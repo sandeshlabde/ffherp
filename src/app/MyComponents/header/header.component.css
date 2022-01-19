@@ -1,0 +1,14 @@
+header {
+    top: 0;
+    z-index: 100;
+    position: sticky;
+}
+
+.header-links li {
+    text-decoration: none;
+    padding-left: 25px;
+}
+
+header i {
+    font-size: 25px;
+}

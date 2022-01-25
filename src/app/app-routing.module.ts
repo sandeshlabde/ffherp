@@ -1,11 +1,20 @@
+ 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ApiTableComponent } from './MyComponents/api-table/api-table.component';
-import { ListTableComponent } from './MyComponents/list-table/list-table.component';
+   
+import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component';
+import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-email-quot.component';
+import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
+ 
+ 
 
 const routes: Routes = [
-   { path: '', component:ListTableComponent},
-{ path: 'prospect', component:ApiTableComponent  },
+   { path: '', component:SideNavComponent},
+  {path:'page/:flag', component:ProspectListComponent},
+  {path:'page/:flag/:id',component:ProspectListComponent},
+  {path:':flag/:id',component:ShowEmailQuotComponent}
+  
+  
 ];
 
 @NgModule({

@@ -1,0 +1,12 @@
+textBox {
+    display: flex;
+}
+
+textarea {
+    resize: none;
+    display: flex;
+}
+
+.chatHeadingSize {
+    width: 100px;
+}

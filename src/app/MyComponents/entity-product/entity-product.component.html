@@ -1,0 +1,171 @@
+<div class="modal-content">
+    <div class="modal-header   comp_name ">
+        <!-- header part with company name, id and title starts here -->
+        <div class="col-lg-6">
+            <div class="p-1">
+                <div class="text-center" *ngFor="let x of entityIdDetailData2">
+
+                    <h3>{{x.CompanyName}}</h3>
+                </div>
+
+            </div>
+        </div>
+        <!-- id and title section -->
+        <div class="col-lg-5 text-end" id="id_title" *ngFor="let x of entityIdDetailData2">
+            <div class="row  ">
+                <div>
+                    {{flag}} ID : {{x.ID}}
+                </div>
+
+            </div>
+            <div class="row  " id="id_title">
+                <div>
+                    Title : {{x.Title}}
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-1  text-end">
+            <button type=" button " class="btn-close " data-bs-dismiss="modal" aria-label="Close"> </button>
+
+        </div>
+
+    </div>
+    <!-- modal body main code -->
+    <div class="modal-body " id="modal ">
+        <!-- compant Details data row starts here -->
+        <div class="row billing ">
+            <div class="col-lg-6 border border-dark entity_box address_part">
+                <!-- lead company details -->
+                <div class="row ">
+                    <div class="col-lg-6 ">
+                        <h6><b>Billing Address</b></h6><br>
+                        <span class="text-dark " id="col_2 " *ngFor="let x of entityIdDetailData2 ">
+                                    {{x.CompanyAddress}}<br>
+                                    {{x.CompanyAddress1}}
+                                </span>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- second column in row -->
+            <div class="col-lg-6 entity_box border border-dark ">
+                <div class="row ">
+                    <div class="col-lg-2 text-end  text-black-50 col_1 ">
+                        <label><b>Status</b></label><br>
+                        <label><b>Priority</b></label><br>
+                        <label><b>Source</b></label>
+                    </div>
+                    <div class="col-lg-3 text-start bold col_2 " *ngFor="let x of entityIdDetailData2 ">
+                        <label><b>{{x.Status}}</b></label><br>
+                        <label><b>{{x.Priority}}</b></label><br>
+                        <label><b>{{x.Source}}</b></label>
+                    </div>
+
+                    <div class="col-lg-4 text-end text-black-50 col_1 ">
+                        <label><b>Status</b></label><br>
+                        <label><b>Source</b></label>
+                    </div>
+                    <div class="col-lg-3 text-start col_2 " *ngFor="let x of entityIdDetailData2 ">
+                        <label><b>{{x.Status}}</b></label><br>
+                        <label><b>{{x.Source}}</b></label>
+                    </div>
+                    <div class="row pt-2 " ng-repeat="x in lead ">
+                        <h6 id="schedule "><b>Next Schedule Action :</b></h6>
+                        <div id="col_2 " *ngFor="let x of entityIdDetailData2 ">
+                            <b>Follow up action on {{x.Opendate}}</b><br>
+                            <b>To call and ask for demo meeting</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- links -->
+        <div class="row ">
+            <ul class="nav nav-tabs billing ">
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link text-center border border-primary link " (click)="product() "><u>PRODUCTS</u></a>
+                </li>
+                <span *ngFor="let x of entityIdDetailData2 ">{{x.schedule}}</span>
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link border border-primary link " (click)="action() "><u>ACTIONS</u>&nbsp;&nbsp;<span  
+                                    class="text-center " *ngFor="let x of entityIdDetailData2 ">({{x.ActionCount}})</span></a>
+                </li>
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link border border-primary link " data-bs-toggle="tab " href="# "><u>CHATS</u>&nbsp;&nbsp;<span  
+                                    class="text-center " *ngFor="let x of entityIdDetailData2 ">({{x.Chatcnt}})</span> </a>
+                </li>
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link border border-primary link " data-bs-toggle="tab " href="# "><u>ATTACHMENTS</u>&nbsp;&nbsp;<span  class="text-center " *ngFor="let x of entityIdDetailData2 ">({{x.schedule}})</span> </a>
+                </li>
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link border border-primary link " data-bs-toggle="tab " href="# "><u>VOUCHERS</u>&nbsp;&nbsp;<span class="text-center " *ngFor="let x of entityIdDetailData2 ">({{x.schedule}})</span> </a>
+                </li>
+                <li class="nav-item hover-shadow m-1 ">
+                    <a class="nav-link border border-primary link " data-bs-toggle="tab " href="# "><u>Notes</u>&nbsp;&nbsp;
+                        <span  class="text-center " *ngFor="let x of entityIdDetailData2 ">({{x.NotesCount}})</span> </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ms-2 me-2 " *ngIf="viewProductTable " id="viewTables ">
+
+            <table class="table table-striped ">
+                <thead>
+                    <tr class=" table-primary " id="table ">
+                        <th> Product</th>
+                        <th> Rate</th>
+                        <th>Discount</th>
+                        <th>Quantity</th>
+                        <th>Amount</th>
+                        <th>Taxes</th>
+                        <th>TaxAmount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of ViewProductDetail2 ">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.rate}}</td>
+                        <td>{{x.Discount_val}}</td>
+                        <td>{{x.Quantity}}</td>
+                        <td>{{x.amount}}</td>
+                        <td>{{x.Taxes_val}}</td>
+                        <td>{{x.TaxAmount_val}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+        <div class="ms-2 me-2 " *ngIf="actionTable " id="actionTables ">
+
+            <table class="table table-striped ">
+                <thead>
+                    <tr id="table " class="table-primary ">
+                        <th>Acu Id</th>
+                        <th>Sch Id</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>By</th>
+                        <th>Action Done</th>
+                        <th>Revised PDF</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let x of ViewActionDetail2 ">
+                        <td>{{x.ScheduleActionId}}</td>
+                        <td>{{x.SeqId}}</td>
+                        <td>{{x.ActionStartDate}}</td>
+                        <td>{{x.ActionStartTime}}</td>
+                        <td>{{x.username}}</td>
+                        <td>{{x.Taxes_val}}</td>
+                        <td>{{x.TaxAmount_val}}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+</div>

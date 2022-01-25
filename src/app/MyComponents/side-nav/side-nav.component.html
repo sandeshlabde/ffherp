@@ -1,7 +1,7 @@
-<div class="sidebar close">
+<div class="sidebar close pb-3">
     <div class="logo-details">
-        <i class='bx bxl-c-plus-plus bx-menu'></i>
 
+        <!-- <i class="fas fa-bars"></i> -->
     </div>
     <ul class="nav-links">
 
@@ -16,9 +16,9 @@
             <!-- onclick function div display none and block   handle in validation.js-->
             <ul class="sub-menu shadow-lg  bg-body rounded ">
                 <li><a class="link_name bg-info text-dark" href="#">marketing</a></li>
-                <li><a routerLink="/prospect" routerLinkActive="active" id="Prospect">ProspectList</a>
+                <li><a routerLink="/page/Prospect" routerLinkActive="active" id="Prospect">ProspectList</a>
                 </li>
-                <li><a href="#" id="Prospectdash">ProspectDashboard</a></li>
+                <li><a routerLink="/dashBoard" routerLinkActive="active" id="Prospectdash">ProspectDashboard</a></li>
             </ul>
         </li>
         <li>
@@ -32,9 +32,9 @@
             <!-- onclick function div display block and none handle in validation.js-->
             <ul class="sub-menu shadow-lg  bg-body rounded ">
                 <li><a class="link_name bg-info text-dark" href="#">Sales</a></li>
-                <li><a href="#" id="Lead">LeadList</a></li>
+                <li><a routerLink="/page/Lead" routerLinkActive="active" id="Lead">LeadList</a></li>
                 <li><a href="#" id="Leaddash" onclick="openDash()">LeadDashboard</a></li>
-                <li><a href="#" id="SO">SOList</a></li>
+                <li><a routerLink="/page/SalesOrderLIst" routerLinkActive="active" id="SO">SOList</a></li>
                 <li><a href="#" id="SOdash">SODashboard</a></li>
             </ul>
         </li>
@@ -51,14 +51,14 @@
             <ul class="sub-menu  shadow-lg  bg-body rounded ">
                 <li><a class="link_name bg-info text-dark" href="#">Inventoy</a></li>
 
-                <li><a href="#" id="MO">MOList</a></li>
+                <li><a routerLink="/page/MoList" routerLinkActive="active" id="MO">MOList</a></li>
                 <li><a href="#" id="MOdash">MODashboard</a></li>
 
-                <li><a href="#" id="PO">POList</a></li>
+                <li><a routerLink="/page/POList" routerLinkActive="active" id="PO">POList</a></li>
                 <li><a href="#" id="POdash">PODashboard</a></li>
-                <li><a href="#" id="MI">MIList</a></li>
+                <li><a routerLink="/page/MIList" routerLinkActive="active">MIList</a></li>
                 <li><a href="#" id="MIdash">MIDashboard</a></li>
-                <li><a href="#" id="Repair">RepairList</a></li>
+                <li><a href="#" id="/page/Repair">RepairList</a></li>
                 <li><a href="#" id="RepairDash">RepairDashboard</a>
                 </li>
             </ul>
@@ -74,10 +74,10 @@
             <!-- onclick function div display block and none handle in validation.js-->
             <ul class="sub-menu shadow-lg  bg-body rounded ">
                 <li><a class="link_name bg-info text-dark" href="#">Payment</a></li>
-                <li><a href="#" id="Invoice">InvoiceList</a></li>
-                <li><a href="#" onclick="openDash()">InvoiceDashboard</a>
+                <li><a routerLink="/page/Payment" id="Invoice">InvoiceList</a></li>
+                <li><a href="#">InvoiceDashboard</a>
                 </li>
-                <li><a href="#" id="PI">PIList</a></li>
+                <li><a routerLink="/page/Payable" routerLinkActive="active" id="PI">PIList</a></li>
                 <li><a href="#" id="PIDash">PIDashboard</a></li>
             </ul>
         </li>
@@ -92,7 +92,7 @@
             <!-- onclick function div display block and none handle in validation.js-->
             <ul class="sub-menu shadow-lg  bg-body rounded ">
                 <li><a class="link_name bg-info text-dark" href="#">Support</a></li>
-                <li><a href="#" id="Ticket">TicketList</a></li>
+                <li><a routerLink="/page/Ticket" routerLinkActive="active" id="Ticket">TicketList</a></li>
                 <li><a href="#" id="TicketDash">TicketDashboard</a>
                 </li>
             </ul>
@@ -108,8 +108,8 @@
             <!-- onclick function div display block and none handle in validation.js-->
             <ul class="sub-menu shadow-lg   bg-body rounded">
                 <li><a class="link_name bg-info text-dark" href="#">AMC</a></li>
-                <li><a href="#" ng-click="Show_AMC()" onclick="openList()" id=" AMC">AMCList</a></li>
-                <li><a href="#" ng-click="dashAMC()" onclick="openDash()" id="AMCDash">AMCDashboard</a></li>
+                <li><a routerLink="/page/AMC" routerLinkActive="active" id=" AMC">AMCList</a></li>
+                <li><a href="#" id="AMCDash">AMCDashboard</a></li>
             </ul>
         </li>
 
@@ -125,8 +125,8 @@
             <!-- onclick function div display block and none handle in validation.js-->
             <ul class="sub-menu shadow-lg  bg-body rounded">
                 <li><a class="link_name bg-info text-dark" href="#"> Work</a></li>
-                <li><a href="#" ng-click="ShowWork()" onclick="openList()" id="Work">WorkList</a></li>
-                <li><a href="#" ng-click="dashWork()" onclick="openDash()" id="WorkDash">WorkDashboard</a></li>
+                <li><a routerLink="/page/Work " routerLinkActive="active" id="Work">WorkList</a></li>
+                <li><a href="#" id="WorkDash">WorkDashboard</a></li>
             </ul>
         </li>
         <li>
@@ -148,7 +148,7 @@
 
     </ul>
 </div>
-<div class="container">
-    <h1>table</h1>
+<div class="container contain">
+
     <router-outlet></router-outlet>
 </div>

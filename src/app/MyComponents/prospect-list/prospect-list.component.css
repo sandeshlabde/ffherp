@@ -1,0 +1,77 @@
+table {
+    width: 100%;
+    padding-top: 10px;
+}
+
+th {
+    height: 30px;
+    text-align: center;
+}
+
+tbody tr td i {
+    font-size: 10px;
+    color: rgb(156, 155, 155);
+    padding: 3px;
+}
+
+td {
+    font-size: 12px;
+    text-align: center;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#modal {
+    background-color: #ffffffff;
+}
+
+.nav-item {
+    justify-content: center;
+}
+
+.nav-link {
+    font-size: x-small;
+}
+
+
+/* table menu hover section */
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.dropdown-content a {
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: black;
+    color: white;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: rgb(30, 138, 189);
+}

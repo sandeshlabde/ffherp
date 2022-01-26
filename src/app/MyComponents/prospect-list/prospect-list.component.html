@@ -35,12 +35,12 @@
                 </div>
             </td>
             <td class="text-start">
-                <a routerLink="/page/{{flag}}/{{x.InstalledNo}}" routerLinkActive="active" (click)="entityId(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#view">
+                <a (click)="openEntity(x.InstalledNo)">
                 {{x.InstalledNo}}
             </a>
-                <a routerLink="/page/{{flag}}/{{x.InstalledNo}}" routerLinkActive="active" data-bs-toggle="modal" data-bs-target="#email"><i data-bs-toggle="tooltip" data-bs-placement="top" title="ViewEmail" class="fas fa-envelope"></i>
+                <a (click)="openEmail(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#email"><i data-bs-toggle="tooltip" data-bs-placement="top" title="ViewEmail" class="fas fa-envelope"></i>
                 </a>
-                <a routerLink="/page/{{flag}}/{{x.InstalledNo}}" data-bs-toggle="modal" data-bs-target="#notes"><i data-bs-toggle="tooltip" data-bs-placement="top" title="viewNotes" class="far fa-file-alt"></i> 
+                <a (click)="openNotes(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#notes"><i data-bs-toggle="tooltip" data-bs-placement="top" title="viewNotes" class="far fa-file-alt"></i> 
                 </a>
                 <a href="#"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Upload " class="fas fa-cloud-upload-alt"></i>
                 </a>
@@ -81,8 +81,8 @@
 
             <!-- ***************6th colm******************** -->
             <td class="text-start">{{x.Stage}}
-                <a href="#" ng-click="viewChat(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#notes"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Chat" class="far fa-comments"></i></a>
-                <a routerLink="{{flag}}/{{x.InstalledNo}}" data-bs-toggle="modal" data-bs-target="#emailQuot"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="far fa-file-pdf"></i></a>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#notes"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Chat" class="far fa-comments"></i></a>
+                <a (click)="openEmailQuote(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="far fa-file-pdf"></i></a>
             </td>
             <!-- ***************7th colm******************** -->
             <td class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard }}</td>
@@ -134,3 +134,4 @@
         </div>
     </div>
 </div>
+<app-entity-product [Entityid]="data"></app-entity-product>

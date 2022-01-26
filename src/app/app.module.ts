@@ -15,7 +15,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 // angular material input module import
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatButtonModule} from '@angular/material/button';
 // ngx pagination sorting searching
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
@@ -57,7 +57,8 @@ import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-emai
     Ng2SearchPipeModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   
   ],
   providers: [ProspectService],

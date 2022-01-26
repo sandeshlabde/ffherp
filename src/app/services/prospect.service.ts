@@ -32,7 +32,11 @@ export class ProspectService {
 
   // Email Quotation API URL
   emailQuotationUrl="https://ffherp.co.in:446/api/Voucher/QuotationEmailRead";
- 
+  
+  // Email Quotation API URL
+  PDFEmailDetailUrl="https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFEmailDetails";
+  // Email Quotation API URL
+  PDFEmailDetaiUrl="https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFDefaultValues";
    
   constructor(private http: HttpClient) { }
 
@@ -144,7 +148,7 @@ return this.http.post (this.actionDetailsUrl, requestBody );
 
 }
 // Action Api calling
-emailQuotation(   EntityID:number,EmailAddress:any )   {
+emailQuotation(  EntityID:number,EmailAddress:any )   {
 
   const requestBody = {
     DBNAME: "Vol187",
@@ -156,6 +160,21 @@ emailQuotation(   EntityID:number,EmailAddress:any )   {
 }
  
 return this.http.post (this.emailQuotationUrl, requestBody );
+
+}
+// Action Api calling
+pdfemaildetail(eEntityFlag:string )   {
+
+  const requestBody = {
+    DBNAME: "Vol187",
+    eEntityFlag ,  
+    password: "123456789",
+    
+    
+   
+}
+ 
+return this.http.post (this.PDFEmailDetaiUrl, requestBody );
 
 }
 }

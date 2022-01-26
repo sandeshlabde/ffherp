@@ -6,6 +6,7 @@
                 <div class="text-center" *ngFor="let x of entityIdDetailData2">
 
                     <h3>{{x.CompanyName}}</h3>
+
                 </div>
 
             </div>
@@ -26,8 +27,8 @@
             </div>
         </div>
         <div class="col-lg-1  text-end">
-            <button type=" button " class="btn-close " data-bs-dismiss="modal" aria-label="Close"> </button>
-
+            <!-- <button type=" button " class="btn-close " data-bs-dismiss="modal" aria-label="Close"> </button> -->
+            <button mat-raised-button mat-dialog-close>Cancel</button>
         </div>
 
     </div>
@@ -168,4 +169,9 @@
 
         </div>
     </div>
+
+
+
+
 </div>
+<h1> {{Entityid}}</h1>

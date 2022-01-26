@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProspectService } from 'src/app/services/prospect.service';
 
@@ -24,11 +24,16 @@ export class EntityProductComponent implements OnInit {
   Module: any;
 
 
-  constructor(private listService: ProspectService, private root: ActivatedRoute) {
-    this.root.params.subscribe((param) => {
 
+  @Input() Entityid: any;
+  
+  constructor(private listService: ProspectService, private root: ActivatedRoute) {
+
+    this.Entityid=this.Entityid;
+    this.root.params.subscribe((param) => {
       
-      this.listService.getViewList(param["flag"], param["id"]).subscribe((data: any) => {
+      console.log("EntityId"+this.Entityid);
+      this.listService.getViewList(param["flag"], this.Entityid).subscribe((data: any) => {
         this.entityIdDetailData = data;
         this.entityIdDetailData2 = JSON.parse(this.entityIdDetailData);
       })
@@ -78,10 +83,10 @@ export class EntityProductComponent implements OnInit {
 
     this.root.params.subscribe((param) => {
 
-      console.warn("Product" + param["flag"], param["id"])
-      
+      console.warn("Product" + param["flag"], this.Entityid)
+      console.log("entityid"+this.Entityid)
 
-      this.listService.productDetails(param["id"], this.Module).subscribe((data: any) => {
+      this.listService.productDetails(this.Entityid, this.Module).subscribe((data: any) => {
         this.ViewProductDetail = data;
         this.ViewProductDetail2 = JSON.parse(this.ViewProductDetail);
       })
@@ -90,8 +95,8 @@ export class EntityProductComponent implements OnInit {
 
     this.root.params.subscribe((param) => {
 
-      console.warn(param["id"])
-      this.listService.actionDetails(param["id"], this.Module).subscribe((data: any) => {
+       
+      this.listService.actionDetails(this.Entityid, this.Module).subscribe((data: any) => {
         this.ViewActionDetail = data;
         this.ViewActionDetail2 = JSON.parse(this.ViewActionDetail);
       })

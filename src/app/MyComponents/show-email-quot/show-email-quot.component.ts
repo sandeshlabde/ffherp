@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ProspectService } from 'src/app/services/prospect.service';
 
@@ -11,20 +12,27 @@ export class ShowEmailQuotComponent implements OnInit {
   
   pdfemailData: any;
   pdfemailData2: any;
-  flag: any;
+  EntityName: any;
   id:any;
+  Entityid: any;
+  PDFCustomerID!: number;
 
-  constructor(private listService: ProspectService, private root: ActivatedRoute) {   
-    this.root.params.subscribe((param) => {
-      console.warn(param["flag"], param["id"])
+  constructor(private listService: ProspectService, private root: ActivatedRoute,  @Inject(MAT_DIALOG_DATA) public data:any) {   
+    this.Entityid=this.data.EntityID,
+    this.EntityName=this.data.EntityName
+       
 
-       this.listService.pdfemaildetail(param["flag"]).subscribe((data: any) => {
+       this.listService.pdfemaildetail(this.EntityName).subscribe((data: any) => {
       this.pdfemailData = data;
       this.pdfemailData2 = JSON.parse(this.pdfemailData);
-      console.warn("pdfemaildata"+this.pdfemailData2)
+       
     })
-    this.flag = param["flag"]
-  })}
+  
+}
+showPDF(){
+  this.listService.showEmailPDF(this.EntityName,this.PDFCustomerID, this.Entityid).subscribe((data: any) => {
+  })
+}
 
   ngOnInit(): void {
   }

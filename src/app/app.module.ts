@@ -10,8 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
-import {MatDialogModule} from '@angular/material/dialog';
+ 
+import {MatDialogModule } from '@angular/material/dialog';
 // angular material input module import
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -39,10 +39,19 @@ import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-emai
     AppComponent,
     HeaderComponent,
     SideNavComponent, 
-    ProspectListComponent, EntityProductComponent, ProductComponent, ActionComponent, NoteComponent, EmailQuotationComponent, ShowEmailQuotComponent,
+    ProspectListComponent,
+    EntityProductComponent,
+    ActionComponent,
+     NoteComponent, 
+    EmailQuotationComponent,
+     ShowEmailQuotComponent, 
+     ProductComponent,
+     
+      
      
    
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,10 +67,13 @@ import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-emai
     Ng2OrderModule,
     NgxPaginationModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+ 
   
   ],
   providers: [ProspectService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+ 
+}

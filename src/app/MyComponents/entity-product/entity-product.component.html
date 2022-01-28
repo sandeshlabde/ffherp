@@ -1,34 +1,34 @@
-<div class="modal-content">
+<div class=" ">
     <div class="modal-header   comp_name ">
         <!-- header part with company name, id and title starts here -->
         <div class="col-lg-6">
             <div class="p-1">
-                <div class="text-center" *ngFor="let x of entityIdDetailData2">
+                <div class="text-start" *ngFor="let x of entityIdDetailData2 ">
 
-                    <h3>{{x.CompanyName}}</h3>
+                    <h3>{{ x.CompanyName}}</h3>
 
                 </div>
 
             </div>
         </div>
         <!-- id and title section -->
-        <div class="col-lg-5 text-end" id="id_title" *ngFor="let x of entityIdDetailData2">
+        <div class="col-lg-5 text-end" id="id_title">
             <div class="row  ">
                 <div>
-                    {{flag}} ID : {{x.ID}}
+                    {{EntityName}} ID : {{ Entityid}}
                 </div>
 
             </div>
             <div class="row  " id="id_title">
                 <div>
-                    Title : {{x.Title}}
+                    Title : {{data.Title}}
                 </div>
 
             </div>
         </div>
         <div class="col-lg-1  text-end">
-            <!-- <button type=" button " class="btn-close " data-bs-dismiss="modal" aria-label="Close"> </button> -->
-            <button mat-raised-button mat-dialog-close>Cancel</button>
+
+            <button type="button" mat-dialog-close class="btn-close "></button>
         </div>
 
     </div>
@@ -72,7 +72,7 @@
                         <label><b>{{x.Status}}</b></label><br>
                         <label><b>{{x.Source}}</b></label>
                     </div>
-                    <div class="row pt-2 " ng-repeat="x in lead ">
+                    <div class="row pt-2 ">
                         <h6 id="schedule "><b>Next Schedule Action :</b></h6>
                         <div id="col_2 " *ngFor="let x of entityIdDetailData2 ">
                             <b>Follow up action on {{x.Opendate}}</b><br>
@@ -110,7 +110,7 @@
             </ul>
         </div>
 
-        <div class="ms-2 me-2 " *ngIf="viewProductTable " id="viewTables ">
+        <div class="ms-2 me-2 " *ngIf="viewProductTable" id="viewTables ">
 
             <table class="table table-striped ">
                 <thead>
@@ -139,7 +139,7 @@
             </table>
 
         </div>
-        <div class="ms-2 me-2 " *ngIf="actionTable " id="actionTables ">
+        <div class="ms-2 me-2 " *ngIf="actionTable" id="actionTables ">
 
             <table class="table table-striped ">
                 <thead>
@@ -170,8 +170,4 @@
         </div>
     </div>
 
-
-
-
 </div>
-<h1> {{Entityid}}</h1>

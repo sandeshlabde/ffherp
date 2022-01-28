@@ -10,28 +10,26 @@
         <div class="col-sm-3   email-box">
             <!---************** dropDown list section start here ********-->
             <div class="check-form-field  ">
-                <select class="input-text" id="Additional_Input_Field_4" name="Cost-Center">
-                    <option>select</option>
-                    <option value="Vadiyar Project">Vadiyar Project
-                    </option>
+                <select class="input-text" id=" Format" name=" Format">
+                    <option *ngFor="let x of pdfemailData2.slice(0,3)" value="{{x.key}} "> {{x.Value}}</option>
+                    
+                     
                 </select>
-                <label for="Cost-Center" class="label">Select Format :</label>
+                <label for="Format" class="label">Select Format :</label>
             </div>
             <div class="check-form-field ">
-                <select class="input-text" id="Additional_Input_Field_4" name="Cost-Center">
-                    <option>select</option>
-                    <option value="Vadiyar Project">Vadiyar Project
-                    </option>
+                <select class="input-text" id=" " name=" ">
+                    <option *ngFor="let x of pdfemailData2.slice(3,5)" value="{{x.key}} "> {{x.Value}}</option>
+                   
                 </select>
-                <label for="Cost-Center" class="label"> Select Header / Footer</label>
+                <label for=" " class="label"> Select Header / Footer</label>
             </div>
             <div class="check-form-field ">
-                <select class="input-text" id="Additional_Input_Field_4" name="Cost-Center">
-                    <option>select</option>
-                    <option value="Vadiyar Project">Vadiyar Project
-                    </option>
+                <select class="input-text" id=" " name=" ">
+                    <option value="0">Select Bank</option>
+                    <option *ngFor="let x of pdfemailData2.slice(5,18)" value="{{x.key}} "> {{x.Value}}</option>
                 </select>
-                <label for="Cost-Center" class="label"> Select Bank</label>
+                <label for=" " class="label"> Select Bank</label>
             </div>
             <!---************** dropDown list  section start here ********-->
 
@@ -76,7 +74,7 @@
 
             <!---************** link section start here ********-->
             <div>
-                <a href="">View Quote</a>
+                <a href="#" (click)="showPDF()"> View Quote</a>
             </div>
             <div>
                 <a href="">Email Quote</a>

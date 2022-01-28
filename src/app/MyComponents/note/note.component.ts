@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+ 
 import { ProspectService } from 'src/app/services/prospect.service';
 
 export interface noteDataField {
@@ -14,24 +15,25 @@ export interface noteDataField {
   styleUrls: ['./note.component.css']
 })
 export class NoteComponent implements OnInit {
+  Entityid: any;
 
   noteData : any;
   noteData2: any;
-  flag: any;
-  id: any;
+  EntityName: any;
+   
   Description: any;
   description:string="";
 
-  constructor( private listService: ProspectService,private root:ActivatedRoute ) {
-    this.root.params.subscribe((param)=>{
-      this.listService.getNoteList(param["flag"], param["id"] ).subscribe((data: any)=>{ 
+  constructor( private listService: ProspectService,    @Inject(MAT_DIALOG_DATA) public data:any ) {
+    this.Entityid=this.data.EntityID,
+    this.EntityName=this.data.EntityName
+      this.listService.getNoteList( this.EntityName, this.Entityid ).subscribe((data: any)=>{ 
         this.noteData=data;
          this.noteData2 =JSON.parse(this.noteData);
       }) ; 
       
-      this.flag =param['flag']
-  this.id=param["id"]
-    }); 
+     
+    
     
   };
 
@@ -39,10 +41,10 @@ export class NoteComponent implements OnInit {
   saveNote(Description:string){
    this.Description=Description;//get input value
    
-    this.listService.saveNoteList( this.flag , this.id,this.Description ).subscribe((data: any)=>{ 
+    this.listService.saveNoteList( this.EntityName ,  this.Entityid,this.Description ).subscribe((data: any)=>{ 
       
     }) ; 
-    this.listService.getNoteList( this.flag, this.id).subscribe((data: any)=>{ 
+    this.listService.getNoteList( this.EntityName,  this.Entityid).subscribe((data: any)=>{ 
       this.noteData=data;
       
        this.noteData2 =JSON.parse(this.noteData);

@@ -1,24 +1,27 @@
-<div class="modal-header tect-center bg-primary text-white">
-    <h5 class="modal-title "> Email Trace</h5>
-    <button type="button" class="btn-close btn-light" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
-<div class="modal-body">
+<div class="email-body">
+    <div class="modal-header tect-center bg-primary text-white">
+        <h5 class="modal-title "> Email Trace</h5>
+        <button type="button" mat-dialog-close class="btn-close "></button>
 
-    <table id="emailTable" class="table table-striped table-striped">
-        <thead class="table-primary ">
-            <tr>
-                <th>Folder</th>
-                <th> Date Time</th>
-                <th>From/To</th>
-                <th>Subject</th>
-                <th>Message</th>
-            </tr>
+    </div>
+    <div class="modal-body">
 
-        </thead>
-        <tbody>
-            <tr>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
+        <table id="emailTable" class="table table-striped table-striped">
+            <thead class="table-primary ">
+                <tr>
+                    <th>Folder</th>
+                    <th> Date Time</th>
+                    <th>From/To</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

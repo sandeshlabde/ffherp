@@ -37,19 +37,22 @@ export class ProspectService {
   PDFEmailDetailUrl="https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFEmailDetails";
   // Email Quotation API URL
   PDFEmailDetaiUrl="https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFDefaultValues";
+
+  // Email Show PDF API URL
+  showEmailPDFUrl="https://apitest.ffherp.co.in/api/Voucher/GetQuotationFormatFile"
    
   constructor(private http: HttpClient) { }
 
  
 // list  table api calling
 
-  getLeadList(flag:string):Observable<prospectdatafield[]> {
- 
+  getLeadList(EntityName:string):Observable<prospectdatafield[]> {
+  
     const requestBody = {
     dbname: "Vol187",
     encrypt: "X·ÌØ8âˆø«¸SÚã’", 
     id: "1",
-    flag ,
+    EntityName ,
     userid: "Director"
   }
  
@@ -57,14 +60,14 @@ export class ProspectService {
 }
 
 // show entityid  info APi calling
-getViewList(flag:string, id:number)   {
+getViewList(EntityName:string, id:number)   {
 
   const requestBody = {
     dbname: "Vol187",
     encrypt: "X·ÌØ8âˆø«¸SÚã’",
     password: "123456789",
     id,
-    flag,
+    EntityName,
     userid: "Director"
 
 }
@@ -74,13 +77,13 @@ return this.http.post (this.entityIdUrl, requestBody );
 }
 
 // Entity product details api calling
-getProductList(flag:string, id:number)   {
+getProductList(EntityName:string, id:number)   {
 
   const requestBody = {
    
     DbName: "Vol187",
     id,
-    flag,
+    EntityName,
 }
  
 return this.http.post (this.productViewUrl, requestBody );
@@ -163,11 +166,11 @@ return this.http.post (this.emailQuotationUrl, requestBody );
 
 }
 // Action Api calling
-pdfemaildetail(eEntityFlag:string )   {
+pdfemaildetail(EntityName:string )   {
 
   const requestBody = {
     DBNAME: "Vol187",
-    eEntityFlag ,  
+    EntityName ,  
     password: "123456789",
     
     
@@ -175,6 +178,42 @@ pdfemaildetail(eEntityFlag:string )   {
 }
  
 return this.http.post (this.PDFEmailDetaiUrl, requestBody );
+
+}
+showEmailPDF(EntityName:string ,PDFCustomerID:number,PDFEntityID:number)   {
+
+  const requestBody = {
+    PDFCustomerID,
+    DBNAME: "Vol187",
+    PDFEntityID,
+    EntityName , 
+    PDFPageName : PDFEntityID,
+    PDFSource: PDFEntityID,
+    PDFFormatSeqID: "",
+    PDFFormatSetNo: "",
+    PDFHeaderLogo: "",
+    PDFShowTax: "No",
+    PDFRoleId: 1,
+    password: "123456789",
+    PDFUserID: "Director"
+    
+    // PDFCustomerID: 187
+    // PDFDBName: "Vol187"
+    // PDFEntityID: "220110002"
+    // PDFEntityType: "Lead"
+    // PDFFormatSeqID: ""
+    // PDFFormatSetNo: ""
+    // PDFHeaderLogo: ""
+    // PDFPageName: "Lead"
+    // PDFPassword: " X·ÌØ8âˆø«¸SÚã’"
+    // PDFRoleId: 1
+    // PDFShowTax: "No"
+    // PDFSource: "Lead"
+    // PDFUserID: "Director"   
+   
+}
+ 
+return this.http.post (this.showEmailPDFUrl, requestBody );
 
 }
 }

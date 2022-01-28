@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ProspectService } from 'src/app/services/prospect.service';
+
 
 @Component({
   selector: 'app-entity-product',
@@ -12,7 +13,7 @@ export class EntityProductComponent implements OnInit {
 
   entityIdDetailData: any;
   entityIdDetailData2: any;
-  flag: any;
+  EntityName: any;
   ViewProductDetail: any;
   ViewProductDetail2: any;
   ViewActionDetail: any;
@@ -21,87 +22,85 @@ export class EntityProductComponent implements OnInit {
 
   viewProductTable: boolean = false;
   actionTable: boolean = false;
-  Module: any;
+  EntityModule: any;
+  Entityid: any;
 
 
 
-  @Input() Entityid: any;
-  
-  constructor(private listService: ProspectService, private root: ActivatedRoute) {
-
-    this.Entityid=this.Entityid;
-    this.root.params.subscribe((param) => {
-      
-      console.log("EntityId"+this.Entityid);
-      this.listService.getViewList(param["flag"], this.Entityid).subscribe((data: any) => {
-        this.entityIdDetailData = data;
-        this.entityIdDetailData2 = JSON.parse(this.entityIdDetailData);
-      })
-      this.flag = param["flag"]
-    })
-    
-// entity Product module name set start here
+constructor(private listService: ProspectService, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.Entityid = this.data.EntityID,
+      this.EntityName = this.data.EntityName
 
 
-    if (this.flag == "PoList") {
-      this.Module = "PO";
+ 
+    this.listService.getViewList(this.EntityName, this.Entityid).subscribe((data: any) => {
+      this.entityIdDetailData = data;
+      this.entityIdDetailData2 = JSON.parse(this.entityIdDetailData);
+      console.log("dialogdata" + this.EntityName, this.entityIdDetailData2);
+    });
+
+
+
+    // entity Product EntityModule name set start here
+ 
+    if (this.EntityName == "PoList") {
+      this.EntityModule = "PO";
     }
-    else if (this.flag == "SalesOrderLIst"){
-       this.Module="SO";
-       
+    else if (this.EntityName == "SalesOrderLIst") {
+      this.EntityModule = "SO";
+
     }
-    else if (this.flag == "Payable"){
-       this.Module="Payable";
-       
+    else if (this.EntityName == "Payable") {
+      this.EntityModule = "Payable";
+
     }
-    else if (this.flag == "MoList"){
-       this.Module="MO";
-       
+    else if (this.EntityName == "MoList") {
+      this.EntityModule = "MO";
+
     }
-    else if (this.flag == "MIList"){
-       this.Module="MI";
-       
+    else if (this.EntityName == "MIList") {
+      this.EntityModule = "MI";
+
     }
-    else if (this.flag == "Repair"){
-       this.Module="Repair";
-       
+    else if (this.EntityName == "Repair") {
+      this.EntityModule = "Repair";
+
     }
-    else if (this.flag == "Payment"){
-       this.Module="RCB";
-       
+    else if (this.EntityName == "Payment") {
+      this.EntityModule = "RCB";
+
     }
-    else if (this.flag == "AMC"){
-       this.Module="AMC";
-       
+    else if (this.EntityName == "AMC") {
+      this.EntityModule = "AMC";
+
     }
-    else if (this.flag == "Work"){
-       this.Module="AMC";
-       
+    else if (this.EntityName == "Work") {
+      this.EntityModule = "AMC";
+
     }
 
-// entity Product module name set end here
+    // entity Product EntityModule name set end here
 
-    this.root.params.subscribe((param) => {
 
-      console.warn("Product" + param["flag"], this.Entityid)
-      console.log("entityid"+this.Entityid)
 
-      this.listService.productDetails(this.Entityid, this.Module).subscribe((data: any) => {
-        this.ViewProductDetail = data;
-        this.ViewProductDetail2 = JSON.parse(this.ViewProductDetail);
-      })
-
+    // entity ID product Details section start here
+    this.listService.productDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
+      this.ViewProductDetail = data;
+      this.ViewProductDetail2 = JSON.parse(this.ViewProductDetail);
+      console.log("product"+ this.ViewProductDetail2)
     })
 
-    this.root.params.subscribe((param) => {
+    // entity ID product Details section End here
 
-       
-      this.listService.actionDetails(this.Entityid, this.Module).subscribe((data: any) => {
-        this.ViewActionDetail = data;
-        this.ViewActionDetail2 = JSON.parse(this.ViewActionDetail);
-      })
+    // entity ID Action Details section start here
 
+    this.listService.actionDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
+      this.ViewActionDetail = data;
+      this.ViewActionDetail2 = JSON.parse(this.ViewActionDetail);
+      console.log("Action"+  this.ViewActionDetail2)
     })
+
+    // entity ID Action Details section End here 
 
   }
 
@@ -114,7 +113,7 @@ export class EntityProductComponent implements OnInit {
     this.viewProductTable = false;
   }
   ngOnInit(): void {
-   
+
   }
 
 }

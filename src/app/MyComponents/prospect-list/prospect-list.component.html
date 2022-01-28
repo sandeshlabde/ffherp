@@ -59,22 +59,14 @@
 
             <!-- ***********4th colm********* -->
             <td class="text-start" *ngIf="isStatus ">{{x.StatusName}}</td>
-
-
-
             <td class="text-start" *ngIf="isShowDDate">{{x.DeliveryStatusName}}</td>
-
-
             <td class="text-start" *ngIf="isBStatus">{{x.Billedstatus}}</td>
 
 
 
             <!-- ***********5th colm********* -->
             <td class="text-start" *ngIf="isSourceName">{{x.SourceName}}</td>
-
-
             <td class="text-start" *ngIf="isBilledStatus">{{x.Billedstatus}}</td>
-
             <td class="text-start" *ngIf="isDDeliveryStatus">{{x.DeliveryStatusName}}</td>
             <td class="text-start" *ngIf="isServiceType"> {{x.ServiceTypeName}}</td>
 
@@ -85,53 +77,16 @@
                 <a (click)="openEmailQuote(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="far fa-file-pdf"></i></a>
             </td>
             <!-- ***************7th colm******************** -->
-            <td class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard }}</td>
-
-
-
-            <td class="text-start" *ngIf="isDeliveryDate">{{x.DeliveryDate }}</td>
+            <td class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard|date:"dd MMM yyyy" }}</td>
+            <td class="text-start" *ngIf="isDeliveryDate">{{x.DeliveryDate|date:"dd MMM yyyy" }}</td>
             <!-- |date:"dd MMM yyyy" -->
 
 
 
-            <!-- ***************8th colm******************** -->
+
 
 
         </tr>
     </tbody>
 </table>
 <pagination-controls (pageChange)="p=$event"></pagination-controls>
-
-<!--  **********************************view section model******************************-->
-<div class="modal fade" id="view" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-
-        <app-entity-product></app-entity-product>
-
-    </div>
-</div>
-<div class="modal fade" id="notes" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <app-note></app-note>
-    </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="email" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <app-email-quotation></app-email-quotation>
-
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="emailQuot" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-
-            <app-show-email-quot></app-show-email-quot>
-
-        </div>
-    </div>
-</div>
-<app-entity-product [Entityid]="data"></app-entity-product>

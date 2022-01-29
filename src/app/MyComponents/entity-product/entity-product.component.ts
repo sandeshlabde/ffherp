@@ -24,6 +24,7 @@ export class EntityProductComponent implements OnInit {
   actionTable: boolean = false;
   EntityModule: any;
   Entityid: any;
+  chatData: any;
 
 
 
@@ -48,6 +49,14 @@ constructor(private listService: ProspectService, @Inject(MAT_DIALOG_DATA) publi
     }
     else if (this.EntityName == "SalesOrderLIst") {
       this.EntityModule = "SO";
+
+    }
+    else if (this.EntityName == "Prospect") {
+      this.EntityModule = "Prospect";
+
+    }
+    else if (this.EntityName == "Lead") {
+      this.EntityModule = "L";
 
     }
     else if (this.EntityName == "Payable") {
@@ -80,14 +89,17 @@ constructor(private listService: ProspectService, @Inject(MAT_DIALOG_DATA) publi
     }
 
     // entity Product EntityModule name set end here
-
+this.listService.showChat(this.EntityModule,this.Entityid).subscribe((data:any)=>{
+  this.chatData=JSON.parse(data);
+  console.log(this.chatData);
+})
 
 
     // entity ID product Details section start here
     this.listService.productDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
       this.ViewProductDetail = data;
       this.ViewProductDetail2 = JSON.parse(this.ViewProductDetail);
-      console.log("product"+ this.ViewProductDetail2)
+     
     })
 
     // entity ID product Details section End here
@@ -97,7 +109,7 @@ constructor(private listService: ProspectService, @Inject(MAT_DIALOG_DATA) publi
     this.listService.actionDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
       this.ViewActionDetail = data;
       this.ViewActionDetail2 = JSON.parse(this.ViewActionDetail);
-      console.log("Action"+  this.ViewActionDetail2)
+      
     })
 
     // entity ID Action Details section End here 

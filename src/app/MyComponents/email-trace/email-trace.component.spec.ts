@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmailQuotationComponent } from './email-quotation.component';
+import { EmailTraceComponent } from './email-trace.component';
 
-describe('EmailQuotationComponent', () => {
-  let component: EmailQuotationComponent;
-  let fixture: ComponentFixture<EmailQuotationComponent>;
+describe('EmailTraceComponent', () => {
+  let component: EmailTraceComponent;
+  let fixture: ComponentFixture<EmailTraceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmailQuotationComponent ]
+      declarations: [ EmailTraceComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EmailQuotationComponent);
+    fixture = TestBed.createComponent(EmailTraceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

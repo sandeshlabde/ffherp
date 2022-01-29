@@ -30,8 +30,10 @@ import { EntityProductComponent } from './MyComponents/entity-product/entity-pro
 import { ProductComponent } from './MyComponents/product/product.component';
 import { ActionComponent } from './MyComponents/action/action.component';
 import { NoteComponent } from './MyComponents/note/note.component';
-import { EmailQuotationComponent } from './MyComponents/email-quotation/email-quotation.component';
+ 
 import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-email-quot.component';
+import { EmailTraceComponent } from './MyComponents/email-trace/email-trace.component';
+ 
  
 
 @NgModule({
@@ -43,9 +45,9 @@ import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-emai
     EntityProductComponent,
     ActionComponent,
      NoteComponent, 
-    EmailQuotationComponent,
+    
      ShowEmailQuotComponent, 
-     ProductComponent,
+     ProductComponent, EmailTraceComponent 
      
       
      

@@ -10,3 +10,7 @@ textarea {
 .chatHeadingSize {
     width: 100px;
 }
+
+.noteBox {
+    width: 500px;
+}

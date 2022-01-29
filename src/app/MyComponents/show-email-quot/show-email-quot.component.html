@@ -7,94 +7,158 @@
 
     <div class="containt-Body">
         <!-- *****left side contain start here************ -->
-        <div class="col-sm-3   email-box">
-            <!---************** dropDown list section start here ********-->
-            <div class="check-form-field  ">
-                <select class="input-text" id=" Format" name=" Format">
-                    <option *ngFor="let x of pdfemailData2.slice(0,3)" value="{{x.key}} "> {{x.Value}}</option>
+        <div class="row  col-lg-5  email-box">
+            <div class="col   ">
+                <!---************** dropDown list section start here ********-->
+                <div class="check-form-field  ">
+                    <select class="input-select" id=" Format" name=" Format">
+                    <option *ngFor="let x of  emailQuoteData.slice(0,3)" value="{{x.key}} "> {{x.Value}}</option>
                     
                      
                 </select>
-                <label for="Format" class="label">Select Format :</label>
-            </div>
-            <div class="check-form-field ">
-                <select class="input-text" id=" " name=" ">
-                    <option *ngFor="let x of pdfemailData2.slice(3,5)" value="{{x.key}} "> {{x.Value}}</option>
+                    <label for="Format" class="dropDown-label">Select Format :</label>
+                </div>
+                <div class="check-form-field ">
+                    <select class="input-select" id=" " name=" ">
+                    <option *ngFor="let x of  emailQuoteData.slice(3,5)" value="{{x.key}} "> {{x.Value}}</option>
                    
                 </select>
-                <label for=" " class="label"> Select Header / Footer</label>
-            </div>
-            <div class="check-form-field ">
-                <select class="input-text" id=" " name=" ">
+                    <label for=" " class="dropDown-label"> Select Header / Footer</label>
+                </div>
+                <div class="check-form-field ">
+                    <select class="input-select" id=" " name=" ">
                     <option value="0">Select Bank</option>
-                    <option *ngFor="let x of pdfemailData2.slice(5,18)" value="{{x.key}} "> {{x.Value}}</option>
+                    <option *ngFor="let x of  emailQuoteData.slice(5,18)" value="{{x.key}} "> {{x.Value}}</option>
                 </select>
-                <label for=" " class="label"> Select Bank</label>
-            </div>
-            <!---************** dropDown list  section start here ********-->
+                    <label for=" " class="dropDown-label"> Select Bank</label>
+                </div>
+                <!---************** dropDown list  section start here ********-->
 
-            <!---************** CheckBox section start here ********-->
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Select Bank</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Hide Discount Column </label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Discount Rate  </label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Show Round of Total</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Show Task</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label"> Show Rubber Stamp</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Show Product Remark</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Show Product image</label>
-            </div>
-            <div class="form-field">
-                <input type="checkbox" class="input-checkbox" name="" id="">
-                <label for="" class="checkbox-label">Show Product Partcode </label>
-            </div>
-            <!---************** CheckBox section end here ********-->
+                <!---************** CheckBox section start here ********-->
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Select Bank</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Hide Discount Column </label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Discount Rate  </label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Show Round of Total</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Show Task</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label"> Show Rubber Stamp</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Show Product Remark</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Show Product image</label>
+                </div>
+                <div class="form-field">
+                    <input type="checkbox" class="input-checkbox" name="" id="">
+                    <label for="" class="checkbox-label">Show Product Partcode </label>
+                </div>
+                <!---************** CheckBox section end here ********-->
 
-            <!---************** link section start here ********-->
-            <div>
-                <a href="#" (click)="showPDF()"> View Quote</a>
+                <!---************** link section start here ********-->
+                <div>
+                    <a class="link" (click)="showPDF()"> View Quote</a>
+                </div>
+                <div>
+                    <a class="link" (click)="EmailQuote()">Email Quote</a>
+                </div>
+                <div>
+                    <a class="link">Send PDF On WhatsApp</a>
+                </div>
+                <div>
+                    <a class="link" (click)="TermsCondition()">Term & Conditions</a>
+                </div>
             </div>
-            <div>
-                <a href="">Email Quote</a>
-            </div>
-            <div>
-                <a href="">Send PDF On WhatsApp</a>
-            </div>
-            <div>
-                <a href="">Term & Conditions</a>
+            <div class="col-sm-1 ">
+                <div class="vl"></div>
             </div>
         </div>
         <!-- left side contain endhere -->
-        <div class="col-sm-1">
-            <div class="vl"></div>
+
+        <div class="col p-3">
+            <div *ngIf="emailQuote">
+                <div *ngFor="let x of  ShowEmailQuoteData">
+                    <div class="form-field2">
+                        <input class="input-text" type="email" name="" id="" value="{{x.EmailTo}}">
+                        <label class="labels" for="">To :</label>
+                    </div>
+                    <div class="form-field2">
+                        <input class="input-text" type="email" name="" id="" value=" ">
+                        <label class="labels" for="">CC :</label>
+                    </div>
+                    <div class="form-field2">
+                        <input class="input-text" type="email" name="" id="" value=" ">
+                        <label class="labels" for="">BCC :</label>
+                    </div>
+                    <div class="form-field2">
+                        <input class="input-text" type="email" name="" id="" value="{{x.EmailSubject}}">
+                        <label class="labels" for="">Subject :</label>
+                    </div>
+                    <div class="form-field2">
+                        Attachment : <span class="text-primary ps-2"> {{x.EmailFileName}}</span>
+                    </div>
+                    <div class="form-field2">
+                        <input class="input-text" type="file" name="" id="" value="">
+                        <label class="file-label" for="">Another :</label>
+                    </div>
+                    <div class="form-field2">
+                        <input class="input-text" type="text">
+                        <label class="labels" for=""> Attachment:</label>
+
+                    </div>
+                    <div class="form-field2">
+                        <textarea name="" id="" class="input-text Description">{{x.EmailBody}}</textarea>
+                        <label class="file-label" for="">Message</label>
+
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-outline-info">Send Email</button>
+            </div>
+            <div *ngIf="termsCondition">
+                <div class="check-form-field">
+                    <select class="input-select" name="Format" (change)="selectDropDown($event)">
+                       <option value="">Select Format</option>
+                    <option [value]="x.Key" *ngFor="let x of  emailQuoteData.slice(0,3)" > {{x.Value}}</option>
+                </select>
+                    <label for="Format" class="dropDown-label">Select Format :</label>
+                </div>
+                <div class="check-form-field">
+                    <select class="input-select" name=" " (change)="selectTermSet($event)">
+                       
+                    <option [value]="x.eLeadTermsSetID" *ngFor="let x of  termsconditionData "> {{x.eLeadTermsSetName}}</option>
+                </select>
+                    <label for=" " class="dropDown-label">Select Term Set :</label>
+                </div>
+                <div>
+                    <div class="check-form-field" *ngFor="let x of termSetData">
+                        <input class="input-text" type="text" value="{{x.eLeadTermsDetails}}">
+                        <label for="" class="labels">{{x.eLeadTermsName}}</label>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-outline-info ">Submit</button>
+                <button type="button" class=" btn btn-outline-info ms-3">Cancel</button>
+            </div>
         </div>
-
-    </div>
-    <div class="modal-footer">
-
-
 
     </div>
 </div>

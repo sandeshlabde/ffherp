@@ -6,8 +6,9 @@ import { __param } from 'tslib';
  import {MatDialog} from '@angular/material/dialog';
 import { EntityProductComponent } from '../entity-product/entity-product.component';
 import { ShowEmailQuotComponent } from '../show-email-quot/show-email-quot.component';
-import { EmailQuotationComponent } from '../email-quotation/email-quotation.component';
+ 
 import { NoteComponent } from '../note/note.component';
+import { EmailTraceComponent } from '../email-trace/email-trace.component';
 
 export interface DialogData {
   EntityID:number,
@@ -72,7 +73,7 @@ get isServiceType(){
      
       this.listService.getLeadList(param["EntityName"]).subscribe((data: any)=>{ 
         this.dataSource=data;
-         
+        
          this.dataSource2=JSON.parse(this.dataSource);
       }) ; 
       this.EntityName=param['EntityName']
@@ -104,8 +105,8 @@ openEmailQuote(id:any) {
   // this.data=id;
  
   const dialogRef1 = this.dialog.open(ShowEmailQuotComponent,{
-    height: '1000px',
-    width: '1200px',
+    height: '900px',
+    width: '1000px',
     data: {
       EntityID: id,
        EntityName: this.EntityName
@@ -115,9 +116,9 @@ openEmailQuote(id:any) {
   dialogRef1.afterClosed().subscribe();
 }   
 //  MODEL POP UP End here
-openEmail(id:any){
+openEmailTrace(id:any){
   // this.data=id;
-  const dialogRef2 = this.dialog.open(EmailQuotationComponent ,{
+  const dialogRef2 = this.dialog.open(EmailTraceComponent ,{
     
     data: {
       EntityID: id,

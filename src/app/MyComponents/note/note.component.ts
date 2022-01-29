@@ -27,8 +27,10 @@ export class NoteComponent implements OnInit {
   constructor( private listService: ProspectService,    @Inject(MAT_DIALOG_DATA) public data:any ) {
     this.Entityid=this.data.EntityID,
     this.EntityName=this.data.EntityName
+    
       this.listService.getNoteList( this.EntityName, this.Entityid ).subscribe((data: any)=>{ 
         this.noteData=data;
+        
          this.noteData2 =JSON.parse(this.noteData);
       }) ; 
       

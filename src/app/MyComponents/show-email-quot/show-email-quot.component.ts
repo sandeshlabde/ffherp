@@ -21,13 +21,15 @@ export class ShowEmailQuotComponent implements OnInit {
   data2: any;
   emailQuote:boolean= false; 
   termsCondition:boolean=false
+  viewPDF:boolean=false
   termsconditionData: any;
   key!: number;
   eLeadFormatID: any;
   eLeadTermsSetID: any;
   termSetData: any;
-   
-
+  termsSaveData: any;
+  url=  " ";
+    
   constructor(private listService: ProspectService,   @Inject(MAT_DIALOG_DATA) public data:any) {   
     this.Entityid=this.data.EntityID,
     this.EntityName=this.data.EntityName
@@ -36,17 +38,26 @@ export class ShowEmailQuotComponent implements OnInit {
        this.listService.PDFEmailDetail(this.EntityName).subscribe((data: any) => {
         
       this.emailQuoteData = JSON.parse(data);
-       console.log(  this.emailQuoteData);
+      console.log( this.emailQuoteData);
+       
     })
     
   
 }
+// pdf view function
 showPDF(){
-  this.listService.showEmailPDF(this.EntityName,this.PDFCustomerID, this.Entityid).subscribe((data: any) => {
-    this.ShowPDFData=JSON.parse(data);
-    console.log("PDF view"+this.ShowPDFData);
+  this.emailQuote=false;
+this.termsCondition=false;
+this.viewPDF=!this.viewPDF
+  this.listService.showEmailPDF(this.EntityName,  this.Entityid).subscribe((data: any) => {
+    alert(this.EntityName +this.PDFCustomerID+ this.Entityid);
+    this.url= data;
+    console.log(this.url);
+
+     
   })
 }
+// Email Quote function
 EmailQuote(){
   this.listService.emailQuotedetail(this.EntityName, this.Entityid).subscribe((data: any) => {
     this.ShowEmailQuoteData=JSON.parse(data);
@@ -54,20 +65,34 @@ EmailQuote(){
   })
   this.emailQuote=!this.emailQuote;
   this.termsCondition=false
+  this.viewPDF=false
 }
+
+// Send Mail Function
+sendMail(){
+  this.listService.showEmailPDF(this.EntityName,  this.Entityid).subscribe((data: any) => {
+     
+
+     
+  })
+}
+// Terms And Condition function
 TermsCondition(){
   this.emailQuote=false;
+  this.viewPDF=false;
 this.termsCondition=!this.termsCondition
 }
+// select format DropDown function
 selectDropDown(e: any){
   
   this.eLeadFormatID = e.target.value;
    
   this.listService.showtermscondition(this.eLeadFormatID ).subscribe((data: any) => {
     this.termsconditionData=JSON.parse(data);
-     console.log(this.termsconditionData);
+     
   })
 }
+// select Term Set DropDown Function
 selectTermSet(e: any){
 this.eLeadTermsSetID=e.target.value;
   this.listService.showtermSet(this.eLeadFormatID,this.eLeadTermsSetID).subscribe((data: any) => {
@@ -76,7 +101,15 @@ this.eLeadTermsSetID=e.target.value;
   })
 
 }
-// showtermSet
+// save Terms and Condition
+saveCondition(){ 
+  console.warn(this.EntityName,this.Entityid,this.eLeadFormatID,this.eLeadTermsSetID);
+  this.listService.saveTerms(this.EntityName,this.Entityid,this.eLeadFormatID,this.eLeadTermsSetID).subscribe((data: any) => {
+    this.termsSaveData=JSON.parse(data);
+    
+  })
+}
+ 
 
 // PDFEmailDetai
   ngOnInit(): void {

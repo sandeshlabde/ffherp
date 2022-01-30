@@ -15,9 +15,10 @@ export class ProspectService {
   // entityID show details API URL
   entityIdUrl = "https://ffherp.co.in:446/api/Voucher/ViewModuleWiseEntityInfo";
 
-  // Productview  Details API URL
+  // lead Productview  Details API URL
   productViewUrl = "http://178.63.87.175:82//webService/Lead/LeadAction.asmx/ProductView";
 
+  
   // Note show Data API URL
   noteViewUrl = "https://apitest.ffherp.co.in/api/Voucher/NotesDetails";
 
@@ -30,11 +31,17 @@ export class ProspectService {
   // action Details  Data API URL
   actionDetailsUrl = "https://ffherp.co.in:446/api/Voucher/GetActualData";
 
+  // Lead Action Details Data API URL
+  leadActionUrl="http://178.63.87.175:82//webService/Lead/LeadAction.asmx/ActionView"
+
   // emailtraceUrl Quotation API URL
   emailtraceUrl = "https://ffherp.co.in:446/api/Voucher/QuotationEmailRead";
 
   //  show Email Quotation API URL
   emailQuoteUrl = "https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFEmailDetails";
+
+  // Send Email Api Url
+  sendEmailUrl="https://apitest.ffherp.co.in/api/Voucher/SendEmailQuotation"
 
   // Email Quotation API URL
   viewEmailQuoteDetaiUrl = "https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFDefaultValues";
@@ -47,6 +54,10 @@ export class ProspectService {
 
   // terms and Condition API URL
   termSeturl = "https://apitest.ffherp.co.in/api/Voucher/GetLeadPDFTermsSetDetails"
+
+  // Save terms API URL
+  saveTermsUrl="https://apitest.ffherp.co.in/api/Voucher/SaveLeadPDFTermsSet"
+
   // Chat  API URL
   Chaturl = "https://apitest.ffherp.co.in/api/Sales/GetChatHistory"
 
@@ -73,12 +84,17 @@ export class ProspectService {
 
     const requestBody = {
       dbname: "Vol187",
-      encrypt: "X·ÌØ8âˆø«¸SÚã’",
+      encrypt: " X·ÌØ8âˆø«¸SÚã’",
       password: "123456789",
       id,
       flag,
       userid: "Director"
-
+      // dbname: "Vol187",
+      // encrypt: "123456789",
+      // password: "123456789",
+      // id: id,
+      // flag: "PO",
+      // userid: "Director"
     }
 
     return this.http.post(this.entityIdUrl, requestBody);
@@ -95,9 +111,22 @@ export class ProspectService {
       flag,
     }
 
-    return this.http.post(this.productViewUrl, requestBody);
+    return this.http.post(this.productDetailsUrl, requestBody);
 
   };
+  
+  // Entity Lead product details api calling
+  getLeadProductView( EntityId: number,Module:number){
+    const requestBody={
+      dbName: "Vol187",
+      EntityId ,
+      Module,
+      // DbName: "Vol187",
+      //                       EntityId: id,
+      //                       Module: "Lead"
+    }
+    return this.http.post(this.productViewUrl, requestBody);
+  }
 
   // get api calling show note data
   getNoteList(EntityName: string, EntityID: number) {
@@ -159,6 +188,15 @@ export class ProspectService {
     return this.http.post(this.actionDetailsUrl, requestBody);
 
   }
+  leadActionDetails(leadId:number){
+    const requestBody = {
+      dbName: "Vol187",
+leadId ,
+password: "123456789"
+
+    }
+    return this.http.post(this.leadActionUrl, requestBody);
+  }
   // emailtrace Api calling
   emailtrace(EntityID: number, EmailAddress: any) {
 
@@ -196,7 +234,40 @@ export class ProspectService {
     return this.http.post(this.emailQuoteUrl, requestBody);
 
   }
-  // 
+  // send Mail API Calling
+  sendEmail(PDFEntityID:number,PDFEntityType:string,PDFFormatID:number){
+    const requestBody = {
+      PDFCustomerID: 187,
+      PDFDBName: "Vol187",
+      PDFEntityID,
+      PDFEntityType,
+      PDFFormatID,
+      PDFPassword: " X·ÌØ8âˆø«¸SÚã’",
+      PDFSource: PDFEntityType,
+      PDFUserID: "Director",
+    }
+//     PDFCustomerID: 187
+// PDFDBName: "Vol187"
+// PDFEntityID: "220110002"
+// PDFEntityType: "Lead"
+// PDFFormatID: "105"
+// PDFFormatSeqID: ""
+// PDFFormatSetNo: "105"
+// PDFHeaderLogo: "92"
+// PDFPageName: ""
+// PDFPassword: " X·ÌØ8âˆø«¸SÚã’"
+// PDFRoleId: 1
+// PDFShowTax: "No"
+// PDFSource: "Lead"
+// PDFUserID: "Director"
+// eBCCEmailID: ""
+// eCCEmailID: ""
+// eEmailBody: "Dear Sir<br/> Please find the attached proposal as per your requirement.<br/><br/>Regards,<br/>Director<br/><br/>+919730988805<br/>dir@noemail.com<br/><br/>"
+// eEmailSubject: "Quotation for Rhythm Cancer Hospital   (220110002)"
+// eRouteFlag: "LeadList"
+// eToEmailID: "tes@gmail.com"
+return this.http.post(this.sendEmailUrl, requestBody);
+  }
   PDFEmailDetail(eEntityFlag: string) {
     const requestBody = {
       DBNAME: "Vol187",
@@ -205,11 +276,11 @@ export class ProspectService {
     }
     return this.http.post(this.viewEmailQuoteDetaiUrl, requestBody);
   }
-  showEmailPDF(EntityName: string, PDFCustomerID: number, PDFEntityID: number) {
+  showEmailPDF(EntityName: string,   PDFEntityID: number) {
 
     const requestBody = {
-      PDFCustomerID,
-      DBNAME: "Vol187",
+       
+      PDFDBName: "Vol187",
       PDFEntityID,
       EntityName,
       PDFPageName: PDFEntityID,
@@ -222,6 +293,7 @@ export class ProspectService {
       password: "123456789",
       PDFUserID: "Director"
 
+      
       // PDFCustomerID: 187
       // PDFDBName: "Vol187"
       // PDFEntityID: "220110002"
@@ -234,8 +306,7 @@ export class ProspectService {
       // PDFRoleId: 1
       // PDFShowTax: "No"
       // PDFSource: "Lead"
-      // PDFUserID: "Director"   
-
+      // PDFUserID: "Director"
     }
 
     return this.http.post(this.showEmailPDFUrl, requestBody);
@@ -268,6 +339,22 @@ export class ProspectService {
     }
 
     return this.http.post(this.termSeturl, requestBody);
+
+  }
+   saveTerms(EntityId: number, EntityName:string,FormatId:number,Set_SeqNo:number) {
+
+    const requestBody = {
+      dbname: "Vol187",
+      EntityId,
+      
+      EntityName,
+      FormatId,
+      Set_SeqNo,
+ 
+
+    }
+
+    return this.http.post(this.saveTermsUrl, requestBody);
 
   }
   showChat(EntityId: number, PageId: string) {

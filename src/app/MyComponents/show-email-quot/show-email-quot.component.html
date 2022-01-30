@@ -131,7 +131,7 @@
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-outline-info">Send Email</button>
+                <button type="submit" class="btn btn-outline-info" (click)="sendMail()">Send Email</button>
             </div>
             <div *ngIf="termsCondition">
                 <div class="check-form-field">
@@ -155,10 +155,15 @@
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-outline-info ">Submit</button>
+                <button type="submit" class="btn btn-outline-info" (click)="saveCondition()">Save</button>
                 <button type="button" class=" btn btn-outline-info ms-3">Cancel</button>
+            </div>
+            <div *ngIf="viewPDF">
+                <ngx-extended-pdf-viewer [src]="'assets/example.pdf'" [useBrowserLocale]="true" [textLayer]="true" [showHandToolButton]="true" [showPresentationModeButton]="true" [showDownloadButton]="false"></ngx-extended-pdf-viewer>
             </div>
         </div>
 
     </div>
+
+
 </div>

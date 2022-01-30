@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MyProject';
+  title = 'FFHErp';
+  url=  "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 }

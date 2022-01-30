@@ -35,7 +35,7 @@ export class ProspectListComponent implements OnInit {
   
   entityIdDetailData: any;
   entityIdDetailData2: any;
-  
+ 
    
  // table colum row show function start here
  

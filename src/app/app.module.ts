@@ -20,7 +20,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination'; 
-
+import {  PdfViewerModule } from 'ng2-pdf-viewer';
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
 import {ProspectService } from "../app/services/prospect.service";
@@ -33,6 +33,7 @@ import { NoteComponent } from './MyComponents/note/note.component';
  
 import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-email-quot.component';
 import { EmailTraceComponent } from './MyComponents/email-trace/email-trace.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
  
  
 
@@ -70,7 +71,8 @@ import { EmailTraceComponent } from './MyComponents/email-trace/email-trace.comp
     NgxPaginationModule,
     MatDialogModule,
     MatButtonModule,
- 
+    PdfViewerModule,
+    NgxExtendedPdfViewerModule
   
   ],
   providers: [ProspectService],

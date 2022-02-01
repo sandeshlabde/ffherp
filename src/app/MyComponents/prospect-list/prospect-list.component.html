@@ -1,11 +1,17 @@
-<table class="table table-striped table-hover   shadow-lg p-3 mb-5 bg-body rounded">
+<table class="table table-striped table-hover shadow-lg p-3 mb-5 bg-body rounded">
+    <!-- table table-striped table-hover -->
     <thead>
         <tr class="table-primary">
             <th></th>
+
+            <!-- comman table heading start here-->
             <th class="text-start" (click)="sort('ID')">ID</th>
             <th class="text-start" (click)="sort('Company')">Company</th>
             <th class="text-start" (click)="sort('Action')">Contact</th>
             <th class="text-end" (click)="sort('Value')">Value</th>
+            <!-- comman table heading end here -->
+
+
             <th class="text-start" *ngIf="isStatus " (click)="sort('Status')">Status</th>
             <th class="text-start" *ngIf="isShowDDate" (click)="sort('Status')">Status</th>
             <th class="text-start" *ngIf="isBStatus">Status</th>
@@ -13,16 +19,19 @@
             <th class="text-start" *ngIf="isBilledStatus" (click)="sort('Source')">Source</th>
             <th class="text-start" *ngIf="isDDeliveryStatus" (click)="sort('Source')">Source</th>
             <th class="text-start" *ngIf="isServiceType" (click)="sort('Source')">Source</th>
+
+
             <th class="text-start" (click)="sort('Stage')">Stage</th>
+
             <th class="text-start" *ngIf="expDate" (click)="sort('Exp-cls')">Exp cls</th>
-            <th class="text-start" *ngIf="isDeliveryDate" (click)="sort('Exp-cls')">Exp cls</th>
+            <th class="text-start" *ngIf="isDeliveryDate" (click)="sort('Exp-cls')">Del Date</th>
 
         </tr>
     </thead>
     <tbody>
         <!-- -==========Data Section========== -->
 
-        <tr *ngFor="let x of dataSource2|orderBy:key:reverse | paginate: { itemsPerPage: 10, currentPage: p }  " class="table-light listdatarow">
+        <tr *ngFor="let x of dataSource|orderBy:key:reverse | paginate: { itemsPerPage: 10, currentPage: p }  " class="table-light listdatarow">
             <td class="text-start"> <img class="dropbtn" src="assets/img/android_menu_square-01-128.png" height="20" alt="">
 
                 <div class="dropdown-content">
@@ -35,7 +44,7 @@
                 </div>
             </td>
             <td class="text-start">
-                <a (click)="openEntity(x.InstalledNo)">
+                <a (click)="openEntity(x.InstalledNo, x.EXPClosuredateDashboard )">
                 {{x.InstalledNo}}
             </a>
                 <a (click)="openEmailTrace(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#email"><i data-bs-toggle="tooltip" data-bs-placement="top" title="ViewEmail" class="fas fa-envelope"></i>
@@ -77,8 +86,8 @@
                 <a (click)="openEmailQuote(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="far fa-file-pdf"></i></a>
             </td>
             <!-- ***************7th colm******************** -->
-            <td class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard }}</td>
-            <td class="text-start" *ngIf="isDeliveryDate">{{x.DeliveryDate }}</td>
+            <td [ngStyle]="{'color':x.EXPClosuredateDashboard<current_date?'green':'red'}" class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard|date:"dd MMM y" }}</td>
+            <td [ngStyle]="{'color':x.DeliveryDate<current_date?'green':'red'}" class="text-start" *ngIf="isDeliveryDate">{{x.DeliveryDate|date:"dd MMM y" }}</td>
             <!-- |date:"dd MMM yyyy" -->
 
 

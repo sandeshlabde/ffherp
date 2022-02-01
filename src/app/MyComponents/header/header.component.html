@@ -1,144 +1,88 @@
-<header>
-    <div class="px-3 py-2 bg-dark text-white">
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <a href="/" class="companyLogo">
+        <img src="assets/img/FFHFinalLogo.png" height="45" alt="">
+    </a>
 
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start header-links">
+    <div class="spacer"></div>
+    <img src="assets/img/NoImage.png" width="50" [height]="40" alt="">
+    <a class=" " href="#" id="ffh">
+              FieldForceHelp
+          </a>
 
-            <a href="/" class="d-flex align-items-center ps-5 my-2 my-lg-0 me-lg-auto text-white text-decoration-none">
-                <img src="assets/img/FFHFinalLogo.png" height="45" alt="">
-            </a>
+    <a href="#" class="header-link" [matMenuTriggerFor]="list" id="">
+        <i class="fas fa-paperclip"> </i>
+        <mat-menu #list="matMenu">
+            <button mat-menu-item class="bg-info text-dark">My list</button>
+            <hr class="dropdown-divider">
 
-            <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
+            <a class="dropdown-list" mat-menu-item href="#">My User</a>
+            <a class="dropdown-list" mat-menu-item href="#">User Rights</a>
+            <a class="dropdown-list" mat-menu-item href="#">My Company</a>
+            <a class="dropdown-list" mat-menu-item href="#">My Config</a>
+            <a class="dropdown-list" mat-menu-item href="#">My Alert</a>
+            <a class="dropdown-list" mat-menu-item href="#">My Branches</a>
 
-                <li>
+            <a class="dropdown-list" mat-menu-item href="#">My Report</a>
+            <a class="dropdown-list" mat-menu-item href="#">User Report</a>
+            <a class="dropdown-list" mat-menu-item href="#">Location Detail</a>
+        </mat-menu>
+    </a>
+    <a href="#" class="header-link " [matMenuTriggerFor]="QuickLinks" id="">
+        <i class="fas fa-barcode"></i>
+        <mat-menu #QuickLinks="matMenu">
+            <button mat-menu-item class="bg-info text-dark">Quick Links</button>
+            <hr class="dropdown-divider">
 
-                    <div class="dropdown">
-                        <img src="assets/img/NoImage.png" width="50" [height]="40" alt="">
-                        <a class=" link-dark  text-white text-decoration-none dropdown-toggle dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                FieldForceHelp
-                            </a>
+            <a class="dropdown-list" mat-menu-item href="#">Create Prospect</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create Lead</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create SO</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create MO</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create MI</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create Bill</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create Ticket</a>
+            <a class="dropdown-list" mat-menu-item href="#">Install Product</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create PO</a>
+            <a class="dropdown-list" mat-menu-item href="#">Create POBill</a>
+            <a class="dropdown-list" mat-menu-item href="#">Journal Vouchar</a>
+            <a class="dropdown-list" mat-menu-item href="#">Memo</a>
+            <a class="dropdown-list" mat-menu-item href="#">Payment Received</a>
+            <a class="dropdown-list" mat-menu-item href="#">Payment Made</a>
+            <a class="dropdown-list" mat-menu-item href="#">Stock Journal </a>
+        </mat-menu>
+    </a>
+    <a href="#" class=" header-link " [matMenuTriggerFor]="masters" id="">
+        <i class="fas fa-search"></i>
+        <mat-menu #masters="matMenu">
+            <button mat-menu-item class="bg-info text-dark">Masters</button>
+            <hr class="dropdown-divider">
 
-                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-list" mat-menu-item href="#">Company</a>
+            <a class="dropdown-list" mat-menu-item href="#">Contact</a>
+            <a class="dropdown-list" mat-menu-item href="#">Product</a>
+            <a class="dropdown-list" mat-menu-item href="#">Ledger</a>
+        </mat-menu>
+    </a>
+    <a href="#" class=" header-link " id="">
+        <i class="far fa-envelope"></i>
 
-                            <li class="ps-2 bg-info text-white">My list</li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">My User</a></li>
-                            <li><a class="dropdown-item" href="#">User Rights</a></li>
-                            <li><a class="dropdown-item" href="#">My Company</a></li>
-                            <li><a class="dropdown-item" href="#">My Config</a></li>
-                            <li><a class="dropdown-item" href="#">My Alert</a></li>
-                            <li><a class="dropdown-item" href="#">My Branches</a></li>
+    </a>
+    <a href="#" class=" header-link " id="">
+        <i class="far fa-bell"></i>
 
-                            <li><a class="dropdown-item" href="#">My Report</a></li>
-                            <li><a class="dropdown-item" href="#">User Report</a></li>
-                            <li><a class="dropdown-item" href="#">Location Detail</a></li>
-                        </ul>
+    </a>
+    <a href="#" class=" header-link" [matMenuTriggerFor]="user" id=" ">
 
-                    </div>
-                </li>
+        <i class="fas fa-user-circle"></i>
+        <mat-menu #user="matMenu">
+            <a class="dropdown-list" mat-menu-item href="#">New project...</a>
+            <a class="dropdown-list" mat-menu-item href="#">Settings</a>
+            <a class="dropdown-list" mat-menu-item href="#">Profile</a>
+            <hr class="dropdown-divider">
 
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark  text-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-paperclip"></i>
-                        </a>
-                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser2">
-                            <li class="ps-2 bg-info text-white"> Quick Links </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Create Prospect</a></li>
-                            <li><a class="dropdown-item" href="#">Create Lead</a></li>
-                            <li><a class="dropdown-item" href="#">Create SO</a></li>
-                            <li><a class="dropdown-item" href="#">Create MO</a></li>
-                            <li><a class="dropdown-item" href="#">Create MI</a></li>
-                            <li><a class="dropdown-item" href="#">Create Bill</a></li>
-                            <li><a class="dropdown-item" href="#">Create Ticket</a></li>
-                            <li><a class="dropdown-item" href="#">Install Product</a></li>
-                            <li><a class="dropdown-item" href="#">Create PO</a></li>
-                            <li><a class="dropdown-item" href="#">Create POBill</a></li>
-                            <li><a class="dropdown-item" href="#">Journal Vouchar</a></li>
-                            <li><a class="dropdown-item" href="#">Memo</a></li>
-                            <li><a class="dropdown-item" href="#">Payment Received</a></li>
-                            <li><a class="dropdown-item" href="#">Payment Made</a></li>
-                            <li><a class="dropdown-item" href="#">Stock Journal </a></li>
-
-
-                        </ul>
-                    </div>
-
-                </li>
-
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="   text-white text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span><i class="fas fa-barcode"></i> </span>
-                        </a>
-                        <ul class="dropdown-menu text-small listScroll" aria-labelledby="dropdownUser2">
-
-                            <li class="ps-2 bg-info text-white"> Masters </li>
-
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Company</a></li>
-                            <li><a class="dropdown-item" href="#">Contact</a></li>
-                            <li><a class="dropdown-item" href="#">Product</a></li>
-                            <li><a class="dropdown-item" href="#">Ledger</a></li>
-                        </ul>
-                    </div>
-
-                </li>
-
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark  text-white text-decoration-none  " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-search"></i>
-                        </a>
+            <a class="" href="#">Sign out</a>
+        </mat-menu>
 
 
-                    </div>
-
-                </li>
-
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark  text-white text-decoration-none  " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="far fa-envelope"></i>
-                        </a>
-
-                    </div>
-
-                </li>
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark  text-white text-decoration-none  " id="dropdownUser2">
-                            <i class="far fa-bell"></i>
-                        </a>
-
-                    </div>
-
-                </li>
-                <li>
-                    <div class="dropdown text-end">
-                        <a href="#" class="d-block link-dark  text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class='bx bx-user-circle user'></i>
-                        </a>
-                        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
-</header>
+    </a>
+</div>

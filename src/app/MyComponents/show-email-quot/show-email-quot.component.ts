@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NgModule } from '@angular/core';
+ 
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
@@ -29,6 +29,9 @@ export class ShowEmailQuotComponent implements OnInit {
   termSetData: any;
   termsSaveData: any;
   url=  " ";
+  format: any;
+  header: any;
+  bank: any;
     
   constructor(private listService: ProspectService,   @Inject(MAT_DIALOG_DATA) public data:any) {   
     this.Entityid=this.data.EntityID,
@@ -56,6 +59,27 @@ this.viewPDF=!this.viewPDF
 
      
   })
+};
+// Send Mail Function
+selectFormat(e:any){
+this.format=e.target.value;
+ 
+};
+selectHeader(e:any){
+this.header=e.target.value;
+ 
+};
+selectBank(e:any){
+this.bank=e.target.value;
+console.log(this.format,  this.header,this.bank)
+};
+ 
+onClickSubmit(data:any){
+
+  // this.listService.sendEmail(this.format,this.header, this.Entityid,this.EntityName,this.header,this.format).subscribe((data: any) => {
+  // console.log(this.eLeadTermsSetID,  this.Entityid,this.eLeadFormatID)
+  // })
+  alert(data.EmailTo+","+data.Message+","+data.BCC+",");
 }
 // Email Quote function
 EmailQuote(){
@@ -68,14 +92,7 @@ EmailQuote(){
   this.viewPDF=false
 }
 
-// Send Mail Function
-sendMail(){
-  this.listService.showEmailPDF(this.EntityName,  this.Entityid).subscribe((data: any) => {
-     
 
-     
-  })
-}
 // Terms And Condition function
 TermsCondition(){
   this.emailQuote=false;
@@ -101,6 +118,7 @@ this.eLeadTermsSetID=e.target.value;
   })
 
 }
+
 // save Terms and Condition
 saveCondition(){ 
   console.warn(this.EntityName,this.Entityid,this.eLeadFormatID,this.eLeadTermsSetID);

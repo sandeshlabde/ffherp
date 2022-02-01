@@ -66,7 +66,7 @@ export class ProspectService {
 
   // list  table api calling
 
-  getLeadList(flag: string): Observable<prospectdatafield[]> {
+  getLeadList(flag: string)  {
 
     const requestBody = {
       dbname: "Vol187",
@@ -76,7 +76,7 @@ export class ProspectService {
       userid: "Director"
     }
 
-    return this.http.post<prospectdatafield[]>(this.listUrl, requestBody);
+    return this.http.post (this.listUrl, requestBody);
   }
 
   // show entityid  info APi calling
@@ -89,12 +89,7 @@ export class ProspectService {
       id,
       flag,
       userid: "Director"
-      // dbname: "Vol187",
-      // encrypt: "123456789",
-      // password: "123456789",
-      // id: id,
-      // flag: "PO",
-      // userid: "Director"
+       
     }
 
     return this.http.post(this.entityIdUrl, requestBody);
@@ -235,16 +230,27 @@ password: "123456789"
 
   }
   // send Mail API Calling
-  sendEmail(PDFEntityID:number,PDFEntityType:string,PDFFormatID:number){
+  sendEmail(PDFEntityID:number,PDFEntityType:string,PDFFormatID:number,PDFHeaderLogo:number,eBCCEmailID:any,eCCEmailID:any,eEmailBody:string, eEmailSubject:string,eRouteFlag:string,eToEmailID:any,PDFFormatSeqID:any,PDFPageName:any){
     const requestBody = {
       PDFCustomerID: 187,
       PDFDBName: "Vol187",
       PDFEntityID,
       PDFEntityType,
       PDFFormatID,
+      PDFFormatSetNo:PDFFormatID,
+      PDFFormatSeqID,
+      PDFPageName,
       PDFPassword: " X·ÌØ8âˆø«¸SÚã’",
       PDFSource: PDFEntityType,
       PDFUserID: "Director",
+      PDFRoleId: 1,
+      PDFHeaderLogo,
+      eBCCEmailID,
+      eCCEmailID,
+      eEmailBody,
+      eEmailSubject,
+      eRouteFlag,
+      eToEmailID,
     }
 //     PDFCustomerID: 187
 // PDFDBName: "Vol187"

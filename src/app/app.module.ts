@@ -7,54 +7,58 @@ import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // angular material table module import
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
- 
-import {MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 // angular material input module import
-import {MatInputModule} from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
-import {MatButtonModule} from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 // ngx pagination sorting searching
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
-import { NgxPaginationModule } from 'ngx-pagination'; 
-import {  PdfViewerModule } from 'ng2-pdf-viewer';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
-import {ProspectService } from "../app/services/prospect.service";
+import { ProspectService } from "../app/services/prospect.service";
+import { FormsModule } from '@angular/forms';
+ 
 // components module import
 import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component';
 import { EntityProductComponent } from './MyComponents/entity-product/entity-product.component';
 import { ProductComponent } from './MyComponents/product/product.component';
 import { ActionComponent } from './MyComponents/action/action.component';
 import { NoteComponent } from './MyComponents/note/note.component';
- 
+
 import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-email-quot.component';
 import { EmailTraceComponent } from './MyComponents/email-trace/email-trace.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
- 
- 
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SideNavComponent, 
+    SideNavComponent,
     ProspectListComponent,
     EntityProductComponent,
     ActionComponent,
-     NoteComponent, 
-    
-     ShowEmailQuotComponent, 
-     ProductComponent, EmailTraceComponent 
-     
-      
-     
-   
+    NoteComponent,
+
+    ShowEmailQuotComponent,
+    ProductComponent,
+    EmailTraceComponent
+
+
+
+
   ],
-  
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -72,12 +76,16 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatDialogModule,
     MatButtonModule,
     PdfViewerModule,
-    NgxExtendedPdfViewerModule
-  
+    NgxExtendedPdfViewerModule,
+    MatToolbarModule,
+    MatMenuModule,
+    FormsModule,
+   
+ 
   ],
   providers: [ProspectService],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
- 
+export class AppModule {
+
 }

@@ -1,15 +1,45 @@
-header {
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: absolute;
     top: 0;
-    z-index: 4;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    z-index: 11;
     position: sticky;
 }
 
-.header-links li {
-    text-decoration: none;
-    padding-left: 25px;
+.header-link {
+    margin: 0 16px;
 }
 
-header i {
+#ffh {
+    color: white;
+    margin-right: 10px;
+}
+
+.companyLogo {
+    padding-left: 83px;
+}
+
+i {
     font-size: 18px;
-    padding-top: 10px;
+    color: white;
+}
+
+.dropdown-list {
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-list:hover {
+    color: rgb(113, 206, 235);
 }

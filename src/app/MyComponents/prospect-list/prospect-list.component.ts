@@ -9,6 +9,7 @@ import { ShowEmailQuotComponent } from '../show-email-quot/show-email-quot.compo
  
 import { NoteComponent } from '../note/note.component';
 import { EmailTraceComponent } from '../email-trace/email-trace.component';
+ 
 
 export interface DialogData {
   EntityID:number,
@@ -21,10 +22,10 @@ export interface DialogData {
 })
 
 export class ProspectListComponent implements OnInit {
-    
+  myStyles:any;
   
   dataSource:any;
-  dataSource2: any;
+  
   EntityName!: string;
  
   ViewDataSource:any;
@@ -35,8 +36,11 @@ export class ProspectListComponent implements OnInit {
   
   entityIdDetailData: any;
   entityIdDetailData2: any;
+  date: any;
+  format="d mmm yyyy"
+  current_date=new Date( ) ;
+  
  
-   
  // table colum row show function start here
  
  get isShowDDate(){
@@ -72,14 +76,17 @@ get isServiceType(){
     this.root.params.subscribe((param)=>{
      
       this.listService.getLeadList(param["EntityName"]).subscribe((data: any)=>{ 
-        this.dataSource=data;
+        this.dataSource=JSON.parse(data);
         
-         this.dataSource2=JSON.parse(this.dataSource);
+        console.log(this.dataSource);
       }) ; 
       this.EntityName=param['EntityName']
- 
+ console.log(param["EntityName"]);
+
     });
-    
+   
+    console.log(this.current_date);
+      
    
   };
  
@@ -88,8 +95,8 @@ get isServiceType(){
 
  
 
-openEntity(id:any) {
-   
+openEntity(id:any ,date:any) {
+   this.date=date;
   const dialogRef = this.dialog.open(EntityProductComponent,{
     height: '450px',
     width: '1350px',
@@ -156,7 +163,8 @@ sort(key: string){
   this.key=key;
   this.reverse=!this.reverse;
 }
-   
+  
+ 
 }
 
  

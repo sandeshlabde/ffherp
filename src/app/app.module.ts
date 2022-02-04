@@ -12,15 +12,22 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+ 
 // angular material input module import
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatBadgeModule} from '@angular/material/badge';
+import{AngularEditorModule} from '@kolkov/angular-editor'
 // ngx pagination sorting searching
+ 
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxChatboxModule } from "ngx-chatbox";
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
@@ -31,12 +38,16 @@ import { FormsModule } from '@angular/forms';
 import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component';
 import { EntityProductComponent } from './MyComponents/entity-product/entity-product.component';
 import { ProductComponent } from './MyComponents/product/product.component';
-import { ActionComponent } from './MyComponents/action/action.component';
 import { NoteComponent } from './MyComponents/note/note.component';
 
 import { ShowEmailQuotComponent } from './MyComponents/show-email-quot/show-email-quot.component';
 import { EmailTraceComponent } from './MyComponents/email-trace/email-trace.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { ChatComponent } from './MyComponents/chat/chat.component';
+ 
+import { SearchfilterPipe } from './searchfilter.pipe';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { FilterSearchComponent } from './MyComponents/filter-search/filter-search.component';
 
 
 
@@ -46,13 +57,16 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     HeaderComponent,
     SideNavComponent,
     ProspectListComponent,
-    EntityProductComponent,
-    ActionComponent,
+    EntityProductComponent, 
     NoteComponent,
 
     ShowEmailQuotComponent,
     ProductComponent,
-    EmailTraceComponent
+    EmailTraceComponent,
+    ChatComponent,
+    
+    SearchfilterPipe,
+         FilterSearchComponent
 
 
 
@@ -80,7 +94,12 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     MatToolbarModule,
     MatMenuModule,
     FormsModule,
-   
+    MatBadgeModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    AngularEditorModule,
+    AutocompleteLibModule,
+    NgxChatboxModule,
  
   ],
   providers: [ProspectService],

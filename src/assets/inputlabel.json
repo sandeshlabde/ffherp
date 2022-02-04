@@ -1,0 +1,36 @@
+[{
+        "ID": "label1",
+        "Label": "Prospect Id",
+        "Type": "input"
+    },
+    {
+        "ID": "label2",
+        "Label": "Select Status",
+        "Type": "input"
+    },
+    {
+        "ID": "label3",
+        "Label": "Select Source",
+        "Type": "select"
+    },
+    {
+        "ID": "label4",
+        "Label": "Select Tag",
+        "Type": "input"
+    },
+    {
+        "ID": "label5",
+        "Label": "Prospect Id",
+        "Type": "input"
+    },
+    {
+        "ID": "label1",
+        "Label": "Prospect Id",
+        "Type": "input"
+    },
+    {
+        "ID": "label1",
+        "Label": "Prospect Id",
+        "Type": "input"
+    }
+]

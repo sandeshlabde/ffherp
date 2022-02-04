@@ -1,16 +1,11 @@
 .comp_name {
-    background-color: #c8e8f87c;
+    background-color: #2a9fda7c;
     color: black;
     border-radius: 10px;
 }
 
 .link {
     background-color: #c8e8f87c;
-}
-
-#id_title {
-    color: rgba(0, 0, 0, 0.596);
-    font-size: small;
 }
 
 .entity_box {

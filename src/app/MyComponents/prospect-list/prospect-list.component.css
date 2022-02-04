@@ -1,81 +1,91 @@
-table {
-    width: 100%;
-    padding-top: 70px;
-}
-
-.red {
-    background-color: red;
-}
-
-th {
-    height: 30px;
-    text-align: center;
-}
-
-tbody tr td i {
-    font-size: 10px;
-    color: rgb(156, 155, 155);
-    padding: 3px;
-}
-
-td {
-    font-size: 12px;
-    text-align: center;
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-#modal {
-    background-color: #ffffffff;
-}
-
-.nav-item {
-    justify-content: center;
-}
-
-.nav-link {
-    font-size: x-small;
-}
-
-
-/* table menu hover section */
-
-.dropdown {
-    position: relative;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 100px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    font-weight: 400;
-    font-size: 12px;
-}
-
-.dropdown-content a {
-    color: black;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: black;
-    color: white;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: rgb(30, 138, 189);
-}
+    table {
+        width: 100%;
+        height: 75%;
+        padding-top: 70px;
+    }
+    
+    .red {
+        background-color: red;
+    }
+    
+    th {
+        height: 30px;
+        text-align: center;
+    }
+    
+    tbody tr td i {
+        font-size: 12px;
+        color: rgb(156, 155, 155);
+        padding: 3px;
+    }
+    
+    .Company {
+        max-width: 120px;
+        font-size: 16px;
+        color: black;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .Company:hover {
+        transition: 0.8s;
+        transform: scale(1.2);
+        max-width: 100%;
+    }
+    
+    .table-data {
+        font-size: 13px;
+        text-align: center;
+    }
+    
+    .a {
+        text-decoration: none;
+    }
+    
+    .a:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: small;
+    }
+    
+    #modal {
+        background-color: #ffffffff;
+    }
+    
+    .nav-item {
+        justify-content: center;
+    }
+    
+    .nav-link {
+        font-size: x-small;
+    }
+    
+    .search-input {
+        width: 100%;
+        height: 38px;
+        display: block;
+        width: 100%;
+        height: 24px;
+        font-size: 14px;
+        font-weight: 400;
+        color: black;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid rgb(201, 199, 199);
+    }
+    
+    .search-input:focus {
+        border-bottom: 2px solid blue;
+        outline: none;
+    }
+    
+    .table-control {
+        padding: 10px 0px;
+    }
+    
+    .filterSearch {
+        font-size: 17px;
+        margin-right: 22px;
+    }

@@ -1,0 +1,52 @@
+<div class="noteBox">
+
+    <div class="modal-header bg-info text-white text-center ">
+
+
+        <h5 class="modal-title title">Chat</h5>
+
+        <button type="button" mat-dialog-close class="btn-close text-white "></button>
+
+
+    </div>
+    <div class="modal-body contain">
+        <div *ngFor="let x of chat">
+            <div class="card chatCard">
+                <div class="text-primary">{{x.UserID}}</div>
+                <div>{{x.Instruction}}</div>
+                <div class="text-end">{{x.UpdatedOn|date:"dd MMM y ,h:mm:ss a"}}</div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class=" ">
+        <form #chatData="ngForm" (ngSubmit)="chatDataSubmit(chatData.value)">
+            <div class="col-md-12 form-field">
+                <!-- <ng-autocomplete [data]="actorList" 
+                    [searchKeyword]="keyword" (selected)='selectEvent($event)'
+                     (inputChanged)='onChangeSearch($event)' 
+                     [itemTemplate]="itemTemplate" 
+                     [notFoundTemplate]="notFoundTemplate">
+                </ng-autocomplete>
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template> -->
+                <input class="chat-input" name="AddedUserinChat" value="AddedUserinChat" type="text" ngModel>
+                <label for="AddedUserinChat" class="labels">Add Username Here.....</label>
+            </div>
+            <div class="col-md-12">
+                <textarea name="chatMessage" #chatMessage placeholder="Type Your Message Here......" value="chatMessage" ngModel></textarea>
+            </div>
+            <button type="submit" class="btn btn-secondary">Send</button>
+        </form>
+
+    </div>
+</div>

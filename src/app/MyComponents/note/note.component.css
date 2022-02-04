@@ -1,16 +1,12 @@
-textBox {
-    display: flex;
-}
-
-textarea {
-    resize: none;
-    display: flex;
-}
-
-.chatHeadingSize {
-    width: 100px;
-}
-
-.noteBox {
-    width: 500px;
-}
+ textarea {
+     resize: none;
+     display: flex;
+ }
+ 
+ .chatHeadingSize {
+     width: 100px;
+ }
+ 
+ .noteBox {
+     width: 100%;
+ }

@@ -1,4 +1,4 @@
-<div class=" ">
+<div>
     <div class="modal-header   comp_name ">
         <!-- header part with company name, id and title starts here -->
         <div class="col-lg-6">
@@ -12,10 +12,10 @@
             </div>
         </div>
         <!-- id and title section -->
-        <div class="col-lg-5 text-end" id="id_title">
+        <div class="col-lg-5 text-end">
             <div class="row  ">
                 <div>
-                    {{EntityName}} ID : {{ Entityid}}
+                    {{EntityNameTitle}} ID : {{ Entityid}}
                 </div>
 
             </div>
@@ -89,6 +89,7 @@
                     <a class="nav-link text-center border border-primary link " (click)="product() "><u>PRODUCTS</u></a>
                 </li>
                 <span *ngFor="let x of entityIdDetailData ">{{x.schedule}}</span>
+
                 <li class="nav-item hover-shadow m-1 ">
                     <a class="nav-link border border-primary link " (click)="action() "><u>ACTIONS</u>&nbsp;&nbsp;<span  
                                     class="text-center " *ngFor="let x of entityIdDetailData ">({{x.ActionCount}})</span></a>
@@ -170,24 +171,7 @@
         </div>
         <div class="ms-2 me-2 " *ngIf="viewNoteTable" id="noteTables ">
 
-            <table id="noteTable" class="table table-striped table-hover">
-                <thead class="table-primary notes">
-                    <tr>
-                        <th class="chatHeadingSize">Added By</th>
-                        <th class="chatHeadingSize">On Date</th>
-                        <th>Notes</th>
-                    </tr>
-
-                </thead>
-                <tbody>
-                    <tr *ngFor="let x of noteData">
-                        <td>{{x.UpdatedBy}}</td>
-                        <td>{{x.Fromdate}}</td>
-                        <td>{{x.Description}}</td>
-                    </tr>
-                </tbody>
-
-            </table>
+            <app-note></app-note>
 
         </div>
     </div>

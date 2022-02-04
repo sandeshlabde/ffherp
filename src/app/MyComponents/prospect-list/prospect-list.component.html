@@ -1,13 +1,51 @@
-<table class="table table-striped table-hover shadow-lg p-3 mb-5 bg-body rounded">
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{EntityName}}</li>
+    </ol>
+</nav>
+<div class="text-end">
+    <span class="filterSearch" (click)="openFilterSearch()"><i data-bs-toggle="tooltip" data-bs-placement="bottom" title=" Filter Search "  class="fas fa-filter"></i></span>
+</div>
+<!-- table control options section start here -->
+<div class="table-control row">
+
+    <div class="col-md-2">
+        <input type="checkbox" name="select" value="select" id="" (change)="checkValue($event)">
+        <label for="select">Multiple Select</label>
+    </div>
+    <div class="col"> <input type="text" class="search-input" [(ngModel)]="filterTerm" placeholder="Search all columns"></div>
+    <div class="col-md-2">
+        <label for="page">Per Page</label>
+        <select name="page" (change)="selectPegItom($event)">
+         <option [value]=" 10"> 10</option>
+         <option [value]=" 25"> 20</option>
+         <option [value]=" 50"> 50</option>
+         <option [value]=" 100"> 100</option>
+     </select>
+
+    </div>
+    <div class="col">
+        <pagination-controls (pageChange)="p=$event"></pagination-controls>
+    </div>
+
+
+</div>
+<!-- table control options section start here -->
+<table class="table  table-hover shadow-lg p-3 mb-5 bg-body rounded">
     <!-- table table-striped table-hover -->
     <thead>
         <tr class="table-primary">
-            <th></th>
+            <th>
+                <input *ngIf='checkbox' type="checkbox" name="" id="" [(ngModel)]="checked">
+
+            </th>
 
             <!-- comman table heading start here-->
             <th class="text-start" (click)="sort('ID')">ID</th>
             <th class="text-start" (click)="sort('Company')">Company</th>
             <th class="text-start" (click)="sort('Action')">Contact</th>
+            <th class="text-start" (click)="sort('Owner')">Owner </th>
             <th class="text-end" (click)="sort('Value')">Value</th>
             <!-- comman table heading end here -->
 
@@ -30,10 +68,14 @@
     </thead>
     <tbody>
         <!-- -==========Data Section========== -->
+        <tr *ngFor="let x of dataSource|orderBy:key:reverse | paginate: { itemsPerPage:perPage, currentPage: p }| filter:filterTerm " class="table-light  ">
 
-        <tr *ngFor="let x of dataSource|orderBy:key:reverse | paginate: { itemsPerPage: 10, currentPage: p }  " class="table-light listdatarow">
-            <td class="text-start"> <img class="dropbtn" src="assets/img/android_menu_square-01-128.png" height="20" alt="">
+            <td class="text-start table-data">
+                <input type="checkbox" *ngIf='checkbox' name="" id="" [(ngModel)]="checked">
+                <img class="dropbtn" src="assets/img/android_menu_square-01-128.png" height="20" alt="">
 
+
+                <!-- 
                 <div class="dropdown-content">
                     <a href="#">false Audit</a>
                     <a href="#">Convert To false</a>
@@ -41,55 +83,65 @@
                     <a href="#">Clone false</a>
                     <a href="#">View Expenses</a>
                     <a href="#">Create false</a>
-                </div>
+                </div> -->
             </td>
-            <td class="text-start">
-                <a (click)="openEntity(x.InstalledNo, x.EXPClosuredateDashboard )">
+            <td class="text-start table-data">
+                <a class="a" (click)="openEntity(x.InstalledNo )">
                 {{x.InstalledNo}}
             </a>
-                <a (click)="openEmailTrace(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#email"><i data-bs-toggle="tooltip" data-bs-placement="top" title="ViewEmail" class="fas fa-envelope"></i>
+                <a class="a" (click)="openEmailTrace(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#email"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Email Trace" class="fas fa-envelope"></i>
                 </a>
-                <a (click)="openNotes(x.InstalledNo)" data-bs-toggle="modal" data-bs-target="#notes"><i data-bs-toggle="tooltip" data-bs-placement="top" title="viewNotes" class="far fa-file-alt"></i> 
+
+                <a class="a"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Upload " class="fas fa-cloud-upload-alt"></i>
                 </a>
-                <a href="#"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Upload " class="fas fa-cloud-upload-alt"></i>
-                </a>
-                <a href="#"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit false" class="fas fa-pencil-alt"></i></a>
+                <a class="a"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit false" class="fas fa-pencil-alt"></i></a>
 
             </td>
-            <td class="text-start">{{x.ClientName}}
+            <td class="text-start Company">
+
+
+                <a class="a" (click)="openEmailQuote(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="fas fa-file-pdf"></i></a>
+
+                {{x.ClientName}}
 
             </td>
-            <td class="text-start">{{x.ContactName }} <a href="#"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Phone" class="fas fa-phone"></i></a> <a href="#"><i data-bs-toggle="tooltip" data-bs-placement="top" title="WhatsApp" class="fab fa-whatsapp"></i></a>
+            <td class="text-start table-data">{{x.ContactName }} <a class="a"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Phone" class="fas fa-phone"></i></a> <a href="#"><i data-bs-toggle="tooltip" data-bs-placement="top" title="WhatsApp" class="fab fa-whatsapp"></i></a>
             </td>
-            <td class="text-end">
+            <td class="text-start table-data">
+                <a class="a" (click)="openChat(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Chat" class="far fa-comments"></i></a>
+                <a class="a" (click)="openNotes(x.InstalledNo)">
+
+                    <i data-bs-toggle="tooltip" data-bs-placement="top" title="view Notes" class="far fa-clipboard"></i> </a>
+                {{x.OwnerName }}
+
+            </td>
+            <td class="text-end table-data">
                 {{x.Anualisedamount |currency:"INR"}}
-
             </td>
 
             <!-- ***********4th colm********* -->
-            <td class="text-start" *ngIf="isStatus ">{{x.StatusName}}</td>
-            <td class="text-start" *ngIf="isShowDDate">{{x.DeliveryStatusName}}</td>
-            <td class="text-start" *ngIf="isBStatus">{{x.Billedstatus}}</td>
+            <td class="text-start table-data" *ngIf="isStatus ">{{x.StatusName}}</td>
+            <td class="text-start table-data" *ngIf="isShowDDate">{{x.DeliveryStatusName}}</td>
+            <td class="text-start table-data" *ngIf="isBStatus">{{x.Billedstatus}}</td>
 
 
 
             <!-- ***********5th colm********* -->
-            <td class="text-start" *ngIf="isSourceName">{{x.SourceName}}</td>
-            <td class="text-start" *ngIf="isBilledStatus">{{x.Billedstatus}}</td>
-            <td class="text-start" *ngIf="isDDeliveryStatus">{{x.DeliveryStatusName}}</td>
-            <td class="text-start" *ngIf="isServiceType"> {{x.ServiceTypeName}}</td>
+            <td class="text-start table-data" *ngIf="isSourceName">{{x.SourceName}}</td>
+            <td class="text-start table-data" *ngIf="isBilledStatus">{{x.Billedstatus}}</td>
+            <td class="text-start table-data" *ngIf="isDDeliveryStatus">{{x.DeliveryStatusName}}</td>
+            <td class="text-start table-data" *ngIf="isServiceType"> {{x.ServiceTypeName}}</td>
 
 
             <!-- ***************6th colm******************** -->
-            <td class="text-start">{{x.Stage}}
-                <a href="#" data-bs-toggle="modal" data-bs-target="#notes"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Chat" class="far fa-comments"></i></a>
-                <a (click)="openEmailQuote(x.InstalledNo)"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="View Email Quote" class="far fa-file-pdf"></i></a>
+            <td class="text-start table-data">{{x.Stage}}
+
             </td>
             <!-- ***************7th colm******************** -->
-            <td [ngStyle]="{'color':x.EXPClosuredateDashboard<current_date?'green':'red'}" class="text-start" *ngIf="expDate">{{x.EXPClosuredateDashboard|date:"dd MMM y" }}</td>
-            <td [ngStyle]="{'color':x.DeliveryDate<current_date?'green':'red'}" class="text-start" *ngIf="isDeliveryDate">{{x.DeliveryDate|date:"dd MMM y" }}</td>
+            <td class="text-start table-data" [ngStyle]="{'color':x.EXPClosuredateDashboard < current_date?'green':'red'}" *ngIf="expDate">{{x.EXPClosuredateDashboard|date:"dd MMM yyyy" }}</td>
+            <td class="text-start table-data" [ngStyle]="{'color':x.DeliveryDate<current_date?'green':'red'}" *ngIf="isDeliveryDate">{{x.DeliveryDate }}</td>
             <!-- |date:"dd MMM yyyy" -->
-
+            <!-- [ngStyle]="{'color':x.DeliveryDate<current_date?'green':'red'}" -->
 
 
 
@@ -98,4 +150,3 @@
         </tr>
     </tbody>
 </table>
-<pagination-controls (pageChange)="p=$event"></pagination-controls>

@@ -102,26 +102,26 @@
                 <form #emailData="ngForm" (ngSubmit)="onClickSubmit(emailData.value)">
                     <div *ngFor="let x of  ShowEmailQuoteData">
                         <div class="form-field2">
-                            <input class="input-text" type="email" name="EmailTo" id="" value="{{x.EmailTo}}" ngModel>
+                            <input class="input-text" type="email" name="EmailTo" id="" [(ngModel)]="x.EmailTo">
                             <label class="labels" for="">To :</label>
                         </div>
                         <div class="form-field2">
-                            <input class="input-text" type="email" name="CC" id="" value=" " ngModel>
+                            <input class="input-text" type="email" name="CC" id="" [(ngModel)]="x.CC">
                             <label class="labels" for="">CC :</label>
                         </div>
                         <div class="form-field2">
-                            <input class="input-text" type="email" name="BCC" id="" value=" " ngModel>
+                            <input class="input-text" type="email" name="BCC" id="" [(ngModel)]="x.BCC">
                             <label class="labels" for="">BCC :</label>
                         </div>
                         <div class="form-field2">
-                            <input class="input-text" type="email" name="Subject" id="" value="{{x.EmailSubject}}" ngModel>
+                            <input class="input-text" type="email" name="Subject" id="" [(ngModel)]="x.EmailSubject">
                             <label class="labels" for="">Subject :</label>
                         </div>
                         <div class="form-field2">
                             Attachment : <span class="text-primary ps-2"> {{x.EmailFileName}}</span>
                         </div>
                         <div class="form-field2">
-                            <input class="input-text" type="file" name="" id="" value="" multiple ngModel>
+                            <input class="input-text" type="file" name="" id="" multiple>
                             <label class="file-label" for="">Another :</label>
                         </div>
                         <div class="form-field2">
@@ -130,9 +130,9 @@
 
                         </div>
                         <div class="form-field2">
-                            <textarea name="Message" id="" type="HTML" class="input-text Description" ngModel>{{x.EmailBody}}</textarea>
+                            <!-- <textarea> </textarea> -->
                             <label class="file-label" for="">Message</label>
-
+                            <angular-editor name="Message" id="" type="text" class="  Description" [(ngModel)]="x.EmailBody"></angular-editor>
                         </div>
 
                     </div>
@@ -140,30 +140,31 @@
                 </form>
             </div>
             <div *ngIf="termsCondition">
-                <form action="">
-                    <div class="check-form-field">
-                        <select class="input-select" name="Format" (change)="selectDropDown($event)">
+
+                <div class="check-form-field">
+                    <select class="input-select" name="Format" (change)="selectDropDown($event)">
                        <option value="">Select Format</option>
                     <option [value]="x.Key" *ngFor="let x of  emailQuoteData.slice(0,3)" > {{x.Value}}</option>
                 </select>
-                        <label for="Format" class="dropDown-label">Select Format :</label>
-                    </div>
-                    <div class="check-form-field">
-                        <select class="input-select" name="eLeadTermsSetName" (change)="selectTermSet($event)">
-                        <option value="">Select terms Set</option>
+                    <label for="Format" class="dropDown-label">Select Format :</label>
+                </div>
+                <div class="check-form-field">
+                    <select class="input-select" name="Set" (change)="selectTermSet($event)">
+                        <option value="">Select Term Set</option>
                     <option [value]="x.eLeadTermsSetID" *ngFor="let x of  termsconditionData "> {{x.eLeadTermsSetName}}</option>
                 </select>
-                        <label for="eLeadTermsSetName " class="dropDown-label">Select Term Set :</label>
-                    </div>
-                    <div>
+                    <label for="Set " class="dropDown-label">Select Term Set :</label>
+                </div>
+                <form #termsCondition="ngForm" (ngSubmit)="onClickSave(termsCondition.value)">
+                    <div *ngIf="termSection">
                         <div class="check-form-field" *ngFor="let x of termSetData">
-                            <input class="input-text" type="text" value="{{x.eLeadTermsDetails}}" name="eLeadTermsDetails">
+                            <input class="input-text" type="text" [(ngModel)]="x.eLeadTermsDetails" name="eLeadTermsDetails">
                             <label for="eLeadTermsDetails" class="labels">{{x.eLeadTermsName}}</label>
                         </div>
 
                     </div>
-                    <button type="submit" class="btn btn-outline-info" (click)="saveCondition()">Save</button>
-                    <button type="button" class=" btn btn-outline-info ms-3">Cancel</button>
+                    <button type="submit" class="btn btn-outline-info">Save</button>
+
                 </form>
             </div>
 

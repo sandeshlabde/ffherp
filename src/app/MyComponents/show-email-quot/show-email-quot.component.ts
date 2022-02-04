@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
- 
+
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
@@ -32,7 +32,10 @@ export class ShowEmailQuotComponent implements OnInit {
   format: any;
   header: any;
   bank: any;
-    
+  myform: any;
+  termSection:boolean=false;
+  ckeditorContent: any;
+
   constructor(private listService: ProspectService,   @Inject(MAT_DIALOG_DATA) public data:any) {   
     this.Entityid=this.data.EntityID,
     this.EntityName=this.data.EntityName
@@ -73,7 +76,7 @@ selectBank(e:any){
 this.bank=e.target.value;
 console.log(this.format,  this.header,this.bank)
 };
- 
+//  send email Quote
 onClickSubmit(data:any){
 
   // this.listService.sendEmail(this.format,this.header, this.Entityid,this.EntityName,this.header,this.format).subscribe((data: any) => {
@@ -81,11 +84,16 @@ onClickSubmit(data:any){
   // })
   alert(data.EmailTo+","+data.Message+","+data.BCC+",");
 }
+// save terms And condition
+onClickSave(data:any){
+  this.myform.reset()
+}
+
 // Email Quote function
 EmailQuote(){
   this.listService.emailQuotedetail(this.EntityName, this.Entityid).subscribe((data: any) => {
     this.ShowEmailQuoteData=JSON.parse(data);
-  
+    console.log(this.ShowEmailQuoteData);
   })
   this.emailQuote=!this.emailQuote;
   this.termsCondition=false
@@ -101,16 +109,17 @@ this.termsCondition=!this.termsCondition
 }
 // select format DropDown function
 selectDropDown(e: any){
-  
+  this.termSection=false;
   this.eLeadFormatID = e.target.value;
    
   this.listService.showtermscondition(this.eLeadFormatID ).subscribe((data: any) => {
     this.termsconditionData=JSON.parse(data);
-     
   })
+ 
 }
 // select Term Set DropDown Function
 selectTermSet(e: any){
+  this.termSection=true;
 this.eLeadTermsSetID=e.target.value;
   this.listService.showtermSet(this.eLeadFormatID,this.eLeadTermsSetID).subscribe((data: any) => {
     this.termSetData=JSON.parse(data);
@@ -127,10 +136,11 @@ saveCondition(){
     
   })
 }
- 
+  
 
 // PDFEmailDetai
   ngOnInit(): void {
+    
   }
 
 }

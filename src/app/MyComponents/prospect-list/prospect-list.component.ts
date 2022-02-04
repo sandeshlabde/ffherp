@@ -1,6 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
- 
+import * as moment from 'moment';
 import{ProspectService}from 'src/app/services/prospect.service'
 import { __param } from 'tslib';
  import {MatDialog} from '@angular/material/dialog';
@@ -9,6 +9,8 @@ import { ShowEmailQuotComponent } from '../show-email-quot/show-email-quot.compo
  
 import { NoteComponent } from '../note/note.component';
 import { EmailTraceComponent } from '../email-trace/email-trace.component';
+import { ChatComponent } from '../chat/chat.component';
+import { FilterSearchComponent } from '../filter-search/filter-search.component';
  
 
 export interface DialogData {
@@ -23,7 +25,7 @@ export interface DialogData {
 
 export class ProspectListComponent implements OnInit {
   myStyles:any;
-  
+  filterTerm:any;
   dataSource:any;
   
   EntityName!: string;
@@ -37,8 +39,10 @@ export class ProspectListComponent implements OnInit {
   entityIdDetailData: any;
   entityIdDetailData2: any;
   date: any;
-  format="d mmm yyyy"
-  current_date=new Date( ) ;
+  current_date: string;
+  allColumnList: any;
+  checked = false;
+  checkbox = false;
   
  
  // table colum row show function start here
@@ -53,24 +57,24 @@ get isSourceName(){
   return[ 'prospect','lead'].includes(this.EntityName.toLowerCase())
 };
 get expDate(){
-  return['lead','invoice','prospect','ticket','amc','repair','work','molist'].includes(this.EntityName.toLowerCase())
-}
+  return['lead','invoice','prospect','ticket','amc','repair','work','molist','milist'].includes(this.EntityName.toLowerCase())
+};
 
 get isDeliveryDate(){
-  return[ 'salesorderlist','polist','payable','milist'].includes(this.EntityName.toLowerCase())
-}
+  return[ 'salesorderlist','polist','payable'].includes(this.EntityName.toLowerCase())
+};
 get isBilledStatus(){
   return[ 'salesorderlist', 'polist', 'payment' ].includes(this.EntityName.toLowerCase())
-}
+};
 get isDDeliveryStatus(){
   return[ 'payable' ].includes(this.EntityName.toLowerCase())
-}
+};
 get isBStatus(){
   return[ 'milist' ].includes(this.EntityName.toLowerCase())
-}
+};
 get isServiceType(){
   return['Ticket','repair','work','amc' ].includes(this.EntityName.toLowerCase())
-}
+};
 
   constructor( private listService: ProspectService,private root:ActivatedRoute , public dialog: MatDialog) {
     this.root.params.subscribe((param)=>{
@@ -85,21 +89,25 @@ get isServiceType(){
 
     });
    
-    console.log(this.current_date);
-      
+    
+    const date = moment();
+    this.current_date = date.format('DD MMM YYYY ');
+    console.log( "momment"+this.current_date);
    
   };
  
-  
+ 
 // MODEL POP UP start here
 
  
+// entityid Dialog Model
 
-openEntity(id:any ,date:any) {
-   this.date=date;
+openEntity(id:any  ) {
+   
   const dialogRef = this.dialog.open(EntityProductComponent,{
-    height: '450px',
-    width: '1350px',
+    height: '65%',
+    width: '100%',
+  
     data: {
       EntityID: id,
        EntityName: this.EntityName
@@ -107,11 +115,10 @@ openEntity(id:any ,date:any) {
   });
 
   dialogRef.afterClosed().subscribe( );
-}   
+}; 
+  //email Quate Dialog Model 
 openEmailQuote(id:any) {
-  // this.data=id;
- 
-  const dialogRef1 = this.dialog.open(ShowEmailQuotComponent,{
+  const dialogRef = this.dialog.open(ShowEmailQuotComponent,{
     height: '900px',
     width: '1000px',
     data: {
@@ -120,25 +127,28 @@ openEmailQuote(id:any) {
     },
   });
 
-  dialogRef1.afterClosed().subscribe();
-}   
-//  MODEL POP UP End here
+  dialogRef.afterClosed().subscribe();
+}  ; 
+// email Trace Dialog Model
 openEmailTrace(id:any){
-  // this.data=id;
-  const dialogRef2 = this.dialog.open(EmailTraceComponent ,{
-    
+  
+  const dialogRef = this.dialog.open(EmailTraceComponent ,{
+    height: '40%',
+    width: '70%',
     data: {
       EntityID: id,
        EntityName: this.EntityName
     },
   });
 
-  dialogRef2.afterClosed().subscribe();
-}
+  dialogRef.afterClosed().subscribe();
+};
+// Notes Section Dialog Model
 openNotes(id:any){
-  // this.data=id;
-  const dialogRef3 = this.dialog.open(NoteComponent,{
    
+  const dialogRef3 = this.dialog.open(NoteComponent,{
+    height: '50%',
+    width: '60%',
     data: {
       EntityID: id,
        EntityName: this.EntityName
@@ -146,25 +156,60 @@ openNotes(id:any){
   });
 
   dialogRef3.afterClosed().subscribe();
+};
+// Chat Section Dialog Model
+openChat(id:any){
+   
+  const dialogRef4 = this.dialog.open(ChatComponent,{
+    height: 'auto',
+    width: '40%',
+    data: {
+      EntityID: id,
+       EntityName: this.EntityName
+    },
+  });
+
+  dialogRef4.afterClosed().subscribe();
+};
+
+openFilterSearch(){
+  const dialogRef4 = this.dialog.open( FilterSearchComponent,{
+    height: '100%',
+    width: '80%',
+     
+  });
+
+  dialogRef4.afterClosed().subscribe();
 }
 
-  
+ //  MODEL POP UP End here
 
   ngOnInit(): void {
      
      
 }
 // pagination
+perPage=10;
 p:number=1;
 key:string='id';
-reverse:boolean=false;
+reverse:boolean=true;
 // sorting
 sort(key: string){
   this.key=key;
   this.reverse=!this.reverse;
-}
-  
+};
+// Per page itom code
+selectPegItom(e:any){
+  this.perPage=e.target.value;
+} ;
  
+checkValue(e:any){
+  console.log(e.target.value);
+     this.checkbox=! this.checkbox;
+}
+
+
+
 }
 
  

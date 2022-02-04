@@ -61,6 +61,12 @@ export class ProspectService {
   // Chat  API URL
   Chaturl = "https://apitest.ffherp.co.in/api/Sales/GetChatHistory"
 
+  // submmitting chat API URL
+  submitChatUrl="https://apitest.ffherp.co.in/api/Sales/SubmitChattingData"
+
+  // submmitting chat API URL
+  actorListUrl="https://ffherp.co.in/Pages/Modules/Common/OwnerActorLoad.asmx/GetOwnerActorList"
+
   constructor(private http: HttpClient) { }
 
 
@@ -70,7 +76,7 @@ export class ProspectService {
 
     const requestBody = {
       dbname: "Vol187",
-      encrypt: "X·ÌØ8âˆø«¸SÚã’",
+      encrypt: " X·ÌØ8âˆø«¸SÚã’",
       id: "1",
       flag,
       userid: "Director"
@@ -84,7 +90,7 @@ export class ProspectService {
 
     const requestBody = {
       dbname: "Vol187",
-      encrypt: " X·ÌØ8âˆø«¸SÚã’",
+      encrypt: "X·ÌØ8âˆø«¸SÚã’",
       password: "123456789",
       id,
       flag,
@@ -366,18 +372,59 @@ return this.http.post(this.sendEmailUrl, requestBody);
   showChat(EntityId: number, PageId: string) {
 
     const requestBody = {
-      dbname: "Vol187",
+      Dbname: "Vol187",
       EntityId,
-      UserID: "Director",
       PageId,
-
-
+      Password: " X·ÌØ8âˆø«¸SÚã’",
+      UserID: "Director",
+       
+      // Dbname: "Vol187"
+      // EntityId: "220110002"
+      // PageId: "L"
+      // Password: " X·ÌØ8âˆø«¸SÚã’"
+      // UserID: "Director"
 
     }
 
     return this.http.post(this.Chaturl, requestBody);
 
-  }
+  };
+  submitChat(EntityId: number, PageId: string,AddedUserinChat:string,Message:string) {
 
+    const requestBody = {
+      Dbname: "Vol187",
+      EntityId,
+      UserID: "Director",
+      PageId,
+      Password: " X·ÌØ8âˆø«¸SÚã’",
+      AddedUserinChat,
+      Message,
+      // NoteId,
+      // AddedUserinChat: ""
+// Dbname: "Vol187"
+// EntityId: "220110002"
+// : "testing"
+// MsgTo: ""
+// NoteId: "0"
+// PageId: "L"
+// Password: " X·ÌØ8âˆø«¸SÚã’"
+// UserID: "Director"
+// companyname: ""
+    }
+
+    return this.http.post(this.submitChatUrl, requestBody);
+
+  }
+  actorList(prefixText: string ) {
+
+    const requestBody = {
+      prefixText,
+      
+    }
+
+    return this.http.post(this.actorListUrl, requestBody);
+
+  }
+   
 }
 

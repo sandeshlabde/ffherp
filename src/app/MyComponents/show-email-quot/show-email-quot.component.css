@@ -161,7 +161,7 @@
 .Description {
     width: 100%;
     resize: none;
-    height: 160px;
+    /* height: 160px; */
 }
 
 

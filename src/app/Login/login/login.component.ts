@@ -3,9 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Global } from 'Global';
-import { ILoginDetails } from 'E:/Angular5+/MyProject/module';
+import { ILoginDetails } from '../../models';
 
-import { ProspectService } from 'src/app/services/prospect.service';
+import { ProspectService } from '../../services/prospect.service';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +39,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private listService: ProspectService,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private global: Global
   ) {
     this.autoLogin();
   }
@@ -54,19 +55,17 @@ export class LoginComponent implements OnInit {
         password: this.Password,
         SessionFlag: 'Login',
       };
-      this.listService.login(user).subscribe((res) => {
+      this.listService.login(user).subscribe((res: string) => {
         // console.log(res);
-        this.res = res;
-        Global.LOGGED_IN_USER = JSON.parse(this.res);
-        localStorage.setItem('Global.LOGGED_IN_USER', JSON.stringify(res));
-
+        localStorage.setItem('Global.LOGGED_IN_USER', res);
+        const response = JSON.parse(res);
         if (
-          Global.LOGGED_IN_USER.LoginYn == '1' ||
-          Global.LOGGED_IN_USER.LoginYn == '2' ||
-          Global.LOGGED_IN_USER.LoginYn == '4'
+          response.LoginYn == '1' ||
+          response.LoginYn == '2' ||
+          response.LoginYn == '4'
         ) {
           this.router.navigate(['page/Lead']);
-        } else if (Global.LOGGED_IN_USER.LoginYn == '3') {
+        } else if (response.LoginYn == '3') {
           this.Error =
             'Your subscription period has expired. Please contact your administrator for renewal.';
         } else {
@@ -78,7 +77,7 @@ export class LoginComponent implements OnInit {
   }
 
   autoLogin() {
-    // const UserData = JSON.stringify(localStorage.getItem('Global.LOGGED_IN_USER'));
+    // const UserData = JSON.stringify(localStorage.getItem('this.global.LOGGED_IN_USER'));
     // const userDetalis = JSON.parse(UserData);
     // console.log("parse"+ userDetalis);
     // if(!userDetalis){

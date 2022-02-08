@@ -1,6 +1,9 @@
-import{IUser }from './module'
+import { Injectable } from '@angular/core';
+import { IUser } from 'src/app/models';
 
-export class Global{
-   public static LOGGED_IN_USER:IUser
-   
+@Injectable({
+  providedIn: 'root',
+})
+export class Global {
+  public LOGGED_IN_USER: IUser;
 }

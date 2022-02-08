@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Global } from 'Global';
  
 import { ProspectService } from 'src/app/services/prospect.service';
 
@@ -28,7 +29,7 @@ export class NoteComponent implements OnInit {
     this.Entityid=this.data.EntityID,
     this.EntityName=this.data.EntityName
     
-      this.listService.getNoteList( this.EntityName, this.Entityid ).subscribe((data: any)=>{ 
+      this.listService.getNoteList( this.EntityName, this.Entityid ,Global.LOGGED_IN_USER.DbName,Global.LOGGED_IN_USER.encryptPswd,Global.LOGGED_IN_USER.Username).subscribe((data: any)=>{ 
         this.noteData=data;
         
          this.noteData2 =JSON.parse(this.noteData);
@@ -43,10 +44,10 @@ export class NoteComponent implements OnInit {
   saveNote(Description:string){
    this.Description=Description;//get input value
    
-    this.listService.saveNoteList( this.EntityName ,  this.Entityid,this.Description ).subscribe((data: any)=>{ 
+    this.listService.saveNoteList( this.EntityName , this.Entityid,this.Description ,Global.LOGGED_IN_USER.DbName,Global.LOGGED_IN_USER.encryptPswd,Global.LOGGED_IN_USER.Username).subscribe((data: any)=>{ 
       
     }) ; 
-    this.listService.getNoteList( this.EntityName,  this.Entityid).subscribe((data: any)=>{ 
+    this.listService.getNoteList( this.EntityName,  this.Entityid, Global.LOGGED_IN_USER.DbName,Global.LOGGED_IN_USER.encryptPswd,Global.LOGGED_IN_USER.Username).subscribe((data: any)=>{ 
       this.noteData=data;
       
        this.noteData2 =JSON.parse(this.noteData);

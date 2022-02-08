@@ -59,7 +59,7 @@
             <th class="text-start" *ngIf="isServiceType" (click)="sort('Source')">Source</th>
 
 
-            <th class="text-start" (click)="sort('Stage')">Stage</th>
+            <th class="text-start" (click)="sort('Stage')" *ngIf="stage">Stage</th>
 
             <th class="text-start" *ngIf="expDate" (click)="sort('Exp-cls')">Exp cls</th>
             <th class="text-start" *ngIf="isDeliveryDate" (click)="sort('Exp-cls')">Del Date</th>
@@ -134,7 +134,7 @@
 
 
             <!-- ***************6th colm******************** -->
-            <td class="text-start table-data">{{x.Stage}}
+            <td class="text-start table-data" *ngIf="stage">{{x.Stage}}
 
             </td>
             <!-- ***************7th colm******************** -->

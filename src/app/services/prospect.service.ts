@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+ 
 import { Observable } from 'rxjs';
 import { prospectdatafield } from 'src/apitable';
 
@@ -8,6 +9,8 @@ import { prospectdatafield } from 'src/apitable';
   providedIn: 'root'
 })
 export class ProspectService {
+  // Login API URL
+  loginUrl ="https://apitest.ffherp.co.in/api/FFHAMC/FFHLogin"
 
   // list API url
   listUrl = "https://apitest.ffherp.co.in/api/FFHAMC/AMCList";
@@ -69,32 +72,36 @@ export class ProspectService {
 
   constructor(private http: HttpClient) { }
 
+// login API Calling
+login(user:any){
+  
+  return this.http.post (this.loginUrl,user)
+};
+loggedIn(){
+  return !!localStorage.getItem('Global.LOGGED_IN_USER')
+};
 
+// signOut(){
+
+// }
   // list  table api calling
 
-  getLeadList(flag: string)  {
+  getLeadList(params:any)  {
 
-    const requestBody = {
-      dbname: "Vol187",
-      encrypt: " X·ÌØ8âˆø«¸SÚã’",
-      id: "1",
-      flag,
-      userid: "Director"
-    }
-
-    return this.http.post (this.listUrl, requestBody);
+   
+    return this.http.post (this.listUrl, params);
   }
 
   // show entityid  info APi calling
-  getViewList(flag: string, id: number) {
+  getViewList(flag: string, id: number,dbname:string,encrypt:string,password:string,userid:string) {
 
     const requestBody = {
-      dbname: "Vol187",
-      encrypt: "X·ÌØ8âˆø«¸SÚã’",
-      password: "123456789",
+      dbname ,
+      encrypt ,
+      password ,
       id,
       flag,
-      userid: "Director"
+      userid 
        
     }
 
@@ -103,11 +110,11 @@ export class ProspectService {
   }
 
   // Entity product details api calling
-  getProductList(flag: string, id: number) {
+  getProductList(flag: string, id: number,DbName:string) {
 
     const requestBody = {
 
-      DbName: "Vol187",
+      DbName ,
       id,
       flag,
     }
@@ -117,27 +124,25 @@ export class ProspectService {
   };
   
   // Entity Lead product details api calling
-  getLeadProductView( EntityId: number,Module:number){
+  getLeadProductView( EntityId: number,Module:number,dbName:string){
     const requestBody={
-      dbName: "Vol187",
+      dbName ,
       EntityId ,
       Module,
-      // DbName: "Vol187",
-      //                       EntityId: id,
-      //                       Module: "Lead"
+       
     }
     return this.http.post(this.productViewUrl, requestBody);
   }
 
   // get api calling show note data
-  getNoteList(EntityName: string, EntityID: number) {
+  getNoteList(EntityName: string, EntityID: number,DBNAME:string,UpdatedBy:string,password:string) {
 
     const requestBody = {
-      DBNAME: "Vol187",
+      DBNAME ,
       EntityID,
       EntityName,
-      UpdatedBy: "Director",
-      password: " X·ÌØ8âˆø«¸SÚã’",
+      UpdatedBy ,
+      password,
 
     }
 
@@ -146,14 +151,14 @@ export class ProspectService {
   }
 
   // save note Api calling
-  saveNoteList(EntityName: string, EntityID: number, Description: string) {
+  saveNoteList(EntityName: string, EntityID: number, Description: string,DBNAME:string,UpdatedBy:string,password:string) {
 
     const requestBody = {
-      DBNAME: "Vol187",
+      DBNAME ,
       EntityID,
       EntityName,
-      UpdatedBy: "Director",
-      password: " X·ÌØ8âˆø«¸SÚã’",
+      UpdatedBy ,
+      password ,
       Description,
 
     }
@@ -163,10 +168,10 @@ export class ProspectService {
   }
 
   // Product Api calling
-  productDetails(EntityId: number, Module: string) {
+  productDetails(EntityId: number, Module: string,DbName:string) {
 
     const requestBody = {
-      DbName: "Vol187",
+      DbName ,
       EntityId,
       Module,
 
@@ -177,10 +182,10 @@ export class ProspectService {
   }
 
   // Action Api calling
-  actionDetails(EntityId: number, Module: string) {
+  actionDetails(EntityId: number, Module: string,DbName:string) {
 
     const requestBody = {
-      DbName: "Vol187",
+      DbName ,
       EntityId,
       Module,
 
@@ -189,38 +194,31 @@ export class ProspectService {
     return this.http.post(this.actionDetailsUrl, requestBody);
 
   }
-  leadActionDetails(leadId:number){
+  leadActionDetails(leadId:number,dbName:string,password:string){
     const requestBody = {
-      dbName: "Vol187",
+      dbName ,
 leadId ,
-password: "123456789"
+password 
 
     }
     return this.http.post(this.leadActionUrl, requestBody);
   }
   // emailtrace Api calling
-  emailtrace(EntityID: number, EmailAddress: any) {
+  emailtrace(params:any) {
 
-    const requestBody = {
-      DBNAME: "Vol187",
-      EntityID,
-      OwnerId: "Director",
-      password: " X·ÌØ8âˆø«¸SÚã’",
-      EmailAddress,
+     
 
-    }
-
-    return this.http.post(this.emailtraceUrl, requestBody);
+    return this.http.post(this.emailtraceUrl, params);
 
   }
 
   // PDF Email Details Api calling
-  emailQuotedetail(PDFSource: string, PDFEntityID: number) {
+  emailQuotedetail(PDFSource: string, PDFEntityID: number,dbname:string,PDFUserID:string,password:string) {
 
     const requestBody = {
-      dbname: "Vol187",
-      PDFUserID: "Director",
-      password: " X·ÌØ8âˆø«¸SÚã’",
+      dbname ,
+      PDFUserID ,
+      password ,
       PDFSource,
       PDFEntityID,
       //     PDFEntityID: "211228001"
@@ -236,20 +234,20 @@ password: "123456789"
 
   }
   // send Mail API Calling
-  sendEmail(PDFEntityID:number,PDFEntityType:string,PDFFormatID:number,PDFHeaderLogo:number,eBCCEmailID:any,eCCEmailID:any,eEmailBody:string, eEmailSubject:string,eRouteFlag:string,eToEmailID:any,PDFFormatSeqID:any,PDFPageName:any){
+  sendEmail(PDFEntityID:number,PDFEntityType:string,PDFFormatID:number,PDFHeaderLogo:number,eBCCEmailID:any,eCCEmailID:any,eEmailBody:string, eEmailSubject:string,eRouteFlag:string,eToEmailID:any,PDFFormatSeqID:any,PDFPageName:any,PDFDBName:string,PDFCustomerID:string,PDFPassword:string,PDFUserID:string,PDFRoleId:string){
     const requestBody = {
-      PDFCustomerID: 187,
-      PDFDBName: "Vol187",
+      PDFCustomerID ,
+      PDFDBName,
       PDFEntityID,
       PDFEntityType,
       PDFFormatID,
       PDFFormatSetNo:PDFFormatID,
       PDFFormatSeqID,
       PDFPageName,
-      PDFPassword: " X·ÌØ8âˆø«¸SÚã’",
+      PDFPassword ,
       PDFSource: PDFEntityType,
-      PDFUserID: "Director",
-      PDFRoleId: 1,
+      PDFUserID ,
+      PDFRoleId ,
       PDFHeaderLogo,
       eBCCEmailID,
       eCCEmailID,
@@ -280,19 +278,19 @@ password: "123456789"
 // eToEmailID: "tes@gmail.com"
 return this.http.post(this.sendEmailUrl, requestBody);
   }
-  PDFEmailDetail(eEntityFlag: string) {
+  emailQuoteData(DBNAME:string,Password:string,eEntityFlag: string) {
     const requestBody = {
-      DBNAME: "Vol187",
-      Password: "123456789",
+      DBNAME ,
+      Password ,
       eEntityFlag,
     }
     return this.http.post(this.viewEmailQuoteDetaiUrl, requestBody);
   }
-  showEmailPDF(EntityName: string,   PDFEntityID: number) {
+  showEmailPDF(EntityName: string,   PDFEntityID: number,PDFDBName:string,password:string,PDFUserID:string,PDFRoleId:string) {
 
     const requestBody = {
        
-      PDFDBName: "Vol187",
+      PDFDBName ,
       PDFEntityID,
       EntityName,
       PDFPageName: PDFEntityID,
@@ -301,9 +299,9 @@ return this.http.post(this.sendEmailUrl, requestBody);
       PDFFormatSetNo: "",
       PDFHeaderLogo: "",
       PDFShowTax: "No",
-      PDFRoleId: 1,
-      password: "123456789",
-      PDFUserID: "Director"
+      PDFRoleId ,
+      password,
+      PDFUserID 
 
       
       // PDFCustomerID: 187
@@ -324,12 +322,12 @@ return this.http.post(this.sendEmailUrl, requestBody);
     return this.http.post(this.showEmailPDFUrl, requestBody);
 
   }
-  showtermscondition(eLeadFormatID: number) {
+  showtermscondition(eLeadFormatID: number,dbname:string,password:string) {
 
     const requestBody = {
-      dbname: "Vol187",
+      dbname ,
       eLeadFormatID,
-      password: " X·ÌØ8âˆø«¸SÚã’"
+      password 
 
       // 
 
@@ -338,12 +336,12 @@ return this.http.post(this.sendEmailUrl, requestBody);
     return this.http.post(this.termsConditionurl, requestBody);
 
   }
-  showtermSet(eLeadFormatID: number, eLeadTermsSetID: number) {
+  showtermSet(eLeadFormatID: number, eLeadTermsSetID: number,dbname:string,password: string) {
 
     const requestBody = {
-      dbname: "Vol187",
+      dbname,
       eLeadFormatID,
-      password: " X·ÌØ8âˆø«¸SÚã’",
+      password ,
       eLeadTermsSetID,
 
 
@@ -353,10 +351,10 @@ return this.http.post(this.sendEmailUrl, requestBody);
     return this.http.post(this.termSeturl, requestBody);
 
   }
-   saveTerms(EntityId: number, EntityName:string,FormatId:number,Set_SeqNo:number) {
+   saveTerms(EntityId: number, EntityName:string,FormatId:number,Set_SeqNo:number,dbname:string) {
 
     const requestBody = {
-      dbname: "Vol187",
+      dbname ,
       EntityId,
       
       EntityName,
@@ -369,34 +367,21 @@ return this.http.post(this.sendEmailUrl, requestBody);
     return this.http.post(this.saveTermsUrl, requestBody);
 
   }
-  showChat(EntityId: number, PageId: string) {
+  showChat( params:any) {
 
-    const requestBody = {
-      Dbname: "Vol187",
-      EntityId,
-      PageId,
-      Password: " X·ÌØ8âˆø«¸SÚã’",
-      UserID: "Director",
-       
-      // Dbname: "Vol187"
-      // EntityId: "220110002"
-      // PageId: "L"
-      // Password: " X·ÌØ8âˆø«¸SÚã’"
-      // UserID: "Director"
+    
 
-    }
-
-    return this.http.post(this.Chaturl, requestBody);
+    return this.http.post(this.Chaturl, params);
 
   };
-  submitChat(EntityId: number, PageId: string,AddedUserinChat:string,Message:string) {
+  submitChat(EntityId: number, PageId: string,AddedUserinChat:string,Message:string,Dbname:string,UserID:string,Password:string) {
 
     const requestBody = {
-      Dbname: "Vol187",
+      Dbname,
       EntityId,
-      UserID: "Director",
+      UserID ,
       PageId,
-      Password: " X·ÌØ8âˆø«¸SÚã’",
+      Password ,
       AddedUserinChat,
       Message,
       // NoteId,

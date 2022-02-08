@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProductComponent implements OnInit {
   constructor( private listService: ProspectService,private root:ActivatedRoute ) {
     this.root.params.subscribe((param)=>{
     console.warn(param["flag"],param["id"])
-      this.listService.getProductList(param["flag"],param["id"]).subscribe((data: any)=>{ 
+      this.listService.getProductList(param["flag"],param["id"],Global.LOGGED_IN_USER.DbName).subscribe((data: any)=>{ 
         this.productdata =data;
          
          this.productdata2 =JSON.parse(this.productdata);

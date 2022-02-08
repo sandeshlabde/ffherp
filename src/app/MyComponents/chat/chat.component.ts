@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
@@ -83,8 +84,19 @@ export class ChatComponent implements OnInit {
     };
 
     // entity Product EntityModule name set end here
-
-      this.listService.showChat(this.Entityid, this.pageID,  ).subscribe((data: any)=>{ 
+    // Dbname,
+    // EntityId,
+    // PageId,
+    // Password,
+    // UserID,
+    let params={
+      EntityId:this.Entityid,
+      pageID: this.pageID,
+      Dbname:Global.LOGGED_IN_USER.DbName,
+      encrypt:Global.LOGGED_IN_USER.encryptPswd,
+      userid:Global.LOGGED_IN_USER.UserId
+    }
+      this.listService.showChat( params ).subscribe((data: any)=>{ 
         this.chat=JSON.parse(data) ;
         console.warn(data);
       
@@ -95,12 +107,19 @@ export class ChatComponent implements OnInit {
    }
   // showChat
   chatDataSubmit(data:any){
+    
      
-    this.listService.submitChat( this.Entityid,this.pageID,data.AddedUserinChat,data.chatMessage).subscribe((data: any) => {
+    this.listService.submitChat( this.Entityid,this.pageID,data.AddedUserinChat,data.chatMessage,Global.LOGGED_IN_USER.DbName,Global.LOGGED_IN_USER.encryptPswd,Global.LOGGED_IN_USER.UserId ).subscribe((data: any) => {
 
     });
-    
-    this.listService.showChat(this.Entityid, this.pageID,  ).subscribe((data: any)=>{ 
+    let params={
+      EntityId:this.Entityid,
+      pageID: this.pageID,
+      Dbname:Global.LOGGED_IN_USER.DbName,
+      encrypt:Global.LOGGED_IN_USER.encryptPswd,
+      userid:Global.LOGGED_IN_USER.UserId
+    }
+    this.listService.showChat(params).subscribe((data: any)=>{ 
       this.chat=JSON.parse(data) ;
     });
  
@@ -126,3 +145,5 @@ export class ChatComponent implements OnInit {
   }
 
 }
+ 
+

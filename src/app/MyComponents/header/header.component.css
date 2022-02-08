@@ -19,6 +19,7 @@
 
 .header-link {
     margin: 0 16px;
+    list-style: none;
 }
 
 #ffh {
@@ -41,5 +42,6 @@ i {
 }
 
 .dropdown-list:hover {
-    color: rgb(113, 206, 235);
+    color: white;
+    background-color: black;
 }

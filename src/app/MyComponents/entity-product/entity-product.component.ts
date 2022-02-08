@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
 
 
@@ -92,7 +93,7 @@ export class EntityProductComponent implements OnInit {
       this.Entityflag = "Receivable";
 
     }
-    else if (this.EntityName === "AMC") {
+    else if (this.EntityName === "") {
       this.EntityNameTitle="AMC"
       this.EntityModule = "AMC";
       this.Entityflag = "AMC";
@@ -114,27 +115,32 @@ export class EntityProductComponent implements OnInit {
     // entity Product EntityModule name set end here
 
 // entityid Details Section Start Here*******************************************************************************
-     
-this.listService.getViewList(this.Entityflag, this.Entityid).subscribe((data: any) => {
+  
+this.listService.getViewList(this.Entityflag, this.Entityid,Global.LOGGED_IN_USER.DbName,Global.LOGGED_IN_USER.UserId,Global.LOGGED_IN_USER.Password,Global.LOGGED_IN_USER.encryptPswd).subscribe((data: any) => {
   this.entityIdDetailData = JSON.parse(data);
-  console.log( this.entityIdDetailData);
-  console.log( this.EntityModule, this.Entityid);
+   
 
 });
 // }
 
  
 // entityid Details Section End Here*************************************************************************
-      
+let params={
+  EntityId:this.Entityid,
+  pageID: this.EntityModule,
+  Dbname:Global.LOGGED_IN_USER.DbName,
+  encrypt:Global.LOGGED_IN_USER.encryptPswd,
+  userid:Global.LOGGED_IN_USER.UserId
+}   
  
-    this.listService.showChat(this.EntityModule, this.Entityid).subscribe((data: any) => {
+    this.listService.showChat(params).subscribe((data: any) => {
       this.chatData = JSON.parse(data);
 
     })
  
 
     // entity ID product Details section start here
-    this.listService.productDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
+    this.listService.productDetails(this.Entityid, this.EntityModule,Global.LOGGED_IN_USER.DbName).subscribe((data: any) => {
       this.ViewProductDetail = JSON.parse(data);
       console.log( this.ViewProductDetail);
     });
@@ -143,7 +149,7 @@ this.listService.getViewList(this.Entityflag, this.Entityid).subscribe((data: an
     //  ****************************************************************************************************************
     // entity ID Action Details section start here
 
-    this.listService.actionDetails(this.Entityid, this.EntityModule).subscribe((data: any) => {
+    this.listService.actionDetails(this.Entityid, this.EntityModule,Global.LOGGED_IN_USER.DbName).subscribe((data: any) => {
       this.ViewActionDetail = JSON.parse(data);
       console.log( this.ViewActionDetail);
 

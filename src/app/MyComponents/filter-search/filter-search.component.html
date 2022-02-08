@@ -73,67 +73,17 @@
     <div class="col ">
         <h1>Entity Wise
         </h1>
-        <div>
-            <!-- 1st row start here -->
+        <div *ngFor="let x of labelData">
             <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> LeadId</label>
-                <!-- 1st row end here -->
-                <!-- 2nd row start here -->
-                <div class="form-field">
-                    <select class="input-select" name="Format">
-                        <option value="">Select Format</option>
-                 </select>
-                    <label for=" " class="labels">Select Status</label>
-                </div>
-                <!-- 2nd row end here -->
-                <!-- 3rd row start here -->
-                <div class="form-field">
-                    <select class="input-select" name="Format">
-                        <option value="">Select Format</option>
-                 </select>
-                    <label for=" " class="labels">Select Source </label>
-                </div>
-                <!-- 3rd row end here -->
-                <!-- 4th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels">Select Stage  </label>
-                </div>
-                <!-- 4th row end here -->
-                <!-- 5th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels"> Select Tag</label>
-                </div>
-                <!-- 5th row end here -->
-                <!-- 6th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels"> Owner</label>
-                </div>
-                <!-- 6th row end here -->
-                <!-- 7th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels">Actor</label>
-                </div>
-                <!-- 7th row end here -->
-                <!-- 8th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels">Select Branch </label>
-                </div>
-                <!-- 8th row end here -->
-                <!-- 8th row start here -->
-                <div class="form-field">
-                    <input class="input-text" type="text" name=" ">
-                    <label for=" " class="labels">Select Branch </label>
-                </div>
-                <!-- 8th row end here -->
+
+                <input class="input-text" id="{{x.ID}}" type="{{x.Type}}" name=" ">
+                <label for="" class="labels"> {{x.Label}} </label>
             </div>
+
         </div>
+
     </div>
+
     <div class="col">
         <h1>Date</h1>
         <div>

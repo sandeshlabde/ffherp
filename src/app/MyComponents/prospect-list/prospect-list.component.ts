@@ -11,6 +11,7 @@ import { NoteComponent } from '../note/note.component';
 import { EmailTraceComponent } from '../email-trace/email-trace.component';
 import { ChatComponent } from '../chat/chat.component';
 import { FilterSearchComponent } from '../filter-search/filter-search.component';
+import { Global } from 'Global';
  
 
 export interface DialogData {
@@ -28,7 +29,7 @@ export class ProspectListComponent implements OnInit {
   filterTerm:any;
   dataSource:any;
   
-  EntityName!: string;
+  EntityName: any;
  
   ViewDataSource:any;
   ViewDataSource2: any;
@@ -39,7 +40,7 @@ export class ProspectListComponent implements OnInit {
   entityIdDetailData: any;
   entityIdDetailData2: any;
   date: any;
-  current_date: string;
+  current_date: any;
   allColumnList: any;
   checked = false;
   checkbox = false;
@@ -51,13 +52,13 @@ export class ProspectListComponent implements OnInit {
   return['salesorderlist'].includes(this.EntityName.toLowerCase())
 } ; 
 get isStatus(){
-  return['lead','molist', 'invoice', 'prospect','polist','payable','Ticket','repair','work'].includes(this.EntityName.toLowerCase())
+  return['lead','molist', 'payment', 'prospect','polist','payable','Ticket','repair','work'].includes(this.EntityName.toLowerCase())
 };
 get isSourceName(){
   return[ 'prospect','lead'].includes(this.EntityName.toLowerCase())
 };
 get expDate(){
-  return['lead','invoice','prospect','ticket','amc','repair','work','molist','milist'].includes(this.EntityName.toLowerCase())
+  return['lead','payment','prospect','ticket','amc','repair','work','molist','milist'].includes(this.EntityName.toLowerCase())
 };
 
 get isDeliveryDate(){
@@ -75,24 +76,34 @@ get isBStatus(){
 get isServiceType(){
   return['Ticket','repair','work','amc' ].includes(this.EntityName.toLowerCase())
 };
+get stage(){
+  return[ 'prospect','lead', ].includes(this.EntityName.toLowerCase())
+};
 
   constructor( private listService: ProspectService,private root:ActivatedRoute , public dialog: MatDialog) {
     this.root.params.subscribe((param)=>{
-     
-      this.listService.getLeadList(param["EntityName"]).subscribe((data: any)=>{ 
+      this.EntityName=param['EntityName'];
+      
+      let params={
+        flag: this.EntityName,
+        Dbname:Global.LOGGED_IN_USER.DbName,
+        encrypt:Global.LOGGED_IN_USER.encryptPswd,
+        id:Global.LOGGED_IN_USER.RoleId,
+        userid:Global.LOGGED_IN_USER.UserId
+      }
+      this.listService.getLeadList(params).subscribe((data: any)=>{ 
         this.dataSource=JSON.parse(data);
         
-        console.log(this.dataSource);
+        // console.log( "date"+this.dataSource[0].EXPClosuredateDashboard);
       }) ; 
-      this.EntityName=param['EntityName']
- console.log(param["EntityName"]);
+  
 
     });
    
     
-    const date = moment();
-    this.current_date = date.format('DD MMM YYYY ');
-    console.log( "momment"+this.current_date);
+    // const date = moment();
+    // var A=this.dataSource[0].EXPClosuredateDashboard = date.format('DD MMM YYYY ');
+    // console.log( "Date"+A);
    
   };
  
@@ -176,7 +187,10 @@ openFilterSearch(){
   const dialogRef4 = this.dialog.open( FilterSearchComponent,{
     height: '100%',
     width: '80%',
+    data: {
      
+       EntityName: this.EntityName
+    },
   });
 
   dialogRef4.afterClosed().subscribe();

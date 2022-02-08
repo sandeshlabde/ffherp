@@ -1,19 +1,19 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-    <a href="/" class="companyLogo">
+    <a href="/page/Lead" class="companyLogo">
         <img src="assets/img/FFHFinalLogo.png" height="45" alt="">
     </a>
 
     <div class="spacer"></div>
     <img src="assets/img/NoImage.png" width="50" [height]="40" alt="">
     <a class=" " href="#" id="ffh">
-              FieldForceHelp
+             {{companyName}}
           </a>
 
-    <a href="#" class="header-link" [matMenuTriggerFor]="list" id="">
+    <li class="header-link" [matMenuTriggerFor]="list" id="">
         <i class="fas fa-paperclip"> </i>
         <mat-menu #list="matMenu">
-            <button mat-menu-item class="bg-info text-dark">My list</button>
+            <button mat-menu-item class="bg-dark text-white">My list</button>
             <hr class="dropdown-divider">
 
             <a class="dropdown-list" mat-menu-item href="#">My User</a>
@@ -27,11 +27,11 @@
             <a class="dropdown-list" mat-menu-item href="#">User Report</a>
             <a class="dropdown-list" mat-menu-item href="#">Location Detail</a>
         </mat-menu>
-    </a>
-    <a href="#" class="header-link " [matMenuTriggerFor]="QuickLinks" id="">
+    </li>
+    <li class="header-link " [matMenuTriggerFor]="QuickLinks" id="">
         <i class="fas fa-barcode"></i>
         <mat-menu #QuickLinks="matMenu">
-            <button mat-menu-item class="bg-info text-dark">Quick Links</button>
+            <button mat-menu-item class="bg-dark text-white">Quick Links</button>
             <hr class="dropdown-divider">
 
             <a class="dropdown-list" mat-menu-item href="#">Create Prospect</a>
@@ -50,11 +50,11 @@
             <a class="dropdown-list" mat-menu-item href="#">Payment Made</a>
             <a class="dropdown-list" mat-menu-item href="#">Stock Journal </a>
         </mat-menu>
-    </a>
-    <a href="#" class=" header-link " [matMenuTriggerFor]="masters" id="">
+    </li>
+    <li class=" header-link " [matMenuTriggerFor]="masters" id="">
         <i class="fas fa-search"></i>
         <mat-menu #masters="matMenu">
-            <button mat-menu-item class="bg-info text-dark">Masters</button>
+            <button mat-menu-item class="bg-dark text-white">Masters</button>
             <hr class="dropdown-divider">
 
             <a class="dropdown-list" mat-menu-item href="#">Company</a>
@@ -62,27 +62,28 @@
             <a class="dropdown-list" mat-menu-item href="#">Product</a>
             <a class="dropdown-list" mat-menu-item href="#">Ledger</a>
         </mat-menu>
-    </a>
-    <a href="#" class=" header-link " id="">
+    </li>
+    <li href="#" class=" header-link " id="">
         <i class="far fa-envelope"></i>
 
-    </a>
-    <a href="#" class=" header-link " id="">
+    </li>
+    <li href="#" class=" header-link " id="">
         <i class="far fa-bell"></i>
 
-    </a>
-    <a href="#" class=" header-link" [matMenuTriggerFor]="user" id=" ">
+    </li>
+    <li class=" header-link" [matMenuTriggerFor]="user" id=" ">
 
-        <i class="fas fa-user-circle"></i>
+        <i class="fas fa-user-circle"></i> {{userId}}
         <mat-menu #user="matMenu">
             <a class="dropdown-list" mat-menu-item href="#">New project...</a>
             <a class="dropdown-list" mat-menu-item href="#">Settings</a>
             <a class="dropdown-list" mat-menu-item href="#">Profile</a>
             <hr class="dropdown-divider">
 
-            <a class="" href="#">Sign out</a>
+            <a class="dropdown-list" mat-menu-item (click)="onSignOut()">Sign out</a>
         </mat-menu>
 
 
-    </a>
+    </li>
 </div>
+<app-side-nav></app-side-nav>

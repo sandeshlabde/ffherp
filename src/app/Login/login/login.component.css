@@ -1,0 +1,86 @@
+.main {
+    max-width: 35%;
+    height: 100%;
+    padding-top: 80px;
+}
+
+form {
+    height: 80vh;
+    background-color: transparent;
+    padding: 30px;
+}
+
+.bg {
+    height: 100vh;
+    background-image: url("/assets/img/login-bg2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.chat-input {
+    width: 100%;
+    height: 38px;
+    display: block;
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(148, 43, 43);
+    ;
+}
+
+.chat-input:focus {
+    border-bottom: 2px solid rgb(148, 43, 43);
+    ;
+    outline: none;
+}
+
+.chat-input:focus+label {
+    color: rgb(148, 43, 43);
+    top: -25px;
+}
+
+.labels {
+    display: block;
+    position: absolute;
+    top: -16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(148, 43, 43);
+    cursor: text;
+}
+
+.form-field {
+    position: relative;
+    margin: 50px 0 52px 0;
+}
+
+button {
+    width: 60px;
+}
+
+h1 {
+    height: 6vh;
+    color: rgb(148, 43, 43);
+}
+
+h2 {
+    margin: 36px 0px 0px 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

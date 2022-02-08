@@ -1,18 +1,20 @@
  
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router'; 
-import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component'; 
-import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
+import { AuthGuard } from './auth.guard';
+import { LoginComponent } from './Login/login/login.component';
+import { HeaderComponent } from './MyComponents/header/header.component';
+ 
+ 
+ 
  
  
 
 const routes: Routes = [
-   { path: '', component:SideNavComponent},
-  {path:'page/:EntityName', component:ProspectListComponent},
- 
- 
-  
-  
+   { path: '', redirectTo:"login", pathMatch: "full"},
+   { path: 'login',component:LoginComponent,canActivate:[AuthGuard] },
+  {path:'page/:EntityName', component:HeaderComponent, },
+  // ,canActivate:[AuthGuard]
 ];
 
 @NgModule({

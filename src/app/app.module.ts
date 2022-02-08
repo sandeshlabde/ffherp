@@ -32,7 +32,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
 import { ProspectService } from "../app/services/prospect.service";
-import { FormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule} from '@angular/forms';
  
 // components module import
 import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component';
@@ -48,6 +48,10 @@ import { ChatComponent } from './MyComponents/chat/chat.component';
 import { SearchfilterPipe } from './searchfilter.pipe';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FilterSearchComponent } from './MyComponents/filter-search/filter-search.component';
+import{ LoginComponent} from './Login/login/login.component';
+import {  AuthGuard } from './auth.guard';
+ 
+ 
 
 
 
@@ -58,15 +62,15 @@ import { FilterSearchComponent } from './MyComponents/filter-search/filter-searc
     SideNavComponent,
     ProspectListComponent,
     EntityProductComponent, 
-    NoteComponent,
-
+    NoteComponent, 
     ShowEmailQuotComponent,
     ProductComponent,
     EmailTraceComponent,
-    ChatComponent,
-    
+    ChatComponent, 
     SearchfilterPipe,
-         FilterSearchComponent
+     FilterSearchComponent,
+      LoginComponent,
+         
 
 
 
@@ -100,9 +104,12 @@ import { FilterSearchComponent } from './MyComponents/filter-search/filter-searc
     AngularEditorModule,
     AutocompleteLibModule,
     NgxChatboxModule,
+    ReactiveFormsModule,
+    
  
   ],
-  providers: [ProspectService],
+  // , AuthGuard
+  providers: [ProspectService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -9,9 +9,9 @@
 }
 
 .entity_box {
-    max-width: 500px;
+    /* max-width: 500px; */
     margin: 2px;
-    border-radius: 14px;
+    border-radius: 2px;
     color: #0000005d;
 }
 

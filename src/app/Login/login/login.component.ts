@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private global: Global
   ) {
-    this.autoLogin();
+     
   }
 
   onClickLogin() {
@@ -76,15 +76,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  autoLogin() {
-    // const UserData = JSON.stringify(localStorage.getItem('this.global.LOGGED_IN_USER'));
-    // const userDetalis = JSON.parse(UserData);
-    // console.log("parse"+ userDetalis);
-    // if(!userDetalis){
-    //   return;
-    // }
-    // const loggedInUser = new user(userDetalis)
-  }
+  // autoLogin() {
+    
+  // }
 
   ngOnInit(): void {
     this.Form = this.fb.group({

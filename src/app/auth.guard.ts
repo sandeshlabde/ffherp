@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+ 
 import { ProspectService } from './services/prospect.service';
-import { Resolver } from './services/resolver.service';
+ 
 
 @Injectable({
   providedIn: 'root',

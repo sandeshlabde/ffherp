@@ -29,8 +29,8 @@ export class NoteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    (this.Entityid = this.data.EntityID),
-      (this.EntityName = this.data.EntityName);
+    this.Entityid = this.data.EntityID
+      this.EntityName = this.data.EntityName
 
     this.listService
       .getNoteList(

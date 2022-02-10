@@ -52,7 +52,8 @@
 
             <th class="text-start" *ngIf="isStatus " (click)="sort('Status')">Status</th>
             <th class="text-start" *ngIf="isShowDDate" (click)="sort('Status')">Status</th>
-            <th class="text-start" *ngIf="isBStatus">Status</th>
+            <th class="text-start" *ngIf="isBStatus" (click)="sort('Status')">Status</th>
+
             <th class="text-start" *ngIf="isSourceName" (click)="sort('Source')">Source</th>
             <th class="text-start" *ngIf="isBilledStatus" (click)="sort('Source')">Source</th>
             <th class="text-start" *ngIf="isDDeliveryStatus" (click)="sort('Source')">Source</th>
@@ -94,7 +95,7 @@
 
                 <a class="a"> <i data-bs-toggle="tooltip" data-bs-placement="top" title="Upload " class="fas fa-cloud-upload-alt"></i>
                 </a>
-                <a class="a"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit false" class="fas fa-pencil-alt"></i></a>
+                <a class="a" (click)="EditList(x.InstalledNo,x.ENTITY,x.EntityId)"><i data-bs-toggle="tooltip" data-bs-placement="top" title="Edit {{EntityName}}" class="fas fa-pencil-alt"></i></a>
 
             </td>
             <td class="text-start Company">

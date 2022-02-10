@@ -55,6 +55,8 @@ export class ChatComponent implements OnInit {
       this.pageID = 'Work';
     } else if (this.EntityName === 'Ticket') {
       this.pageID = 'Ticket';
+    } else if (this.EntityName === 'Voucher') {
+      this.pageID = 'Voucher';
     }
 
     // entity Product EntityModule name set end here

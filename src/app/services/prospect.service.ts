@@ -13,7 +13,7 @@ export class ProspectService {
   loginUrl ="https://apitest.ffherp.co.in/api/FFHAMC/FFHLogin"
 
   // list API url
-  listUrl = "https://apitest.ffherp.co.in/api/FFHAMC/AMCList";
+  listUrl = "https://ffherp.co.in:446/api/FFHAMC/AMCList";
 
   // entityID show details API URL
   entityIdUrl = "https://ffherp.co.in:446/api/Voucher/ViewModuleWiseEntityInfo";
@@ -70,6 +70,8 @@ export class ProspectService {
   // submmitting chat API URL
   actorListUrl="https://ffherp.co.in/Pages/Modules/Common/OwnerActorLoad.asmx/GetOwnerActorList"
 
+  // edit list Api URL
+  editUrl="https://ffherp.co.in:446/api/Voucher/VoucherDetails"
   constructor(private http: HttpClient) { }
 
 // login API Calling
@@ -151,7 +153,7 @@ loggedIn(){
   }
 
   // save note Api calling
-  saveNoteList(EntityName: string, EntityID: number, Description: string,DBNAME:string,UpdatedBy:string,password:string) {
+  saveNoteList(EntityName: string, EntityID: number, Description: string,DBNAME:string,password:string,UpdatedBy:string) {
 
     const requestBody = {
       DBNAME ,
@@ -411,5 +413,8 @@ return this.http.post(this.sendEmailUrl, requestBody);
 
   }
    
+  showEditData(param:any){
+    return this.http.post(this.editUrl,param);
+  }
 }
 

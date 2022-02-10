@@ -50,6 +50,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { FilterSearchComponent } from './MyComponents/filter-search/filter-search.component';
 import{ LoginComponent} from './Login/login/login.component';
 import {  AuthGuard } from './auth.guard';
+import { EditListComponent } from './MyComponents/edit-list/edit-list.component';
  
  
 
@@ -70,6 +71,7 @@ import {  AuthGuard } from './auth.guard';
     SearchfilterPipe,
      FilterSearchComponent,
       LoginComponent,
+      EditListComponent,
          
 
 

@@ -12,6 +12,7 @@ import { EmailTraceComponent } from '../email-trace/email-trace.component';
 import { ChatComponent } from '../chat/chat.component';
 import { FilterSearchComponent } from '../filter-search/filter-search.component';
 import { Global } from 'Global';
+import { EditListComponent } from '../edit-list/edit-list.component';
 
 export interface DialogData {
   EntityID: number;
@@ -59,10 +60,11 @@ export class ProspectListComponent implements OnInit {
       'Ticket',
       'repair',
       'work',
+      'voucher'
     ].includes(this.EntityName.toLowerCase());
   }
   get isSourceName() {
-    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
+    return ['prospect', 'lead',  ].includes(this.EntityName.toLowerCase());
   }
   get expDate() {
     return [
@@ -75,6 +77,7 @@ export class ProspectListComponent implements OnInit {
       'work',
       'molist',
       'milist',
+      'voucher'
     ].includes(this.EntityName.toLowerCase());
   }
 
@@ -100,9 +103,9 @@ export class ProspectListComponent implements OnInit {
     );
   }
   get stage() {
-    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
+    return ['prospect', 'lead' ].includes(this.EntityName.toLowerCase());
   }
-
+ 
   constructor(
     private listService: ProspectService,
     private root: ActivatedRoute,
@@ -211,7 +214,20 @@ export class ProspectListComponent implements OnInit {
 
     dialogRef4.afterClosed().subscribe();
   }
+// EditList dialog model
+EditList(installno:any,entityName:any,entityid:any){
+  const dialogRef4 = this.dialog.open( EditListComponent, {
+    height: '50%%',
+    width: '80%',
+    data: {
+      installno:installno,
+      entityName: entityName,
+      entityid:entityid
+    },
+  });
 
+  dialogRef4.afterClosed().subscribe();
+}
   //  MODEL POP UP End here
 
   ngOnInit(): void {}

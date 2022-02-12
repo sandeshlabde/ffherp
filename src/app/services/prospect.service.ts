@@ -71,7 +71,19 @@ export class ProspectService {
   actorListUrl="https://ffherp.co.in/Pages/Modules/Common/OwnerActorLoad.asmx/GetOwnerActorList"
 
   // edit list Api URL
-  editUrl="https://ffherp.co.in:446/api/Voucher/VoucherDetails"
+  voucharDetailUrl="https://ffherp.co.in:446/api/Voucher/VoucherDetails"
+
+  // Activity DashBoard Report Api Url
+  ActivityDashUrl="https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDashboard"
+
+// total activity visit Api URl
+totalActivityUrl="https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDetails"
+
+
+
+
+
+
   constructor(private http: HttpClient) { }
 
 // login API Calling
@@ -413,8 +425,15 @@ return this.http.post(this.sendEmailUrl, requestBody);
 
   }
    
-  showEditData(param:any){
-    return this.http.post(this.editUrl,param);
+  showvoucharData(param:any){
+    return this.http.post(this. voucharDetailUrl,param);
   }
+  showActivityDashRepo(param:any){
+    return this.http.post(this.ActivityDashUrl,param)
+  }
+  showtotalActivity(param:any){
+    return this.http.post(this.totalActivityUrl,param)
+  }
+
 }
 

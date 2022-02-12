@@ -10,6 +10,12 @@
 
     </div>
     <div class="modal-body">
+
+        <div class="form-field">
+            <input class="input-text" type="password" id="">
+            <label class="labels" for="">Enter Password for validate and Approve...</label>
+        </div>
+
         <table class="table table-hover table-striped ">
             <thead>
 
@@ -34,7 +40,7 @@
 
 
             <tbody>
-                <tr *ngFor="let x of editData" class="table-light  ">
+                <tr *ngFor="let x of approvalData" class="table-light  ">
                     <td>{{x.VoucherNo}}</td>
                     <td>{{x.UpdatedBy}}
 
@@ -49,9 +55,12 @@
                     <td>{{x.ApprovedAmount}}</td>
                     <td>{{x.PaidAmount}}</td>
                     <td>{{x.DueAmount}}</td>
-                    <td>{{x.PaymentStatus}}</td>
-                    <td>{{x.f}}</td>
-                    <td>{{x.ApprovedRemark}}</td>
+                    <td><select class="dd" name="" id="">
+                        <option value="">Approved</option>
+                        <option value="">Not Approved</option>
+                    </select></td>
+                    <td><input type="number" class="input1" name="" id="" value="{{x.ApprovalStatus}}"></td>
+                    <td><input type="text" class="input2"></td>
 
                 </tr>
             </tbody>

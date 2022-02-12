@@ -1,0 +1,14 @@
+.chart {
+    display: block;
+    width: 400px;
+    height: 400px;
+}
+
+.contain {
+    margin-left: 5%;
+}
+
+.option {
+    display: flex;
+    margin: 20px 0px 10px 0px;
+}

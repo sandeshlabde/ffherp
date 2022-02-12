@@ -13,7 +13,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
- 
+import {MatDatepickerModule} from '@angular/material/datepicker';
 // angular material input module import
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
@@ -27,7 +27,7 @@ import{AngularEditorModule} from '@kolkov/angular-editor'
 import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgxChatboxModule } from "ngx-chatbox";
+ 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
@@ -51,7 +51,10 @@ import { FilterSearchComponent } from './MyComponents/filter-search/filter-searc
 import{ LoginComponent} from './Login/login/login.component';
 import {  AuthGuard } from './auth.guard';
 import { EditListComponent } from './MyComponents/edit-list/edit-list.component';
- 
+import { ApprovalComponent } from './MyComponents/approval/approval.component';
+import { DashBoardComponent } from './MyComponents/dash-board/dash-board.component';
+import { CommanComponent } from './MyComponents/comman/comman.component';
+import {NgChartsModule} from 'ng2-charts'
  
 
 
@@ -72,6 +75,9 @@ import { EditListComponent } from './MyComponents/edit-list/edit-list.component'
      FilterSearchComponent,
       LoginComponent,
       EditListComponent,
+      ApprovalComponent,
+      DashBoardComponent,
+      CommanComponent,
          
 
 
@@ -105,12 +111,13 @@ import { EditListComponent } from './MyComponents/edit-list/edit-list.component'
     MatProgressSpinnerModule,
     AngularEditorModule,
     AutocompleteLibModule,
-    NgxChatboxModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    NgChartsModule,
     
  
   ],
-  // , AuthGuard
+   
   providers: [ProspectService, AuthGuard],
   bootstrap: [AppComponent]
 })

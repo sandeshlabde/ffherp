@@ -23,8 +23,8 @@ export class ChatComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    (this.Entityid = this.data.EntityID),
-      (this.EntityName = this.data.EntityName);
+    this.Entityid = this.data.EntityID
+      this.EntityName = this.data.EntityName
 
     // entity Product EntityModule name set start here
 
@@ -90,6 +90,9 @@ export class ChatComponent implements OnInit {
         this.global.LOGGED_IN_USER.UserId
       )
       .subscribe((data: any) => {});
+
+
+      
     let params = {
       EntityId: this.Entityid,
       pageID: this.pageID,

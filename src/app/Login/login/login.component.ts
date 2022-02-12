@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           response.LoginYn == '2' ||
           response.LoginYn == '4'
         ) {
-          this.router.navigate(['page/Lead']);
+          this.router.navigate(['admin']);
         } else if (response.LoginYn == '3') {
           this.Error =
             'Your subscription period has expired. Please contact your administrator for renewal.';

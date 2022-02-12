@@ -13,6 +13,7 @@ import { ChatComponent } from '../chat/chat.component';
 import { FilterSearchComponent } from '../filter-search/filter-search.component';
 import { Global } from 'Global';
 import { EditListComponent } from '../edit-list/edit-list.component';
+import { ApprovalComponent } from '../approval/approval.component';
 
 export interface DialogData {
   EntityID: number;
@@ -105,6 +106,24 @@ export class ProspectListComponent implements OnInit {
   get stage() {
     return ['prospect', 'lead' ].includes(this.EntityName.toLowerCase());
   }
+  get installedno(){
+    return ['lead',
+    'payment',
+    'prospect',
+    'ticket',
+    'amc',
+    'repair',
+    'work',
+    'molist',
+    'milist',
+    'salesorderlist', 
+    'polist',
+     'payable'
+      ].includes(this.EntityName.toLowerCase());
+  }
+  get voucher(){
+    return ['voucher'  ].includes(this.EntityName.toLowerCase());
+  }
  
   constructor(
     private listService: ProspectService,
@@ -124,7 +143,7 @@ export class ProspectListComponent implements OnInit {
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource = JSON.parse(data);
 
-        // console.log( "date"+this.dataSource[0].EXPClosuredateDashboard);
+        console.log( "data"+data );
       });
     });
 
@@ -216,7 +235,22 @@ export class ProspectListComponent implements OnInit {
   }
 // EditList dialog model
 EditList(installno:any,entityName:any,entityid:any){
+  console.log(installno,entityName,entityid)
   const dialogRef4 = this.dialog.open( EditListComponent, {
+    height: '50%%',
+    width: '80%',
+    data: {
+      installno:installno,
+      entityName: entityName,
+      entityid:entityid
+    },
+  });
+
+  dialogRef4.afterClosed().subscribe();
+}
+approval(installno:any,entityName:any,entityid:any){
+  console.log(installno,entityName,entityid)
+  const dialogRef4 = this.dialog.open( ApprovalComponent, {
     height: '50%%',
     width: '80%',
     data: {

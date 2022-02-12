@@ -1,0 +1,53 @@
+tbody tr td {
+    text-align: left;
+}
+
+.input1 {
+    width: 50px;
+}
+
+.input2 {
+    width: 100px;
+}
+
+.dd {
+    width: 40px;
+}
+
+.form-field {
+    position: relative;
+    margin: 10px 0 17px 0;
+}
+
+.labels {
+    display: block;
+    position: absolute;
+    top: -16px;
+    font-size: 14px;
+    font-weight: 400;
+    color: grey;
+    cursor: text;
+}
+
+.input-text:focus+label {
+    color: blue;
+    top: -20px;
+}
+
+.input-text {
+    display: block;
+    width: 100%;
+    height: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(201, 199, 199);
+}
+
+.input-text:focus {
+    border-bottom: 1px solid blue;
+    outline: none;
+}

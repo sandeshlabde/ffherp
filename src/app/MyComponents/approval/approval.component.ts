@@ -4,12 +4,13 @@ import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
-  selector: 'app-edit-list',
-  templateUrl: './edit-list.component.html',
-  styleUrls: ['./edit-list.component.css']
+  selector: 'app-approval',
+  templateUrl: './approval.component.html',
+  styleUrls: ['./approval.component.css']
 })
-export class EditListComponent implements OnInit {
-  editData: any;
+export class ApprovalComponent implements OnInit {
+
+ approvalData: any;
 
   constructor(
      @Inject(MAT_DIALOG_DATA) public data: any,
@@ -31,7 +32,7 @@ export class EditListComponent implements OnInit {
     }
     this.listService.showvoucharData(params).subscribe((data: any) => {
       console.log(data);
-      this.editData=JSON.parse(data);
+      this.approvalData=JSON.parse(data);
     });
    }
 

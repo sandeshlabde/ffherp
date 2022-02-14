@@ -18,16 +18,26 @@ export class DashBoardComponent implements OnInit {
   jsonData: any;
   todate: any;
   fromdate: any;
-  From: ' ';
+  From= ' ';
   To = ' ';
+  entVisits: any
+  entCallsReport: any
+  entMailsReport: any
+  entOtherActivityReport: any
+  pieChartOptions: { scaleShowVerticalLines: boolean; responsive: boolean; };
+  pieChartLabels: string[];
+  pieChartLegend: boolean;
+  pieChartData: { data: any[]; }[];
   
+  AllData: any;
+  tableConfig: any;
   constructor(
     private listService: ProspectService,
     private global: Global,
     private httpClient: HttpClient
   ) {
      
-    
+   
 
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
@@ -39,67 +49,10 @@ export class DashBoardComponent implements OnInit {
   }
 
   submitValue() {
-    this.total();
-    let param = {
-      eDbname: this.global.LOGGED_IN_USER.DbName,
-      eFromDate: this.From,
-      ePassword: this.global.LOGGED_IN_USER.encryptPswd,
-      eToDate: this.To,
-      eUserId: this.global.LOGGED_IN_USER.UserId,
+    this.tableConfig= {
+      'rows': 'entUserName',
+      'columns': "entActionType" 
     };
-    this.listService.showActivityDashRepo(param).subscribe((data: any) => {
-      this.activityData = JSON.parse(data);
-      console.log(data);
-      console.log(this.To,this.From)
-     
-    });
-  }
-
-  piChart(
-    entVisits: any,
-    entCallsReport: any,
-    entMailsReport: any,
-    entOtherActivityReport: any
-  ) {
-    const myChart = new Chart('myChart', {
-      type: 'pie',
-      data: {
-        labels: ['Visits', 'CallsReport', 'MailsReport', 'OtherActivityReport'],
-        datasets: [
-          {
-            label: '# of Activity',
-            data: [
-              entVisits,
-              entCallsReport,
-              entMailsReport,
-              entOtherActivityReport,
-            ],
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)',
-            ],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true,
-          },
-        },
-      },
-    });
-  }
-  total() {
     let param = {
       eDbname: this.global.LOGGED_IN_USER.DbName,
       eFromDate: this.From,
@@ -109,8 +62,44 @@ export class DashBoardComponent implements OnInit {
       eToDate: this.To,
     };
     this.listService.showtotalActivity(param).subscribe((data: any) => {
-      console.log('All Data' + data);
+      this.AllData=JSON.parse(data)
+      console.warn("all"+data)
     });
+    
+     
   }
+ 
+  piChart(
+    entVisits: any,
+    entCallsReport: any,
+    entMailsReport: any,
+    entOtherActivityReport: any
+  ) {
+    this.entVisits=  entVisits,
+    this.entCallsReport=entCallsReport
+    this.entMailsReport= entMailsReport,
+    this.entOtherActivityReport=entOtherActivityReport
+    
+    this.pieChartOptions  = {
+      scaleShowVerticalLines: false,
+   responsive: true
+ };
+ this.pieChartLabels  = ['Visits', 'CallsReport', 'MailsReport', 'OtherActivityReport' ];
+   
+ this.pieChartLegend = true;
+
+ this.pieChartData  = [
+   { data: [this.entVisits, this.entCallsReport, this.entMailsReport, this.entOtherActivityReport ],   },
+  
+ ];
+  }
+
+  
+
+  
+
+
+
+   
   ngOnInit(): void {}
 }

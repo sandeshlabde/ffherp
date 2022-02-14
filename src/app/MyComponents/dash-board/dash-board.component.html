@@ -3,53 +3,26 @@
         <div class="col-lg-6">
             <div class="option">
                 <select name="singleSelect" id="singleSelect">
-                <option id="{{D.id}}"  *ngFor="let D of ddData "  [value]="D.key">{{D.value}}</option>
-                </select>
-
-
-
+          <option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
+            {{ D.value }}
+          </option>
+        </select>
 
                 <span>Activity Report :</span>
                 <input type="date" name="From" [(ngModel)]="From" />
                 <input type="date" name="To" [(ngModel)]="To" />
                 <button type="submit" (click)="submitValue()">Go</button>
-
-
             </div>
             <div>
-                <table class="table table-hovar table-striped">
-                    <thead>
-                        <tr class="table-primary">
-                            <th>User</th>
-                            <th>Visit</th>
-                            <th>Call</th>
-                            <th>Mail</th>
-                            <th>Other</th>
-                            <th>Total</th>
-                            <th>Hours</th>
-                            <th>Missed</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let x of activityData">
-                            <th>
-                                <a (click)="piChart( x.entVisits,x.entCallsReport,x.entMailsReport, x.entOtherActivityReport )">{{ x.entUserName }}</a>
-                            </th>
-                            <th>{{ x.entVisits }}</th>
-                            <th>{{ x.entCallsReport }}</th>
-                            <th>{{ x.entMailsReport }}</th>
-                            <th>{{ x.entOtherActivityReport }}</th>
-                            <th> <a>{{ x.entTotalActivityReport }}</a></th>
-                            <th>{{ x.entTotalTimeReport }}</th>
-                            <th>{{ x.entMissedActivityReport }}</th>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <db-angular-pivot-table [source]="AllData" [configs]='tableConfig'></db-angular-pivot-table>
             </div>
         </div>
         <div class="col-lg-6">
-            <div style="display: block ; width: 400px;">
-                <canvas id="myChart"></canvas>
+            <div style="display: block; width: 400px">
+                <div style="display: block">
+                    <canvas baseChart [type]="'pie'" [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [legend]="pieChartLegend"></canvas>
+                </div>
             </div>
         </div>
     </div>

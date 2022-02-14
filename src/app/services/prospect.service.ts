@@ -73,8 +73,7 @@ export class ProspectService {
   // edit list Api URL
   voucharDetailUrl="https://ffherp.co.in:446/api/Voucher/VoucherDetails"
 
-  // Activity DashBoard Report Api Url
-  ActivityDashUrl="https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDashboard"
+ 
 
 // total activity visit Api URl
 totalActivityUrl="https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDetails"
@@ -428,9 +427,7 @@ return this.http.post(this.sendEmailUrl, requestBody);
   showvoucharData(param:any){
     return this.http.post(this. voucharDetailUrl,param);
   }
-  showActivityDashRepo(param:any){
-    return this.http.post(this.ActivityDashUrl,param)
-  }
+  
   showtotalActivity(param:any){
     return this.http.post(this.totalActivityUrl,param)
   }

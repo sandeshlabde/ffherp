@@ -25,7 +25,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/admin/Dashboard/Dashboard',
+        redirectTo: '/admin/page/Lead',
         pathMatch: 'full',
       },
     ],

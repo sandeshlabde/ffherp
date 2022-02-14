@@ -5,10 +5,18 @@
 }
 
 .contain {
-    margin-left: 5%;
+    margin-left: 6%;
 }
 
 .option {
     display: flex;
     margin: 20px 0px 10px 0px;
+}
+
+select {
+    margin-right: 15px;
+}
+
+input {
+    margin: 0px 23px;
 }

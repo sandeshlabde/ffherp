@@ -9,9 +9,7 @@ import { ProspectService } from './services/prospect.service';
 import { Resolver } from './services/resolver.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent ,
-  resolve: { login: Resolver },
-  canActivate: [AuthGuard],},
+  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: 'admin',

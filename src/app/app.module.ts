@@ -28,7 +28,7 @@ import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
  
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+ 
 // http import modul
 import { HttpClientModule } from '@angular/common/http';
 import { ProspectService } from "../app/services/prospect.service";
@@ -54,10 +54,10 @@ import { EditListComponent } from './MyComponents/edit-list/edit-list.component'
 import { ApprovalComponent } from './MyComponents/approval/approval.component';
 import { DashBoardComponent } from './MyComponents/dash-board/dash-board.component';
 import { CommanComponent } from './MyComponents/comman/comman.component';
-import {NgChartsModule} from 'ng2-charts'
+import {NgChartsModule } from 'ng2-charts'  
+import { AngularPivotTableModule } from 'angular-pivot-table';
  
-
-
+ 
 
 @NgModule({
   declarations: [
@@ -97,11 +97,9 @@ import {NgChartsModule} from 'ng2-charts'
     HttpClientModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    Ng2OrderModule,
-    NgxPaginationModule,
+    Ng2OrderModule, 
     MatDialogModule,
-    MatButtonModule,
-    PdfViewerModule,
+    MatButtonModule, 
     NgxExtendedPdfViewerModule,
     MatToolbarModule,
     MatMenuModule,
@@ -113,8 +111,8 @@ import {NgChartsModule} from 'ng2-charts'
     AutocompleteLibModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    NgChartsModule,
-    
+    NgChartsModule, 
+    AngularPivotTableModule,
  
   ],
    

@@ -4,16 +4,17 @@
         padding-top: 70px;
     }
     
-    .red {
-        background-color: red;
-    }
-    
     th {
         height: 30px;
         text-align: center;
+        background-color: skyblue;
     }
     
-    tbody tr td i {
+    tr:hover {
+        background-color: rgb(240, 223, 192);
+    }
+    
+    i {
         font-size: 12px;
         color: rgb(156, 155, 155);
         padding: 3px;
@@ -29,6 +30,7 @@
     }
     
     .Company:hover {
+        background-color: rgb(240, 223, 192);
         transition: 0.8s;
         transform: scale(1.2);
         max-width: 100%;

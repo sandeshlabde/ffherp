@@ -26,14 +26,15 @@ export class EntityProductComponent implements OnInit {
   noteData: any;
   Entityflag: any;
   EntityNameTitle: any;
+  entityData: any;
 
   constructor(
     private listService: ProspectService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    (this.Entityid = this.data.EntityID),
-      (this.EntityName = this.data.EntityName);
+    this.Entityid = this.data.EntityID
+      this.EntityName = this.data.EntityName
 
     // entity Product EntityModule name set start here
 
@@ -73,7 +74,7 @@ export class EntityProductComponent implements OnInit {
       this.EntityNameTitle = 'Payment';
       this.EntityModule = 'RCB';
       this.Entityflag = 'Receivable';
-    } else if (this.EntityName === '') {
+    } else if (this.EntityName === 'AMC') {
       this.EntityNameTitle = 'AMC';
       this.EntityModule = 'AMC';
       this.Entityflag = 'AMC';
@@ -101,7 +102,8 @@ export class EntityProductComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
-        this.entityIdDetailData = JSON.parse(data);
+        this.entityIdDetailData = JSON.parse(data );
+        this.entityData= this.entityIdDetailData[0]
       });
     // }
 

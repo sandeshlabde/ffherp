@@ -1,12 +1,11 @@
 .main {
-    max-width: 35%;
-    height: 100%;
-    padding-top: 80px;
+    padding-top: 100px;
+    max-width: 500px;
 }
 
 form {
-    height: 80vh;
     background-color: transparent;
+    backdrop-filter: blur(10px);
     padding: 30px;
 }
 
@@ -64,8 +63,9 @@ button {
 }
 
 h1 {
-    height: 6vh;
+    height: 7vh;
     color: rgb(148, 43, 43);
+    font-size: 78px;
 }
 
 h2 {

@@ -18,27 +18,25 @@ export class DashBoardComponent implements OnInit {
   jsonData: any;
   todate: any;
   fromdate: any;
-  From= ' ';
+  From = ' ';
   To = ' ';
-  entVisits: any
-  entCallsReport: any
-  entMailsReport: any
-  entOtherActivityReport: any
-  pieChartOptions: { scaleShowVerticalLines: boolean; responsive: boolean; };
+  entVisits: any;
+  entCallsReport: any;
+  entMailsReport: any;
+  entOtherActivityReport: any;
+  pieChartOptions: { scaleShowVerticalLines: boolean; responsive: boolean };
   pieChartLabels: string[];
   pieChartLegend: boolean;
-  pieChartData: { data: any[]; }[];
-  
+  pieChartData: { data: any[] }[];
+
   AllData: any;
   tableConfig: any;
+  pivotBy: (groupby: any, key: any, value: any) => any[];
   constructor(
     private listService: ProspectService,
     private global: Global,
     private httpClient: HttpClient
   ) {
-     
-   
-
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
       this.ddData = this.jsonData.DDvalue;
@@ -49,10 +47,11 @@ export class DashBoardComponent implements OnInit {
   }
 
   submitValue() {
-    this.tableConfig= {
-      'rows': 'entUserName',
-      'columns': "entActionType" 
+    this.tableConfig = {
+      rows: 'entActionActorName',
+      columns: 'entActionType',
     };
+
     let param = {
       eDbname: this.global.LOGGED_IN_USER.DbName,
       eFromDate: this.From,
@@ -62,44 +61,46 @@ export class DashBoardComponent implements OnInit {
       eToDate: this.To,
     };
     this.listService.showtotalActivity(param).subscribe((data: any) => {
-      this.AllData=JSON.parse(data)
-      console.warn("all"+data)
-    });
-    
-     
-  }
+      this.AllData = JSON.parse(data);
+      console.warn(this.AllData);
  
+    });
+  }
+
   piChart(
     entVisits: any,
     entCallsReport: any,
     entMailsReport: any,
     entOtherActivityReport: any
   ) {
-    this.entVisits=  entVisits,
-    this.entCallsReport=entCallsReport
-    this.entMailsReport= entMailsReport,
-    this.entOtherActivityReport=entOtherActivityReport
-    
-    this.pieChartOptions  = {
-      scaleShowVerticalLines: false,
-   responsive: true
- };
- this.pieChartLabels  = ['Visits', 'CallsReport', 'MailsReport', 'OtherActivityReport' ];
-   
- this.pieChartLegend = true;
+    (this.entVisits = entVisits), (this.entCallsReport = entCallsReport);
+    (this.entMailsReport = entMailsReport),
+      (this.entOtherActivityReport = entOtherActivityReport);
 
- this.pieChartData  = [
-   { data: [this.entVisits, this.entCallsReport, this.entMailsReport, this.entOtherActivityReport ],   },
-  
- ];
+    this.pieChartOptions = {
+      scaleShowVerticalLines: false,
+      responsive: true,
+    };
+    this.pieChartLabels = [
+      'Visits',
+      'CallsReport',
+      'MailsReport',
+      'OtherActivityReport',
+    ];
+
+    this.pieChartLegend = true;
+
+    this.pieChartData = [
+      {
+        data: [
+          this.entVisits,
+          this.entCallsReport,
+          this.entMailsReport,
+          this.entOtherActivityReport,
+        ],
+      },
+    ];
   }
 
-  
-
-  
-
-
-
-   
   ngOnInit(): void {}
 }

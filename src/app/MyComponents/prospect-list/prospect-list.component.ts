@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { ProspectService } from 'src/app/services/prospect.service';
@@ -15,6 +15,11 @@ import { Global } from 'Global';
 import { EditListComponent } from '../edit-list/edit-list.component';
 import { ApprovalComponent } from '../approval/approval.component';
 
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { prospectdatafield } from 'src/apitable';
+import { DispClmModule } from '../../MyComponents/prospect-list/headingcol';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -25,29 +30,39 @@ export interface DialogData {
   styleUrls: ['./prospect-list.component.css'],
 })
 export class ProspectListComponent implements OnInit {
-  myStyles: any;
-  filterTerm: any;
-  dataSource: any;
+  displayedColumns: string[] = [
+    'InstalledNo',
+    'ClientName',
+    'ContactName',
+    'OwnerName',
+    'Anualisedamount',
+    'StatusName',
+    'Billedstatus',
+    'SourceName',
+    'Billedstatus1',
+    'isDDeliveryStatus1',
+    'ServiceTypeName',
+    'Stage',
+    'EXPClosuredateDashboard',
+    'DeliveryDate',
+  ];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  dataSource = new MatTableDataSource<prospectdatafield>([]);
 
   EntityName: any;
-
-  ViewDataSource: any;
-  ViewDataSource2: any;
-  actionData: any;
-  actionData2: any;
   id: any;
-
-  entityIdDetailData: any;
-  entityIdDetailData2: any;
   date: any;
   current_date: any;
-  allColumnList: any;
-  checked = false;
-  checkbox = false;
+  selection: any;
 
   // table colum row show function start here
-
-  get isShowDDate() {
+  get delstatus() {
+    return ['salesorderlist'].includes(this.EntityName.toLowerCase());
+  }
+  get isShowDStatus() {
     return ['salesorderlist'].includes(this.EntityName.toLowerCase());
   }
   get isStatus() {
@@ -61,11 +76,11 @@ export class ProspectListComponent implements OnInit {
       'Ticket',
       'repair',
       'work',
-      'voucher'
+      'voucher',
     ].includes(this.EntityName.toLowerCase());
   }
   get isSourceName() {
-    return ['prospect', 'lead',  ].includes(this.EntityName.toLowerCase());
+    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
   }
   get expDate() {
     return [
@@ -78,7 +93,7 @@ export class ProspectListComponent implements OnInit {
       'work',
       'molist',
       'milist',
-      'voucher'
+      'voucher',
     ].includes(this.EntityName.toLowerCase());
   }
 
@@ -104,32 +119,34 @@ export class ProspectListComponent implements OnInit {
     );
   }
   get stage() {
-    return ['prospect', 'lead' ].includes(this.EntityName.toLowerCase());
+    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
   }
-  get installedno(){
-    return ['lead',
-    'payment',
-    'prospect',
-    'ticket',
-    'amc',
-    'repair',
-    'work',
-    'molist',
-    'milist',
-    'salesorderlist', 
-    'polist',
-     'payable'
-      ].includes(this.EntityName.toLowerCase());
+  get installedno() {
+    return [
+      'lead',
+      'payment',
+      'prospect',
+      'ticket',
+      'amc',
+      'repair',
+      'work',
+      'molist',
+      'milist',
+      'salesorderlist',
+      'polist',
+      'payable',
+    ].includes(this.EntityName.toLowerCase());
   }
-  get voucher(){
-    return ['voucher'  ].includes(this.EntityName.toLowerCase());
+  get voucher() {
+    return ['voucher'].includes(this.EntityName.toLowerCase());
   }
- 
+
   constructor(
     private listService: ProspectService,
     private root: ActivatedRoute,
     public dialog: MatDialog,
-    private global: Global
+    private global: Global,
+   
   ) {
     this.root.params.subscribe((param) => {
       this.EntityName = param['EntityName'];
@@ -141,15 +158,17 @@ export class ProspectListComponent implements OnInit {
         userid: this.global.LOGGED_IN_USER.UserId,
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
-        this.dataSource = JSON.parse(data);
-
-        console.log( "data"+data );
+        this.dataSource.data = JSON.parse(data);
       });
     });
-
-    // const date = moment();
-    // var A=this.dataSource[0].EXPClosuredateDashboard = date.format('DD MMM YYYY ');
-    // console.log( "Date"+A);
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   // MODEL POP UP start here
@@ -233,55 +252,35 @@ export class ProspectListComponent implements OnInit {
 
     dialogRef4.afterClosed().subscribe();
   }
-// EditList dialog model
-EditList(installno:any,entityName:any,entityid:any){
-  console.log(installno,entityName,entityid)
-  const dialogRef4 = this.dialog.open( EditListComponent, {
-    height: '50%%',
-    width: '80%',
-    data: {
-      installno:installno,
-      entityName: entityName,
-      entityid:entityid
-    },
-  });
+  // EditList dialog model
+  EditList(installno: any, entityName: any, entityid: any) {
+    console.log(installno, entityName, entityid);
+    const dialogRef4 = this.dialog.open(EditListComponent, {
+      height: '50%%',
+      width: '80%',
+      data: {
+        installno: installno,
+        entityName: entityName,
+        entityid: entityid,
+      },
+    });
 
-  dialogRef4.afterClosed().subscribe();
-}
-approval(installno:any,entityName:any,entityid:any){
-  console.log(installno,entityName,entityid)
-  const dialogRef4 = this.dialog.open( ApprovalComponent, {
-    height: '50%%',
-    width: '80%',
-    data: {
-      installno:installno,
-      entityName: entityName,
-      entityid:entityid
-    },
-  });
-
-  dialogRef4.afterClosed().subscribe();
-}
-  //  MODEL POP UP End here
-
-  ngOnInit(): void {}
-  // pagination
-  perPage = 10;
-  p: number = 1;
-  key: string = 'id';
-  reverse: boolean = true;
-  // sorting
-  sort(key: string) {
-    this.key = key;
-    this.reverse = !this.reverse;
+    dialogRef4.afterClosed().subscribe();
   }
-  // Per page itom code
-  selectPegItom(e: any) {
-    this.perPage = e.target.value;
+  approval(installno: any, entityName: any, entityid: any) {
+    console.log(installno, entityName, entityid);
+    const dialogRef4 = this.dialog.open(ApprovalComponent, {
+      height: '50%%',
+      width: '80%',
+      data: {
+        installno: installno,
+        entityName: entityName,
+        entityid: entityid,
+      },
+    });
+
+    dialogRef4.afterClosed().subscribe();
   }
 
-  checkValue(e: any) {
-    console.log(e.target.value);
-    this.checkbox = !this.checkbox;
-  }
+  ngOnInit() {}
 }

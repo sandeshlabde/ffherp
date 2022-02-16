@@ -23,8 +23,7 @@ export interface IUser{
     Message:string;
     
 }
-
-
+ 
 export interface ILoginDetails{
     EmailId:string;
     password:string;

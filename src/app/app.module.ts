@@ -12,6 +12,8 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 // angular material input module import
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,6 +49,7 @@ import { AngularPivotTableModule } from 'angular-pivot-table';
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { TablePipe } from './MyComponents/prospect-list/pipe/table.pipe';
+
  
  
 @NgModule({
@@ -91,6 +94,8 @@ import { TablePipe } from './MyComponents/prospect-list/pipe/table.pipe';
     MatSortModule,
     MatInputModule,
     MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 
   providers: [ProspectService, AuthGuard],

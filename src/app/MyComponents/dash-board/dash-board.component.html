@@ -2,19 +2,55 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="option">
-                <select name="singleSelect" id="singleSelect">
-          <option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
-            {{ D.value }}
-          </option>
-        </select>
+                <mat-form-field appearance="fill">
+                    <mat-label>Select an option</mat-label>
+                    <mat-select [(ngModel)]="selectedValue">
+                        <mat-option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
+                            {{ D.value }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
 
                 <span>Activity Report :</span>
                 <input type="date" name="From" [(ngModel)]="From" />
                 <input type="date" name="To" [(ngModel)]="To" />
                 <button type="submit" (click)="submitValue()">Go</button>
+
+                <!-- <mat-form-field appearance="fill">
+                    <mat-label> From Date</mat-label>
+                    <input matInput [matDatepicker]="from" [(ngModel)]="From" >
+                    <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+                    <mat-datepicker #from></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>To Date</mat-label>
+                    <input matInput [matDatepicker]="to" [(ngModel)]="To" >
+                    <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+                    <mat-datepicker #to></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" (click)="submitValue()">Go</button> -->
             </div>
             <div>
-                <db-angular-pivot-table [source]="AllData" [configs]='tableConfig'></db-angular-pivot-table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Actor</th>
+                            <th *ngFor="let H of myarr | keyvalue">{{ H.key }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let x of value | keyvalue" (click)="piChart(x)">
+                            <td>
+                                {{ x.key }}
+                            </td>
+                            <td>{{ x.value }}</td>
+                            <td>{{ x.value }}</td>
+                            <td>{{ x.value }}</td>
+                            <td>{{ x.value }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-lg-6">

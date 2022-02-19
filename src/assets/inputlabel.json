@@ -517,17 +517,17 @@
     "DDvalue": [{
             "id": "1",
             "value": "Action",
-            "key": "111"
+            "key": "entActionType"
         },
         {
             "id": "2",
             "value": "Activity",
-            "key": "222"
+            "key": "entActivityType"
         },
         {
             "id": "3",
             "value": "Entity",
-            "key": "333"
+            "key": "entEntityName"
         }
     ]
 }

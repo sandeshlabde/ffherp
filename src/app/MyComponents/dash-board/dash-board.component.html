@@ -1,22 +1,26 @@
 <div class="contain">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="option">
-                <mat-form-field appearance="fill">
-                    <mat-label>Select an option</mat-label>
-                    <mat-select [(ngModel)]="selectedValue">
-                        <mat-option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
-                            {{ D.value }}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="option">
+        <mat-form-field appearance="fill">
+          <mat-label>Select an option</mat-label>
+          <mat-select [(ngModel)]="selectedValue">
+            <mat-option
+              id="{{ D.id }}"
+              *ngFor="let D of ddData"
+              [value]="D.key"
+            >
+              {{ D.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-                <span>Activity Report :</span>
-                <input type="date" name="From" [(ngModel)]="From" />
-                <input type="date" name="To" [(ngModel)]="To" />
-                <button type="submit" (click)="submitValue()">Go</button>
+        <span>Activity Report :</span>
+        <input type="date" name="From" [(ngModel)]="From" />
+        <input type="date" name="To" [(ngModel)]="To" />
+        <button type="submit" (click)="submitValue()">Go</button>
 
-                <!-- <mat-form-field appearance="fill">
+        <!-- <mat-form-field appearance="fill">
                     <mat-label> From Date</mat-label>
                     <input matInput [matDatepicker]="from" [(ngModel)]="From" >
                     <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
@@ -30,35 +34,41 @@
                     <mat-datepicker #to></mat-datepicker>
                 </mat-form-field>
                 <button mat-raised-button color="primary" type="submit" (click)="submitValue()">Go</button> -->
-            </div>
-            <div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Actor</th>
-                            <th *ngFor="let H of myarr | keyvalue">{{ H.key }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let x of value | keyvalue" (click)="piChart(x)">
-                            <td>
-                                {{ x.key }}
-                            </td>
-                            <td>{{ x.value }}</td>
-                            <td>{{ x.value }}</td>
-                            <td>{{ x.value }}</td>
-                            <td>{{ x.value }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="col-lg-6">
-            <div style="display: block; width: 400px">
-                <div style="display: block">
-                    <canvas baseChart [type]="'pie'" [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [legend]="pieChartLegend"></canvas>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Actor</th>
+              <th *ngFor="let H of myarr | keyvalue">{{ H.key }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let x of value | keyvalue" (click)="piChart(x)">
+              <td>
+                {{ x.key }}
+              </td>
+              <ng-container *ngFor="let H of myarr | keyvalue">
+                <td>{{ x.value[H.key + ""] }}</td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+    <div class="col-lg-6">
+      <div style="display: block; width: 400px">
+        <div style="display: block">
+          <canvas
+            baseChart
+            [type]="'pie'"
+            [datasets]="pieChartData"
+            [labels]="pieChartLabels"
+            [options]="pieChartOptions"
+            [legend]="pieChartLegend"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

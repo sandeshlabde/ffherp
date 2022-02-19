@@ -1,11 +1,7 @@
-import { keyframes } from '@angular/animations';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
 
 import { Global } from 'Global';
-import * as moment from 'moment';
-import { of } from 'rxjs';
 import { ProspectService } from 'src/app/services/prospect.service';
 
 @Component({
@@ -40,11 +36,8 @@ export class DashBoardComponent implements OnInit {
   pieChartLabels: string[];
   pieChartLegend: boolean;
   pieChartData: { data: any[] }[];
-  value: any;
-  myarr: any;
+  tableData: any;
   entE_mailReport: any;
-  MyArry: any;
-  labelArray: any;
 
   constructor(
     private listService: ProspectService,
@@ -60,6 +53,21 @@ export class DashBoardComponent implements OnInit {
     this.AdvanceFilter = true;
   }
 
+  getPivotTable(data, type) {
+    const map = new Map();
+    data.forEach((item) => {
+      map.set(item['entActionActorName'], {
+        ...map.get(item['entActionActorName']),
+        [item[type]]:
+          map.get(item['entActionActorName']) &&
+          map.get(item['entActionActorName'])[item[type]]
+            ? map.get(item['entActionActorName'])[item[type]] + 1
+            : 1,
+      });
+    });
+    return map;
+  }
+
   submitValue() {
     let param = {
       // entActionActorID: "DC5254",
@@ -72,41 +80,30 @@ export class DashBoardComponent implements OnInit {
     };
     this.listService.showtotalActivity(param).subscribe((data: any) => {
       this.AllData = JSON.parse(data);
-      console.log(this.AllData);
-      console.log(this.selectedValue);
-      const type = this.selectedValue;
-
-      const map = new Map();
-      const map2 = new Map();
-      this.AllData.forEach((item) => {
-        map.set(item['entActionActorName'], {
-          ...map.get(item['entActionActorName']),
-          [item[type]]:
-            map.get(item['entActionActorName']) &&
-            map.get(item['entActionActorName'])[item[type]]
-              ? map.get(item['entActionActorName'])[item[type]] + 1
-              : 1,
-        });
-      });
-
-      this.value = map;
-      this.MyArry = Array.from(this.value.values());
-      console.log(this.value);
-
-      this.AllData.forEach((item) => {
-        map2.set(item[type], {
-          ...map2.get(item[type]),
-          [item[type]]:
-            map2.get(item[type]) && map2.get(item[type])[item[type]]
-              ? map2.get(item[type])[item[type]] + 1
-              : 1,
-        });
-      });
-
-      this.myarr = map2;
-      this.labelArray = Array.from(this.myarr.keys());
-      this.pieChartLabels = this.labelArray;
     });
+  }
+
+  get columns(): Array<string> {
+    if (this.tableData) {
+      const c: any = Array.from(this.tableData).reduce(
+        (cols: Set<string>, o) => {
+          Object.keys(o[1]).forEach((key) => {
+            cols.add(key);
+          });
+          return cols;
+        },
+        new Set()
+      );
+      console.log(c);
+      return Array.from(c);
+    }
+    return [];
+  }
+
+  updateTable() {
+    this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
+    this.pieChartLabels = Array.from(this.tableData.keys());
+    console.log(this.tableData);
   }
 
   // "": 10

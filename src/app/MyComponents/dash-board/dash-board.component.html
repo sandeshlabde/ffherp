@@ -4,7 +4,10 @@
       <div class="option">
         <mat-form-field appearance="fill">
           <mat-label>Select an option</mat-label>
-          <mat-select [(ngModel)]="selectedValue">
+          <mat-select
+            [(ngModel)]="selectedValue"
+            (ngModelChange)="updateTable()"
+          >
             <mat-option
               id="{{ D.id }}"
               *ngFor="let D of ddData"
@@ -40,16 +43,16 @@
           <thead>
             <tr>
               <th>Actor</th>
-              <th *ngFor="let H of myarr | keyvalue">{{ H.key }}</th>
+              <th *ngFor="let H of columns">{{ H }}</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of value | keyvalue" (click)="piChart(x)">
+            <tr *ngFor="let x of tableData | keyvalue" (click)="piChart(x)">
               <td>
                 {{ x.key }}
               </td>
-              <ng-container *ngFor="let H of myarr | keyvalue">
-                <td>{{ x.value[H.key + ""] }}</td>
+              <ng-container *ngFor="let H of columns">
+                <td>{{ x.value[H] }}</td>
               </ng-container>
             </tr>
           </tbody>

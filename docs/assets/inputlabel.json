@@ -513,5 +513,21 @@
             "Type": "input"
         }
 
+    ],
+    "DDvalue": [{
+            "id": "1",
+            "value": "Action",
+            "key": "entActionType"
+        },
+        {
+            "id": "2",
+            "value": "Activity",
+            "key": "entActivityType"
+        },
+        {
+            "id": "3",
+            "value": "Entity",
+            "key": "entEntityName"
+        }
     ]
 }

@@ -102,7 +102,9 @@ export class EntityProductComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
+
         this.entityIdDetailData = JSON.parse(data );
+        console.log( this.entityIdDetailData)
         this.entityData= this.entityIdDetailData[0]
       });
     // }

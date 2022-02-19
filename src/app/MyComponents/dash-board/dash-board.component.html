@@ -1,77 +1,50 @@
 <div class="contain">
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="option">
-        <mat-form-field appearance="fill">
-          <mat-label>Select an option</mat-label>
-          <mat-select
-            [(ngModel)]="selectedValue"
-            (ngModelChange)="updateTable()"
-          >
-            <mat-option
-              id="{{ D.id }}"
-              *ngFor="let D of ddData"
-              [value]="D.key"
-            >
-              {{ D.value }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <span>Activity Report :</span>
-        <input type="date" name="From" [(ngModel)]="From" />
-        <input type="date" name="To" [(ngModel)]="To" />
-        <button type="submit" (click)="submitValue()">Go</button>
-
-        <!-- <mat-form-field appearance="fill">
-                    <mat-label> From Date</mat-label>
-                    <input matInput [matDatepicker]="from" [(ngModel)]="From" >
-                    <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
-                    <mat-datepicker #from></mat-datepicker>
-                </mat-form-field>
-
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="option">
                 <mat-form-field appearance="fill">
-                    <mat-label>To Date</mat-label>
-                    <input matInput [matDatepicker]="to" [(ngModel)]="To" >
-                    <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
-                    <mat-datepicker #to></mat-datepicker>
+                    <mat-label>Select an option</mat-label>
+                    <mat-select [(ngModel)]="selectedValue" (ngModelChange)="updateTable()">
+                        <mat-option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
+                            {{ D.value }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
-                <button mat-raised-button color="primary" type="submit" (click)="submitValue()">Go</button> -->
-      </div>
-      <div>
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Actor</th>
-              <th *ngFor="let H of columns">{{ H }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let x of tableData | keyvalue" (click)="piChart(x)">
-              <td>
-                {{ x.key }}
-              </td>
-              <ng-container *ngFor="let H of columns">
-                <td>{{ x.value[H] }}</td>
-              </ng-container>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="col-lg-6">
-      <div style="display: block; width: 400px">
-        <div style="display: block">
-          <canvas
-            baseChart
-            [type]="'pie'"
-            [datasets]="pieChartData"
-            [labels]="pieChartLabels"
-            [options]="pieChartOptions"
-            [legend]="pieChartLegend"
-          ></canvas>
+
+                <span>Activity Report :</span>
+                <input type="date" name="From" [(ngModel)]="From" />
+                <input type="date" name="To" [(ngModel)]="To" />
+                <button type="submit" (click)="submitValue()">Go</button>
+
+
+            </div>
+            <div>
+                <table class="table" *ngIf="columns">
+                    <thead>
+                        <tr>
+                            <th>Actor</th>
+                            <th *ngFor="let H of columns">{{ H }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let x of tableData | keyvalue" (click)="piChart(x.value)">
+                            <td>
+                                {{ x.key }}
+                            </td>
+                            <ng-container *ngFor="let H of columns">
+                                <td>{{ x.value[H] }}</td>
+                            </ng-container>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-      </div>
+        <div class="col-lg-6">
+            <div style="display: block; width: 400px">
+                <div style="display: block">
+                    <canvas baseChart [type]="'pie'" [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [legend]="pieChartLegend"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

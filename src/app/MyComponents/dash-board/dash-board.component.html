@@ -1,6 +1,6 @@
 <div class="contain">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col ">
             <div class="option">
                 <mat-form-field appearance="fill">
                     <mat-label>Select an option</mat-label>
@@ -19,11 +19,12 @@
 
             </div>
             <div>
-                <table class="table" *ngIf="columns">
+                <table class="table table-hover" *ngIf="columns">
                     <thead>
-                        <tr>
+                        <tr class="table-primary">
                             <th>Actor</th>
                             <th *ngFor="let H of columns">{{ H }}</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,12 +35,16 @@
                             <ng-container *ngFor="let H of columns">
                                 <td>{{ x.value[H] }}</td>
                             </ng-container>
+                            t
+                        </tr>
+                        <tr>
+                            <td>Total</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col ">
             <div style="display: block; width: 400px">
                 <div style="display: block">
                     <canvas baseChart [type]="'pie'" [datasets]="pieChartData" [labels]="pieChartLabels" [options]="pieChartOptions" [legend]="pieChartLegend"></canvas>

@@ -11,7 +11,7 @@ import { ProspectService } from 'src/app/services/prospect.service';
 })
 export class DashBoardComponent implements OnInit {
   [x: string]: any;
-  selectedValue = ''; 
+  selectedValue = 'entActionType'; 
   ddData: any;
   jsonData: any;
 
@@ -33,6 +33,7 @@ export class DashBoardComponent implements OnInit {
     private global: Global,
     private httpClient: HttpClient
   ) {
+     
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
       this.ddData = this.jsonData.DDvalue;
@@ -56,6 +57,7 @@ export class DashBoardComponent implements OnInit {
   }
 
   submitValue() {
+    
     let param = {
       eDbname: this.global.LOGGED_IN_USER.DbName,
       eFromDate: this.From,
@@ -67,6 +69,7 @@ export class DashBoardComponent implements OnInit {
     this.listService.showtotalActivity(param).subscribe((data: any) => {
       this.AllData = JSON.parse(data);
     });
+    
   }
 
   get columns(): Array<string> {
@@ -87,14 +90,15 @@ export class DashBoardComponent implements OnInit {
   }
 
   updateTable() {
+    
     this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
     this.pieChartLabels = Array.from(this.columns.values());
-    // console.log(this.tableData);
+    const Total=Array.from(this.tableData.values())
+    console.log(Total);
   }
 
   piChart(x) {
-    const propertyNames = Object.values(x);
-    console.log(propertyNames),
+    const  pieData = Object.values(x);
       (this.pieChartOptions = {
         scaleShowVerticalLines: false,
         responsive: true,
@@ -104,7 +108,7 @@ export class DashBoardComponent implements OnInit {
 
     this.pieChartData = [
       {
-        data: propertyNames,
+        data:pieData,
       },
     ];
   }

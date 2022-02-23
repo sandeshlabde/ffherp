@@ -121,16 +121,10 @@ loggedIn(){
   }
 
   // Entity product details api calling
-  getProductList(flag: string, id: number,DbName:string) {
+  getProductList(param) {
+ 
 
-    const requestBody = {
-
-      DbName ,
-      id,
-      flag,
-    }
-
-    return this.http.post(this.productDetailsUrl, requestBody);
+    return this.http.post(this.productDetailsUrl, param);
 
   };
   

@@ -15,15 +15,12 @@ export class ShowEmailQuotComponent implements OnInit {
   EntityName: any;
   id: any;
   Entityid: any;
-  PDFCustomerID!: number;
-  ShowPDFData: any;
-  ShowEmailQuoteData: any;
-  data2: any;
+  PDFCustomerID!: number; 
+  ShowEmailQuoteData: any; 
   emailQuote: boolean = false;
   termsCondition: boolean = false;
   viewPDF: boolean = false;
-  termsconditionData: any;
-  key!: number;
+  termsconditionData: any; 
   eLeadFormatID: any;
   eLeadTermsSetID: any;
   termSetData: any;
@@ -33,8 +30,7 @@ export class ShowEmailQuotComponent implements OnInit {
   header: any;
   bank: any;
   myform: any;
-  termSection: boolean = false;
-  ckeditorContent: any;
+  termSection: boolean = false; 
 
   constructor(
     private listService: ProspectService,
@@ -69,10 +65,8 @@ export class ShowEmailQuotComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd,
         this.global.LOGGED_IN_USER.UserId
       )
-      .subscribe((data: any) => {
-        alert(this.EntityName + this.PDFCustomerID + this.Entityid);
-        this.url = data;
-        console.log(this.url);
+      .subscribe((data: any) => { 
+        this.url = data; 
       });
   }
   // Send Mail Function
@@ -83,15 +77,13 @@ export class ShowEmailQuotComponent implements OnInit {
     this.header = e.target.value;
   }
   selectBank(e: any) {
-    this.bank = e.target.value;
-    console.log(this.format, this.header, this.bank);
+    this.bank = e.target.value; 
   }
   //  send email Quote
   onClickSubmit(data: any) {
     // this.listService.sendEmail(this.format,this.header, this.Entityid,this.EntityName,this.header,this.format).subscribe((data: any) => {
     // console.log(this.eLeadTermsSetID,  this.Entityid,this.eLeadFormatID)
     // })
-    alert(data.EmailTo + ',' + data.Message + ',' + data.BCC + ',');
   }
   // save terms And condition
   onClickSave(data: any) {
@@ -109,8 +101,7 @@ export class ShowEmailQuotComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
-        this.ShowEmailQuoteData = JSON.parse(data);
-        console.log(this.ShowEmailQuoteData);
+        this.ShowEmailQuoteData = JSON.parse(data); 
       });
     this.emailQuote = !this.emailQuote;
     this.termsCondition = false;

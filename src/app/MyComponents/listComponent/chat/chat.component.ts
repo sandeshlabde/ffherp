@@ -23,8 +23,8 @@ export class ChatComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    this.Entityid = this.data.EntityID
-      this.EntityName = this.data.EntityName
+    this.Entityid = this.data.EntityID;
+    this.EntityName = this.data.EntityName;
 
     // entity Product EntityModule name set start here
 
@@ -32,12 +32,9 @@ export class ChatComponent implements OnInit {
       this.pageID = 'PO';
     } else if (this.EntityName === 'SalesOrderLIst') {
       this.pageID = 'SO';
-    }
-    // else if (this.EntityName === "Prospect") {
-    //   this.pageID="Prospect"
-
-    // }
-    else if (this.EntityName === 'Lead') {
+    } else if (this.EntityName === 'Prospect') {
+      this.pageID = 'Prospect';
+    } else if (this.EntityName === 'Lead') {
       this.pageID = 'L';
     } else if (this.EntityName === 'Payable') {
       this.pageID = 'Payable';
@@ -60,11 +57,7 @@ export class ChatComponent implements OnInit {
     }
 
     // entity Product EntityModule name set end here
-    // Dbname,
-    // EntityId,
-    // PageId,
-    // Password,
-    // UserID,
+
     let params = {
       EntityId: this.Entityid,
       pageID: this.pageID,
@@ -91,8 +84,6 @@ export class ChatComponent implements OnInit {
       )
       .subscribe((data: any) => {});
 
-
-      
     let params = {
       EntityId: this.Entityid,
       pageID: this.pageID,

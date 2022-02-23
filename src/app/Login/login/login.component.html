@@ -1,31 +1,29 @@
-<div class="bg ">
+<div class="bg">
     <div class="text-center container main">
-        <main class="form-login  contain shadow-lg   mb-5  rounded">
+        <main class="form-login contain shadow-lg mb-5 rounded">
             <h1 class=" "><i class="fas fa-users"></i></h1>
             <form [formGroup]="Form" (ngSubmit)="onClickLogin()">
-                <h3 class="text-danger"><b> {{Error}}</b></h3>
-                <!-- (ngSubmit)="onClickLogin( value)" -->
+                <h3 class="text-danger">
+                    <b> {{ Error }}</b>
+                </h3>
+
                 <div class="col-md-12 form-field">
-
-                    <input class="chat-input" name="email" formControlName="email" type="email">
+                    <input class="chat-input" name="email" formControlName="email" type="email" />
                     <label for="email" class="labels">Username </label>
-
                 </div>
 
                 <div class="col-md-12 form-field">
-
-                    <input class="chat-input" name="password" formControlName="password" type="password">
+                    <input class="chat-input" name="password" formControlName="password" type="password" />
                     <label for="password" class="labels">Password</label>
-
                 </div>
 
                 <div class="text-end">
-                    <button class="w-50 btn btn-md btn-primary" type="submit">Login</button>
+                    <button class="w-50 btn btn-md btn-primary" type="submit">
+            Login
+          </button>
                 </div>
 
-                <h2>
-                    <a href="#">Forgot Password</a> <a href="#">Resister(New SignUp)</a>
-                </h2>
+                <h2><a class="a">Forgot Password</a> <a class="a">Resister(New SignUp)</a></h2>
             </form>
         </main>
     </div>

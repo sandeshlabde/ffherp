@@ -4,7 +4,7 @@ import { AuthGuard } from 'src/app/auth.guard';
 import { Resolver } from 'src/app/services/resolver.service';
 import { CommanComponent } from '../comman/comman.component';
 import { DashBoardComponent } from '../dash-board/dash-board.component';
-import { ProspectListComponent } from '../prospect-list/prospect-list.component';
+import { ProspectListComponent } from '../listComponent/list.component';
 
 const routes: Routes = [
   {

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Global } from 'Global';
- 
 
 @Component({
   selector: 'app-header',
@@ -11,7 +10,7 @@ import { Global } from 'Global';
 export class HeaderComponent implements OnInit {
   companyName: any;
   userId: any;
-  constructor(  private global: Global,private router: Router) {
+  constructor(private global: Global, private router: Router) {
     if (this.global.LOGGED_IN_USER) {
       this.companyName = this.global.LOGGED_IN_USER.CoName;
       this.userId = this.global.LOGGED_IN_USER.UserId;
@@ -19,8 +18,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onSignOut() {
-   localStorage.removeItem('Global.LOGGED_IN_USER');
-   this.router.navigate(['/login']);
+    localStorage.removeItem('Global.LOGGED_IN_USER');
+    this.router.navigate(['/login']);
   }
   ngOnInit(): void {}
 }

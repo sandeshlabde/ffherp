@@ -14,21 +14,10 @@ import { ProspectService } from '../../services/prospect.service';
 })
 export class LoginComponent implements OnInit {
   Form!: FormGroup;
-  username: any;
   Password: any;
-  loginData: any;
-  password1: any;
-  encrypt: any;
-  dbname: any;
-  RoleId: any;
-  userId: any;
-  name: any;
   SessionFlag: any;
-
   EmailId: any;
   LoginYn: any;
-  res: any;
-  resData: any;
   Error: any;
   loginDetails: ILoginDetails = {
     EmailId: '',
@@ -41,9 +30,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private global: Global
-  ) {
-     
-  }
+  ) {}
 
   onClickLogin() {
     if (this.Form.valid) {
@@ -56,7 +43,6 @@ export class LoginComponent implements OnInit {
         SessionFlag: 'Login',
       };
       this.listService.login(user).subscribe((res: string) => {
-        // console.log(res);
         localStorage.setItem('Global.LOGGED_IN_USER', res);
         const response = JSON.parse(res);
         if (
@@ -77,7 +63,7 @@ export class LoginComponent implements OnInit {
   }
 
   // autoLogin() {
-    
+
   // }
 
   ngOnInit(): void {

@@ -88,12 +88,13 @@
                 <div class="vl"></div>
             </div>
         </div>
-        <!-- left side contain endhere -->
+        <!-- left side contain end here -->
 
         <div class="col p-3">
             <div *ngIf="viewPDF">
                 <ngx-extended-pdf-viewer [src]="'assets/example.pdf'" [useBrowserLocale]="true" [textLayer]="true" [showHandToolButton]="true" [showPresentationModeButton]="true" [showDownloadButton]="false"></ngx-extended-pdf-viewer>
             </div>
+
             <div *ngIf="emailQuote">
                 <form #emailData="ngForm" (ngSubmit)="onClickSubmit(emailData.value)">
                     <div *ngFor="let x of  ShowEmailQuoteData">
@@ -135,6 +136,7 @@
                     <button type="submit" value="submit" class="btn btn-outline-info">Send Email</button>
                 </form>
             </div>
+
             <div *ngIf="termsCondition">
 
                 <div class="check-form-field">

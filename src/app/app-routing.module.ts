@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { LoginComponent } from './Login/login/login.component';
-import { DashBoardComponent } from './MyComponents/dash-board/dash-board.component';
-import { HeaderComponent } from './MyComponents/header/header.component';
-import { ProspectListComponent } from './MyComponents/prospect-list/prospect-list.component';
-import { ProspectService } from './services/prospect.service';
+import { LoginComponent } from './Login/login/login.component'; 
+ 
+ 
 import { Resolver } from './services/resolver.service';
 
 const routes: Routes = [

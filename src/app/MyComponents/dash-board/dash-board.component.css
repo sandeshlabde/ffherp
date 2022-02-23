@@ -8,15 +8,27 @@
     margin-left: 6%;
 }
 
+button {
+    margin: auto;
+    height: 50px;
+}
+
+mat-form-field {
+    margin: 0px 10px;
+}
+
 .option {
     display: flex;
     margin: 20px 0px 10px 0px;
+    height: 54px;
 }
 
-select {
-    margin-right: 15px;
+.a {
+    text-decoration: none;
 }
 
-input {
-    margin: 0px 23px;
+.a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: small;
 }

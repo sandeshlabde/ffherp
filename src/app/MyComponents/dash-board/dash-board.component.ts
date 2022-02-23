@@ -1,9 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵɵclassMapInterpolate2 } from '@angular/core';
 
 import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
+import { FormControl } from '@angular/forms';
+import * as moment from 'moment';
+import { map } from 'rxjs';
 
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'LL',
+  },
+  display: {
+    dateInput: 'LL',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 @Component({
   selector: 'app-dash-board',
   templateUrl: './dash-board.component.html',
@@ -11,16 +30,17 @@ import { ProspectService } from 'src/app/services/prospect.service';
 })
 export class DashBoardComponent implements OnInit {
   [x: string]: any;
-  selectedValue = 'entActionType'; 
+  selectedValue = 'entActionType';
   ddData: any;
   jsonData: any;
-
-  fromdate: any; 
+  total: any;
+  value: any;
+  fromdate: any;
   From: any = '';
   To: any = '';
-
+  arr: any[];
   AllData: any;
-
+  FooterTotal: any;
   pieChartOptions: { scaleShowVerticalLines: boolean; responsive: boolean };
   pieChartLabels: string[];
   pieChartLegend: boolean;
@@ -28,20 +48,20 @@ export class DashBoardComponent implements OnInit {
   tableData: any;
 
   h: any;
+
   constructor(
     private listService: ProspectService,
     private global: Global,
     private httpClient: HttpClient
   ) {
-     
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
       this.ddData = this.jsonData.DDvalue;
     });
   }
-   
 
   getPivotTable(data, type) {
+    const map2 = new Map();
     const map = new Map();
     data.forEach((item) => {
       map.set(item['entActionActorName'], {
@@ -51,25 +71,42 @@ export class DashBoardComponent implements OnInit {
           map.get(item['entActionActorName'])[item[type]]
             ? map.get(item['entActionActorName'])[item[type]] + 1
             : 1,
+        total:
+          map.get(item['entActionActorName']) &&
+          map.get(item['entActionActorName']).total
+            ? map.get(item['entActionActorName']).total + 1
+            : 1,
+      });
+      map2.set(item[type], {
+        total2:
+          map2.get(item[type]) && map2.get(item[type]).total2
+            ? map2.get(item[type]).total2 + 1
+            : 1,
       });
     });
+    this.FooterTotal = map2;
+    console.log(map2);
+    console.log(map);
     return map;
   }
 
   submitValue() {
-    
+    const FormDate = moment(this.From).format('YYYY-MM-DD');
+    const ToDate = moment(this.To).format('YYYY-MM-DD');
+
     let param = {
       eDbname: this.global.LOGGED_IN_USER.DbName,
-      eFromDate: this.From,
+      eFromDate: FormDate,
       eMissedFlag: '1',
       eModuleFlag: 'All',
       ePassword: this.global.LOGGED_IN_USER.encryptPswd,
-      eToDate: this.To,
+      eToDate: ToDate,
     };
     this.listService.showtotalActivity(param).subscribe((data: any) => {
       this.AllData = JSON.parse(data);
+      this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
+      this.pieChartLabels = Array.from(this.columns.values());
     });
-    
   }
 
   get columns(): Array<string> {
@@ -77,40 +114,41 @@ export class DashBoardComponent implements OnInit {
       const c: any = Array.from(this.tableData).reduce(
         (cols: Set<string>, o) => {
           Object.keys(o[1]).forEach((key) => {
-            cols.add(key);
+            cols.add(key.trim());
           });
           return cols;
         },
         new Set()
       );
-      // console.log(c);
       return Array.from(c);
     }
     return [];
   }
 
   updateTable() {
-    
-    this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
-    this.pieChartLabels = Array.from(this.columns.values());
-    const Total=Array.from(this.tableData.values())
-    console.log(Total);
+    this.submitValue();
   }
 
   piChart(x) {
-    const  pieData = Object.values(x);
-      (this.pieChartOptions = {
-        scaleShowVerticalLines: false,
-        responsive: true,
-      });
+    console.log(x);
+    const pieData = Object.values(x);
+    this.pieChartOptions = {
+      scaleShowVerticalLines: false,
+      responsive: true,
+    };
 
     this.pieChartLegend = true;
 
     this.pieChartData = [
       {
-        data:pieData,
+        data: pieData,
       },
     ];
+  }
+  getTotal(A) {
+    return Array.from(this.tableData).reduce((sum, o) => {
+      return o[1] && o[1][A] ? o[1][A] + sum : sum;
+    }, 0);
   }
   ngOnInit(): void {}
 }

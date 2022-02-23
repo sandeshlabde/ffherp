@@ -1,33 +1,30 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
 import { ProspectService } from 'src/app/services/prospect.service';
-import { __param } from 'tslib';
 import { MatDialog } from '@angular/material/dialog';
-import { EntityProductComponent } from '../entity-product/entity-product.component';
-import { ShowEmailQuotComponent } from '../show-email-quot/show-email-quot.component';
-
-import { NoteComponent } from '../note/note.component';
-import { EmailTraceComponent } from '../email-trace/email-trace.component';
-import { ChatComponent } from '../chat/chat.component';
-import { FilterSearchComponent } from '../filter-search/filter-search.component';
-import { Global } from 'Global';
-import { EditListComponent } from '../edit-list/edit-list.component';
-import { ApprovalComponent } from '../approval/approval.component';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { prospectdatafield } from 'src/apitable';
-import { DispClmModule } from '../../MyComponents/prospect-list/headingcol';
+import { Global } from 'Global';
+import { ApprovalComponent } from './approval/approval.component';
+import { ChatComponent } from './chat/chat.component';
+import { EditListComponent } from './edit-list/edit-list.component';
+import { EmailTraceComponent } from './email-trace/email-trace.component';
+import { EntityProductComponent } from './entity-product/entity-product.component';
+import { FilterSearchComponent } from './filter-search/filter-search.component';
+import { NoteComponent } from './note/note.component';
+import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.component';
+
 export interface DialogData {
   EntityID: number;
   EntityName: string;
 }
 @Component({
   selector: 'app-prospect-list',
-  templateUrl: './prospect-list.component.html',
-  styleUrls: ['./prospect-list.component.css'],
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css'],
 })
 export class ProspectListComponent implements OnInit {
   displayedColumns: string[] = [
@@ -145,8 +142,7 @@ export class ProspectListComponent implements OnInit {
     private listService: ProspectService,
     private root: ActivatedRoute,
     public dialog: MatDialog,
-    private global: Global,
-   
+    private global: Global
   ) {
     this.root.params.subscribe((param) => {
       this.EntityName = param['EntityName'];

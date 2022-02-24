@@ -1,11 +1,44 @@
-mat-checkbox {
-    margin: 0px 5px;
+mat-radio-button {
+    margin: 0px 10px;
 }
 
-.Discussion-textarea {
+.input-width {
     width: 100%;
 }
 
 .form-box {
+    width: 80vh;
+}
+
+.form-contain {
     padding: 10px;
+}
+
+textarea {
+    height: 166px;
+    resize: none;
+}
+
+.heading {
+    text-align: center;
+    background-color: green;
+    color: white;
+    height: 50px;
+}
+
+.select-option {
+    display: flex;
+    margin: 10px;
+    justify-self: center;
+    justify-content: space-around;
+}
+
+.not-Connect-Checkbox {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Connect-Checkbox {
+    display: flex;
+    justify-content: space-around;
 }

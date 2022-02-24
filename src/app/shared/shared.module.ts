@@ -13,7 +13,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
-
+import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
@@ -43,6 +43,7 @@ import { ActionComponent } from './action/action.component';
     FormsModule,
     ReactiveFormsModule,
     NgChartsModule,
+    MatRadioModule,
   ],
   exports: [
     CommonModule,
@@ -56,6 +57,7 @@ import { ActionComponent } from './action/action.component';
     MatSelectModule,
     MatButtonModule,
     MatMenuModule,
+    MatRadioModule,
     NgxExtendedPdfViewerModule,
     AngularEditorModule,
     MatInputModule,

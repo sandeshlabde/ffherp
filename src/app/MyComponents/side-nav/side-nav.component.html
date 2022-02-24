@@ -1,136 +1,158 @@
 <div class="sidebar close pb-3">
-
     <ul class="nav-links">
         <li>
             <div class="iocn-link">
-
-                <i><img class="sideNavimg" src="assets/img/img1.png" alt=""></i>
+                <i><img class="sideNavimg" src="assets/img/img1.png" alt="" /></i>
             </div>
 
-            <ul class="sub-menu shadow-lg  bg-body rounded ">
-                <li><a class="link_name bg-dark text-white" routerLink="/admin/Dashboard/Dashboard">Dashboard</a></li>
-
+            <ul class="sub-menu shadow-lg bg-body rounded">
+                <li>
+                    <a class="link_name bg-dark text-white" routerLink="/admin/Dashboard/Dashboard">
+            Dashboard
+          </a>
+                </li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
-
-                <i><img class="sideNavimg" src="assets/img/img2.png" alt=""></i>
+                <i><img class="sideNavimg" src="assets/img/img2.png" alt="" /></i>
             </div>
 
-            <ul class="sub-menu shadow-lg  bg-body rounded ">
+            <ul class="sub-menu shadow-lg bg-body rounded">
                 <li><a class="link_name bg-dark text-white">Marketing</a></li>
-                <li><a routerLink="/admin/page/Prospect" routerLinkActive="active" id="Prospect">ProspectList</a>
-                </li>
-                <li><a routerLink="/dashBoard" routerLinkActive="active" id="Prospectdash">ProspectDashboard</a></li>
-            </ul>
+                <li>
+                    <a routerLink="/dashBoard" routerLinkActive="active" id="Prospectdash">ProspectDashboard</a
+          >
         </li>
         <li>
-            <div class="iocn-link">
-                <i><img class="sideNavimg" src="assets/img/img3.png" alt=""></i>
-            </div>
+          <a
+            routerLink="/admin/page/Prospect"
+            routerLinkActive="active"
+            id="Prospect"
+            >ProspectList</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <i><img class="sideNavimg" src="assets/img/img3.png" alt="" /></i>
+      </div>
 
-            <ul class="sub-menu shadow-lg  bg-body rounded ">
-                <li><a class="link_name  bg-dark text-white">Sales</a></li>
-                <li><a routerLink="/admin/page/Lead" routerLinkActive="active" id="Lead">LeadList</a></li>
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name bg-dark text-white">Sales</a></li>
                 <li><a id="Leaddash" onclick="openDash()">LeadDashboard</a></li>
-                <li><a routerLink="/admin/page/SalesOrderLIst" routerLinkActive="active" id="SO">SOList</a></li>
-                <li><a id="SOdash">SODashboard</a></li>
-            </ul>
+                <li>
+                    <a routerLink="/admin/page/Lead" routerLinkActive="active" id="Lead">LeadList</a
+          >
         </li>
+        <li><a id="SOdash">SODashboard</a></li>
+                <li>
+                    <a routerLink="/admin/page/SalesOrderLIst" routerLinkActive="active" id="SO">SOList</a
+          >
+        </li>
+      </ul>
+    </li>
 
-        <li>
-            <div class="iocn-link">
-                <i><img class="sideNavimg" src="assets/img/img5.png" alt=""></i>
-            </div>
+    <li>
+      <div class="iocn-link">
+        <i><img class="sideNavimg" src="assets/img/img5.png" alt="" /></i>
+      </div>
 
-            <ul class="sub-menu  shadow-lg  bg-body rounded ">
-                <li><a class="link_name  bg-dark text-white">Inventoy</a></li>
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name bg-dark text-white">Inventoy</a></li>
 
-                <li><a routerLink="/admin/page/MoList" routerLinkActive="active" id="MO">MOList</a></li>
                 <li><a id="MOdash">MODashboard</a></li>
+                <li>
+                    <a routerLink="/admin/page/MoList" routerLinkActive="active" id="MO">MOList</a
+          >
+        </li>
 
-                <li><a routerLink="/admin/page/POList" routerLinkActive="active" id="PO">POList</a></li>
-                <li><a id="POdash">PODashboard</a></li>
-                <li><a routerLink="/admin/page/MIList" routerLinkActive="active">MIList</a></li>
-                <li><a id="MIdash">MIDashboard</a></li>
+        <li><a id="POdash">PODashboard</a></li>
+                <li>
+                    <a routerLink="/admin/page/POList" routerLinkActive="active" id="PO">POList</a
+          >
+        </li>
+        <li><a id="MIdash">MIDashboard</a></li>
+                <li>
+                    <a routerLink="/admin/page/MIList" routerLinkActive="active">MIList</a
+          >
+        </li>
+        <li><a id="RepairDash">RepairDashboard</a></li>
                 <li><a routerLink="/admin/page/Repair">RepairList</a></li>
-                <li><a id="RepairDash">RepairDashboard</a>
+            </ul>
+        </li>
+        <li>
+            <div class="iocn-link">
+                <i><img class="sideNavimg" src="assets/img/img6.png" alt="" /></i>
+            </div>
+
+            <ul class="sub-menu shadow-lg bg-body rounded">
+                <li><a class="link_name bg-dark text-white">Payment</a></li>
+                <li><a>InvoiceDashboard</a></li>
+                <li>
+                    <a routerLink="/admin/page/Payment" id="Invoice">InvoiceList</a>
                 </li>
+
+                <li>
+                    <a routerLink="/admin/page/Payable" routerLinkActive="active" id="PI">PIList</a
+          >
+        </li>
+        <li><a id="PIDash">PIDashboard</a></li>
+                <li><a routerLink="/admin/page/Voucher" id="vouchar">Voucher</a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
-                <i><img class="sideNavimg" src="assets/img/img6.png" alt=""></i>
+                <i><img class="sideNavimg" src="assets/img/img7.png" /> </i>
             </div>
 
-            <ul class="sub-menu shadow-lg  bg-body rounded ">
-                <li><a class="link_name  bg-dark text-white">Payment</a></li>
-                <li><a routerLink="/admin/page/Payment" id="Invoice">InvoiceList</a></li>
-                <li><a>InvoiceDashboard</a>
-                </li>
-                <li><a routerLink="/admin/page/Payable" routerLinkActive="active" id="PI">PIList</a></li>
-                <li><a id="PIDash">PIDashboard</a></li>
-                <li><a routerLink="/admin/page/Voucher" id="vouchar">Vouchar</a></li>
+            <ul class="sub-menu shadow-lg bg-body rounded">
+                <li><a class="link_name bg-dark text-white">Support</a></li>
+                <li>
+                    <a routerLink="/admin/page/Ticket" routerLinkActive="active" id="Ticket">TicketList</a
+          >
+        </li>
+        <li><a id="TicketDash">TicketDashboard</a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
+                <i><img class="sideNavimg" src="assets/img/img8.png" alt="" /></i>
+            </div>
+            <ul class="sub-menu shadow-lg bg-body rounded">
+                <li><a class="link_name bg-dark text-white">AMC</a></li>
+                <li>
+                    <a routerLink="/admin/page/AMC" routerLinkActive="active" id=" AMC">AMCList</a
+          >
+        </li>
+        <li><a id="AMCDash">AMCDashboard</a></li>
+            </ul>
+        </li>
 
-                <i><img class="sideNavimg" src="assets/img/img7.png"> </i>
-
-
-
+        <li>
+            <div class="iocn-link">
+                <i><img class="sideNavimg" src="assets/img/img9.png" alt="" /></i>
             </div>
 
-            <ul class="sub-menu shadow-lg  bg-body rounded ">
-                <li><a class="link_name  bg-dark text-white">Support</a></li>
-                <li><a routerLink="/admin/page/Ticket" routerLinkActive="active" id="Ticket">TicketList</a></li>
-                <li><a id="TicketDash">TicketDashboard</a>
-                </li>
+            <ul class="sub-menu shadow-lg bg-body rounded">
+                <li><a class="link_name bg-dark text-white"> Work</a></li>
+                <li>
+                    <a routerLink="/admin/page/Work" routerLinkActive="active" id="Work">WorkList</a
+          >
+        </li>
+        <li><a id="WorkDash">WorkDashboard</a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
-
-                <i><img class="sideNavimg" src="assets/img/img8.png" alt=""></i>
-
-
-
+                <i><img class="sideNavimg" src="assets/img/ProjectImage.png" alt=""
+        /></i>
             </div>
-            <ul class="sub-menu shadow-lg   bg-body rounded">
-                <li><a class="link_name  bg-dark text-white">AMC</a></li>
-                <li><a routerLink="/admin/page/AMC" routerLinkActive="active" id=" AMC">AMCList</a></li>
-                <li><a id="AMCDash">AMCDashboard</a></li>
-            </ul>
-        </li>
-
-
-        <li>
-            <div class="iocn-link">
-
-                <i><img class="sideNavimg" src="assets/img/img9.png" alt=""></i>
-            </div>
-
-            <ul class="sub-menu shadow-lg  bg-body rounded">
-                <li><a class="link_name  bg-dark text-white"> Work</a></li>
-                <li><a routerLink="/admin/page/Work" routerLinkActive="active" id="Work">WorkList</a></li>
-                <li><a id="WorkDash">WorkDashboard</a></li>
-            </ul>
-        </li>
-        <li>
-            <div class="iocn-link">
-
-                <i><img class="sideNavimg" src="assets/img/ProjectImage.png" alt=""></i>
-
-            </div>
-            <ul class="sub-menu shadow-lg bg-body rounded ">
+            <ul class="sub-menu shadow-lg bg-body rounded">
                 <li><a class="link_name bg-dark text-white"> Project</a></li>
                 <li><a id="Project">My Project</a></li>
             </ul>
         </li>
-
-
-
     </ul>
 </div>

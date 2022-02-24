@@ -9,11 +9,11 @@ import { Global } from 'Global';
 })
 export class HeaderComponent implements OnInit {
   companyName: any;
-  userId: any;
+  userName: any;
   constructor(private global: Global, private router: Router) {
     if (this.global.LOGGED_IN_USER) {
       this.companyName = this.global.LOGGED_IN_USER.CoName;
-      this.userId = this.global.LOGGED_IN_USER.UserId;
+      this.userName = this.global.LOGGED_IN_USER.Username;
     }
   }
 

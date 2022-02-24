@@ -155,6 +155,7 @@ export class ProspectListComponent implements OnInit {
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
+        console.log(JSON.parse(data));
       });
     });
   }

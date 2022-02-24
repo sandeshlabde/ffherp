@@ -33,8 +33,8 @@ export class EntityProductComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    this.Entityid = this.data.EntityID
-      this.EntityName = this.data.EntityName
+    this.Entityid = this.data.EntityID;
+    this.EntityName = this.data.EntityName;
 
     // entity Product EntityModule name set start here
 
@@ -102,10 +102,9 @@ export class EntityProductComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
-
-        this.entityIdDetailData = JSON.parse(data );
-        console.log( this.entityIdDetailData)
-        this.entityData= this.entityIdDetailData[0]
+        this.entityIdDetailData = JSON.parse(data);
+        console.log(this.entityIdDetailData);
+        this.entityData = this.entityIdDetailData[0];
       });
     // }
 
@@ -142,7 +141,8 @@ export class EntityProductComponent implements OnInit {
       .actionDetails(
         this.Entityid,
         this.EntityModule,
-        this.global.LOGGED_IN_USER.DbName
+        this.global.LOGGED_IN_USER.DbName,
+        this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
         this.ViewActionDetail = JSON.parse(data);

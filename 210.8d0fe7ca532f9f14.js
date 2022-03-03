@@ -877,19 +877,16 @@
                                             Object.assign({}, b.get(x.entActionActorName)), {
                                                 [x[y]]: b.get(x.entActionActorName) &&
                                                     b.get(x.entActionActorName)[x[y]] ?
-                                                    b.get(x.entActionActorName)[x[y]] + 1 :
-                                                    1,
+                                                    b.get(x.entActionActorName)[x[y]] + 1 : 1,
                                                 total: b.get(x.entActionActorName) &&
                                                     b.get(x.entActionActorName).total ?
-                                                    b.get(x.entActionActorName).total + 1 :
-                                                    1,
+                                                    b.get(x.entActionActorName).total + 1 : 1,
                                             }
                                         )
                                     ),
                                     D.set(x[y], {
                                         total2: D.get(x[y]) && D.get(x[y]).total2 ?
-                                            D.get(x[y]).total2 + 1 :
-                                            1,
+                                            D.get(x[y]).total2 + 1 : 1,
                                     });
                             }),
                             (this.FooterTotal = D),
@@ -2779,7 +2776,7 @@
                         (this.httpClient = l),
                         (this.data = y),
                         (this.EntityName = this.data.EntityName),
-                        this.httpClient.get("/assets/inputlabel.json").subscribe((D) => {
+                        this.httpClient.get("./assets/inputlabel.json").subscribe((D) => {
                             (this.FormArry = D),
                             "Prospect" === this.EntityName ?
                                 (this.labelData = this.FormArry.prospect) :
@@ -4637,9 +4634,11 @@
                             return new(l || h)();
                         }),
                         (h.ɵmod = e.oAB({ type: h })),
-                        (h.ɵinj = e.cJS({ imports: [
+                        (h.ɵinj = e.cJS({
+                            imports: [
                                 [n.Bz.forChild(ra)], n.Bz
-                            ] })),
+                            ]
+                        })),
                         h
                     );
                 })(),
@@ -4650,9 +4649,11 @@
                             return new(l || h)();
                         }),
                         (h.ɵmod = e.oAB({ type: h })),
-                        (h.ɵinj = e.cJS({ imports: [
+                        (h.ɵinj = e.cJS({
+                            imports: [
                                 [o.ez, J]
-                            ] })),
+                            ]
+                        })),
                         h
                     );
                 })();
@@ -5639,14 +5640,11 @@
                                 u[2];
                         })({
                             ss: d ?
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434" :
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434",
+                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434" : "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434",
                             mm: d ?
-                                "\u0445\u0432\u0456\u043b\u0456\u043d\u0430_\u0445\u0432\u0456\u043b\u0456\u043d\u044b_\u0445\u0432\u0456\u043b\u0456\u043d" :
-                                "\u0445\u0432\u0456\u043b\u0456\u043d\u0443_\u0445\u0432\u0456\u043b\u0456\u043d\u044b_\u0445\u0432\u0456\u043b\u0456\u043d",
+                                "\u0445\u0432\u0456\u043b\u0456\u043d\u0430_\u0445\u0432\u0456\u043b\u0456\u043d\u044b_\u0445\u0432\u0456\u043b\u0456\u043d" : "\u0445\u0432\u0456\u043b\u0456\u043d\u0443_\u0445\u0432\u0456\u043b\u0456\u043d\u044b_\u0445\u0432\u0456\u043b\u0456\u043d",
                             hh: d ?
-                                "\u0433\u0430\u0434\u0437\u0456\u043d\u0430_\u0433\u0430\u0434\u0437\u0456\u043d\u044b_\u0433\u0430\u0434\u0437\u0456\u043d" :
-                                "\u0433\u0430\u0434\u0437\u0456\u043d\u0443_\u0433\u0430\u0434\u0437\u0456\u043d\u044b_\u0433\u0430\u0434\u0437\u0456\u043d",
+                                "\u0433\u0430\u0434\u0437\u0456\u043d\u0430_\u0433\u0430\u0434\u0437\u0456\u043d\u044b_\u0433\u0430\u0434\u0437\u0456\u043d" : "\u0433\u0430\u0434\u0437\u0456\u043d\u0443_\u0433\u0430\u0434\u0437\u0456\u043d\u044b_\u0433\u0430\u0434\u0437\u0456\u043d",
                             dd: "\u0434\u0437\u0435\u043d\u044c_\u0434\u043d\u0456_\u0434\u0437\u0451\u043d",
                             MM: "\u043c\u0435\u0441\u044f\u0446_\u043c\u0435\u0441\u044f\u0446\u044b_\u043c\u0435\u0441\u044f\u0446\u0430\u045e",
                             yy: "\u0433\u043e\u0434_\u0433\u0430\u0434\u044b_\u0433\u0430\u0434\u043e\u045e",
@@ -13851,11 +13849,9 @@
                                 M[2];
                         })({
                             ss: u ?
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434" :
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434",
+                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434" : "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u044b_\u0441\u0435\u043a\u0443\u043d\u0434",
                             mm: u ?
-                                "\u043c\u0438\u043d\u0443\u0442\u0430_\u043c\u0438\u043d\u0443\u0442\u044b_\u043c\u0438\u043d\u0443\u0442" :
-                                "\u043c\u0438\u043d\u0443\u0442\u0443_\u043c\u0438\u043d\u0443\u0442\u044b_\u043c\u0438\u043d\u0443\u0442",
+                                "\u043c\u0438\u043d\u0443\u0442\u0430_\u043c\u0438\u043d\u0443\u0442\u044b_\u043c\u0438\u043d\u0443\u0442" : "\u043c\u0438\u043d\u0443\u0442\u0443_\u043c\u0438\u043d\u0443\u0442\u044b_\u043c\u0438\u043d\u0443\u0442",
                             hh: "\u0447\u0430\u0441_\u0447\u0430\u0441\u0430_\u0447\u0430\u0441\u043e\u0432",
                             dd: "\u0434\u0435\u043d\u044c_\u0434\u043d\u044f_\u0434\u043d\u0435\u0439",
                             ww: "\u043d\u0435\u0434\u0435\u043b\u044f_\u043d\u0435\u0434\u0435\u043b\u0438_\u043d\u0435\u0434\u0435\u043b\u044c",
@@ -16188,14 +16184,11 @@
                                 f[2];
                         })({
                             ss: M ?
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434" :
-                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434",
+                                "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434" : "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434",
                             mm: M ?
-                                "\u0445\u0432\u0438\u043b\u0438\u043d\u0430_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d" :
-                                "\u0445\u0432\u0438\u043b\u0438\u043d\u0443_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d",
+                                "\u0445\u0432\u0438\u043b\u0438\u043d\u0430_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d" : "\u0445\u0432\u0438\u043b\u0438\u043d\u0443_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d",
                             hh: M ?
-                                "\u0433\u043e\u0434\u0438\u043d\u0430_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d" :
-                                "\u0433\u043e\u0434\u0438\u043d\u0443_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d",
+                                "\u0433\u043e\u0434\u0438\u043d\u0430_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d" : "\u0433\u043e\u0434\u0438\u043d\u0443_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d",
                             dd: "\u0434\u0435\u043d\u044c_\u0434\u043d\u0456_\u0434\u043d\u0456\u0432",
                             MM: "\u043c\u0456\u0441\u044f\u0446\u044c_\u043c\u0456\u0441\u044f\u0446\u0456_\u043c\u0456\u0441\u044f\u0446\u0456\u0432",
                             yy: "\u0440\u0456\u043a_\u0440\u043e\u043a\u0438_\u0440\u043e\u043a\u0456\u0432",
@@ -18431,9 +18424,7 @@
                         for (
                             m = (function as(t) {
                                 var a = new Date(n.now());
-                                return t._useUTC ?
-                                    [a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate()] :
-                                    [a.getFullYear(), a.getMonth(), a.getDate()];
+                                return t._useUTC ? [a.getUTCFullYear(), a.getUTCMonth(), a.getUTCDate()] : [a.getFullYear(), a.getMonth(), a.getDate()];
                             })(t),
                             t._w &&
                             null == t._a[2] &&
@@ -18867,8 +18858,7 @@
                                         (r = Wa(t, a)) :
                                         (((r = Wa(a, t)).milliseconds = -r.milliseconds),
                                             (r.months = -r.months)),
-                                        r) :
-                                    { milliseconds: 0, months: 0 };
+                                        r) : { milliseconds: 0, months: 0 };
                             })(R(r.from), R(r.to))),
                             ((r = {}).ms = T.milliseconds),
                             (r.M = T.months)),

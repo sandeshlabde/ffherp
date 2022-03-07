@@ -84,7 +84,8 @@ var Mo = Object.defineProperty,
                     "element" :
                     ((s) =>
                         null == s ?
-                        `${s}` : {}.toString
+                        `${s}` :
+                        {}.toString
                         .call(s)
                         .match(/\s([a-z]+)/i)[1]
                         .toLowerCase())(o);

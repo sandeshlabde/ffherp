@@ -1295,11 +1295,13 @@
                         return !me && "object" == typeof s && s ?
                             !!s.capture :
                             me && a ?
-                            "boolean" == typeof s ? { capture: s, passive: !0 } :
+                            "boolean" == typeof s ?
+                            { capture: s, passive: !0 } :
                             s ?
                             "object" == typeof s && !1 !== s.passive ?
                             Object.assign(Object.assign({}, s), { passive: !0 }) :
-                            s : { passive: !0 } :
+                            s :
+                            { passive: !0 } :
                             s;
                     }
                     d && d.prepend && (J = O[x(d.prepend)] = O[d.prepend]);
@@ -2074,7 +2076,9 @@
                                             return !0;
                                     } catch (e) {}
                                     return !1;
-                                })() ? [{ target: f, ignoreProperties: ["error"] }] : [];
+                                })() ?
+                                [{ target: f, ignoreProperties: ["error"] }] :
+                                [];
                             W(f, Te.concat(["messageerror"]), r && r.concat(_), de(f)),
                                 W(Document.prototype, Te, r),
                                 void 0 !== f.SVGElement && W(f.SVGElement.prototype, Te, r),

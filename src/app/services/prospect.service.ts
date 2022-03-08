@@ -91,9 +91,6 @@ export class ProspectService {
     return !!localStorage.getItem('Global.LOGGED_IN_USER');
   }
 
-  // signOut(){
-
-  // }
   // list  table api calling
 
   getLeadList(params: any) {

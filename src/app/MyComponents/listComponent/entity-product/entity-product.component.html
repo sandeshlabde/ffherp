@@ -1,63 +1,61 @@
-<div *ngIf="entityData">
-    <div class="modal-header comp_name">
-        <!-- header part with company name, id and title starts here -->
-        <div class="col-lg-6">
-            <div class="p-1">
-                <div class="text-start">
-                    <h3>{{ entityData?.CompanyName }}</h3>
-                </div>
-            </div>
+<div *ngIf="entityData" class="entityData">
+  <div class="modal-header comp_name">
+    <!-- header part with company name, id and title starts here -->
+    <div class="col-lg-6">
+      <div class="p-1">
+        <div class="text-start">
+          <h3>{{ entityData?.CompanyName }}</h3>
         </div>
-        <!-- id and title section -->
-        <div class="col-lg-5 text-end">
-            <div class="row">
-                <div>{{ EntityNameTitle }} ID : {{ Entityid }}</div>
-            </div>
-            <div class="row" id="id_title">
-                <div>Title : {{ data.Title }}</div>
-            </div>
-        </div>
-        <div class="col-lg-1 text-end">
-            <button type="button" mat-dialog-close class="btn-close"></button>
-        </div>
+      </div>
     </div>
-    <!-- modal body main code -->
-    <div class="modal-body col" id="modal ">
-        <!-- compant Details data row starts here -->
-        <div class="row billing">
-            <div class="col-lg-5 border border-dark entity_box address_part">
-                <div>
-                    <h6><b>Billing Address</b></h6>
-                    <br />
-                    <span class="text-dark" id="col_2 ">
-            {{ entityData?.CompanyAddress }}<br />
+    <!-- id and title section -->
+    <div class="col-lg-5 text-end">
+      <div class="row">
+        <div>{{ EntityNameTitle }} ID : {{ Entityid }}</div>
+      </div>
+      <div class="row" id="id_title">
+        <div>Title : {{ data.Title }}</div>
+      </div>
+    </div>
+    <div class="col-lg-1 text-end">
+      <button type="button" mat-dialog-close class="btn-close"></button>
+    </div>
+  </div>
+  <div class=" ">
+    <div class="billing">
+      <div class="col-lg-6 entity_box address_part">
+        <div>
+          <h6><b>Billing Address</b></h6>
+          <br />
+          <span class="text-dark" id="col_2 ">
+            {{ entityData?.CompanyAddress }} <br />
             {{ entityData?.CompanyAddress1 }}
           </span>
-                </div>
-            </div>
-            <!-- second column in row -->
-            <div class="col-lg-5 entity_box border border-dark">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div>
-                            <b>
-                <span class="text-end text-black-50 col_1">Status:</span>
+        </div>
+      </div>
+      <!-- second column in row -->
+      <div class="col-lg-6 entity_box">
+        <div class="row">
+          <div class="col-lg-6">
+            <div>
+              <b>
+                <span class="text-end text-black-50 col_1">Status :</span>
                 <span class="col-lg-3 text-start col_2">
                   {{ entityData?.Status }}</span
                 >
               </b>
-                        </div>
-                        <div>
-                            <b>
-                <span class="text-end text-black-50 col_1">Priority:</span>
+            </div>
+            <div>
+              <b>
+                <span class="text-end text-black-50 col_1">Priority :</span>
                 <span class="col-lg-3 text-start col_2">
                   {{ entityData?.Priority }}
                 </span>
               </b>
-                        </div>
-                        <div>
-                            <b>
-                <span class="text-end text-black-50 col_1">Source:</span>
+            </div>
+            <div>
+              <b>
+                <span class="text-end text-black-50 col_1">Source :</span>
                 <span class="col-lg-3 text-start col_2">
                   {{ entityData?.Source }}</span
                 ></b
@@ -68,96 +66,104 @@
           <div class="col-lg-6">
             <div>
               <b>
-                <span class="text-end text-black-50 col_1">Status:</span>
+                <span class="text-end text-black-50 col_1">Status :</span>
                 <span class="col-lg-3 text-start col_2">
                   {{ entityData?.Status }}
                 </span>
               </b>
-                        </div>
-                        <div>
-                            <b>
-                <span class="text-end text-black-50 col_1">Source:</span>
+            </div>
+            <div>
+              <b>
+                <span class="text-end text-black-50 col_1">Source :</span>
                 <span class="col-lg-3 text-start col_2">
                   {{ entityData?.Source }}
                 </span>
               </b>
-                        </div>
-                    </div>
-
-                    <div class="row pt-2">
-                        <h6 id="schedule "><b>Next Schedule Action :</b></h6>
-                        <div id="col_2 ">
-                            <b>Follow up action on {{ entityData?.Opendate }}</b>
-                            <br />
-                            <b>To call and ask for demo meeting</b>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        <!-- links -->
-        <div class="row">
-            <ul class="nav nav-tabs billing">
-                <li class="nav-item hover-shadow m-1">
-                    <a class="nav-link text-center border border-primary link" (click)="product()">
-                        <u>PRODUCTS</u>
-                    </a>
-                </li>
-                <span entityData>{{ entityData?.schedule }}</span>
+          </div>
 
-                <li class="nav-item hover-shadow m-1">
-                    <a class="nav-link border border-primary link" (click)="action()">
-                        <u>ACTIONS</u>&nbsp;&nbsp;<span class="text-center" entityData>
-              ({{ entityData?.ActionCount }})</span
-            >
-          </a>
-        </li>
-        <li class="nav-item hover-shadow m-1">
-          <a
-            class="nav-link border border-primary link"
-            data-bs-toggle="tab "
-         
-            ><u>CHATS</u>&nbsp;&nbsp;<span class="text-center" entityData
-              >({{ entityData?.Chatcnt }})</span
-            >
-          </a>
-        </li>
-        <li class="nav-item hover-shadow m-1">
-          <a
-            class="nav-link border border-primary link"
-            data-bs-toggle="tab "
-            
-            ><u>ATTACHMENTS</u>&nbsp;&nbsp;<span class="text-center" entityData
-              >({{ entityData?.schedule }})</span
-            >
-          </a>
-        </li>
-        <li class="nav-item hover-shadow m-1">
-          <a
-            class="nav-link border border-primary link"
-            data-bs-toggle="tab "
-            
-            ><u>VOUCHERS</u>&nbsp;&nbsp;<span class="text-center"  entityData
-              >({{ entityData?.schedule }})</span
-            >
-          </a>
-        </li>
-        <li class="nav-item hover-shadow m-1">
-          <a
-            class="nav-link border border-primary link"
-            data-bs-toggle="tab "
-            (click)="noteTable()"
-            ><u>Notes</u>&nbsp;&nbsp;
-            <span class="text-center" entityData
-              >({{ entityData?.NotesCount }})</span
-            >
-          </a>
-        </li>
-      </ul>
+          <div class="row pt-2">
+            <h6 id="schedule "><b>Next Schedule Action :</b></h6>
+            <div id="col_2 ">
+              <b
+                >Follow up action on
+                {{ entityData?.Opendate | date: "dd MMM YYYY " }}</b
+              >
+              <br />
+              <b>To call and ask for demo meeting</b>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- links -->
+
+    <ul class="nav nav-tabs billing">
+      <li class="nav-item hover-shadow m-1">
+        <a
+          class="nav-link text-center border border-primary link"
+          (click)="product()"
+        >
+          PRODUCTS
+        </a>
+      </li>
+
+      <li class="nav-item hover-shadow m-1">
+        <a class="nav-link border border-primary link" (click)="action()">
+          ACTIONS&nbsp;&nbsp;<span
+            class="text-center"
+            entityData
+            *ngIf="entityData.ActionCount"
+          >
+            ({{ entityData?.ActionCount }})</span
+          >
+        </a>
+      </li>
+      <li class="nav-item hover-shadow m-1">
+        <a class="nav-link border border-primary link" data-bs-toggle="tab ">
+          CHATS &nbsp;&nbsp;<span
+            class="text-center"
+            entityData
+            *ngIf="entityData.Chatcnt !== '0'"
+            >({{ entityData?.Chatcnt }})</span
+          >
+        </a>
+      </li>
+      <li class="nav-item hover-shadow m-1">
+        <a class="nav-link border border-primary link" data-bs-toggle="tab "
+          >ATTACHMENTS&nbsp;&nbsp;<span
+            class="text-center"
+            entityData
+            *ngIf="entityData.schedule"
+            >({{ entityData?.schedule }})</span
+          >
+        </a>
+      </li>
+      <li class="nav-item hover-shadow m-1">
+        <a class="nav-link border border-primary link" data-bs-toggle="tab "
+          >VOUCHERS&nbsp;&nbsp;<span
+            class="text-center"
+            entityData
+            *ngIf="entityData.schedule"
+            >({{ entityData?.schedule }})</span
+          >
+        </a>
+      </li>
+      <li class="nav-item hover-shadow m-1">
+        <a
+          class="nav-link border border-primary link"
+          data-bs-toggle="tab "
+          (click)="noteTable()"
+          >Notes&nbsp;&nbsp;
+          <span class="text-center" entityData *ngIf="entityData.NotesCount"
+            >({{ entityData?.NotesCount }})</span
+          >
+        </a>
+      </li>
+    </ul>
   </div>
   <div class="ms-2 me-2" *ngIf="viewProductTable" id="viewTables ">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" *ngIf="ViewProductDetail">
       <thead>
         <tr class="table-primary" id="table ">
           <th>Product</th>
@@ -170,14 +176,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let x of ViewProductDetail">
-          <td>{{ x.Name }}</td>
-          <td>{{ x.rate }}</td>
-          <td>{{ x.Discount_val }}</td>
-          <td>{{ x.Quantity }}</td>
-          <td>{{ x.amount }}</td>
-          <td>{{ x.Taxes_val }}</td>
-          <td>{{ x.TaxAmount_val }}</td>
+        <tr *ngFor="let Product of ViewProductDetail">
+          <td>{{ Product.Name }}</td>
+          <td>{{ Product.rate }}</td>
+          <td>{{ Product.Discount_val }}</td>
+          <td>{{ Product.Quantity }}</td>
+          <td>{{ Product.amount }}</td>
+          <td>{{ Product.Taxes_val }}</td>
+          <td>{{ Product.TaxAmount_val }}</td>
         </tr>
       </tbody>
     </table>
@@ -191,19 +197,19 @@
           <th>Date</th>
           <th>Time</th>
           <th>By</th>
-          <th>Action Done</th>
+          <th>Done</th>
           <th>Revised PDF</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let x of ViewActionDetail">
-          <td>{{ x.ScheduleActionId }}</td>
-          <td>{{ x.SeqId }}</td>
-          <td>{{ x.ActionStartDate }}</td>
-          <td>{{ x.ActionStartTime }}</td>
-          <td>{{ x.username }}</td>
-          <td>{{ x.Taxes_val }}</td>
-          <td>{{ x.TaxAmount_val }}</td>
+        <tr *ngFor="let Action of ViewActionDetail">
+          <td>{{ Action.ScheduleActionId }}</td>
+          <td>{{ Action.SeqId }}</td>
+          <td>{{ Action.ActionStartDate }}</td>
+          <td>{{ Action.ActionStartTime }}</td>
+          <td>{{ Action.username }}</td>
+          <td>{{ Action.Taxes_val }}</td>
+          <td>{{ Action.TaxAmount_val }}</td>
         </tr>
       </tbody>
     </table>

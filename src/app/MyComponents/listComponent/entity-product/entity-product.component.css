@@ -1,49 +1,49 @@
 .comp_name {
-    background-color: #2a9fda7c;
-    color: black;
-    border-radius: 10px;
+  background-color: #2a9fda7c;
+  color: black;
 }
 
 .link {
-    background-color: #c8e8f87c;
+  background-color: #c8e8f87c;
+}
+
+.entityData {
 }
 
 .entity_box {
-    /* width: 100%; */
-    margin: 2px;
-    border-radius: 2px;
-    color: #0000005d;
+  padding: 10px;
+  border: 1px solid black;
+  color: #0000005d;
+}
+
+.billing {
+  display: flex;
+  justify-content: center;
 }
 
 .address_part {
-    background-color: #ece6e6;
+  background-color: #ece6e6;
 }
 
 .col_1 {
-    font-size: small;
-    text-decoration: solid;
-    margin-right: 10px;
+  font-size: small;
+  text-decoration: solid;
+  margin-right: 10px;
 }
 
 .col_2 {
-    font-size: small;
-    color: #000000a9;
+  font-size: small;
+  color: #000000a9;
 }
 
 #schedule {
-    font-size: small;
-    text-align: start;
-    color: #0000005d;
+  font-size: small;
+  text-align: start;
+  color: #0000005d;
 }
-
 
 /*  */
 
-.billing {
-    display: flex;
-    justify-content: center;
-}
-
 .chatHeadingSize {
-    width: 100px;
+  width: 100px;
 }

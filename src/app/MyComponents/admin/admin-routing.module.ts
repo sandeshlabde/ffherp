@@ -4,7 +4,7 @@ import { AuthGuard } from 'src/app/auth.guard';
 import { Resolver } from 'src/app/services/resolver.service';
 import { CommanComponent } from '../comman/comman.component';
 import { DashBoardComponent } from '../dash-board/dash-board.component';
-import { ProspectListComponent } from '../listComponent/list.component';
+import { ListComponent } from '../listComponent/list.component';
 
 const routes: Routes = [
   {
@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: 'page/:EntityName',
-        component: ProspectListComponent,
+        component: ListComponent,
         resolve: { login: Resolver },
         canActivate: [AuthGuard],
       },

@@ -62,10 +62,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // autoLogin() {
-
-  // }
-
   ngOnInit(): void {
     this.Form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],

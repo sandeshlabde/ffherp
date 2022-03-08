@@ -1,109 +1,106 @@
-<div class="modal-header bg-info text-white text-center ">
+<div class="modal-header bg-info text-white text-center">
+  <h3>Search</h3>
 
-
-    <h3>Search</h3>
-
-    <button type="button" mat-dialog-close class="btn-close "></button>
-
+  <button type="button" mat-dialog-close class="btn-close"></button>
 </div>
 
 <div class="row">
-    <div class="col ">
-        <h1>Company</h1>
-        <div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> Company</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> Associat Company</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> Parent Company</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels">Company Owner </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> Select Industy Type</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels">Select Relationship </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels">Area </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels">City </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name=" ">
-                <label for=" " class="labels"> State</label>
-            </div>
-        </div>
+  <div class="col">
+    <h1>Company</h1>
+    <div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels"> Company</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels"> Associat Company</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels"> Parent Company</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels">Company Owner </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels"> Select Industy Type</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels">Select Relationship </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels">Area </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels">City </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name=" " />
+        <label for=" " class="labels"> State</label>
+      </div>
     </div>
-    <div class="col ">
-        <h1>Product</h1>
-        <div>
-            <div class="form-field">
-                <input class="input-text" type="text" name="Product ">
-                <label for="Product " class="labels"> Product</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name="Category">
-                <label for="Category " class="labels">  Category  </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name="Group ">
-                <label for="Group " class="labels"> Group</label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="text" name="Manufacture ">
-                <label for=" Manufacture" class="labels">Manufacture</label>
-            </div>
-        </div>
+  </div>
+  <div class="col">
+    <h1>Product</h1>
+    <div>
+      <div class="form-field">
+        <input class="input-text" type="text" name="Product " />
+        <label for="Product " class="labels"> Product</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name="Category" />
+        <label for="Category " class="labels"> Category </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name="Group " />
+        <label for="Group " class="labels"> Group</label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="text" name="Manufacture " />
+        <label for=" Manufacture" class="labels">Manufacture</label>
+      </div>
     </div>
-    <div class="col ">
-        <h1>Entity Wise
-        </h1>
-        <div *ngFor="let x of labelData">
-            <div class="form-field">
-
-                <input class="input-text" id="{{x.ID}}" type="{{x.Type}}" name=" ">
-                <label for="" class="labels"> {{x.Label}} </label>
-            </div>
-
-        </div>
-
+  </div>
+  <div class="col">
+    <h1>Entity Wise</h1>
+    <div *ngFor="let x of labelData">
+      <div class="form-field">
+        <input
+          class="input-text"
+          id="{{ x.ID }}"
+          type="{{ x.Type }}"
+          name=" "
+        />
+        <label for="" class="labels"> {{ x.Label }} </label>
+      </div>
     </div>
+  </div>
 
-    <div class="col">
-        <h1>Date</h1>
-        <div>
-            <div class="form-field">
-                <select class="input-select" name="selectTyoe">
-                    <option value="">Select Format</option>
-             </select>
-                <label for="selectTyoe" class="labels">Select Date Type </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="date" name="From ">
-                <label for="From " class="labels">From </label>
-            </div>
-            <div class="form-field">
-                <input class="input-text" type="date" name="To ">
-                <label for=" To" class="labels">To </label>
-            </div>
-
-        </div>
+  <div class="col">
+    <h1>Date</h1>
+    <div>
+      <div class="form-field">
+        <select class="input-select" name="selectTyoe">
+          <option value="">Select Format</option>
+        </select>
+        <label for="selectTyoe" class="labels">Select Date Type </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="date" name="From " />
+        <label for="From " class="labels">From </label>
+      </div>
+      <div class="form-field">
+        <input class="input-text" type="date" name="To " />
+        <label for=" To" class="labels">To </label>
+      </div>
     </div>
+  </div>
 </div>
 <button mat-raised-button color="primary">Search</button>
 <button mat-raised-button color="primary">Export Excel</button>

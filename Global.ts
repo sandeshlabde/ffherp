@@ -6,4 +6,5 @@ import { IUser } from 'src/app/models';
 })
 export class Global {
   public LOGGED_IN_USER: IUser;
+  // public ACTION_DEFAULT_DATA: ActionDefaultData;
 }

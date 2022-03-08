@@ -18,7 +18,7 @@ export class NoteComponent implements OnInit {
   Entityid: any;
 
   noteData: any;
-  noteData2: any;
+
   EntityName: any;
 
   Description: any;
@@ -29,8 +29,8 @@ export class NoteComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
-    this.Entityid = this.data.EntityID
-      this.EntityName = this.data.EntityName
+    this.Entityid = this.data.EntityID;
+    this.EntityName = this.data.EntityName;
 
     this.listService
       .getNoteList(
@@ -41,9 +41,8 @@ export class NoteComponent implements OnInit {
         this.global.LOGGED_IN_USER.Username
       )
       .subscribe((data: any) => {
-        this.noteData = data;
-
-        this.noteData2 = JSON.parse(this.noteData);
+        this.noteData = JSON.parse(data);
+        console.log(this.noteData);
       });
   }
 
@@ -70,9 +69,7 @@ export class NoteComponent implements OnInit {
         this.global.LOGGED_IN_USER.Username
       )
       .subscribe((data: any) => {
-        this.noteData = data;
-
-        this.noteData2 = JSON.parse(this.noteData);
+        this.noteData = JSON.parse(data);
       });
 
     this.description = this.Description;

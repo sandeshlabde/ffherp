@@ -1,83 +1,83 @@
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
-    <a href="/admin/page/Lead" class="companyLogo">
-        <img src="assets/img/FFHFinalLogo.png" height="45" alt="" />
-    </a>
+  <a href="/admin/page/Lead" class="companyLogo">
+    <img src="assets/img/FFHFinalLogo.png" height="45" alt="" />
+  </a>
 
-    <div class="spacer"></div>
-    <img src="assets/img/NoImage.png" width="50" [height]="40" alt="" />
-    <a class=" " id="ffh">
+  <div class="spacer"></div>
+  <img src="assets/img/NoImage.png" width="50" [height]="40" alt="" />
+  <a class=" " id="ffh">
     {{ companyName }}
   </a>
 
-    <li class="header-link" [matMenuTriggerFor]="list" id="">
-        <i class="fas fa-paperclip"> </i>
-        <mat-menu #list="matMenu">
-            <button mat-menu-item class="bg-dark text-white">My list</button>
-            <hr class="dropdown-divider" />
+  <li class="header-link" [matMenuTriggerFor]="list" id="">
+    <i class="fas fa-paperclip"> </i>
+    <mat-menu #list="matMenu">
+      <button mat-menu-item class="bg-dark text-white">My list</button>
+      <hr class="dropdown-divider" />
 
-            <a class="dropdown-list" mat-menu-item>My User</a>
-            <a class="dropdown-list" mat-menu-item>User Rights</a>
-            <a class="dropdown-list" mat-menu-item>My Company</a>
-            <a class="dropdown-list" mat-menu-item>My Config</a>
-            <a class="dropdown-list" mat-menu-item>My Alert</a>
-            <a class="dropdown-list" mat-menu-item>My Branches</a>
+      <a class="dropdown-list" mat-menu-item>My User</a>
+      <a class="dropdown-list" mat-menu-item>User Rights</a>
+      <a class="dropdown-list" mat-menu-item>My Company</a>
+      <a class="dropdown-list" mat-menu-item>My Config</a>
+      <a class="dropdown-list" mat-menu-item>My Alert</a>
+      <a class="dropdown-list" mat-menu-item>My Branches</a>
 
-            <a class="dropdown-list" mat-menu-item>My Report</a>
-            <a class="dropdown-list" mat-menu-item>User Report</a>
-            <a class="dropdown-list" mat-menu-item>Location Detail</a>
-        </mat-menu>
-    </li>
-    <li class="header-link" [matMenuTriggerFor]="QuickLinks" id="">
-        <i class="fas fa-barcode"></i>
-        <mat-menu #QuickLinks="matMenu">
-            <button mat-menu-item class="bg-dark text-white">Quick Links</button>
-            <hr class="dropdown-divider" />
+      <a class="dropdown-list" mat-menu-item>My Report</a>
+      <a class="dropdown-list" mat-menu-item>User Report</a>
+      <a class="dropdown-list" mat-menu-item>Location Detail</a>
+    </mat-menu>
+  </li>
+  <li class="header-link" [matMenuTriggerFor]="QuickLinks" id="">
+    <i class="fas fa-barcode"></i>
+    <mat-menu #QuickLinks="matMenu">
+      <button mat-menu-item class="bg-dark text-white">Quick Links</button>
+      <hr class="dropdown-divider" />
 
-            <a class="dropdown-list" mat-menu-item>Create Prospect</a>
-            <a class="dropdown-list" mat-menu-item>Create Lead</a>
-            <a class="dropdown-list" mat-menu-item>Create SO</a>
-            <a class="dropdown-list" mat-menu-item>Create MO</a>
-            <a class="dropdown-list" mat-menu-item>Create MI</a>
-            <a class="dropdown-list" mat-menu-item>Create Bill</a>
-            <a class="dropdown-list" mat-menu-item>Create Ticket</a>
-            <a class="dropdown-list" mat-menu-item>Install Product</a>
-            <a class="dropdown-list" mat-menu-item>Create PO</a>
-            <a class="dropdown-list" mat-menu-item>Create POBill</a>
-            <a class="dropdown-list" mat-menu-item>Journal Vouchar</a>
-            <a class="dropdown-list" mat-menu-item>Memo</a>
-            <a class="dropdown-list" mat-menu-item>Payment Received</a>
-            <a class="dropdown-list" mat-menu-item>Payment Made</a>
-            <a class="dropdown-list" mat-menu-item>Stock Journal </a>
-        </mat-menu>
-    </li>
-    <li class="header-link" [matMenuTriggerFor]="masters" id="">
-        <i class="fas fa-search"></i>
-        <mat-menu #masters="matMenu">
-            <button mat-menu-item class="bg-dark text-white">Masters</button>
-            <hr class="dropdown-divider" />
+      <a class="dropdown-list" mat-menu-item>Create Prospect</a>
+      <a class="dropdown-list" mat-menu-item>Create Lead</a>
+      <a class="dropdown-list" mat-menu-item>Create SO</a>
+      <a class="dropdown-list" mat-menu-item>Create MO</a>
+      <a class="dropdown-list" mat-menu-item>Create MI</a>
+      <a class="dropdown-list" mat-menu-item>Create Bill</a>
+      <a class="dropdown-list" mat-menu-item>Create Ticket</a>
+      <a class="dropdown-list" mat-menu-item>Install Product</a>
+      <a class="dropdown-list" mat-menu-item>Create PO</a>
+      <a class="dropdown-list" mat-menu-item>Create POBill</a>
+      <a class="dropdown-list" mat-menu-item>Journal Vouchar</a>
+      <a class="dropdown-list" mat-menu-item>Memo</a>
+      <a class="dropdown-list" mat-menu-item>Payment Received</a>
+      <a class="dropdown-list" mat-menu-item>Payment Made</a>
+      <a class="dropdown-list" mat-menu-item>Stock Journal </a>
+    </mat-menu>
+  </li>
+  <li class="header-link" [matMenuTriggerFor]="masters" id="">
+    <i class="fas fa-search"></i>
+    <mat-menu #masters="matMenu">
+      <button mat-menu-item class="bg-dark text-white">Masters</button>
+      <hr class="dropdown-divider" />
 
-            <a class="dropdown-list" mat-menu-item>Company</a>
-            <a class="dropdown-list" mat-menu-item>Contact</a>
-            <a class="dropdown-list" mat-menu-item>Product</a>
-            <a class="dropdown-list" mat-menu-item>Ledger</a>
-        </mat-menu>
-    </li>
-    <li class="header-link" id="">
-        <i class="far fa-envelope"></i>
-    </li>
-    <li class="header-link" id="">
-        <i class="far fa-bell"></i>
-    </li>
-    <li class="header-link" [matMenuTriggerFor]="user" id=" ">
-        <i class="fas fa-user-circle"></i> {{ userName }}
-        <mat-menu #user="matMenu">
-            <a class="dropdown-list" mat-menu-item>New project...</a>
-            <a class="dropdown-list" mat-menu-item>Settings</a>
-            <a class="dropdown-list" mat-menu-item>Profile</a>
-            <hr class="dropdown-divider" />
+      <a class="dropdown-list" mat-menu-item>Company</a>
+      <a class="dropdown-list" mat-menu-item>Contact</a>
+      <a class="dropdown-list" mat-menu-item>Product</a>
+      <a class="dropdown-list" mat-menu-item>Ledger</a>
+    </mat-menu>
+  </li>
+  <li class="header-link" id="">
+    <i class="far fa-envelope"></i>
+  </li>
+  <li class="header-link" id="">
+    <i class="far fa-bell"></i>
+  </li>
+  <li class="header-link" [matMenuTriggerFor]="user" id=" ">
+    <i class="fas fa-user-circle"></i> {{ userName }}
+    <mat-menu #user="matMenu">
+      <a class="dropdown-list" mat-menu-item>New project...</a>
+      <a class="dropdown-list" mat-menu-item>Settings</a>
+      <a class="dropdown-list" mat-menu-item>Profile</a>
+      <hr class="dropdown-divider" />
 
-            <a class="dropdown-list" mat-menu-item (click)="onSignOut()">Sign out</a>
-        </mat-menu>
-    </li>
+      <a class="dropdown-list" mat-menu-item (click)="onSignOut()">Sign out</a>
+    </mat-menu>
+  </li>
 </div>

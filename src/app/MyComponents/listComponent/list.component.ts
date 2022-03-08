@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProspectService } from 'src/app/services/prospect.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,7 +16,9 @@ import { EntityProductComponent } from './entity-product/entity-product.componen
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { NoteComponent } from './note/note.component';
 import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.component';
+import { ActionComponent } from 'src/app/shared/action/action.component';
 
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -26,7 +28,7 @@ export interface DialogData {
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
 })
-export class ProspectListComponent implements OnInit {
+export class ListComponent implements OnInit {
   displayedColumns: string[] = [
     'InstalledNo',
     'ClientName',
@@ -48,13 +50,22 @@ export class ProspectListComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource = new MatTableDataSource<prospectdatafield>([]);
+  drop(event: CdkDragDrop<any[]>) {
+    console.log(event);
+    moveItemInArray(
+      this.dataSource.data,
+      event.previousIndex,
+      event.currentIndex
+    );
+  }
 
   EntityName: any;
   id: any;
   date: any;
   current_date: any;
   selection: any;
-
+  tableSection: boolean = true;
+  cardSection: boolean = false;
   // table colum row show function start here
   get delstatus() {
     return ['salesorderlist'].includes(this.EntityName.toLowerCase());
@@ -142,14 +153,15 @@ export class ProspectListComponent implements OnInit {
     private listService: ProspectService,
     private root: ActivatedRoute,
     public dialog: MatDialog,
+
     private global: Global
   ) {
     this.root.params.subscribe((param) => {
       this.EntityName = param['EntityName'];
       let params = {
-        flag: this.EntityName,
+        Flag: this.EntityName,
         Dbname: this.global.LOGGED_IN_USER.DbName,
-        encrypt: this.global.LOGGED_IN_USER.encryptPswd,
+        Password: this.global.LOGGED_IN_USER.encryptPswd,
         id: this.global.LOGGED_IN_USER.RoleId,
         userid: this.global.LOGGED_IN_USER.UserId,
       };
@@ -251,7 +263,6 @@ export class ProspectListComponent implements OnInit {
   }
   // EditList dialog model
   EditList(installno: any, entityName: any, entityid: any) {
-    console.log(installno, entityName, entityid);
     const dialogRef4 = this.dialog.open(EditListComponent, {
       height: '50%%',
       width: '80%',
@@ -278,6 +289,28 @@ export class ProspectListComponent implements OnInit {
 
     dialogRef4.afterClosed().subscribe();
   }
+  openAction(id: any, clientNo: any) {
+    const dialogRef = this.dialog.open(ActionComponent, {
+      width: '35%',
 
+      position: { left: 65 + '%', top: 5 + '%' },
+
+      data: {
+        EntityID: id,
+        EntityName: this.EntityName,
+        clientNo: clientNo,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe();
+  }
+  selectTable() {
+    this.tableSection = true;
+    this.cardSection = false;
+  }
+  selectCard() {
+    this.tableSection = false;
+    this.cardSection = true;
+  }
   ngOnInit() {}
 }

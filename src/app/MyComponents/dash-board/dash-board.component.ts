@@ -1,28 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ɵɵclassMapInterpolate2 } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Global } from 'Global';
 import { ProspectService } from 'src/app/services/prospect.service';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
-import { FormControl } from '@angular/forms';
-import * as moment from 'moment';
-import { map } from 'rxjs';
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'LL',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-dash-board',
   templateUrl: './dash-board.component.html',
@@ -36,8 +19,8 @@ export class DashBoardComponent implements OnInit {
   total: any;
   value: any;
   fromdate: any;
-  From: any = '';
-  To: any = '';
+  From: any = moment().format('YYYY-MM-DD');
+  To: any = moment().format('YYYY-MM-DD');
   arr: any[];
   AllData: any;
   FooterTotal: any;

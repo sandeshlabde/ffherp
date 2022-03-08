@@ -11,13 +11,13 @@ import { CommanComponent } from './MyComponents/comman/comman.component';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './MyComponents/header/header.component';
 import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
-import { ProspectListComponent } from './MyComponents/listComponent/list.component';
+import { ListComponent } from './MyComponents/listComponent/list.component';
 import { ListModule } from './MyComponents/listComponent/list.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProspectListComponent,
+    ListComponent,
     LoginComponent,
     DashBoardComponent,
     CommanComponent,

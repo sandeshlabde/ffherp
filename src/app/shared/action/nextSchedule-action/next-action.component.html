@@ -1,0 +1,192 @@
+<h1 mat-dialog-title class="heading">Your Next Action</h1>
+<form #nextAction="ngForm" (submit)="saveActionForm(nextAction.value)">
+  <div class="SelectActionType-Checkbox">
+    <mat-radio-group
+      aria-label="Select-Action-Type"
+      name="ScheduleActionType"
+      [(ngModel)]="ScheduleActionType"
+      (ngModelChange)="updateOptionalLabel()"
+    >
+      <mat-radio-button
+        color="primary"
+        *ngFor="let ScheduleSelectActionData of SelectActionData"
+        [value]="ScheduleSelectActionData.Id"
+        name="{{ ScheduleSelectActionData.Name }}"
+      >
+        {{ ScheduleSelectActionData.Name }}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="contain2">
+    <div class="row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Activity Type</mat-label>
+          <mat-select name="ScheduleActivityType" ngModel>
+            <mat-option
+              *ngFor="let actionValue of activitydata"
+              value="{{ actionValue.Id }}"
+            >
+              {{ actionValue.Name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-12">
+        <mat-form-field class="input-width">
+          <mat-label>What To Do</mat-label>
+          <textarea matInput ngModel name="Discussions"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="row col-12">
+        <div class="col-lg-6">
+          <mat-form-field class="input-width">
+            <mat-label>Alert Before</mat-label>
+            <input matInput name="alertBefore2" ngModel />
+          </mat-form-field>
+        </div>
+        <div class="col-lg-6 row">
+          <div class="col-lg-6">
+            <mat-form-field class="input-width">
+              <mat-label>On Date Time</mat-label>
+              <input
+                matInput
+                [matDatepicker]="ScheduleActionDate"
+                name="ScheduleActionDate"
+                [max]="today"
+                ngModel
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="ScheduleActionDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #ScheduleActionDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field class="input-width">
+              <input matInput type="time" name="ScheduleActionTime" ngModel />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10">
+          <mat-form-field class="input-width">
+            <mat-label>Coustomer Contact Name</mat-label>
+            <mat-select name="CoustomerContactName" ngModel>
+              <mat-option
+                *ngFor="let contactlist of contactlistData"
+                value="{{ contactlist.Name }}"
+              >
+                {{ contactlist.Name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="col-lg-2">
+          <mat-checkbox>Other</mat-checkbox>
+        </div>
+      </div>
+      <div class="col-12 row">
+        <div class="col-lg-6">
+          <mat-checkbox class="input-width">
+            <mat-form-field class="input-width">
+              <mat-label>E-mail</mat-label>
+              <input matInput name="contactEmail" ngModel />
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+        <div class="col-lg-6">
+          <mat-checkbox class="input-width">
+            <mat-form-field
+              class="input-width"
+              *ngFor="let contactlist of contactlistData"
+            >
+              <!-- *ngFor="let contactlist of contactlistData" -->
+              <mat-label>SMS</mat-label>
+              <input
+                name="ContactMobile"
+                matInput
+                [(ngModel)]="contactlist.ContactMobile"
+              />
+              <!-- [(ngModel)]="contactlist.ContactMobile"  -->
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field
+          class="input-width"
+          *ngFor="let getDefaultData of getDefaultData"
+        >
+          <mat-label>Executive Name</mat-label>
+          <input
+            matInput
+            name="ScheduleUserId"
+            [(ngModel)]="getDefaultData.ScheduleUserId"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-12 row">
+        <div class="col-lg-6">
+          <mat-checkbox class="example-margin">
+            <mat-form-field class="input-width">
+              <mat-label>E-mail</mat-label>
+              <input matInput name="Email" ngModel />
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+        <div class="col-lg-6">
+          <mat-checkbox class="example-margin">
+            <mat-form-field class="input-width">
+              <mat-label>SMS</mat-label>
+              <input matInput name="SMS" ngModel />
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+      </div>
+      <!-- <div class="col-lg-12">
+                    <mat-form-field class="input-width">
+                        <mat-label>Manager Alert</mat-label>
+                        <input matInput name="ManagerAlert" ngModel />
+                    </mat-form-field>
+                </div> -->
+      <div class="col-12 row" *ngFor="let user of userlistData">
+        <div class="col-lg-6">
+          <mat-checkbox class="example-margin">
+            <mat-form-field class="input-width">
+              <mat-label>E-mail</mat-label>
+              <input [(ngModel)]="user.UserEmail" name="UserEmail" matInput />
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+        <div class="col-lg-6">
+          <mat-checkbox class="example-margin">
+            <mat-form-field class="input-width">
+              <mat-label>SMS</mat-label>
+              <input [(ngModel)]="user.UserMobile" name="UserMobile" matInput />
+            </mat-form-field>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <button class="col" mat-stroked-button matStepperPrevious color="warn">
+      Back
+    </button>
+    <button
+      class="col"
+      type="submit"
+      mat-stroked-button
+      matStepperNext
+      color="primary"
+    >
+      Save
+    </button>
+  </div>
+</form>

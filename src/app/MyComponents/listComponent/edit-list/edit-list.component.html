@@ -1,64 +1,50 @@
 <div class="noteBox">
+  <div class="modal-header bg-primary text-white text-center">
+    <h4 class="modal-title title">Vouchar Detail</h4>
 
-    <div class="modal-header bg-primary text-white text-center ">
+    <button type="button" mat-dialog-close class="btn-close"></button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr class="table-primary">
+          <th>Seq</th>
+          <th>By</th>
+          <th>On</th>
+          <th>Head</th>
+          <th>Entity</th>
+          <th>Budget</th>
+          <th>Exp.</th>
+          <th>Appv Status</th>
+          <th>Appv Amt</th>
+          <th>Paid Amt</th>
+          <th>Due Amt</th>
+          <th>Paid Status</th>
+          <th>Appv Status</th>
+          <th>Appv Amt</th>
+          <th>Remark</th>
+        </tr>
+      </thead>
 
-
-        <h4 class="modal-title title">Vouchar Detail</h4>
-
-        <button type="button" mat-dialog-close class="btn-close "></button>
-
-
-    </div>
-    <div class="modal-body">
-        <table class="table table-hover table-striped ">
-            <thead>
-
-                <tr class="table-primary">
-                    <th>Seq</th>
-                    <th>By</th>
-                    <th>On</th>
-                    <th>Head</th>
-                    <th>Entity</th>
-                    <th>Budget</th>
-                    <th>Exp.</th>
-                    <th>Appv Status</th>
-                    <th>Appv Amt</th>
-                    <th>Paid Amt</th>
-                    <th>Due Amt</th>
-                    <th>Paid Status</th>
-                    <th>Appv Status</th>
-                    <th>Appv Amt</th>
-                    <th>Remark</th>
-                </tr>
-            </thead>
-
-
-            <tbody>
-                <tr *ngFor="let x of editData" class="table-light  ">
-                    <td>{{x.VoucherNo}}</td>
-                    <td>{{x.UpdatedBy}}
-
-                    </td>
-                    <td>{{x.UpdatedOn|date:"dd MMM yyyy"}}</td>
-                    <td>{{x.ExpenseTitle}}</td>
-                    <td>{{x.EntityName}}</td>
-                    <td>{{x.Budgeted}}</td>
-                    <td>{{x.ExpenseTitle}}</td>
-                    <td>{{x.ApprovalStatus}}</td>
-                    <td>{{x.ApprovedAmount}}</td>
-                    <td>{{x.ApprovedAmount}}</td>
-                    <td>{{x.PaidAmount}}</td>
-                    <td>{{x.DueAmount}}</td>
-                    <td>{{x.PaymentStatus}}</td>
-                    <td>{{x.f}}</td>
-                    <td>{{x.ApprovedRemark}}</td>
-
-                </tr>
-            </tbody>
-
-        </table>
-
-
-    </div>
-
+      <tbody>
+        <tr *ngFor="let x of editData" class="table-light">
+          <td>{{ x.VoucherNo }}</td>
+          <td>{{ x.UpdatedBy }}</td>
+          <td>{{ x.UpdatedOn | date: "dd MMM yyyy" }}</td>
+          <td>{{ x.ExpenseTitle }}</td>
+          <td>{{ x.EntityName }}</td>
+          <td>{{ x.Budgeted }}</td>
+          <td>{{ x.ExpenseTitle }}</td>
+          <td>{{ x.ApprovalStatus }}</td>
+          <td>{{ x.ApprovedAmount }}</td>
+          <td>{{ x.ApprovedAmount }}</td>
+          <td>{{ x.PaidAmount }}</td>
+          <td>{{ x.DueAmount }}</td>
+          <td>{{ x.PaymentStatus }}</td>
+          <td>{{ x.f }}</td>
+          <td>{{ x.ApprovedRemark }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

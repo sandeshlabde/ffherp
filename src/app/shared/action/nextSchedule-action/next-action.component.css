@@ -1,0 +1,57 @@
+button {
+  width: 50%;
+  height: 45px;
+}
+
+mat-radio-button {
+  margin: 0px 10px;
+}
+
+textarea {
+  height: 60px;
+  resize: none;
+}
+.mat-tab-group {
+  max-height: 100vh !important;
+}
+.SelectActionType-Checkbox {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0px;
+}
+
+.input-width {
+  width: 100%;
+}
+
+.contain2 {
+  margin: 10px;
+  max-height: 100vh;
+}
+
+.mat-dialog-content {
+  display: block;
+  margin: 0px !important;
+  padding: 0px !important;
+  max-height: 100vh !important;
+  overflow: auto;
+}
+
+.heading {
+  top: 0px;
+  position: sticky;
+  text-align: center;
+  background-color: rgb(230, 144, 123);
+  color: white;
+  padding: 5px 0px;
+  padding: 0px !important;
+  margin: 0px !important;
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0px !important;
+}
+
+.form-contain {
+  height: 100%;
+}

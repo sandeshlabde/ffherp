@@ -1,0 +1,106 @@
+<form class="form-box">
+  <div class="heading1">
+    <h1>Congratulation</h1>
+  </div>
+  <div class="heading2">
+    <h1>Better Luck Next Time</h1>
+  </div>
+  <div class="heading3">
+    <h1>Not Your Fault</h1>
+  </div>
+  <div class="contain card">
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Opportunity Status</mat-label>
+          <mat-select name="Opportunity " ngModel>
+            <mat-option value=" "> </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Delivery Date</mat-label>
+          <input matInput [matDatepicker]="Delivery" name="Delivery " ngModel />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="Delivery"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #Delivery></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Coustomer Pur Order No</mat-label>
+          <input matInput name="Coustomer " ngModel />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label> Date</mat-label>
+          <input matInput [matDatepicker]="Date" name="Date " ngModel />
+          <mat-datepicker-toggle matSuffix [for]="Date"></mat-datepicker-toggle>
+          <mat-datepicker #Date></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Our Cost </mat-label>
+          <input matInput name=" OurCost" ngModel />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label> Order Value</mat-label>
+          <input matInput name="  OrderValue" ngModel />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Instrument type</mat-label>
+          <mat-select name=" Instrument" ngModel>
+            <mat-option value=" "> </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Advance Received</mat-label>
+          <input matInput name="AdvanceReceived " ngModel />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-12 row">
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Bank Drawn ON</mat-label>
+          <input matInput name="BankDrawnON " ngModel />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6">
+        <mat-form-field class="input-width">
+          <mat-label>Instument Number</mat-label>
+          <input matInput name="InstumentNumber " ngModel />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col-lg-12">
+      <mat-form-field class="input-width">
+        <mat-label>Remark</mat-label>
+        <textarea matInput ngModel name="Remark"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="link"><a class="a"> Send Alert</a></div>
+    <div class="col">
+      <button mat-raised-button color="warn">Save & Sales Order</button>
+      <button mat-raised-button color="primary">Save & Close Lead</button>
+    </div>
+  </div>
+</form>

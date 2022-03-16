@@ -29,7 +29,7 @@ export class EditListComponent implements OnInit {
       encrypt: this.global.LOGGED_IN_USER.encryptPswd,
     };
     this.listService.showvoucharData(params).subscribe((data: any) => {
-      console.log(data);
+      console.log(JSON.parse(data));
       this.editData = JSON.parse(data);
     });
   }

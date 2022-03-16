@@ -1,0 +1,43 @@
+.contact_form {
+  min-height: 400px;
+  margin: 0px 6px;
+  padding: 10px;
+}
+.full-width {
+  width: 100%;
+}
+li {
+  text-decoration: none;
+  display: inline;
+  padding-left: 10px;
+  cursor: pointer;
+}
+h4 {
+  text-align: center;
+  color: lightskyblue;
+  margin: 0px !important;
+}
+textarea {
+  height: 330px;
+  resize: none;
+}
+.Formheader {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+}
+.formFooter {
+  height: 48px;
+  padding-top: 7px;
+}
+.mat-stroked-button {
+  margin-right: 15px !important;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+}
+.mat-checkbox {
+  margin-top: 16px;
+}

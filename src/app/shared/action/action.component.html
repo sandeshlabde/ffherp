@@ -24,7 +24,7 @@
           </mat-radio-group>
         </div>
 
-        <mat-tab-group mat-stretch-tabs class=" ">
+        <mat-tab-group mat-stretch-tabs class=" " [(selectedIndex)]="TabIndex">
           <mat-tab label="Connected">
             <div class="row contain">
               <div class="col-lg-6">
@@ -69,8 +69,8 @@
                     <input
                       matInput
                       [matDatepicker]="ActionStartDate"
-                      name="ActionStartDate"
-                      ngModel
+                      name="actionStartDate"
+                      [(ngModel)]="actionStartDate"
                     />
                     <mat-datepicker-toggle
                       matSuffix
@@ -97,8 +97,8 @@
                     <input
                       matInput
                       [matDatepicker]="ActionEndDate"
-                      name="ActionEndDate"
-                      ngModel
+                      name="actionEndDate"
+                      [(ngModel)]="actionEndDate"
                     />
                     <mat-datepicker-toggle
                       matSuffix
@@ -160,7 +160,7 @@
                 <div class="row col-lg-12">
                   <div class="col-lg-4">
                     <mat-label>Email Report</mat-label>
-                    <!-- <input matInput name="EmailReport" ngModel /> -->
+
                     <mat-checkbox class="pe-2" name="Client" ngModel
                       >Client</mat-checkbox
                     >

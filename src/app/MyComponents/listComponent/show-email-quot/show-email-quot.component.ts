@@ -15,12 +15,12 @@ export class ShowEmailQuotComponent implements OnInit {
   EntityName: any;
   id: any;
   Entityid: any;
-  PDFCustomerID!: number; 
-  ShowEmailQuoteData: any; 
+  PDFCustomerID!: number;
+  ShowEmailQuoteData: any;
   emailQuote: boolean = false;
   termsCondition: boolean = false;
   viewPDF: boolean = false;
-  termsconditionData: any; 
+  termsconditionData: any;
   eLeadFormatID: any;
   eLeadTermsSetID: any;
   termSetData: any;
@@ -30,7 +30,12 @@ export class ShowEmailQuotComponent implements OnInit {
   header: any;
   bank: any;
   myform: any;
-  termSection: boolean = false; 
+  termSection: boolean = false;
+  selectemailQuoteFormat: any;
+  SelectFormat: any;
+  SelectHeaderFooter: any;
+  SelectBank: any;
+  SelecteeLeadTermsSetID: any;
 
   constructor(
     private listService: ProspectService,
@@ -65,19 +70,19 @@ export class ShowEmailQuotComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd,
         this.global.LOGGED_IN_USER.UserId
       )
-      .subscribe((data: any) => { 
-        this.url = data; 
+      .subscribe((data: any) => {
+        this.url = data;
       });
   }
   // Send Mail Function
-  selectFormat(e: any) {
-    this.format = e.target.value;
+  selectFormat() {
+    this.format = this.SelectFormat;
   }
-  selectHeader(e: any) {
-    this.header = e.target.value;
+  selectHeader() {
+    this.header = this.SelectHeaderFooter;
   }
-  selectBank(e: any) {
-    this.bank = e.target.value; 
+  selectBank() {
+    this.bank = this.SelectBank;
   }
   //  send email Quote
   onClickSubmit(data: any) {
@@ -101,7 +106,7 @@ export class ShowEmailQuotComponent implements OnInit {
         this.global.LOGGED_IN_USER.encryptPswd
       )
       .subscribe((data: any) => {
-        this.ShowEmailQuoteData = JSON.parse(data); 
+        this.ShowEmailQuoteData = JSON.parse(data);
       });
     this.emailQuote = !this.emailQuote;
     this.termsCondition = false;
@@ -115,9 +120,9 @@ export class ShowEmailQuotComponent implements OnInit {
     this.termsCondition = !this.termsCondition;
   }
   // select format DropDown function
-  selectDropDown(e: any) {
+  selectDropDown() {
     this.termSection = false;
-    this.eLeadFormatID = e.target.value;
+    this.eLeadFormatID = this.selectemailQuoteFormat;
 
     this.listService
       .showtermscondition(
@@ -130,9 +135,9 @@ export class ShowEmailQuotComponent implements OnInit {
       });
   }
   // select Term Set DropDown Function
-  selectTermSet(e: any) {
+  selectTermSet() {
     this.termSection = true;
-    this.eLeadTermsSetID = e.target.value;
+    this.eLeadTermsSetID = this.SelecteeLeadTermsSetID;
     this.listService
       .showtermSet(
         this.eLeadFormatID,

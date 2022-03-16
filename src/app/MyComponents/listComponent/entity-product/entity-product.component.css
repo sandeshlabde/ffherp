@@ -26,18 +26,18 @@
 }
 
 .col_1 {
-  font-size: small;
+  /* font-size: small; */
   text-decoration: solid;
   margin-right: 10px;
 }
 
 .col_2 {
-  font-size: small;
+  /* font-size: small; */
   color: #000000a9;
 }
 
 #schedule {
-  font-size: small;
+  /* font-size: small; */
   text-align: start;
   color: #0000005d;
 }

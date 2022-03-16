@@ -1,4 +1,4 @@
-export interface prospectdatafield {
+export interface listdatafield {
   position: number;
   IsSearch: number;
   RoleID: number;
@@ -34,6 +34,7 @@ export interface prospectdatafield {
   NextActtiondate: string;
   Nextactiontime: string;
   REMARK: string;
+  NextACtionDate: string;
   DeliveryStatusName: string;
   ServiceTypeName: string;
   StatusName: string;

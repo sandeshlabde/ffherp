@@ -1,34 +1,52 @@
 .chart {
-    display: block;
-    width: 400px;
-    height: 400px;
+  display: block;
+  width: 400px;
+  height: 400px;
 }
-
 .contain {
-    margin-left: 6%;
+  padding: 64px 17px 0px 67px;
 }
-
 button {
-    margin: auto;
-    height: 50px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
+  height: 45px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(108, 166, 231) !important;
 }
-
+button:hover {
+  color: black;
+  /* background-color: rgb(105, 179, 240); */
+}
 mat-form-field {
-    margin: 0px 10px;
+  margin: 0px 10px;
 }
-
+.ChartHeading {
+  text-align: center;
+  margin-top: 10px;
+}
+.mat-card {
+  margin-top: 30px;
+  display: block;
+  width: 500px;
+  height: 500px;
+  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%), 2px 2px 2px 2px rgb(0 0 0 / 14%),
+    2px 2px 2px 2px rgb(0 0 0 / 12%);
+}
+.piaChart {
+  display: flex;
+  justify-content: center;
+}
 .option {
-    display: flex;
-    margin: 20px 0px 10px 0px;
-    height: 54px;
+  display: flex;
+  margin: 20px 0px 10px 0px;
+  height: 54px;
 }
 
 .a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .a:hover {
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: small;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: small;
 }

@@ -6,7 +6,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { prospectdatafield } from 'src/apitable';
+import { listdatafield } from 'src/apitable';
 import { Global } from 'Global';
 import { ApprovalComponent } from './approval/approval.component';
 import { ChatComponent } from './chat/chat.component';
@@ -19,6 +19,8 @@ import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.compon
 import { ActionComponent } from 'src/app/shared/action/action.component';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CreateNewComponent } from './create-new/create-new.component';
+import * as moment from 'moment';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -29,36 +31,108 @@ export interface DialogData {
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  displayedColumns: string[] = [
-    'InstalledNo',
-    'ClientName',
-    'ContactName',
-    'OwnerName',
-    'Anualisedamount',
-    'StatusName',
-    'Billedstatus',
-    'SourceName',
-    'Billedstatus1',
-    'isDDeliveryStatus1',
-    'ServiceTypeName',
-    'Stage',
-    'EXPClosuredateDashboard',
-    'DeliveryDate',
+  a = moment();
+  toDayDate = this.a.toISOString();
+  public dateColour: boolean;
+  displayedColumns: any[] = [
+    {
+      default: true,
+      columnName: 'InstalledNo',
+    },
+    {
+      default: true,
+      columnName: 'ClientName',
+    },
+    {
+      default: true,
+      columnName: 'ContactName',
+    },
+    {
+      default: true,
+      columnName: 'OwnerName',
+    },
+    {
+      default: true,
+      columnName: 'Anualisedamount',
+    },
+    {
+      default: false,
+      columnName: 'StatusName',
+      entityTypes: [
+        'lead',
+        'molist',
+        'payment',
+        'prospect',
+        'payable',
+        'Ticket',
+        'repair',
+        'work',
+        'voucher',
+      ],
+    },
+    {
+      default: false,
+      columnName: 'Billedstatus',
+      entityTypes: ['salesorderlist', 'polist', 'payment'],
+    },
+    {
+      default: false,
+      columnName: 'SourceName',
+      entityTypes: ['prospect', 'lead'],
+    },
+    {
+      default: false,
+      columnName: 'DeliveryStatusName',
+      entityTypes: ['salesorderlist'],
+    },
+    {
+      default: false,
+      columnName: 'ServiceTypeName',
+      entityTypes: ['Ticket', 'repair', 'work', 'amc'],
+    },
+    {
+      default: false,
+      columnName: 'Stage',
+      entityTypes: ['prospect', 'lead'],
+    },
+    {
+      default: false,
+      columnName: 'EXPClosuredateDashboard',
+      entityTypes: [
+        'lead',
+        'payment',
+        'prospect',
+        'ticket',
+        'amc',
+        'repair',
+        'work',
+        'molist',
+        'milist',
+        'voucher',
+      ],
+    },
+    {
+      default: false,
+      columnName: 'DeliveryDate',
+      entityTypes: ['salesorderlist', 'polist', 'payable'],
+    },
   ];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  dataSource = new MatTableDataSource<prospectdatafield>([]);
+  dataSource = new MatTableDataSource<listdatafield>([]);
+  EntityNameTitle: string = '';
+  listcol: any;
+  eXPDate: any;
+  groupbydata: Map<any, any>;
   drop(event: CdkDragDrop<any[]>) {
-    console.log(event);
     moveItemInArray(
       this.dataSource.data,
       event.previousIndex,
       event.currentIndex
     );
   }
-
   EntityName: any;
   id: any;
   date: any;
@@ -67,68 +141,25 @@ export class ListComponent implements OnInit {
   tableSection: boolean = true;
   cardSection: boolean = false;
   // table colum row show function start here
-  get delstatus() {
-    return ['salesorderlist'].includes(this.EntityName.toLowerCase());
-  }
-  get isShowDStatus() {
-    return ['salesorderlist'].includes(this.EntityName.toLowerCase());
-  }
-  get isStatus() {
-    return [
-      'lead',
-      'molist',
-      'payment',
-      'prospect',
-      'polist',
-      'payable',
-      'Ticket',
-      'repair',
-      'work',
-      'voucher',
-    ].includes(this.EntityName.toLowerCase());
-  }
-  get isSourceName() {
-    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
-  }
-  get expDate() {
-    return [
-      'lead',
-      'payment',
-      'prospect',
-      'ticket',
-      'amc',
-      'repair',
-      'work',
-      'molist',
-      'milist',
-      'voucher',
-    ].includes(this.EntityName.toLowerCase());
+
+  get listColumns() {
+    return Object.values(this.displayedColumns)
+      .filter((item) => {
+        if (item.default) {
+          return true;
+        }
+        if (item.entityTypes) {
+          return (
+            item.entityTypes.includes(this.EntityName.toLowerCase()) ||
+            item.default
+          );
+        } else {
+          return false;
+        }
+      })
+      .map((item) => item.columnName);
   }
 
-  get isDeliveryDate() {
-    return ['salesorderlist', 'polist', 'payable'].includes(
-      this.EntityName.toLowerCase()
-    );
-  }
-  get isBilledStatus() {
-    return ['salesorderlist', 'polist', 'payment'].includes(
-      this.EntityName.toLowerCase()
-    );
-  }
-  get isDDeliveryStatus() {
-    return ['payable'].includes(this.EntityName.toLowerCase());
-  }
-  get isBStatus() {
-    return ['milist'].includes(this.EntityName.toLowerCase());
-  }
-  get isServiceType() {
-    return ['Ticket', 'repair', 'work', 'amc'].includes(
-      this.EntityName.toLowerCase()
-    );
-  }
-  get stage() {
-    return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
-  }
   get installedno() {
     return [
       'lead',
@@ -167,10 +198,66 @@ export class ListComponent implements OnInit {
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
-        console.log(JSON.parse(data));
+        console.log(this.dataSource.data);
+        // this.groupby();
       });
+      if (this.EntityName === 'POList') {
+        this.EntityNameTitle = 'Purchase Order';
+      } else if (this.EntityName === 'SalesOrderLIst') {
+        this.EntityNameTitle = 'Sales Order';
+      } else if (this.EntityName === 'Prospect') {
+        this.EntityNameTitle = 'Prospect';
+      } else if (this.EntityName === 'Lead') {
+        this.EntityNameTitle = 'Lead';
+      } else if (this.EntityName === 'Payable') {
+        this.EntityNameTitle = 'Payable';
+      } else if (this.EntityName === 'MoList') {
+        this.EntityNameTitle = 'Material Out';
+      } else if (this.EntityName === 'MIList') {
+        this.EntityNameTitle = 'Material In';
+      } else if (this.EntityName === 'Repair') {
+        this.EntityNameTitle = 'Repair';
+      } else if (this.EntityName === 'Payment') {
+        this.EntityNameTitle = 'Payment';
+      } else if (this.EntityName === 'AMC') {
+        this.EntityNameTitle = 'AMC';
+      } else if (this.EntityName === 'Work') {
+        this.EntityNameTitle = 'Work';
+      } else if (this.EntityName === 'Ticket') {
+        this.EntityNameTitle = 'Ticket';
+      }
     });
   }
+  // groupby() {
+  //   const map = new Map();
+  //   this.dataSource.data.forEach((item) => {
+  //     map.set(item['ClientName'], {
+  //       ...map.get(item['ClientName']),
+  //       [item['ClientName']]:
+  //         map.get(item['ClientName']) &&
+  //         map.get(item['ClientName'])[item['ClientName']]
+  //           ? map.get(item['ClientName'])[item['ClientName']] + 1
+  //           : 1,
+  //     });
+  //   });
+  //   return (this.groupbydata = map);
+  //   console.log(map);
+  // }
+  // get columns(): Array<string> {
+  //   if (this.groupbydata) {
+  //     const c: any = Array.from(this.groupbydata).reduce(
+  //       (cols: Set<string>, o) => {
+  //         Object.keys(o[1]).forEach((key) => {
+  //           cols.add(key.trim());
+  //         });
+  //         return cols;
+  //       },
+  //       new Set()
+  //     );
+  //     return Array.from(c);
+  //   }
+  //   return [];
+  // }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -192,6 +279,7 @@ export class ListComponent implements OnInit {
       data: {
         EntityID: id,
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -205,6 +293,7 @@ export class ListComponent implements OnInit {
       data: {
         EntityID: id,
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -218,19 +307,22 @@ export class ListComponent implements OnInit {
       data: {
         EntityID: id,
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
     dialogRef.afterClosed().subscribe();
   }
   // Notes Section Dialog Model
-  openNotes(id: any) {
+  openNotes(id: any, company: any) {
     const dialogRef3 = this.dialog.open(NoteComponent, {
       height: '50%',
       width: '60%',
       data: {
         EntityID: id,
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
+        companyName: company,
       },
     });
 
@@ -239,11 +331,13 @@ export class ListComponent implements OnInit {
   // Chat Section Dialog Model
   openChat(id: any) {
     const dialogRef4 = this.dialog.open(ChatComponent, {
-      height: 'auto',
-      width: '40%',
+      width: '35%',
+
+      position: { left: 65 + '%', top: 5 + '%' },
       data: {
         EntityID: id,
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -256,6 +350,7 @@ export class ListComponent implements OnInit {
       width: '80%',
       data: {
         EntityName: this.EntityName,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -270,6 +365,7 @@ export class ListComponent implements OnInit {
         installno: installno,
         entityName: entityName,
         entityid: entityid,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -284,6 +380,7 @@ export class ListComponent implements OnInit {
         installno: installno,
         entityName: entityName,
         entityid: entityid,
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 
@@ -299,6 +396,18 @@ export class ListComponent implements OnInit {
         EntityID: id,
         EntityName: this.EntityName,
         clientNo: clientNo,
+        EntityNameTitle: this.EntityNameTitle,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe();
+  }
+  createForm() {
+    const dialogRef = this.dialog.open(CreateNewComponent, {
+      data: {
+        EntityName: this.EntityName,
+
+        EntityNameTitle: this.EntityNameTitle,
       },
     });
 

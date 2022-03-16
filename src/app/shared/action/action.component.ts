@@ -1,15 +1,36 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+  DateAdapter,
+} from '@angular/material/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Global } from 'Global';
 import * as moment from 'moment';
+import { MY_FORMATS } from 'src/app/matdatepickerformat';
 import { ActionService } from 'src/app/services/action.service';
 
 @Component({
   selector: 'app-action',
   templateUrl: './action.component.html',
   styleUrls: ['./action.component.css'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class ActionComponent implements OnInit {
+  public TabIndex = 1;
   EntityId: '';
   stageType: string;
   activityType: string;
@@ -21,9 +42,9 @@ export class ActionComponent implements OnInit {
   ActionType: any;
   ActivityType: any;
   Discussions: any;
-  ActionStartDate: any = moment();
+  actionStartDate: any = moment().format('YYYY-MM-DD');
   ActionStartTime: any;
-  ActionEndDate: any = moment();
+  actionEndDate: any = moment().format('YYYY-MM-DD');
   ActionEndTime: any;
 
   Comefrompdfsend: any;
@@ -179,9 +200,9 @@ export class ActionComponent implements OnInit {
       ActionType: this.SelectActionType,
       ActivityType: data.ActivityType,
       Discussions: data.Discussion,
-      ActionStartDate: moment(data.ActionStartDate).format('DD/MM/YYYY'),
+      ActionStartDate: moment(data.actionStartDate).format('DD/MM/YYYY'),
       ActionStartTime: data.ActionStartTime,
-      ActionEndDate: moment(data.ActionEndDate).format('DD/MM/YYYY'),
+      ActionEndDate: moment(data.actionEndDate).format('DD/MM/YYYY'),
       ActionEndTime: data.ActionEndTime,
       ContactId: this.getDefaultData[0].ContactId,
       UserId: this.global.LOGGED_IN_USER.UserId,

@@ -1,106 +1,114 @@
-<div class="modal-header bg-info text-white text-center">
-  <h3>Search</h3>
+<div>
+  <div class="modal-header bg-info text-white text-center">
+    <h3>Search</h3>
 
-  <button type="button" mat-dialog-close class="btn-close"></button>
+    <button type="button" mat-dialog-close class="btn-close"></button>
+  </div>
+
+  <div class="row filterSearchContain">
+    <div class="col">
+      <h1>Company</h1>
+      <div>
+        <mat-form-field class="input-width">
+          <mat-label>Company</mat-label>
+          <input matInput name="Company " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Associat Company</mat-label>
+          <input matInput name="AssociatCompany " />
+        </mat-form-field>
+
+        <mat-form-field class="input-width">
+          <mat-label>Parent Company</mat-label>
+          <input matInput name="ParentCompany " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Company Owner</mat-label>
+          <input matInput name="CompanyOwner" />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Select Industy Typer</mat-label>
+          <input matInput name="SelectIndustyType" />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Select Relationship </mat-label>
+          <input matInput name="SelectRelationship " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Area </mat-label>
+          <input matInput name="Area " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>City </mat-label>
+          <input matInput name="City " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>State </mat-label>
+          <input matInput name="State " />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col">
+      <h1>Product</h1>
+      <div>
+        <mat-form-field class="input-width">
+          <mat-label>Product</mat-label>
+          <input matInput name="Product " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Category</mat-label>
+          <input matInput name="Category" />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Group</mat-label>
+          <input matInput name="Group " />
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>Manufacture</mat-label>
+          <input matInput name="Manufacture " />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col">
+      <h1>Entity Wise</h1>
+      <div *ngFor="let label of labelData">
+        <mat-form-field class="input-width">
+          <mat-label>{{ label.Label }} </mat-label>
+          <input
+            matInput
+            id="{{ label.ID }}"
+            type="{{ label.Type }}"
+            name="{{ label.Label }}"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="col">
+      <h1>Date</h1>
+      <div>
+        <mat-form-field class="input-width">
+          <mat-label>Select Date Type</mat-label>
+          <mat-select>
+            <mat-option> Select Format </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="input-width">
+          <mat-label>From</mat-label>
+          <input matInput [matDatepicker]="From" />
+          <mat-datepicker-toggle matSuffix [for]="From"></mat-datepicker-toggle>
+          <mat-datepicker #From></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="input-width">
+          <mat-label>From</mat-label>
+          <input matInput [matDatepicker]="To" />
+          <mat-datepicker-toggle matSuffix [for]="To"></mat-datepicker-toggle>
+          <mat-datepicker #To></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary">Search</button>
+  <button mat-raised-button color="primary">Export Excel</button>
 </div>
-
-<div class="row">
-  <div class="col">
-    <h1>Company</h1>
-    <div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels"> Company</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels"> Associat Company</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels"> Parent Company</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels">Company Owner </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels"> Select Industy Type</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels">Select Relationship </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels">Area </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels">City </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name=" " />
-        <label for=" " class="labels"> State</label>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <h1>Product</h1>
-    <div>
-      <div class="form-field">
-        <input class="input-text" type="text" name="Product " />
-        <label for="Product " class="labels"> Product</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name="Category" />
-        <label for="Category " class="labels"> Category </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name="Group " />
-        <label for="Group " class="labels"> Group</label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="text" name="Manufacture " />
-        <label for=" Manufacture" class="labels">Manufacture</label>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <h1>Entity Wise</h1>
-    <div *ngFor="let x of labelData">
-      <div class="form-field">
-        <input
-          class="input-text"
-          id="{{ x.ID }}"
-          type="{{ x.Type }}"
-          name=" "
-        />
-        <label for="" class="labels"> {{ x.Label }} </label>
-      </div>
-    </div>
-  </div>
-
-  <div class="col">
-    <h1>Date</h1>
-    <div>
-      <div class="form-field">
-        <select class="input-select" name="selectTyoe">
-          <option value="">Select Format</option>
-        </select>
-        <label for="selectTyoe" class="labels">Select Date Type </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="date" name="From " />
-        <label for="From " class="labels">From </label>
-      </div>
-      <div class="form-field">
-        <input class="input-text" type="date" name="To " />
-        <label for=" To" class="labels">To </label>
-      </div>
-    </div>
-  </div>
-</div>
-<button mat-raised-button color="primary">Search</button>
-<button mat-raised-button color="primary">Export Excel</button>

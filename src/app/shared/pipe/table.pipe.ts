@@ -1,166 +1,39 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 
 @Pipe({
-  name: 'columnRow',
+  name: 'dateformat',
 })
 export class TablePipe implements PipeTransform {
-  transform(value: any, entityName: string): any {
-    console.log(value, entityName);
-    if (entityName === 'Lead') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'SourceName',
-        'Stage',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'Prospect') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'SourceName',
-        'Stage',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'SalesOrderLIst') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'DeliveryStatusName',
-        'Billedstatus',
-        'DeliveryDate',
-      ];
-    } else if (entityName === 'POList') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'Billedstatus',
-        'DeliveryDate',
-      ];
-    } else if (entityName === 'Payable') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'DeliveryStatusName',
-        'DeliveryDate',
-      ];
-    } else if (entityName === 'MoList') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'MIList') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'Billedstatus',
-        'SourceName',
-        'DeliveryDate',
-      ];
-    } else if (entityName === 'Repair') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'ServiceTypeName',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'Payment') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'Billedstatus',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'Receivable') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'SourceName',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'Work') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'ServiceTypeName',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'AMC') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'ServiceTypeName',
-        'EXPClosuredateDashboard',
-      ];
-    } else if (entityName === 'Ticket') {
-      value = [
-        'InstalledNo',
-        'ClientName',
-        'ContactName',
-        'OwnerName',
-        'Anualisedamount',
-        'StatusName',
-        'SourceName',
-        'Stage',
-        'EXPClosuredateDashboard',
-      ];
+  transform(value: any): any {
+    if (value == null) {
+      // console.log(value);
+      return value;
+    } else {
+      let Value = value.split('/');
+      let format = Value.reverse();
+      let joinDate = format.join('-');
+      console.log(joinDate);
+      const formatValue = moment(joinDate).format('DD MMM y');
+      return formatValue;
     }
-    debugger
-    return value;
   }
 }
 // @Pipe({
-//   name: 'fieldSum',
+//   name: 'opentDateFormat',
 // })
-// export class FieldSumPipe implements PipeTransform {
-//   transform(items: any[], attr: string): number {
-//     console.log('items:', items, 'attr:', attr);
-//     return items.reduce((a, b) => a + b[attr], 0);
+// export class opentDateFormat implements PipeTransform {
+//   transform(value: any): any {
+//     if (value == null) {
+//       // console.log(value);
+//       return value;
+//     } else {
+//       let Value = value.split('/');
+//       let format = Value.reverse();
+//       let joinDate = format.join('-');
+//       console.log(joinDate);
+//       const formatValue = moment(joinDate).format('DD MMM y');
+//       return formatValue;
+//     }
 //   }
 // }

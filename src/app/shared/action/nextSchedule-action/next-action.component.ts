@@ -1,13 +1,33 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+} from '@angular/material/core';
 
 import { Global } from 'Global';
 import * as moment from 'moment';
+import { MY_FORMATS } from 'src/app/matdatepickerformat';
 import { ActionService } from 'src/app/services/action.service';
 
 @Component({
   selector: 'app-next-action',
   templateUrl: './next-action.component.html',
   styleUrls: ['./next-action.component.css'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class NextActionComponent implements OnInit {
   @Input() EntityId: string;
@@ -22,7 +42,7 @@ export class NextActionComponent implements OnInit {
   ActionType: any;
   moveStageData: any;
   userlistData: any;
-  ActionStartDate: any = moment().format('DD-MM-YYYY');
+  scheduleActionDate: any = moment().format('YYYY-MM-DD');
   ActionStartTime: any;
 
   today: Date = new Date();
@@ -39,7 +59,7 @@ export class NextActionComponent implements OnInit {
       ScheduleActionType: this.ScheduleActionType,
       ScheduleActivityType: data.ScheduleActivityType,
       Discussions: data.Discussions,
-      ScheduleActionDate: moment(data.ScheduleActionDate).format('DD/MM/YYYY'),
+      ScheduleActionDate: moment(data.scheduleActionDate).format('DD/MM/YYYY'),
       ScheduleActionTime: data.ScheduleActionTime,
       ContactId: '211209001',
       ScheduleUserId: '0066',

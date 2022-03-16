@@ -20,7 +20,10 @@ i {
   color: rgb(156, 155, 155);
   padding: 3px;
 }
-
+.tableOption {
+  display: flex;
+  justify-content: space-between;
+}
 .Company {
   /* max-width: 120px; */
   font-size: 16px;
@@ -51,7 +54,6 @@ i {
 .a:hover {
   text-decoration: underline;
   cursor: pointer;
-  font-size: small;
 }
 
 #modal {
@@ -96,7 +98,7 @@ i {
 }
 
 .contain {
-  padding: 0px 10px 0px 55px;
+  padding: 0px 17px 0px 67px;
 }
 
 nav {
@@ -137,11 +139,9 @@ mat-icon {
 }
 .card-box {
   min-width: 300px;
-  max-width: 350px;
   margin: 5px;
 }
 .cardSection {
-  display: flex;
   padding: 24px;
 }
 li {
@@ -172,4 +172,10 @@ span {
   font-size: medium;
   font-style: italic;
   font-weight: 400;
+}
+.red {
+  color: red;
+}
+.green {
+  color: green;
 }

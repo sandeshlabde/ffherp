@@ -9,6 +9,9 @@ import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ApprovalComponent } from './approval/approval.component';
 import { EditListComponent } from './edit-list/edit-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { CreateNewComponent } from './create-new/create-new.component';
+import { AdditionalDetailsComponent } from './create-new/additional-details/additional-details.component';
+import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-address/delivary-billing-address.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FilterSearchComponent,
     ApprovalComponent,
     EditListComponent,
+    CreateNewComponent,
+    AdditionalDetailsComponent,
+    DelivaryBillingAddressComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [
@@ -32,6 +38,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FilterSearchComponent,
     ApprovalComponent,
     EditListComponent,
+    CreateNewComponent,
+    AdditionalDetailsComponent,
+    DelivaryBillingAddressComponent,
   ],
 })
 export class ListModule {}

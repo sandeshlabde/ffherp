@@ -28,6 +28,7 @@ import { NextActionComponent } from './action/nextSchedule-action/next-action.co
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     TablePipe,
@@ -62,6 +63,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     DragDropModule,
     MatCardModule,
+    MatAutocompleteModule,
   ],
   exports: [
     CommonModule,
@@ -94,6 +96,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     DragDropModule,
     MatCardModule,
+    MatAutocompleteModule,
   ],
 })
 export class SharedModule {}

@@ -3,8 +3,9 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
       <li class="breadcrumb-item active" aria-current="page">
-        {{ EntityName }}
+        {{ EntityNameTitle }}
       </li>
+      <li (click)="createForm()"><mat-icon> local_hospital</mat-icon></li>
       <li (click)="selectCard()"><mat-icon>credit_card</mat-icon></li>
       <li (click)="selectTable()"><mat-icon>dns</mat-icon></li>
     </ol>
@@ -20,14 +21,14 @@
     ></span>
   </div>
   <div *ngIf="tableSection">
-    <div class="row">
-      <div class="col">
+    <div class="tableOption">
+      <div>
         <mat-form-field appearance="standard">
           <mat-label>Search Column</mat-label>
           <input matInput (keyup)="applyFilter($event)" #input />
         </mat-form-field>
       </div>
-      <div class="col">
+      <div>
         <mat-paginator
           [pageSize]="10"
           [pageSizeOptions]="[5, 10, 25, 100]"
@@ -43,7 +44,6 @@
         matSort
         class="mat-elevation-z8"
       >
-        <!-- Position Column -->
         <ng-container matColumnDef="InstalledNo">
           <th
             mat-header-cell
@@ -60,47 +60,60 @@
               (click)="openEntity(element.InstalledNo)"
             >
               {{ element.InstalledNo }}
-              <!--   -->
-            </a>
-            <!--  -->
-            <span *ngIf="voucher">{{ element.InstalledNo }}</span>
-            <a
-              class="a"
-              (click)="openEmailTrace(element.InstalledNo)"
-              data-bs-toggle="modal"
-              data-bs-target="#email"
-              ><i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Email Trace"
-                class="fas fa-envelope"
-              ></i>
             </a>
 
-            <a class="a">
-              <i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Upload "
-                class="fas fa-cloud-upload-alt"
-              ></i>
-            </a>
-            <a
-              class="a"
-              (click)="
-                EditList(element.InstalledNo, element.ENTITY, element.EntityId)
-              "
-              ><i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Edit {{ EntityName }}"
-                class="fas fa-pencil-alt"
-              ></i
-            ></a>
+            <div>
+              <span *ngIf="voucher">{{ element.InstalledNo }}</span>
+              <a
+                class="a"
+                (click)="openEmailTrace(element.InstalledNo)"
+                data-bs-toggle="modal"
+                data-bs-target="#email"
+                ><i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Email Trace"
+                  class="fas fa-envelope"
+                ></i>
+              </a>
+
+              <a class="a">
+                <i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Upload "
+                  class="fas fa-cloud-upload-alt"
+                ></i>
+              </a>
+              <a *ngIf="installedno" class="a"
+                ><i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Edit {{ EntityName }}"
+                  class="fas fa-pencil-alt"
+                ></i
+              ></a>
+              <a
+                *ngIf="voucher"
+                class="a"
+                (click)="
+                  EditList(
+                    element.InstalledNo,
+                    element.ENTITY,
+                    element.EntityId
+                  )
+                "
+                ><i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Edit {{ EntityName }}"
+                  class="fas fa-pencil-alt"
+                ></i
+              ></a>
+            </div>
           </td>
         </ng-container>
 
-        <!-- Name Column -->
         <ng-container matColumnDef="ClientName">
           <th
             mat-header-cell
@@ -111,15 +124,17 @@
             Company
           </th>
           <td mat-cell *matCellDef="let element" class="text-start Company">
-            <a class="a" (click)="openEmailQuote(element.InstalledNo)">
-              <i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="View Email Quote"
-                class="fas fa-file-pdf"
-              ></i
-            ></a>
             {{ element.ClientName }}
+            <div>
+              <a class="a" (click)="openEmailQuote(element.InstalledNo)">
+                <i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="View Email Quote"
+                  class="fas fa-file-pdf"
+                ></i
+              ></a>
+            </div>
             <div *ngIf="voucher">
               <a
                 class="a"
@@ -136,7 +151,6 @@
           </td>
         </ng-container>
 
-        <!-- Weight Column -->
         <ng-container matColumnDef="ContactName">
           <th
             mat-header-cell
@@ -148,26 +162,27 @@
           </th>
           <td mat-cell *matCellDef="let element" class="text-start table-data">
             {{ element.ContactName }}
-            <a class="a"
-              ><i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Phone"
-                class="fas fa-phone"
-              ></i
-            ></a>
-            <a
-              ><i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="WhatsApp"
-                class="fab fa-whatsapp"
-              ></i
-            ></a>
+            <div>
+              <a class="a"
+                ><i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Phone"
+                  class="fas fa-phone"
+                ></i
+              ></a>
+              <a
+                ><i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="WhatsApp"
+                  class="fab fa-whatsapp"
+                ></i
+              ></a>
+            </div>
           </td>
         </ng-container>
 
-        <!-- Symbol Column -->
         <ng-container matColumnDef="OwnerName">
           <th
             mat-header-cell
@@ -178,22 +193,6 @@
             Owner Name
           </th>
           <td mat-cell *matCellDef="let element" class="text-start table-data">
-            <a class="a" (click)="openChat(element.InstalledNo)">
-              <i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="Chat"
-                class="far fa-comments"
-              ></i
-            ></a>
-            <a class="a" (click)="openNotes(element.InstalledNo)">
-              <i
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                title="view Notes"
-                class="far fa-clipboard"
-              ></i>
-            </a>
             {{ element.OwnerName }}
           </td>
         </ng-container>
@@ -201,20 +200,45 @@
           <th
             mat-header-cell
             *matHeaderCellDef
-            mat-sort-header
             class="text-end"
+            mat-sort-header
           >
             Amount
           </th>
-          <td mat-cell *matCellDef="let element" class="text-end table-data">
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="text-end table-data"
+            [ngStyle]=""
+          >
             {{ element.Anualisedamount | currency: "INR" }}
-            <a (click)="openAction(element.InstalledNo, element.ClientID)"
-              ><i class="fas fa-plus-circle"></i
-            ></a>
+            <div>
+              <a class="a" (click)="openChat(element.InstalledNo)">
+                <i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="Chat"
+                  class="far fa-comments"
+                ></i
+              ></a>
+              <a
+                class="a"
+                (click)="openNotes(element.InstalledNo, element.ClientName)"
+              >
+                <i
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="view Notes"
+                  class="far fa-clipboard"
+                ></i>
+              </a>
+              <a (click)="openAction(element.InstalledNo, element.ClientID)"
+                ><i class="fas fa-plus-circle"></i
+              ></a>
+            </div>
           </td>
         </ng-container>
         <ng-container matColumnDef="StatusName">
-          <!-- *ngIf="isStatus " -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -229,7 +253,6 @@
         </ng-container>
 
         <ng-container matColumnDef="DeliveryStatusName">
-          <!-- *ngIf="isShowDStatus" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -243,23 +266,7 @@
           </td>
         </ng-container>
 
-        <ng-container matColumnDef="Billedstatus">
-          <!-- *ngIf="isBStatus" -->
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            class="text-start"
-          >
-            Billed Status
-          </th>
-          <td mat-cell *matCellDef="let element" class="text-start table-data">
-            {{ element.Billedstatus }}
-          </td>
-        </ng-container>
-
         <ng-container matColumnDef="SourceName">
-          <!-- *ngIf="isSourceName" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -272,8 +279,7 @@
             {{ element.SourceName }}
           </td>
         </ng-container>
-        <ng-container matColumnDef="Billedstatus1">
-          <!-- *ngIf="isSourceName" -->
+        <ng-container matColumnDef="Billedstatus">
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -286,23 +292,8 @@
             {{ element.Billedstatus }}
           </td>
         </ng-container>
-        <ng-container matColumnDef="isDDeliveryStatus1">
-          <!--  *ngIf="isDDeliveryStatus" -->
-          <th
-            mat-header-cell
-            *matHeaderCellDef
-            mat-sort-header
-            class="text-start"
-          >
-            Del Status
-          </th>
-          <td mat-cell *matCellDef="let element" class="text-start table-data">
-            {{ element.isDDeliveryStatus }}
-          </td>
-        </ng-container>
 
         <ng-container matColumnDef="ServiceTypeName">
-          <!-- *ngIf="isServiceType" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -317,7 +308,6 @@
         </ng-container>
 
         <ng-container matColumnDef="Stage">
-          <!-- *ngIf="stage" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -331,7 +321,6 @@
           </td>
         </ng-container>
         <ng-container matColumnDef="EXPClosuredateDashboard">
-          <!-- *ngIf="isDeliveryDate" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -340,12 +329,18 @@
           >
             EXP Date
           </th>
-          <td mat-cell *matCellDef="let element" class="text-start table-data">
-            {{ element.EXPClosuredateDashboard }}
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="text-start table-data"
+            [ngClass]="
+              element.EXPClosuredateDashboard >= toDayDate ? 'green' : 'red'
+            "
+          >
+            {{ element.EXPClosuredateDashboard | dateformat }}
           </td>
         </ng-container>
         <ng-container matColumnDef="DeliveryDate">
-          <!-- *ngIf="expDate" -->
           <th
             mat-header-cell
             *matHeaderCellDef
@@ -354,21 +349,26 @@
           >
             Del Date
           </th>
-          <td mat-cell *matCellDef="let element" class="text-start table-data">
-            {{ element.DeliveryDate }}
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="text-start table-data"
+            [ngClass]="element.DeliveryDate >= toDayDate ? 'green' : 'red'"
+          >
+            {{ element.DeliveryDate | dateformat }}
           </td>
         </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        <tr mat-header-row *matHeaderRowDef="listColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: listColumns"></tr>
       </table>
     </div>
   </div>
   <div style="background-color: rgb(113, 180, 219)" *ngIf="cardSection">
     <div
       cdkDropList
+      [cdkDropListData]="dataSource.data"
       class="cardSection row"
-      cdkDropListOrientation="horizontal"
       (cdkDropListDropped)="drop($event)"
     >
       <mat-card
@@ -381,8 +381,13 @@
         </div>
         <div>
           <div>
-            <span>{{ cardData.InstalledNo }}</span> opened on
-            <span>{{ cardData.Opendate | date: "dd MMM y" }}</span>
+            <span>
+              <a class="a" (click)="openEntity(cardData.InstalledNo)">
+                {{ cardData.InstalledNo }}</a
+              ></span
+            >
+            opened on
+            <span>{{ cardData.Opendate | dateformat }}</span>
           </div>
         </div>
         <div class="row">
@@ -396,22 +401,27 @@
           <div class="ActionField">
             <span> {{ cardData.nextactiontype }}</span> for
             <span> {{ cardData.OwnerName }}</span> on
-            <span> {{ cardData.NextActtiondate | date: "dd MMM y" }}</span> at
+            <span> {{ cardData.NextActtiondate | dateformat }}</span> at
             <span> {{ cardData.Nextactiontime }}</span>
           </div>
         </div>
         <div>{{ cardData.REMARK }}</div>
         <div class="iconfield">
           <div>
-            <span class="iconfield-badge">{{
+            <span class="iconfield-badge" *ngIf="cardData.Anualisedamount">{{
               cardData.Anualisedamount | currency: "INR"
             }}</span>
-            <span class="iconfield-badge">{{ cardData.StatusName }}</span>
+            <span *ngIf="cardData.StatusName" class="iconfield-badge">{{
+              cardData.StatusName
+            }}</span>
           </div>
 
           <div class="icon">
             <li>
-              <a class="a" (click)="openNotes(cardData.InstalledNo)">
+              <a
+                class="a"
+                (click)="openNotes(cardData.InstalledNo, cardData.ClientName)"
+              >
                 <i
                   data-bs-toggle="tooltip"
                   data-bs-placement="top"
@@ -454,6 +464,26 @@
         </div>
       </mat-card>
     </div>
+  </div>
+  <div>
+    <!-- <table>
+      <thead>
+        <tr>
+          <th>GroupBy</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let y of groupbydata | keyvalue">
+          <td>
+            {{ y.key }}
+          </td>
+          <ng-container *ngFor="let x of columns">
+            <td>{{ y.value[x] }}</td>
+          </ng-container>
+        </tr>
+      </tbody>
+    </table> -->
   </div>
 </div>
 

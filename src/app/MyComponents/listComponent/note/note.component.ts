@@ -23,6 +23,7 @@ export class NoteComponent implements OnInit {
 
   Description: any;
   description: string = '';
+  companyName: any;
 
   constructor(
     private listService: ProspectService,
@@ -31,19 +32,8 @@ export class NoteComponent implements OnInit {
   ) {
     this.Entityid = this.data.EntityID;
     this.EntityName = this.data.EntityName;
-
-    this.listService
-      .getNoteList(
-        this.EntityName,
-        this.Entityid,
-        this.global.LOGGED_IN_USER.DbName,
-        this.global.LOGGED_IN_USER.encryptPswd,
-        this.global.LOGGED_IN_USER.Username
-      )
-      .subscribe((data: any) => {
-        this.noteData = JSON.parse(data);
-        console.log(this.noteData);
-      });
+    this.companyName = this.data.companyName;
+    this.getNoteList();
   }
 
   // save note function call
@@ -60,6 +50,12 @@ export class NoteComponent implements OnInit {
         this.global.LOGGED_IN_USER.Username
       )
       .subscribe((data: any) => {});
+    this.getNoteList();
+
+    this.description = this.Description;
+    this.Description = ' ';
+  }
+  getNoteList() {
     this.listService
       .getNoteList(
         this.EntityName,
@@ -70,10 +66,8 @@ export class NoteComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.noteData = JSON.parse(data);
+        console.log(this.noteData);
       });
-
-    this.description = this.Description;
-    this.description = ' ';
   }
   ngOnInit(): void {}
 }

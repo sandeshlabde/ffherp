@@ -1,0 +1,89 @@
+<div>
+  <div mat-dialog-title>
+    <h2 class="text-center text-primary">Additional Details</h2>
+  </div>
+  <form>
+    <div class="row g-0 form-container m-1 p-1 border border-primary">
+      <div class="col">
+        <mat-form-field class="example-full-width">
+          <mat-label>Doc Number</mat-label>
+          <input matInput name="DocNumber" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="example-full-width">
+          <mat-label>Open Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="OpenDate"
+            [(ngModel)]="openDate"
+            name="openDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="OpenDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #OpenDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-lg-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>Status</mat-label>
+          <input matInput name="Status" />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>Cost Center</mat-label>
+          <mat-select>
+            <mat-option> select </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-12">
+        <mat-form-field class="example-full-width">
+          <mat-label>Branch</mat-label>
+          <mat-select>
+            <mat-option> select </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field class="example-full-width">
+          <mat-label>Converted Form</mat-label>
+          <mat-select>
+            <mat-option> select </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field class="example-full-width">
+          <mat-label>ID</mat-label>
+          <input matInput name="ID" />
+        </mat-form-field>
+      </div>
+
+      <div cclass="col-lg-12" *ngIf="CostOfsupply">
+        <mat-form-field class="example-full-width">
+          <mat-label>Cost Of supply</mat-label>
+          <input matInput name="CostOfsupply" />
+        </mat-form-field>
+      </div>
+      <div class="col" *ngIf="ChallanSO">
+        <mat-form-field class="example-full-width">
+          <mat-label>Challan Number</mat-label>
+          <input matInput name="ChallanNumber" />
+        </mat-form-field>
+      </div>
+      <div class="col" *ngIf="ChallanSO">
+        <mat-form-field class="example-full-width">
+          <mat-label>SO ID</mat-label>
+          <input matInput name="SOID" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>

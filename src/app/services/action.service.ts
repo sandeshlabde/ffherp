@@ -19,6 +19,8 @@ export class ActionService {
 
   saveSheduleCommonActionURL =
     'https://ffherp.co.in:446/api/Voucher/SaveSheduleCommonAction';
+  createFormAutoCompleteURL =
+    'https://apitest.ffherp.co.in/api/Voucher/getAutoCompleteCompanyList';
 
   constructor(private http: HttpClient) {}
 
@@ -39,5 +41,8 @@ export class ActionService {
   }
   saveSheduleCommonAction(param: any) {
     return this.http.post(this.saveSheduleCommonActionURL, param);
+  }
+  createFormAutoComplete(param: any) {
+    return this.http.post(this.createFormAutoCompleteURL, param);
   }
 }

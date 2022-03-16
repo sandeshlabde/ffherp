@@ -8,8 +8,8 @@ textarea {
 }
 
 .form-box {
-  width: 80vh;
   margin: 5px;
+  min-height: 480px;
 }
 
 .heading1 {

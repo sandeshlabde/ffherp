@@ -1,0 +1,630 @@
+<div>
+  <div mat-dialog-title class="Formheader">
+    <div><h2 class="text-cente">New / Edit</h2></div>
+    <div class="text-end">
+      <h4><a class="link" (click)="Detail()"> Additional Details</a></h4>
+    </div>
+  </div>
+  <form action="">
+    <div class="row g-0">
+      <div class="col">
+        <h4>For Company</h4>
+        <div class="contact_form row g-0 border border-primary">
+          <div class="col-lg-10">
+            <mat-form-field class="full-width">
+              <mat-label>Company</mat-label>
+              <input
+                matInput
+                type="text"
+                id="Input_Field_1"
+                name="Company"
+                minlength="3"
+                maxlength="40"
+                title="Please include letters, space, period, single quote, brackets only."
+                [(ngModel)]="Company"
+                (ngModelChange)="Autocomplete($event)"
+                [matAutocomplete]="auto"
+                required
+              />
+
+              <mat-autocomplete
+                #auto="matAutocomplete"
+                [displayWith]="displayFn"
+              >
+                <mat-option
+                  *ngFor="let item of autoCompleteData"
+                  [value]="item.companyName"
+                >
+                  {{ item.companyName }}
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <li class="company_link">
+              <a class="link" style="color: red">Select Site</a>
+            </li>
+            <li class="company_link">
+              <a class="link" style="color: red" (click)="address()">
+                Address</a
+              >
+            </li>
+            <li class="company_link">
+              <a style="color: red" class="link">Channel Partener</a>
+            </li>
+          </div>
+
+          <div class="col-lg-2">
+            <a class="link" rel="noopener noreferrer" style="color: red">+</a>
+
+            <a class="link" rel="noopener noreferrer" style="color: red">360</a>
+          </div>
+          <div class="col-lg-11">
+            <mat-form-field class="full-width">
+              <mat-label>Contact</mat-label>
+              <input matInput name="Contact" required />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-1">
+            <a class="link" style="color: red">+</a>
+          </div>
+
+          <div class="col-lg-1 text-center"><mat-checkbox> </mat-checkbox></div>
+          <div class="col-lg-5">
+            <mat-form-field class="full-width">
+              <mat-label>Mobile</mat-label>
+              <input matInput id="Input_Field_3_related" name="Mobile" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-1 text-center">
+            <mat-checkbox> </mat-checkbox>
+          </div>
+          <div class="col-lg-5">
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput id="Input_Field_4_related" name="Email" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-form-field class="full-width">
+              <mat-label>Manager</mat-label>
+              <mat-select>
+                <mat-option> select </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-1 text-center"><mat-checkbox> </mat-checkbox></div>
+          <div class="col-lg-5">
+            <mat-form-field class="full-width">
+              <mat-label>Mobile</mat-label>
+              <input matInput id="Input_Field_3_related" name="Mobile" />
+            </mat-form-field>
+          </div>
+          <div class="col-lg-1 text-center">
+            <mat-checkbox> </mat-checkbox>
+          </div>
+          <div class="col-lg-5">
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input matInput id="Input_Field_4_related" name="Email" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-form-field class="full-width">
+              <mat-label> Email Subject Line</mat-label>
+              <input matInput name="Email_Subj_Line" />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4>Details</h4>
+        <div class="contact_form border border-primary">
+          <div>
+            <!-- 1st row Details section start -->
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Source</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label>Source</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Source</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Delivary Mode</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Delivary Mode</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Received Mode</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label>Invoice Type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="pi">
+                  <mat-label>Invoice Type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Complaint for product / Service type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospectlead">
+                  <mat-label>Source Detail</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Source text</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="DelivaryName">
+                  <mat-label>Delivary Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <!-- <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Delivary Name</mat-label>
+                  <input matInput />
+                </mat-form-field> -->
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Transport/Courier Name</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label>GST Type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!-- <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label> </mat-label>
+                  <input matInput />
+                </mat-form-field> -->
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Select Problem</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 1st row Details Section end  -->
+            <!-- 2nd row Details Section start  -->
+            <div class="row">
+              <div class="col">
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Allocate To</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label>Billed By</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="pi">
+                  <mat-label>Entered By</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Ticket Type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="DispatchBy">
+                  <mat-label>Dispatch By</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="prospectlead">
+                  <mat-label>Priority</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-2" *ngIf="ticket">
+                <mat-form-field class="full-width">
+                  <mat-label>Amount</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>DropDown</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label>Exp Closer Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="lExpCloserDate"
+                    [(ngModel)]="LExpCloserDate"
+                    name="LExpCloserDate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="lExpCloserDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #lExpCloserDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Delivary Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="delDate"
+                    [(ngModel)]="DelDate"
+                    name="DelDate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="delDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #delDate></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Problem Type</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="Stage">
+                  <mat-label>Stage</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="Docket">
+                  <mat-label> Docket/LR Number</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 2nd row Details Section end  -->
+            <!-- 3rd row Details Section start  -->
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>.......</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label>Stage</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Delivar Mode</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Customer PO Number</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Payment Terms</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Material Invard Type</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Priority</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="PONumber">
+                  <mat-label>PO Number</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Stage</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label> Probability</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Delivary By</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Warranty Terms</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Returnable Type</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Close Before</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="tCloseBefore"
+                    [(ngModel)]="TCloseBefore"
+                    name="TCloseBefore"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="tCloseBefore"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #tCloseBefore></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="PODate">
+                  <mat-label>PO Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="mPODate"
+                    [(ngModel)]="MPODate"
+                    name="MPODate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="mPODate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #mPODate></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 3rd row Details Section End  -->
+            <!-- 4th row Details Section start  -->
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Industry Type.</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label>Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Delivary Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Material Out Type</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Advance Payment</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Purchase Invoice Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label>Reminder Periodicity</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="pi">
+                  <mat-label>Supplier Invoice Number</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Ticket Source</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>....</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="lead">
+                  <mat-label>Product Service</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="so">
+                  <mat-label>Billing Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Returnable</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Material EXP Del Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="poEXPDelDate"
+                    [(ngModel)]="POEXPDelDate"
+                    name="POEXPDelDate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="poEXPDelDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #poEXPDelDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mi">
+                  <mat-label>Bill Receipt Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="ticket">
+                  <mat-label>Stage</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="paymentpayable">
+                  <mat-label>Invoice Date</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="piInvoiceDate"
+                    [(ngModel)]="PIInvoiceDate"
+                    name="PIInvoiceDate"
+                    [min]="minDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="piInvoiceDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #piInvoiceDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 4th row Details Section End  -->
+            <!-- 5th row Details Section start  -->
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Text 1</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Stage</mat-label>
+                  <input matInput />
+                </mat-form-field>
+
+                <mat-form-field class="full-width" *ngIf="payment">
+                  <mat-label>Material Del Status</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field
+                  class="full-width"
+                  *ngIf="MaterialReceiptStatus"
+                >
+                  <mat-label>Material Receipt Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Text 2</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="mo">
+                  <mat-label>Billing Status</mat-label>
+                  <input matInput />
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="po">
+                  <mat-label>Purchase Invoice Status</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="full-width" *ngIf="paymentpayable">
+                  <mat-label>Payment Receipt Status</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- 5th row Details Section End  -->
+            <!-- 6th row Details Section start  -->
+            <div class="row">
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Product</mat-label>
+                  <mat-select>
+                    <mat-option> </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-lg-6">
+                <mat-form-field class="full-width" *ngIf="prospect">
+                  <mat-label>Value</mat-label>
+                  <input matInput />
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <!-- 6th row Details Section End  -->
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <h4>Description</h4>
+        <div class="contact_form border border-primary">
+          <div class="form-field col-lg-12">
+            <mat-form-field class="full-width">
+              <mat-label>Description</mat-label>
+              <textarea matInput maxlength="300" required></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-end formFooter">
+      <button
+        class="border border-danger"
+        mat-button
+        mat-dialog-close
+        mat-stroked-button
+        color="warn"
+      >
+        Cancel
+      </button>
+      <button
+        mat-button
+        mat-stroked-button
+        color="primary"
+        [mat-dialog-close]="true"
+        type="submit"
+        class="border border-primary"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

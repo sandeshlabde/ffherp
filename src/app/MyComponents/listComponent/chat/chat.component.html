@@ -8,7 +8,7 @@
       class="btn-close text-white"
     ></button>
   </div>
-  <div class="modal-body contain">
+  <div class="contain">
     <div *ngFor="let x of chat">
       <div class="card chatCard">
         <div class="text-primary">{{ x.UserID }}</div>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div class=" ">
+  <div class="FormContain">
     <form #chatData="ngForm" (ngSubmit)="chatDataSubmit(chatData.value)">
       <div class="col-md-12 form-field">
         <!-- <ng-autocomplete [data]="actorList" 

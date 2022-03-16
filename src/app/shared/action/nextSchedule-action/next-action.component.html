@@ -18,7 +18,7 @@
     </mat-radio-group>
   </div>
   <div class="contain2">
-    <div class="row">
+    <div class="row g-0">
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Activity Type</mat-label>
@@ -46,16 +46,16 @@
             <input matInput name="alertBefore2" ngModel />
           </mat-form-field>
         </div>
-        <div class="col-lg-6 row">
+        <div class="col-lg-6 row g-0">
           <div class="col-lg-6">
             <mat-form-field class="input-width">
               <mat-label>On Date Time</mat-label>
               <input
                 matInput
                 [matDatepicker]="ScheduleActionDate"
-                name="ScheduleActionDate"
+                name="scheduleActionDate"
                 [max]="today"
-                ngModel
+                [(ngModel)]="scheduleActionDate"
               />
               <mat-datepicker-toggle
                 matSuffix
@@ -67,11 +67,12 @@
           <div class="col-lg-6">
             <mat-form-field class="input-width">
               <input matInput type="time" name="ScheduleActionTime" ngModel />
+              <!-- <input matTimepicker  ngModel /> -->
             </mat-form-field>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row g-0">
         <div class="col-lg-10">
           <mat-form-field class="input-width">
             <mat-label>Coustomer Contact Name</mat-label>
@@ -90,7 +91,7 @@
           <mat-checkbox>Other</mat-checkbox>
         </div>
       </div>
-      <div class="col-12 row">
+      <div class="col-12 row g-0">
         <div class="col-lg-6">
           <mat-checkbox class="input-width">
             <mat-form-field class="input-width">
@@ -130,7 +131,7 @@
           />
         </mat-form-field>
       </div>
-      <div class="col-12 row">
+      <div class="col-12 row g-0">
         <div class="col-lg-6">
           <mat-checkbox class="example-margin">
             <mat-form-field class="input-width">
@@ -154,7 +155,7 @@
                         <input matInput name="ManagerAlert" ngModel />
                     </mat-form-field>
                 </div> -->
-      <div class="col-12 row" *ngFor="let user of userlistData">
+      <div class="col-12 row g-0" *ngFor="let user of userlistData">
         <div class="col-lg-6">
           <mat-checkbox class="example-margin">
             <mat-form-field class="input-width">
@@ -175,7 +176,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row g-0">
     <button class="col" mat-stroked-button matStepperPrevious color="warn">
       Back
     </button>

@@ -58,7 +58,7 @@ export class DashBoardComponent implements OnInit {
   constructor(
     private listService: ProspectService,
     private global: Global,
-    private httpClient: HttpClient // private _adapter: DateAdapter<any>
+    private httpClient: HttpClient
   ) {
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
@@ -83,7 +83,7 @@ export class DashBoardComponent implements OnInit {
             : 1,
       });
     });
-    console.log(map);
+
     return map;
   }
 
@@ -102,7 +102,7 @@ export class DashBoardComponent implements OnInit {
     this.listService.showtotalActivity(param).subscribe((data: any) => {
       this.AllData = JSON.parse(data);
       this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
-      // this.pieChartLabels = Array.from(this.columns.values());
+      console.log(this.tableData);
     });
   }
 

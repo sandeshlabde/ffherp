@@ -16,23 +16,19 @@
               <input
                 matInput
                 type="text"
-                id="Input_Field_1"
                 name="Company"
                 minlength="3"
                 maxlength="40"
-                title="Please include letters, space, period, single quote, brackets only."
                 [(ngModel)]="Company"
                 (ngModelChange)="Autocomplete($event)"
                 [matAutocomplete]="auto"
                 required
               />
 
-              <mat-autocomplete
-                #auto="matAutocomplete"
-                [displayWith]="displayFn"
-              >
+              <mat-autocomplete #auto="matAutocomplete">
                 <mat-option
                   *ngFor="let item of autoCompleteData"
+                  id="{{ item.companyId }}"
                   [value]="item.companyName"
                 >
                   {{ item.companyName }}
@@ -60,6 +56,9 @@
           <div class="col-lg-11">
             <mat-form-field class="full-width">
               <mat-label>Contact</mat-label>
+              <mat-select>
+                <!-- <mat-option> {{Name}} </mat-option> -->
+              </mat-select>
               <input matInput name="Contact" required />
             </mat-form-field>
           </div>
@@ -72,7 +71,7 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput id="Input_Field_3_related" name="Mobile" />
+              <input matInput name="Mobile" />
             </mat-form-field>
           </div>
           <div class="col-lg-1 text-center">
@@ -81,7 +80,7 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput id="Input_Field_4_related" name="Email" />
+              <input matInput name="Email" />
             </mat-form-field>
           </div>
 
@@ -98,7 +97,7 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput id="Input_Field_3_related" name="Mobile" />
+              <input matInput name="Mobile" />
             </mat-form-field>
           </div>
           <div class="col-lg-1 text-center">
@@ -107,7 +106,7 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput id="Input_Field_4_related" name="Email" />
+              <input matInput name="Email" />
             </mat-form-field>
           </div>
 
@@ -126,54 +125,33 @@
             <!-- 1st row Details section start -->
             <div class="row">
               <div class="col-lg-6">
-                <mat-form-field class="full-width" *ngIf="prospect">
+                <mat-form-field class="full-width" *ngIf="Source">
                   <mat-label>Source</mat-label>
                   <mat-select>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="lead">
-                  <mat-label>Source</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="so">
-                  <mat-label>Source</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="mo">
+
+                <mat-form-field class="full-width" *ngIf="DelivaryMode">
                   <mat-label>Delivary Mode</mat-label>
                   <mat-select>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="po">
-                  <mat-label>Delivary Mode</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
-                  </mat-select>
-                </mat-form-field>
+
                 <mat-form-field class="full-width" *ngIf="mi">
                   <mat-label>Received Mode</mat-label>
                   <mat-select>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="payment">
+                <mat-form-field class="full-width" *ngIf="paymentpayable">
                   <mat-label>Invoice Type</mat-label>
                   <mat-select>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <mat-form-field class="full-width" *ngIf="pi">
-                  <mat-label>Invoice Type</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
-                  </mat-select>
-                </mat-form-field>
+
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Complaint for product / Service type</mat-label>
                   <mat-select>
@@ -195,10 +173,7 @@
                   <mat-label>Delivary Name</mat-label>
                   <input matInput />
                 </mat-form-field>
-                <!-- <mat-form-field class="full-width" *ngIf="po">
-                  <mat-label>Delivary Name</mat-label>
-                  <input matInput />
-                </mat-form-field> -->
+
                 <mat-form-field class="full-width" *ngIf="mi">
                   <mat-label>Transport/Courier Name</mat-label>
                   <input matInput />
@@ -209,10 +184,7 @@
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
-                <!-- <mat-form-field class="full-width" *ngIf="payment">
-                  <mat-label> </mat-label>
-                  <input matInput />
-                </mat-form-field> -->
+
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Select Problem</mat-label>
                   <mat-select>
@@ -260,7 +232,7 @@
                   <input matInput />
                 </mat-form-field>
               </div>
-              <div class="col">
+              <div class="col-md-6">
                 <mat-form-field class="full-width" *ngIf="prospect">
                   <mat-label>DropDown</mat-label>
                   <mat-select>

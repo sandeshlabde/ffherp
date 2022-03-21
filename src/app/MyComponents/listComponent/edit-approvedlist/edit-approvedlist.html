@@ -37,8 +37,12 @@
           <td>{{ x.ExpenseTitle }}</td>
           <td>{{ x.ApprovalStatus }}</td>
           <td>{{ x.ApprovedAmount }}</td>
-          <td>{{ x.ApprovedAmount }}</td>
           <td>{{ x.PaidAmount }}</td>
+          <td>
+            <a class="a" (click)="editVouchar(x)"
+              ><i matTooltip="Edit Vouchar" class="fas fa-pencil-alt"></i
+            ></a>
+          </td>
           <td>{{ x.PaymentStatus }}</td>
           <td>{{ x.DueAmount }}</td>
           <td>{{ x.ApprovedRemark }}</td>

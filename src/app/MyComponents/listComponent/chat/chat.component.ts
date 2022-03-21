@@ -58,6 +58,33 @@ export class ChatComponent implements OnInit {
 
     // entity Product EntityModule name set end here
 
+    this.getChatData();
+  }
+
+  // showChat
+  chatDataSubmit(data: any) {
+    const param = {
+      NoteId: '0',
+      AddedUserinChat: data.AddedUserinChat,
+      Dbname: this.global.LOGGED_IN_USER.DbName,
+      EntityId: this.Entityid,
+      Message: data.chatMessage,
+      MsgTo: '',
+
+      PageId: this.pageID,
+      Password: this.global.LOGGED_IN_USER.encryptPswd,
+      UserID: this.global.LOGGED_IN_USER.UserId,
+      companyname: '',
+    };
+    this.listService.submitChat(param).subscribe((data: any) => {});
+
+    this.getChatData();
+  }
+
+  selectEvent(item: any) {
+    console.log(item);
+  }
+  getChatData() {
     let params = {
       EntityId: this.Entityid,
       pageID: this.pageID,
@@ -70,42 +97,11 @@ export class ChatComponent implements OnInit {
       console.warn(data);
     });
   }
-  // showChat
-  chatDataSubmit(data: any) {
-    this.listService
-      .submitChat(
-        this.Entityid,
-        this.pageID,
-        data.AddedUserinChat,
-        data.chatMessage,
-        this.global.LOGGED_IN_USER.DbName,
-        this.global.LOGGED_IN_USER.encryptPswd,
-        this.global.LOGGED_IN_USER.UserId
-      )
-      .subscribe((data: any) => {});
-
-    let params = {
-      EntityId: this.Entityid,
-      pageID: this.pageID,
-      Dbname: this.global.LOGGED_IN_USER.DbName,
-      encrypt: this.global.LOGGED_IN_USER.encryptPswd,
-      userid: this.global.LOGGED_IN_USER.UserId,
-    };
-    this.listService.showChat(params).subscribe((data: any) => {
-      this.chat = JSON.parse(data);
-    });
-  }
-
-  selectEvent(item: any) {
-    console.log(item);
-    // do something with selected item
-  }
-
   onChangeSearch(val: string) {
     this.prefixText = val;
-    this.listService.actorList(this.prefixText).subscribe((data: any) => {
-      this.actorList = data;
-    });
+    // this.listService.actorList(this.prefixText).subscribe((data: any) => {
+    //   this.actorList = data;
+    // });
   }
 
   ngOnInit(): void {}

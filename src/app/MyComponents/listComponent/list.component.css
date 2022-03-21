@@ -179,3 +179,7 @@ span {
 .green {
   color: green;
 }
+.tooltip {
+  background-color: black;
+  color: white;
+}

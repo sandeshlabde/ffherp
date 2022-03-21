@@ -10,7 +10,7 @@ import { listdatafield } from 'src/apitable';
 import { Global } from 'Global';
 import { ApprovalComponent } from './approval/approval.component';
 import { ChatComponent } from './chat/chat.component';
-import { EditListComponent } from './edit-list/edit-list.component';
+
 import { EmailTraceComponent } from './email-trace/email-trace.component';
 import { EntityProductComponent } from './entity-product/entity-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
@@ -21,6 +21,8 @@ import { ActionComponent } from 'src/app/shared/action/action.component';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CreateNewComponent } from './create-new/create-new.component';
 import * as moment from 'moment';
+import { CommanService } from 'src/app/services/comman.service';
+import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -126,6 +128,7 @@ export class ListComponent implements OnInit {
   listcol: any;
   eXPDate: any;
   groupbydata: Map<any, any>;
+  commanData: any;
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(
       this.dataSource.data,
@@ -181,12 +184,21 @@ export class ListComponent implements OnInit {
   }
 
   constructor(
+    private CommanService: CommanService,
     private listService: ProspectService,
     private root: ActivatedRoute,
     public dialog: MatDialog,
 
     private global: Global
   ) {
+    let params = {
+      DbName: this.global.LOGGED_IN_USER.DbName,
+      Password: this.global.LOGGED_IN_USER.encryptPswd,
+      UserId: this.global.LOGGED_IN_USER.UserId,
+    };
+    this.CommanService.listCommanData(params).subscribe((data: any) => {
+      this.commanData = JSON.parse(data);
+    });
     this.root.params.subscribe((param) => {
       this.EntityName = param['EntityName'];
       let params = {
@@ -198,8 +210,6 @@ export class ListComponent implements OnInit {
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
-        console.log(this.dataSource.data);
-        // this.groupby();
       });
       if (this.EntityName === 'POList') {
         this.EntityNameTitle = 'Purchase Order';
@@ -225,39 +235,12 @@ export class ListComponent implements OnInit {
         this.EntityNameTitle = 'Work';
       } else if (this.EntityName === 'Ticket') {
         this.EntityNameTitle = 'Ticket';
+      } else if (this.EntityName === 'Voucher') {
+        this.EntityNameTitle = 'Voucher';
       }
     });
   }
-  // groupby() {
-  //   const map = new Map();
-  //   this.dataSource.data.forEach((item) => {
-  //     map.set(item['ClientName'], {
-  //       ...map.get(item['ClientName']),
-  //       [item['ClientName']]:
-  //         map.get(item['ClientName']) &&
-  //         map.get(item['ClientName'])[item['ClientName']]
-  //           ? map.get(item['ClientName'])[item['ClientName']] + 1
-  //           : 1,
-  //     });
-  //   });
-  //   return (this.groupbydata = map);
-  //   console.log(map);
-  // }
-  // get columns(): Array<string> {
-  //   if (this.groupbydata) {
-  //     const c: any = Array.from(this.groupbydata).reduce(
-  //       (cols: Set<string>, o) => {
-  //         Object.keys(o[1]).forEach((key) => {
-  //           cols.add(key.trim());
-  //         });
-  //         return cols;
-  //       },
-  //       new Set()
-  //     );
-  //     return Array.from(c);
-  //   }
-  //   return [];
-  // }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -406,7 +389,7 @@ export class ListComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateNewComponent, {
       data: {
         EntityName: this.EntityName,
-
+        commanData: this.commanData,
         EntityNameTitle: this.EntityNameTitle,
       },
     });

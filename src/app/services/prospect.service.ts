@@ -14,10 +14,6 @@ export class ProspectService {
   // entityID show details API URL
   entityIdUrl = 'https://ffherp.co.in:446/api/Voucher/ViewModuleWiseEntityInfo';
 
-  // lead Productview  Details API URL
-  productViewUrl =
-    'http://178.63.87.175:82//webService/Lead/LeadAction.asmx/ProductView';
-
   // Note show Data API URL
   noteViewUrl = 'https://apitest.ffherp.co.in/api/Voucher/NotesDetails';
 
@@ -30,10 +26,6 @@ export class ProspectService {
 
   // action Details  Data API URL
   actionDetailsUrl = 'https://ffherp.co.in:446/api/Voucher/GetActualData';
-
-  // Lead Action Details Data API URL
-  leadActionUrl =
-    'http://178.63.87.175:82//webService/Lead/LeadAction.asmx/ActionView';
 
   // emailtraceUrl Quotation API URL
   emailtraceUrl = 'https://ffherp.co.in:446/api/Voucher/QuotationEmailRead';
@@ -71,12 +63,13 @@ export class ProspectService {
   submitChatUrl = 'https://apitest.ffherp.co.in/api/Sales/SubmitChattingData';
 
   // submmitting chat API URL
-  actorListUrl =
-    'https://ffherp.co.in/Pages/Modules/Common/OwnerActorLoad.asmx/GetOwnerActorList';
 
   // edit list Api URL
   voucharDetailUrl = 'https://ffherp.co.in:446/api/Voucher/VoucherDetails';
 
+  // Approved Vouchar API URL
+  approvedVoucharUrl =
+    'https://apitest.ffherp.co.in/api/Voucher/GetVoucherApproval';
   // total activity visit Api URl
   totalActivityUrl =
     'https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDetails';
@@ -121,16 +114,6 @@ export class ProspectService {
   // Entity product details api calling
   getProductList(param) {
     return this.http.post(this.productDetailsUrl, param);
-  }
-
-  // Entity Lead product details api calling
-  getLeadProductView(EntityId: number, Module: number, dbName: string) {
-    const requestBody = {
-      dbName,
-      EntityId,
-      Module,
-    };
-    return this.http.post(this.productViewUrl, requestBody);
   }
 
   // get api calling show note data
@@ -200,14 +183,7 @@ export class ProspectService {
 
     return this.http.post(this.actionDetailsUrl, requestBody);
   }
-  leadActionDetails(leadId: number, dbName: string, password: string) {
-    const requestBody = {
-      dbName,
-      leadId,
-      password,
-    };
-    return this.http.post(this.leadActionUrl, requestBody);
-  }
+
   // emailtrace Api calling
   emailtrace(params: any) {
     return this.http.post(this.emailtraceUrl, params);
@@ -393,50 +369,16 @@ export class ProspectService {
   showChat(params: any) {
     return this.http.post(this.Chaturl, params);
   }
-  submitChat(
-    EntityId: number,
-    PageId: string,
-    AddedUserinChat: string,
-    Message: string,
-    Dbname: string,
-    UserID: string,
-    Password: string
-  ) {
-    const requestBody = {
-      Dbname,
-      EntityId,
-      UserID,
-      PageId,
-      Password,
-      AddedUserinChat,
-      Message,
-      // NoteId,
-      // AddedUserinChat: ""
-      // Dbname: "Vol187"
-      // EntityId: "220110002"
-      // : "testing"
-      // MsgTo: ""
-      // NoteId: "0"
-      // PageId: "L"
-      // Password: " X·ÌØ8âˆø«¸SÚã’"
-      // UserID: "Director"
-      // companyname: ""
-    };
-
-    return this.http.post(this.submitChatUrl, requestBody);
-  }
-  actorList(prefixText: string) {
-    const requestBody = {
-      prefixText,
-    };
-
-    return this.http.post(this.actorListUrl, requestBody);
+  submitChat(param) {
+    return this.http.post(this.submitChatUrl, param);
   }
 
   showvoucharData(param: any) {
     return this.http.post(this.voucharDetailUrl, param);
   }
-
+  approvedVouchar(param: any) {
+    return this.http.post(this.approvedVoucharUrl, param);
+  }
   showtotalActivity(param: any) {
     return this.http.post(this.totalActivityUrl, param);
   }

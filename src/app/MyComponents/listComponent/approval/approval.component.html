@@ -34,19 +34,20 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let x of approvalData" class="table-light">
-          <td>{{ x.VoucherNo }}</td>
-          <td>{{ x.UpdatedBy }}</td>
-          <td>{{ x.UpdatedOn | date: "dd MMM yyyy" }}</td>
-          <td>{{ x.ExpenseTitle }}</td>
-          <td>{{ x.EntityName }}</td>
-          <td>{{ x.Budgeted }}</td>
-          <td>{{ x.ExpenseTitle }}</td>
-          <td>{{ x.ApprovalStatus }}</td>
-          <td>{{ x.ApprovedAmount }}</td>
-          <td>{{ x.ApprovedAmount }}</td>
-          <td>{{ x.PaidAmount }}</td>
-          <td>{{ x.DueAmount }}</td>
+        <tr *ngFor="let vouchar of approvalData" class="table-light">
+          <td>{{ vouchar.VoucherNo }}</td>
+          <td>{{ vouchar.UpdatedBy }}</td>
+          <td>{{ vouchar.UpdatedOn | date: "dd MMM yyyy" }}</td>
+          <td>{{ vouchar.ExpenseTitle }}</td>
+          <td>{{ vouchar.EntityName }}</td>
+          <td>{{ vouchar.Budgeted }}</td>
+          <td>{{ vouchar.ExpenseTitle }}</td>
+          <td>{{ vouchar.ApprovalStatus }}</td>
+          <td>{{ vouchar.ApprovedAmount }}</td>
+          <td>{{ vouchar.ApprovedAmount }}</td>
+          <td>{{ vouchar.PaidAmount }}</td>
+
+          <td>{{ vouchar.DueAmount }}</td>
           <td>
             <select class="dd" name="" id="">
               <option value="">Approved</option>
@@ -59,7 +60,7 @@
               class="input1"
               name=""
               id=""
-              value="{{ x.ApprovalStatus }}"
+              value="{{ vouchar.ApprovalStatus }}"
             />
           </td>
           <td><input type="text" class="input2" /></td>

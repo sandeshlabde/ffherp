@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditListComponent } from './edit-list.component';
+import { EditListComponent } from './edit-approvedlist';
 
 describe('EditListComponent', () => {
   let component: EditListComponent;
@@ -8,9 +8,8 @@ describe('EditListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditListComponent ]
-    })
-    .compileComponents();
+      declarations: [EditListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

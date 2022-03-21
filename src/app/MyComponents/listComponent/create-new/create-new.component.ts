@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -11,8 +11,8 @@ import {
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Global } from 'Global';
 import * as moment from 'moment';
+import { CommanService } from 'src/app/services/comman.service';
 import { MY_FORMATS } from 'src/app/matdatepickerformat';
-import { ActionService } from 'src/app/services/action.service';
 import { AdditionalDetailsComponent } from './additional-details/additional-details.component';
 import { DelivaryBillingAddressComponent } from './delivary-billing-address/delivary-billing-address.component';
 
@@ -32,6 +32,8 @@ import { DelivaryBillingAddressComponent } from './delivary-billing-address/deli
   ],
 })
 export class CreateNewComponent implements OnInit {
+  CommanData: any;
+  Company: any = '';
   a = moment();
   minDate = this.a.toISOString();
   LExpCloserDate: any = this.a.toISOString();
@@ -43,8 +45,17 @@ export class CreateNewComponent implements OnInit {
   POEXPDelDate: any = this.a.toISOString();
   PIInvoiceDate: any = this.a.toISOString();
   EntityName: any;
-  Company: any;
+
   autoCompleteData: any;
+  get Source() {
+    return ['prospect', 'lead', 'salesorderlist'].includes(
+      this.EntityName.toLowerCase()
+    );
+  }
+  get DelivaryMode() {
+    return ['po', 'mo'].includes(this.EntityName.toLowerCase());
+  }
+
   get prospectlead() {
     return ['prospect', 'lead'].includes(this.EntityName.toLowerCase());
   }
@@ -111,13 +122,16 @@ export class CreateNewComponent implements OnInit {
   }
 
   constructor(
-    private actionService: ActionService,
     private global: Global,
+    private commanservice: CommanService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialog: MatDialog
   ) {
+    this.CommanData = data.commanData;
+    console.log(data.commanData);
     this.EntityName = this.data.EntityName;
   }
+
   Autocomplete(e: any) {
     console.log(e);
     if (e.length >= 3) {
@@ -125,19 +139,28 @@ export class CreateNewComponent implements OnInit {
         DBName: this.global.LOGGED_IN_USER.DbName,
         prefixText: e,
       };
-      this.actionService
+      this.commanservice
         .createFormAutoComplete(param)
         .subscribe((data: any) => {
           this.autoCompleteData = JSON.parse(data);
-          let a = Array.from(this.autoCompleteData);
-          console.log(a);
+          console.log(this.autoCompleteData);
         });
     }
+    this.companyContactList(id);
   }
-  displayFn(item) {
-    console.log(item);
-    return item ? item.companyName : undefined;
+  companyContactList(id: any) {
+    console.log(id);
+
+    let param = {
+      DBNAME: this.global.LOGGED_IN_USER.DbName,
+      id11: this.Company,
+      password: this.global.LOGGED_IN_USER.encryptPswd,
+    };
+    this.commanservice.getCompanyContactList(param).subscribe((data: any) => {
+      console.log(JSON.parse(data));
+    });
   }
+
   Detail() {
     const dialogRef = this.dialog.open(AdditionalDetailsComponent, {
       position: { right: 0 + '%', top: 10 + '%' },
@@ -156,4 +179,7 @@ export class CreateNewComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
   ngOnInit(): void {}
+}
+function id(id: any) {
+  throw new Error('Function not implemented.');
 }

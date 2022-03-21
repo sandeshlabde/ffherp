@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     TablePipe,
@@ -64,6 +65,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     DragDropModule,
     MatCardModule,
     MatAutocompleteModule,
+    MatTooltipModule,
   ],
   exports: [
     CommonModule,
@@ -97,6 +99,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     DragDropModule,
     MatCardModule,
     MatAutocompleteModule,
+    MatTooltipModule,
   ],
 })
 export class SharedModule {}

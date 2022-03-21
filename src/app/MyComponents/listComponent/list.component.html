@@ -39,6 +39,7 @@
     </div>
     <div class="table-section">
       <table
+        *ngIf="dataSource"
         mat-table
         [dataSource]="dataSource"
         matSort
@@ -64,32 +65,16 @@
 
             <div>
               <span *ngIf="voucher">{{ element.InstalledNo }}</span>
-              <a
-                class="a"
-                (click)="openEmailTrace(element.InstalledNo)"
-                data-bs-toggle="modal"
-                data-bs-target="#email"
-                ><i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Email Trace"
-                  class="fas fa-envelope"
-                ></i>
+              <a class="a" (click)="openEmailTrace(element.InstalledNo)"
+                ><i matTooltip="Email Trace" class="fas fa-envelope"></i>
               </a>
 
               <a class="a">
-                <i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Upload "
-                  class="fas fa-cloud-upload-alt"
-                ></i>
+                <i matTooltip="Upload " class="fas fa-cloud-upload-alt"></i>
               </a>
               <a *ngIf="installedno" class="a"
                 ><i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Edit {{ EntityName }}"
+                  matTooltip="Edit {{ EntityName }}"
                   class="fas fa-pencil-alt"
                 ></i
               ></a>
@@ -104,9 +89,7 @@
                   )
                 "
                 ><i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Edit {{ EntityName }}"
+                  matTooltip="Edit {{ EntityName }}"
                   class="fas fa-pencil-alt"
                 ></i
               ></a>
@@ -127,12 +110,7 @@
             {{ element.ClientName }}
             <div>
               <a class="a" (click)="openEmailQuote(element.InstalledNo)">
-                <i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="View Email Quote"
-                  class="fas fa-file-pdf"
-                ></i
+                <i matTooltip="View Email Quote" class="fas fa-file-pdf"></i
               ></a>
             </div>
             <div *ngIf="voucher">
@@ -163,22 +141,8 @@
           <td mat-cell *matCellDef="let element" class="text-start table-data">
             {{ element.ContactName }}
             <div>
-              <a class="a"
-                ><i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Phone"
-                  class="fas fa-phone"
-                ></i
-              ></a>
-              <a
-                ><i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="WhatsApp"
-                  class="fab fa-whatsapp"
-                ></i
-              ></a>
+              <a class="a"><i matTooltip="Phone" class="fas fa-phone"></i></a>
+              <a><i matTooltip="WhatsApp" class="fab fa-whatsapp"></i></a>
             </div>
           </td>
         </ng-container>
@@ -214,26 +178,16 @@
             {{ element.Anualisedamount | currency: "INR" }}
             <div>
               <a class="a" (click)="openChat(element.InstalledNo)">
-                <i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="Chat"
-                  class="far fa-comments"
-                ></i
+                <i matTooltip="Chat" class="far fa-comments"></i
               ></a>
               <a
                 class="a"
                 (click)="openNotes(element.InstalledNo, element.ClientName)"
               >
-                <i
-                  data-bs-toggle="tooltip"
-                  data-bs-placement="top"
-                  title="view Notes"
-                  class="far fa-clipboard"
-                ></i>
+                <i matTooltip="view Notes" class="far fa-clipboard"></i>
               </a>
               <a (click)="openAction(element.InstalledNo, element.ClientID)"
-                ><i class="fas fa-plus-circle"></i
+                ><i matTooltip="Add Action" class="fas fa-plus-circle"></i
               ></a>
             </div>
           </td>

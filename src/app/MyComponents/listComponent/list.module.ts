@@ -7,11 +7,12 @@ import { EmailTraceComponent } from './email-trace/email-trace.component';
 import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ApprovalComponent } from './approval/approval.component';
-import { EditListComponent } from './edit-list/edit-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateNewComponent } from './create-new/create-new.component';
 import { AdditionalDetailsComponent } from './create-new/additional-details/additional-details.component';
 import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-address/delivary-billing-address.component';
+import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+import { EditVoucharComponent } from './edit-approvedlist/edit-vouchar/edit-vouchar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-a
     CreateNewComponent,
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
+    EditVoucharComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [
@@ -41,6 +43,7 @@ import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-a
     CreateNewComponent,
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
+    EditVoucharComponent,
   ],
 })
 export class ListModule {}

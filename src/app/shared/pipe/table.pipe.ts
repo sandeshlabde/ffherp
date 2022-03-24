@@ -13,7 +13,7 @@ export class TablePipe implements PipeTransform {
       let Value = value.split('/');
       let format = Value.reverse();
       let joinDate = format.join('-');
-      console.log(joinDate);
+
       const formatValue = moment(joinDate).format('DD MMM y');
       return formatValue;
     }

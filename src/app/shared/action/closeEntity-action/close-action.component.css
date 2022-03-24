@@ -36,8 +36,15 @@ textarea {
 button {
   width: 50%;
   height: 45px;
+  margin: 5px;
+  color: white;
 }
-
+.SaveAction {
+  background-color: green;
+}
+.backButton {
+  background-color: red;
+}
 .link {
   text-align: end;
   margin: 10px 0px;
@@ -53,5 +60,6 @@ a:hover {
   cursor: pointer;
 }
 .contain {
-  min-height: 518px;
+  min-height: 530px;
+  margin-top: 10px;
 }

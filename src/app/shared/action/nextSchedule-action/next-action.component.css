@@ -1,8 +1,15 @@
 button {
   width: 50%;
   height: 45px;
+  margin: 5px;
+  color: white;
 }
-
+.saveButton {
+  background-color: green;
+}
+.backButton {
+  background-color: red;
+}
 mat-radio-button {
   margin: 0px 10px;
 }

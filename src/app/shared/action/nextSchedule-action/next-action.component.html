@@ -84,10 +84,13 @@
               name="contactEmail"
               ngModel
             /> -->
-            <mat-select name="CoustomerContactName" ngModel>
+            <mat-select
+              name="CoustomerContactName"
+              [(ngModel)]="CoustomerContactName"
+            >
               <mat-option
                 *ngFor="let contactlist of contactlistData"
-                value="{{ contactlist.Name }}"
+                value="{{ contactlist.Id }}"
               >
                 {{ contactlist.Name }}</mat-option
               >
@@ -163,7 +166,7 @@
           <mat-select
             name="ManagerAlert"
             (ngModelChange)="getuserdata($event)"
-            ngModel
+            [(ngModel)]="ManagerAlert"
           >
             <mat-option
               *ngFor="let user of activityByData"
@@ -174,46 +177,35 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-12 row g-0">
-        <!-- *ngFor="let user of selectedUserData" -->
+      <div class="col-12 row g-0" *ngFor="let user of selectedUserData">
         <div class="col-lg-6">
-          <mat-checkbox class="input-width">
-            <mat-form-field class="input-ckeck">
-              <mat-label>E-mail</mat-label>
-              <input
-                matInput
-                value="{{ selectedUserData?.UserEmail }}"
-                name="UserEmail"
-              />
-            </mat-form-field>
-          </mat-checkbox>
+          <mat-form-field class="input-ckeck">
+            <mat-label>E-mail</mat-label>
+            <input matInput [(ngModel)]="user.UserEmail" name="UserEmail" />
+          </mat-form-field>
+          <!-- </mat-checkbox> -->
         </div>
         <div class="col-lg-6">
-          <mat-checkbox class="input-width">
-            <mat-form-field class="input-ckeck">
-              <mat-label>SMS</mat-label>
-              <input
-                name="UserEmail"
-                matInput
-                value="{{ selectedUserData?.UserMobile }}"
-              />
-            </mat-form-field>
-          </mat-checkbox>
+          <!-- <mat-checkbox class="input-width"> -->
+          <mat-form-field class="input-ckeck">
+            <mat-label>SMS</mat-label>
+            <input name="UserMobile" matInput [(ngModel)]="user.UserMobile" />
+          </mat-form-field>
+          <!-- </mat-checkbox> -->
         </div>
       </div>
     </div>
   </div>
 
   <div class="row g-0">
-    <button class="col" mat-stroked-button matStepperPrevious color="warn">
+    <button class="col backButton" mat-stroked-button matStepperPrevious>
       Back
     </button>
     <button
-      class="col"
       type="submit"
       mat-stroked-button
       matStepperNext
-      color="primary"
+      class="col border saveButton"
     >
       Save
     </button>

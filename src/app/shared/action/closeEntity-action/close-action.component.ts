@@ -23,10 +23,12 @@ export class CloseActionComponent implements OnInit {
   lostDate: any = moment();
   closedDate: any = moment();
   Lost: boolean = false;
-  Win: boolean = true;
+  Won: boolean = true;
   Close: boolean = false;
   ValueLost: boolean = false;
   SelectedStatus: any;
+  lostReasonData: any;
+  LostReason: any = '90';
   constructor(private actionService: ActionService, private global: Global) {}
   getuserdata() {
     const param4 = {
@@ -41,17 +43,17 @@ export class CloseActionComponent implements OnInit {
   selectStatus(e) {
     console.log(e);
     if (e == 12) {
-      this.Win = true;
+      this.Won = true;
       this.Close = false;
       this.Lost = false;
       this.ValueLost = false;
     } else if (e == 13) {
-      this.Win = false;
+      this.Won = false;
       this.Close = false;
       this.Lost = true;
       this.ValueLost = true;
     } else if (e == 15) {
-      this.Win = false;
+      this.Won = false;
       this.Close = true;
       this.Lost = false;
       this.ValueLost = true;
@@ -62,12 +64,13 @@ export class CloseActionComponent implements OnInit {
     console.log(this.newlyActionData);
 
     this.OpportunityStatusData = this.newlyActionData.Table9;
-    this.InstrumentTypeData = this.newlyActionData.Table24;
-    // this.moveStageData = this.newlyActionData.Table1;
+    this.InstrumentTypeData = this.newlyActionData.Table11;
+    this.lostReasonData = this.newlyActionData.Table10;
     // this.contactlistData = this.newlyActionData.Table2;
     // this.activityByData = this.newlyActionData.Table16;
     // this.CoustamerContactData = this.newlyActionData.Table4;
     this.SelectedStatus = 12;
+    this.LostReason = 90;
     console.log(this.SelectedStatus);
   }
 }

@@ -8,11 +8,11 @@ table {
 }
 th {
   height: 30px;
-  background-color: skyblue;
+  background-color: #dcebdc;
 }
 
 tr:hover {
-  background-color: rgb(240, 223, 192);
+  background-color: #dbe4eb;
 }
 
 i {
@@ -110,6 +110,7 @@ mat-icon {
 ::ng-deep.mat-dialog-container {
   margin: 0px !important;
   padding: 0px !important;
+  overflow-x: hidden !important;
 }
 .cdk-drag-preview {
   box-sizing: border-box;
@@ -183,3 +184,7 @@ span {
   background-color: black;
   color: white;
 }
+/* .iconDiv{
+  display: none;
+} */
+

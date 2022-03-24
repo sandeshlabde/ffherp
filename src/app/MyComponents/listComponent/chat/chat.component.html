@@ -1,12 +1,6 @@
 <div class="noteBox">
   <div class="modal-header bg-info text-white text-center">
     <h5 class="modal-title title">Chat</h5>
-
-    <button
-      type="button"
-      mat-dialog-close
-      class="btn-close text-white"
-    ></button>
   </div>
   <div class="contain">
     <div *ngFor="let x of chat">
@@ -22,10 +16,10 @@
   <div class="FormContain">
     <form #chatData="ngForm" (ngSubmit)="chatDataSubmit(chatData.value)">
       <div class="col-md-12 form-field">
-        <!-- <ng-autocomplete [data]="actorList" 
+        <!-- <ng-autocomplete [data]="actorList"
                     [searchKeyword]="keyword" (selected)='selectEvent($event)'
-                     (inputChanged)='onChangeSearch($event)' 
-                     [itemTemplate]="itemTemplate" 
+                     (inputChanged)='onChangeSearch($event)'
+                     [itemTemplate]="itemTemplate"
                      [notFoundTemplate]="notFoundTemplate">
                 </ng-autocomplete>
                 <ng-template #itemTemplate let-item>

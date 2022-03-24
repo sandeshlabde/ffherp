@@ -1,49 +1,53 @@
-.comp_name {
-  background-color: #2a9fda7c;
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+  padding-top: 28px;
+}
+.id-title-block span{
+  display: block;
+}
+.id-entity span{
+  display:inline-block;
+}
+.table_heading {
+  background-color: #bce1c6;
+}
+.card{
+  height: 200px;
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+}
+.company_details{
+  padding: 5px 0p 5px 0px;
+  row-gap: 10px;
+}
+.span-text{
+  color: lightslategray;
+  font-size: 15px;
+  padding-right: 10px;
+}
+.resp-text{
+  font-size: 14px;
+  font-weight: bold;
   color: black;
 }
-
-.link {
-  background-color: #c8e8f87c;
+.nxt-action-details{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.i-block{
+  margin-top: 5px;
 }
 
-.entityData {
+.i-block span{
+  display: block;
+  color: lightslategray;
 }
-
-.entity_box {
-  padding: 10px;
-  border: 1px solid black;
-  color: #0000005d;
-}
-
-.billing {
-  display: flex;
-  justify-content: center;
-}
-
-.address_part {
-  background-color: #ece6e6;
-}
-
-.col_1 {
-  /* font-size: small; */
-  text-decoration: solid;
-  margin-right: 10px;
-}
-
-.col_2 {
-  /* font-size: small; */
-  color: #000000a9;
-}
-
-#schedule {
-  /* font-size: small; */
-  text-align: start;
-  color: #0000005d;
-}
-
-/*  */
-
-.chatHeadingSize {
-  width: 100px;
+.date-class{
+  color:black;
+  font-weight: bold;
+  font-size: 14px;
 }

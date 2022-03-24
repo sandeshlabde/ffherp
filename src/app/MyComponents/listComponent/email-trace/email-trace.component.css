@@ -2,3 +2,13 @@
   max-width: 100%;
   min-height: auto;
 }
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+  padding-top: 28px;
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+}

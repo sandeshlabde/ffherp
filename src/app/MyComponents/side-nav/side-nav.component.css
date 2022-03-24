@@ -33,13 +33,13 @@
 }
 
 .sidebar .nav-links li:hover {
-  background: black;
+  background: #b8e0d4;
   color: white;
 }
 
 .sidebar .nav-links li .iocn-link {
   text-align: center;
-  background-color: black;
+  background-color: #b8e0d4;
 }
 
 .sidebar.close .nav-links li .iocn-link {
@@ -51,7 +51,7 @@
   min-width: 50px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: black;
   font-size: 20px;
   cursor: pointer;
   transition: all 0.3s ease;

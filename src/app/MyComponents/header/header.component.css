@@ -10,8 +10,8 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: black;
-  color: white;
+  background-color: #b8e0d4;
+  color: black;
   font-weight: 600;
   z-index: 100;
   position: fixed;
@@ -23,7 +23,7 @@
 }
 
 #ffh {
-  color: white;
+  color: black;
   margin-right: 10px;
 }
 
@@ -33,7 +33,7 @@
 
 i {
   font-size: 18px;
-  color: white;
+  color: black;
 }
 
 .dropdown-list {

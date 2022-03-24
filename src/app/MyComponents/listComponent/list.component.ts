@@ -33,6 +33,8 @@ export interface DialogData {
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
+
+  panelOpenState:boolean = false;
   a = moment();
   toDayDate = this.a.toISOString();
   public dateColour: boolean;

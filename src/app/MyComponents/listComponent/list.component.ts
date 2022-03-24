@@ -12,7 +12,6 @@ import { ApprovalComponent } from './approval/approval.component';
 import { ChatComponent } from './chat/chat.component';
 
 import { EmailTraceComponent } from './email-trace/email-trace.component';
-import { EntityProductComponent } from './entity-product/entity-product.component';
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { NoteComponent } from './note/note.component';
 import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.component';
@@ -23,6 +22,7 @@ import { CreateNewComponent } from './create-new/create-new.component';
 import * as moment from 'moment';
 import { CommanService } from 'src/app/services/comman.service';
 import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+import { EntityProductComponent } from './viewEntity/entity-product.component';
 export interface DialogData {
   EntityID: number;
   EntityName: string;

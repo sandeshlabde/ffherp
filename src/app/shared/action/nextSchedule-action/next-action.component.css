@@ -26,7 +26,7 @@ textarea {
 
 .contain2 {
   margin: 10px;
-  min-height: 500px;
+  min-height: 518px;
 }
 
 .mat-dialog-content {
@@ -54,4 +54,7 @@ textarea {
 
 .form-contain {
   height: 100%;
+}
+.input-ckeck {
+  width: 136px !important;
 }

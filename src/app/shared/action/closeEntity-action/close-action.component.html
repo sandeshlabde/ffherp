@@ -1,27 +1,45 @@
-<form class="form-box">
-  <div class="heading1">
+<form
+  class="form-box"
+  #closeAction="ngForm"
+  (submit)="closeActionForm(closeAction.value)"
+>
+  <div class="heading1" *ngIf="Win">
     <h1>Congratulation</h1>
   </div>
-  <div class="heading2">
+  <div class="heading2" *ngIf="Lost">
     <h1>Better Luck Next Time</h1>
   </div>
-  <div class="heading3">
+  <div class="heading3" *ngIf="Close">
     <h1>Not Your Fault</h1>
   </div>
-  <div class="contain card">
+  <div class="contain">
     <div class="col-lg-12 row">
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Opportunity Status</mat-label>
-          <mat-select name="Opportunity " ngModel>
-            <mat-option value=" "> </mat-option>
+          <mat-select
+            name="selectedStatus"
+            (ngModelChange)="selectStatus($event)"
+            ngModel
+            [(value)]="SelectedStatus"
+          >
+            <mat-option
+              *ngFor="let status of OpportunityStatusData"
+              [value]="status.Id"
+              >{{ status.Name }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-6" *ngIf="Win">
         <mat-form-field class="input-width">
           <mat-label>Delivery Date</mat-label>
-          <input matInput [matDatepicker]="Delivery" name="Delivery " ngModel />
+          <input
+            matInput
+            [matDatepicker]="Delivery"
+            name="Delivery "
+            [(ngModel)]="delivery"
+          />
           <mat-datepicker-toggle
             matSuffix
             [for]="Delivery"
@@ -29,9 +47,67 @@
           <mat-datepicker #Delivery></mat-datepicker>
         </mat-form-field>
       </div>
+      <div class="col-lg-6" *ngIf="Lost">
+        <mat-form-field class="input-width">
+          <mat-label>Lost Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="LostDate"
+            name="LostDate "
+            [(ngModel)]="lostDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="LostDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #LostDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-lg-6" *ngIf="Close">
+        <mat-form-field class="input-width">
+          <mat-label>Closed Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="ClosedDate"
+            name="LostDate "
+            [(ngModel)]="closedDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="ClosedDate"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #ClosedDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col-lg-12" *ngIf="Lost">
+      <mat-form-field class="input-width">
+        <mat-label>Lost Reason</mat-label>
+        <mat-select name="LostReason" ngModel>
+          <mat-option
+            *ngFor="let type of InstrumentTypeData"
+            value="{{ type.Id }} "
+          >
+            {{ type.Name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-12" *ngIf="Lost">
+      <mat-form-field class="input-width">
+        <mat-label>Closed Reason</mat-label>
+        <mat-select name="ClosedReason" ngModel>
+          <mat-option
+            *ngFor="let type of InstrumentTypeData"
+            value="{{ type.Id }} "
+          >
+            {{ type.Name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="col-lg-12 row">
-      <div class="col-lg-6">
+      <div class="col-lg-6" *ngIf="Win">
         <mat-form-field class="input-width">
           <mat-label>Coustomer Pur Order No</mat-label>
           <input matInput name="Coustomer " ngModel />
@@ -40,32 +116,54 @@
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label> Date</mat-label>
-          <input matInput [matDatepicker]="Date" name="Date " ngModel />
+          <input
+            matInput
+            [matDatepicker]="Date"
+            name="Date "
+            [(ngModel)]="date"
+          />
           <mat-datepicker-toggle matSuffix [for]="Date"></mat-datepicker-toggle>
           <mat-datepicker #Date></mat-datepicker>
         </mat-form-field>
       </div>
+      <div class="col-lg-6" *ngIf="ValueLost">
+        <mat-form-field class="input-width">
+          <mat-label>Value Lost</mat-label>
+          <input matInput name="Coustomer " ngModel />
+        </mat-form-field>
+      </div>
     </div>
-    <div class="col-lg-12 row">
+    <div class="col-lg-12">
+      <mat-form-field class="input-width" *ngIf="Lost">
+        <mat-label>Lost To </mat-label>
+        <input matInput name="LostTo" ngModel />
+      </mat-form-field>
+    </div>
+    <div class="col-lg-12 row" *ngIf="Win">
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Our Cost </mat-label>
-          <input matInput name=" OurCost" ngModel />
+          <input matInput name="OurCost" ngModel />
         </mat-form-field>
       </div>
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label> Order Value</mat-label>
-          <input matInput name="  OrderValue" ngModel />
+          <input matInput name="OrderValue" ngModel />
         </mat-form-field>
       </div>
     </div>
-    <div class="col-lg-12 row">
+    <div class="col-lg-12 row" *ngIf="Win">
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Instrument type</mat-label>
           <mat-select name=" Instrument" ngModel>
-            <mat-option value=" "> </mat-option>
+            <mat-option
+              *ngFor="let type of InstrumentTypeData"
+              value="{{ type.Id }} "
+            >
+              {{ type.Name }}</mat-option
+            >
           </mat-select>
         </mat-form-field>
       </div>
@@ -76,7 +174,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="col-lg-12 row">
+    <div class="col-lg-12 row" *ngIf="Win">
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Bank Drawn ON</mat-label>
@@ -98,13 +196,12 @@
       </mat-form-field>
     </div>
     <div class="link"><a class="a"> Send Alert</a></div>
-    <div class="col">
-      <button mat-raised-button matStepperPreviouscolor="warn">
-        Save & Sales Order
-      </button>
-      <button mat-raised-button matStepperPrevious color="primary">
-        Save & Close Lead
-      </button>
-    </div>
+  </div>
+  <div class="row">
+    <button class="col" mat-stroked-button color="warn">Save Action</button>
+
+    <button class="col" mat-stroked-button matStepperNext color="warn">
+      Back
+    </button>
   </div>
 </form>

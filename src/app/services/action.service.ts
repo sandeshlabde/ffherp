@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class ActionService {
   getDefaultDatacommonURL =
     'https://ffherp.co.in:446/api/Voucher/GetDefaultDatacommon';
+  GetCommonDataNewlyUrl =
+    'https://ffherp.co.in:446/api/Voucher/GetCommonDataNewly';
   commanDataURL = 'https://ffherp.co.in:446/api/Voucher/GetCommonData';
 
   commanContactListURL =
@@ -19,11 +21,15 @@ export class ActionService {
 
   saveSheduleCommonActionURL =
     'https://ffherp.co.in:446/api/Voucher/SaveSheduleCommonAction';
-
+  getUserEmailMobileUrl =
+    'https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile';
   constructor(private http: HttpClient) {}
 
   getDefaultData(param) {
     return this.http.post(this.getDefaultDatacommonURL, param);
+  }
+  getCommonDataNewlyData(param) {
+    return this.http.post(this.GetCommonDataNewlyUrl, param);
   }
   connanData(param: any) {
     return this.http.post(this.commanDataURL, param);
@@ -33,6 +39,9 @@ export class ActionService {
   }
   getUserlist(param: any) {
     return this.http.post(this.getUserDataURL, param);
+  }
+  getUserEmailMobile(param: any) {
+    return this.http.post(this.getUserEmailMobileUrl, param);
   }
   saveActualCommanAction(param: any) {
     return this.http.post(this.saveActualCommonActionURL, param);

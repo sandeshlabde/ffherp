@@ -1,4 +1,13 @@
-<mat-stepper #stepper>
+<mat-stepper #stepper selectedIndex="1">
+  <mat-step>
+    <app-close-action
+      *ngIf="closeAction"
+      [EntityId]="EntityId"
+      [entityname]="entityname"
+      [newlyActionData]="newlyActionData"
+      [getDefaultData]="getDefaultData"
+    ></app-close-action>
+  </mat-step>
   <mat-step>
     <h1 class="heading">
       What Is Your Interaction
@@ -18,7 +27,9 @@
               *ngFor="let SelectActionData of SelectActionData"
               [value]="SelectActionData.Id"
               name="{{ SelectActionData.Name }}"
+              [checked]="SelectActionData.Id == DefaultSelect"
             >
+              <!-- [checked]="SelectActionData.Id == DefaultSelect" -->
               {{ SelectActionData.Name }}
             </mat-radio-button>
           </mat-radio-group>
@@ -121,7 +132,7 @@
                   <mat-select name="CoustomerContactName" ngModel>
                     <mat-option
                       *ngFor="let contactlist of contactlistData"
-                      value="{{ contactlist.Name }}"
+                      value="{{ contactlist.Id }}"
                     >
                       {{ contactlist.Name }}</mat-option
                     >
@@ -135,7 +146,14 @@
               <div class="col-lg-12">
                 <mat-form-field class="input-width">
                   <mat-label>Activity By</mat-label>
-                  <input matInput name="ActivityBy" ngModel />
+                  <mat-select name="ActivityBy" ngModel>
+                    <mat-option
+                      *ngFor="let user of activityByData"
+                      value="{{ user.UserId }}"
+                    >
+                      {{ user.UserName }}</mat-option
+                    >
+                  </mat-select>
                 </mat-form-field>
               </div>
               <div class="col-lg-12 row">
@@ -157,7 +175,7 @@
                     <input matInput name="Distance" ngModel />
                   </mat-form-field>
                 </div>
-                <div class="row col-lg-12">
+                <div class="row col-lg-12" *ngIf="emailReport">
                   <div class="col-lg-4">
                     <mat-label>Email Report</mat-label>
 
@@ -217,17 +235,17 @@
         </mat-tab-group>
 
         <div class="row">
-          <button class="col" mat-stroked-button color="warn">
+          <button
+            class="col"
+            mat-stroked-button
+            matStepperPrevious
+            (click)="CloseLead()"
+            color="warn"
+          >
             Close Lead
           </button>
 
-          <button
-            class="col"
-            matStepperNext
-            mat-stroked-button
-            color="accent"
-            (click)="CloseLead()"
-          >
+          <button class="col" mat-stroked-button color="accent">
             Convert To Lead
           </button>
 
@@ -249,13 +267,9 @@
     <app-next-action
       *ngIf="nextAction"
       [EntityId]="EntityId"
-      [activityType]="activityType"
       [entityname]="entityname"
+      [newlyActionData]="newlyActionData"
       [getDefaultData]="getDefaultData"
-      [contactlistData]="contactlistData"
-      [activitydata]="activitydata"
-      [SelectActionData]="SelectActionData"
     ></app-next-action>
-    <app-close-action *ngIf="closeAction"></app-close-action>
   </mat-step>
 </mat-stepper>

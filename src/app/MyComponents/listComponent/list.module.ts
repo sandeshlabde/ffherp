@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from './chat/chat.component';
-import { EntityProductComponent } from './entity-product/entity-product.component';
+import { EntityProductComponent } from './viewEntity/entity-product.component';
 import { NoteComponent } from './note/note.component';
 import { EmailTraceComponent } from './email-trace/email-trace.component';
 import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.component';

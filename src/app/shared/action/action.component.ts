@@ -30,7 +30,8 @@ import { ActionService } from 'src/app/services/action.service';
   ],
 })
 export class ActionComponent implements OnInit {
-  public TabIndex = 1;
+  [x: string]: any;
+  public TabIndex = 0;
   EntityId: '';
   stageType: string;
   activityType: string;
@@ -42,9 +43,9 @@ export class ActionComponent implements OnInit {
   ActionType: any;
   ActivityType: any;
   Discussions: any;
-  actionStartDate: any = moment().format('YYYY-MM-DD');
+  actionStartDate: any = moment();
   ActionStartTime: any;
-  actionEndDate: any = moment().format('YYYY-MM-DD');
+  actionEndDate: any = moment();
   ActionEndTime: any;
 
   Comefrompdfsend: any;
@@ -54,11 +55,15 @@ export class ActionComponent implements OnInit {
   EntityName: any;
   moveStageData: any;
   activitydata: any;
-
+  newlyActionData: any;
   id: any;
   notContactableData: any;
   clientNo: any;
-
+  activityByData: any;
+  DefaultSelect: any;
+  get emailReport() {
+    return ['ticket'].includes(this.EntityName.toLowerCase());
+  }
   constructor(
     private actionService: ActionService,
     private global: Global,
@@ -124,74 +129,82 @@ export class ActionComponent implements OnInit {
     const params = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
-      Type: this.stageType,
+      EntityId: '220321006',
+      EntityName: this.entityname,
+      CompanyId: '160608234',
+      ContactId: '160608237',
+      ActionActor: '123',
+      TargetOwner: '123',
     };
 
-    this.actionService.connanData(params).subscribe((data: any) => {
-      this.moveStageData = JSON.parse(data);
-      console.log(this.moveStageData);
+    this.actionService.getCommonDataNewlyData(params).subscribe((data: any) => {
+      this.newlyActionData = JSON.parse(data);
+      this.SelectActionData = this.newlyActionData.Table6;
+      this.activitydata = this.newlyActionData.Table;
+      this.moveStageData = this.newlyActionData.Table1;
+      this.contactlistData = this.newlyActionData.Table15;
+      this.activityByData = this.newlyActionData.Table3;
+      this.notContactableData = this.newlyActionData.Table7;
+      console.log(this.contactlistData);
     });
-    const param1 = {
-      DBNAME: this.global.LOGGED_IN_USER.DbName,
-      password: this.global.LOGGED_IN_USER.encryptPswd,
-      Type: 'LFollowUpType',
-    };
-    this.actionService.connanData(param1).subscribe((data: any) => {
-      this.SelectActionData = JSON.parse(data);
-      console.log(this.SelectActionData);
-    });
-    const param2 = {
-      DBNAME: this.global.LOGGED_IN_USER.DbName,
-      password: this.global.LOGGED_IN_USER.encryptPswd,
-      Type: 'CallType',
-    };
-    this.actionService.connanData(param2).subscribe((data: any) => {
-      this.notContactableData = JSON.parse(data);
-    });
-    const param3 = {
-      DBNAME: this.global.LOGGED_IN_USER.DbName,
-      password: this.global.LOGGED_IN_USER.encryptPswd,
-      Type: this.activityType,
-    };
-    this.actionService.connanData(param3).subscribe((data: any) => {
-      this.activitydata = JSON.parse(data);
-      console.log(this.activitydata);
-    });
+    // const param1 = {
+    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
+    //   password: this.global.LOGGED_IN_USER.encryptPswd,
+    //   Type: 'LFollowUpType',
+    // };
+    // this.actionService.connanData(param1).subscribe((data: any) => {
+    //   this.SelectActionData = JSON.parse(data);
+    //   console.log(this.SelectActionData);
+    // });
+    // const param2 = {
+    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
+    //   password: this.global.LOGGED_IN_USER.encryptPswd,
+    //   Type: 'CallType',
+    // };
+    // this.actionService.connanData(param2).subscribe((data: any) => {
+    //   this.notContactableData = JSON.parse(data);
+    // });
+    // const param3 = {
+    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
+    //   password: this.global.LOGGED_IN_USER.encryptPswd,
+    //   Type: this.activityType,
+    // };
+    // this.actionService.connanData(param3).subscribe((data: any) => {
+    //   this.activitydata = JSON.parse(data);
+    //   console.log(this.activitydata);
+    // });
 
     const param5 = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
-      EntityId: this.EntityId,
+      EntityId: '220114001',
       EntityName: this.entityname,
     };
     this.actionService.getDefaultData(param5).subscribe((data: any) => {
       this.getDefaultData = JSON.parse(data);
+      this.DefaultSelect = this.getDefaultData[0].ScheduleActionType;
       console.log(this.getDefaultData);
-      this.contactList();
     });
   }
   updateOptionalLabel() {}
   CloseLead() {
-    alert('clicked');
-    this.nextAction = false;
     this.closeAction = true;
   }
   NextAction() {
     this.nextAction = true;
-    this.closeAction = false;
   }
-  contactList() {
-    console.log(this.clientNo);
-    const param4 = {
-      DBNAME: this.global.LOGGED_IN_USER.DbName,
-      password: this.global.LOGGED_IN_USER.encryptPswd,
-      id11: this.clientNo,
-    };
-    this.actionService.getContactList(param4).subscribe((data: any) => {
-      this.contactlistData = JSON.parse(data);
-      console.log(JSON.parse(data));
-    });
-  }
+  // contactList() {
+  //   console.log(this.clientNo);
+  //   const param4 = {
+  //     DBNAME: this.global.LOGGED_IN_USER.DbName,
+  //     password: this.global.LOGGED_IN_USER.encryptPswd,
+  //     id11: this.clientNo,
+  //   };
+  //   this.actionService.getContactList(param4).subscribe((data: any) => {
+  //     this.contactlistData = JSON.parse(data);
+  //     console.log(JSON.parse(data));
+  //   });
+  // }
   ActionForm(data: any) {
     const param = {
       Dbname: this.global.LOGGED_IN_USER.DbName,

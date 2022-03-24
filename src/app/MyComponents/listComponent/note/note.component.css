@@ -2,11 +2,15 @@
      resize: none;
      display: flex;
  }
- 
+
  .chatHeadingSize {
      width: 100px;
  }
- 
+
  .noteBox {
      width: 100%;
  }
+ .table_heading {
+  background-color: #bce1c6;
+  color:black;
+}

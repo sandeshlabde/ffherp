@@ -16,7 +16,7 @@ tr:hover {
 }
 
 i {
-  font-size: 12px;
+  font-size: 14px;
   color: rgb(156, 155, 155);
   padding: 3px;
 }
@@ -93,8 +93,11 @@ i {
 }
 
 .filterSearch {
-  font-size: 17px;
-  margin-right: 22px;
+  font-size: 20px;
+
+}
+.filterSearch i {
+  font-size: 20px;
 }
 
 .contain {
@@ -158,10 +161,11 @@ span {
   padding: 0px 3px;
 }
 .iconfield-badge {
-  background-color: rgb(85, 157, 238);
-  color: white;
+  background-color: #b8e0d4;
+  color: black;
   border-radius: 5px;
   margin: 5px;
+  padding: 3px;
 }
 .company {
   padding: 0px 0px 5px 0px;
@@ -188,3 +192,21 @@ span {
   display: none;
 } */
 
+.flex{
+  display:flex;
+  justify-content: space-between;
+}
+.left{
+  display: flex;
+}
+.right{
+  display: flex;
+}
+
+.cardcontainer{
+  background-color: #dcebdc;
+}
+.breadcrumb-home{
+  color:black;
+  list-style-type: none;
+}

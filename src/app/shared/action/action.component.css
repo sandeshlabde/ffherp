@@ -29,9 +29,9 @@ textarea {
 
 .heading {
   text-align: center;
-  background-color: green;
-  color: white;
-  background-color: #333;
+  background-color:  #dcebdc;
+  color: black;
+  /* background-color: #333; */
   position: sticky;
   top: 0;
   width: 100%;
@@ -75,4 +75,7 @@ button {
 
 ::ng-deep .mat-horizontal-content-container {
   padding: 0px !important;
+}
+.connent_And_not_contactable{
+  overflow-x: hidden;
 }

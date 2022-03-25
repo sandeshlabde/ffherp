@@ -1,7 +1,10 @@
+
+
 .containt-Body {
   display: flex;
   background-color: #f3f3ec;
-  height: 100vh;
+  height: 79.8vh;
+  /* overflow-y:hidden !important; */
 }
 
 /* left contain  */

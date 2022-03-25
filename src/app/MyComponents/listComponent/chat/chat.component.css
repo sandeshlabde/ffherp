@@ -10,13 +10,27 @@ textarea {
 
 .chatCard {
   box-sizing: border-box;
-  background-color: rgb(238, 209, 188);
+  /* background-color: rgb(238, 209, 188); */
+  background-color: #dbe4eb;
   margin: 10px;
   padding: 10px;
 }
 .FormContain {
   margin: 0px 10px;
 }
+<<<<<<< HEAD
 .full-width {
   width: 100%;
+=======
+
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+>>>>>>> 679694e6dc7709f84592a544c0fb328c7a8a63fd
 }

@@ -1,0 +1,18 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$custom-primary: mat-palettle($mat-deep-purple,600);
+$custome-accent: mat-palettle($mat-pint,100);
+
+$custome-theme: mat-dark-theme($custom-primary,$custome-accent);
+@include angular-material-theme($custome-theme);
+
+$alt-primary: mat-palettle($mat-yellow);
+$alt-accent: mat-palettle($mat-grey,200);
+
+$alt-theme: mat-dark-theme($alt-primary,$alt-accent);
+
+.alertnative {
+  @include mat-button-theme($alt-theme);
+}

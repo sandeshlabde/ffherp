@@ -328,7 +328,7 @@ export class ListComponent implements OnInit {
   //email Quate Dialog Model
   openEmailQuote(id: any) {
     const dialogRef = this.dialog.open(ShowEmailQuotComponent, {
-      height: '900px',
+      height: '80vh',
       width: '1000px',
       data: {
         EntityID: id,

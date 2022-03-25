@@ -28,6 +28,15 @@ export interface ILoginDetails {
   password: string;
   SessionFlag: string;
 }
+
+export interface Option {
+  backgroundColor: string;
+  buttonColor: string;
+  headingColor: string;
+  label: string;
+  value: string;
+}
+
 // export interface ActionDefaultData {
 //   ActorId: string;
 //   ActorName: string;

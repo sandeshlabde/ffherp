@@ -210,3 +210,12 @@ span {
   color:black;
   list-style-type: none;
 }
+.home-icon{
+  color: black;
+  font-size: 15px;
+}
+
+.Amount-head{
+  position: relative;
+  right: -78;
+}

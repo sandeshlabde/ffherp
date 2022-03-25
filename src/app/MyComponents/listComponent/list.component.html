@@ -3,7 +3,7 @@
     <!-- <ol class="breadcrumb"> -->
     <div class="flex">
       <div class="left">
-        <div class="breadcrumb-item "><a class="breadcrumb-home">Home</a></div>
+        <div class="breadcrumb-item "><i class="fas fa-home home-icon"></i></div>
         <div class="breadcrumb-item active" aria-current="page">
           {{ EntityNameTitle }}
         </div>
@@ -18,7 +18,7 @@
               data-bs-toggle="tooltip"
               data-bs-placement="bottom"
               title=" Filter Search "
-              class="fas fa-filter"
+              class="fas fa-filter home-icon"
             ></i
           ></span>
         </div>
@@ -167,11 +167,11 @@
             {{ element.OwnerName }}
           </td>
         </ng-container>
-        <ng-container matColumnDef="Anualisedamount">
+        <ng-container matColumnDef="Anualisedamount" class="Amount-head">
           <th
             mat-header-cell
             *matHeaderCellDef
-            class="text-end"
+            class="Amount-head"
             mat-sort-header
           >
             Amount

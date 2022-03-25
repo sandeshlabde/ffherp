@@ -51,3 +51,15 @@ tbody tr td {
   border-bottom: 1px solid blue;
   outline: none;
 }
+
+
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+}

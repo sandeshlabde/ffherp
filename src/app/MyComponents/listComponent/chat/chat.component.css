@@ -50,10 +50,22 @@ textarea {
 
 .chatCard {
   box-sizing: border-box;
-  background-color: rgb(238, 209, 188);
+  /* background-color: rgb(238, 209, 188); */
+  background-color: #dbe4eb;
   margin: 10px;
   padding: 10px;
 }
 .FormContain {
   margin: 0px 10px;
+}
+
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
 }

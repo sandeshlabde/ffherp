@@ -120,3 +120,11 @@
 .sideNavimg {
   max-height: 33px;
 }
+
+.green {
+  background-color:  #b8e0d4;
+}
+
+.red {
+  background-color: lightsalmon;
+}

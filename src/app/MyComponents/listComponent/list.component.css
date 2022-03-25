@@ -23,6 +23,7 @@ i {
 .tableOption {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .Company {
   /* max-width: 120px; */
@@ -94,7 +95,6 @@ i {
 
 .filterSearch {
   font-size: 20px;
-
 }
 .filterSearch i {
   font-size: 20px;
@@ -192,21 +192,21 @@ span {
   display: none;
 } */
 
-.flex{
-  display:flex;
+.flex {
+  display: flex;
   justify-content: space-between;
 }
-.left{
+.left {
   display: flex;
 }
-.right{
+.right {
   display: flex;
 }
 
-.cardcontainer{
+.cardcontainer {
   background-color: #dcebdc;
 }
-.breadcrumb-home{
-  color:black;
+.breadcrumb-home {
+  color: black;
   list-style-type: none;
 }

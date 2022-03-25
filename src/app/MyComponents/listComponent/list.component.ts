@@ -23,6 +23,13 @@ import * as moment from 'moment';
 import { CommanService } from 'src/app/services/comman.service';
 import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
 import { EntityProductComponent } from './viewEntity/entity-product.component';
+import { SelectionModel } from '@angular/cdk/collections';
+
+import { FlatTreeControl } from '@angular/cdk/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+} from '@angular/material/tree';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -33,23 +40,58 @@ export interface DialogData {
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-
-  panelOpenState:boolean = false;
+  panelOpenState: boolean = false;
   a = moment();
   toDayDate = this.a.toISOString();
   public dateColour: boolean;
+
+  EntityNameTitle: string = '';
+  listcol: any;
+  eXPDate: any;
+  groupbydata: Map<any, any>;
+  commanData: any;
+  Allshow: boolean = false;
+
+  EntityName: any;
+  id: any;
+  date: any;
+  current_date: any;
+  Selection: any;
+  tableSection: boolean = true;
+  cardSection: boolean = false;
+  groupSelected: string = ' ';
+  Array: any;
   displayedColumns: any[] = [
+    {
+      default: true,
+      columnName: 'select',
+    },
     {
       default: true,
       columnName: 'InstalledNo',
     },
+
     {
       default: true,
       columnName: 'ClientName',
     },
     {
-      default: true,
+      default: false,
       columnName: 'ContactName',
+      entityTypes: [
+        'lead',
+        'payment',
+        'prospect',
+        'ticket',
+        'amc',
+        'repair',
+        'work',
+        'molist',
+        'milist',
+        'salesorderlist',
+        'polist',
+        'payable',
+      ],
     },
     {
       default: true,
@@ -124,13 +166,7 @@ export class ListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
-  dataSource = new MatTableDataSource<listdatafield>([]);
-  EntityNameTitle: string = '';
-  listcol: any;
-  eXPDate: any;
-  groupbydata: Map<any, any>;
-  commanData: any;
+  FilterEntityData: void;
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(
       this.dataSource.data,
@@ -138,13 +174,8 @@ export class ListComponent implements OnInit {
       event.currentIndex
     );
   }
-  EntityName: any;
-  id: any;
-  date: any;
-  current_date: any;
-  selection: any;
-  tableSection: boolean = true;
-  cardSection: boolean = false;
+  dataSource = new MatTableDataSource<listdatafield>([]);
+  selection = new SelectionModel<listdatafield>(true, []);
   // table colum row show function start here
 
   get listColumns() {
@@ -251,7 +282,31 @@ export class ListComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+  masterToggle() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
 
+    this.selection.select(...this.dataSource.data);
+  }
+
+  checkboxLabel(row?: listdatafield): string {
+    if (!row) {
+      return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
+    }
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${
+      row.position + 1
+    }`;
+  }
+  multipleSelect() {
+    this.Allshow = !this.Allshow;
+  }
   // MODEL POP UP start here
 
   // entityid Dialog Model
@@ -316,9 +371,9 @@ export class ListComponent implements OnInit {
   // Chat Section Dialog Model
   openChat(id: any) {
     const dialogRef4 = this.dialog.open(ChatComponent, {
-      width: '35%',
+      width: '30%',
 
-      position: { left: 65 + '%', top: 5 + '%' },
+      position: { left: 70 + '%', top: 10 + '%' },
       data: {
         EntityID: id,
         EntityName: this.EntityName,
@@ -405,6 +460,31 @@ export class ListComponent implements OnInit {
   selectCard() {
     this.tableSection = false;
     this.cardSection = true;
+  }
+  groupSelectedValue() {
+    console.log(this.groupSelected);
+
+    const map = new Map();
+    this.dataSource.data.forEach((item) => {
+      map.set(item[this.groupSelected], {
+        total:
+          map.get(item[this.groupSelected]) &&
+          map.get(item[this.groupSelected]).total
+            ? map.get(item[this.groupSelected]).total + 1
+            : 1,
+      });
+    });
+    this.Array = map;
+    // this.FilterEntityData = this.filteredEntity(
+    //   this.dataSource.data,
+    //   this.groupSelected
+    // );
+    console.log(this.FilterEntityData);
+  }
+  filteredEntity(entity: any) {
+    if (this.dataSource.data && this.dataSource.data.length > 0)
+      return this.dataSource.data.filter((item) => item.OwnerName == entity);
+    return [];
   }
   ngOnInit() {}
 }

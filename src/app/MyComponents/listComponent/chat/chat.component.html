@@ -14,40 +14,26 @@
     </div>
   </div>
   <div class="FormContain">
-    <form #chatData="ngForm" (ngSubmit)="chatDataSubmit(chatData.value)">
+    <form #chatData="ngForm" (ngSubmit)="chatDataSubmit()">
       <div class="col-md-12 form-field">
-        <!-- <ng-autocomplete [data]="actorList"
-                    [searchKeyword]="keyword" (selected)='selectEvent($event)'
-                     (inputChanged)='onChangeSearch($event)'
-                     [itemTemplate]="itemTemplate"
-                     [notFoundTemplate]="notFoundTemplate">
-                </ng-autocomplete>
-                <ng-template #itemTemplate let-item>
-                    <a [innerHTML]="item.name"></a>
-                </ng-template>
-
-                <ng-template #notFoundTemplate let-notFound>
-                    <div [innerHTML]="notFound"></div>
-                </ng-template> -->
-        <input
-          class="chat-input"
-          name="AddedUserinChat"
-          value="AddedUserinChat"
-          type="text"
-          ngModel
-        />
-        <label for="AddedUserinChat" class="labels"
-          >Add Username Here.....</label
-        >
+        <mat-form-field class="full-width">
+          <mat-label>Add Username Here.....</mat-label>
+          <input
+            matInput
+            name="AddedUserinChat"
+            [(ngModel)]="AddedUserinChat"
+          />
+        </mat-form-field>
       </div>
       <div class="col-md-12">
-        <textarea
-          name="chatMessage"
-          #chatMessage
-          placeholder="Type Your Message Here......"
-          value="chatMessage"
-          ngModel
-        ></textarea>
+        <mat-form-field class="full-width">
+          <mat-label>Type Your Message Here......</mat-label>
+          <textarea
+            matInput
+            name="chatMessage"
+            [(ngModel)]="chatMessage"
+          ></textarea>
+        </mat-form-field>
       </div>
       <button type="submit" class="btn btn-secondary">Send</button>
     </form>

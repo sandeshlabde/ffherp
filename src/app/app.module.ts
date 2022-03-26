@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -14,6 +14,10 @@ import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
 import { ListComponent } from './MyComponents/listComponent/list.component';
 import { ListModule } from './MyComponents/listComponent/list.module';
 import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashboard.component';
+<<<<<<< HEAD
+=======
+import { MatToolbarModule } from '@angular/material/toolbar';
+>>>>>>> e52c4aa3c46edd8c315eb4a1a63ec783e61b1614
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,7 @@ import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashb
     ListModule,
   ],
 
-  providers: [ProspectService, AuthGuard],
+  providers: [ProspectService, AuthGuard, Title],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

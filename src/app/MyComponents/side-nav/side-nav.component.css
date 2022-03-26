@@ -34,7 +34,7 @@
 
 .sidebar .nav-links li:hover {
   background: #b8e0d4;
-  color: white;
+  color: black;
 }
 
 .sidebar .nav-links li .iocn-link {
@@ -84,7 +84,7 @@
 
 .sidebar .nav-links li .sub-menu a:hover {
   opacity: 1;
-  color: white;
+  color: black;
 }
 
 .sidebar.close .nav-links li .sub-menu {
@@ -115,6 +115,7 @@
   font-size: 18px;
   opacity: 1;
   display: block;
+  background-color: #dcebdc;
 }
 
 .sideNavimg {

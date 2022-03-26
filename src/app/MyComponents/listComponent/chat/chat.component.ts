@@ -14,10 +14,10 @@ export class ChatComponent implements OnInit {
   chatData: any;
   pageID: any;
   chat: any;
-  keyword = 'name';
   prefixText: any;
   actorList: any;
-
+  chatMessage: any;
+  AddedUserinChat: any;
   constructor(
     private listService: ProspectService,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -62,13 +62,13 @@ export class ChatComponent implements OnInit {
   }
 
   // showChat
-  chatDataSubmit(data: any) {
+  chatDataSubmit() {
     const param = {
       NoteId: '0',
-      AddedUserinChat: data.AddedUserinChat,
+      AddedUserinChat: this.AddedUserinChat,
       Dbname: this.global.LOGGED_IN_USER.DbName,
       EntityId: this.Entityid,
-      Message: data.chatMessage,
+      Message: this.chatMessage,
       MsgTo: '',
 
       PageId: this.pageID,
@@ -77,7 +77,8 @@ export class ChatComponent implements OnInit {
       companyname: '',
     };
     this.listService.submitChat(param).subscribe((data: any) => {});
-
+    this.chatMessage = '';
+    this.AddedUserinChat = '';
     this.getChatData();
   }
 

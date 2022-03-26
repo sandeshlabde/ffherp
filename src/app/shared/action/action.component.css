@@ -63,6 +63,14 @@ textarea {
 button {
   width: 100%;
   height: 45px;
+  margin: 5px;
+  color: white;
+}
+.CloseConvertButton {
+  background-color: red;
+}
+.nextActionButton {
+  background-color: green;
 }
 
 .mat-tab-group {

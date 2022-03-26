@@ -40,7 +40,7 @@
               <div class="row">
                 <div class="col-6">
                   <span class="span-text">Status : </span>
-                  <span class="resp-text">{{ entityData?.Status }}</span>
+                  <span class="resp-text">{{ entityData?.BillingStatus }}</span>
                 </div>
                 <div class="col-6 d-flex">
                   <span class="span-text">Stage : </span>
@@ -91,10 +91,7 @@
         <div class="col-lg-12">
           <mat-tab-group animationDuration="0ms">
             <mat-tab label="Product"
-              ><table
-                class="table mt-2"
-                *ngIf="ViewProductDetail"
-              >
+              ><table class="table mt-2" *ngIf="ViewProductDetail">
                 <thead>
                   <tr class="table_heading">
                     <th>Product</th>
@@ -123,23 +120,23 @@
               <table class="table mt-2">
                 <thead>
                   <tr class="table_heading">
-                    <th>Acu Id</th>
+                    <th>Id</th>
                     <th>Sch Id</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>By</th>
-                    <th>Done</th>
+                    <th>Discussions</th>
                     <th>Link</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr *ngFor="let Action of ViewActionDetail">
-                    <td>{{ Action.ScheduleActionId }}</td>
+                    <td>{{ Action.ActualId }}</td>
                     <td>{{ Action.SeqId }}</td>
                     <td>{{ Action.ActionStartDate | date: "dd MMM y" }}</td>
                     <td>{{ Action.ActionStartTime }}</td>
                     <td>{{ Action.username }}</td>
-                    <td>{{ Action.Taxes_val }}</td>
+                    <td>{{ Action.Discussions }}</td>
                     <td>{{ Action.TaxAmount_val }}</td>
                   </tr>
                 </tbody>
@@ -155,4 +152,3 @@
     </div>
   </div>
 </div>
-

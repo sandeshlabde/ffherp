@@ -30,6 +30,8 @@ export class NextActionComponent implements OnInit {
   activityByData: any;
   ManagerAlert: any;
   selectedUserData: any;
+  CoustomerContactName: any;
+
   constructor(private actionService: ActionService, private global: Global) {}
 
   saveActionForm(data: any) {
@@ -45,12 +47,12 @@ export class NextActionComponent implements OnInit {
       Discussions: data.Discussions,
       ScheduleActionDate: moment(data.scheduleActionDate).format('DD/MM/YYYY'),
       ScheduleActionTime: data.ScheduleActionTime,
-      ContactId: '211209001',
-      ScheduleUserId: '0066',
+      ContactId: this.getDefaultData[0].ContactId,
+      ScheduleUserId: this.getDefaultData[0].ScheduleUserId,
       UpdatedBy: this.global.LOGGED_IN_USER.Username,
       FlagUpdateSheduleAction: '',
       NextOtherContactInfo: '',
-      Id: 14285,
+      Id: this.getDefaultData[0].ScheduleActionId,
       CallBackIn: '',
       arr: [
         'false',
@@ -81,7 +83,6 @@ export class NextActionComponent implements OnInit {
   }
   updateOptionalLabel() {}
   getuserdata(e: any) {
-    console.log(e);
     let param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -89,7 +90,6 @@ export class NextActionComponent implements OnInit {
     };
     this.actionService.getUserEmailMobile(param).subscribe((data: any) => {
       this.selectedUserData = JSON.parse(data);
-      console.log(this.selectedUserData);
     });
   }
   ngOnInit(): void {
@@ -112,10 +112,16 @@ export class NextActionComponent implements OnInit {
     this.SelectActionData = this.newlyActionData.Table6;
     this.activitydata = this.newlyActionData.Table;
     this.moveStageData = this.newlyActionData.Table1;
-    this.contactlistData = this.newlyActionData.Table15;
+    this.contactlistData = this.newlyActionData.Table2;
     this.activityByData = this.newlyActionData.Table3;
     this.CoustamerContactData = this.newlyActionData.Table4;
     this.DefaultSelect = this.getDefaultData[0].ScheduleActionType;
-    console.log(this.contactlistData);
+
+    this.CoustomerContactName = this.contactlistData[0].Id;
+    this.ManagerAlert = this.getDefaultData[0].ScheduleUserId;
+    this.selectedUserData = this.newlyActionData.Table4;
+    // console.log(this.contactlistData);
+    console.log(this.newlyActionData);
+    console.log(this.ManagerAlert);
   }
 }

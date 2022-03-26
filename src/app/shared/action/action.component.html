@@ -35,14 +35,19 @@
           </mat-radio-group>
         </div>
 
-        <mat-tab-group mat-stretch-tabs class=" " [(selectedIndex)]="TabIndex" class="connent_And_not_contactable">
+        <mat-tab-group
+          mat-stretch-tabs
+          class=" "
+          [(selectedIndex)]="TabIndex"
+          class="connent_And_not_contactable"
+        >
           <mat-tab label="Connected">
             <div class="row contain">
               <div class="col-lg-6">
                 <mat-form-field class="input-width">
                   <mat-label>Activity Type</mat-label>
 
-                  <mat-select name="ActivityType" ngModel>
+                  <mat-select name="ActivityType" [(ngModel)]="ActivityType">
                     <mat-option
                       *ngFor="let actionValue of activitydata"
                       value="{{ actionValue.Id }}"
@@ -56,7 +61,7 @@
                 <mat-form-field class="input-width">
                   <mat-label>Move To Stage</mat-label>
 
-                  <mat-select name="MoveTostage" ngModel>
+                  <mat-select name="MoveTostage" [(ngModel)]="MoveTostage">
                     <mat-option
                       *ngFor="let stageValue of moveStageData"
                       value="{{ stageValue.Id }}"
@@ -129,7 +134,10 @@
                 <mat-form-field class="input-width">
                   <mat-label>Coustomer Contact Name</mat-label>
 
-                  <mat-select name="CoustomerContactName" ngModel>
+                  <mat-select
+                    name="CoustomerContactName"
+                    [(ngModel)]="CoustomerContactName"
+                  >
                     <mat-option
                       *ngFor="let contactlist of contactlistData"
                       value="{{ contactlist.Id }}"
@@ -146,7 +154,7 @@
               <div class="col-lg-12">
                 <mat-form-field class="input-width">
                   <mat-label>Activity By</mat-label>
-                  <mat-select name="ActivityBy" ngModel>
+                  <mat-select name="ActivityBy" [(ngModel)]="ActivityBy">
                     <mat-option
                       *ngFor="let user of activityByData"
                       value="{{ user.UserId }}"
@@ -201,9 +209,9 @@
             </div>
           </mat-tab>
           <mat-tab label="Not Contactable">
-            <div class="container">
-              <div class="row">
-                <div class="not-Connect-Checkbox ">
+            <div class="contain">
+              <div class="row g-0">
+                <div class="not-Connect-Checkbox">
                   <mat-radio-group class="row">
                     <mat-radio-button
                       color="primary"
@@ -234,27 +242,30 @@
           </mat-tab>
         </mat-tab-group>
 
-        <div class="row">
+        <div class="row g-0">
           <button
-            class="col"
+            *ngIf="CloseLeadButton"
+            class="col CloseConvertButton"
             mat-stroked-button
             matStepperPrevious
             (click)="CloseLead()"
-            color="warn"
           >
             Close Lead
           </button>
 
-          <button class="col" mat-stroked-button color="accent">
+          <button
+            *ngIf="ConvertToLeadButton"
+            class="col CloseConvertButton"
+            mat-stroked-button
+          >
             Convert To Lead
           </button>
 
           <button
             (click)="NextAction()"
-            class="col"
+            class="col nextActionButton"
             matStepperNext
             mat-stroked-button
-            color="primary"
             type="submit"
           >
             Next Action

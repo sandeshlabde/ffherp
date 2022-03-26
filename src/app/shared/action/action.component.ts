@@ -40,8 +40,7 @@ export class ActionComponent implements OnInit {
   contactlistData: any;
   nextAction: boolean = false;
   closeAction: boolean = false;
-  ActionType: any;
-  ActivityType: any;
+
   Discussions: any;
   actionStartDate: any = moment();
   ActionStartTime: any;
@@ -61,6 +60,30 @@ export class ActionComponent implements OnInit {
   clientNo: any;
   activityByData: any;
   DefaultSelect: any;
+  CoustomerContactName: any;
+  ActivityType: any;
+  MoveTostage: any;
+  ActivityBy: any;
+
+  get ConvertToLeadButton() {
+    return ['prospect'].includes(this.EntityName.toLowerCase());
+  }
+  get CloseLeadButton() {
+    return [
+      'lead',
+      'payment',
+      'salesorderlist',
+      'polist',
+      'payable',
+      'ticket',
+      'amc',
+      'repair',
+      'work',
+      'molist',
+      'milist',
+      'voucher',
+    ].includes(this.EntityName.toLowerCase());
+  }
   get emailReport() {
     return ['ticket'].includes(this.EntityName.toLowerCase());
   }
@@ -125,28 +148,24 @@ export class ActionComponent implements OnInit {
     //   this.stageType = 'Ticket';
     //   this.entityname = 'Ticket';
     // }
-
-    const params = {
+    const param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
-      EntityId: '220321006',
+      EntityId: this.EntityId,
       EntityName: this.entityname,
-      CompanyId: '160608234',
-      ContactId: '160608237',
-      ActionActor: '123',
-      TargetOwner: '123',
     };
-
-    this.actionService.getCommonDataNewlyData(params).subscribe((data: any) => {
-      this.newlyActionData = JSON.parse(data);
-      this.SelectActionData = this.newlyActionData.Table6;
-      this.activitydata = this.newlyActionData.Table;
-      this.moveStageData = this.newlyActionData.Table1;
-      this.contactlistData = this.newlyActionData.Table15;
-      this.activityByData = this.newlyActionData.Table3;
-      this.notContactableData = this.newlyActionData.Table7;
-      console.log(this.contactlistData);
+    this.actionService.getDefaultData(param).subscribe((data: any) => {
+      this.getDefaultData = JSON.parse(data);
+      this.DefaultSelect = this.getDefaultData[0].ScheduleActionType;
+      this.CoustomerContactName = this.getDefaultData[0].ContactId;
+      this.ActivityType = this.getDefaultData[0].NextScheduleActivityType;
+      this.MoveTostage = this.getDefaultData[0].MoveToStage;
+      this.ActivityBy = this.getDefaultData[0].ScheduleUserId;
+      console.log(this.ActivityType);
+      console.log(this.getDefaultData);
+      this.getNewlyData();
     });
+
     // const param1 = {
     //   DBNAME: this.global.LOGGED_IN_USER.DbName,
     //   password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -173,18 +192,6 @@ export class ActionComponent implements OnInit {
     //   this.activitydata = JSON.parse(data);
     //   console.log(this.activitydata);
     // });
-
-    const param5 = {
-      DBNAME: this.global.LOGGED_IN_USER.DbName,
-      password: this.global.LOGGED_IN_USER.encryptPswd,
-      EntityId: '220114001',
-      EntityName: this.entityname,
-    };
-    this.actionService.getDefaultData(param5).subscribe((data: any) => {
-      this.getDefaultData = JSON.parse(data);
-      this.DefaultSelect = this.getDefaultData[0].ScheduleActionType;
-      console.log(this.getDefaultData);
-    });
   }
   updateOptionalLabel() {}
   CloseLead() {
@@ -192,6 +199,28 @@ export class ActionComponent implements OnInit {
   }
   NextAction() {
     this.nextAction = true;
+  }
+  getNewlyData() {
+    const params = {
+      DBNAME: this.global.LOGGED_IN_USER.DbName,
+      password: this.global.LOGGED_IN_USER.encryptPswd,
+      EntityId: this.EntityId,
+      EntityName: this.entityname,
+      CompanyId: this.getDefaultData[0].clientId,
+      ContactId: this.getDefaultData[0].ContactId,
+      TargetOwner: this.getDefaultData[0].OwnerId,
+      ActionActor: this.getDefaultData[0].UpdatedBy,
+    };
+
+    this.actionService.getCommonDataNewlyData(params).subscribe((data: any) => {
+      this.newlyActionData = JSON.parse(data);
+      this.SelectActionData = this.newlyActionData.Table6;
+      this.activitydata = this.newlyActionData.Table;
+      this.moveStageData = this.newlyActionData.Table1;
+      this.contactlistData = this.newlyActionData.Table2;
+      this.activityByData = this.newlyActionData.Table3;
+      this.notContactableData = this.newlyActionData.Table7;
+    });
   }
   // contactList() {
   //   console.log(this.clientNo);

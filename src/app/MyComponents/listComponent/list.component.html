@@ -781,11 +781,10 @@
 
       <div>
         <mat-accordion *ngFor="let group of Array | keyvalue">
-          <mat-expansion-panel>
+          <mat-expansion-panel class="card-box">
             <mat-expansion-panel-header>
               <mat-panel-title>
                 <span class="me-4"> {{ group.key }}</span>
-
                 {{ group.value["total"] }}
               </mat-panel-title>
             </mat-expansion-panel-header>

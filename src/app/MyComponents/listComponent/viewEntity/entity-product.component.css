@@ -7,6 +7,10 @@
 .id-title-block span{
   display: block;
 }
+.id-name-section{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 .id-entity span{
   display:inline-block;
 }

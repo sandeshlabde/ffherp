@@ -30,13 +30,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
-<<<<<<< HEAD
+
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
-=======
-import { MatExpansionModule } from '@angular/material/expansion';
->>>>>>> e52c4aa3c46edd8c315eb4a1a63ec783e61b1614
+
+
 @NgModule({
   declarations: [
     TablePipe,
@@ -74,11 +73,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatAutocompleteModule,
     MatTooltipModule,
     MatExpansionModule,
-<<<<<<< HEAD
+
     MatGridListModule,
     MatToolbarModule
-=======
->>>>>>> e52c4aa3c46edd8c315eb4a1a63ec783e61b1614
   ],
   exports: [
     CommonModule,
@@ -114,11 +111,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatAutocompleteModule,
     MatTooltipModule,
     MatExpansionModule,
-<<<<<<< HEAD
     MatGridListModule,
     MatToolbarModule
-=======
->>>>>>> e52c4aa3c46edd8c315eb4a1a63ec783e61b1614
   ],
 })
 export class SharedModule {}

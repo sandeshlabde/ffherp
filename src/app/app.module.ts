@@ -14,10 +14,8 @@ import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
 import { ListComponent } from './MyComponents/listComponent/list.component';
 import { ListModule } from './MyComponents/listComponent/list.module';
 import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashboard.component';
-<<<<<<< HEAD
-=======
+
 import { MatToolbarModule } from '@angular/material/toolbar';
->>>>>>> e52c4aa3c46edd8c315eb4a1a63ec783e61b1614
 @NgModule({
   declarations: [
     AppComponent,

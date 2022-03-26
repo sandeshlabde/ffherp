@@ -6,6 +6,7 @@
       [entityname]="entityname"
       [newlyActionData]="newlyActionData"
       [getDefaultData]="getDefaultData"
+      [commanActionFormData]="commanActionFormData"
     ></app-close-action>
   </mat-step>
   <mat-step>
@@ -27,7 +28,7 @@
               *ngFor="let SelectActionData of SelectActionData"
               [value]="SelectActionData.Id"
               name="{{ SelectActionData.Name }}"
-              [checked]="SelectActionData.Id == DefaultSelect"
+              [checked]="SelectActionData.Id == DefaultSelectActionType"
             >
               <!-- [checked]="SelectActionData.Id == DefaultSelect" -->
               {{ SelectActionData.Name }}
@@ -164,7 +165,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="col-lg-12 row">
+              <div *ngIf="travel" class="col-lg-12 row">
                 <div class="col-lg-4">
                   <mat-form-field class="input-width">
                     <mat-label>Travel Time</mat-label>
@@ -281,6 +282,7 @@
       [entityname]="entityname"
       [newlyActionData]="newlyActionData"
       [getDefaultData]="getDefaultData"
+      [commanActionFormData]="commanActionFormData"
     ></app-next-action>
   </mat-step>
 </mat-stepper>

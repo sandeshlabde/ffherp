@@ -225,6 +225,17 @@ export class ListComponent implements OnInit {
   get voucher() {
     return ['voucher'].includes(this.EntityName.toLowerCase());
   }
+  get facDelDate() {
+    return ['salesorderlist'].includes(this.EntityName.toLowerCase());
+  }
+  get UpTo() {
+    return ['lead'].includes(this.EntityName.toLowerCase());
+  }
+  get nextAct() {
+    return ['salesorderlist', 'prospect'].includes(
+      this.EntityName.toLowerCase()
+    );
+  }
 
   constructor(
     private CommanService: CommanService,
@@ -254,6 +265,7 @@ export class ListComponent implements OnInit {
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
+        console.log(this.dataSource.data);
       });
       if (this.EntityName === 'POList') {
         this.EntityNameTitle = 'Purchase Order';

@@ -42,4 +42,9 @@ export interface listdatafield {
   Stage: string;
   EXPClosuredateDashboard: number;
   DeliveryDate: number;
+  ChatNotiCount: number;
+  Title: string;
+  SVACTOR: string;
+  FActor: string;
+  UpTo: string;
 }

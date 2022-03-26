@@ -11,11 +11,12 @@ import { ActionService } from 'src/app/services/action.service';
 })
 export class NextActionComponent implements OnInit {
   @Input() EntityId: string;
-  activityType: string;
   @Input() entityname: string;
   @Input() getDefaultData: any;
-  contactlistData: any;
   @Input() newlyActionData: any;
+  @Input() commanActionFormData: any;
+  activityType: string;
+  contactlistData: any;
   SelectActionData: any;
   DefaultSelect: any;
   ScheduleActionType: string;
@@ -31,20 +32,20 @@ export class NextActionComponent implements OnInit {
   ManagerAlert: any;
   selectedUserData: any;
   CoustomerContactName: any;
+  responseId: any;
 
   constructor(private actionService: ActionService, private global: Global) {}
 
-  saveActionForm(data: any) {
-    // this.ActionType = data.ActionType;
-    // console.log(data);
+  schedulsaveActionForm(data: any) {
+    this.commanSaveaction(this.commanActionFormData);
     let param = {
       Dbname: this.global.LOGGED_IN_USER.DbName,
       Password: this.global.LOGGED_IN_USER.encryptPswd,
       EntityId: this.EntityId,
       EntityName: this.entityname,
-      ScheduleActionType: this.ScheduleActionType,
+      ScheduleActionType: this.DefaultSelect,
       ScheduleActivityType: data.ScheduleActivityType,
-      Discussions: data.Discussions,
+      Instructions: data.Discussions,
       ScheduleActionDate: moment(data.scheduleActionDate).format('DD/MM/YYYY'),
       ScheduleActionTime: data.ScheduleActionTime,
       ContactId: this.getDefaultData[0].ContactId,
@@ -52,7 +53,7 @@ export class NextActionComponent implements OnInit {
       UpdatedBy: this.global.LOGGED_IN_USER.Username,
       FlagUpdateSheduleAction: '',
       NextOtherContactInfo: '',
-      Id: this.getDefaultData[0].ScheduleActionId,
+      Id: this.responseId,
       CallBackIn: '',
       arr: [
         'false',
@@ -76,10 +77,18 @@ export class NextActionComponent implements OnInit {
       ],
       Hours: 'hh',
     };
+    console.log(data);
 
+    console.log(this.commanActionFormData);
     this.actionService
       .saveSheduleCommonAction(param)
       .subscribe((data: any) => {});
+  }
+  commanSaveaction(param) {
+    this.actionService.saveActualCommanAction(param).subscribe((data: any) => {
+      this.responseId = data;
+      console.log(this.responseId);
+    });
   }
   updateOptionalLabel() {}
   getuserdata(e: any) {
@@ -92,22 +101,7 @@ export class NextActionComponent implements OnInit {
       this.selectedUserData = JSON.parse(data);
     });
   }
-  ngOnInit(): void {
-    // this.SelectActionData = this.newlyActionData.Table6;
-    // this.activitydata = this.newlyActionData.Table;
-    // this.moveStageData = this.newlyActionData.Table1;
-    // this.contactlistData = this.newlyActionData.Table2;
-    // this.activityByData = this.newlyActionData.Table16;
-    // this.CoustamerContactData = this.newlyActionData.Table4;
-    // const param4 = {
-    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
-    //   password: this.global.LOGGED_IN_USER.encryptPswd,
-    //   id11: this.global.LOGGED_IN_USER.Username,
-    // };
-    // this.actionService.getUserlist(param4).subscribe((data: any) => {
-    //   this.userlistData = JSON.parse(data);
-    // });
-  }
+  ngOnInit(): void {}
   ngAfterViewInit() {
     this.SelectActionData = this.newlyActionData.Table6;
     this.activitydata = this.newlyActionData.Table;
@@ -121,7 +115,7 @@ export class NextActionComponent implements OnInit {
     this.ManagerAlert = this.getDefaultData[0].ScheduleUserId;
     this.selectedUserData = this.newlyActionData.Table4;
     // console.log(this.contactlistData);
-    console.log(this.newlyActionData);
-    console.log(this.ManagerAlert);
+    // console.log(this.newlyActionData);
+    console.log(this.commanActionFormData);
   }
 }

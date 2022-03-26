@@ -11,6 +11,7 @@ import { ActionService } from 'src/app/services/action.service';
 export class CloseActionComponent implements OnInit {
   @Input() EntityId: string;
 
+  @Input() commanActionFormData: any;
   @Input() entityname: string;
   @Input() getDefaultData: any;
 
@@ -59,16 +60,80 @@ export class CloseActionComponent implements OnInit {
       this.ValueLost = true;
     }
   }
-  closeActionForm(data: any) {}
+  closeActionForm(data: any) {
+    console.log(this.getDefaultData);
+    const param = {
+      Dbname: this.global.LOGGED_IN_USER.DbName,
+      Password: this.global.LOGGED_IN_USER.encryptPswd,
+      EntityId: this.EntityId,
+      EntityName: this.entityname,
+      ActionType: this.commanActionFormData.ScheduleActionType,
+      ActivityType: this.commanActionFormData.ScheduleActivityType,
+      Discussions: data.Remark,
+      ActionStartDate: this.commanActionFormData.ActionStartDate,
+      ActionStartTime: this.commanActionFormData.ActionStartTime,
+      ActionEndDate: this.commanActionFormData.ActionEndDate,
+      ActionEndTime: this.commanActionFormData.ActionEndTime,
+      ContactId: this.getDefaultData[0].ContactId,
+      UserId: 'Aditya111',
+      Moneys: '',
+      KMS: '',
+      UpdatedBy: this.global.LOGGED_IN_USER.Username,
+      Id: 14379,
+      CallBackIn: '',
+      Hours: 'hh',
+      OtherContact: '',
+      MoveTostage: '121',
+      Converttolead: '0',
+      CloseProspect: '0',
+      CloseWork: '0',
+      TravelTime: '',
+      TravelCost: '',
+      OtherCost: '',
+      DCRNO: '',
+      CallingResponseCode: '',
+      Comefrompdfsend: '',
+      CloseLead: '0',
+      CloseLeadStatus: '? number:0 ?',
+      CloseLeadPONumber: '',
+      CloseLeadPODATE: '26/03/2022',
+      CloseLeadDeliveryDATE: '26/03/2022',
+      CloseLeadAdv: '0',
+      CloseLeadINS: '',
+      CloseLeadBank: '',
+      CloseLeadMode: '50',
+      CloseLeadRemarks: '',
+      CloseLeadLostReason: '90',
+      CloseLeadLostDate: '26/03/2022',
+      CloseLeadCloseReason: '',
+      CloseLeadCloseDate: '26/03/2022',
+      CloseLeadLeadValue: '6472.92',
+      CloseLeadLeadCloseValue: '12',
+      CloseLeadLeadContactSMS: '9835488546',
+      CloseLeadLeadOwnerSMS: '',
+      CloseLeadLeadActorSMS: '',
+      chkContactSMSClose: 'false',
+      chkContactEmailClose: 'false',
+      chkOwnerSMS: 'false',
+      chkOwnerEmail: 'false',
+      chkActorSMSClose: 'false',
+      chkActorEmailClose: 'false',
+      ContactSMSClose: '9835488546',
+      ContactEmailClose: 'dharmesh.jivani@rasnaltelecom.com',
+      OwnerEmail: 'saidirector@gmail.com',
+      OwnerSMS: '',
+      ActorSMSClose: '',
+      ActorEmailClose: 'aadi111@gmail.com',
+    };
+    this.actionService
+      .saveActualCommanAction(param)
+      .subscribe((data: any) => {});
+  }
   ngOnInit(): void {
-    console.log(this.newlyActionData);
-
     this.OpportunityStatusData = this.newlyActionData.Table9;
     this.InstrumentTypeData = this.newlyActionData.Table11;
     this.lostReasonData = this.newlyActionData.Table10;
-    // this.contactlistData = this.newlyActionData.Table2;
-    // this.activityByData = this.newlyActionData.Table16;
-    // this.CoustamerContactData = this.newlyActionData.Table4;
+
     this.SelectedStatus = 12;
     this.LostReason = 90;
     console.log(this.SelectedStatus);

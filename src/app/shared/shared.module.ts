@@ -31,10 +31,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatToolbarModule} from '@angular/material/toolbar';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -73,9 +73,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatAutocompleteModule,
     MatTooltipModule,
     MatExpansionModule,
-
+    MatBadgeModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
   ],
   exports: [
     CommonModule,
@@ -112,7 +112,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTooltipModule,
     MatExpansionModule,
     MatGridListModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatBadgeModule,
   ],
 })
 export class SharedModule {}

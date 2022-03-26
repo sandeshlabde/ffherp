@@ -1,11 +1,12 @@
 textarea {
   width: 100%;
   resize: none;
-  height: 80px;
+  height: 50px;
 }
 
 .contain {
-  height: 309px;
+  height: 330px;
+  overflow-y: scroll;
 }
 
 .chatCard {

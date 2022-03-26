@@ -216,7 +216,13 @@
                 {{ element.OwnerName }}
                 <div>
                   <a class="a" (click)="openChat(element.InstalledNo)">
-                    <i matTooltip="Chat" class="far fa-comments"></i
+                    <i
+                      matTooltip="Chat"
+                      matBadge="{{ element.ChatNotiCount }}"
+                      matBadgeColor="primary"
+                      matBadgeSize="small"
+                      class="far fa-comments"
+                    ></i
                   ></a>
                   <a
                     class="a"
@@ -412,28 +418,35 @@
               <span>{{ cardData.ClientName }}</span>
             </div>
             <div>
-              <div>
-                <span>
-                  <a class="a" (click)="openEntity(cardData.InstalledNo)">
-                    {{ cardData.InstalledNo }}</a
-                  ></span
-                >
-                opened on
-                <span>{{ cardData.Opendate | dateformat }}</span>
-              </div>
+              <span> {{ cardData.ContactName }}</span>
             </div>
-            <div class="row">
-              <div>
-                <span> {{ cardData.ContactName }}</span
-                ><span> {{ cardData.ConMobile }}</span
-                ><span>{{ cardData.Contactdetail }}</span>
-              </div>
+
+            <div>
+              <span>
+                <a class="a" (click)="openEntity(cardData.InstalledNo)">
+                  {{ cardData.InstalledNo }}</a
+                ></span
+              >
+              opened on
+              <span>{{ cardData.Opendate | dateformat }}</span>
+            </div>
+            <div>{{ cardData.Title }}</div>
+            <div *ngIf="facDelDate">
+              <span>{{ cardData.FActor }}</span
+              ><span>on</span>
+              <span>{{ cardData.DeliveryDate | dateformat }}</span>
             </div>
             <div>
               <div class="ActionField">
+                <span>Scheduled</span>
                 <span> {{ cardData.nextactiontype }}</span> for
-                <span> {{ cardData.OwnerName }}</span> on
-                <span> {{ cardData.NextActtiondate | dateformat }}</span> at
+                <span> {{ cardData.SVACTOR }}</span> on
+
+                <span *ngIf="UpTo">{{ cardData.UpTo | dateformat }}</span>
+                <span *ngIf="nextAct">
+                  {{ cardData.NextActtiondate | dateformat }}</span
+                >
+                at
                 <span> {{ cardData.Nextactiontime }}</span>
               </div>
             </div>
@@ -489,9 +502,10 @@
                 <li>
                   <a class="a" (click)="openChat(cardData.InstalledNo)">
                     <i
-                      data-bs-toggle="tooltip"
-                      data-bs-placement="top"
-                      title="Chat"
+                      matTooltip="Chat"
+                      matBadge="{{ cardData.ChatNotiCount }}"
+                      matBadgeColor="primary"
+                      matBadgeSize="small"
                       class="far fa-comments"
                     ></i
                   ></a>
@@ -559,7 +573,7 @@
                   Company
                 </th>
                 <td mat-cell *matCellDef="let element" class="table-data">
-                  <div>{{ element.ClientName }}</div>
+                  <div class="ClientName">{{ element.ClientName }}</div>
                   <div>
                     {{ element.ContactName }}
                     <a class="a"
@@ -603,7 +617,7 @@
               <ng-container matColumnDef="UploadEdit">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let element" class="table-data">
-                  <div>
+                  <div class="subValueIcon">
                     <a class="a">
                       <i
                         matTooltip="Upload"
@@ -612,7 +626,7 @@
                     </a>
                   </div>
 
-                  <div>
+                  <div class="subValueIcon">
                     <a
                       class="a"
                       (click)="
@@ -636,21 +650,25 @@
                 </th>
                 <td mat-cell *matCellDef="let element" class="table-data">
                   <div>
-                    Open :{{ element.Opendate | dateformat }} || EXP Closure :{{
-                      element.EXPClosuredateDashboard | dateformat
-                    }}
+                    <span class="Datalabel"> Open :</span
+                    >{{ element.Opendate | dateformat }} ||<span
+                      class="Datalabel"
+                      >EXP Closure :</span
+                    >
+                    {{ element.EXPClosuredateDashboard | dateformat }}
                   </div>
                   <div>
                     <div>
-                      Status :{{
-                        element.EXPClosuredateDashboard | dateformat
-                      }}
-                      || Stage :{{ element.Stage }}
+                      <span class="Datalabel"> Status :</span>
+                      {{ element.StatusName }}
+                      || <span class="Datalabel"> Stage :</span
+                      >{{ element.Stage }}
                     </div>
                     <div>
-                      Source : {{ element.SourceName }} || Priority :{{
-                        element.Priority
-                      }}
+                      <span class="Datalabel"> Source :</span>
+                      {{ element.SourceName }} ||
+                      <span class="Datalabel">Priority :</span>
+                      {{ element.Priority }}
                     </div>
                   </div>
                   <div *ngIf="voucher">
@@ -690,9 +708,11 @@
               <ng-container matColumnDef="AddCount">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
                 <td mat-cell *matCellDef="let element" class="table-data">
-                  <div></div>
+                  <div class="subValueIcon text-primary">
+                    {{ element.AMCActionCount }}
+                  </div>
 
-                  <div>
+                  <div class="subValueIcon">
                     <a
                       (click)="
                         openAction(element.InstalledNo, element.ClientID)
@@ -729,7 +749,7 @@
                   *matCellDef="let element"
                   class="text-start table-data"
                 >
-                  <div>
+                  <div class="subValueIcon">
                     <a class="a" (click)="openEmailQuote(element.InstalledNo)">
                       <i
                         matTooltip="View Email Quote"
@@ -737,9 +757,15 @@
                       ></i
                     ></a>
                   </div>
-                  <div>
+                  <div class="subValueIcon">
                     <a class="a" (click)="openChat(element.InstalledNo)">
-                      <i matTooltip="Chat" class="far fa-comments"></i
+                      <i
+                        matTooltip="Chat"
+                        matBadge="{{ element.ChatNotiCount }}"
+                        matBadgeColor="primary"
+                        matBadgeSize="small"
+                        class="far fa-comments"
+                      ></i
                     ></a>
                   </div>
                 </td>

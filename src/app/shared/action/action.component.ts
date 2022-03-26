@@ -59,12 +59,12 @@ export class ActionComponent implements OnInit {
   notContactableData: any;
   clientNo: any;
   activityByData: any;
-  DefaultSelect: any;
+  DefaultSelectActionType: any;
   CoustomerContactName: any;
   ActivityType: any;
   MoveTostage: any;
   ActivityBy: any;
-
+  commanActionFormData: any;
   get ConvertToLeadButton() {
     return ['prospect'].includes(this.EntityName.toLowerCase());
   }
@@ -85,6 +85,9 @@ export class ActionComponent implements OnInit {
     ].includes(this.EntityName.toLowerCase());
   }
   get emailReport() {
+    return ['ticket'].includes(this.EntityName.toLowerCase());
+  }
+  get travel() {
     return ['ticket'].includes(this.EntityName.toLowerCase());
   }
   constructor(
@@ -156,7 +159,7 @@ export class ActionComponent implements OnInit {
     };
     this.actionService.getDefaultData(param).subscribe((data: any) => {
       this.getDefaultData = JSON.parse(data);
-      this.DefaultSelect = this.getDefaultData[0].ScheduleActionType;
+      this.DefaultSelectActionType = this.getDefaultData[0].ScheduleActionType;
       this.CoustomerContactName = this.getDefaultData[0].ContactId;
       this.ActivityType = this.getDefaultData[0].NextScheduleActivityType;
       this.MoveTostage = this.getDefaultData[0].MoveToStage;
@@ -165,33 +168,6 @@ export class ActionComponent implements OnInit {
       console.log(this.getDefaultData);
       this.getNewlyData();
     });
-
-    // const param1 = {
-    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
-    //   password: this.global.LOGGED_IN_USER.encryptPswd,
-    //   Type: 'LFollowUpType',
-    // };
-    // this.actionService.connanData(param1).subscribe((data: any) => {
-    //   this.SelectActionData = JSON.parse(data);
-    //   console.log(this.SelectActionData);
-    // });
-    // const param2 = {
-    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
-    //   password: this.global.LOGGED_IN_USER.encryptPswd,
-    //   Type: 'CallType',
-    // };
-    // this.actionService.connanData(param2).subscribe((data: any) => {
-    //   this.notContactableData = JSON.parse(data);
-    // });
-    // const param3 = {
-    //   DBNAME: this.global.LOGGED_IN_USER.DbName,
-    //   password: this.global.LOGGED_IN_USER.encryptPswd,
-    //   Type: this.activityType,
-    // };
-    // this.actionService.connanData(param3).subscribe((data: any) => {
-    //   this.activitydata = JSON.parse(data);
-    //   console.log(this.activitydata);
-    // });
   }
   updateOptionalLabel() {}
   CloseLead() {
@@ -222,24 +198,14 @@ export class ActionComponent implements OnInit {
       this.notContactableData = this.newlyActionData.Table7;
     });
   }
-  // contactList() {
-  //   console.log(this.clientNo);
-  //   const param4 = {
-  //     DBNAME: this.global.LOGGED_IN_USER.DbName,
-  //     password: this.global.LOGGED_IN_USER.encryptPswd,
-  //     id11: this.clientNo,
-  //   };
-  //   this.actionService.getContactList(param4).subscribe((data: any) => {
-  //     this.contactlistData = JSON.parse(data);
-  //     console.log(JSON.parse(data));
-  //   });
-  // }
+
   ActionForm(data: any) {
-    const param = {
+    this.commanActionFormData = {
       Dbname: this.global.LOGGED_IN_USER.DbName,
       Password: this.global.LOGGED_IN_USER.encryptPswd,
       EntityId: this.EntityId,
-      ActionType: this.SelectActionType,
+      EntityName: this.entityname,
+      ActionType: this.DefaultSelectActionType,
       ActivityType: data.ActivityType,
       Discussions: data.Discussion,
       ActionStartDate: moment(data.actionStartDate).format('DD/MM/YYYY'),
@@ -265,10 +231,6 @@ export class ActionComponent implements OnInit {
       DCRNO: data.DCRNO,
       Comefrompdfsend: '',
     };
-
-    // this.actionService
-    //   .saveActualCommanAction(param)
-    //   .subscribe((data: any) => {});
   }
 
   ngOnInit(): void {}

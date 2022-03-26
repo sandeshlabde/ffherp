@@ -497,6 +497,7 @@ export class ListComponent implements OnInit {
       });
     });
     this.Array = map;
+    console.log(this.Array);
     // this.FilterEntityData = this.filteredEntity(
     //   this.dataSource.data,
     //   this.groupSelected
@@ -506,7 +507,7 @@ export class ListComponent implements OnInit {
   filteredEntity(entity: any) {
     if (this.dataSource.data && this.dataSource.data.length > 0)
       return this.dataSource.data.filter((item) => item.OwnerName == entity);
-    return [];
+      return [];
   }
   ngOnInit() {}
 }

@@ -31,6 +31,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     TablePipe,
@@ -67,7 +69,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatToolbarModule
   ],
   exports: [
     CommonModule,
@@ -102,7 +106,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatCardModule,
     MatAutocompleteModule,
     MatTooltipModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatToolbarModule
   ],
 })
 export class SharedModule {}

@@ -7,11 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'FFHErp';
-  toggle = true;
   constructor() {}
   ngOnInit() {}
-
-  changeTheme(){
-    this.toggle = !this.toggle;
-  }
 }

@@ -7,17 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  toggle = true;
+
 
   constructor() {
 
   }
 
   ngOnInit(): void {
-  }
-
-  changeTheme() {
-    this.toggle = !this.toggle;
   }
 
 }

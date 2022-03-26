@@ -14,7 +14,6 @@ import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
 import { ListComponent } from './MyComponents/listComponent/list.component';
 import { ListModule } from './MyComponents/listComponent/list.module';
 import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashboard.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +30,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
     SharedModule,
     ListModule,
-
   ],
 
   providers: [ProspectService, AuthGuard],

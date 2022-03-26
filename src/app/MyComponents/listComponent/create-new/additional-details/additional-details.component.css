@@ -5,3 +5,14 @@
   min-height: 400px;
   width: 400px;
 }
+
+
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+}

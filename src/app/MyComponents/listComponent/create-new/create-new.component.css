@@ -24,7 +24,19 @@ textarea {
 .Formheader {
   display: flex;
   justify-content: space-around;
+
 }
+
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+}
+
+.standard-color-modal{
+  background-color: #dcebdc;
+}
+
 
 .link {
   text-decoration: none;

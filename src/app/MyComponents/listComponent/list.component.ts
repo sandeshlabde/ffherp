@@ -397,7 +397,7 @@ export class ListComponent implements OnInit {
 
   openFilterSearch() {
     const dialogRef4 = this.dialog.open(FilterSearchComponent, {
-      height: '100%',
+      height: '80%',
       width: '80%',
       data: {
         EntityName: this.EntityName,
@@ -410,7 +410,7 @@ export class ListComponent implements OnInit {
   // EditList dialog model
   EditList(installno: any, entityName: any, entityid: any) {
     const dialogRef4 = this.dialog.open(EditListComponent, {
-      height: '50%%',
+      height: '50%',
       width: '80%',
       data: {
         installno: installno,

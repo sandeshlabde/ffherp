@@ -16,7 +16,9 @@ button {
   text-align: center;
 
 }
-
 .modal-container{
-  height: 700px;
+  height: 650px;
+}
+.filterSearchContain{
+  margin:35px;
 }

@@ -8,6 +8,26 @@
         <div class="breadcrumb-item active" aria-current="page">
           {{ EntityNameTitle }}
         </div>
+        <div (click)="selectCard()">
+          <mat-icon>featured_play_list</mat-icon>
+        </div>
+        <div (click)="selectTable()"><mat-icon>dns</mat-icon></div>
+        <div (click)="viewDetail()"><mat-icon>details</mat-icon></div>
+      </div>
+      <div class="right">
+
+        <!-- <div (click)="createForm()"><mat-icon> local_hospital</mat-icon></div> -->
+
+        <!-- <div>
+          <span class="filterSearch" (click)="openFilterSearch()"
+            ><i
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title=" Filter Search "
+              class="fas fa-filter home-icon"
+            ></i
+          ></span>
+        </div> -->
         <div (click)="createForm()"><mat-icon> local_hospital</mat-icon></div>
         <div>
           <span class="filterSearch" (click)="openFilterSearch()"
@@ -19,24 +39,6 @@
             ></i
           ></span>
         </div>
-      </div>
-      <div class="right">
-        <div (click)="viewDetail()"><mat-icon>details</mat-icon></div>
-        <!-- <div (click)="createForm()"><mat-icon> local_hospital</mat-icon></div> -->
-        <div (click)="selectCard()">
-          <mat-icon>featured_play_list</mat-icon>
-        </div>
-        <div (click)="selectTable()"><mat-icon>dns</mat-icon></div>
-        <!-- <div>
-          <span class="filterSearch" (click)="openFilterSearch()"
-            ><i
-              data-bs-toggle="tooltip"
-              data-bs-placement="bottom"
-              title=" Filter Search "
-              class="fas fa-filter home-icon"
-            ></i
-          ></span>
-        </div> -->
       </div>
     </div>
   </nav>

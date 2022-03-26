@@ -188,6 +188,12 @@ span {
   background-color: black;
   color: white;
 }
+
+th.mat-header-cell {
+  text-align: center !important;
+  justify-content: center !important;
+}
+
 /* .iconDiv{
   display: none;
 } */
@@ -210,12 +216,12 @@ span {
   color: black;
   list-style-type: none;
 }
-.home-icon{
+.home-icon {
   color: black;
   font-size: 15px;
 }
 
-.Amount-head{
+.Amount-head {
   position: relative;
   right: -78;
 }

@@ -7,7 +7,11 @@
 
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li>
-          <a class="link_name" routerLink="/admin/Dashboard/Dashboard">
+          <a
+            class="link_name"
+            (click)="setTitle('FFHErp/Dashboard')"
+            routerLink="/admin/Dashboard/Dashboard"
+          >
             Dashboard
           </a>
         </li>
@@ -22,13 +26,15 @@
         <li><a class="link_name">Marketing</a></li>
         <li>
           <a
+            (click)="setTitle('FFHErp/Prospect Dashboard')"
             routerLink="/admin/ListDashboard/Prospect"
             routerLinkActive="active"
-            >ProspectDashboard</a
+            >Prospect Dashboard</a
           >
         </li>
         <li>
           <a
+            (click)="setTitle('FFHErp/Prospect')"
             routerLink="/admin/page/Prospect"
             routerLinkActive="active"
             id="Prospect"
@@ -44,19 +50,28 @@
 
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">Sales</a></li>
-        <li><a id="Leaddash" onclick="openDash()">LeadDashboard</a></li>
-        <li>
-          <a routerLink="/admin/page/Lead" routerLinkActive="active" id="Lead"
-            >LeadList</a
-          >
-        </li>
-        <li><a id="SOdash">SODashboard</a></li>
+        <li><a (click)="setTitle('FFHErp/Lead Dashboard')"> Dashboard</a></li>
         <li>
           <a
+            (click)="setTitle('FFHErp/Lead')"
+            routerLink="/admin/page/Lead"
+            routerLinkActive="active"
+            id="Lead"
+            >Lead
+          </a>
+        </li>
+        <li>
+          <a (click)="setTitle('FFHErp/SO Dashboard')" id="SOdash"
+            >SO Dashboard</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Sales Order')"
             routerLink="/admin/page/SalesOrderLIst"
             routerLinkActive="active"
             id="SO"
-            >SOList</a
+            >Sales Order</a
           >
         </li>
       </ul>
@@ -70,27 +85,46 @@
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">Inventoy</a></li>
 
-        <li><a id="MOdash">MODashboard</a></li>
+        <li><a (click)="setTitle('FFHErp/MO Dashboard')">MODashboard</a></li>
         <li>
-          <a routerLink="/admin/page/MoList" routerLinkActive="active" id="MO"
-            >MOList</a
+          <a
+            (click)="setTitle('FFHErp/Material Out')"
+            routerLink="/admin/page/MoList"
+            routerLinkActive="active"
+            id="MO"
+            >Material Out</a
           >
         </li>
 
-        <li><a id="POdash">PODashboard</a></li>
+        <li><a (click)="setTitle('FFHErp/PO Dashboard')">PODashboard</a></li>
         <li>
-          <a routerLink="/admin/page/POList" routerLinkActive="active" id="PO"
-            >POList</a
+          <a
+            (click)="setTitle('FFHErp/Purchas Order')"
+            routerLink="/admin/page/POList"
+            routerLinkActive="active"
+            id="PO"
+            >Purchas Order</a
           >
         </li>
-        <li><a id="MIdash">MIDashboard</a></li>
+        <li><a (click)="setTitle('FFHErp/MI Dashboard')">MIDashboard</a></li>
         <li>
-          <a routerLink="/admin/page/MIList" routerLinkActive="active"
-            >MIList</a
+          <a
+            (click)="setTitle('FFHErp/Material In')"
+            routerLink="/admin/page/MIList"
+            routerLinkActive="active"
+            >Material In</a
           >
         </li>
-        <li><a id="RepairDash">RepairDashboard</a></li>
-        <li><a routerLink="/admin/page/Repair">RepairList</a></li>
+        <li>
+          <a (click)="setTitle('FFHErp/Repair Dashboard')">RepairDashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Repair List')"
+            routerLink="/admin/page/Repair"
+            >Repair
+          </a>
+        </li>
       </ul>
     </li>
     <li>
@@ -100,18 +134,36 @@
 
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">Payment</a></li>
-        <li><a>InvoiceDashboard</a></li>
         <li>
-          <a routerLink="/admin/page/Payment" id="Invoice">InvoiceList</a>
+          <a (click)="setTitle('FFHErp/InvoiceDashboard')">InvoiceDashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Invoice ')"
+            routerLink="/admin/page/Payment"
+            id="Invoice"
+            >Invoice
+          </a>
         </li>
 
         <li>
-          <a routerLink="/admin/page/Payable" routerLinkActive="active" id="PI"
-            >PIList</a
+          <a
+            (click)="setTitle('FFHErp/Purchas Invoice ')"
+            routerLink="/admin/page/Payable"
+            routerLinkActive="active"
+            id="PI"
+            >Purchas Invoice</a
           >
         </li>
-        <li><a id="PIDash">PIDashboard</a></li>
-        <li><a routerLink="/admin/page/Voucher" id="vouchar">Voucher</a></li>
+        <li><a (click)="setTitle('FFHErp/PI Dashboard ')">PIDashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Voucher ')"
+            routerLink="/admin/page/Voucher"
+            id="vouchar"
+            >Voucher</a
+          >
+        </li>
       </ul>
     </li>
     <li>
@@ -122,43 +174,55 @@
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">Support</a></li>
         <li>
+          <a (click)="setTitle('FFHErp/Ticket Dashboard ')"> Dashboard</a>
+        </li>
+        <li>
           <a
+            (click)="setTitle('FFHErp/Ticket ')"
             routerLink="/admin/page/Ticket"
             routerLinkActive="active"
             id="Ticket"
-            >TicketList</a
-          >
+            >Ticket
+          </a>
         </li>
-        <li><a id="TicketDash">TicketDashboard</a></li>
       </ul>
     </li>
     <li>
       <div class="iocn-link">
-        <i class="fas fa-handshake"></i></div>
+        <i class="fas fa-handshake"></i>
+      </div>
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">AMC</a></li>
+        <li><a (click)="setTitle('FFHErp/AMC Dashboard')"> Dashboard</a></li>
         <li>
-          <a routerLink="/admin/page/AMC" routerLinkActive="active" id=" AMC"
-            >AMCList</a
-          >
+          <a
+            (click)="setTitle('FFHErp/AMC')"
+            routerLink="/admin/page/AMC"
+            routerLinkActive="active"
+            id=" AMC"
+            >AMC
+          </a>
         </li>
-        <li><a id="AMCDash">AMCDashboard</a></li>
       </ul>
     </li>
 
     <li>
       <div class="iocn-link">
-       <i class="fas fa-briefcase"></i>
+        <i class="fas fa-briefcase"></i>
       </div>
 
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name"> Work</a></li>
+        <li><a (click)="setTitle('FFHErp/Work Dashboard ')"> Dashboard</a></li>
         <li>
-          <a routerLink="/admin/page/Work" routerLinkActive="active" id="Work"
-            >WorkList</a
-          >
+          <a
+            (click)="setTitle('FFHErp/Work ')"
+            routerLink="/admin/page/Work"
+            routerLinkActive="active"
+            id="Work"
+            >Work
+          </a>
         </li>
-        <li><a id="WorkDash">WorkDashboard</a></li>
       </ul>
     </li>
     <li>
@@ -167,7 +231,7 @@
       </div>
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name"> Project</a></li>
-        <li><a id="Project">My Project</a></li>
+        <li><a (click)="setTitle('FFHErp/My Project ')">My Project</a></li>
       </ul>
     </li>
   </ul>

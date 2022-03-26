@@ -59,6 +59,7 @@ export class ListComponent implements OnInit {
   Selection: any;
   tableSection: boolean = true;
   cardSection: boolean = false;
+  DetailViewSection: boolean = false;
   groupSelected: string = ' ';
   Array: any;
   displayedColumns: any[] = [
@@ -163,7 +164,16 @@ export class ListComponent implements OnInit {
       entityTypes: ['salesorderlist', 'polist', 'payable'],
     },
   ];
-
+  columns: any[] = [
+    'Company',
+    'UploadEdit',
+    'Details',
+    'Amount',
+    'Description',
+    'AddCount',
+    'Schedule',
+    'ChatEmailPDF',
+  ];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   FilterEntityData: void;
@@ -240,6 +250,7 @@ export class ListComponent implements OnInit {
         Password: this.global.LOGGED_IN_USER.encryptPswd,
         id: this.global.LOGGED_IN_USER.RoleId,
         userid: this.global.LOGGED_IN_USER.UserId,
+        RoleID: this.global.LOGGED_IN_USER.RoleId,
       };
       this.listService.getLeadList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
@@ -313,7 +324,7 @@ export class ListComponent implements OnInit {
 
   openEntity(id: any) {
     const dialogRef = this.dialog.open(EntityProductComponent, {
-      height: '65%',
+      height: '80%',
       width: '100%',
 
       data: {
@@ -456,10 +467,21 @@ export class ListComponent implements OnInit {
   selectTable() {
     this.tableSection = true;
     this.cardSection = false;
+    this.DetailViewSection = false;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   selectCard() {
     this.tableSection = false;
     this.cardSection = true;
+    this.DetailViewSection = false;
+  }
+  viewDetail() {
+    this.tableSection = false;
+    this.cardSection = false;
+    this.DetailViewSection = true;
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   groupSelectedValue() {
     console.log(this.groupSelected);

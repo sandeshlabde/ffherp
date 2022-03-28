@@ -440,7 +440,7 @@
                 [1, "iocn-link"],
                 [
                   "src",
-                  " /assets/img/dashboard.png",
+                  "assets/img/dashboard.png",
                   "width",
                   "30px",
                   "height",
@@ -459,7 +459,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/growth.png",
+                  "assets/img/growth.png",
                   "width",
                   "30px",
                   "height",
@@ -488,7 +488,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/business-and-finance.png",
+                  "assets/img/business-and-finance.png",
                   "width",
                   "30px",
                   "height",
@@ -520,7 +520,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/shopping-cart.png",
+                  "assets/img/shopping-cart.png",
                   "width",
                   "30px",
                   "height",
@@ -559,7 +559,7 @@
                 ["routerLink", "/admin/page/Repair", 3, "click"],
                 [
                   "src",
-                  "/assets/img/coin.png",
+                  "assets/img/coin.png",
                   "width",
                   "30px",
                   "height",
@@ -595,7 +595,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/technical-support.png",
+                  "assets/img/technical-support.png",
                   "width",
                   "30px",
                   "height",
@@ -615,7 +615,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/handshake.png",
+                  "assets/img/handshake.png",
                   "width",
                   "30px",
                   "height",
@@ -646,7 +646,7 @@
                 ],
                 [
                   "src",
-                  "/assets/img/blueprint.png",
+                  "assets/img/blueprint.png",
                   "width",
                   "30px",
                   "height",

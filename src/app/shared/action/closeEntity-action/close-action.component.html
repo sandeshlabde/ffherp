@@ -100,7 +100,7 @@
       <div class="col-lg-6" *ngIf="Won">
         <mat-form-field class="input-width">
           <mat-label>Coustomer Pur Order No</mat-label>
-          <input matInput name="Coustomer " ngModel />
+          <input matInput name="CoustomerPONO" ngModel />
         </mat-form-field>
       </div>
       <div class="col-lg-6">
@@ -119,7 +119,7 @@
       <div class="col-lg-6" *ngIf="ValueLost">
         <mat-form-field class="input-width">
           <mat-label>Value Lost</mat-label>
-          <input matInput name="Coustomer " ngModel />
+          <input matInput name="Coustomer" ngModel />
         </mat-form-field>
       </div>
     </div>
@@ -147,7 +147,7 @@
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Instrument type</mat-label>
-          <mat-select name=" Instrument" ngModel>
+          <mat-select name="Instrument" ngModel>
             <mat-option
               *ngFor="let type of InstrumentTypeData"
               value="{{ type.Id }} "
@@ -168,13 +168,13 @@
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Bank Drawn ON</mat-label>
-          <input matInput name="BankDrawnON " ngModel />
+          <input matInput name="BankDrawnON" ngModel />
         </mat-form-field>
       </div>
       <div class="col-lg-6">
         <mat-form-field class="input-width">
           <mat-label>Instument Number</mat-label>
-          <input matInput name="InstumentNumber " ngModel />
+          <input matInput name="InstumentNumber" ngModel />
         </mat-form-field>
       </div>
     </div>

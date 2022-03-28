@@ -61,8 +61,9 @@ export class CloseActionComponent implements OnInit {
     }
   }
   closeActionForm(data: any) {
-    console.log(data);
-    console.log(this.getDefaultData);
+    // console.log(data);
+    // console.log(this.getDefaultData);
+    console.log(this.commanActionFormData);
     const param = {
       Dbname: this.global.LOGGED_IN_USER.DbName,
       Password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -70,13 +71,13 @@ export class CloseActionComponent implements OnInit {
       EntityName: this.entityname,
       ActionType: this.commanActionFormData.ScheduleActionType,
       ActivityType: this.commanActionFormData.ScheduleActivityType,
-      Discussions: data.Remark,
+      Discussions: this.commanActionFormData.Discussions,
       ActionStartDate: this.commanActionFormData.ActionStartDate,
       ActionStartTime: this.commanActionFormData.ActionStartTime,
       ActionEndDate: this.commanActionFormData.ActionEndDate,
       ActionEndTime: this.commanActionFormData.ActionEndTime,
       ContactId: this.getDefaultData[0].ContactId,
-      UserId: 'Aditya111',
+      UserId: this.commanActionFormData.ActivityBy,
       Moneys: '',
       KMS: '',
       UpdatedBy: this.global.LOGGED_IN_USER.Username,
@@ -88,28 +89,28 @@ export class CloseActionComponent implements OnInit {
       Converttolead: '0',
       CloseProspect: '0',
       CloseWork: '0',
-      TravelTime: '',
-      TravelCost: '',
-      OtherCost: '',
-      DCRNO: '',
+      TravelTime: this.commanActionFormData.TravelTime,
+      TravelCost: this.commanActionFormData.TravelCost,
+      OtherCost: this.commanActionFormData.OtherCost,
+      DCRNO: this.commanActionFormData.DCRNO,
       CallingResponseCode: '',
       Comefrompdfsend: '',
       CloseLead: '0',
       CloseLeadStatus: '? number:0 ?',
-      CloseLeadPONumber: '',
+      CloseLeadPONumber: data.CoustomerPONO,
       CloseLeadPODATE: '26/03/2022',
       CloseLeadDeliveryDATE: moment(data.closedDate).format('DD/MM/YYYY'),
       CloseLeadAdv: '0',
       CloseLeadINS: '',
       CloseLeadBank: '',
-      CloseLeadMode: '50',
-      CloseLeadRemarks: '',
-      CloseLeadLostReason: '90',
-      CloseLeadLostDate: '26/03/2022',
-      CloseLeadCloseReason: '',
-      CloseLeadCloseDate: '26/03/2022',
+      CloseLeadMode: data.Instrument,
+      CloseLeadRemarks: data.Remark,
+      CloseLeadLostReason: data.LostReason,
+      CloseLeadLostDate: moment(data.LostDate).format('DD/MM/YYYY'),
+      CloseLeadCloseReason: data.ClosedReason,
+      CloseLeadCloseDate: moment(data.closedDate).format('DD/MM/YYYY'),
       CloseLeadLeadValue: '6472.92',
-      CloseLeadLeadCloseValue: '12',
+      CloseLeadLeadCloseValue: data.selectedStatus,
       CloseLeadLeadContactSMS: '9835488546',
       CloseLeadLeadOwnerSMS: '',
       CloseLeadLeadActorSMS: '',
@@ -126,6 +127,7 @@ export class CloseActionComponent implements OnInit {
       ActorSMSClose: '',
       ActorEmailClose: 'aadi111@gmail.com',
     };
+    console.log(param);
     // this.actionService
     //   .saveActualCommanAction(param)
     //   .subscribe((data: any) => {});
@@ -137,6 +139,6 @@ export class CloseActionComponent implements OnInit {
 
     this.SelectedStatus = 12;
     this.LostReason = 90;
-    console.log(this.SelectedStatus);
+    // console.log(this.newlyActionData);
   }
 }

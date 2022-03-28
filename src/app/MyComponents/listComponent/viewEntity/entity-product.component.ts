@@ -90,7 +90,6 @@ export class EntityProductComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.entityIdDetailData = JSON.parse(data);
-        console.log(this.entityIdDetailData);
         this.entityData = this.entityIdDetailData[0];
       });
     // }
@@ -117,7 +116,6 @@ export class EntityProductComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.ViewProductDetail = JSON.parse(data);
-        console.log(this.ViewProductDetail);
       });
     // entity ID product Details section End here
 
@@ -133,26 +131,25 @@ export class EntityProductComponent implements OnInit {
       )
       .subscribe((data: any) => {
         this.ViewActionDetail = JSON.parse(data);
-        console.log(this.ViewActionDetail);
       });
 
     // entity ID Action Details section End here
   }
 
-  product() {
-    this.viewProductTable = !this.viewProductTable;
-    this.actionTable = false;
-    this.viewNoteTable = false;
-  }
-  action() {
-    this.actionTable = !this.actionTable;
-    this.viewProductTable = false;
-    this.viewNoteTable = false;
-  }
-  noteTable() {
-    this.viewProductTable = false;
-    this.actionTable = false;
-    this.viewNoteTable = !this.viewNoteTable;
-  }
+  // product() {
+  //   this.viewProductTable = !this.viewProductTable;
+  //   this.actionTable = false;
+  //   this.viewNoteTable = false;
+  // }
+  // action() {
+  //   this.actionTable = !this.actionTable;
+  //   this.viewProductTable = false;
+  //   this.viewNoteTable = false;
+  // }
+  // noteTable() {
+  //   this.viewProductTable = false;
+  //   this.actionTable = false;
+  //   this.viewNoteTable = !this.viewNoteTable;
+  // }
   ngOnInit(): void {}
 }

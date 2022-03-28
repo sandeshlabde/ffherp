@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 import { Global } from 'Global';
 import * as moment from 'moment';
@@ -37,6 +38,7 @@ export class NextActionComponent implements OnInit {
   constructor(private actionService: ActionService, private global: Global) {}
 
   schedulsaveActionForm(data: any) {
+    console.log(data);
     this.commanSaveaction(this.commanActionFormData);
     let param = {
       Dbname: this.global.LOGGED_IN_USER.DbName,

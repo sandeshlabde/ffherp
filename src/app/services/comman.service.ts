@@ -11,6 +11,7 @@ export class CommanService {
     'https://apitest.ffherp.co.in/api/Voucher/getAutoCompleteCompanyList';
   companyContactListURL =
     'https://apitest.ffherp.co.in/api/Voucher/GetCommonContactList';
+  ApprovalCountUrl = 'https://ffherp.co.in:446/api/Voucher/GetApprovalCount';
   constructor(private http: HttpClient) {}
   createFormAutoComplete(param: any) {
     return this.http.post(this.createFormAutoCompleteURL, param);
@@ -20,5 +21,8 @@ export class CommanService {
   }
   listCommanData(param) {
     return this.http.post(this.listCommanDataURL, param);
+  }
+  ApprovalCount(param) {
+    return this.http.post(this.ApprovalCountUrl, param);
   }
 }

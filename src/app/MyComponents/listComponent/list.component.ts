@@ -21,7 +21,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CreateNewComponent } from './create-new/create-new.component';
 import * as moment from 'moment';
 import { CommanService } from 'src/app/services/comman.service';
-import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+
 import { EntityProductComponent } from './viewEntity/entity-product.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -30,6 +30,8 @@ import {
   MatTreeFlatDataSource,
   MatTreeFlattener,
 } from '@angular/material/tree';
+import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+import { ActionScheduledComponent } from 'src/app/shared/action-scheduled/action-scheduled.component';
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -437,7 +439,7 @@ export class ListComponent implements OnInit {
   approval(installno: any, entityName: any, entityid: any) {
     console.log(installno, entityName, entityid);
     const dialogRef4 = this.dialog.open(ApprovalComponent, {
-      height: '50%%',
+      height: '50%',
       width: '80%',
       data: {
         installno: installno,
@@ -470,6 +472,20 @@ export class ListComponent implements OnInit {
       data: {
         EntityName: this.EntityName,
         commanData: this.commanData,
+        EntityNameTitle: this.EntityNameTitle,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe();
+  }
+  actionSchedul(id, company) {
+    const dialogRef = this.dialog.open(ActionScheduledComponent, {
+      height: '50%',
+      width: '80%',
+      data: {
+        companyName: company,
+        EntityID: id,
+        EntityName: this.EntityName,
         EntityNameTitle: this.EntityNameTitle,
       },
     });
@@ -519,7 +535,7 @@ export class ListComponent implements OnInit {
   filteredEntity(entity: any) {
     if (this.dataSource.data && this.dataSource.data.length > 0)
       return this.dataSource.data.filter((item) => item.OwnerName == entity);
-      return [];
+    return [];
   }
   ngOnInit() {}
 }

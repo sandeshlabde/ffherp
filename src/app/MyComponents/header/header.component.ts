@@ -1,7 +1,8 @@
 import { Component, HostBinding, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Global } from 'Global';
-import {OverlayContainer} from "@angular/cdk/overlay";
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { CommanService } from 'src/app/services/comman.service';
 
 const THEME_DARKNESS_SUFFIX = `-dark`;
 @Component({
@@ -10,14 +11,12 @@ const THEME_DARKNESS_SUFFIX = `-dark`;
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-
   themes: string[] = [
-		"deeppurple-amber",
-		"indigo-pink",
-		"pink-bluegrey",
-		"purple-green",
-	];
-
+    'deeppurple-amber',
+    'indigo-pink',
+    'pink-bluegrey',
+    'purple-green',
+  ];
 
   companyName: any;
   userName: any;
@@ -25,6 +24,7 @@ export class HeaderComponent implements OnInit {
   @HostBinding('class') activeThemeCssClass: string;
   isThemeDark = false;
   activeTheme: string;
+  CountData: any;
 
   setTheme(theme: string, darkness: boolean = null) {
     if (darkness === null) darkness = this.isThemeDark;
@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
   }
 
   constructor(
+    private commanService: CommanService,
     private global: Global,
     private router: Router,
     private overlayContainer: OverlayContainer
@@ -59,6 +60,15 @@ export class HeaderComponent implements OnInit {
       this.userName = this.global.LOGGED_IN_USER.Username;
     }
     this.setTheme('indigo-pink', false); // Default Theme
+    const param = {
+      DBNAME: this.global.LOGGED_IN_USER.DbName,
+      password: this.global.LOGGED_IN_USER.encryptPswd,
+      userid: this.global.LOGGED_IN_USER.UserId,
+    };
+    this.commanService.ApprovalCount(param).subscribe((data: any) => {
+      this.CountData = JSON.parse(data);
+      console.log(this.CountData);
+    });
   }
 
   onSignOut() {

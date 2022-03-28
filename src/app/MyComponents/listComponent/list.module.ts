@@ -11,8 +11,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { CreateNewComponent } from './create-new/create-new.component';
 import { AdditionalDetailsComponent } from './create-new/additional-details/additional-details.component';
 import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-address/delivary-billing-address.component';
-import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+
 import { EditVoucharComponent } from './edit-approvedlist/edit-vouchar/edit-vouchar.component';
+import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
 
 @NgModule({
   declarations: [

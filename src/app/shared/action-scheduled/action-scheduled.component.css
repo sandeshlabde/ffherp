@@ -1,0 +1,27 @@
+table {
+  width: 100%;
+  height: 75%;
+  padding-top: 70px;
+}
+
+th {
+  height: 26px;
+  background-color: #dcebdc;
+  font-size: 20px;
+  color: black;
+}
+tr {
+  height: 36px;
+}
+tr:hover {
+  background-color: #dbe4eb;
+}
+.modal-heading {
+  /* background-color: #bce1c6; */
+  height: 30px;
+  text-align: center;
+}
+
+.standard-color-modal {
+  background-color: #dcebdc;
+}

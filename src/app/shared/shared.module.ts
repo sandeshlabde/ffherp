@@ -35,6 +35,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { ActionScheduledComponent } from './action-scheduled/action-scheduled.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     ActionComponent,
     NextActionComponent,
     CloseActionComponent,
+    ActionScheduledComponent,
   ],
   imports: [
     CommonModule,
@@ -114,6 +116,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatGridListModule,
     MatToolbarModule,
     MatBadgeModule,
+    ActionScheduledComponent,
   ],
 })
 export class SharedModule {}

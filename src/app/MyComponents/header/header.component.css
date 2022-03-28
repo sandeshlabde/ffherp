@@ -16,13 +16,17 @@
   z-index: 100;
   position: fixed;
 }
-
+.mat-badge-medium .mat-badge-content {
+  width: 32px !important;
+  height: 21px !important;
+  top: -16px !important;
+  line-height: 22px;
+}
 .header-link {
   margin: 0 16px;
   list-style: none;
-
 }
-.matmenuList{
+.matmenuList {
   background-color: #dcebdc;
 }
 
@@ -50,16 +54,15 @@ i {
 }
 
 .green {
-  background-color:  #b8e0d4;
+  background-color: #b8e0d4;
 }
 
 .red {
   background-color: lightsalmon;
 }
 
-.themebutton{
+.themebutton {
   background-color: #b8e0d4;
-
 }
 
 /* this is for theme */

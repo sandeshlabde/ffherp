@@ -233,3 +233,16 @@ th.mat-header-cell {
 .card-box:hover {
   background-color: #dbe4eb;
 }
+
+.subValueIcon {
+  margin: 15px 0px;
+  cursor: pointer;
+}
+.ClientName {
+  color: blue;
+  font-weight: 600;
+  font-size: 16px;
+}
+.Datalabel {
+  color: grey;
+}

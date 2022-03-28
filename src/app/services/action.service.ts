@@ -21,8 +21,16 @@ export class ActionService {
 
   saveSheduleCommonActionURL =
     'https://ffherp.co.in:446/api/Voucher/SaveSheduleCommonAction';
+
   getUserEmailMobileUrl =
     'https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile';
+
+  GetActualDataRandomUrl =
+    'https://ffherp.co.in:446/api/Voucher/GetActualDataRandom';
+
+  GetSheduledDataUrl = 'https://ffherp.co.in:446/api/Voucher/GetSheduledData';
+
+  GetRevisedPDFDataUrl = 'https://ffherp.co.in:446/api/Voucher/GetRevisedPDF';
   constructor(private http: HttpClient) {}
 
   getDefaultData(param) {
@@ -48,5 +56,14 @@ export class ActionService {
   }
   saveSheduleCommonAction(param: any) {
     return this.http.post(this.saveSheduleCommonActionURL, param);
+  }
+  GetActualDataRandom(param: any) {
+    return this.http.post(this.GetActualDataRandomUrl, param);
+  }
+  GetSheduledData(param: any) {
+    return this.http.post(this.GetSheduledDataUrl, param);
+  }
+  GetRevisedPDFData(param: any) {
+    return this.http.post(this.GetRevisedPDFDataUrl, param);
   }
 }

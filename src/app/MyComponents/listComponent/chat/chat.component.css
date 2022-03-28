@@ -32,3 +32,8 @@ textarea {
 .standard-color-modal {
   background-color: #dcebdc;
 }
+.sendButtonDiv {
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: end;
+}

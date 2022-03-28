@@ -440,7 +440,7 @@
                 [1, "iocn-link"],
                 [
                   "src",
-                  "assets/img/dashboard.png",
+                  " /assets/img/dashboard.png",
                   "width",
                   "30px",
                   "height",
@@ -459,7 +459,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/growth.png",
+                  "/assets/img/growth.png",
                   "width",
                   "30px",
                   "height",
@@ -488,7 +488,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/business-and-finance.png",
+                  "/assets/img/business-and-finance.png",
                   "width",
                   "30px",
                   "height",
@@ -520,7 +520,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/shopping-cart.png",
+                  "/assets/img/shopping-cart.png",
                   "width",
                   "30px",
                   "height",
@@ -559,7 +559,7 @@
                 ["routerLink", "/admin/page/Repair", 3, "click"],
                 [
                   "src",
-                  "assets/img/coin.png",
+                  "/assets/img/coin.png",
                   "width",
                   "30px",
                   "height",
@@ -595,7 +595,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/technical-support.png",
+                  "/assets/img/technical-support.png",
                   "width",
                   "30px",
                   "height",
@@ -615,7 +615,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/handshake.png",
+                  "/assets/img/handshake.png",
                   "width",
                   "30px",
                   "height",
@@ -646,7 +646,7 @@
                 ],
                 [
                   "src",
-                  "assets/img/blueprint.png",
+                  "/assets/img/blueprint.png",
                   "width",
                   "30px",
                   "height",
@@ -7351,244 +7351,7 @@
       function ai(s) {
         throw new Error("Function not implemented.");
       }
-      let Ut = (() => {
-        class s {
-          constructor(a, d, g) {
-            (this.data = a),
-              (this.listService = d),
-              (this.global = g),
-              console.log(a);
-          }
-          ngOnInit() {}
-        }
-        return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(B.WI), e.Y36(ce.L), e.Y36(u.x));
-          }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
-            selectors: [["app-edit-vouchar"]],
-            decls: 0,
-            vars: 0,
-            template: function (a, d) {},
-            styles: [""],
-          })),
-          s
-        );
-      })();
-      function ni(s, p) {
-        if (1 & s) {
-          const a = e.EpF();
-          e.TgZ(0, "tr", 5),
-            e.TgZ(1, "td"),
-            e._uU(2),
-            e.qZA(),
-            e.TgZ(3, "td"),
-            e._uU(4),
-            e.qZA(),
-            e.TgZ(5, "td"),
-            e._uU(6),
-            e.ALo(7, "date"),
-            e.qZA(),
-            e.TgZ(8, "td"),
-            e._uU(9),
-            e.qZA(),
-            e.TgZ(10, "td"),
-            e._uU(11),
-            e.qZA(),
-            e.TgZ(12, "td"),
-            e._uU(13),
-            e.qZA(),
-            e.TgZ(14, "td"),
-            e._uU(15),
-            e.qZA(),
-            e.TgZ(16, "td"),
-            e._uU(17),
-            e.qZA(),
-            e.TgZ(18, "td"),
-            e._uU(19),
-            e.qZA(),
-            e.TgZ(20, "td"),
-            e._uU(21),
-            e.qZA(),
-            e.TgZ(22, "td"),
-            e.TgZ(23, "a", 6),
-            e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw().editVouchar(T);
-            }),
-            e._UZ(24, "i", 7),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(25, "td"),
-            e._uU(26),
-            e.qZA(),
-            e.TgZ(27, "td"),
-            e._uU(28),
-            e.qZA(),
-            e.TgZ(29, "td"),
-            e._uU(30),
-            e.qZA(),
-            e.qZA();
-        }
-        if (2 & s) {
-          const a = p.$implicit;
-          e.xp6(2),
-            e.Oqu(a.VoucherNo),
-            e.xp6(2),
-            e.Oqu(a.UpdatedBy),
-            e.xp6(2),
-            e.Oqu(e.xi3(7, 13, a.UpdatedOn, "dd MMM yyyy")),
-            e.xp6(3),
-            e.Oqu(a.ExpenseTitle),
-            e.xp6(2),
-            e.Oqu(a.EntityName),
-            e.xp6(2),
-            e.Oqu(a.Budgeted),
-            e.xp6(2),
-            e.Oqu(a.ExpenseTitle),
-            e.xp6(2),
-            e.Oqu(a.ApprovalStatus),
-            e.xp6(2),
-            e.Oqu(a.ApprovedAmount),
-            e.xp6(2),
-            e.Oqu(a.PaidAmount),
-            e.xp6(5),
-            e.Oqu(a.PaymentStatus),
-            e.xp6(2),
-            e.Oqu(a.DueAmount),
-            e.xp6(2),
-            e.Oqu(a.ApprovedRemark);
-        }
-      }
-      let ii = (() => {
-        class s {
-          constructor(a, d, g, T) {
-            (this.data = a),
-              (this.listService = d),
-              (this.global = g),
-              (this.dialog = T),
-              this.listService
-                .showvoucharData({
-                  id: a.installno,
-                  entityName: a.entityName,
-                  entityId: a.entityid,
-                  dbname: this.global.LOGGED_IN_USER.DbName,
-                  encrypt: this.global.LOGGED_IN_USER.encryptPswd,
-                })
-                .subscribe((Ft) => {
-                  this.editData = JSON.parse(Ft);
-                });
-          }
-          editVouchar(a) {
-            this.dialog
-              .open(Ut, {
-                position: { left: "65%", top: "5%" },
-                data: { value: a },
-              })
-              .afterClosed()
-              .subscribe();
-          }
-          ngOnInit() {}
-        }
-        return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(
-              e.Y36(B.WI),
-              e.Y36(ce.L),
-              e.Y36(u.x),
-              e.Y36(B.uw)
-            );
-          }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
-            selectors: [["app-edit-list"]],
-            decls: 38,
-            vars: 1,
-            consts: [
-              [1, "noteBox"],
-              [1, "modal-heading", "standard-color-modal"],
-              [1, "modal-body"],
-              [1, "table", "table-hover", "table-striped"],
-              ["class", "table-light", 4, "ngFor", "ngForOf"],
-              [1, "table-light"],
-              [1, "a", 3, "click"],
-              ["matTooltip", "Edit Vouchar", 1, "fas", "fa-pencil-alt"],
-            ],
-            template: function (a, d) {
-              1 & a &&
-                (e.TgZ(0, "div", 0),
-                e.TgZ(1, "div", 1),
-                e.TgZ(2, "h2"),
-                e._uU(3, "Vouchar Detail"),
-                e.qZA(),
-                e.qZA(),
-                e.TgZ(4, "div", 2),
-                e.TgZ(5, "table", 3),
-                e.TgZ(6, "thead"),
-                e.TgZ(7, "tr"),
-                e.TgZ(8, "th"),
-                e._uU(9, "Seq"),
-                e.qZA(),
-                e.TgZ(10, "th"),
-                e._uU(11, "By"),
-                e.qZA(),
-                e.TgZ(12, "th"),
-                e._uU(13, "On"),
-                e.qZA(),
-                e.TgZ(14, "th"),
-                e._uU(15, "Head"),
-                e.qZA(),
-                e.TgZ(16, "th"),
-                e._uU(17, "Entity"),
-                e.qZA(),
-                e.TgZ(18, "th"),
-                e._uU(19, "Budget"),
-                e.qZA(),
-                e.TgZ(20, "th"),
-                e._uU(21, "Exp."),
-                e.qZA(),
-                e.TgZ(22, "th"),
-                e._uU(23, "Appv Status"),
-                e.qZA(),
-                e.TgZ(24, "th"),
-                e._uU(25, "Appv Amt"),
-                e.qZA(),
-                e.TgZ(26, "th"),
-                e._uU(27, "Paid Amt"),
-                e.qZA(),
-                e.TgZ(28, "th"),
-                e._uU(29, "Due Amt"),
-                e.qZA(),
-                e.TgZ(30, "th"),
-                e._uU(31, "Paid Status"),
-                e.qZA(),
-                e.TgZ(32, "th"),
-                e._uU(33, "Appv Amt"),
-                e.qZA(),
-                e.TgZ(34, "th"),
-                e._uU(35, "Remark"),
-                e.qZA(),
-                e.qZA(),
-                e.qZA(),
-                e.TgZ(36, "tbody"),
-                e.YNc(37, ni, 31, 16, "tr", 4),
-                e.qZA(),
-                e.qZA(),
-                e.qZA(),
-                e.qZA()),
-                2 & a && (e.xp6(37), e.Q6J("ngForOf", d.editData));
-            },
-            directives: [m.sg, C.gM],
-            pipes: [m.uU],
-            styles: [
-              "th[_ngcontent-%COMP%]{height:30px;text-align:center}td[_ngcontent-%COMP%]{font-size:13px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
-            ],
-          })),
-          s
-        );
-      })();
-      function si(s, p) {
+      function Ut(s, p) {
         if (
           (1 & s &&
             (e.TgZ(0, "tr"),
@@ -7633,7 +7396,7 @@
             e.Oqu(a.TaxAmount_val);
         }
       }
-      function oi(s, p) {
+      function ni(s, p) {
         if (
           (1 & s &&
             (e.TgZ(0, "table", 27),
@@ -7663,7 +7426,7 @@
             e.qZA(),
             e.qZA(),
             e.TgZ(17, "tbody"),
-            e.YNc(18, si, 15, 7, "tr", 29),
+            e.YNc(18, Ut, 15, 7, "tr", 29),
             e.qZA(),
             e.qZA()),
           2 & s)
@@ -7672,7 +7435,7 @@
           e.xp6(18), e.Q6J("ngForOf", a.ViewProductDetail);
         }
       }
-      function ma(s, p) {
+      function ii(s, p) {
         if (
           (1 & s &&
             (e.TgZ(0, "tr"),
@@ -7718,7 +7481,7 @@
             e.Oqu(a.TaxAmount_val);
         }
       }
-      function ri(s, p) {
+      function si(s, p) {
         if (
           (1 & s &&
             (e.TgZ(0, "div", 1),
@@ -7859,7 +7622,7 @@
             e.TgZ(82, "div", 22),
             e.TgZ(83, "mat-tab-group", 23),
             e.TgZ(84, "mat-tab", 24),
-            e.YNc(85, oi, 19, 1, "table", 25),
+            e.YNc(85, ni, 19, 1, "table", 25),
             e.qZA(),
             e.TgZ(86, "mat-tab", 26),
             e.TgZ(87, "table", 27),
@@ -7889,7 +7652,7 @@
             e.qZA(),
             e.qZA(),
             e.TgZ(104, "tbody"),
-            e.YNc(105, ma, 16, 10, "tr", 29),
+            e.YNc(105, ii, 16, 10, "tr", 29),
             e.qZA(),
             e.qZA(),
             e.qZA(),
@@ -7961,7 +7724,7 @@
             e.Q6J("ngForOf", a.ViewActionDetail);
         }
       }
-      let ua = (() => {
+      let oi = (() => {
         class s {
           constructor(a, d, g) {
             (this.listService = a),
@@ -8113,7 +7876,7 @@
               ["label", "Notes"],
             ],
             template: function (a, d) {
-              1 & a && e.YNc(0, ri, 114, 18, "div", 0),
+              1 & a && e.YNc(0, si, 114, 18, "div", 0),
                 2 & a && e.Q6J("ngIf", d.entityData);
             },
             directives: [m.O5, je.SP, je.uX, m.sg, vt],
@@ -8125,8 +7888,245 @@
           s
         );
       })();
-      var Q = f(449),
-        _i = f(7544),
+      var ma = f(449);
+      let ri = (() => {
+        class s {
+          constructor(a, d, g) {
+            (this.data = a),
+              (this.listService = d),
+              (this.global = g),
+              console.log(a);
+          }
+          ngOnInit() {}
+        }
+        return (
+          (s.ɵfac = function (a) {
+            return new (a || s)(e.Y36(B.WI), e.Y36(ce.L), e.Y36(u.x));
+          }),
+          (s.ɵcmp = e.Xpm({
+            type: s,
+            selectors: [["app-edit-vouchar"]],
+            decls: 0,
+            vars: 0,
+            template: function (a, d) {},
+            styles: [""],
+          })),
+          s
+        );
+      })();
+      function ua(s, p) {
+        if (1 & s) {
+          const a = e.EpF();
+          e.TgZ(0, "tr", 5),
+            e.TgZ(1, "td"),
+            e._uU(2),
+            e.qZA(),
+            e.TgZ(3, "td"),
+            e._uU(4),
+            e.qZA(),
+            e.TgZ(5, "td"),
+            e._uU(6),
+            e.ALo(7, "date"),
+            e.qZA(),
+            e.TgZ(8, "td"),
+            e._uU(9),
+            e.qZA(),
+            e.TgZ(10, "td"),
+            e._uU(11),
+            e.qZA(),
+            e.TgZ(12, "td"),
+            e._uU(13),
+            e.qZA(),
+            e.TgZ(14, "td"),
+            e._uU(15),
+            e.qZA(),
+            e.TgZ(16, "td"),
+            e._uU(17),
+            e.qZA(),
+            e.TgZ(18, "td"),
+            e._uU(19),
+            e.qZA(),
+            e.TgZ(20, "td"),
+            e._uU(21),
+            e.qZA(),
+            e.TgZ(22, "td"),
+            e.TgZ(23, "a", 6),
+            e.NdJ("click", function () {
+              const T = e.CHM(a).$implicit;
+              return e.oxw().editVouchar(T);
+            }),
+            e._UZ(24, "i", 7),
+            e.qZA(),
+            e.qZA(),
+            e.TgZ(25, "td"),
+            e._uU(26),
+            e.qZA(),
+            e.TgZ(27, "td"),
+            e._uU(28),
+            e.qZA(),
+            e.TgZ(29, "td"),
+            e._uU(30),
+            e.qZA(),
+            e.qZA();
+        }
+        if (2 & s) {
+          const a = p.$implicit;
+          e.xp6(2),
+            e.Oqu(a.VoucherNo),
+            e.xp6(2),
+            e.Oqu(a.UpdatedBy),
+            e.xp6(2),
+            e.Oqu(e.xi3(7, 13, a.UpdatedOn, "dd MMM yyyy")),
+            e.xp6(3),
+            e.Oqu(a.ExpenseTitle),
+            e.xp6(2),
+            e.Oqu(a.EntityName),
+            e.xp6(2),
+            e.Oqu(a.Budgeted),
+            e.xp6(2),
+            e.Oqu(a.ExpenseTitle),
+            e.xp6(2),
+            e.Oqu(a.ApprovalStatus),
+            e.xp6(2),
+            e.Oqu(a.ApprovedAmount),
+            e.xp6(2),
+            e.Oqu(a.PaidAmount),
+            e.xp6(5),
+            e.Oqu(a.PaymentStatus),
+            e.xp6(2),
+            e.Oqu(a.DueAmount),
+            e.xp6(2),
+            e.Oqu(a.ApprovedRemark);
+        }
+      }
+      let Q = (() => {
+        class s {
+          constructor(a, d, g, T) {
+            (this.data = a),
+              (this.listService = d),
+              (this.global = g),
+              (this.dialog = T),
+              this.listService
+                .showvoucharData({
+                  id: a.installno,
+                  entityName: a.entityName,
+                  entityId: a.entityid,
+                  dbname: this.global.LOGGED_IN_USER.DbName,
+                  encrypt: this.global.LOGGED_IN_USER.encryptPswd,
+                })
+                .subscribe((Ft) => {
+                  this.editData = JSON.parse(Ft);
+                });
+          }
+          editVouchar(a) {
+            this.dialog
+              .open(ri, {
+                position: { left: "65%", top: "5%" },
+                data: { value: a },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          ngOnInit() {}
+        }
+        return (
+          (s.ɵfac = function (a) {
+            return new (a || s)(
+              e.Y36(B.WI),
+              e.Y36(ce.L),
+              e.Y36(u.x),
+              e.Y36(B.uw)
+            );
+          }),
+          (s.ɵcmp = e.Xpm({
+            type: s,
+            selectors: [["app-edit-list"]],
+            decls: 38,
+            vars: 1,
+            consts: [
+              [1, "noteBox"],
+              [1, "modal-heading", "standard-color-modal"],
+              [1, "modal-body"],
+              [1, "table", "table-hover", "table-striped"],
+              ["class", "table-light", 4, "ngFor", "ngForOf"],
+              [1, "table-light"],
+              [1, "a", 3, "click"],
+              ["matTooltip", "Edit Vouchar", 1, "fas", "fa-pencil-alt"],
+            ],
+            template: function (a, d) {
+              1 & a &&
+                (e.TgZ(0, "div", 0),
+                e.TgZ(1, "div", 1),
+                e.TgZ(2, "h2"),
+                e._uU(3, "Vouchar Detail"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(4, "div", 2),
+                e.TgZ(5, "table", 3),
+                e.TgZ(6, "thead"),
+                e.TgZ(7, "tr"),
+                e.TgZ(8, "th"),
+                e._uU(9, "Seq"),
+                e.qZA(),
+                e.TgZ(10, "th"),
+                e._uU(11, "By"),
+                e.qZA(),
+                e.TgZ(12, "th"),
+                e._uU(13, "On"),
+                e.qZA(),
+                e.TgZ(14, "th"),
+                e._uU(15, "Head"),
+                e.qZA(),
+                e.TgZ(16, "th"),
+                e._uU(17, "Entity"),
+                e.qZA(),
+                e.TgZ(18, "th"),
+                e._uU(19, "Budget"),
+                e.qZA(),
+                e.TgZ(20, "th"),
+                e._uU(21, "Exp."),
+                e.qZA(),
+                e.TgZ(22, "th"),
+                e._uU(23, "Appv Status"),
+                e.qZA(),
+                e.TgZ(24, "th"),
+                e._uU(25, "Appv Amt"),
+                e.qZA(),
+                e.TgZ(26, "th"),
+                e._uU(27, "Paid Amt"),
+                e.qZA(),
+                e.TgZ(28, "th"),
+                e._uU(29, "Due Amt"),
+                e.qZA(),
+                e.TgZ(30, "th"),
+                e._uU(31, "Paid Status"),
+                e.qZA(),
+                e.TgZ(32, "th"),
+                e._uU(33, "Appv Amt"),
+                e.qZA(),
+                e.TgZ(34, "th"),
+                e._uU(35, "Remark"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(36, "tbody"),
+                e.YNc(37, ua, 31, 16, "tr", 4),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA()),
+                2 & a && (e.xp6(37), e.Q6J("ngForOf", d.editData));
+            },
+            directives: [m.sg, C.gM],
+            pipes: [m.uU],
+            styles: [
+              "th[_ngcontent-%COMP%]{height:30px;text-align:center}td[_ngcontent-%COMP%]{font-size:13px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
+            ],
+          })),
+          s
+        );
+      })();
+      var _i = f(7544),
         ft = f(1125);
       let ca = (() => {
         class s {
@@ -9622,7 +9622,7 @@
                         "ChatEmailPDF",
                       ]),
                       (this.dataSource = new W.by([])),
-                      (this.selection = new Q.Ov(!0, [])),
+                      (this.selection = new ma.Ov(!0, [])),
                       this.CommanService.listCommanData({
                         DbName: this.global.LOGGED_IN_USER.DbName,
                         Password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -9757,7 +9757,7 @@
                   }
                   openEntity(a) {
                     this.dialog
-                      .open(ua, {
+                      .open(oi, {
                         height: "80%",
                         width: "100%",
                         data: {
@@ -9841,7 +9841,7 @@
                   }
                   EditList(a, d, g) {
                     this.dialog
-                      .open(ii, {
+                      .open(Q, {
                         height: "50%",
                         width: "80%",
                         data: {

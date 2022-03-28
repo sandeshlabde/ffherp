@@ -61,6 +61,7 @@ export class CloseActionComponent implements OnInit {
     }
   }
   closeActionForm(data: any) {
+    console.log(data);
     console.log(this.getDefaultData);
     const param = {
       Dbname: this.global.LOGGED_IN_USER.DbName,
@@ -79,11 +80,11 @@ export class CloseActionComponent implements OnInit {
       Moneys: '',
       KMS: '',
       UpdatedBy: this.global.LOGGED_IN_USER.Username,
-      Id: 14379,
+      Id: this.getDefaultData[0].ScheduleUserId,
       CallBackIn: '',
       Hours: 'hh',
       OtherContact: '',
-      MoveTostage: '121',
+      MoveTostage: this.commanActionFormData.MoveTostage,
       Converttolead: '0',
       CloseProspect: '0',
       CloseWork: '0',
@@ -97,7 +98,7 @@ export class CloseActionComponent implements OnInit {
       CloseLeadStatus: '? number:0 ?',
       CloseLeadPONumber: '',
       CloseLeadPODATE: '26/03/2022',
-      CloseLeadDeliveryDATE: '26/03/2022',
+      CloseLeadDeliveryDATE: moment(data.closedDate).format('DD/MM/YYYY'),
       CloseLeadAdv: '0',
       CloseLeadINS: '',
       CloseLeadBank: '',
@@ -125,9 +126,9 @@ export class CloseActionComponent implements OnInit {
       ActorSMSClose: '',
       ActorEmailClose: 'aadi111@gmail.com',
     };
-    this.actionService
-      .saveActualCommanAction(param)
-      .subscribe((data: any) => {});
+    // this.actionService
+    //   .saveActualCommanAction(param)
+    //   .subscribe((data: any) => {});
   }
   ngOnInit(): void {
     this.OpportunityStatusData = this.newlyActionData.Table9;

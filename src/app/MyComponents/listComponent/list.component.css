@@ -7,10 +7,14 @@ table {
   overflow-x: auto;
 }
 th {
-  height: 30px;
+  height: 26px;
   background-color: #dcebdc;
+  font-size: 20px;
+  color: black;
 }
-
+tr {
+  height: 36px;
+}
 tr:hover {
   background-color: #dbe4eb;
 }
@@ -225,14 +229,7 @@ th.mat-header-cell {
   position: relative;
   right: -78;
 }
-.subValueIcon {
-  margin: 15px 0px;
-}
-.ClientName {
-  color: blue;
-  font-weight: 700;
-  size: 16px;
-}
-.Datalabel {
-  color: grey;
+
+.card-box:hover {
+  background-color: #dbe4eb;
 }

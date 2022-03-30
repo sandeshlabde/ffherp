@@ -14,6 +14,8 @@ import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-a
 
 import { EditVoucharComponent } from './edit-approvedlist/edit-vouchar/edit-vouchar.component';
 import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
+import { DashListComponent } from '../dash-board/dash-list/dash-list.component';
+import { ListComponent } from './list.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
     EditVoucharComponent,
+    DashListComponent,
+    ListComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [
@@ -45,6 +49,8 @@ import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
     EditVoucharComponent,
+    DashListComponent,
+    ListComponent,
   ],
 })
 export class ListModule {}

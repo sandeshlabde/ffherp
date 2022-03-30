@@ -6,6 +6,10 @@ table {
 .table-section {
   overflow-x: auto;
 }
+th.mat-header-cell {
+  text-align: center !important;
+  justify-content: center !important;
+}
 th {
   height: 26px;
   background-color: #dcebdc;
@@ -18,24 +22,45 @@ tr {
 tr:hover {
   background-color: #dbe4eb;
 }
-
+td {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+span {
+  padding: 0px 3px;
+}
+nav {
+  padding-top: 74px;
+}
+mat-icon {
+  margin: 0px 0px 0px 10px;
+}
+li {
+  text-decoration: none;
+  display: inline;
+}
 i {
   font-size: 14px;
   color: rgb(156, 155, 155);
   padding: 3px;
+}
+.menuCell {
+  width: 60px;
 }
 .tableOption {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.Company {
-  /* max-width: 120px; */
-  font-size: 16px;
+.columnFontSize {
+  max-width: 120px;
+  font-size: 17px;
   color: black;
-  /* white-space: nowrap;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; */
+  text-overflow: ellipsis;
 }
 
 /* .Company:hover {
@@ -108,12 +133,6 @@ i {
   padding: 0px 17px 0px 67px;
 }
 
-nav {
-  padding-top: 74px;
-}
-mat-icon {
-  margin: 0px 0px 0px 10px;
-}
 ::ng-deep.mat-dialog-container {
   margin: 0px !important;
   padding: 0px !important;
@@ -152,18 +171,13 @@ mat-icon {
 .cardSection {
   padding: 24px;
 }
-li {
-  text-decoration: none;
-  display: inline;
-}
+
 .iconfield {
   display: flex;
   justify-content: space-between;
   padding: 10px 0px 0px 0px;
 }
-span {
-  padding: 0px 3px;
-}
+
 .iconfield-badge {
   background-color: #b8e0d4;
   color: black;
@@ -191,11 +205,6 @@ span {
 .tooltip {
   background-color: black;
   color: white;
-}
-
-th.mat-header-cell {
-  text-align: center !important;
-  justify-content: center !important;
 }
 
 /* .iconDiv{
@@ -245,4 +254,10 @@ th.mat-header-cell {
 }
 .Datalabel {
   color: grey;
+}
+.mat-badge-content {
+  color: rgb(240, 45, 45) !important;
+  background: transparent !important;
+  right: -7px !important;
+  top: -7px !important;
 }

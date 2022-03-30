@@ -11,19 +11,23 @@ import { CommanComponent } from './MyComponents/comman/comman.component';
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './MyComponents/header/header.component';
 import { SideNavComponent } from './MyComponents/side-nav/side-nav.component';
-import { ListComponent } from './MyComponents/listComponent/list.component';
 import { ListModule } from './MyComponents/listComponent/list.module';
 import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashboard.component';
+import { LoaderComponent } from './loader/loader.component';
+import { LoaderintercepterInterceptor } from './shared/intercepter/loaderintercepter.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
+
     LoginComponent,
     DashBoardComponent,
     CommanComponent,
     HeaderComponent,
     SideNavComponent,
     ListDashboardComponent,
+    LoaderComponent,
   ],
 
   imports: [
@@ -34,7 +38,16 @@ import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashb
     ListModule,
   ],
 
-  providers: [ProspectService, AuthGuard, Title],
+  providers: [
+    ProspectService,
+    AuthGuard,
+    Title,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderintercepterInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

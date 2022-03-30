@@ -1,0 +1,22 @@
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Contact Name</th>
+      <th>Company Name</th>
+      <th>Entity Name</th>
+      <th>Activity Type</th>
+      <th>Action Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dashData of dashDetailList">
+      <td>{{ dashData.entActionId }}</td>
+      <td>{{ dashData.entActionContactName }}</td>
+      <td>{{ dashData.entActionCompanyName }}</td>
+      <td>{{ dashData.entEntityName }}</td>
+      <td>{{ dashData.entActivityType }}</td>
+      <td>{{ dashData.entActionType }}</td>
+    </tr>
+  </tbody>
+</table>

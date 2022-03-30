@@ -35,18 +35,19 @@ export class CreateNewComponent implements OnInit {
   CommanData: any;
   Company: any = '';
   a = moment();
-  minDate = this.a.toISOString();
-  LExpCloserDate: any = this.a.toISOString();
-  DelDate: any = this.a.toISOString();
-  MPODate: any = this.a.toISOString();
-  PPODate: any = this.a.toISOString();
-  PIPODate: any = this.a.toISOString();
-  TCloseBefore: any = this.a.toISOString();
-  POEXPDelDate: any = this.a.toISOString();
-  PIInvoiceDate: any = this.a.toISOString();
+  minDate = this.a;
+  LExpCloserDate: any = this.a;
+  DelDate: any = this.a;
+  MPODate: any = this.a;
+  PPODate: any = this.a;
+  PIPODate: any = this.a;
+  TCloseBefore: any = this.a;
+  POEXPDelDate: any = this.a;
+  PIInvoiceDate: any = this.a;
   EntityName: any;
 
   autoCompleteData: any;
+  CompanyId: any;
   get Source() {
     return ['prospect', 'lead', 'salesorderlist'].includes(
       this.EntityName.toLowerCase()
@@ -134,6 +135,8 @@ export class CreateNewComponent implements OnInit {
 
   Autocomplete(e: any) {
     console.log(e);
+    console.log(this.Company);
+    // console.log(this.CompanyId);
     if (e.length >= 3) {
       let param = {
         DBName: this.global.LOGGED_IN_USER.DbName,
@@ -143,17 +146,17 @@ export class CreateNewComponent implements OnInit {
         .createFormAutoComplete(param)
         .subscribe((data: any) => {
           this.autoCompleteData = JSON.parse(data);
-          console.log(this.autoCompleteData);
+          console.log();
         });
     }
-    this.companyContactList(id);
+    this.companyContactList(this.autoCompleteData[0].companyId);
   }
   companyContactList(id: any) {
     console.log(id);
 
     let param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
-      id11: this.Company,
+      id11: id,
       password: this.global.LOGGED_IN_USER.encryptPswd,
     };
     this.commanservice.getCompanyContactList(param).subscribe((data: any) => {

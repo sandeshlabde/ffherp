@@ -55,31 +55,39 @@
           Go
         </button>
       </div>
+      <div class="dateOption">
+        <div><a class="a" (click)="today()">Today</a></div>
+        <div><a class="a" (click)="yesterday()">Yesterday</a></div>
+        <div><a class="a" (click)="lastWeek()">Last Week</a></div>
+      </div>
       <div>
-        <table class="table table-hover" *ngIf="tableData">
+        <table class="table" *ngIf="tableData">
           <thead>
-            <tr class="table-primary">
+            <tr>
               <th>Actor</th>
-              <ng-container *ngFor="let H of columns">
-                <th *ngIf="H != 'total'">
-                  {{ H }}
+              <ng-container *ngFor="let Actor of columns">
+                <th *ngIf="Actor != 'total'">
+                  {{ Actor }}
                 </th>
               </ng-container>
               <th>Total</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let x of tableData | keyvalue">
+            <tr *ngFor="let count of tableData | keyvalue">
               <td>
-                <a class="a" (click)="piChart(x.value)">
-                  {{ x.key }}
+                <a class="a" (click)="piChart(count.value)">
+                  {{ count.key }}
                 </a>
               </td>
-              <ng-container *ngFor="let H of columns">
-                <td *ngIf="H != 'total'">{{ x.value[H] }}</td>
+              <ng-container *ngFor="let Actor of columns">
+                <td *ngIf="Actor != 'total'">{{ count.value[Actor] }}</td>
               </ng-container>
+
               <td>
-                <a class="a">{{ x.value["total"] }}</a>
+                <a class="a" (click)="ShowListDeatail(count.key)">{{
+                  count.value["total"]
+                }}</a>
               </td>
             </tr>
             <tr>

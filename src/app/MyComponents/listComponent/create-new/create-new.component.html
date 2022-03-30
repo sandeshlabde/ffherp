@@ -28,7 +28,6 @@
               <mat-autocomplete #auto="matAutocomplete">
                 <mat-option
                   *ngFor="let item of autoCompleteData"
-                  id="{{ item.companyId }}"
                   [value]="item.companyName"
                 >
                   {{ item.companyName }}

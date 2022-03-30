@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+
+  margin: 20px 10px 10px 10px;
+}
+
+th {
+  height: 26px;
+  background-color: #dcebdc;
+  font-size: 16px;
+  font-weight: 400;
+  color: black;
+}
+tr:hover {
+  background-color: #dbe4eb;
+}

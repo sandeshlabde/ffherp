@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { Global } from 'Global';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CommanService } from 'src/app/services/comman.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ApprovalnotifictionListComponent } from 'src/app/shared/approvalnotifiction-list/approvalnotifiction-list.component';
+import { ListComponent } from '../listComponent/list.component';
 
 const THEME_DARKNESS_SUFFIX = `-dark`;
 @Component({
@@ -53,7 +56,8 @@ export class HeaderComponent implements OnInit {
     private commanService: CommanService,
     private global: Global,
     private router: Router,
-    private overlayContainer: OverlayContainer
+    private overlayContainer: OverlayContainer,
+    public dialog: MatDialog
   ) {
     if (this.global.LOGGED_IN_USER) {
       this.companyName = this.global.LOGGED_IN_USER.CoName;
@@ -70,7 +74,18 @@ export class HeaderComponent implements OnInit {
       console.log(this.CountData);
     });
   }
+  approvalNotificationList(count, entityName) {
+    const dialogRef = this.dialog.open(ListComponent, {
+      height: '100%',
+      width: '100%',
+      data: {
+        Count: count,
+        EntityName: entityName,
+      },
+    });
 
+    dialogRef.afterClosed().subscribe();
+  }
   onSignOut() {
     localStorage.removeItem('Global.LOGGED_IN_USER');
     this.router.navigate(['/login']);

@@ -77,13 +77,28 @@
       <button mat-menu-item class="matmenuList">Approval Notification</button>
       <hr class="dropdown-divider" />
 
-      <a class="dropdown-list" mat-menu-item
+      <a
+        class="dropdown-list"
+        mat-menu-item
+        (click)="
+          approvalNotificationList(CountData?.SOApprovalCount, 'SalesOrderLIst')
+        "
         >Sales Order({{ CountData?.SOApprovalCount }})</a
       >
-      <a class="dropdown-list" mat-menu-item
+      <a
+        class="dropdown-list"
+        (click)="
+          approvalNotificationList(CountData?.PayableApprovalCount, 'Payable')
+        "
+        mat-menu-item
         >Payble({{ CountData?.PayableApprovalCount }})</a
       >
-      <a class="dropdown-list" mat-menu-item
+      <a
+        class="dropdown-list"
+        (click)="
+          approvalNotificationList(CountData?.VoucherApprovalCount, 'Voucher')
+        "
+        mat-menu-item
         >Vouchar({{ CountData?.VoucherApprovalCount }})</a
       >
     </mat-menu>

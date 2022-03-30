@@ -1,9 +1,7 @@
-
-
 .containt-Body {
   display: flex;
   background-color: #f3f3ec;
-  height: 79.8vh;
+  height: fit-content;
   /* overflow-y:hidden !important; */
 }
 

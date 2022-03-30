@@ -10,7 +10,7 @@
 
     <table class="table">
       <thead>
-        <tr>
+        <tr class="standard-color-modal">
           <th>Seq</th>
           <th>By</th>
           <th>On</th>
@@ -23,6 +23,7 @@
           <th>Paid Amt</th>
           <th>Due Amt</th>
           <th>Paid Status</th>
+          <th></th>
           <th>Appv Status</th>
           <th>Appv Amt</th>
           <th>Remark</th>
@@ -44,6 +45,7 @@
           <td>{{ vouchar.PaidAmount }}</td>
 
           <td>{{ vouchar.DueAmount }}</td>
+          <td><mat-icon> border_color</mat-icon></td>
           <td>
             <select class="dd" name="" id="">
               <option value="">Approved</option>

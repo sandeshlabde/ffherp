@@ -2,13 +2,6 @@
   <ul class="nav-links">
     <li>
       <div class="iocn-link">
-        <!-- <i><mat-icon>dashboard</mat-icon></i> -->
-        <!-- <img
-          src="../assets/img/dashboard.png"
-          width="30px"
-          height="30px"
-          class="icon-img"
-        /> -->
         <img
           src=" /assets/img/dashboard.png"
           width="30px"
@@ -171,14 +164,16 @@
       <ul class="sub-menu shadow-lg bg-body rounded">
         <li><a class="link_name">Payment</a></li>
         <li>
-          <a (click)="setTitle('FFHErp/InvoiceDashboard')">InvoiceDashboard</a>
+          <a (click)="setTitle('FFHErp/Invoice Dashboard')"
+            >Invoice Dashboard</a
+          >
         </li>
         <li>
           <a
-            (click)="setTitle('FFHErp/Invoice ')"
+            (click)="setTitle('FFHErp/Sales Invoice ')"
             routerLink="/admin/page/Payment"
             id="Invoice"
-            >Invoice
+            >Sales Invoice
           </a>
         </li>
 
@@ -188,10 +183,10 @@
             routerLink="/admin/page/Payable"
             routerLinkActive="active"
             id="PI"
-            >Purchas Invoice</a
+            >Purchase Invoice</a
           >
         </li>
-        <li><a (click)="setTitle('FFHErp/PI Dashboard ')">PIDashboard</a></li>
+        <li><a (click)="setTitle('FFHErp/PI Dashboard ')">PI Dashboard</a></li>
         <li>
           <a
             (click)="setTitle('FFHErp/Voucher ')"

@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProspectService {
+  loader = new BehaviorSubject<boolean>(false);
   // Login API URL
   loginUrl = 'https://apitest.ffherp.co.in/api/FFHAMC/FFHLogin';
 
@@ -86,7 +88,7 @@ export class ProspectService {
 
   // list  table api calling
 
-  getLeadList(params: any) {
+  getList(params: any) {
     return this.http.post(this.listUrl, params);
   }
 

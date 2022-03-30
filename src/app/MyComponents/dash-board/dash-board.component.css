@@ -6,11 +6,17 @@
 .contain {
   padding: 64px 17px 0px 67px;
 }
+
 th {
+  height: 26px;
+  background-color: #dcebdc;
   font-size: 11px;
   font-weight: 400;
+  color: black;
 }
-
+tr:hover {
+  background-color: #dbe4eb;
+}
 button {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26) !important;
   height: 45px;
@@ -46,14 +52,23 @@ mat-form-field {
   height: 54px;
 }
 
-.a {
+a {
   text-decoration: none;
   font-size: 11px;
   font-weight: 400;
 }
 
-.a:hover {
+a:hover {
   text-decoration: underline;
   cursor: pointer;
   font-size: small;
+}
+.dateOption {
+  display: flex;
+  justify-content: space-between;
+}
+::ng-deep.mat-dialog-container {
+  margin: 0px !important;
+  padding: 0px !important;
+  overflow-x: hidden !important;
 }

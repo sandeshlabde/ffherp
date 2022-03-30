@@ -6,7 +6,7 @@
     </h1>
   </div>
 
-  <mat-tab-group>
+  <mat-tab-group [selectedIndex]="1">
     <mat-tab label="Pending">
       <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8">
         <ng-container matColumnDef="SchID">

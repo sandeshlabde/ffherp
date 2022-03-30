@@ -15,6 +15,8 @@ import {
   MAT_DATE_FORMATS,
   DateAdapter,
 } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DashListComponent } from './dash-list/dash-list.component';
 
 @Component({
   selector: 'app-dash-board',
@@ -33,17 +35,17 @@ import {
 })
 export class DashBoardComponent implements OnInit {
   [x: string]: any;
-
+  Today = moment();
   selectedValue = 'entActionType';
   ddData: any;
   jsonData: any;
   total: any;
   value: any;
   fromdate: any;
-  From: any = moment().format('YYYY-MM-DD');
-  To: any = moment().format('YYYY-MM-DD');
-  minDate: any = moment().format('YYYY-MM-DD');
-  maxDate: any = moment().format('YYYY-MM-DD');
+  From: any = this.Today;
+  To: any = this.Today;
+  minDate: any = this.Today;
+  maxDate: any = this.Today;
   arr: any[];
   AllData: any;
   FooterTotal: any;
@@ -58,14 +60,32 @@ export class DashBoardComponent implements OnInit {
   constructor(
     private listService: ProspectService,
     private global: Global,
-    private httpClient: HttpClient
+    private httpClient: HttpClient,
+    public dialog: MatDialog
   ) {
     this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
       this.jsonData = data;
       this.ddData = this.jsonData.DDvalue;
     });
+    this.submitValue();
   }
+  today() {
+    this.From = moment(this.Today);
+    this.To = moment(this.Today);
+    this.submitValue();
+  }
+  yesterday() {
+    this.From = moment(this.Today).add(-1, 'days');
+    this.To = moment(this.Today).add('days');
+    this.submitValue();
+  }
+  lastWeek() {
+    this.From = moment(this.Today).subtract(1, 'weeks').startOf('isoWeek');
 
+    this.To = moment(this.Today).subtract(1, 'weeks').endOf('isoWeek');
+
+    this.submitValue();
+  }
   getPivotTable(data, type) {
     const map = new Map();
     data.forEach((item) => {
@@ -155,6 +175,19 @@ export class DashBoardComponent implements OnInit {
         data: pieData,
       },
     ];
+  }
+  ShowListDeatail(A) {
+    console.log(A);
+    const dialogRef = this.dialog.open(DashListComponent, {
+      height: '50%',
+      width: '80%',
+      data: {
+        ActorName: A,
+        Data: this.AllData,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe();
   }
   ngOnInit(): void {}
 }

@@ -1,11 +1,15 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProspectService } from 'src/app/services/prospect.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
+import { MatSort, Sort } from '@angular/material/sort';
 import { listdatafield } from 'src/apitable';
 import { Global } from 'Global';
 import { ApprovalComponent } from './approval/approval.component';
@@ -25,13 +29,10 @@ import { CommanService } from 'src/app/services/comman.service';
 import { EntityProductComponent } from './viewEntity/entity-product.component';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { FlatTreeControl } from '@angular/cdk/tree';
-import {
-  MatTreeFlatDataSource,
-  MatTreeFlattener,
-} from '@angular/material/tree';
 import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
 import { ActionScheduledComponent } from 'src/app/shared/action-scheduled/action-scheduled.component';
+import { Subscription } from 'rxjs';
+
 export interface DialogData {
   EntityID: number;
   EntityName: string;
@@ -49,21 +50,24 @@ export class ListComponent implements OnInit {
 
   EntityNameTitle: string = '';
   listcol: any;
-  eXPDate: any;
+
   groupbydata: Map<any, any>;
   commanData: any;
   Allshow: boolean = false;
-
+  selectedColumn: any;
+  FilterEntityData: any;
   EntityName: any;
   id: any;
   date: any;
-  current_date: any;
   Selection: any;
   tableSection: boolean = true;
   cardSection: boolean = false;
   DetailViewSection: boolean = false;
   groupSelected: string = ' ';
   Array: any;
+  // dialogRef: MatDialogRef<Count>;
+  // dialogData: NewMessageDialoagData;
+
   displayedColumns: any[] = [
     {
       default: true,
@@ -178,7 +182,12 @@ export class ListComponent implements OnInit {
   ];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  FilterEntityData: void;
+  Count: string;
+  subscriptions: Subscription;
+  dialogData: any;
+  Approval: any;
+  IsSearch: any;
+
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(
       this.dataSource.data,
@@ -244,28 +253,30 @@ export class ListComponent implements OnInit {
     private listService: ProspectService,
     private root: ActivatedRoute,
     public dialog: MatDialog,
-
+    private injector: Injector,
     private global: Global
   ) {
-    let params = {
-      DbName: this.global.LOGGED_IN_USER.DbName,
-      Password: this.global.LOGGED_IN_USER.encryptPswd,
-      UserId: this.global.LOGGED_IN_USER.UserId,
-    };
-    this.CommanService.listCommanData(params).subscribe((data: any) => {
-      this.commanData = JSON.parse(data);
-    });
     this.root.params.subscribe((param) => {
-      this.EntityName = param['EntityName'];
+      this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+      if (this.dialogData) {
+        this.EntityName = this.dialogData.EntityName;
+        this.Approval = '296';
+        (this.IsSearch = 1), console.log(this.dialogData);
+      } else {
+        this.EntityName = param['EntityName'];
+      }
       let params = {
         Flag: this.EntityName,
         Dbname: this.global.LOGGED_IN_USER.DbName,
         Password: this.global.LOGGED_IN_USER.encryptPswd,
-        id: this.global.LOGGED_IN_USER.RoleId,
+        // id: this.global.LOGGED_IN_USER.RoleId,
         userid: this.global.LOGGED_IN_USER.UserId,
         RoleID: this.global.LOGGED_IN_USER.RoleId,
+        Approval: this.Approval,
+        IsSearch: this.IsSearch,
       };
-      this.listService.getLeadList(params).subscribe((data: any) => {
+
+      this.listService.getList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
         console.log(this.dataSource.data);
       });
@@ -297,11 +308,27 @@ export class ListComponent implements OnInit {
         this.EntityNameTitle = 'Voucher';
       }
     });
+    let params = {
+      DbName: this.global.LOGGED_IN_USER.DbName,
+      Password: this.global.LOGGED_IN_USER.encryptPswd,
+      UserId: this.global.LOGGED_IN_USER.UserId,
+    };
+    this.CommanService.listCommanData(params).subscribe((data: any) => {
+      this.commanData = JSON.parse(data);
+      console.log(this.commanData);
+    });
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.changeSortedColumn();
+  }
+  changeSortedColumn() {
+    const sortState: Sort = { active: this.selectedColumn, direction: 'asc' };
+    this.sort.active = sortState.active;
+    this.sort.direction = sortState.direction;
+    this.sort.sortChange.emit(sortState);
   }
   applyFilter(event: any) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -353,7 +380,7 @@ export class ListComponent implements OnInit {
   //email Quate Dialog Model
   openEmailQuote(id: any) {
     const dialogRef = this.dialog.open(ShowEmailQuotComponent, {
-      height: '80vh',
+      height: '82vh',
       width: '1000px',
       data: {
         EntityID: id,
@@ -496,8 +523,8 @@ export class ListComponent implements OnInit {
     this.tableSection = true;
     this.cardSection = false;
     this.DetailViewSection = false;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
   selectCard() {
     this.tableSection = false;
@@ -508,8 +535,8 @@ export class ListComponent implements OnInit {
     this.tableSection = false;
     this.cardSection = false;
     this.DetailViewSection = true;
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
   groupSelectedValue() {
     console.log(this.groupSelected);
@@ -530,11 +557,14 @@ export class ListComponent implements OnInit {
     //   this.dataSource.data,
     //   this.groupSelected
     // );
-    console.log(this.FilterEntityData);
+    // console.log(this.FilterEntityData);
   }
   filteredEntity(entity: any) {
-    if (this.dataSource.data && this.dataSource.data.length > 0)
+    if (this.groupSelected == 'OwnerName') {
       return this.dataSource.data.filter((item) => item.OwnerName == entity);
+    } else if (this.groupSelected == 'StatusName') {
+      return this.dataSource.data.filter((item) => item.StatusName == entity);
+    }
     return [];
   }
   ngOnInit() {}

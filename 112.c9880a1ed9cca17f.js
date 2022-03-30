@@ -1,1765 +1,28 @@
 (self.webpackChunkMyProject = self.webpackChunkMyProject || []).push([
-  [378],
+  [112],
   {
-    7378: (Z, Y, f) => {
+    112: (Z, Y, f) => {
       "use strict";
-      f.r(Y), f.d(Y, { AdminModule: () => Cs });
+      f.r(Y), f.d(Y, { AdminModule: () => qs });
       var m = f(9808),
-        i = f(1083),
+        s = f(1083),
         r = f(2993),
         o = f(1423),
         e = f(5e3),
-        u = f(520);
-      let p = (() => {
-        class s {
-          constructor(a) {
-            (this.http = a),
-              (this.listCommanDataURL =
-                "https://apitest.ffherp.co.in/api/FFHAMC/GetSearchDDLValue"),
-              (this.createFormAutoCompleteURL =
-                "https://apitest.ffherp.co.in/api/Voucher/getAutoCompleteCompanyList"),
-              (this.companyContactListURL =
-                "https://apitest.ffherp.co.in/api/Voucher/GetCommonContactList"),
-              (this.ApprovalCountUrl =
-                "https://ffherp.co.in:446/api/Voucher/GetApprovalCount");
-          }
-          createFormAutoComplete(a) {
-            return this.http.post(this.createFormAutoCompleteURL, a);
-          }
-          getCompanyContactList(a) {
-            return this.http.post(this.companyContactListURL, a);
-          }
-          listCommanData(a) {
-            return this.http.post(this.listCommanDataURL, a);
-          }
-          ApprovalCount(a) {
-            return this.http.post(this.ApprovalCountUrl, a);
-          }
-        }
-        return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.LFG(u.eN));
-          }),
-          (s.ɵprov = e.Yz7({ token: s, factory: s.ɵfac, providedIn: "root" })),
-          s
-        );
-      })();
-      var M = f(3700),
-        L = f(9776),
-        k = f(2181),
-        C = f(7544),
-        q = f(4594),
-        N = f(7423),
-        _e = f(9772),
-        w = f(3874),
-        K = f(7446),
-        De = f(3954);
-      function Oe(s, c) {
-        1 & s && (e.TgZ(0, "mat-icon", 35), e._uU(1, "check"), e.qZA());
-      }
-      function Lt(s, c) {
-        if (1 & s) {
-          const a = e.EpF();
-          e.TgZ(0, "mat-grid-tile"),
-            e.TgZ(1, "button", 33),
-            e.NdJ("click", function (g) {
-              const v = e.CHM(a).$implicit,
-                ce = e.oxw();
-              return g.stopPropagation(), ce.setTheme(v);
-            }),
-            e.TgZ(2, "div"),
-            e._UZ(3, "div"),
-            e._UZ(4, "div"),
-            e.YNc(5, Oe, 2, 0, "mat-icon", 34),
-            e.qZA(),
-            e.qZA(),
-            e.qZA();
-        }
-        if (2 & s) {
-          const a = c.$implicit,
-            d = e.oxw();
-          e.xp6(2),
-            e.uIk("class", a + "theme-primary center"),
-            e.xp6(1),
-            e.uIk("class", a + "theme-accent"),
-            e.xp6(1),
-            e.uIk("class", a + "theme-warn"),
-            e.xp6(1),
-            e.Q6J("ngIf", d.activeTheme === a);
-        }
-      }
-      let Yt = (() => {
-        class s {
-          constructor(a, d, g, T) {
-            (this.commanService = a),
-              (this.global = d),
-              (this.router = g),
-              (this.overlayContainer = T),
-              (this.themes = [
-                "deeppurple-amber",
-                "indigo-pink",
-                "pink-bluegrey",
-                "purple-green",
-              ]),
-              (this.isThemeDark = !1),
-              this.global.LOGGED_IN_USER &&
-                ((this.companyName = this.global.LOGGED_IN_USER.CoName),
-                (this.userName = this.global.LOGGED_IN_USER.Username)),
-              this.setTheme("indigo-pink", !1),
-              this.commanService
-                .ApprovalCount({
-                  DBNAME: this.global.LOGGED_IN_USER.DbName,
-                  password: this.global.LOGGED_IN_USER.encryptPswd,
-                  userid: this.global.LOGGED_IN_USER.UserId,
-                })
-                .subscribe((ce) => {
-                  (this.CountData = JSON.parse(ce)),
-                    console.log(this.CountData);
-                });
-          }
-          setTheme(a, d = null) {
-            if (null === d) d = this.isThemeDark;
-            else if (this.isThemeDark === d) {
-              if (this.activeTheme === a) return;
-            } else this.isThemeDark = d;
-            this.activeTheme = a;
-            const g = !0 === d ? a + "-dark" : a,
-              T = this.overlayContainer.getContainerElement().classList;
-            T.contains(this.activeThemeCssClass)
-              ? T.replace(this.activeThemeCssClass, g)
-              : T.add(g),
-              (this.activeThemeCssClass = g),
-              console.log(g);
-          }
-          toggleDarkness() {
-            this.setTheme(this.activeTheme, !this.isThemeDark);
-          }
-          onSignOut() {
-            localStorage.removeItem("Global.LOGGED_IN_USER"),
-              this.router.navigate(["/login"]);
-          }
-          ngOnInit() {}
-        }
-        return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(p), e.Y36(M.x), e.Y36(i.F0), e.Y36(L.Xj));
-          }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
-            selectors: [["app-header"]],
-            hostVars: 2,
-            hostBindings: function (a, d) {
-              2 & a && e.Tol(d.activeThemeCssClass);
-            },
-            decls: 125,
-            vars: 15,
-            consts: function () {
-              let c, a;
-              return (
-                (c = $localize`:@@Select-a-theme:Select a theme!`),
-                (a = $localize`:@@Dark:Dark `),
-                [
-                  ["role", "banner", 1, "toolbar"],
-                  ["href", "/admin/page/Lead", 1, "companyLogo"],
-                  [
-                    "src",
-                    "assets/img/FFHFinalLogo.png",
-                    "height",
-                    "45",
-                    "alt",
-                    "",
-                  ],
-                  [1, "spacer"],
-                  [
-                    "src",
-                    "assets/img/NoImage.png",
-                    "width",
-                    "50",
-                    "alt",
-                    "",
-                    3,
-                    "height",
-                  ],
-                  ["id", "ffh", 1, ""],
-                  ["id", "", 1, "header-link", 3, "matMenuTriggerFor"],
-                  [1, "fas", "fa-paperclip"],
-                  ["list", "matMenu"],
-                  ["mat-menu-item", "", 1, "matmenuList"],
-                  [1, "dropdown-divider"],
-                  ["mat-menu-item", "", 1, "dropdown-list"],
-                  [1, "fas", "fa-barcode"],
-                  ["QuickLinks", "matMenu"],
-                  [1, "fas", "fa-search"],
-                  ["masters", "matMenu"],
-                  ["id", "", 1, "header-link"],
-                  [1, "far", "fa-envelope"],
-                  [1, "header-link", 3, "matMenuTriggerFor"],
-                  [
-                    "matBadgeColor",
-                    "warn",
-                    "matBadgeOverlap",
-                    "false",
-                    1,
-                    "far",
-                    "fa-bell",
-                    3,
-                    "matBadge",
-                  ],
-                  ["Notification", "matMenu"],
-                  ["id", " ", 1, "header-link", 3, "matMenuTriggerFor"],
-                  [1, "fas", "fa-user-circle"],
-                  ["user", "matMenu"],
-                  ["mat-menu-item", "", 1, "dropdown-list", 3, "click"],
-                  [1, "themebutton"],
-                  [
-                    "mat-icon-button",
-                    "",
-                    "id",
-                    "theme-selector",
-                    "matTooltip",
-                    c,
-                    "tabindex",
-                    "-1",
-                    3,
-                    "mat-menu-trigger-for",
-                  ],
-                  [1, "auto-flip"],
-                  ["themeMenu", "matMenu"],
-                  [
-                    1,
-                    "mat-menu-item",
-                    "theme-selector-is-dark",
-                    3,
-                    "checked",
-                    "click",
-                    "change",
-                  ],
-                  a,
-                  ["cols", "2", 1, "theme-selectors-container"],
-                  [4, "ngFor", "ngForOf"],
-                  ["mat-button", "", 1, "theme-selector", 3, "click"],
-                  ["class", "center theme-check", 4, "ngIf"],
-                  [1, "center", "theme-check"],
-                ]
-              );
-            },
-            template: function (a, d) {
-              if (
-                (1 & a &&
-                  (e.TgZ(0, "div", 0),
-                  e.TgZ(1, "a", 1),
-                  e._UZ(2, "img", 2),
-                  e.qZA(),
-                  e._UZ(3, "div", 3),
-                  e._UZ(4, "img", 4),
-                  e.TgZ(5, "a", 5),
-                  e._uU(6),
-                  e.qZA(),
-                  e.TgZ(7, "li", 6),
-                  e._UZ(8, "i", 7),
-                  e.TgZ(9, "mat-menu", null, 8),
-                  e.TgZ(11, "button", 9),
-                  e._uU(12, "My list"),
-                  e.qZA(),
-                  e._UZ(13, "hr", 10),
-                  e.TgZ(14, "a", 11),
-                  e._uU(15, "My User"),
-                  e.qZA(),
-                  e.TgZ(16, "a", 11),
-                  e._uU(17, "User Rights"),
-                  e.qZA(),
-                  e.TgZ(18, "a", 11),
-                  e._uU(19, "My Company"),
-                  e.qZA(),
-                  e.TgZ(20, "a", 11),
-                  e._uU(21, "My Config"),
-                  e.qZA(),
-                  e.TgZ(22, "a", 11),
-                  e._uU(23, "My Alert"),
-                  e.qZA(),
-                  e.TgZ(24, "a", 11),
-                  e._uU(25, "My Branches"),
-                  e.qZA(),
-                  e.TgZ(26, "a", 11),
-                  e._uU(27, "My Report"),
-                  e.qZA(),
-                  e.TgZ(28, "a", 11),
-                  e._uU(29, "User Report"),
-                  e.qZA(),
-                  e.TgZ(30, "a", 11),
-                  e._uU(31, "Location Detail"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(32, "li", 6),
-                  e._UZ(33, "i", 12),
-                  e.TgZ(34, "mat-menu", null, 13),
-                  e.TgZ(36, "button", 9),
-                  e._uU(37, "Quick Links"),
-                  e.qZA(),
-                  e._UZ(38, "hr", 10),
-                  e.TgZ(39, "a", 11),
-                  e._uU(40, "Create Prospect"),
-                  e.qZA(),
-                  e.TgZ(41, "a", 11),
-                  e._uU(42, "Create Lead"),
-                  e.qZA(),
-                  e.TgZ(43, "a", 11),
-                  e._uU(44, "Create SO"),
-                  e.qZA(),
-                  e.TgZ(45, "a", 11),
-                  e._uU(46, "Create MO"),
-                  e.qZA(),
-                  e.TgZ(47, "a", 11),
-                  e._uU(48, "Create MI"),
-                  e.qZA(),
-                  e.TgZ(49, "a", 11),
-                  e._uU(50, "Create Bill"),
-                  e.qZA(),
-                  e.TgZ(51, "a", 11),
-                  e._uU(52, "Create Ticket"),
-                  e.qZA(),
-                  e.TgZ(53, "a", 11),
-                  e._uU(54, "Install Product"),
-                  e.qZA(),
-                  e.TgZ(55, "a", 11),
-                  e._uU(56, "Create PO"),
-                  e.qZA(),
-                  e.TgZ(57, "a", 11),
-                  e._uU(58, "Create POBill"),
-                  e.qZA(),
-                  e.TgZ(59, "a", 11),
-                  e._uU(60, "Journal Vouchar"),
-                  e.qZA(),
-                  e.TgZ(61, "a", 11),
-                  e._uU(62, "Memo"),
-                  e.qZA(),
-                  e.TgZ(63, "a", 11),
-                  e._uU(64, "Payment Received"),
-                  e.qZA(),
-                  e.TgZ(65, "a", 11),
-                  e._uU(66, "Payment Made"),
-                  e.qZA(),
-                  e.TgZ(67, "a", 11),
-                  e._uU(68, "Stock Journal "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(69, "li", 6),
-                  e._UZ(70, "i", 14),
-                  e.TgZ(71, "mat-menu", null, 15),
-                  e.TgZ(73, "button", 9),
-                  e._uU(74, "Masters"),
-                  e.qZA(),
-                  e._UZ(75, "hr", 10),
-                  e.TgZ(76, "a", 11),
-                  e._uU(77, "Company"),
-                  e.qZA(),
-                  e.TgZ(78, "a", 11),
-                  e._uU(79, "Contact"),
-                  e.qZA(),
-                  e.TgZ(80, "a", 11),
-                  e._uU(81, "Product"),
-                  e.qZA(),
-                  e.TgZ(82, "a", 11),
-                  e._uU(83, "Ledger"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(84, "li", 16),
-                  e._UZ(85, "i", 17),
-                  e.qZA(),
-                  e.TgZ(86, "li", 18),
-                  e._UZ(87, "i", 19),
-                  e.TgZ(88, "mat-menu", null, 20),
-                  e.TgZ(90, "button", 9),
-                  e._uU(91, "Approval Notification"),
-                  e.qZA(),
-                  e._UZ(92, "hr", 10),
-                  e.TgZ(93, "a", 11),
-                  e._uU(94),
-                  e.qZA(),
-                  e.TgZ(95, "a", 11),
-                  e._uU(96),
-                  e.qZA(),
-                  e.TgZ(97, "a", 11),
-                  e._uU(98),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(99, "li", 21),
-                  e._UZ(100, "i", 22),
-                  e._uU(101),
-                  e.TgZ(102, "mat-menu", null, 23),
-                  e.TgZ(104, "a", 11),
-                  e._uU(105, "Register Extension "),
-                  e.qZA(),
-                  e.TgZ(106, "a", 11),
-                  e._uU(107, "Change Pwd"),
-                  e.qZA(),
-                  e.TgZ(108, "a", 11),
-                  e._uU(109, "Upload"),
-                  e.qZA(),
-                  e._UZ(110, "hr", 10),
-                  e.TgZ(111, "a", 24),
-                  e.NdJ("click", function () {
-                    return d.onSignOut();
-                  }),
-                  e._uU(112, "Sign out"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(113, "span"),
-                  e.TgZ(114, "mat-toolbar", 25),
-                  e.TgZ(115, "mat-toolbar-row"),
-                  e.TgZ(116, "button", 26),
-                  e.TgZ(117, "mat-icon", 27),
-                  e._uU(118, "format_color_fill"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(119, "mat-menu", null, 28),
-                  e.TgZ(121, "mat-checkbox", 29),
-                  e.NdJ("click", function (T) {
-                    return T.stopPropagation();
-                  })("change", function () {
-                    return d.toggleDarkness();
-                  }),
-                  e.SDv(122, 30),
-                  e.qZA(),
-                  e.TgZ(123, "mat-grid-list", 31),
-                  e.YNc(124, Lt, 6, 4, "mat-grid-tile", 32),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA()),
-                2 & a)
-              ) {
-                const g = e.MAs(10),
-                  T = e.MAs(35),
-                  v = e.MAs(72),
-                  ce = e.MAs(89),
-                  ye = e.MAs(103),
-                  b = e.MAs(120);
-                e.xp6(4),
-                  e.Q6J("height", 40),
-                  e.xp6(2),
-                  e.hij(" ", d.companyName, " "),
-                  e.xp6(1),
-                  e.Q6J("matMenuTriggerFor", g),
-                  e.xp6(25),
-                  e.Q6J("matMenuTriggerFor", T),
-                  e.xp6(37),
-                  e.Q6J("matMenuTriggerFor", v),
-                  e.xp6(17),
-                  e.Q6J("matMenuTriggerFor", ce),
-                  e.xp6(1),
-                  e.s9C(
-                    "matBadge",
-                    null == d.CountData ? null : d.CountData.TotalApprovalCount
-                  ),
-                  e.xp6(7),
-                  e.hij(
-                    "Sales Order(",
-                    null == d.CountData ? null : d.CountData.SOApprovalCount,
-                    ")"
-                  ),
-                  e.xp6(2),
-                  e.hij(
-                    "Payble(",
-                    null == d.CountData
-                      ? null
-                      : d.CountData.PayableApprovalCount,
-                    ")"
-                  ),
-                  e.xp6(2),
-                  e.hij(
-                    "Vouchar(",
-                    null == d.CountData
-                      ? null
-                      : d.CountData.VoucherApprovalCount,
-                    ")"
-                  ),
-                  e.xp6(1),
-                  e.Q6J("matMenuTriggerFor", ye),
-                  e.xp6(2),
-                  e.hij(" ", d.userName, " "),
-                  e.xp6(15),
-                  e.Q6J("mat-menu-trigger-for", b),
-                  e.xp6(5),
-                  e.Q6J("checked", d.isThemeDark),
-                  e.xp6(3),
-                  e.Q6J("ngForOf", d.themes);
-              }
-            },
-            directives: [
-              k.p6,
-              k.VK,
-              k.OP,
-              C.k,
-              q.Ye,
-              q.rD,
-              N.lW,
-              _e.gM,
-              w.Hw,
-              K.oG,
-              De.Il,
-              m.sg,
-              De.DX,
-              m.O5,
-            ],
-            styles: [
-              ".spacer[_ngcontent-%COMP%]{flex:1}.toolbar[_ngcontent-%COMP%]{position:absolute;top:0;left:0;right:0;height:60px;display:flex;align-items:center;background-color:#b8e0d4;color:#000;font-weight:600;z-index:100;position:fixed}.mat-badge-medium[_ngcontent-%COMP%]   .mat-badge-content[_ngcontent-%COMP%]{width:32px!important;height:21px!important;top:-16px!important;line-height:22px}.header-link[_ngcontent-%COMP%]{margin:0 16px;list-style:none}.matmenuList[_ngcontent-%COMP%]{background-color:#dcebdc}#ffh[_ngcontent-%COMP%]{color:#000;margin-right:10px}.companyLogo[_ngcontent-%COMP%]{padding-left:83px}i[_ngcontent-%COMP%]{font-size:18px;color:#000}.dropdown-list[_ngcontent-%COMP%]{color:#000;text-decoration:none}.dropdown-list[_ngcontent-%COMP%]:hover{background:#b8e0d4}.green[_ngcontent-%COMP%]{background-color:#b8e0d4}.red[_ngcontent-%COMP%]{background-color:#ffa07a}.themebutton[_ngcontent-%COMP%]{background-color:#b8e0d4}.example-icon[_ngcontent-%COMP%]{padding:0 14px}.example-spacer[_ngcontent-%COMP%]{flex:1 1 auto}@mixin size($width,$height: null){width: $width; height: if($height==null,$width,$height);}.theme-selectors-container[_ngcontent-%COMP%]{width:190px;margin:0 8px}button.theme-selector[_ngcontent-%COMP%]{@include size(80px);}div.theme-primary[_ngcontent-%COMP%]{@include size(70px);border-radius:50%}div.theme-accent[_ngcontent-%COMP%]{@include size(25px);position:absolute;bottom:0;left:0}div.theme-warn[_ngcontent-%COMP%]{@include size(15px);position:absolute;bottom:7%;left:20%;transform:rotate(45deg)}.theme-check[_ngcontent-%COMP%]{color:#fff;font-size:3.2em}.theme-selector-is-dark[_ngcontent-%COMP%]{font-weight:700;font-size:1.2em}.center[_ngcontent-%COMP%]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}",
-            ],
-          })),
-          s
-        );
-      })();
-      var Ue = f(2313);
-      let de = (() => {
-          class s {
-            constructor(a) {
-              (this.titleService = a), (this.toggle = !0);
-            }
-            setTitle(a) {
-              this.titleService.setTitle(a);
-            }
-            ngOnInit() {}
-            changeTheme() {
-              this.toggle = !this.toggle;
-            }
-          }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(Ue.Dx));
-            }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
-              selectors: [["app-side-nav"]],
-              decls: 143,
-              vars: 0,
-              consts: [
-                [1, "sidebar", "close", "pb-3"],
-                [1, "nav-links"],
-                [1, "iocn-link"],
-                [
-                  "src",
-                  "assets/img/dashboard.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [1, "sub-menu", "shadow-lg", "bg-body", "rounded"],
-                [
-                  "routerLink",
-                  "/admin/Dashboard/Dashboard",
-                  1,
-                  "link_name",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "assets/img/growth.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [1, "link_name"],
-                [
-                  "routerLink",
-                  "/admin/ListDashboard/Prospect",
-                  "routerLinkActive",
-                  "active",
-                  3,
-                  "click",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/Prospect",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "Prospect",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "assets/img/business-and-finance.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [3, "click"],
-                [
-                  "routerLink",
-                  "/admin/page/Lead",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "Lead",
-                  3,
-                  "click",
-                ],
-                ["id", "SOdash", 3, "click"],
-                [
-                  "routerLink",
-                  "/admin/page/SalesOrderLIst",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "SO",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "assets/img/shopping-cart.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/MoList",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "MO",
-                  3,
-                  "click",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/POList",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "PO",
-                  3,
-                  "click",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/MIList",
-                  "routerLinkActive",
-                  "active",
-                  3,
-                  "click",
-                ],
-                ["routerLink", "/admin/page/Repair", 3, "click"],
-                [
-                  "src",
-                  "assets/img/coin.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/Payment",
-                  "id",
-                  "Invoice",
-                  3,
-                  "click",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/Payable",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "PI",
-                  3,
-                  "click",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/Voucher",
-                  "id",
-                  "vouchar",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "./assets/img/technical-support.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/Ticket",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "Ticket",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "assets/img/handshake.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-                [
-                  "routerLink",
-                  "/admin/page/AMC",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  " AMC",
-                  3,
-                  "click",
-                ],
-                [1, "fas", "fa-briefcase"],
-                [
-                  "routerLink",
-                  "/admin/page/Work",
-                  "routerLinkActive",
-                  "active",
-                  "id",
-                  "Work",
-                  3,
-                  "click",
-                ],
-                [
-                  "src",
-                  "assets/img/blueprint.png",
-                  "width",
-                  "30px",
-                  "height",
-                  "30px",
-                  1,
-                  "icon-img",
-                ],
-              ],
-              template: function (a, d) {
-                1 & a &&
-                  (e.TgZ(0, "div", 0),
-                  e.TgZ(1, "ul", 1),
-                  e.TgZ(2, "li"),
-                  e.TgZ(3, "div", 2),
-                  e._UZ(4, "img", 3),
-                  e.qZA(),
-                  e.TgZ(5, "ul", 4),
-                  e.TgZ(6, "li"),
-                  e.TgZ(7, "a", 5),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Dashboard");
-                  }),
-                  e._uU(8, " Dashboard "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(9, "li"),
-                  e.TgZ(10, "div", 2),
-                  e._UZ(11, "img", 6),
-                  e.qZA(),
-                  e.TgZ(12, "ul", 4),
-                  e.TgZ(13, "li"),
-                  e.TgZ(14, "a", 7),
-                  e._uU(15, "Marketing"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(16, "li"),
-                  e.TgZ(17, "a", 8),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Prospect Dashboard");
-                  }),
-                  e._uU(18, "Prospect Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(19, "li"),
-                  e.TgZ(20, "a", 9),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Prospect");
-                  }),
-                  e._uU(21, "ProspectList"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(22, "li"),
-                  e.TgZ(23, "div", 2),
-                  e._UZ(24, "img", 10),
-                  e.qZA(),
-                  e.TgZ(25, "ul", 4),
-                  e.TgZ(26, "li"),
-                  e.TgZ(27, "a", 7),
-                  e._uU(28, "Sales"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(29, "li"),
-                  e.TgZ(30, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Lead Dashboard");
-                  }),
-                  e._uU(31, " Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(32, "li"),
-                  e.TgZ(33, "a", 12),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Lead");
-                  }),
-                  e._uU(34, "Lead "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(35, "li"),
-                  e.TgZ(36, "a", 13),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/SO Dashboard");
-                  }),
-                  e._uU(37, "SO Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(38, "li"),
-                  e.TgZ(39, "a", 14),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Sales Order");
-                  }),
-                  e._uU(40, "Sales Order"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(41, "li"),
-                  e.TgZ(42, "div", 2),
-                  e._UZ(43, "img", 15),
-                  e.qZA(),
-                  e.TgZ(44, "ul", 4),
-                  e.TgZ(45, "li"),
-                  e.TgZ(46, "a", 7),
-                  e._uU(47, "Inventoy"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(48, "li"),
-                  e.TgZ(49, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/MO Dashboard");
-                  }),
-                  e._uU(50, "MODashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(51, "li"),
-                  e.TgZ(52, "a", 16),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Material Out");
-                  }),
-                  e._uU(53, "Material Out"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(54, "li"),
-                  e.TgZ(55, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/PO Dashboard");
-                  }),
-                  e._uU(56, "PODashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(57, "li"),
-                  e.TgZ(58, "a", 17),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Purchas Order");
-                  }),
-                  e._uU(59, "Purchas Order"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(60, "li"),
-                  e.TgZ(61, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/MI Dashboard");
-                  }),
-                  e._uU(62, "MIDashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(63, "li"),
-                  e.TgZ(64, "a", 18),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Material In");
-                  }),
-                  e._uU(65, "Material In"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(66, "li"),
-                  e.TgZ(67, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Repair Dashboard");
-                  }),
-                  e._uU(68, "RepairDashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(69, "li"),
-                  e.TgZ(70, "a", 19),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Repair List");
-                  }),
-                  e._uU(71, "Repair "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(72, "li"),
-                  e.TgZ(73, "div", 2),
-                  e._UZ(74, "img", 20),
-                  e.qZA(),
-                  e.TgZ(75, "ul", 4),
-                  e.TgZ(76, "li"),
-                  e.TgZ(77, "a", 7),
-                  e._uU(78, "Payment"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(79, "li"),
-                  e.TgZ(80, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/InvoiceDashboard");
-                  }),
-                  e._uU(81, "InvoiceDashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(82, "li"),
-                  e.TgZ(83, "a", 21),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Invoice ");
-                  }),
-                  e._uU(84, "Invoice "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(85, "li"),
-                  e.TgZ(86, "a", 22),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Purchas Invoice ");
-                  }),
-                  e._uU(87, "Purchas Invoice"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(88, "li"),
-                  e.TgZ(89, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/PI Dashboard ");
-                  }),
-                  e._uU(90, "PIDashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(91, "li"),
-                  e.TgZ(92, "a", 23),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Voucher ");
-                  }),
-                  e._uU(93, "Voucher"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(94, "li"),
-                  e.TgZ(95, "div", 2),
-                  e._UZ(96, "img", 24),
-                  e.qZA(),
-                  e.TgZ(97, "ul", 4),
-                  e.TgZ(98, "li"),
-                  e.TgZ(99, "a", 7),
-                  e._uU(100, "Support"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(101, "li"),
-                  e.TgZ(102, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Ticket Dashboard ");
-                  }),
-                  e._uU(103, " Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(104, "li"),
-                  e.TgZ(105, "a", 25),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Ticket ");
-                  }),
-                  e._uU(106, "Ticket "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(107, "li"),
-                  e.TgZ(108, "div", 2),
-                  e._UZ(109, "img", 26),
-                  e.qZA(),
-                  e.TgZ(110, "ul", 4),
-                  e.TgZ(111, "li"),
-                  e.TgZ(112, "a", 7),
-                  e._uU(113, "AMC"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(114, "li"),
-                  e.TgZ(115, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/AMC Dashboard");
-                  }),
-                  e._uU(116, " Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(117, "li"),
-                  e.TgZ(118, "a", 27),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/AMC");
-                  }),
-                  e._uU(119, "AMC "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(120, "li"),
-                  e.TgZ(121, "div", 2),
-                  e._UZ(122, "i", 28),
-                  e.qZA(),
-                  e.TgZ(123, "ul", 4),
-                  e.TgZ(124, "li"),
-                  e.TgZ(125, "a", 7),
-                  e._uU(126, " Work"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(127, "li"),
-                  e.TgZ(128, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Work Dashboard ");
-                  }),
-                  e._uU(129, " Dashboard"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(130, "li"),
-                  e.TgZ(131, "a", 29),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/Work ");
-                  }),
-                  e._uU(132, "Work "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(133, "li"),
-                  e.TgZ(134, "div", 2),
-                  e._UZ(135, "img", 30),
-                  e.qZA(),
-                  e.TgZ(136, "ul", 4),
-                  e.TgZ(137, "li"),
-                  e.TgZ(138, "a", 7),
-                  e._uU(139, " Project"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(140, "li"),
-                  e.TgZ(141, "a", 11),
-                  e.NdJ("click", function () {
-                    return d.setTitle("FFHErp/My Project ");
-                  }),
-                  e._uU(142, "My Project"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA());
-              },
-              directives: [i.yS, i.Od],
-              styles: [
-                ".sidebar[_ngcontent-%COMP%]{position:fixed;top:0;left:0;height:100vh;width:260px;transition:all .5s ease;z-index:100}.sidebar.close[_ngcontent-%COMP%]{width:50px}.nav-links[_ngcontent-%COMP%]{height:100%;padding:60px 0 0;overflow:auto}.nav-links[_ngcontent-%COMP%]{overflow:visible}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]{position:relative;list-style:none;transition:all .4s ease;padding:1px 0}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:hover{background:#b8e0d4;color:#000}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .iocn-link[_ngcontent-%COMP%]{text-align:center;background-color:#b8e0d4}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .iocn-link[_ngcontent-%COMP%]{display:block}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{height:50px;min-width:50px;text-align:center;line-height:50px;color:#000;font-size:20px;cursor:pointer;transition:all .3s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{display:flex;align-items:center;text-decoration:none}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{margin-top:2px;background:white;display:none}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li.showMenu[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{display:block}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{color:#000;font-size:15px;padding:5px 0;white-space:nowrap;opacity:.6;transition:all .3s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]:hover{opacity:1;color:#000}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{position:absolute;left:100%;top:-10px;margin-top:0;padding:10px 3px;border-radius:0 6px 6px 0;opacity:0;display:block;pointer-events:none;transition:0s}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:hover   .sub-menu[_ngcontent-%COMP%]{top:0;opacity:1;pointer-events:auto;transition:all .4s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   .link_name[_ngcontent-%COMP%]{display:none}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   .link_name[_ngcontent-%COMP%]{font-size:18px;opacity:1;display:block;background-color:#dcebdc}.sideNavimg[_ngcontent-%COMP%]{max-height:33px}.icon-img[_ngcontent-%COMP%]{margin:10px}",
-              ],
-            })),
-            s
-          );
-        })(),
-        Qt = (() => {
-          class s {
-            constructor() {}
-            ngOnInit() {}
-          }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)();
-            }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
-              selectors: [["app-comman"]],
-              decls: 3,
-              vars: 0,
-              template: function (a, d) {
-                1 & a &&
-                  (e._UZ(0, "app-header"),
-                  e._UZ(1, "app-side-nav"),
-                  e._UZ(2, "router-outlet"));
-              },
-              directives: [Yt, de, i.lC],
-              styles: [""],
-            })),
-            s
-          );
-        })();
-      var H = f(5439),
-        zt = f.t(H, 2);
-      const Je = {
-        parse: { dateInput: "LL" },
-        display: {
-          dateInput: "LL",
-          monthYearLabel: "MMM YYYY",
-          dateA11yLabel: "LL",
-          monthYearA11yLabel: "MMMM YYYY",
-        },
-      };
-      var E = f(508);
-      const ke = H || zt,
-        ve = new e.OlP("MAT_MOMENT_DATE_ADAPTER_OPTIONS", {
-          providedIn: "root",
-          factory: function Dt() {
-            return { useUtc: !1 };
-          },
-        });
-      function kt(s, c) {
-        const a = Array(s);
-        for (let d = 0; d < s; d++) a[d] = c(d);
-        return a;
-      }
-      let et = (() => {
-        class s extends E._A {
-          constructor(a, d) {
-            super(), (this._options = d), this.setLocale(a || ke.locale());
-          }
-          setLocale(a) {
-            super.setLocale(a);
-            let d = ke.localeData(a);
-            this._localeData = {
-              firstDayOfWeek: d.firstDayOfWeek(),
-              longMonths: d.months(),
-              shortMonths: d.monthsShort(),
-              dates: kt(31, (g) => this.createDate(2017, 0, g + 1).format("D")),
-              longDaysOfWeek: d.weekdays(),
-              shortDaysOfWeek: d.weekdaysShort(),
-              narrowDaysOfWeek: d.weekdaysMin(),
-            };
-          }
-          getYear(a) {
-            return this.clone(a).year();
-          }
-          getMonth(a) {
-            return this.clone(a).month();
-          }
-          getDate(a) {
-            return this.clone(a).date();
-          }
-          getDayOfWeek(a) {
-            return this.clone(a).day();
-          }
-          getMonthNames(a) {
-            return "long" == a
-              ? this._localeData.longMonths
-              : this._localeData.shortMonths;
-          }
-          getDateNames() {
-            return this._localeData.dates;
-          }
-          getDayOfWeekNames(a) {
-            return "long" == a
-              ? this._localeData.longDaysOfWeek
-              : "short" == a
-              ? this._localeData.shortDaysOfWeek
-              : this._localeData.narrowDaysOfWeek;
-          }
-          getYearName(a) {
-            return this.clone(a).format("YYYY");
-          }
-          getFirstDayOfWeek() {
-            return this._localeData.firstDayOfWeek;
-          }
-          getNumDaysInMonth(a) {
-            return this.clone(a).daysInMonth();
-          }
-          clone(a) {
-            return a.clone().locale(this.locale);
-          }
-          createDate(a, d, g) {
-            const T = this._createMoment({ year: a, month: d, date: g }).locale(
-              this.locale
-            );
-            return T.isValid(), T;
-          }
-          today() {
-            return this._createMoment().locale(this.locale);
-          }
-          parse(a, d) {
-            return a && "string" == typeof a
-              ? this._createMoment(a, d, this.locale)
-              : a
-              ? this._createMoment(a).locale(this.locale)
-              : null;
-          }
-          format(a, d) {
-            return (a = this.clone(a)), this.isValid(a), a.format(d);
-          }
-          addCalendarYears(a, d) {
-            return this.clone(a).add({ years: d });
-          }
-          addCalendarMonths(a, d) {
-            return this.clone(a).add({ months: d });
-          }
-          addCalendarDays(a, d) {
-            return this.clone(a).add({ days: d });
-          }
-          toIso8601(a) {
-            return this.clone(a).format();
-          }
-          deserialize(a) {
-            let d;
-            if (a instanceof Date)
-              d = this._createMoment(a).locale(this.locale);
-            else if (this.isDateInstance(a)) return this.clone(a);
-            if ("string" == typeof a) {
-              if (!a) return null;
-              d = this._createMoment(a, ke.ISO_8601).locale(this.locale);
-            }
-            return d && this.isValid(d)
-              ? this._createMoment(d).locale(this.locale)
-              : super.deserialize(a);
-          }
-          isDateInstance(a) {
-            return ke.isMoment(a);
-          }
-          isValid(a) {
-            return this.clone(a).isValid();
-          }
-          invalid() {
-            return ke.invalid();
-          }
-          _createMoment(a, d, g) {
-            const { strict: T, useUtc: v } = this._options || {};
-            return v ? ke.utc(a, d, g, T) : ke(a, d, g, T);
-          }
-        }
-        return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.LFG(E.Ad, 8), e.LFG(ve, 8));
-          }),
-          (s.ɵprov = e.Yz7({ token: s, factory: s.ɵfac })),
-          s
-        );
-      })();
-      var ae = f(7626),
-        j = f(7322),
-        te = f(4107),
-        A = f(3075),
-        oe = f(7531),
-        B = f(6856),
-        We = f(9224),
-        Bt = f(483);
-      function Oa(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 16), e._uU(1), e.qZA()), 2 & s)) {
-          const a = c.$implicit;
-          e.s9C("id", a.id),
-            e.Q6J("value", a.key),
-            e.xp6(1),
-            e.hij(" ", a.value, " ");
-        }
-      }
-      function Ua(s, c) {
-        if ((1 & s && (e.TgZ(0, "th"), e._uU(1), e.qZA()), 2 & s)) {
-          const a = e.oxw().$implicit;
-          e.xp6(1), e.hij(" ", a, " ");
-        }
-      }
-      function Ha(s, c) {
+        u = f(8966),
+        p = f(6087),
+        T = f(4999),
+        L = f(4847),
+        D = f(7626),
+        w = f(3700),
+        b = f(7322),
+        q = f(7531),
+        se = f(3874),
+        k = f(3075);
+      function ae(i, c) {
         if (
-          (1 & s && (e.ynx(0), e.YNc(1, Ua, 2, 1, "th", 15), e.BQk()), 2 & s)
-        ) {
-          const a = c.$implicit;
-          e.xp6(1), e.Q6J("ngIf", "total" != a);
-        }
-      }
-      function Ea(s, c) {
-        if ((1 & s && (e.TgZ(0, "td"), e._uU(1), e.qZA()), 2 & s)) {
-          const a = e.oxw().$implicit,
-            d = e.oxw().$implicit;
-          e.xp6(1), e.Oqu(d.value[a]);
-        }
-      }
-      function Pa(s, c) {
-        if (
-          (1 & s && (e.ynx(0), e.YNc(1, Ea, 2, 1, "td", 15), e.BQk()), 2 & s)
-        ) {
-          const a = c.$implicit;
-          e.xp6(1), e.Q6J("ngIf", "total" != a);
-        }
-      }
-      function ja(s, c) {
-        if (1 & s) {
-          const a = e.EpF();
-          e.TgZ(0, "tr"),
-            e.TgZ(1, "td"),
-            e.TgZ(2, "a", 20),
-            e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(2).piChart(T.value);
-            }),
-            e._uU(3),
-            e.qZA(),
-            e.qZA(),
-            e.YNc(4, Pa, 2, 1, "ng-container", 19),
-            e.TgZ(5, "td"),
-            e.TgZ(6, "a", 21),
-            e._uU(7),
-            e.qZA(),
-            e.qZA(),
-            e.qZA();
-        }
-        if (2 & s) {
-          const a = c.$implicit,
-            d = e.oxw(2);
-          e.xp6(3),
-            e.hij(" ", a.key, " "),
-            e.xp6(1),
-            e.Q6J("ngForOf", d.columns),
-            e.xp6(3),
-            e.Oqu(a.value.total);
-        }
-      }
-      function Ia(s, c) {
-        if ((1 & s && (e.TgZ(0, "td"), e._uU(1), e.qZA()), 2 & s)) {
-          const a = e.oxw().$implicit,
-            d = e.oxw(2);
-          e.xp6(1), e.hij(" ", d.getTotal(a), " ");
-        }
-      }
-      function Fa(s, c) {
-        if (
-          (1 & s && (e.ynx(0), e.YNc(1, Ia, 2, 1, "td", 15), e.BQk()), 2 & s)
-        ) {
-          const a = c.$implicit;
-          e.xp6(1), e.Q6J("ngIf", "total" != a);
-        }
-      }
-      function Ja(s, c) {
-        if (
-          (1 & s &&
-            (e.TgZ(0, "table", 17),
-            e.TgZ(1, "thead"),
-            e.TgZ(2, "tr", 18),
-            e.TgZ(3, "th"),
-            e._uU(4, "Actor"),
-            e.qZA(),
-            e.YNc(5, Ha, 2, 1, "ng-container", 19),
-            e.TgZ(6, "th"),
-            e._uU(7, "Total"),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(8, "tbody"),
-            e.YNc(9, ja, 8, 3, "tr", 19),
-            e.ALo(10, "keyvalue"),
-            e.TgZ(11, "tr"),
-            e.TgZ(12, "td"),
-            e._uU(13, "Total"),
-            e.qZA(),
-            e.YNc(14, Fa, 2, 1, "ng-container", 19),
-            e.TgZ(15, "td"),
-            e._uU(16),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA()),
-          2 & s)
-        ) {
-          const a = e.oxw();
-          e.xp6(5),
-            e.Q6J("ngForOf", a.columns),
-            e.xp6(4),
-            e.Q6J("ngForOf", e.lcZ(10, 4, a.tableData)),
-            e.xp6(5),
-            e.Q6J("ngForOf", a.columns),
-            e.xp6(2),
-            e.Oqu(a.getTotal("total"));
-        }
-      }
-      function Wa(s, c) {
-        if (
-          (1 & s &&
-            (e.TgZ(0, "div"),
-            e.TgZ(1, "h2", 22),
-            e._uU(2, "Chart"),
-            e.qZA(),
-            e.TgZ(3, "mat-card"),
-            e._UZ(4, "canvas", 23),
-            e.qZA(),
-            e.qZA()),
-          2 & s)
-        ) {
-          const a = e.oxw();
-          e.xp6(4),
-            e.Q6J("type", "pie")("datasets", a.pieChartData)(
-              "labels",
-              a.pieChartLabels
-            )("options", a.pieChartOptions)("legend", a.pieChartLegend);
-        }
-      }
-      let Re = (() => {
-          class s {
-            constructor(a, d, g) {
-              (this.listService = a),
-                (this.global = d),
-                (this.httpClient = g),
-                (this.selectedValue = "entActionType"),
-                (this.From = H().format("YYYY-MM-DD")),
-                (this.To = H().format("YYYY-MM-DD")),
-                (this.minDate = H().format("YYYY-MM-DD")),
-                (this.maxDate = H().format("YYYY-MM-DD")),
-                this.httpClient
-                  .get("./assets/inputlabel.json")
-                  .subscribe((T) => {
-                    (this.jsonData = T), (this.ddData = this.jsonData.DDvalue);
-                  });
-            }
-            getPivotTable(a, d) {
-              const g = new Map();
-              return (
-                a.forEach((T) => {
-                  g.set(
-                    T.entActionContactName,
-                    Object.assign(
-                      Object.assign({}, g.get(T.entActionContactName)),
-                      {
-                        [T[d]]:
-                          g.get(T.entActionContactName) &&
-                          g.get(T.entActionContactName)[T[d]]
-                            ? g.get(T.entActionContactName)[T[d]] + 1
-                            : 1,
-                        total:
-                          g.get(T.entActionContactName) &&
-                          g.get(T.entActionContactName).total
-                            ? g.get(T.entActionContactName).total + 1
-                            : 1,
-                      }
-                    )
-                  );
-                }),
-                g
-              );
-            }
-            submitValue() {
-              const a = H(this.From).format("YYYY-MM-DD"),
-                d = H(this.To).format("YYYY-MM-DD");
-              this.listService
-                .showtotalActivity({
-                  eDbname: this.global.LOGGED_IN_USER.DbName,
-                  eFromDate: a,
-                  eMissedFlag: "1",
-                  eModuleFlag: "All",
-                  ePassword: this.global.LOGGED_IN_USER.encryptPswd,
-                  eToDate: d,
-                })
-                .subscribe((T) => {
-                  (this.AllData = JSON.parse(T)),
-                    (this.tableData = this.getPivotTable(
-                      this.AllData,
-                      this.selectedValue
-                    )),
-                    console.log(this.tableData);
-                });
-            }
-            get columns() {
-              if (this.tableData) {
-                const a = Array.from(this.tableData).reduce(
-                  (d, g) => (
-                    Object.keys(g[1]).forEach((T) => {
-                      d.add(T.trim());
-                    }),
-                    d
-                  ),
-                  new Set()
-                );
-                return Array.from(a);
-              }
-              return [];
-            }
-            updateTable() {
-              this.submitValue();
-            }
-            getTotal(a) {
-              return Array.from(this.tableData).reduce(
-                (d, g) => (g[1] && g[1][a] ? g[1][a] + d : d),
-                0
-              );
-            }
-            piChart(a) {
-              const d = Object.keys(a)
-                  .filter((T) => "total" !== T)
-                  .reduce((T, v) => ((T[v] = a[v]), T), {}),
-                g = Object.values(d);
-              (this.pieChartLabels = Object.keys(d)),
-                (this.pieChartOptions = {
-                  scaleShowVerticalLines: !1,
-                  responsive: !0,
-                }),
-                (this.pieChartLegend = !0),
-                (this.pieChartData = [{ data: g }]);
-            }
-            ngOnInit() {}
-          }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(ae.L), e.Y36(M.x), e.Y36(u.eN));
-            }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
-              selectors: [["app-dash-board"]],
-              features: [
-                e._Bn([
-                  { provide: E.Ad, useValue: "en-GB" },
-                  { provide: E._A, useClass: et, deps: [E.Ad, ve] },
-                  { provide: E.sG, useValue: Je },
-                ]),
-              ],
-              decls: 31,
-              vars: 11,
-              consts: [
-                [1, "contain"],
-                [1, "row"],
-                [1, "col"],
-                [1, "option"],
-                [3, "ngModel", "ngModelChange"],
-                [3, "id", "value", 4, "ngFor", "ngForOf"],
-                [
-                  "matInput",
-                  "",
-                  "name",
-                  "From",
-                  3,
-                  "matDatepicker",
-                  "ngModel",
-                  "max",
-                  "ngModelChange",
-                ],
-                ["input", "ngModel"],
-                ["matSuffix", "", 3, "for"],
-                ["from", ""],
-                [
-                  "matInput",
-                  "",
-                  3,
-                  "matDatepicker",
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                ["to", ""],
-                [
-                  "mat-stroked-button",
-                  "",
-                  "type",
-                  "submit",
-                  "color",
-                  "primary",
-                  1,
-                  "ms-2",
-                  3,
-                  "click",
-                ],
-                ["class", "table table-hover", 4, "ngIf"],
-                [1, "col", "piaChart"],
-                [4, "ngIf"],
-                [3, "id", "value"],
-                [1, "table", "table-hover"],
-                [1, "table-primary"],
-                [4, "ngFor", "ngForOf"],
-                [1, "a", 3, "click"],
-                [1, "a"],
-                [1, "ChartHeading"],
-                [
-                  "baseChart",
-                  "",
-                  3,
-                  "type",
-                  "datasets",
-                  "labels",
-                  "options",
-                  "legend",
-                ],
-              ],
-              template: function (a, d) {
-                if (
-                  (1 & a &&
-                    (e.TgZ(0, "div", 0),
-                    e.TgZ(1, "div", 1),
-                    e.TgZ(2, "div", 2),
-                    e.TgZ(3, "div", 3),
-                    e.TgZ(4, "mat-form-field"),
-                    e.TgZ(5, "mat-label"),
-                    e._uU(6, "Select an option"),
-                    e.qZA(),
-                    e.TgZ(7, "mat-select", 4),
-                    e.NdJ("ngModelChange", function (T) {
-                      return (d.selectedValue = T);
-                    })("ngModelChange", function () {
-                      return d.updateTable();
-                    }),
-                    e.YNc(8, Oa, 2, 3, "mat-option", 5),
-                    e.qZA(),
-                    e.qZA(),
-                    e.TgZ(9, "mat-form-field"),
-                    e.TgZ(10, "mat-label"),
-                    e._uU(11, "From Date"),
-                    e.qZA(),
-                    e.TgZ(12, "input", 6, 7),
-                    e.NdJ("ngModelChange", function (T) {
-                      return (d.From = T);
-                    }),
-                    e.qZA(),
-                    e._UZ(14, "mat-datepicker-toggle", 8),
-                    e._UZ(15, "mat-datepicker", null, 9),
-                    e.qZA(),
-                    e.TgZ(17, "mat-form-field"),
-                    e.TgZ(18, "mat-label"),
-                    e._uU(19, "To Date"),
-                    e.qZA(),
-                    e.TgZ(20, "input", 10, 7),
-                    e.NdJ("ngModelChange", function (T) {
-                      return (d.To = T);
-                    }),
-                    e.qZA(),
-                    e._UZ(22, "mat-datepicker-toggle", 8),
-                    e._UZ(23, "mat-datepicker", null, 11),
-                    e.qZA(),
-                    e.TgZ(25, "button", 12),
-                    e.NdJ("click", function () {
-                      return d.submitValue();
-                    }),
-                    e._uU(26, " Go "),
-                    e.qZA(),
-                    e.qZA(),
-                    e.TgZ(27, "div"),
-                    e.YNc(28, Ja, 17, 6, "table", 13),
-                    e.qZA(),
-                    e.qZA(),
-                    e.TgZ(29, "div", 14),
-                    e.YNc(30, Wa, 5, 5, "div", 15),
-                    e.qZA(),
-                    e.qZA(),
-                    e.qZA()),
-                  2 & a)
-                ) {
-                  const g = e.MAs(16),
-                    T = e.MAs(24);
-                  e.xp6(7),
-                    e.Q6J("ngModel", d.selectedValue),
-                    e.xp6(1),
-                    e.Q6J("ngForOf", d.ddData),
-                    e.xp6(4),
-                    e.Q6J("matDatepicker", g)("ngModel", d.From)(
-                      "max",
-                      d.maxDate
-                    ),
-                    e.xp6(2),
-                    e.Q6J("for", g),
-                    e.xp6(6),
-                    e.Q6J("matDatepicker", T)("ngModel", d.To),
-                    e.xp6(2),
-                    e.Q6J("for", T),
-                    e.xp6(6),
-                    e.Q6J("ngIf", d.tableData),
-                    e.xp6(2),
-                    e.Q6J("ngIf", d.pieChartData);
-                }
-              },
-              directives: [
-                j.KE,
-                j.hX,
-                te.gD,
-                A.JJ,
-                A.On,
-                m.sg,
-                oe.Nt,
-                B.hl,
-                A.Fj,
-                B.nW,
-                j.R9,
-                B.Mq,
-                N.lW,
-                m.O5,
-                E.ey,
-                We.a8,
-                Bt.jh,
-              ],
-              pipes: [m.Nd],
-              styles: [
-                ".chart[_ngcontent-%COMP%]{display:block;width:400px;height:400px}.contain[_ngcontent-%COMP%]{padding:64px 17px 0 67px}th[_ngcontent-%COMP%]{font-size:11px;font-weight:400}button[_ngcontent-%COMP%]{box-shadow:0 2px 5px #00000042!important;height:45px;margin-bottom:10px;border:1px solid rgb(108,166,231)!important}button[_ngcontent-%COMP%]:hover{color:#000}mat-form-field[_ngcontent-%COMP%]{margin:0 10px}.ChartHeading[_ngcontent-%COMP%]{text-align:center;margin-top:10px}.mat-card[_ngcontent-%COMP%]{margin-top:30px;display:block;width:500px;height:500px;box-shadow:2px 2px 2px 2px #0003,2px 2px 2px 2px #00000024,2px 2px 2px 2px #0000001f}.piaChart[_ngcontent-%COMP%]{display:flex;justify-content:center}.option[_ngcontent-%COMP%]{display:flex;margin:20px 0 10px;height:54px}.a[_ngcontent-%COMP%]{text-decoration:none;font-size:11px;font-weight:400}.a[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer;font-size:small}",
-              ],
-            })),
-            s
-          );
-        })(),
-        X = (() => {
-          class s {
-            constructor(a) {
-              this.sanitizer = a;
-            }
-            ngOnInit() {
-              this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-                "https://ffherp.co.in/Pages/Modules/Lead/SupDashboard.aspx"
-              );
-            }
-          }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(Ue.H7));
-            }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
-              selectors: [["app-list-dashboard"]],
-              decls: 2,
-              vars: 1,
-              consts: [
-                [1, "DashBoard"],
-                ["frameborder", "0", 1, "Iframe", 3, "src"],
-              ],
-              template: function (a, d) {
-                1 & a && (e.TgZ(0, "div", 0), e._UZ(1, "iframe", 1), e.qZA()),
-                  2 & a && (e.xp6(1), e.Q6J("src", d.safeUrl, e.uOi));
-              },
-              styles: [
-                "#DashBoard[_ngcontent-%COMP%]{padding:0 17px 0 67px}.Iframe[_ngcontent-%COMP%]{height:100vh;width:100%}",
-              ],
-            })),
-            s
-          );
-        })();
-      var ne = f(6087),
-        G = f(4999),
-        tt = f(4847),
-        U = f(8966);
-      function Ra(s, c) {
-        if (
-          (1 & s &&
-            (e.TgZ(0, "tr", 6),
+          (1 & i &&
+            (e.TgZ(0, "tr", 7),
             e.TgZ(1, "td"),
             e._uU(2),
             e.qZA(),
@@ -1798,23 +61,28 @@
             e._uU(25),
             e.qZA(),
             e.TgZ(26, "td"),
-            e.TgZ(27, "select", 7),
-            e.TgZ(28, "option", 8),
-            e._uU(29, "Approved"),
-            e.qZA(),
-            e.TgZ(30, "option", 8),
-            e._uU(31, "Not Approved"),
+            e.TgZ(27, "mat-icon"),
+            e._uU(28, " border_color"),
             e.qZA(),
             e.qZA(),
+            e.TgZ(29, "td"),
+            e.TgZ(30, "select", 8),
+            e.TgZ(31, "option", 9),
+            e._uU(32, "Approved"),
             e.qZA(),
-            e.TgZ(32, "td"),
-            e._UZ(33, "input", 9),
+            e.TgZ(33, "option", 9),
+            e._uU(34, "Not Approved"),
             e.qZA(),
-            e.TgZ(34, "td"),
-            e._UZ(35, "input", 10),
+            e.qZA(),
+            e.qZA(),
+            e.TgZ(35, "td"),
+            e._UZ(36, "input", 10),
+            e.qZA(),
+            e.TgZ(37, "td"),
+            e._UZ(38, "input", 11),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2),
@@ -1841,16 +109,16 @@
             e.Oqu(a.PaidAmount),
             e.xp6(2),
             e.Oqu(a.DueAmount),
-            e.xp6(8),
+            e.xp6(11),
             e.s9C("value", a.ApprovalStatus);
         }
       }
-      let at = (() => {
-        class s {
-          constructor(a, d, g) {
+      let Ce = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.data = a),
-              (this.listService = d),
-              (this.global = g),
+              (this.listService = _),
+              (this.global = M),
               console.log(a.installno, a.entityName, a.entityid),
               this.listService
                 .showvoucharData({
@@ -1860,21 +128,21 @@
                   dbname: this.global.LOGGED_IN_USER.DbName,
                   encrypt: this.global.LOGGED_IN_USER.encryptPswd,
                 })
-                .subscribe((b) => {
-                  console.log(JSON.parse(b)),
-                    (this.approvalData = JSON.parse(b));
+                .subscribe((N) => {
+                  console.log(JSON.parse(N)),
+                    (this.approvalData = JSON.parse(N));
                 });
           }
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(U.WI), e.Y36(ae.L), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(u.WI), e.Y36(D.L), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-approval"]],
-            decls: 44,
+            decls: 45,
             vars: 1,
             consts: [
               [1, "noteBox"],
@@ -1882,6 +150,7 @@
               [1, "full-width"],
               ["matInput", "", "type", "password"],
               [1, "table"],
+              [1, "standard-color-modal"],
               ["class", "table-light", 4, "ngFor", "ngForOf"],
               [1, "table-light"],
               ["name", "", "id", "", 1, "dd"],
@@ -1889,7 +158,7 @@
               ["type", "number", "name", "", "id", "", 1, "input1", 3, "value"],
               ["type", "text", 1, "input2"],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               1 & a &&
                 (e.TgZ(0, "div", 0),
                 e.TgZ(1, "div", 1),
@@ -1906,7 +175,7 @@
                 e.qZA(),
                 e.TgZ(9, "table", 4),
                 e.TgZ(10, "thead"),
-                e.TgZ(11, "tr"),
+                e.TgZ(11, "tr", 5),
                 e.TgZ(12, "th"),
                 e._uU(13, "Seq"),
                 e.qZA(),
@@ -1943,37 +212,39 @@
                 e.TgZ(34, "th"),
                 e._uU(35, "Paid Status"),
                 e.qZA(),
-                e.TgZ(36, "th"),
-                e._uU(37, "Appv Status"),
+                e._UZ(36, "th"),
+                e.TgZ(37, "th"),
+                e._uU(38, "Appv Status"),
                 e.qZA(),
-                e.TgZ(38, "th"),
-                e._uU(39, "Appv Amt"),
+                e.TgZ(39, "th"),
+                e._uU(40, "Appv Amt"),
                 e.qZA(),
-                e.TgZ(40, "th"),
-                e._uU(41, "Remark"),
+                e.TgZ(41, "th"),
+                e._uU(42, "Remark"),
                 e.qZA(),
                 e.qZA(),
                 e.qZA(),
-                e.TgZ(42, "tbody"),
-                e.YNc(43, Ra, 36, 16, "tr", 5),
+                e.TgZ(43, "tbody"),
+                e.YNc(44, ae, 39, 16, "tr", 6),
                 e.qZA(),
                 e.qZA(),
                 e.qZA(),
                 e.qZA()),
-                2 & a && (e.xp6(43), e.Q6J("ngForOf", d.approvalData));
+                2 & a && (e.xp6(44), e.Q6J("ngForOf", _.approvalData));
             },
-            directives: [j.KE, j.hX, oe.Nt, m.sg, A.YN, A.Kr],
+            directives: [b.KE, b.hX, q.Nt, m.sg, se.Hw, k.YN, k.Kr],
             pipes: [m.uU],
             styles: [
               "tbody[_ngcontent-%COMP%]   tr[_ngcontent-%COMP%]   td[_ngcontent-%COMP%]{text-align:left}.dd[_ngcontent-%COMP%]{width:40px}.full-width[_ngcontent-%COMP%]{margin:10px 0 0 10px;width:200px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
             ],
           })),
-          s
+          i
         );
       })();
-      function re(s, c) {
+      var K = f(7423);
+      function Mt(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div"),
             e.TgZ(1, "div", 13),
             e.TgZ(2, "div", 14),
@@ -1986,7 +257,7 @@
             e.qZA(),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(3),
@@ -1997,12 +268,12 @@
             e.hij(" ", e.xi3(7, 3, a.UpdatedOn, "dd MMM y ,h:mm:ss a"), " ");
         }
       }
-      let O = (() => {
-          class s {
-            constructor(a, d, g) {
+      let Ve = (() => {
+          class i {
+            constructor(a, _, M) {
               (this.listService = a),
-                (this.data = d),
-                (this.global = g),
+                (this.data = _),
+                (this.global = M),
                 (this.Entityid = this.data.EntityID),
                 (this.EntityName = this.data.EntityName),
                 "POList" === this.EntityName
@@ -2046,7 +317,7 @@
                   UserID: this.global.LOGGED_IN_USER.UserId,
                   companyname: "",
                 })
-                .subscribe((d) => {}),
+                .subscribe((_) => {}),
                 (this.chatMessage = ""),
                 (this.AddedUserinChat = ""),
                 this.getChatData();
@@ -2063,8 +334,8 @@
                   encrypt: this.global.LOGGED_IN_USER.encryptPswd,
                   userid: this.global.LOGGED_IN_USER.UserId,
                 })
-                .subscribe((d) => {
-                  (this.chat = JSON.parse(d)), console.warn(d);
+                .subscribe((_) => {
+                  (this.chat = JSON.parse(_)), console.warn(_);
                 });
             }
             onChangeSearch(a) {
@@ -2073,11 +344,11 @@
             ngOnInit() {}
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(ae.L), e.Y36(U.WI), e.Y36(M.x));
+            (i.ɵfac = function (a) {
+              return new (a || i)(e.Y36(D.L), e.Y36(u.WI), e.Y36(w.x));
             }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
+            (i.ɵcmp = e.Xpm({
+              type: i,
               selectors: [["app-chat"]],
               decls: 22,
               vars: 3,
@@ -2124,7 +395,7 @@
                 [3, "innerHTML"],
                 [1, "text-end"],
               ],
-              template: function (a, d) {
+              template: function (a, _) {
                 1 & a &&
                   (e.TgZ(0, "div", 0),
                   e.TgZ(1, "div", 1),
@@ -2133,12 +404,12 @@
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(4, "div", 2),
-                  e.YNc(5, re, 8, 6, "div", 3),
+                  e.YNc(5, Mt, 8, 6, "div", 3),
                   e.qZA(),
                   e.TgZ(6, "div", 4),
                   e.TgZ(7, "form", 5, 6),
                   e.NdJ("ngSubmit", function () {
-                    return d.chatDataSubmit();
+                    return _.chatDataSubmit();
                   }),
                   e.TgZ(9, "div", 7),
                   e.TgZ(10, "mat-form-field", 8),
@@ -2146,8 +417,8 @@
                   e._uU(12, "Add Username Here....."),
                   e.qZA(),
                   e.TgZ(13, "input", 9),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.AddedUserinChat = T);
+                  e.NdJ("ngModelChange", function (g) {
+                    return (_.AddedUserinChat = g);
                   }),
                   e.qZA(),
                   e.qZA(),
@@ -2158,8 +429,8 @@
                   e._uU(17, "Type Your Message Here......"),
                   e.qZA(),
                   e.TgZ(18, "textarea", 10),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.chatMessage = T);
+                  e.NdJ("ngModelChange", function (g) {
+                    return (_.chatMessage = g);
                   }),
                   e.qZA(),
                   e.qZA(),
@@ -2174,39 +445,39 @@
                   e.qZA()),
                   2 & a &&
                     (e.xp6(5),
-                    e.Q6J("ngForOf", d.chat),
+                    e.Q6J("ngForOf", _.chat),
                     e.xp6(8),
-                    e.Q6J("ngModel", d.AddedUserinChat),
+                    e.Q6J("ngModel", _.AddedUserinChat),
                     e.xp6(5),
-                    e.Q6J("ngModel", d.chatMessage));
+                    e.Q6J("ngModel", _.chatMessage));
               },
               directives: [
                 m.sg,
-                A._Y,
-                A.JL,
-                A.F,
-                j.KE,
-                j.hX,
-                oe.Nt,
-                A.Fj,
-                A.JJ,
-                A.On,
-                N.lW,
+                k._Y,
+                k.JL,
+                k.F,
+                b.KE,
+                b.hX,
+                q.Nt,
+                k.Fj,
+                k.JJ,
+                k.On,
+                K.lW,
               ],
               pipes: [m.uU],
               styles: [
                 "textarea[_ngcontent-%COMP%]{width:100%;resize:none;height:50px}.contain[_ngcontent-%COMP%]{height:330px;overflow-y:scroll}.chatCard[_ngcontent-%COMP%]{box-sizing:border-box;background-color:#dbe4eb;margin:10px;padding:10px}.FormContain[_ngcontent-%COMP%]{margin:0 10px}.full-width[_ngcontent-%COMP%]{width:100%}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}.sendButtonDiv[_ngcontent-%COMP%]{margin-bottom:5px;display:flex;justify-content:end}",
               ],
             })),
-            s
+            i
           );
         })(),
-        He = (() => {
-          class s {
-            constructor(a, d, g) {
+        Tt = (() => {
+          class i {
+            constructor(a, _, M) {
               (this.listService = a),
-                (this.data = d),
-                (this.global = g),
+                (this.data = _),
+                (this.global = M),
                 (this.Entityid = this.data.EntityID),
                 (this.EntityName = this.data.EntityName),
                 this.listService
@@ -2217,18 +488,18 @@
                     password: this.global.LOGGED_IN_USER.encryptPswd,
                     EmailAddress: this.global.LOGGED_IN_USER.EmailId,
                   })
-                  .subscribe((v) => {
-                    this.emailData = JSON.parse(v);
+                  .subscribe((A) => {
+                    this.emailData = JSON.parse(A);
                   });
             }
             ngOnInit() {}
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(ae.L), e.Y36(U.WI), e.Y36(M.x));
+            (i.ɵfac = function (a) {
+              return new (a || i)(e.Y36(D.L), e.Y36(u.WI), e.Y36(w.x));
             }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
+            (i.ɵcmp = e.Xpm({
+              type: i,
               selectors: [["app-email-trace"]],
               decls: 22,
               vars: 0,
@@ -2250,7 +521,7 @@
                 ],
                 [1, "standard-color-modal"],
               ],
-              template: function (a, d) {
+              template: function (a, _) {
                 1 & a &&
                   (e.TgZ(0, "div", 0),
                   e.TgZ(1, "div", 1),
@@ -2294,12 +565,16 @@
                 ".email-body[_ngcontent-%COMP%]{max-width:100%;min-height:auto}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center;padding-top:28px}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
               ],
             })),
-            s
+            i
           );
         })();
-      function nt(s, c) {
+      var ge = f(520),
+        z = f(4107),
+        P = f(508),
+        H = f(6856);
+      function Rt(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div"),
             e.TgZ(1, "mat-form-field", 4),
             e.TgZ(2, "mat-label"),
@@ -2308,7 +583,7 @@
             e._UZ(4, "input", 24),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(3),
@@ -2319,14 +594,14 @@
             e.s9C("name", a.Label);
         }
       }
-      let Vt = (() => {
-        class s {
-          constructor(a, d) {
+      let Qt = (() => {
+        class i {
+          constructor(a, _) {
             (this.httpClient = a),
-              (this.data = d),
+              (this.data = _),
               (this.EntityName = this.data.EntityName),
-              this.httpClient.get("./assets/inputlabel.json").subscribe((g) => {
-                (this.FormArry = g),
+              this.httpClient.get("./assets/inputlabel.json").subscribe((M) => {
+                (this.FormArry = M),
                   "Prospect" === this.EntityName
                     ? (this.labelData = this.FormArry.prospect)
                     : "Lead" === this.EntityName
@@ -2357,11 +632,11 @@
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(u.eN), e.Y36(U.WI));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(ge.eN), e.Y36(u.WI));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-filter-search"]],
             decls: 97,
             vars: 5,
@@ -2392,7 +667,7 @@
               ["mat-raised-button", "", "color", "primary"],
               ["matInput", "", 3, "id", "type", "name"],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (
                 (1 & a &&
                   (e.TgZ(0, "div", 0),
@@ -2498,7 +773,7 @@
                   e.TgZ(66, "h1"),
                   e._uU(67, "Entity Wise"),
                   e.qZA(),
-                  e.YNc(68, nt, 5, 4, "div", 18),
+                  e.YNc(68, Rt, 5, 4, "div", 18),
                   e.qZA(),
                   e.TgZ(69, "div", 3),
                   e.TgZ(70, "h1"),
@@ -2543,43 +818,43 @@
                   e.qZA()),
                 2 & a)
               ) {
-                const g = e.MAs(85),
-                  T = e.MAs(92);
+                const M = e.MAs(85),
+                  g = e.MAs(92);
                 e.xp6(68),
-                  e.Q6J("ngForOf", d.labelData),
+                  e.Q6J("ngForOf", _.labelData),
                   e.xp6(14),
+                  e.Q6J("matDatepicker", M),
+                  e.xp6(1),
+                  e.Q6J("for", M),
+                  e.xp6(6),
                   e.Q6J("matDatepicker", g),
                   e.xp6(1),
-                  e.Q6J("for", g),
-                  e.xp6(6),
-                  e.Q6J("matDatepicker", T),
-                  e.xp6(1),
-                  e.Q6J("for", T);
+                  e.Q6J("for", g);
               }
             },
             directives: [
-              j.KE,
-              j.hX,
-              oe.Nt,
+              b.KE,
+              b.hX,
+              q.Nt,
               m.sg,
-              te.gD,
-              E.ey,
-              B.hl,
-              B.nW,
-              j.R9,
-              B.Mq,
-              N.lW,
+              z.gD,
+              P.ey,
+              H.hl,
+              H.nW,
+              b.R9,
+              H.Mq,
+              K.lW,
             ],
             styles: [
               "button[_ngcontent-%COMP%]{margin:0 9px}.filterSearchContain[_ngcontent-%COMP%]{margin:0 10px}.input-width[_ngcontent-%COMP%]{width:100%}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.modal-container[_ngcontent-%COMP%]{height:650px}.filterSearchContain[_ngcontent-%COMP%]{margin:35px}",
             ],
           })),
-          s
+          i
         );
       })();
-      function Qa(s, c) {
+      function de(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "tr"),
             e.TgZ(1, "td"),
             e._uU(2),
@@ -2591,7 +866,7 @@
             e._uU(6),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2),
@@ -2602,12 +877,12 @@
             e.Oqu(a.Description);
         }
       }
-      let $t = (() => {
-        class s {
-          constructor(a, d, g) {
+      let zt = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.listService = a),
-              (this.data = d),
-              (this.global = g),
+              (this.data = _),
+              (this.global = M),
               (this.description = ""),
               (this.Entityid = this.data.EntityID),
               (this.EntityName = this.data.EntityName),
@@ -2625,7 +900,7 @@
                   this.global.LOGGED_IN_USER.encryptPswd,
                   this.global.LOGGED_IN_USER.Username
                 )
-                .subscribe((d) => {}),
+                .subscribe((_) => {}),
               this.getNoteList(),
               (this.description = this.Description),
               (this.Description = " ");
@@ -2646,11 +921,11 @@
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(ae.L), e.Y36(U.WI), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(D.L), e.Y36(u.WI), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-note"]],
             decls: 20,
             vars: 2,
@@ -2688,9 +963,9 @@
                 "click",
               ],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (1 & a) {
-                const g = e.EpF();
+                const M = e.EpF();
                 e.TgZ(0, "div", 0),
                   e.TgZ(1, "div", 1),
                   e.TgZ(2, "table", 2),
@@ -2708,7 +983,7 @@
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(11, "tbody"),
-                  e.YNc(12, Qa, 7, 3, "tr", 5),
+                  e.YNc(12, de, 7, 3, "tr", 5),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(13, "div", 6),
@@ -2721,9 +996,9 @@
                   e.TgZ(18, "div", 10),
                   e.TgZ(19, "input", 11),
                   e.NdJ("click", function () {
-                    e.CHM(g);
-                    const v = e.MAs(15);
-                    return d.saveNote(v.value);
+                    e.CHM(M);
+                    const A = e.MAs(15);
+                    return _.saveNote(A.value);
                   }),
                   e.qZA(),
                   e.qZA(),
@@ -2731,42 +1006,43 @@
               }
               2 & a &&
                 (e.xp6(12),
-                e.Q6J("ngForOf", d.noteData),
+                e.Q6J("ngForOf", _.noteData),
                 e.xp6(2),
-                e.Q6J("value", d.description));
+                e.Q6J("value", _.description));
             },
             directives: [m.sg],
             styles: [
               "textarea[_ngcontent-%COMP%]{resize:none;display:flex}.chatHeadingSize[_ngcontent-%COMP%]{width:100px}.noteBox[_ngcontent-%COMP%]{width:100%}.table_heading[_ngcontent-%COMP%]{background-color:#bce1c6;color:#000}",
             ],
           })),
-          s
+          i
         );
       })();
-      var Kt = f(1018),
-        ie = f(9345);
-      function Xt(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & s)) {
+      var Me = f(7446),
+        yt = f(1018),
+        Lt = f(9345);
+      function Ia(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Key), e.xp6(1), e.hij(" ", a.Value, " ");
         }
       }
-      function vt(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & s)) {
+      function Fa(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Key), e.xp6(1), e.hij(" ", a.Value, " ");
         }
       }
-      function it(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & s)) {
+      function le(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Key), e.xp6(1), e.hij(" ", a.Value, " ");
         }
       }
-      function W(s, c) {
-        1 & s &&
+      function Zt(i, c) {
+        1 & i &&
           (e.TgZ(0, "div"), e._UZ(1, "ngx-extended-pdf-viewer", 16), e.qZA()),
-          2 & s &&
+          2 & i &&
             (e.xp6(1),
             e.Q6J("src", "assets/example.pdf")("useBrowserLocale", !0)(
               "textLayer",
@@ -2776,8 +1052,8 @@
               !1
             ));
       }
-      function ea(s, c) {
-        if (1 & s) {
+      function $e(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
             e.TgZ(1, "mat-form-field", 4),
@@ -2785,8 +1061,8 @@
             e._uU(3, "To :"),
             e.qZA(),
             e.TgZ(4, "input", 22),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.EmailTo = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.EmailTo = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -2795,8 +1071,8 @@
             e._uU(7, "CC :"),
             e.qZA(),
             e.TgZ(8, "input", 23),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.CC = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.CC = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -2805,8 +1081,8 @@
             e._uU(11, "BCC :"),
             e.qZA(),
             e.TgZ(12, "input", 24),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.BCC = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.BCC = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -2815,8 +1091,8 @@
             e._uU(15, "Subject :"),
             e.qZA(),
             e.TgZ(16, "input", 25),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.EmailSubject = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.EmailSubject = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -2845,14 +1121,14 @@
             e._uU(32, "Message :"),
             e.qZA(),
             e.TgZ(33, "angular-editor", 29),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.EmailBody = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.EmailBody = M);
             }),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(4),
             e.Q6J("ngModel", a.EmailTo),
@@ -2868,17 +1144,17 @@
             e.Q6J("ngModel", a.EmailBody);
         }
       }
-      function ta(s, c) {
-        if (1 & s) {
+      function Yt(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
             e.TgZ(1, "form", 17, 18),
             e.NdJ("ngSubmit", function () {
               e.CHM(a);
-              const g = e.MAs(2);
-              return e.oxw().onClickSubmit(g.value);
+              const M = e.MAs(2);
+              return e.oxw().onClickSubmit(M.value);
             }),
-            e.YNc(3, ea, 34, 6, "div", 19),
+            e.YNc(3, $e, 34, 6, "div", 19),
             e.TgZ(4, "button", 20),
             e._uU(5, " Send Email "),
             e.qZA(),
@@ -2888,40 +1164,40 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw();
           e.xp6(3), e.Q6J("ngForOf", a.ShowEmailQuoteData);
         }
       }
-      function st(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & s)) {
+      function xe(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Key), e.xp6(1), e.hij(" ", a.Value, " ");
         }
       }
-      function At(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & s)) {
+      function x(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 15), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.eLeadTermsSetID),
             e.xp6(1),
             e.hij(" ", a.eLeadTermsSetName, " ");
         }
       }
-      function ot(s, c) {
-        if (1 & s) {
+      function Ja(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 4),
             e.TgZ(1, "mat-label"),
             e._uU(2),
             e.qZA(),
             e.TgZ(3, "input", 33),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.eLeadTermsDetails = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.eLeadTermsDetails = M);
             }),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(2),
             e.Oqu(a.eLeadTermsName),
@@ -2929,20 +1205,20 @@
             e.Q6J("ngModel", a.eLeadTermsDetails);
         }
       }
-      function Ee(s, c) {
+      function Wa(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div"),
-            e.YNc(1, ot, 4, 2, "mat-form-field", 32),
+            e.YNc(1, Ja, 4, 2, "mat-form-field", 32),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(2);
           e.xp6(1), e.Q6J("ngForOf", a.termSetData);
         }
       }
-      function rt(s, c) {
-        if (1 & s) {
+      function Xe(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
             e.TgZ(1, "mat-form-field", 4),
@@ -2950,12 +1226,12 @@
             e._uU(3, "Select Format :"),
             e.qZA(),
             e.TgZ(4, "mat-select", 5),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().selectemailQuoteFormat = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().selectemailQuoteFormat = M);
             })("ngModelChange", function () {
               return e.CHM(a), e.oxw().selectDropDown();
             }),
-            e.YNc(5, st, 2, 2, "mat-option", 6),
+            e.YNc(5, xe, 2, 2, "mat-option", 6),
             e.qZA(),
             e.qZA(),
             e.TgZ(6, "mat-form-field", 4),
@@ -2963,31 +1239,31 @@
             e._uU(8, "Select Term Set :"),
             e.qZA(),
             e.TgZ(9, "mat-select", 5),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().SelecteeLeadTermsSetID = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().SelecteeLeadTermsSetID = M);
             })("ngModelChange", function () {
               return e.CHM(a), e.oxw().selectTermSet();
             }),
             e.TgZ(10, "mat-option"),
             e._uU(11, "Select Term Set"),
             e.qZA(),
-            e.YNc(12, At, 2, 2, "mat-option", 6),
+            e.YNc(12, x, 2, 2, "mat-option", 6),
             e.qZA(),
             e.qZA(),
             e.TgZ(13, "form", 17, 30),
             e.NdJ("ngSubmit", function () {
               e.CHM(a);
-              const g = e.MAs(14);
-              return e.oxw().onClickSave(g.value);
+              const M = e.MAs(14);
+              return e.oxw().onClickSave(M.value);
             }),
-            e.YNc(15, Ee, 2, 1, "div", 14),
+            e.YNc(15, Wa, 2, 1, "div", 14),
             e.TgZ(16, "button", 31),
             e._uU(17, "Save"),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw();
           e.xp6(4),
             e.Q6J("ngModel", a.selectemailQuoteFormat),
@@ -3001,545 +1277,679 @@
             e.Q6J("ngIf", a.termSection);
         }
       }
-      let za = (() => {
-          class s {
-            constructor(a, d, g) {
-              (this.listService = a),
-                (this.data = d),
-                (this.global = g),
-                (this.emailQuote = !1),
-                (this.termsCondition = !1),
-                (this.viewPDF = !1),
-                (this.url = " "),
-                (this.termSection = !1),
-                (this.Entityid = this.data.EntityID),
-                (this.EntityName = this.data.EntityName),
-                this.listService
-                  .emailQuoteData(
-                    this.global.LOGGED_IN_USER.DbName,
-                    this.global.LOGGED_IN_USER.encryptPswd,
-                    this.EntityName
-                  )
-                  .subscribe((T) => {
-                    (this.emailQuoteData = JSON.parse(T)),
-                      console.log(this.emailQuoteData);
-                  });
-            }
-            showPDF() {
+      let Gt = (() => {
+        class i {
+          constructor(a, _, M) {
+            (this.listService = a),
+              (this.data = _),
+              (this.global = M),
               (this.emailQuote = !1),
-                (this.termsCondition = !1),
-                (this.viewPDF = !this.viewPDF),
-                this.listService
-                  .showEmailPDF(
-                    this.EntityName,
-                    this.Entityid,
-                    this.global.LOGGED_IN_USER.DbName,
-                    this.global.LOGGED_IN_USER.RoleId,
-                    this.global.LOGGED_IN_USER.encryptPswd,
-                    this.global.LOGGED_IN_USER.UserId
-                  )
-                  .subscribe((a) => {
-                    this.url = a;
-                  });
-            }
-            selectFormat() {
-              this.format = this.SelectFormat;
-            }
-            selectHeader() {
-              this.header = this.SelectHeaderFooter;
-            }
-            selectBank() {
-              this.bank = this.SelectBank;
-            }
-            onClickSubmit(a) {}
-            onClickSave(a) {
-              this.myform.reset();
-            }
-            EmailQuote() {
+              (this.termsCondition = !1),
+              (this.viewPDF = !1),
+              (this.url = " "),
+              (this.termSection = !1),
+              (this.Entityid = this.data.EntityID),
+              (this.EntityName = this.data.EntityName),
               this.listService
-                .emailQuotedetail(
+                .emailQuoteData(
+                  this.global.LOGGED_IN_USER.DbName,
+                  this.global.LOGGED_IN_USER.encryptPswd,
+                  this.EntityName
+                )
+                .subscribe((g) => {
+                  (this.emailQuoteData = JSON.parse(g)),
+                    console.log(this.emailQuoteData);
+                });
+          }
+          showPDF() {
+            (this.emailQuote = !1),
+              (this.termsCondition = !1),
+              (this.viewPDF = !this.viewPDF),
+              this.listService
+                .showEmailPDF(
                   this.EntityName,
                   this.Entityid,
                   this.global.LOGGED_IN_USER.DbName,
-                  this.global.LOGGED_IN_USER.UserId,
+                  this.global.LOGGED_IN_USER.RoleId,
+                  this.global.LOGGED_IN_USER.encryptPswd,
+                  this.global.LOGGED_IN_USER.UserId
+                )
+                .subscribe((a) => {
+                  this.url = a;
+                });
+          }
+          selectFormat() {
+            this.format = this.SelectFormat;
+          }
+          selectHeader() {
+            this.header = this.SelectHeaderFooter;
+          }
+          selectBank() {
+            this.bank = this.SelectBank;
+          }
+          onClickSubmit(a) {}
+          onClickSave(a) {
+            this.myform.reset();
+          }
+          EmailQuote() {
+            this.listService
+              .emailQuotedetail(
+                this.EntityName,
+                this.Entityid,
+                this.global.LOGGED_IN_USER.DbName,
+                this.global.LOGGED_IN_USER.UserId,
+                this.global.LOGGED_IN_USER.encryptPswd
+              )
+              .subscribe((a) => {
+                this.ShowEmailQuoteData = JSON.parse(a);
+              }),
+              (this.emailQuote = !this.emailQuote),
+              (this.termsCondition = !1),
+              (this.viewPDF = !1);
+          }
+          TermsCondition() {
+            (this.emailQuote = !1),
+              (this.viewPDF = !1),
+              (this.termsCondition = !this.termsCondition);
+          }
+          selectDropDown() {
+            (this.termSection = !1),
+              (this.eLeadFormatID = this.selectemailQuoteFormat),
+              this.listService
+                .showtermscondition(
+                  this.eLeadFormatID,
+                  this.global.LOGGED_IN_USER.DbName,
                   this.global.LOGGED_IN_USER.encryptPswd
                 )
                 .subscribe((a) => {
-                  this.ShowEmailQuoteData = JSON.parse(a);
+                  this.termsconditionData = JSON.parse(a);
+                });
+          }
+          selectTermSet() {
+            (this.termSection = !0),
+              (this.eLeadTermsSetID = this.SelecteeLeadTermsSetID),
+              this.listService
+                .showtermSet(
+                  this.eLeadFormatID,
+                  this.eLeadTermsSetID,
+                  this.global.LOGGED_IN_USER.DbName,
+                  this.global.LOGGED_IN_USER.encryptPswd
+                )
+                .subscribe((a) => {
+                  (this.termSetData = JSON.parse(a)),
+                    console.log(this.termSetData);
+                });
+          }
+          ngOnInit() {}
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(D.L), e.Y36(u.WI), e.Y36(w.x));
+          }),
+          (i.ɵcmp = e.Xpm({
+            type: i,
+            selectors: [["app-show-email-quot"]],
+            decls: 64,
+            vars: 9,
+            consts: [
+              [1, "modal-content"],
+              [1, "containt-Body"],
+              [1, "row", "col", "email-box"],
+              [1, "col"],
+              [1, "selectWidth"],
+              [3, "ngModel", "ngModelChange"],
+              [3, "value", 4, "ngFor", "ngForOf"],
+              [1, "form-field"],
+              [1, "checkbox-label"],
+              [1, "link", 3, "click"],
+              [1, "link"],
+              [1, "col-sm-1"],
+              [1, "vl"],
+              [1, "col", "p-3"],
+              [4, "ngIf"],
+              [3, "value"],
+              [
+                3,
+                "src",
+                "useBrowserLocale",
+                "textLayer",
+                "showHandToolButton",
+                "showPresentationModeButton",
+                "showDownloadButton",
+              ],
+              [3, "ngSubmit"],
+              ["emailData", "ngForm"],
+              [4, "ngFor", "ngForOf"],
+              [
+                "type",
+                "submit",
+                "value",
+                "submit",
+                1,
+                "btn",
+                "btn-outline-info",
+              ],
+              [
+                "mat-stroked-button",
+                "",
+                "type",
+                "submit",
+                "value",
+                "submit",
+                "color",
+                "primary",
+              ],
+              [
+                "matInput",
+                "",
+                "type",
+                "email",
+                "name",
+                "EmailTo",
+                "id",
+                "",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+              [
+                "matInput",
+                "",
+                "type",
+                "email",
+                "type",
+                "email",
+                "name",
+                "CC",
+                "id",
+                "",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+              [
+                "matInput",
+                "",
+                "type",
+                "email",
+                "type",
+                "email",
+                "name",
+                "BCC",
+                "id",
+                "",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+              [
+                "matInput",
+                "",
+                "type",
+                "email",
+                "name",
+                "Subject",
+                "id",
+                "",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+              [1, "text-primary", "ps-2"],
+              ["matInput", "", "name", "Another"],
+              [1, "text-danger"],
+              [
+                "name",
+                "Message",
+                "id",
+                "",
+                "type",
+                "text",
+                1,
+                "Description",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+              ["termsCondition", "ngForm"],
+              ["mat-stroked-button", "", "type", "submit", "color", "primary"],
+              ["class", "selectWidth", 4, "ngFor", "ngForOf"],
+              [
+                "matInput",
+                "",
+                "name",
+                "eLeadTermsDetails",
+                3,
+                "ngModel",
+                "ngModelChange",
+              ],
+            ],
+            template: function (a, _) {
+              1 & a &&
+                (e.TgZ(0, "div", 0),
+                e.TgZ(1, "div", 1),
+                e.TgZ(2, "div", 2),
+                e.TgZ(3, "div", 3),
+                e.TgZ(4, "mat-form-field", 4),
+                e.TgZ(5, "mat-label"),
+                e._uU(6, "Select Format :"),
+                e.qZA(),
+                e.TgZ(7, "mat-select", 5),
+                e.NdJ("ngModelChange", function (g) {
+                  return (_.SelectFormat = g);
+                })("ngModelChange", function () {
+                  return _.selectFormat();
                 }),
-                (this.emailQuote = !this.emailQuote),
-                (this.termsCondition = !1),
-                (this.viewPDF = !1);
-            }
-            TermsCondition() {
-              (this.emailQuote = !1),
-                (this.viewPDF = !1),
-                (this.termsCondition = !this.termsCondition);
-            }
-            selectDropDown() {
-              (this.termSection = !1),
-                (this.eLeadFormatID = this.selectemailQuoteFormat),
-                this.listService
-                  .showtermscondition(
-                    this.eLeadFormatID,
-                    this.global.LOGGED_IN_USER.DbName,
-                    this.global.LOGGED_IN_USER.encryptPswd
-                  )
-                  .subscribe((a) => {
-                    this.termsconditionData = JSON.parse(a);
-                  });
-            }
-            selectTermSet() {
-              (this.termSection = !0),
-                (this.eLeadTermsSetID = this.SelecteeLeadTermsSetID),
-                this.listService
-                  .showtermSet(
-                    this.eLeadFormatID,
-                    this.eLeadTermsSetID,
-                    this.global.LOGGED_IN_USER.DbName,
-                    this.global.LOGGED_IN_USER.encryptPswd
-                  )
-                  .subscribe((a) => {
-                    (this.termSetData = JSON.parse(a)),
-                      console.log(this.termSetData);
-                  });
-            }
-            ngOnInit() {}
+                e.YNc(8, Ia, 2, 2, "mat-option", 6),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(9, "mat-form-field", 4),
+                e.TgZ(10, "mat-label"),
+                e._uU(11, "Select Header / Footer"),
+                e.qZA(),
+                e.TgZ(12, "mat-select", 5),
+                e.NdJ("ngModelChange", function (g) {
+                  return (_.SelectHeaderFooter = g);
+                })("ngModelChange", function () {
+                  return _.selectHeader();
+                }),
+                e.YNc(13, Fa, 2, 2, "mat-option", 6),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(14, "mat-form-field", 4),
+                e.TgZ(15, "mat-label"),
+                e._uU(16, "Select Bank"),
+                e.qZA(),
+                e.TgZ(17, "mat-select", 5),
+                e.NdJ("ngModelChange", function (g) {
+                  return (_.SelectBank = g);
+                })("ngModelChange", function () {
+                  return _.selectBank();
+                }),
+                e.YNc(18, le, 2, 2, "mat-option", 6),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(19, "section", 7),
+                e.TgZ(20, "mat-checkbox", 8),
+                e._uU(21, "Select Bank"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(22, "section", 7),
+                e.TgZ(23, "mat-checkbox", 8),
+                e._uU(24, "Hide Discount Column"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(25, "section", 7),
+                e.TgZ(26, "mat-checkbox", 8),
+                e._uU(27, "Discount Rate"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(28, "section", 7),
+                e.TgZ(29, "mat-checkbox", 8),
+                e._uU(30, "Show Round of Total"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(31, "section", 7),
+                e.TgZ(32, "mat-checkbox", 8),
+                e._uU(33, "Show Task"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(34, "section", 7),
+                e.TgZ(35, "mat-checkbox", 8),
+                e._uU(36, " Show Rubber Stamp"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(37, "section", 7),
+                e.TgZ(38, "mat-checkbox", 8),
+                e._uU(39, "Show Product Remark"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(40, "section", 7),
+                e.TgZ(41, "mat-checkbox", 8),
+                e._uU(42, "Show Product image"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(43, "section", 7),
+                e.TgZ(44, "mat-checkbox", 8),
+                e._uU(45, "Show Product Partcode "),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(46, "div"),
+                e.TgZ(47, "a", 9),
+                e.NdJ("click", function () {
+                  return _.showPDF();
+                }),
+                e._uU(48, " View Quote"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(49, "div"),
+                e.TgZ(50, "a", 9),
+                e.NdJ("click", function () {
+                  return _.EmailQuote();
+                }),
+                e._uU(51, "Email Quote"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(52, "div"),
+                e.TgZ(53, "a", 10),
+                e._uU(54, "Send PDF On WhatsApp"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(55, "div"),
+                e.TgZ(56, "a", 9),
+                e.NdJ("click", function () {
+                  return _.TermsCondition();
+                }),
+                e._uU(57, "Term & Conditions"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(58, "div", 11),
+                e._UZ(59, "div", 12),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(60, "div", 13),
+                e.YNc(61, Zt, 2, 6, "div", 14),
+                e.YNc(62, Yt, 8, 1, "div", 14),
+                e.YNc(63, Xe, 18, 5, "div", 14),
+                e.qZA(),
+                e.qZA(),
+                e.qZA()),
+                2 & a &&
+                  (e.xp6(7),
+                  e.Q6J("ngModel", _.SelectFormat),
+                  e.xp6(1),
+                  e.Q6J("ngForOf", _.emailQuoteData.slice(0, 3)),
+                  e.xp6(4),
+                  e.Q6J("ngModel", _.SelectHeaderFooter),
+                  e.xp6(1),
+                  e.Q6J("ngForOf", _.emailQuoteData.slice(3, 5)),
+                  e.xp6(4),
+                  e.Q6J("ngModel", _.SelectBank),
+                  e.xp6(1),
+                  e.Q6J("ngForOf", _.emailQuoteData.slice(5, 18)),
+                  e.xp6(43),
+                  e.Q6J("ngIf", _.viewPDF),
+                  e.xp6(1),
+                  e.Q6J("ngIf", _.emailQuote),
+                  e.xp6(1),
+                  e.Q6J("ngIf", _.termsCondition));
+            },
+            directives: [
+              b.KE,
+              b.hX,
+              z.gD,
+              k.JJ,
+              k.On,
+              m.sg,
+              Me.oG,
+              m.O5,
+              P.ey,
+              yt.S3,
+              k._Y,
+              k.JL,
+              k.F,
+              K.lW,
+              q.Nt,
+              k.Fj,
+              Lt.s6,
+            ],
+            styles: [
+              ".containt-Body[_ngcontent-%COMP%]{display:flex;background-color:#f3f3ec;height:-moz-fit-content;height:fit-content}.email-box[_ngcontent-%COMP%]{margin:5px}.checkbox-label[_ngcontent-%COMP%]{color:gray}.form-field[_ngcontent-%COMP%]{position:relative;margin:10px 0 15px}.selectWidth[_ngcontent-%COMP%]{width:100%}.link[_ngcontent-%COMP%]{color:#00f;text-decoration:none}.link[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer}.vl[_ngcontent-%COMP%]{border-left:2px solid #333;height:100%}.Description[_ngcontent-%COMP%]{width:100%;resize:none}",
+            ],
+          })),
+          i
+        );
+      })();
+      var j = f(5439);
+      const Ye = j || f.t(j, 2),
+        je = new e.OlP("MAT_MOMENT_DATE_ADAPTER_OPTIONS", {
+          providedIn: "root",
+          factory: function Qa() {
+            return { useUtc: !1 };
+          },
+        });
+      function za(i, c) {
+        const a = Array(i);
+        for (let _ = 0; _ < i; _++) a[_] = c(_);
+        return a;
+      }
+      let Ke = (() => {
+        class i extends P._A {
+          constructor(a, _) {
+            super(), (this._options = _), this.setLocale(a || Ye.locale());
           }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(ae.L), e.Y36(U.WI), e.Y36(M.x));
-            }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
-              selectors: [["app-show-email-quot"]],
-              decls: 64,
-              vars: 9,
-              consts: [
-                [1, "modal-content"],
-                [1, "containt-Body"],
-                [1, "row", "col", "email-box"],
-                [1, "col"],
-                [1, "selectWidth"],
-                [3, "ngModel", "ngModelChange"],
-                [3, "value", 4, "ngFor", "ngForOf"],
-                [1, "form-field"],
-                [1, "checkbox-label"],
-                [1, "link", 3, "click"],
-                [1, "link"],
-                [1, "col-sm-1"],
-                [1, "vl"],
-                [1, "col", "p-3"],
-                [4, "ngIf"],
-                [3, "value"],
-                [
-                  3,
-                  "src",
-                  "useBrowserLocale",
-                  "textLayer",
-                  "showHandToolButton",
-                  "showPresentationModeButton",
-                  "showDownloadButton",
-                ],
-                [3, "ngSubmit"],
-                ["emailData", "ngForm"],
-                [4, "ngFor", "ngForOf"],
-                [
-                  "type",
-                  "submit",
-                  "value",
-                  "submit",
-                  1,
-                  "btn",
-                  "btn-outline-info",
-                ],
-                [
-                  "mat-stroked-button",
-                  "",
-                  "type",
-                  "submit",
-                  "value",
-                  "submit",
-                  "color",
-                  "primary",
-                ],
-                [
-                  "matInput",
-                  "",
-                  "type",
-                  "email",
-                  "name",
-                  "EmailTo",
-                  "id",
-                  "",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                [
-                  "matInput",
-                  "",
-                  "type",
-                  "email",
-                  "type",
-                  "email",
-                  "name",
-                  "CC",
-                  "id",
-                  "",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                [
-                  "matInput",
-                  "",
-                  "type",
-                  "email",
-                  "type",
-                  "email",
-                  "name",
-                  "BCC",
-                  "id",
-                  "",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                [
-                  "matInput",
-                  "",
-                  "type",
-                  "email",
-                  "name",
-                  "Subject",
-                  "id",
-                  "",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                [1, "text-primary", "ps-2"],
-                ["matInput", "", "name", "Another"],
-                [1, "text-danger"],
-                [
-                  "name",
-                  "Message",
-                  "id",
-                  "",
-                  "type",
-                  "text",
-                  1,
-                  "Description",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-                ["termsCondition", "ngForm"],
-                [
-                  "mat-stroked-button",
-                  "",
-                  "type",
-                  "submit",
-                  "color",
-                  "primary",
-                ],
-                ["class", "selectWidth", 4, "ngFor", "ngForOf"],
-                [
-                  "matInput",
-                  "",
-                  "name",
-                  "eLeadTermsDetails",
-                  3,
-                  "ngModel",
-                  "ngModelChange",
-                ],
-              ],
-              template: function (a, d) {
-                1 & a &&
-                  (e.TgZ(0, "div", 0),
-                  e.TgZ(1, "div", 1),
-                  e.TgZ(2, "div", 2),
-                  e.TgZ(3, "div", 3),
-                  e.TgZ(4, "mat-form-field", 4),
-                  e.TgZ(5, "mat-label"),
-                  e._uU(6, "Select Format :"),
-                  e.qZA(),
-                  e.TgZ(7, "mat-select", 5),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.SelectFormat = T);
-                  })("ngModelChange", function () {
-                    return d.selectFormat();
-                  }),
-                  e.YNc(8, Xt, 2, 2, "mat-option", 6),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(9, "mat-form-field", 4),
-                  e.TgZ(10, "mat-label"),
-                  e._uU(11, "Select Header / Footer"),
-                  e.qZA(),
-                  e.TgZ(12, "mat-select", 5),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.SelectHeaderFooter = T);
-                  })("ngModelChange", function () {
-                    return d.selectHeader();
-                  }),
-                  e.YNc(13, vt, 2, 2, "mat-option", 6),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(14, "mat-form-field", 4),
-                  e.TgZ(15, "mat-label"),
-                  e._uU(16, "Select Bank"),
-                  e.qZA(),
-                  e.TgZ(17, "mat-select", 5),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.SelectBank = T);
-                  })("ngModelChange", function () {
-                    return d.selectBank();
-                  }),
-                  e.YNc(18, it, 2, 2, "mat-option", 6),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(19, "section", 7),
-                  e.TgZ(20, "mat-checkbox", 8),
-                  e._uU(21, "Select Bank"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(22, "section", 7),
-                  e.TgZ(23, "mat-checkbox", 8),
-                  e._uU(24, "Hide Discount Column"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(25, "section", 7),
-                  e.TgZ(26, "mat-checkbox", 8),
-                  e._uU(27, "Discount Rate"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(28, "section", 7),
-                  e.TgZ(29, "mat-checkbox", 8),
-                  e._uU(30, "Show Round of Total"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(31, "section", 7),
-                  e.TgZ(32, "mat-checkbox", 8),
-                  e._uU(33, "Show Task"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(34, "section", 7),
-                  e.TgZ(35, "mat-checkbox", 8),
-                  e._uU(36, " Show Rubber Stamp"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(37, "section", 7),
-                  e.TgZ(38, "mat-checkbox", 8),
-                  e._uU(39, "Show Product Remark"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(40, "section", 7),
-                  e.TgZ(41, "mat-checkbox", 8),
-                  e._uU(42, "Show Product image"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(43, "section", 7),
-                  e.TgZ(44, "mat-checkbox", 8),
-                  e._uU(45, "Show Product Partcode "),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(46, "div"),
-                  e.TgZ(47, "a", 9),
-                  e.NdJ("click", function () {
-                    return d.showPDF();
-                  }),
-                  e._uU(48, " View Quote"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(49, "div"),
-                  e.TgZ(50, "a", 9),
-                  e.NdJ("click", function () {
-                    return d.EmailQuote();
-                  }),
-                  e._uU(51, "Email Quote"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(52, "div"),
-                  e.TgZ(53, "a", 10),
-                  e._uU(54, "Send PDF On WhatsApp"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(55, "div"),
-                  e.TgZ(56, "a", 9),
-                  e.NdJ("click", function () {
-                    return d.TermsCondition();
-                  }),
-                  e._uU(57, "Term & Conditions"),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(58, "div", 11),
-                  e._UZ(59, "div", 12),
-                  e.qZA(),
-                  e.qZA(),
-                  e.TgZ(60, "div", 13),
-                  e.YNc(61, W, 2, 6, "div", 14),
-                  e.YNc(62, ta, 8, 1, "div", 14),
-                  e.YNc(63, rt, 18, 5, "div", 14),
-                  e.qZA(),
-                  e.qZA(),
-                  e.qZA()),
-                  2 & a &&
-                    (e.xp6(7),
-                    e.Q6J("ngModel", d.SelectFormat),
-                    e.xp6(1),
-                    e.Q6J("ngForOf", d.emailQuoteData.slice(0, 3)),
-                    e.xp6(4),
-                    e.Q6J("ngModel", d.SelectHeaderFooter),
-                    e.xp6(1),
-                    e.Q6J("ngForOf", d.emailQuoteData.slice(3, 5)),
-                    e.xp6(4),
-                    e.Q6J("ngModel", d.SelectBank),
-                    e.xp6(1),
-                    e.Q6J("ngForOf", d.emailQuoteData.slice(5, 18)),
-                    e.xp6(43),
-                    e.Q6J("ngIf", d.viewPDF),
-                    e.xp6(1),
-                    e.Q6J("ngIf", d.emailQuote),
-                    e.xp6(1),
-                    e.Q6J("ngIf", d.termsCondition));
-              },
-              directives: [
-                j.KE,
-                j.hX,
-                te.gD,
-                A.JJ,
-                A.On,
-                m.sg,
-                K.oG,
-                m.O5,
-                E.ey,
-                Kt.S3,
-                A._Y,
-                A.JL,
-                A.F,
-                N.lW,
-                oe.Nt,
-                A.Fj,
-                ie.s6,
-              ],
-              styles: [
-                ".containt-Body[_ngcontent-%COMP%]{display:flex;background-color:#f3f3ec;height:79.8vh}.email-box[_ngcontent-%COMP%]{margin:5px}.checkbox-label[_ngcontent-%COMP%]{color:gray}.form-field[_ngcontent-%COMP%]{position:relative;margin:10px 0 15px}.selectWidth[_ngcontent-%COMP%]{width:100%}.link[_ngcontent-%COMP%]{color:#00f;text-decoration:none}.link[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer}.vl[_ngcontent-%COMP%]{border-left:2px solid #333;height:100%}.Description[_ngcontent-%COMP%]{width:100%;resize:none}",
-              ],
-            })),
-            s
-          );
-        })(),
-        Ae = (() => {
-          class s {
-            constructor(a) {
-              (this.http = a),
-                (this.getDefaultDatacommonURL =
-                  "https://ffherp.co.in:446/api/Voucher/GetDefaultDatacommon"),
-                (this.GetCommonDataNewlyUrl =
-                  "https://ffherp.co.in:446/api/Voucher/GetCommonDataNewly"),
-                (this.commanDataURL =
-                  "https://ffherp.co.in:446/api/Voucher/GetCommonData"),
-                (this.commanContactListURL =
-                  "https://ffherp.co.in:446/api/Voucher/GetCommonContactList"),
-                (this.getUserDataURL =
-                  "https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile"),
-                (this.saveActualCommonActionURL =
-                  "https://ffherp.co.in:446/api/Voucher/SaveActualCommonAction"),
-                (this.saveSheduleCommonActionURL =
-                  "https://ffherp.co.in:446/api/Voucher/SaveSheduleCommonAction"),
-                (this.getUserEmailMobileUrl =
-                  "https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile"),
-                (this.GetActualDataRandomUrl =
-                  "https://ffherp.co.in:446/api/Voucher/GetActualDataRandom"),
-                (this.GetSheduledDataUrl =
-                  "https://ffherp.co.in:446/api/Voucher/GetSheduledData"),
-                (this.GetRevisedPDFDataUrl =
-                  "https://ffherp.co.in:446/api/Voucher/GetRevisedPDF");
-            }
-            getDefaultData(a) {
-              return this.http.post(this.getDefaultDatacommonURL, a);
-            }
-            getCommonDataNewlyData(a) {
-              return this.http.post(this.GetCommonDataNewlyUrl, a);
-            }
-            connanData(a) {
-              return this.http.post(this.commanDataURL, a);
-            }
-            getContactList(a) {
-              return this.http.post(this.commanContactListURL, a);
-            }
-            getUserlist(a) {
-              return this.http.post(this.getUserDataURL, a);
-            }
-            getUserEmailMobile(a) {
-              return this.http.post(this.getUserEmailMobileUrl, a);
-            }
-            saveActualCommanAction(a) {
-              return this.http.post(this.saveActualCommonActionURL, a);
-            }
-            saveSheduleCommonAction(a) {
-              return this.http.post(this.saveSheduleCommonActionURL, a);
-            }
-            GetActualDataRandom(a) {
-              return this.http.post(this.GetActualDataRandomUrl, a);
-            }
-            GetSheduledData(a) {
-              return this.http.post(this.GetSheduledDataUrl, a);
-            }
-            GetRevisedPDFData(a) {
-              return this.http.post(this.GetRevisedPDFDataUrl, a);
-            }
+          setLocale(a) {
+            super.setLocale(a);
+            let _ = Ye.localeData(a);
+            this._localeData = {
+              firstDayOfWeek: _.firstDayOfWeek(),
+              longMonths: _.months(),
+              shortMonths: _.monthsShort(),
+              dates: za(31, (M) => this.createDate(2017, 0, M + 1).format("D")),
+              longDaysOfWeek: _.weekdays(),
+              shortDaysOfWeek: _.weekdaysShort(),
+              narrowDaysOfWeek: _.weekdaysMin(),
+            };
           }
-          return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.LFG(u.eN));
-            }),
-            (s.ɵprov = e.Yz7({
-              token: s,
-              factory: s.ɵfac,
-              providedIn: "root",
-            })),
-            s
-          );
-        })();
-      var be = f(2081),
-        Le = f(9814),
-        le = f(3251);
-      function x(s, c) {
-        1 & s &&
+          getYear(a) {
+            return this.clone(a).year();
+          }
+          getMonth(a) {
+            return this.clone(a).month();
+          }
+          getDate(a) {
+            return this.clone(a).date();
+          }
+          getDayOfWeek(a) {
+            return this.clone(a).day();
+          }
+          getMonthNames(a) {
+            return "long" == a
+              ? this._localeData.longMonths
+              : this._localeData.shortMonths;
+          }
+          getDateNames() {
+            return this._localeData.dates;
+          }
+          getDayOfWeekNames(a) {
+            return "long" == a
+              ? this._localeData.longDaysOfWeek
+              : "short" == a
+              ? this._localeData.shortDaysOfWeek
+              : this._localeData.narrowDaysOfWeek;
+          }
+          getYearName(a) {
+            return this.clone(a).format("YYYY");
+          }
+          getFirstDayOfWeek() {
+            return this._localeData.firstDayOfWeek;
+          }
+          getNumDaysInMonth(a) {
+            return this.clone(a).daysInMonth();
+          }
+          clone(a) {
+            return a.clone().locale(this.locale);
+          }
+          createDate(a, _, M) {
+            const g = this._createMoment({ year: a, month: _, date: M }).locale(
+              this.locale
+            );
+            return g.isValid(), g;
+          }
+          today() {
+            return this._createMoment().locale(this.locale);
+          }
+          parse(a, _) {
+            return a && "string" == typeof a
+              ? this._createMoment(a, _, this.locale)
+              : a
+              ? this._createMoment(a).locale(this.locale)
+              : null;
+          }
+          format(a, _) {
+            return (a = this.clone(a)), this.isValid(a), a.format(_);
+          }
+          addCalendarYears(a, _) {
+            return this.clone(a).add({ years: _ });
+          }
+          addCalendarMonths(a, _) {
+            return this.clone(a).add({ months: _ });
+          }
+          addCalendarDays(a, _) {
+            return this.clone(a).add({ days: _ });
+          }
+          toIso8601(a) {
+            return this.clone(a).format();
+          }
+          deserialize(a) {
+            let _;
+            if (a instanceof Date)
+              _ = this._createMoment(a).locale(this.locale);
+            else if (this.isDateInstance(a)) return this.clone(a);
+            if ("string" == typeof a) {
+              if (!a) return null;
+              _ = this._createMoment(a, Ye.ISO_8601).locale(this.locale);
+            }
+            return _ && this.isValid(_)
+              ? this._createMoment(_).locale(this.locale)
+              : super.deserialize(a);
+          }
+          isDateInstance(a) {
+            return Ye.isMoment(a);
+          }
+          isValid(a) {
+            return this.clone(a).isValid();
+          }
+          invalid() {
+            return Ye.invalid();
+          }
+          _createMoment(a, _, M) {
+            const { strict: g, useUtc: A } = this._options || {};
+            return A ? Ye.utc(a, _, M, g) : Ye(a, _, M, g);
+          }
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.LFG(P.Ad, 8), e.LFG(je, 8));
+          }),
+          (i.ɵprov = e.Yz7({ token: i, factory: i.ɵfac })),
+          i
+        );
+      })();
+      const Te = {
+        parse: { dateInput: "LL" },
+        display: {
+          dateInput: "LL",
+          monthYearLabel: "MMM YYYY",
+          dateA11yLabel: "LL",
+          monthYearA11yLabel: "MMMM YYYY",
+        },
+      };
+      let G = (() => {
+        class i {
+          constructor(a) {
+            (this.http = a),
+              (this.getDefaultDatacommonURL =
+                "https://ffherp.co.in:446/api/Voucher/GetDefaultDatacommon"),
+              (this.GetCommonDataNewlyUrl =
+                "https://ffherp.co.in:446/api/Voucher/GetCommonDataNewly"),
+              (this.commanDataURL =
+                "https://ffherp.co.in:446/api/Voucher/GetCommonData"),
+              (this.commanContactListURL =
+                "https://ffherp.co.in:446/api/Voucher/GetCommonContactList"),
+              (this.getUserDataURL =
+                "https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile"),
+              (this.saveActualCommonActionURL =
+                "https://ffherp.co.in:446/api/Voucher/SaveActualCommonAction"),
+              (this.saveSheduleCommonActionURL =
+                "https://ffherp.co.in:446/api/Voucher/SaveSheduleCommonAction"),
+              (this.getUserEmailMobileUrl =
+                "https://ffherp.co.in:446/api/Voucher/GetUserEmailMobile"),
+              (this.GetActualDataRandomUrl =
+                "https://ffherp.co.in:446/api/Voucher/GetActualDataRandom"),
+              (this.GetSheduledDataUrl =
+                "https://ffherp.co.in:446/api/Voucher/GetSheduledData"),
+              (this.GetRevisedPDFDataUrl =
+                "https://ffherp.co.in:446/api/Voucher/GetRevisedPDF");
+          }
+          getDefaultData(a) {
+            return this.http.post(this.getDefaultDatacommonURL, a);
+          }
+          getCommonDataNewlyData(a) {
+            return this.http.post(this.GetCommonDataNewlyUrl, a);
+          }
+          connanData(a) {
+            return this.http.post(this.commanDataURL, a);
+          }
+          getContactList(a) {
+            return this.http.post(this.commanContactListURL, a);
+          }
+          getUserlist(a) {
+            return this.http.post(this.getUserDataURL, a);
+          }
+          getUserEmailMobile(a) {
+            return this.http.post(this.getUserEmailMobileUrl, a);
+          }
+          saveActualCommanAction(a) {
+            return this.http.post(this.saveActualCommonActionURL, a);
+          }
+          saveSheduleCommonAction(a) {
+            return this.http.post(this.saveSheduleCommonActionURL, a);
+          }
+          GetActualDataRandom(a) {
+            return this.http.post(this.GetActualDataRandomUrl, a);
+          }
+          GetSheduledData(a) {
+            return this.http.post(this.GetSheduledDataUrl, a);
+          }
+          GetRevisedPDFData(a) {
+            return this.http.post(this.GetRevisedPDFDataUrl, a);
+          }
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.LFG(ge.eN));
+          }),
+          (i.ɵprov = e.Yz7({ token: i, factory: i.ɵfac, providedIn: "root" })),
+          i
+        );
+      })();
+      var V = f(2081),
+        Se = f(9814),
+        ue = f(3251);
+      function $(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 25),
           e.TgZ(1, "h1"),
           e._uU(2, "Congratulation"),
           e.qZA(),
           e.qZA());
       }
-      function Ga(s, c) {
-        1 & s &&
+      function Ga(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 26),
           e.TgZ(1, "h1"),
           e._uU(2, "Better Luck Next Time"),
           e.qZA(),
           e.qZA());
       }
-      function Ba(s, c) {
-        1 & s &&
+      function et(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 27),
           e.TgZ(1, "h1"),
           e._uU(2, "Not Your Fault"),
           e.qZA(),
           e.qZA());
       }
-      function se(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & s)) {
+      function ne(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Id), e.xp6(1), e.hij("", a.Name, " ");
         }
       }
-      function bt(s, c) {
-        if (1 & s) {
+      function O(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 7),
             e.TgZ(1, "mat-form-field", 8),
@@ -3547,8 +1957,8 @@
             e._uU(3, "Delivery Date"),
             e.qZA(),
             e.TgZ(4, "input", 29),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().delivery = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().delivery = M);
             }),
             e.qZA(),
             e._UZ(5, "mat-datepicker-toggle", 14),
@@ -3556,17 +1966,17 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(7),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(4),
-            e.Q6J("matDatepicker", a)("ngModel", d.delivery),
+            e.Q6J("matDatepicker", a)("ngModel", _.delivery),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function J(s, c) {
-        if (1 & s) {
+      function qe(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 7),
             e.TgZ(1, "mat-form-field", 8),
@@ -3574,8 +1984,8 @@
             e._uU(3, "Lost Date"),
             e.qZA(),
             e.TgZ(4, "input", 31),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().lostDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().lostDate = M);
             }),
             e.qZA(),
             e._UZ(5, "mat-datepicker-toggle", 14),
@@ -3583,17 +1993,17 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(7),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(4),
-            e.Q6J("matDatepicker", a)("ngModel", d.lostDate),
+            e.Q6J("matDatepicker", a)("ngModel", _.lostDate),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Qe(s, c) {
-        if (1 & s) {
+      function tt(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 7),
             e.TgZ(1, "mat-form-field", 8),
@@ -3601,8 +2011,8 @@
             e._uU(3, "Closed Date"),
             e.qZA(),
             e.TgZ(4, "input", 31),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().closedDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().closedDate = M);
             }),
             e.qZA(),
             e._UZ(5, "mat-datepicker-toggle", 14),
@@ -3610,23 +2020,23 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(7),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(4),
-            e.Q6J("matDatepicker", a)("ngModel", d.closedDate),
+            e.Q6J("matDatepicker", a)("ngModel", _.closedDate),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Va(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & s)) {
+      function Bt(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.Q6J("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function ee(s, c) {
-        if (1 & s) {
+      function Ba(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 16),
             e.TgZ(1, "mat-form-field", 8),
@@ -3634,15 +2044,15 @@
             e._uU(3, "Lost Reason"),
             e.qZA(),
             e.TgZ(4, "mat-select", 34),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().LostReason = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().LostReason = M);
             }),
-            e.YNc(5, Va, 2, 2, "mat-option", 10),
+            e.YNc(5, Bt, 2, 2, "mat-option", 10),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw();
           e.xp6(4),
             e.Q6J("ngModel", a.LostReason),
@@ -3650,8 +2060,8 @@
             e.Q6J("ngForOf", a.lostReasonData);
         }
       }
-      function fe(s, c) {
-        1 & s &&
+      function Va(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 16),
           e.TgZ(1, "mat-form-field", 8),
           e.TgZ(2, "mat-label"),
@@ -3661,8 +2071,8 @@
           e.qZA(),
           e.qZA());
       }
-      function pe(s, c) {
-        1 & s &&
+      function Vt(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 7),
           e.TgZ(1, "mat-form-field", 8),
           e.TgZ(2, "mat-label"),
@@ -3672,8 +2082,8 @@
           e.qZA(),
           e.qZA());
       }
-      function $(s, c) {
-        1 & s &&
+      function ee(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 7),
           e.TgZ(1, "mat-form-field", 8),
           e.TgZ(2, "mat-label"),
@@ -3683,8 +2093,8 @@
           e.qZA(),
           e.qZA());
       }
-      function me(s, c) {
-        1 & s &&
+      function $t(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 8),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Lost To "),
@@ -3692,8 +2102,8 @@
           e._UZ(3, "input", 38),
           e.qZA());
       }
-      function ge(s, c) {
-        1 & s &&
+      function Dt(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 6),
           e.TgZ(1, "div", 7),
           e.TgZ(2, "mat-form-field", 8),
@@ -3713,15 +2123,15 @@
           e.qZA(),
           e.qZA());
       }
-      function we(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & s)) {
+      function at(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 28), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.MGl("value", "", a.Id, " "), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function $a(s, c) {
+      function F(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div", 6),
             e.TgZ(1, "div", 7),
             e.TgZ(2, "mat-form-field", 8),
@@ -3729,7 +2139,7 @@
             e._uU(4, "Instrument type"),
             e.qZA(),
             e.TgZ(5, "mat-select", 41),
-            e.YNc(6, we, 2, 2, "mat-option", 10),
+            e.YNc(6, at, 2, 2, "mat-option", 10),
             e.qZA(),
             e.qZA(),
             e.qZA(),
@@ -3742,14 +2152,14 @@
             e.qZA(),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw();
           e.xp6(6), e.Q6J("ngForOf", a.InstrumentTypeData);
         }
       }
-      function Ka(s, c) {
-        1 & s &&
+      function Xt(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 6),
           e.TgZ(1, "div", 7),
           e.TgZ(2, "mat-form-field", 8),
@@ -3769,15 +2179,15 @@
           e.qZA(),
           e.qZA());
       }
-      let Xa = (() => {
-        class s {
-          constructor(a, d) {
+      let Kt = (() => {
+        class i {
+          constructor(a, _) {
             (this.actionService = a),
-              (this.global = d),
-              (this.date = H()),
-              (this.delivery = H()),
-              (this.lostDate = H()),
-              (this.closedDate = H()),
+              (this.global = _),
+              (this.date = j()),
+              (this.delivery = j()),
+              (this.lostDate = j()),
+              (this.closedDate = j()),
               (this.Lost = !1),
               (this.Won = !0),
               (this.Close = !1),
@@ -3791,8 +2201,8 @@
                 password: this.global.LOGGED_IN_USER.encryptPswd,
                 id11: this.global.LOGGED_IN_USER.Username,
               })
-              .subscribe((d) => {
-                this.userlistData = JSON.parse(d);
+              .subscribe((_) => {
+                this.userlistData = JSON.parse(_);
               });
           }
           selectStatus(a) {
@@ -3815,7 +2225,7 @@
           }
           closeActionForm(a) {
             console.log(this.commanActionFormData);
-            const d = {
+            const _ = {
               Dbname: this.global.LOGGED_IN_USER.DbName,
               Password: this.global.LOGGED_IN_USER.encryptPswd,
               EntityId: this.EntityId,
@@ -3850,16 +2260,16 @@
               CloseLeadStatus: "? number:0 ?",
               CloseLeadPONumber: a.CoustomerPONO,
               CloseLeadPODATE: "26/03/2022",
-              CloseLeadDeliveryDATE: H(a.closedDate).format("DD/MM/YYYY"),
+              CloseLeadDeliveryDATE: j(a.closedDate).format("DD/MM/YYYY"),
               CloseLeadAdv: "0",
               CloseLeadINS: "",
               CloseLeadBank: "",
               CloseLeadMode: a.Instrument,
               CloseLeadRemarks: a.Remark,
               CloseLeadLostReason: a.LostReason,
-              CloseLeadLostDate: H(a.LostDate).format("DD/MM/YYYY"),
+              CloseLeadLostDate: j(a.LostDate).format("DD/MM/YYYY"),
               CloseLeadCloseReason: a.ClosedReason,
-              CloseLeadCloseDate: H(a.closedDate).format("DD/MM/YYYY"),
+              CloseLeadCloseDate: j(a.closedDate).format("DD/MM/YYYY"),
               CloseLeadLeadValue: "6472.92",
               CloseLeadLeadCloseValue: a.selectedStatus,
               CloseLeadLeadContactSMS: "9835488546",
@@ -3878,7 +2288,7 @@
               ActorSMSClose: "",
               ActorEmailClose: "aadi111@gmail.com",
             };
-            console.log(d);
+            console.log(_);
           }
           ngOnInit() {
             (this.OpportunityStatusData = this.newlyActionData.Table9),
@@ -3889,11 +2299,11 @@
           }
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(Ae), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(G), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-close-action"]],
             inputs: {
               EntityId: "EntityId",
@@ -3986,18 +2396,18 @@
               ["matInput", "", "name", "BankDrawnON", "ngModel", ""],
               ["matInput", "", "name", "InstumentNumber", "ngModel", ""],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (1 & a) {
-                const g = e.EpF();
+                const M = e.EpF();
                 e.TgZ(0, "form", 0, 1),
                   e.NdJ("submit", function () {
-                    e.CHM(g);
-                    const v = e.MAs(1);
-                    return d.closeActionForm(v.value);
+                    e.CHM(M);
+                    const A = e.MAs(1);
+                    return _.closeActionForm(A.value);
                   }),
-                  e.YNc(2, x, 3, 0, "div", 2),
+                  e.YNc(2, $, 3, 0, "div", 2),
                   e.YNc(3, Ga, 3, 0, "div", 3),
-                  e.YNc(4, Ba, 3, 0, "div", 4),
+                  e.YNc(4, et, 3, 0, "div", 4),
                   e.TgZ(5, "div", 5),
                   e.TgZ(6, "div", 6),
                   e.TgZ(7, "div", 7),
@@ -4006,45 +2416,45 @@
                   e._uU(10, "Opportunity Status"),
                   e.qZA(),
                   e.TgZ(11, "mat-select", 9),
-                  e.NdJ("ngModelChange", function (v) {
-                    return d.selectStatus(v);
-                  })("ngModelChange", function (v) {
-                    return (d.SelectedStatus = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return _.selectStatus(A);
+                  })("ngModelChange", function (A) {
+                    return (_.SelectedStatus = A);
                   }),
-                  e.YNc(12, se, 2, 2, "mat-option", 10),
+                  e.YNc(12, ne, 2, 2, "mat-option", 10),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
-                  e.YNc(13, bt, 8, 3, "div", 11),
-                  e.YNc(14, J, 8, 3, "div", 11),
-                  e.YNc(15, Qe, 8, 3, "div", 11),
+                  e.YNc(13, O, 8, 3, "div", 11),
+                  e.YNc(14, qe, 8, 3, "div", 11),
+                  e.YNc(15, tt, 8, 3, "div", 11),
                   e.qZA(),
-                  e.YNc(16, ee, 6, 2, "div", 12),
-                  e.YNc(17, fe, 5, 0, "div", 12),
+                  e.YNc(16, Ba, 6, 2, "div", 12),
+                  e.YNc(17, Va, 5, 0, "div", 12),
                   e.TgZ(18, "div", 6),
-                  e.YNc(19, pe, 5, 0, "div", 11),
+                  e.YNc(19, Vt, 5, 0, "div", 11),
                   e.TgZ(20, "div", 7),
                   e.TgZ(21, "mat-form-field", 8),
                   e.TgZ(22, "mat-label"),
                   e._uU(23, " Date"),
                   e.qZA(),
                   e.TgZ(24, "input", 13),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.date = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.date = A);
                   }),
                   e.qZA(),
                   e._UZ(25, "mat-datepicker-toggle", 14),
                   e._UZ(26, "mat-datepicker", null, 15),
                   e.qZA(),
                   e.qZA(),
-                  e.YNc(28, $, 5, 0, "div", 11),
+                  e.YNc(28, ee, 5, 0, "div", 11),
                   e.qZA(),
                   e.TgZ(29, "div", 16),
-                  e.YNc(30, me, 4, 0, "mat-form-field", 17),
+                  e.YNc(30, $t, 4, 0, "mat-form-field", 17),
                   e.qZA(),
-                  e.YNc(31, ge, 11, 0, "div", 18),
-                  e.YNc(32, $a, 12, 1, "div", 18),
-                  e.YNc(33, Ka, 11, 0, "div", 18),
+                  e.YNc(31, Dt, 11, 0, "div", 18),
+                  e.YNc(32, F, 12, 1, "div", 18),
+                  e.YNc(33, Xt, 11, 0, "div", 18),
                   e.TgZ(34, "div", 16),
                   e.TgZ(35, "mat-form-field", 8),
                   e.TgZ(36, "mat-label"),
@@ -4070,100 +2480,100 @@
                   e.qZA();
               }
               if (2 & a) {
-                const g = e.MAs(27);
+                const M = e.MAs(27);
                 e.xp6(2),
-                  e.Q6J("ngIf", d.Won),
+                  e.Q6J("ngIf", _.Won),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Lost),
+                  e.Q6J("ngIf", _.Lost),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Close),
+                  e.Q6J("ngIf", _.Close),
                   e.xp6(7),
-                  e.Q6J("ngModel", d.SelectedStatus),
+                  e.Q6J("ngModel", _.SelectedStatus),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.OpportunityStatusData),
+                  e.Q6J("ngForOf", _.OpportunityStatusData),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Won),
+                  e.Q6J("ngIf", _.Won),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Lost),
+                  e.Q6J("ngIf", _.Lost),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Close),
+                  e.Q6J("ngIf", _.Close),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Lost),
+                  e.Q6J("ngIf", _.Lost),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Close),
+                  e.Q6J("ngIf", _.Close),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.Won),
+                  e.Q6J("ngIf", _.Won),
                   e.xp6(5),
-                  e.Q6J("matDatepicker", g)("ngModel", d.date),
+                  e.Q6J("matDatepicker", M)("ngModel", _.date),
                   e.xp6(1),
-                  e.Q6J("for", g),
+                  e.Q6J("for", M),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.ValueLost),
+                  e.Q6J("ngIf", _.ValueLost),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.Lost),
+                  e.Q6J("ngIf", _.Lost),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Won),
+                  e.Q6J("ngIf", _.Won),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Won),
+                  e.Q6J("ngIf", _.Won),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Won);
+                  e.Q6J("ngIf", _.Won);
               }
             },
             directives: [
-              A._Y,
-              A.JL,
-              A.F,
+              k._Y,
+              k.JL,
+              k.F,
               m.O5,
-              j.KE,
-              j.hX,
-              te.gD,
-              A.JJ,
-              A.On,
+              b.KE,
+              b.hX,
+              z.gD,
+              k.JJ,
+              k.On,
               m.sg,
-              oe.Nt,
-              B.hl,
-              A.Fj,
-              B.nW,
-              j.R9,
-              B.Mq,
-              N.lW,
-              be.Ic,
-              E.ey,
+              q.Nt,
+              H.hl,
+              k.Fj,
+              H.nW,
+              b.R9,
+              H.Mq,
+              K.lW,
+              V.Ic,
+              P.ey,
             ],
             styles: [
               ".input-width[_ngcontent-%COMP%]{width:100%}textarea[_ngcontent-%COMP%]{height:60px;resize:none}.form-box[_ngcontent-%COMP%]{margin:5px;min-height:480px}.heading1[_ngcontent-%COMP%]{text-align:center;background-color:green;color:#fff;height:50px}.heading2[_ngcontent-%COMP%]{text-align:center;background-color:#c95d42;color:#fff;height:50px}.heading3[_ngcontent-%COMP%]{text-align:center;background-color:#dfcd2b;color:#fff;height:50px}button[_ngcontent-%COMP%]{width:50%;height:45px;margin:5px;color:#fff}.SaveAction[_ngcontent-%COMP%]{background-color:green}.backButton[_ngcontent-%COMP%]{background-color:red}.link[_ngcontent-%COMP%]{text-align:end;margin:10px 0}a[_ngcontent-%COMP%]{text-decoration:none;color:#dc143c}a[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer}.contain[_ngcontent-%COMP%]{min-height:530px;margin-top:10px}",
             ],
           })),
-          s
+          i
         );
       })();
-      function V(s, c) {
+      function nt(i, c) {
         if (
-          (1 & s && (e.TgZ(0, "mat-radio-button", 32), e._uU(1), e.qZA()),
-          2 & s)
+          (1 & i && (e.TgZ(0, "mat-radio-button", 32), e._uU(1), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw();
+            _ = e.oxw();
           e.s9C("name", a.Name),
-            e.Q6J("value", a.Id)("checked", a.Id == d.DefaultSelect),
+            e.Q6J("value", a.Id)("checked", a.Id == _.DefaultSelect),
             e.xp6(1),
             e.hij(" ", a.Name, " ");
         }
       }
-      function _t(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & s)) {
+      function kt(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function en(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & s)) {
+      function it(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function aa(s, c) {
-        if (1 & s) {
+      function Ne(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 34),
             e.TgZ(1, "div", 8),
@@ -4173,8 +2583,8 @@
             e._uU(5, "E-mail"),
             e.qZA(),
             e.TgZ(6, "input", 35),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.ContactEmail = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.ContactEmail = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -4187,8 +2597,8 @@
             e._uU(11, "SMS"),
             e.qZA(),
             e.TgZ(12, "input", 36),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.ContactMobile = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.ContactMobile = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -4196,7 +2606,7 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(6),
             e.Q6J("ngModel", a.ContactEmail),
@@ -4204,14 +2614,14 @@
             e.Q6J("ngModel", a.ContactMobile);
         }
       }
-      function na(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & s)) {
+      function st(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 33), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.UserId), e.xp6(1), e.hij(" ", a.UserName, "");
         }
       }
-      function tn(s, c) {
-        if (1 & s) {
+      function $a(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 34),
             e.TgZ(1, "div", 8),
@@ -4221,8 +2631,8 @@
             e._uU(5, "E-mail"),
             e.qZA(),
             e.TgZ(6, "input", 37),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.UserEmail = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.UserEmail = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -4235,8 +2645,8 @@
             e._uU(11, "SMS"),
             e.qZA(),
             e.TgZ(12, "input", 38),
-            e.NdJ("ngModelChange", function (g) {
-              return (e.CHM(a).$implicit.UserMobile = g);
+            e.NdJ("ngModelChange", function (M) {
+              return (e.CHM(a).$implicit.UserMobile = M);
             }),
             e.qZA(),
             e.qZA(),
@@ -4244,7 +2654,7 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(6),
             e.Q6J("ngModel", a.UserEmail),
@@ -4252,17 +2662,17 @@
             e.Q6J("ngModel", a.UserMobile);
         }
       }
-      let an = (() => {
-        class s {
-          constructor(a, d) {
+      let ot = (() => {
+        class i {
+          constructor(a, _) {
             (this.actionService = a),
-              (this.global = d),
-              (this.scheduleActionDate = H().format("YYYY-MM-DD")),
+              (this.global = _),
+              (this.scheduleActionDate = j().format("YYYY-MM-DD")),
               (this.today = new Date());
           }
           schedulsaveActionForm(a) {
             console.log(a), this.commanSaveaction(this.commanActionFormData);
-            let d = {
+            let _ = {
               Dbname: this.global.LOGGED_IN_USER.DbName,
               Password: this.global.LOGGED_IN_USER.encryptPswd,
               EntityId: this.EntityId,
@@ -4270,7 +2680,7 @@
               ScheduleActionType: this.DefaultSelect,
               ScheduleActivityType: a.ScheduleActivityType,
               Instructions: a.Discussions,
-              ScheduleActionDate: H(a.scheduleActionDate).format("DD/MM/YYYY"),
+              ScheduleActionDate: j(a.scheduleActionDate).format("DD/MM/YYYY"),
               ScheduleActionTime: a.ScheduleActionTime,
               ContactId: this.getDefaultData[0].ContactId,
               ScheduleUserId: this.getDefaultData[0].ScheduleUserId,
@@ -4304,12 +2714,12 @@
             console.log(a),
               console.log(this.commanActionFormData),
               this.actionService
-                .saveSheduleCommonAction(d)
-                .subscribe((g) => {});
+                .saveSheduleCommonAction(_)
+                .subscribe((M) => {});
           }
           commanSaveaction(a) {
-            this.actionService.saveActualCommanAction(a).subscribe((d) => {
-              (this.responseId = d), console.log(this.responseId);
+            this.actionService.saveActualCommanAction(a).subscribe((_) => {
+              (this.responseId = _), console.log(this.responseId);
             });
           }
           updateOptionalLabel() {}
@@ -4320,8 +2730,8 @@
                 password: this.global.LOGGED_IN_USER.encryptPswd,
                 id11: a,
               })
-              .subscribe((g) => {
-                this.selectedUserData = JSON.parse(g);
+              .subscribe((M) => {
+                this.selectedUserData = JSON.parse(M);
               });
           }
           ngOnInit() {}
@@ -4340,11 +2750,11 @@
           }
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(Ae), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(G), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-next-action"]],
             inputs: {
               EntityId: "EntityId",
@@ -4504,26 +2914,26 @@
                 "ngModelChange",
               ],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (1 & a) {
-                const g = e.EpF();
+                const M = e.EpF();
                 e.TgZ(0, "h1", 0),
                   e._uU(1, "Your Next Action"),
                   e.qZA(),
                   e.TgZ(2, "form", 1, 2),
                   e.NdJ("submit", function () {
-                    e.CHM(g);
-                    const v = e.MAs(3);
-                    return d.schedulsaveActionForm(v.value);
+                    e.CHM(M);
+                    const A = e.MAs(3);
+                    return _.schedulsaveActionForm(A.value);
                   }),
                   e.TgZ(4, "div", 3),
                   e.TgZ(5, "mat-radio-group", 4),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.ScheduleActionType = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.ScheduleActionType = A);
                   })("ngModelChange", function () {
-                    return d.updateOptionalLabel();
+                    return _.updateOptionalLabel();
                   }),
-                  e.YNc(6, V, 2, 4, "mat-radio-button", 5),
+                  e.YNc(6, nt, 2, 4, "mat-radio-button", 5),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(7, "div", 6),
@@ -4534,7 +2944,7 @@
                   e._uU(12, "Activity Type"),
                   e.qZA(),
                   e.TgZ(13, "mat-select", 10),
-                  e.YNc(14, _t, 2, 2, "mat-option", 11),
+                  e.YNc(14, kt, 2, 2, "mat-option", 11),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
@@ -4579,8 +2989,8 @@
                   e._uU(40, "On Date Time"),
                   e.qZA(),
                   e.TgZ(41, "input", 20),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.scheduleActionDate = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.scheduleActionDate = A);
                   }),
                   e.qZA(),
                   e._UZ(42, "mat-datepicker-toggle", 21),
@@ -4606,31 +3016,31 @@
                   e._uU(55, "Coustomer Contact Name"),
                   e.qZA(),
                   e.TgZ(56, "mat-select", 27),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.CoustomerContactName = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.CoustomerContactName = A);
                   }),
-                  e.YNc(57, en, 2, 2, "mat-option", 11),
+                  e.YNc(57, it, 2, 2, "mat-option", 11),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
-                  e.YNc(58, aa, 13, 2, "div", 28),
+                  e.YNc(58, Ne, 13, 2, "div", 28),
                   e.TgZ(59, "div", 12),
                   e.TgZ(60, "mat-form-field", 9),
                   e.TgZ(61, "mat-label"),
                   e._uU(62, "Manager Alert"),
                   e.qZA(),
                   e.TgZ(63, "mat-select", 29),
-                  e.NdJ("ngModelChange", function (v) {
-                    return d.getuserdata(v);
-                  })("ngModelChange", function (v) {
-                    return (d.ManagerAlert = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return _.getuserdata(A);
+                  })("ngModelChange", function (A) {
+                    return (_.ManagerAlert = A);
                   }),
-                  e.YNc(64, na, 2, 2, "mat-option", 11),
+                  e.YNc(64, st, 2, 2, "mat-option", 11),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
-                  e.YNc(65, tn, 13, 2, "div", 28),
+                  e.YNc(65, $a, 13, 2, "div", 28),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(66, "div", 7),
@@ -4644,70 +3054,70 @@
                   e.qZA();
               }
               if (2 & a) {
-                const g = e.MAs(44);
+                const M = e.MAs(44);
                 e.xp6(5),
-                  e.Q6J("ngModel", d.ScheduleActionType),
+                  e.Q6J("ngModel", _.ScheduleActionType),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.SelectActionData),
+                  e.Q6J("ngForOf", _.SelectActionData),
                   e.xp6(8),
-                  e.Q6J("ngForOf", d.activitydata),
+                  e.Q6J("ngForOf", _.activitydata),
                   e.xp6(27),
-                  e.Q6J("matDatepicker", g)("max", d.today)(
+                  e.Q6J("matDatepicker", M)("max", _.today)(
                     "ngModel",
-                    d.scheduleActionDate
+                    _.scheduleActionDate
                   ),
                   e.xp6(1),
-                  e.Q6J("for", g),
+                  e.Q6J("for", M),
                   e.xp6(14),
-                  e.Q6J("ngModel", d.CoustomerContactName),
+                  e.Q6J("ngModel", _.CoustomerContactName),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.contactlistData),
+                  e.Q6J("ngForOf", _.contactlistData),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.CoustamerContactData),
+                  e.Q6J("ngForOf", _.CoustamerContactData),
                   e.xp6(5),
-                  e.Q6J("ngModel", d.ManagerAlert),
+                  e.Q6J("ngModel", _.ManagerAlert),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.activityByData),
+                  e.Q6J("ngForOf", _.activityByData),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.selectedUserData);
+                  e.Q6J("ngForOf", _.selectedUserData);
               }
             },
             directives: [
-              U.uh,
-              A._Y,
-              A.JL,
-              A.F,
-              Le.VQ,
-              A.JJ,
-              A.On,
+              u.uh,
+              k._Y,
+              k.JL,
+              k.F,
+              Se.VQ,
+              k.JJ,
+              k.On,
               m.sg,
-              j.KE,
-              j.hX,
-              te.gD,
-              oe.Nt,
-              A.Fj,
-              A.Q7,
-              E.ey,
-              B.hl,
-              B.nW,
-              j.R9,
-              B.Mq,
-              K.oG,
-              N.lW,
-              be.fd,
-              be.Ic,
-              U.ZT,
-              Le.U0,
+              b.KE,
+              b.hX,
+              z.gD,
+              q.Nt,
+              k.Fj,
+              k.Q7,
+              P.ey,
+              H.hl,
+              H.nW,
+              b.R9,
+              H.Mq,
+              Me.oG,
+              K.lW,
+              V.fd,
+              V.Ic,
+              u.ZT,
+              Se.U0,
             ],
             styles: [
               "button[_ngcontent-%COMP%]{width:50%;height:45px;margin:5px;color:#fff}.saveButton[_ngcontent-%COMP%]{background-color:green}.backButton[_ngcontent-%COMP%]{background-color:red}mat-radio-button[_ngcontent-%COMP%]{margin:0 10px}textarea[_ngcontent-%COMP%]{height:60px;resize:none}.mat-tab-group[_ngcontent-%COMP%]{max-height:100vh!important}.SelectActionType-Checkbox[_ngcontent-%COMP%]{display:flex;justify-content:space-around;margin:10px 0}.input-width[_ngcontent-%COMP%]{width:100%}.contain2[_ngcontent-%COMP%]{margin:10px;min-height:518px}.mat-dialog-content[_ngcontent-%COMP%]{display:block;margin:0!important;padding:0!important;max-height:100vh!important;overflow:auto}.heading[_ngcontent-%COMP%]{top:0px;position:sticky;text-align:center;background-color:#e6907b;color:#fff;padding:5px 0;padding:0!important;margin:0!important}.mat-dialog-actions[_ngcontent-%COMP%]{margin-bottom:0!important}.form-contain[_ngcontent-%COMP%]{height:100%}.input-ckeck[_ngcontent-%COMP%]{width:136px!important}.otherCheck[_ngcontent-%COMP%]{padding-top:8px}",
             ],
           })),
-          s
+          i
         );
       })();
-      function nn(s, c) {
-        if ((1 & s && e._UZ(0, "app-close-action", 47), 2 & s)) {
+      function Xa(i, c) {
+        if ((1 & i && e._UZ(0, "app-close-action", 47), 2 & i)) {
           const a = e.oxw();
           e.Q6J("EntityId", a.EntityId)("entityname", a.entityname)(
             "newlyActionData",
@@ -4718,45 +3128,45 @@
           );
         }
       }
-      function sn(s, c) {
+      function Ie(i, c) {
         if (
-          (1 & s && (e.TgZ(0, "mat-radio-button", 48), e._uU(1), e.qZA()),
-          2 & s)
+          (1 & i && (e.TgZ(0, "mat-radio-button", 48), e._uU(1), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw();
+            _ = e.oxw();
           e.s9C("name", a.Name),
-            e.Q6J("value", a.Id)("checked", a.Id == d.DefaultSelectActionType),
+            e.Q6J("value", a.Id)("checked", a.Id == _.DefaultSelectActionType),
             e.xp6(1),
             e.hij(" ", a.Name, " ");
         }
       }
-      function on(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & s)) {
+      function rt(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function rn(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & s)) {
+      function C(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function ia(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & s)) {
+      function Ka(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.Id), e.xp6(1), e.hij(" ", a.Name, "");
         }
       }
-      function sa(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & s)) {
+      function en(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 49), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.s9C("value", a.UserId), e.xp6(1), e.hij(" ", a.UserName, "");
         }
       }
-      function _n(s, c) {
-        1 & s &&
+      function te(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 56),
           e.TgZ(1, "div", 51),
           e.TgZ(2, "mat-label"),
@@ -4787,9 +3197,9 @@
           e.qZA(),
           e.qZA());
       }
-      function dn(s, c) {
+      function vt(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div", 50),
             e.TgZ(1, "div", 51),
             e.TgZ(2, "mat-form-field", 14),
@@ -4815,18 +3225,18 @@
             e._UZ(15, "input", 54),
             e.qZA(),
             e.qZA(),
-            e.YNc(16, _n, 18, 0, "div", 55),
+            e.YNc(16, te, 18, 0, "div", 55),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw();
           e.xp6(16), e.Q6J("ngIf", a.emailReport);
         }
       }
-      function ln(s, c) {
+      function I(i, c) {
         if (
-          (1 & s && (e.TgZ(0, "mat-radio-button", 61), e._uU(1), e.qZA()),
-          2 & s)
+          (1 & i && (e.TgZ(0, "mat-radio-button", 61), e._uU(1), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit;
           e.s9C("name", a.Name),
@@ -4835,8 +3245,8 @@
             e.hij(" ", a.Name, " ");
         }
       }
-      function oa(s, c) {
-        if (1 & s) {
+      function Fe(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "button", 62),
             e.NdJ("click", function () {
@@ -4846,12 +3256,12 @@
             e.qZA();
         }
       }
-      function ze(s, c) {
-        1 & s &&
+      function tn(i, c) {
+        1 & i &&
           (e.TgZ(0, "button", 63), e._uU(1, " Convert To Lead "), e.qZA());
       }
-      function ra(s, c) {
-        if ((1 & s && e._UZ(0, "app-next-action", 47), 2 & s)) {
+      function X(i, c) {
+        if ((1 & i && e._UZ(0, "app-next-action", 47), 2 & i)) {
           const a = e.oxw();
           e.Q6J("EntityId", a.EntityId)("entityname", a.entityname)(
             "newlyActionData",
@@ -4862,20 +3272,20 @@
           );
         }
       }
-      let mn = (() => {
-        class s {
-          constructor(a, d, g) {
+      let ce = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.actionService = a),
-              (this.global = d),
-              (this.data = g),
+              (this.global = _),
+              (this.data = M),
               (this.TabIndex = 0),
               (this.nextAction = !1),
               (this.closeAction = !1),
-              (this.actionStartDate = H()),
-              (this.actionEndDate = H()),
-              (this.EntityId = g.EntityID),
-              (this.EntityName = g.EntityName),
-              (this.clientNo = g.clientNo),
+              (this.actionStartDate = j()),
+              (this.actionEndDate = j()),
+              (this.EntityId = M.EntityID),
+              (this.EntityName = M.EntityName),
+              (this.clientNo = M.clientNo),
               "POList" === this.EntityName
                 ? ((this.activityType = "SoActivitytype"),
                   (this.stageType = "SOStage"),
@@ -4923,8 +3333,8 @@
                   EntityId: this.EntityId,
                   EntityName: this.entityname,
                 })
-                .subscribe((v) => {
-                  (this.getDefaultData = JSON.parse(v)),
+                .subscribe((A) => {
+                  (this.getDefaultData = JSON.parse(A)),
                     (this.DefaultSelectActionType =
                       this.getDefaultData[0].ScheduleActionType),
                     (this.CoustomerContactName =
@@ -4982,8 +3392,8 @@
                 TargetOwner: this.getDefaultData[0].OwnerId,
                 ActionActor: this.getDefaultData[0].UpdatedBy,
               })
-              .subscribe((d) => {
-                (this.newlyActionData = JSON.parse(d)),
+              .subscribe((_) => {
+                (this.newlyActionData = JSON.parse(_)),
                   (this.SelectActionData = this.newlyActionData.Table6),
                   (this.activitydata = this.newlyActionData.Table),
                   (this.moveStageData = this.newlyActionData.Table1),
@@ -5001,9 +3411,9 @@
               ActionType: this.DefaultSelectActionType,
               ActivityType: a.ActivityType,
               Discussions: a.Discussion,
-              ActionStartDate: H(a.actionStartDate).format("DD/MM/YYYY"),
+              ActionStartDate: j(a.actionStartDate).format("DD/MM/YYYY"),
               ActionStartTime: a.ActionStartTime,
-              ActionEndDate: H(a.actionEndDate).format("DD/MM/YYYY"),
+              ActionEndDate: j(a.actionEndDate).format("DD/MM/YYYY"),
               ActionEndTime: a.ActionEndTime,
               ContactId: this.getDefaultData[0].ContactId,
               UserId: this.global.LOGGED_IN_USER.UserId,
@@ -5028,17 +3438,17 @@
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(Ae), e.Y36(M.x), e.Y36(U.WI));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(G), e.Y36(w.x), e.Y36(u.WI));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-action"]],
             features: [
               e._Bn([
-                { provide: E.Ad, useValue: "en-GB" },
-                { provide: E._A, useClass: et, deps: [E.Ad, ve] },
-                { provide: E.sG, useValue: Je },
+                { provide: P.Ad, useValue: "en-GB" },
+                { provide: P._A, useClass: Ke, deps: [P.Ad, je] },
+                { provide: P.sG, useValue: Te },
               ]),
             ],
             decls: 95,
@@ -5242,12 +3652,12 @@
               ],
               ["mat-stroked-button", "", 1, "col", "CloseConvertButton"],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (1 & a) {
-                const g = e.EpF();
+                const M = e.EpF();
                 e.TgZ(0, "mat-stepper", 0, 1),
                   e.TgZ(2, "mat-step"),
-                  e.YNc(3, nn, 1, 5, "app-close-action", 2),
+                  e.YNc(3, Xa, 1, 5, "app-close-action", 2),
                   e.qZA(),
                   e.TgZ(4, "mat-step"),
                   e.TgZ(5, "h1", 3),
@@ -5255,24 +3665,24 @@
                   e.qZA(),
                   e.TgZ(7, "form", 4, 5),
                   e.NdJ("submit", function () {
-                    e.CHM(g);
-                    const v = e.MAs(8);
-                    return d.ActionForm(v.value);
+                    e.CHM(M);
+                    const A = e.MAs(8);
+                    return _.ActionForm(A.value);
                   }),
                   e.TgZ(9, "div", 6),
                   e.TgZ(10, "div", 7),
                   e.TgZ(11, "mat-radio-group", 8),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.SelectActionType = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.SelectActionType = A);
                   })("ngModelChange", function () {
-                    return d.updateOptionalLabel();
+                    return _.updateOptionalLabel();
                   }),
-                  e.YNc(12, sn, 2, 4, "mat-radio-button", 9),
+                  e.YNc(12, Ie, 2, 4, "mat-radio-button", 9),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(13, "mat-tab-group", 10),
-                  e.NdJ("selectedIndexChange", function (v) {
-                    return (d.TabIndex = v);
+                  e.NdJ("selectedIndexChange", function (A) {
+                    return (_.TabIndex = A);
                   }),
                   e.TgZ(14, "mat-tab", 11),
                   e.TgZ(15, "div", 12),
@@ -5282,10 +3692,10 @@
                   e._uU(19, "Activity Type"),
                   e.qZA(),
                   e.TgZ(20, "mat-select", 15),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.ActivityType = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.ActivityType = A);
                   }),
-                  e.YNc(21, on, 2, 2, "mat-option", 16),
+                  e.YNc(21, rt, 2, 2, "mat-option", 16),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
@@ -5295,10 +3705,10 @@
                   e._uU(25, "Move To Stage"),
                   e.qZA(),
                   e.TgZ(26, "mat-select", 17),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.MoveTostage = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.MoveTostage = A);
                   }),
-                  e.YNc(27, rn, 2, 2, "mat-option", 16),
+                  e.YNc(27, C, 2, 2, "mat-option", 16),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
@@ -5317,8 +3727,8 @@
                   e._uU(37, "Form Date Time"),
                   e.qZA(),
                   e.TgZ(38, "input", 22),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.actionStartDate = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.actionStartDate = A);
                   }),
                   e.qZA(),
                   e._UZ(39, "mat-datepicker-toggle", 23),
@@ -5338,8 +3748,8 @@
                   e._uU(49, "To Date Time"),
                   e.qZA(),
                   e.TgZ(50, "input", 27),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.actionEndDate = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.actionEndDate = A);
                   }),
                   e.qZA(),
                   e._UZ(51, "mat-datepicker-toggle", 23),
@@ -5358,10 +3768,10 @@
                   e._uU(60, "Coustomer Contact Name"),
                   e.qZA(),
                   e.TgZ(61, "mat-select", 31),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.CoustomerContactName = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.CoustomerContactName = A);
                   }),
-                  e.YNc(62, ia, 2, 2, "mat-option", 16),
+                  e.YNc(62, Ka, 2, 2, "mat-option", 16),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
@@ -5376,14 +3786,14 @@
                   e._uU(69, "Activity By"),
                   e.qZA(),
                   e.TgZ(70, "mat-select", 33),
-                  e.NdJ("ngModelChange", function (v) {
-                    return (d.ActivityBy = v);
+                  e.NdJ("ngModelChange", function (A) {
+                    return (_.ActivityBy = A);
                   }),
-                  e.YNc(71, sa, 2, 2, "mat-option", 16),
+                  e.YNc(71, en, 2, 2, "mat-option", 16),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
-                  e.YNc(72, dn, 17, 1, "div", 34),
+                  e.YNc(72, vt, 17, 1, "div", 34),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(73, "mat-tab", 35),
@@ -5391,7 +3801,7 @@
                   e.TgZ(75, "div", 37),
                   e.TgZ(76, "div", 38),
                   e.TgZ(77, "mat-radio-group", 39),
-                  e.YNc(78, ln, 2, 3, "mat-radio-button", 40),
+                  e.YNc(78, I, 2, 3, "mat-radio-button", 40),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(79, "div", 41),
@@ -5413,11 +3823,11 @@
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(88, "div", 37),
-                  e.YNc(89, oa, 2, 0, "button", 44),
-                  e.YNc(90, ze, 2, 0, "button", 45),
+                  e.YNc(89, Fe, 2, 0, "button", 44),
+                  e.YNc(90, tn, 2, 0, "button", 45),
                   e.TgZ(91, "button", 46),
                   e.NdJ("click", function () {
-                    return d.NextAction();
+                    return _.NextAction();
                   }),
                   e._uU(92, " Next Action "),
                   e.qZA(),
@@ -5426,98 +3836,98 @@
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(93, "mat-step"),
-                  e.YNc(94, ra, 1, 5, "app-next-action", 2),
+                  e.YNc(94, X, 1, 5, "app-next-action", 2),
                   e.qZA(),
                   e.qZA();
               }
               if (2 & a) {
-                const g = e.MAs(41),
-                  T = e.MAs(53);
+                const M = e.MAs(41),
+                  g = e.MAs(53);
                 e.xp6(3),
-                  e.Q6J("ngIf", d.closeAction),
+                  e.Q6J("ngIf", _.closeAction),
                   e.xp6(8),
-                  e.Q6J("ngModel", d.SelectActionType),
+                  e.Q6J("ngModel", _.SelectActionType),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.SelectActionData),
+                  e.Q6J("ngForOf", _.SelectActionData),
                   e.xp6(1),
-                  e.Q6J("selectedIndex", d.TabIndex),
+                  e.Q6J("selectedIndex", _.TabIndex),
                   e.xp6(7),
-                  e.Q6J("ngModel", d.ActivityType),
+                  e.Q6J("ngModel", _.ActivityType),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.activitydata),
+                  e.Q6J("ngForOf", _.activitydata),
                   e.xp6(5),
-                  e.Q6J("ngModel", d.MoveTostage),
+                  e.Q6J("ngModel", _.MoveTostage),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.moveStageData),
+                  e.Q6J("ngForOf", _.moveStageData),
                   e.xp6(11),
-                  e.Q6J("matDatepicker", g)("ngModel", d.actionStartDate),
+                  e.Q6J("matDatepicker", M)("ngModel", _.actionStartDate),
+                  e.xp6(1),
+                  e.Q6J("for", M),
+                  e.xp6(11),
+                  e.Q6J("matDatepicker", g)("ngModel", _.actionEndDate),
                   e.xp6(1),
                   e.Q6J("for", g),
-                  e.xp6(11),
-                  e.Q6J("matDatepicker", T)("ngModel", d.actionEndDate),
-                  e.xp6(1),
-                  e.Q6J("for", T),
                   e.xp6(10),
-                  e.Q6J("ngModel", d.CoustomerContactName),
+                  e.Q6J("ngModel", _.CoustomerContactName),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.contactlistData),
+                  e.Q6J("ngForOf", _.contactlistData),
                   e.xp6(8),
-                  e.Q6J("ngModel", d.ActivityBy),
+                  e.Q6J("ngModel", _.ActivityBy),
                   e.xp6(1),
-                  e.Q6J("ngForOf", d.activityByData),
+                  e.Q6J("ngForOf", _.activityByData),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.travel),
+                  e.Q6J("ngIf", _.travel),
                   e.xp6(6),
-                  e.Q6J("ngForOf", d.notContactableData),
+                  e.Q6J("ngForOf", _.notContactableData),
                   e.xp6(11),
-                  e.Q6J("ngIf", d.CloseLeadButton),
+                  e.Q6J("ngIf", _.CloseLeadButton),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ConvertToLeadButton),
+                  e.Q6J("ngIf", _.ConvertToLeadButton),
                   e.xp6(4),
-                  e.Q6J("ngIf", d.nextAction);
+                  e.Q6J("ngIf", _.nextAction);
               }
             },
             directives: [
-              be.Vq,
-              be.C0,
+              V.Vq,
+              V.C0,
               m.O5,
-              A._Y,
-              A.JL,
-              A.F,
-              Le.VQ,
-              A.JJ,
-              A.On,
+              k._Y,
+              k.JL,
+              k.F,
+              Se.VQ,
+              k.JJ,
+              k.On,
               m.sg,
-              le.SP,
-              le.uX,
-              j.KE,
-              j.hX,
-              te.gD,
-              oe.Nt,
-              A.Fj,
-              B.hl,
-              B.nW,
-              j.R9,
-              B.Mq,
-              K.oG,
-              be.Ic,
-              N.lW,
-              Xa,
-              Le.U0,
-              E.ey,
-              be.fd,
-              an,
+              ue.SP,
+              ue.uX,
+              b.KE,
+              b.hX,
+              z.gD,
+              q.Nt,
+              k.Fj,
+              H.hl,
+              H.nW,
+              b.R9,
+              H.Mq,
+              Me.oG,
+              V.Ic,
+              K.lW,
+              Kt,
+              Se.U0,
+              P.ey,
+              V.fd,
+              ot,
             ],
             styles: [
               "mat-radio-button[_ngcontent-%COMP%]{margin:0 10px}.input-width[_ngcontent-%COMP%]{width:100%}.mat-dialog-content[_ngcontent-%COMP%]{display:block;margin:0!important;padding:0!important;height:100%!important;width:100%!important}.form-contain[_ngcontent-%COMP%]{width:100%}textarea[_ngcontent-%COMP%]{height:60px;resize:none}.heading[_ngcontent-%COMP%]{text-align:center;background-color:#dcebdc;color:#000;position:sticky;top:0;width:100%;padding:0!important;margin:0!important}.contain[_ngcontent-%COMP%]{margin:5px;min-height:480px}.not-Connect-Checkbox[_ngcontent-%COMP%]{display:flex;justify-content:space-around;margin:15px 0}.not-Connect-Checkbox[_ngcontent-%COMP%]   mat-radio-group[_ngcontent-%COMP%]   mat-radio-button[_ngcontent-%COMP%]{margin:5px 0}.SelectActionType-Checkbox[_ngcontent-%COMP%]{display:flex;justify-content:space-around;margin:10px 0}button[_ngcontent-%COMP%]{width:100%;height:45px;margin:5px;color:#fff}.CloseConvertButton[_ngcontent-%COMP%]{background-color:red}.nextActionButton[_ngcontent-%COMP%]{background-color:green}.mat-tab-group[_ngcontent-%COMP%]{max-height:100vh!important}  .mat-horizontal-stepper-header{display:none!important}  .mat-horizontal-content-container{padding:0!important}.connent_And_not_contactable[_ngcontent-%COMP%]{overflow-x:hidden}",
             ],
           })),
-          s
+          i
         );
       })();
-      var wt = f(3737);
-      function Ge(s, c) {
-        1 & s &&
+      var ie = f(3737);
+      function B(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 13),
           e.TgZ(1, "mat-form-field", 3),
           e.TgZ(2, "mat-label"),
@@ -5527,8 +3937,8 @@
           e.qZA(),
           e.qZA());
       }
-      function dt(s, c) {
-        1 & s &&
+      function oe(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 2),
           e.TgZ(1, "mat-form-field", 3),
           e.TgZ(2, "mat-label"),
@@ -5538,8 +3948,8 @@
           e.qZA(),
           e.qZA());
       }
-      function _a(s, c) {
-        1 & s &&
+      function pe(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 2),
           e.TgZ(1, "mat-form-field", 3),
           e.TgZ(2, "mat-label"),
@@ -5549,11 +3959,11 @@
           e.qZA(),
           e.qZA());
       }
-      let Be = (() => {
-          class s {
+      let De = (() => {
+          class i {
             constructor(a) {
               (this.data = a),
-                (this.openDate = H().format("YYYY-MM-DD")),
+                (this.openDate = j().format("YYYY-MM-DD")),
                 (this.EntityName = this.data.EntityName);
             }
             get CostOfsupply() {
@@ -5574,17 +3984,17 @@
             ngOnInit() {}
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(e.Y36(U.WI));
+            (i.ɵfac = function (a) {
+              return new (a || i)(e.Y36(u.WI));
             }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
+            (i.ɵcmp = e.Xpm({
+              type: i,
               selectors: [["app-additional-details"]],
               features: [
                 e._Bn([
-                  { provide: E.Ad, useValue: "en-GB" },
-                  { provide: E._A, useClass: et, deps: [E.Ad, ve] },
-                  { provide: E.sG, useValue: Je },
+                  { provide: P.Ad, useValue: "en-GB" },
+                  { provide: P._A, useClass: Ke, deps: [P.Ad, je] },
+                  { provide: P.sG, useValue: Te },
                 ]),
               ],
               decls: 53,
@@ -5632,7 +4042,7 @@
                 ["matInput", "", "name", "ChallanNumber"],
                 ["matInput", "", "name", "SOID"],
               ],
-              template: function (a, d) {
+              template: function (a, _) {
                 if (
                   (1 & a &&
                     (e.TgZ(0, "div"),
@@ -5657,8 +4067,8 @@
                     e._uU(14, "Open Date"),
                     e.qZA(),
                     e.TgZ(15, "input", 5),
-                    e.NdJ("ngModelChange", function (T) {
-                      return (d.openDate = T);
+                    e.NdJ("ngModelChange", function (g) {
+                      return (_.openDate = g);
                     }),
                     e.qZA(),
                     e._UZ(16, "mat-datepicker-toggle", 6),
@@ -5717,64 +4127,64 @@
                     e._UZ(49, "input", 10),
                     e.qZA(),
                     e.qZA(),
-                    e.YNc(50, Ge, 5, 0, "div", 11),
-                    e.YNc(51, dt, 5, 0, "div", 12),
-                    e.YNc(52, _a, 5, 0, "div", 12),
+                    e.YNc(50, B, 5, 0, "div", 11),
+                    e.YNc(51, oe, 5, 0, "div", 12),
+                    e.YNc(52, pe, 5, 0, "div", 12),
                     e.qZA(),
                     e.qZA(),
                     e.qZA()),
                   2 & a)
                 ) {
-                  const g = e.MAs(18);
+                  const M = e.MAs(18);
                   e.xp6(15),
-                    e.Q6J("matDatepicker", g)("ngModel", d.openDate),
+                    e.Q6J("matDatepicker", M)("ngModel", _.openDate),
                     e.xp6(1),
-                    e.Q6J("for", g),
+                    e.Q6J("for", M),
                     e.xp6(34),
-                    e.Q6J("ngIf", d.CostOfsupply),
+                    e.Q6J("ngIf", _.CostOfsupply),
                     e.xp6(1),
-                    e.Q6J("ngIf", d.ChallanSO),
+                    e.Q6J("ngIf", _.ChallanSO),
                     e.xp6(1),
-                    e.Q6J("ngIf", d.ChallanSO);
+                    e.Q6J("ngIf", _.ChallanSO);
                 }
               },
               directives: [
-                U.uh,
-                A._Y,
-                A.JL,
-                A.F,
-                j.KE,
-                j.hX,
-                oe.Nt,
-                B.hl,
-                A.Fj,
-                A.JJ,
-                A.On,
-                B.nW,
-                j.R9,
-                B.Mq,
-                te.gD,
-                E.ey,
+                u.uh,
+                k._Y,
+                k.JL,
+                k.F,
+                b.KE,
+                b.hX,
+                q.Nt,
+                H.hl,
+                k.Fj,
+                k.JJ,
+                k.On,
+                H.nW,
+                b.R9,
+                H.Mq,
+                z.gD,
+                P.ey,
                 m.O5,
               ],
               styles: [
                 ".example-full-width[_ngcontent-%COMP%]{width:95%}.form-container[_ngcontent-%COMP%]{min-height:400px;width:400px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
               ],
             })),
-            s
+            i
           );
         })(),
-        Me = (() => {
-          class s {
+        an = (() => {
+          class i {
             constructor() {}
             ngOnInit() {}
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)();
+            (i.ɵfac = function (a) {
+              return new (a || i)();
             }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
+            (i.ɵcmp = e.Xpm({
+              type: i,
               selectors: [["app-delivary-billing-address"]],
               decls: 108,
               vars: 0,
@@ -5801,7 +4211,7 @@
                 ["matInput", "", "name", "PAN"],
                 ["matInput", "", "name", "  BillingAddress"],
               ],
-              template: function (a, d) {
+              template: function (a, _) {
                 1 & a &&
                   (e.TgZ(0, "div"),
                   e.TgZ(1, "div", 0),
@@ -5979,26 +4389,63 @@
                   e.qZA(),
                   e.qZA());
               },
-              directives: [U.uh, A._Y, A.JL, A.F, j.KE, j.hX, oe.Nt],
+              directives: [u.uh, k._Y, k.JL, k.F, b.KE, b.hX, q.Nt],
               styles: [
                 ".example-full-width[_ngcontent-%COMP%]{width:100%}.contact_form[_ngcontent-%COMP%]{min-height:400px;width:300px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
               ],
             })),
-            s
+            i
+          );
+        })(),
+        At = (() => {
+          class i {
+            constructor(a) {
+              (this.http = a),
+                (this.listCommanDataURL =
+                  "https://apitest.ffherp.co.in/api/FFHAMC/GetSearchDDLValue"),
+                (this.createFormAutoCompleteURL =
+                  "https://apitest.ffherp.co.in/api/Voucher/getAutoCompleteCompanyList"),
+                (this.companyContactListURL =
+                  "https://apitest.ffherp.co.in/api/Voucher/GetCommonContactList"),
+                (this.ApprovalCountUrl =
+                  "https://ffherp.co.in:446/api/Voucher/GetApprovalCount");
+            }
+            createFormAutoComplete(a) {
+              return this.http.post(this.createFormAutoCompleteURL, a);
+            }
+            getCompanyContactList(a) {
+              return this.http.post(this.companyContactListURL, a);
+            }
+            listCommanData(a) {
+              return this.http.post(this.listCommanDataURL, a);
+            }
+            ApprovalCount(a) {
+              return this.http.post(this.ApprovalCountUrl, a);
+            }
+          }
+          return (
+            (i.ɵfac = function (a) {
+              return new (a || i)(e.LFG(ge.eN));
+            }),
+            (i.ɵprov = e.Yz7({
+              token: i,
+              factory: i.ɵfac,
+              providedIn: "root",
+            })),
+            i
           );
         })();
-      var da = f(1079);
-      function un(s, c) {
-        if ((1 & s && (e.TgZ(0, "mat-option", 39), e._uU(1), e.qZA()), 2 & s)) {
+      var ea = f(1079);
+      function Q(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 39), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
-          e.s9C("id", a.companyId),
-            e.Q6J("value", a.companyName),
+          e.Q6J("value", a.companyName),
             e.xp6(1),
             e.hij(" ", a.companyName, " ");
         }
       }
-      function cn(s, c) {
-        1 & s &&
+      function _t(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Source"),
@@ -6008,8 +4455,8 @@
           e.qZA(),
           e.qZA());
       }
-      function pn(s, c) {
-        1 & s &&
+      function nn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Delivary Mode"),
@@ -6019,8 +4466,8 @@
           e.qZA(),
           e.qZA());
       }
-      function hn(s, c) {
-        1 & s &&
+      function ta(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Received Mode"),
@@ -6030,8 +4477,8 @@
           e.qZA(),
           e.qZA());
       }
-      function fn(s, c) {
-        1 & s &&
+      function aa(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Invoice Type"),
@@ -6041,8 +4488,8 @@
           e.qZA(),
           e.qZA());
       }
-      function gn(s, c) {
-        1 & s &&
+      function sn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Complaint for product / Service type"),
@@ -6052,8 +4499,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Mn(s, c) {
-        1 & s &&
+      function on(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Source Detail"),
@@ -6061,8 +4508,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function xt(s, c) {
-        1 & s &&
+      function rn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Source text"),
@@ -6070,8 +4517,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Tn(s, c) {
-        1 & s &&
+      function _n(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Delivary Name"),
@@ -6079,8 +4526,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function la(s, c) {
-        1 & s &&
+      function dn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Transport/Courier Name"),
@@ -6088,8 +4535,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function yn(s, c) {
-        1 & s &&
+      function ln(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "GST Type"),
@@ -6099,8 +4546,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Ln(s, c) {
-        1 & s &&
+      function na(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Select Problem"),
@@ -6110,8 +4557,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Zn(s, c) {
-        1 & s &&
+      function ia(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Allocate To"),
@@ -6119,8 +4566,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Yn(s, c) {
-        1 & s &&
+      function mn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Billed By"),
@@ -6128,8 +4575,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Dn(s, c) {
-        1 & s &&
+      function un(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Entered By"),
@@ -6137,8 +4584,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function kn(s, c) {
-        1 & s &&
+      function cn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Ticket Type"),
@@ -6148,8 +4595,8 @@
           e.qZA(),
           e.qZA());
       }
-      function vn(s, c) {
-        1 & s &&
+      function sa(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Dispatch By"),
@@ -6157,8 +4604,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function An(s, c) {
-        1 & s &&
+      function Je(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Priority"),
@@ -6166,8 +4613,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function bn(s, c) {
-        1 & s &&
+      function oa(i, c) {
+        1 & i &&
           (e.TgZ(0, "div", 41),
           e.TgZ(1, "mat-form-field", 9),
           e.TgZ(2, "mat-label"),
@@ -6177,8 +4624,8 @@
           e.qZA(),
           e.qZA());
       }
-      function wn(s, c) {
-        1 & s &&
+      function pn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "DropDown"),
@@ -6188,61 +4635,61 @@
           e.qZA(),
           e.qZA());
       }
-      function xn(s, c) {
-        if (1 & s) {
+      function hn(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "Exp Closer Date"),
             e.qZA(),
             e.TgZ(3, "input", 42),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().LExpCloserDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().LExpCloserDate = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 44),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.LExpCloserDate)(
+            e.Q6J("matDatepicker", a)("ngModel", _.LExpCloserDate)(
               "min",
-              d.minDate
+              _.minDate
             ),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Cn(s, c) {
-        if (1 & s) {
+      function We(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "Delivary Date"),
             e.qZA(),
             e.TgZ(3, "input", 45),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().DelDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().DelDate = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 46),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.DelDate)("min", d.minDate),
+            e.Q6J("matDatepicker", a)("ngModel", _.DelDate)("min", _.minDate),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Sn(s, c) {
-        1 & s &&
+      function dt(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Problem Type"),
@@ -6252,8 +4699,8 @@
           e.qZA(),
           e.qZA());
       }
-      function qn(s, c) {
-        1 & s &&
+      function ra(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Stage"),
@@ -6263,8 +4710,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Nn(s, c) {
-        1 & s &&
+      function Re(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, " Docket/LR Number"),
@@ -6272,8 +4719,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Ct(s, c) {
-        1 & s &&
+      function he(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "......."),
@@ -6281,8 +4728,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function St(s, c) {
-        1 & s &&
+      function fn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Stage"),
@@ -6290,8 +4737,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function On(s, c) {
-        1 & s &&
+      function gn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Delivar Mode"),
@@ -6299,8 +4746,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function ma(s, c) {
-        1 & s &&
+      function Mn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Customer PO Number"),
@@ -6308,8 +4755,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function ua(s, c) {
-        1 & s &&
+      function Tn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Payment Terms"),
@@ -6317,8 +4764,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Un(s, c) {
-        1 & s &&
+      function yn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Material Invard Type"),
@@ -6326,8 +4773,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Hn(s, c) {
-        1 & s &&
+      function Ln(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Priority"),
@@ -6337,8 +4784,8 @@
           e.qZA(),
           e.qZA());
       }
-      function En(s, c) {
-        1 & s &&
+      function Zn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "PO Number"),
@@ -6346,8 +4793,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Pn(s, c) {
-        1 & s &&
+      function Yn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Stage"),
@@ -6355,8 +4802,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function ca(s, c) {
-        1 & s &&
+      function bt(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, " Probability"),
@@ -6364,8 +4811,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Q(s, c) {
-        1 & s &&
+      function Dn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Delivary By"),
@@ -6375,8 +4822,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Ve(s, c) {
-        1 & s &&
+      function _a(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Warranty Terms"),
@@ -6384,8 +4831,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function $e(s, c) {
-        1 & s &&
+      function kn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Returnable Type"),
@@ -6393,61 +4840,61 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function jn(s, c) {
-        if (1 & s) {
+      function vn(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "Close Before"),
             e.qZA(),
             e.TgZ(3, "input", 47),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().TCloseBefore = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().TCloseBefore = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 48),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.TCloseBefore)(
+            e.Q6J("matDatepicker", a)("ngModel", _.TCloseBefore)(
               "min",
-              d.minDate
+              _.minDate
             ),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function pa(s, c) {
-        if (1 & s) {
+      function An(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "PO Date"),
             e.qZA(),
             e.TgZ(3, "input", 49),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().MPODate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().MPODate = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 50),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.MPODate)("min", d.minDate),
+            e.Q6J("matDatepicker", a)("ngModel", _.MPODate)("min", _.minDate),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function In(s, c) {
-        1 & s &&
+      function bn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Industry Type."),
@@ -6455,8 +4902,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function lt(s, c) {
-        1 & s &&
+      function wn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Status"),
@@ -6464,8 +4911,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Ze(s, c) {
-        1 & s &&
+      function Cn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Delivary Status"),
@@ -6473,8 +4920,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function qt(s, c) {
-        1 & s &&
+      function xn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Material Out Type"),
@@ -6482,8 +4929,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Fn(s, c) {
-        1 & s &&
+      function Sn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Advance Payment"),
@@ -6491,8 +4938,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Te(s, c) {
-        1 & s &&
+      function qn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Purchase Invoice Status"),
@@ -6500,8 +4947,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Jn(s, c) {
-        1 & s &&
+      function Nn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Reminder Periodicity"),
@@ -6509,8 +4956,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Nt(s, c) {
-        1 & s &&
+      function On(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Supplier Invoice Number"),
@@ -6518,8 +4965,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Wn(s, c) {
-        1 & s &&
+      function Un(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Ticket Source"),
@@ -6529,8 +4976,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Rn(s, c) {
-        1 & s &&
+      function Hn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "...."),
@@ -6538,8 +4985,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Qn(s, c) {
-        1 & s &&
+      function En(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Product Service"),
@@ -6547,8 +4994,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function mt(s, c) {
-        1 & s &&
+      function Pn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Billing Status"),
@@ -6556,8 +5003,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Ot(s, c) {
-        1 & s &&
+      function wt(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Returnable"),
@@ -6565,36 +5012,36 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function zn(s, c) {
-        if (1 & s) {
+      function Ct(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "Material EXP Del Date"),
             e.qZA(),
             e.TgZ(3, "input", 51),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().POEXPDelDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().POEXPDelDate = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 52),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.POEXPDelDate)(
+            e.Q6J("matDatepicker", a)("ngModel", _.POEXPDelDate)(
               "min",
-              d.minDate
+              _.minDate
             ),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Gn(s, c) {
-        1 & s &&
+      function jn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Bill Receipt Status"),
@@ -6602,8 +5049,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Bn(s, c) {
-        1 & s &&
+      function da(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Stage"),
@@ -6613,36 +5060,36 @@
           e.qZA(),
           e.qZA());
       }
-      function ha(s, c) {
-        if (1 & s) {
+      function la(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "mat-form-field", 9),
             e.TgZ(1, "mat-label"),
             e._uU(2, "Invoice Date"),
             e.qZA(),
             e.TgZ(3, "input", 53),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().PIInvoiceDate = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().PIInvoiceDate = M);
             }),
             e.qZA(),
             e._UZ(4, "mat-datepicker-toggle", 43),
             e._UZ(5, "mat-datepicker", null, 54),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.MAs(6),
-            d = e.oxw();
+            _ = e.oxw();
           e.xp6(3),
-            e.Q6J("matDatepicker", a)("ngModel", d.PIInvoiceDate)(
+            e.Q6J("matDatepicker", a)("ngModel", _.PIInvoiceDate)(
               "min",
-              d.minDate
+              _.minDate
             ),
             e.xp6(1),
             e.Q6J("for", a);
         }
       }
-      function Vn(s, c) {
-        1 & s &&
+      function In(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Text 1"),
@@ -6650,8 +5097,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function $n(s, c) {
-        1 & s &&
+      function Fn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Stage"),
@@ -6659,8 +5106,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function Kn(s, c) {
-        1 & s &&
+      function Jn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Material Del Status"),
@@ -6670,8 +5117,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Xn(s, c) {
-        1 & s &&
+      function Wn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Material Receipt Status"),
@@ -6679,8 +5126,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function ei(s, c) {
-        1 & s &&
+      function ma(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Text 2"),
@@ -6688,8 +5135,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function fa(s, c) {
-        1 & s &&
+      function W(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Billing Status"),
@@ -6697,8 +5144,8 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      function ti(s, c) {
-        1 & s &&
+      function Qe(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Purchase Invoice Status"),
@@ -6708,8 +5155,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Pe(s, c) {
-        1 & s &&
+      function ze(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Payment Receipt Status"),
@@ -6719,8 +5166,8 @@
           e.qZA(),
           e.qZA());
       }
-      function ai(s, c) {
-        1 & s &&
+      function Rn(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Product"),
@@ -6730,8 +5177,8 @@
           e.qZA(),
           e.qZA());
       }
-      function Ut(s, c) {
-        1 & s &&
+      function ua(i, c) {
+        1 & i &&
           (e.TgZ(0, "mat-form-field", 9),
           e.TgZ(1, "mat-label"),
           e._uU(2, "Value"),
@@ -6739,26 +5186,26 @@
           e._UZ(3, "input", 40),
           e.qZA());
       }
-      let ni = (() => {
-        class s {
-          constructor(a, d, g, T) {
+      let Qn = (() => {
+        class i {
+          constructor(a, _, M, g) {
             (this.global = a),
-              (this.commanservice = d),
-              (this.data = g),
-              (this.dialog = T),
+              (this.commanservice = _),
+              (this.data = M),
+              (this.dialog = g),
               (this.Company = ""),
-              (this.a = H()),
-              (this.minDate = this.a.toISOString()),
-              (this.LExpCloserDate = this.a.toISOString()),
-              (this.DelDate = this.a.toISOString()),
-              (this.MPODate = this.a.toISOString()),
-              (this.PPODate = this.a.toISOString()),
-              (this.PIPODate = this.a.toISOString()),
-              (this.TCloseBefore = this.a.toISOString()),
-              (this.POEXPDelDate = this.a.toISOString()),
-              (this.PIInvoiceDate = this.a.toISOString()),
-              (this.CommanData = g.commanData),
-              console.log(g.commanData),
+              (this.a = j()),
+              (this.minDate = this.a),
+              (this.LExpCloserDate = this.a),
+              (this.DelDate = this.a),
+              (this.MPODate = this.a),
+              (this.PPODate = this.a),
+              (this.PIPODate = this.a),
+              (this.TCloseBefore = this.a),
+              (this.POEXPDelDate = this.a),
+              (this.PIInvoiceDate = this.a),
+              (this.CommanData = M.commanData),
+              console.log(M.commanData),
               (this.EntityName = this.data.EntityName);
           }
           get Source() {
@@ -6837,33 +5284,33 @@
           }
           Autocomplete(a) {
             console.log(a),
+              console.log(this.Company),
               a.length >= 3 &&
                 this.commanservice
                   .createFormAutoComplete({
                     DBName: this.global.LOGGED_IN_USER.DbName,
                     prefixText: a,
                   })
-                  .subscribe((g) => {
-                    (this.autoCompleteData = JSON.parse(g)),
-                      console.log(this.autoCompleteData);
+                  .subscribe((M) => {
+                    (this.autoCompleteData = JSON.parse(M)), console.log();
                   }),
-              this.companyContactList(Ht);
+              this.companyContactList(this.autoCompleteData[0].companyId);
           }
           companyContactList(a) {
             console.log(a),
               this.commanservice
                 .getCompanyContactList({
                   DBNAME: this.global.LOGGED_IN_USER.DbName,
-                  id11: this.Company,
+                  id11: a,
                   password: this.global.LOGGED_IN_USER.encryptPswd,
                 })
-                .subscribe((g) => {
-                  console.log(JSON.parse(g));
+                .subscribe((M) => {
+                  console.log(JSON.parse(M));
                 });
           }
           Detail() {
             this.dialog
-              .open(Be, {
+              .open(De, {
                 position: { right: "0%", top: "10%" },
                 data: { EntityName: this.EntityName },
               })
@@ -6871,22 +5318,27 @@
               .subscribe();
           }
           address() {
-            this.dialog.open(Me, { data: {} }).afterClosed().subscribe();
+            this.dialog.open(an, { data: {} }).afterClosed().subscribe();
           }
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(M.x), e.Y36(p), e.Y36(U.WI), e.Y36(U.uw));
+          (i.ɵfac = function (a) {
+            return new (a || i)(
+              e.Y36(w.x),
+              e.Y36(At),
+              e.Y36(u.WI),
+              e.Y36(u.uw)
+            );
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-create-new"]],
             features: [
               e._Bn([
-                { provide: E.Ad, useValue: "en-GB" },
-                { provide: E._A, useClass: et, deps: [E.Ad, ve] },
-                { provide: E.sG, useValue: Je },
+                { provide: P.Ad, useValue: "en-GB" },
+                { provide: P._A, useClass: Ke, deps: [P.Ad, je] },
+                { provide: P.sG, useValue: Te },
               ]),
             ],
             decls: 189,
@@ -6928,7 +5380,7 @@
                 "ngModelChange",
               ],
               ["auto", "matAutocomplete"],
-              [3, "id", "value", 4, "ngFor", "ngForOf"],
+              [3, "value", 4, "ngFor", "ngForOf"],
               [1, "company_link"],
               [1, "link", 2, "color", "red"],
               [1, "link", 2, "color", "red", 3, "click"],
@@ -6981,7 +5433,7 @@
                 3,
                 "mat-dialog-close",
               ],
-              [3, "id", "value"],
+              [3, "value"],
               ["matInput", ""],
               [1, "col-2"],
               [
@@ -7058,7 +5510,7 @@
               ],
               ["piInvoiceDate", ""],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               if (
                 (1 & a &&
                   (e.TgZ(0, "div"),
@@ -7072,7 +5524,7 @@
                   e.TgZ(6, "h4"),
                   e.TgZ(7, "a", 3),
                   e.NdJ("click", function () {
-                    return d.Detail();
+                    return _.Detail();
                   }),
                   e._uU(8, " Additional Details"),
                   e.qZA(),
@@ -7092,14 +5544,14 @@
                   e._uU(18, "Company"),
                   e.qZA(),
                   e.TgZ(19, "input", 10),
-                  e.NdJ("ngModelChange", function (T) {
-                    return (d.Company = T);
-                  })("ngModelChange", function (T) {
-                    return d.Autocomplete(T);
+                  e.NdJ("ngModelChange", function (g) {
+                    return (_.Company = g);
+                  })("ngModelChange", function (g) {
+                    return _.Autocomplete(g);
                   }),
                   e.qZA(),
                   e.TgZ(20, "mat-autocomplete", null, 11),
-                  e.YNc(22, un, 2, 3, "mat-option", 12),
+                  e.YNc(22, Q, 2, 2, "mat-option", 12),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(23, "li", 13),
@@ -7110,7 +5562,7 @@
                   e.TgZ(26, "li", 13),
                   e.TgZ(27, "a", 15),
                   e.NdJ("click", function () {
-                    return d.address();
+                    return _.address();
                   }),
                   e._uU(28, " Address"),
                   e.qZA(),
@@ -7217,104 +5669,104 @@
                   e.TgZ(90, "div"),
                   e.TgZ(91, "div", 28),
                   e.TgZ(92, "div", 29),
-                  e.YNc(93, cn, 5, 0, "mat-form-field", 30),
-                  e.YNc(94, pn, 5, 0, "mat-form-field", 30),
-                  e.YNc(95, hn, 5, 0, "mat-form-field", 30),
-                  e.YNc(96, fn, 5, 0, "mat-form-field", 30),
-                  e.YNc(97, gn, 5, 0, "mat-form-field", 30),
+                  e.YNc(93, _t, 5, 0, "mat-form-field", 30),
+                  e.YNc(94, nn, 5, 0, "mat-form-field", 30),
+                  e.YNc(95, ta, 5, 0, "mat-form-field", 30),
+                  e.YNc(96, aa, 5, 0, "mat-form-field", 30),
+                  e.YNc(97, sn, 5, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.TgZ(98, "div", 29),
-                  e.YNc(99, Mn, 4, 0, "mat-form-field", 30),
-                  e.YNc(100, xt, 4, 0, "mat-form-field", 30),
-                  e.YNc(101, Tn, 4, 0, "mat-form-field", 30),
-                  e.YNc(102, la, 4, 0, "mat-form-field", 30),
-                  e.YNc(103, yn, 5, 0, "mat-form-field", 30),
-                  e.YNc(104, Ln, 5, 0, "mat-form-field", 30),
+                  e.YNc(99, on, 4, 0, "mat-form-field", 30),
+                  e.YNc(100, rn, 4, 0, "mat-form-field", 30),
+                  e.YNc(101, _n, 4, 0, "mat-form-field", 30),
+                  e.YNc(102, dn, 4, 0, "mat-form-field", 30),
+                  e.YNc(103, ln, 5, 0, "mat-form-field", 30),
+                  e.YNc(104, na, 5, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(105, "div", 28),
                   e.TgZ(106, "div", 6),
-                  e.YNc(107, Zn, 4, 0, "mat-form-field", 30),
-                  e.YNc(108, Yn, 4, 0, "mat-form-field", 30),
-                  e.YNc(109, Dn, 4, 0, "mat-form-field", 30),
-                  e.YNc(110, kn, 5, 0, "mat-form-field", 30),
-                  e.YNc(111, vn, 4, 0, "mat-form-field", 30),
-                  e.YNc(112, An, 4, 0, "mat-form-field", 30),
+                  e.YNc(107, ia, 4, 0, "mat-form-field", 30),
+                  e.YNc(108, mn, 4, 0, "mat-form-field", 30),
+                  e.YNc(109, un, 4, 0, "mat-form-field", 30),
+                  e.YNc(110, cn, 5, 0, "mat-form-field", 30),
+                  e.YNc(111, sa, 4, 0, "mat-form-field", 30),
+                  e.YNc(112, Je, 4, 0, "mat-form-field", 30),
                   e.qZA(),
-                  e.YNc(113, bn, 5, 0, "div", 31),
+                  e.YNc(113, oa, 5, 0, "div", 31),
                   e.TgZ(114, "div", 32),
-                  e.YNc(115, wn, 5, 0, "mat-form-field", 30),
-                  e.YNc(116, xn, 7, 4, "mat-form-field", 30),
-                  e.YNc(117, Cn, 7, 4, "mat-form-field", 30),
-                  e.YNc(118, Sn, 5, 0, "mat-form-field", 30),
-                  e.YNc(119, qn, 5, 0, "mat-form-field", 30),
-                  e.YNc(120, Nn, 4, 0, "mat-form-field", 30),
+                  e.YNc(115, pn, 5, 0, "mat-form-field", 30),
+                  e.YNc(116, hn, 7, 4, "mat-form-field", 30),
+                  e.YNc(117, We, 7, 4, "mat-form-field", 30),
+                  e.YNc(118, dt, 5, 0, "mat-form-field", 30),
+                  e.YNc(119, ra, 5, 0, "mat-form-field", 30),
+                  e.YNc(120, Re, 4, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(121, "div", 28),
                   e.TgZ(122, "div", 29),
-                  e.YNc(123, Ct, 4, 0, "mat-form-field", 30),
-                  e.YNc(124, St, 4, 0, "mat-form-field", 30),
-                  e.YNc(125, On, 4, 0, "mat-form-field", 30),
-                  e.YNc(126, ma, 4, 0, "mat-form-field", 30),
-                  e.YNc(127, ua, 4, 0, "mat-form-field", 30),
-                  e.YNc(128, Un, 4, 0, "mat-form-field", 30),
-                  e.YNc(129, Hn, 5, 0, "mat-form-field", 30),
-                  e.YNc(130, En, 4, 0, "mat-form-field", 30),
+                  e.YNc(123, he, 4, 0, "mat-form-field", 30),
+                  e.YNc(124, fn, 4, 0, "mat-form-field", 30),
+                  e.YNc(125, gn, 4, 0, "mat-form-field", 30),
+                  e.YNc(126, Mn, 4, 0, "mat-form-field", 30),
+                  e.YNc(127, Tn, 4, 0, "mat-form-field", 30),
+                  e.YNc(128, yn, 4, 0, "mat-form-field", 30),
+                  e.YNc(129, Ln, 5, 0, "mat-form-field", 30),
+                  e.YNc(130, Zn, 4, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.TgZ(131, "div", 29),
-                  e.YNc(132, Pn, 4, 0, "mat-form-field", 30),
-                  e.YNc(133, ca, 4, 0, "mat-form-field", 30),
-                  e.YNc(134, Q, 5, 0, "mat-form-field", 30),
-                  e.YNc(135, Ve, 4, 0, "mat-form-field", 30),
-                  e.YNc(136, $e, 4, 0, "mat-form-field", 30),
-                  e.YNc(137, jn, 7, 4, "mat-form-field", 30),
-                  e.YNc(138, pa, 7, 4, "mat-form-field", 30),
+                  e.YNc(132, Yn, 4, 0, "mat-form-field", 30),
+                  e.YNc(133, bt, 4, 0, "mat-form-field", 30),
+                  e.YNc(134, Dn, 5, 0, "mat-form-field", 30),
+                  e.YNc(135, _a, 4, 0, "mat-form-field", 30),
+                  e.YNc(136, kn, 4, 0, "mat-form-field", 30),
+                  e.YNc(137, vn, 7, 4, "mat-form-field", 30),
+                  e.YNc(138, An, 7, 4, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(139, "div", 28),
                   e.TgZ(140, "div", 29),
-                  e.YNc(141, In, 4, 0, "mat-form-field", 30),
-                  e.YNc(142, lt, 4, 0, "mat-form-field", 30),
-                  e.YNc(143, Ze, 4, 0, "mat-form-field", 30),
-                  e.YNc(144, qt, 4, 0, "mat-form-field", 30),
-                  e.YNc(145, Fn, 4, 0, "mat-form-field", 30),
-                  e.YNc(146, Te, 4, 0, "mat-form-field", 30),
-                  e.YNc(147, Jn, 4, 0, "mat-form-field", 30),
-                  e.YNc(148, Nt, 4, 0, "mat-form-field", 30),
-                  e.YNc(149, Wn, 5, 0, "mat-form-field", 30),
+                  e.YNc(141, bn, 4, 0, "mat-form-field", 30),
+                  e.YNc(142, wn, 4, 0, "mat-form-field", 30),
+                  e.YNc(143, Cn, 4, 0, "mat-form-field", 30),
+                  e.YNc(144, xn, 4, 0, "mat-form-field", 30),
+                  e.YNc(145, Sn, 4, 0, "mat-form-field", 30),
+                  e.YNc(146, qn, 4, 0, "mat-form-field", 30),
+                  e.YNc(147, Nn, 4, 0, "mat-form-field", 30),
+                  e.YNc(148, On, 4, 0, "mat-form-field", 30),
+                  e.YNc(149, Un, 5, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.TgZ(150, "div", 29),
-                  e.YNc(151, Rn, 4, 0, "mat-form-field", 30),
-                  e.YNc(152, Qn, 4, 0, "mat-form-field", 30),
-                  e.YNc(153, mt, 4, 0, "mat-form-field", 30),
-                  e.YNc(154, Ot, 4, 0, "mat-form-field", 30),
-                  e.YNc(155, zn, 7, 4, "mat-form-field", 30),
-                  e.YNc(156, Gn, 4, 0, "mat-form-field", 30),
-                  e.YNc(157, Bn, 5, 0, "mat-form-field", 30),
-                  e.YNc(158, ha, 7, 4, "mat-form-field", 30),
+                  e.YNc(151, Hn, 4, 0, "mat-form-field", 30),
+                  e.YNc(152, En, 4, 0, "mat-form-field", 30),
+                  e.YNc(153, Pn, 4, 0, "mat-form-field", 30),
+                  e.YNc(154, wt, 4, 0, "mat-form-field", 30),
+                  e.YNc(155, Ct, 7, 4, "mat-form-field", 30),
+                  e.YNc(156, jn, 4, 0, "mat-form-field", 30),
+                  e.YNc(157, da, 5, 0, "mat-form-field", 30),
+                  e.YNc(158, la, 7, 4, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(159, "div", 28),
                   e.TgZ(160, "div", 29),
-                  e.YNc(161, Vn, 4, 0, "mat-form-field", 30),
-                  e.YNc(162, $n, 4, 0, "mat-form-field", 30),
-                  e.YNc(163, Kn, 5, 0, "mat-form-field", 30),
-                  e.YNc(164, Xn, 4, 0, "mat-form-field", 30),
+                  e.YNc(161, In, 4, 0, "mat-form-field", 30),
+                  e.YNc(162, Fn, 4, 0, "mat-form-field", 30),
+                  e.YNc(163, Jn, 5, 0, "mat-form-field", 30),
+                  e.YNc(164, Wn, 4, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.TgZ(165, "div", 29),
-                  e.YNc(166, ei, 4, 0, "mat-form-field", 30),
-                  e.YNc(167, fa, 4, 0, "mat-form-field", 30),
-                  e.YNc(168, ti, 5, 0, "mat-form-field", 30),
-                  e.YNc(169, Pe, 5, 0, "mat-form-field", 30),
+                  e.YNc(166, ma, 4, 0, "mat-form-field", 30),
+                  e.YNc(167, W, 4, 0, "mat-form-field", 30),
+                  e.YNc(168, Qe, 5, 0, "mat-form-field", 30),
+                  e.YNc(169, ze, 5, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(170, "div", 28),
                   e.TgZ(171, "div", 29),
-                  e.YNc(172, ai, 5, 0, "mat-form-field", 30),
+                  e.YNc(172, Rn, 5, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.TgZ(173, "div", 29),
-                  e.YNc(174, Ut, 4, 0, "mat-form-field", 30),
+                  e.YNc(174, ua, 4, 0, "mat-form-field", 30),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
@@ -7348,188 +5800,185 @@
                   e.qZA()),
                 2 & a)
               ) {
-                const g = e.MAs(21);
+                const M = e.MAs(21);
                 e.xp6(19),
-                  e.Q6J("ngModel", d.Company)("matAutocomplete", g),
+                  e.Q6J("ngModel", _.Company)("matAutocomplete", M),
                   e.xp6(3),
-                  e.Q6J("ngForOf", d.autoCompleteData),
+                  e.Q6J("ngForOf", _.autoCompleteData),
                   e.xp6(71),
-                  e.Q6J("ngIf", d.Source),
+                  e.Q6J("ngIf", _.Source),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.DelivaryMode),
+                  e.Q6J("ngIf", _.DelivaryMode),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.paymentpayable),
+                  e.Q6J("ngIf", _.paymentpayable),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospectlead),
+                  e.Q6J("ngIf", _.prospectlead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.DelivaryName),
+                  e.Q6J("ngIf", _.DelivaryName),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.payment),
+                  e.Q6J("ngIf", _.payment),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.payment),
+                  e.Q6J("ngIf", _.payment),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.pi),
+                  e.Q6J("ngIf", _.pi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.DispatchBy),
+                  e.Q6J("ngIf", _.DispatchBy),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.prospectlead),
+                  e.Q6J("ngIf", _.prospectlead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.lead),
+                  e.Q6J("ngIf", _.lead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Stage),
+                  e.Q6J("ngIf", _.Stage),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.Docket),
+                  e.Q6J("ngIf", _.Docket),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.lead),
+                  e.Q6J("ngIf", _.lead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mo),
+                  e.Q6J("ngIf", _.mo),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.po),
+                  e.Q6J("ngIf", _.po),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.PONumber),
+                  e.Q6J("ngIf", _.PONumber),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.lead),
+                  e.Q6J("ngIf", _.lead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.po),
+                  e.Q6J("ngIf", _.po),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.PODate),
+                  e.Q6J("ngIf", _.PODate),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.lead),
+                  e.Q6J("ngIf", _.lead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mo),
+                  e.Q6J("ngIf", _.mo),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.po),
+                  e.Q6J("ngIf", _.po),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.payment),
+                  e.Q6J("ngIf", _.payment),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.pi),
+                  e.Q6J("ngIf", _.pi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.lead),
+                  e.Q6J("ngIf", _.lead),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.so),
+                  e.Q6J("ngIf", _.so),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mo),
+                  e.Q6J("ngIf", _.mo),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.po),
+                  e.Q6J("ngIf", _.po),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mi),
+                  e.Q6J("ngIf", _.mi),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.ticket),
+                  e.Q6J("ngIf", _.ticket),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.paymentpayable),
+                  e.Q6J("ngIf", _.paymentpayable),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mo),
+                  e.Q6J("ngIf", _.mo),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.payment),
+                  e.Q6J("ngIf", _.payment),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.MaterialReceiptStatus),
+                  e.Q6J("ngIf", _.MaterialReceiptStatus),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.mo),
+                  e.Q6J("ngIf", _.mo),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.po),
+                  e.Q6J("ngIf", _.po),
                   e.xp6(1),
-                  e.Q6J("ngIf", d.paymentpayable),
+                  e.Q6J("ngIf", _.paymentpayable),
                   e.xp6(3),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(2),
-                  e.Q6J("ngIf", d.prospect),
+                  e.Q6J("ngIf", _.prospect),
                   e.xp6(13),
                   e.Q6J("mat-dialog-close", !0);
               }
             },
             directives: [
-              U.uh,
-              A._Y,
-              A.JL,
-              A.F,
-              j.KE,
-              j.hX,
-              oe.Nt,
-              A.Fj,
-              da.ZL,
-              A.wO,
-              A.nD,
-              A.Q7,
-              A.JJ,
-              A.On,
-              da.XC,
+              u.uh,
+              k._Y,
+              k.JL,
+              k.F,
+              b.KE,
+              b.hX,
+              q.Nt,
+              k.Fj,
+              ea.ZL,
+              k.wO,
+              k.nD,
+              k.Q7,
+              k.JJ,
+              k.On,
+              ea.XC,
               m.sg,
-              te.gD,
-              K.oG,
-              E.ey,
+              z.gD,
+              Me.oG,
+              P.ey,
               m.O5,
-              N.lW,
-              U.ZT,
-              B.hl,
-              B.nW,
-              j.R9,
-              B.Mq,
+              K.lW,
+              u.ZT,
+              H.hl,
+              H.nW,
+              b.R9,
+              H.Mq,
             ],
             styles: [
               ".contact_form[_ngcontent-%COMP%]{min-height:400px;margin:0 6px;padding:10px}.full-width[_ngcontent-%COMP%]{width:100%}li[_ngcontent-%COMP%]{text-decoration:none;display:inline;padding-left:10px;cursor:pointer}h4[_ngcontent-%COMP%]{text-align:center;color:#87cefa;margin:0!important}textarea[_ngcontent-%COMP%]{height:330px;resize:none}.Formheader[_ngcontent-%COMP%]{display:flex;justify-content:space-around}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}.link[_ngcontent-%COMP%]{text-decoration:none;cursor:pointer}.formFooter[_ngcontent-%COMP%]{height:48px;padding-top:7px}.mat-stroked-button[_ngcontent-%COMP%]{margin-right:15px!important;box-shadow:0 2px 5px #00000042!important}.mat-checkbox[_ngcontent-%COMP%]{margin-top:16px}",
             ],
           })),
-          s
+          i
         );
       })();
-      function Ht(s) {
-        throw new Error("Function not implemented.");
-      }
-      function ii(s, c) {
+      function ye(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "tr"),
             e.TgZ(1, "td"),
             e._uU(2),
@@ -7553,7 +6002,7 @@
             e._uU(14),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2),
@@ -7572,12 +6021,12 @@
             e.Oqu(a.TaxAmount_val);
         }
       }
-      function si(s, c) {
+      function St(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "table", 27),
+          (1 & i &&
+            (e.TgZ(0, "table", 26),
             e.TgZ(1, "thead"),
-            e.TgZ(2, "tr", 28),
+            e.TgZ(2, "tr", 27),
             e.TgZ(3, "th"),
             e._uU(4, "Product"),
             e.qZA(),
@@ -7602,18 +6051,18 @@
             e.qZA(),
             e.qZA(),
             e.TgZ(17, "tbody"),
-            e.YNc(18, ii, 15, 7, "tr", 29),
+            e.YNc(18, ye, 15, 7, "tr", 28),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
-          const a = e.oxw(2);
+          const a = e.oxw();
           e.xp6(18), e.Q6J("ngForOf", a.ViewProductDetail);
         }
       }
-      function oi(s, c) {
+      function zn(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "tr"),
             e.TgZ(1, "td"),
             e._uU(2),
@@ -7638,7 +6087,7 @@
             e._uU(15),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2),
@@ -7657,255 +6106,12 @@
             e.Oqu(a.TaxAmount_val);
         }
       }
-      function ri(s, c) {
-        if (
-          (1 & s &&
-            (e.TgZ(0, "div", 1),
-            e.TgZ(1, "div", 2),
-            e.TgZ(2, "div", 3),
-            e.TgZ(3, "div", 4),
-            e.TgZ(4, "div", 5),
-            e.TgZ(5, "h2"),
-            e._uU(6),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(7, "div", 6),
-            e.TgZ(8, "div", 3),
-            e.TgZ(9, "div", 4),
-            e.TgZ(10, "div", 7),
-            e.TgZ(11, "div", 8),
-            e.TgZ(12, "span"),
-            e._uU(13),
-            e.qZA(),
-            e._uU(14, " ID : "),
-            e.TgZ(15, "span"),
-            e._uU(16),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(17, "span"),
-            e._uU(18),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(19, "div", 9),
-            e.TgZ(20, "div", 3),
-            e.TgZ(21, "div", 4),
-            e.TgZ(22, "div", 10),
-            e.TgZ(23, "div", 11),
-            e.TgZ(24, "h3"),
-            e._uU(25, "Billing Address :"),
-            e.qZA(),
-            e.TgZ(26, "div"),
-            e.TgZ(27, "span"),
-            e._uU(28),
-            e.qZA(),
-            e.TgZ(29, "span"),
-            e._uU(30),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(31, "div", 10),
-            e.TgZ(32, "div", 11),
-            e.TgZ(33, "div", 12),
-            e.TgZ(34, "div", 4),
-            e.TgZ(35, "div", 13),
-            e.TgZ(36, "span", 14),
-            e._uU(37, "Status : "),
-            e.qZA(),
-            e.TgZ(38, "span", 15),
-            e._uU(39),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(40, "div", 16),
-            e.TgZ(41, "span", 14),
-            e._uU(42, "Stage : "),
-            e.qZA(),
-            e.TgZ(43, "span", 15),
-            e._uU(44),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(45, "div", 4),
-            e.TgZ(46, "div", 13),
-            e.TgZ(47, "span", 14),
-            e._uU(48, "Priority : "),
-            e.qZA(),
-            e.TgZ(49, "span", 15),
-            e._uU(50),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(51, "div", 16),
-            e.TgZ(52, "span", 14),
-            e._uU(53, "Probability : "),
-            e.qZA(),
-            e.TgZ(54, "span", 15),
-            e._uU(55),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(56, "div", 4),
-            e.TgZ(57, "div", 13),
-            e.TgZ(58, "span", 14),
-            e._uU(59, "Source : "),
-            e.qZA(),
-            e.TgZ(60, "span", 15),
-            e._uU(61),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(62, "div", 16),
-            e.TgZ(63, "span", 14),
-            e._uU(64, "Source Ref : "),
-            e.qZA(),
-            e.TgZ(65, "span", 15),
-            e._uU(66),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(67, "div", 17),
-            e.TgZ(68, "div", 18),
-            e.TgZ(69, "div", 19),
-            e.TgZ(70, "span"),
-            e._uU(71, "Next Schedule Action"),
-            e.qZA(),
-            e.TgZ(72, "span"),
-            e._uU(73, "Follow up action on"),
-            e.qZA(),
-            e.TgZ(74, "span", 20),
-            e._uU(75),
-            e.ALo(76, "date"),
-            e.qZA(),
-            e.TgZ(77, "span"),
-            e._uU(78, "To call and ask for demo meeting"),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(79, "div", 21),
-            e.TgZ(80, "div", 3),
-            e.TgZ(81, "div", 4),
-            e.TgZ(82, "div", 22),
-            e.TgZ(83, "mat-tab-group", 23),
-            e.TgZ(84, "mat-tab", 24),
-            e.YNc(85, si, 19, 1, "table", 25),
-            e.qZA(),
-            e.TgZ(86, "mat-tab", 26),
-            e.TgZ(87, "table", 27),
-            e.TgZ(88, "thead"),
-            e.TgZ(89, "tr", 28),
-            e.TgZ(90, "th"),
-            e._uU(91, "Id"),
-            e.qZA(),
-            e.TgZ(92, "th"),
-            e._uU(93, "Sch Id"),
-            e.qZA(),
-            e.TgZ(94, "th"),
-            e._uU(95, "Date"),
-            e.qZA(),
-            e.TgZ(96, "th"),
-            e._uU(97, "Time"),
-            e.qZA(),
-            e.TgZ(98, "th"),
-            e._uU(99, "By"),
-            e.qZA(),
-            e.TgZ(100, "th"),
-            e._uU(101, "Discussions"),
-            e.qZA(),
-            e.TgZ(102, "th"),
-            e._uU(103, "Link"),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(104, "tbody"),
-            e.YNc(105, oi, 16, 10, "tr", 29),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.TgZ(106, "mat-tab", 30),
-            e._UZ(107, "app-chat"),
-            e.qZA(),
-            e.TgZ(108, "mat-tab", 31),
-            e._uU(109, "Content 3"),
-            e.qZA(),
-            e.TgZ(110, "mat-tab", 32),
-            e._uU(111, "Content 3"),
-            e.qZA(),
-            e.TgZ(112, "mat-tab", 33),
-            e._UZ(113, "app-note"),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA(),
-            e.qZA()),
-          2 & s)
-        ) {
-          const a = e.oxw();
-          e.xp6(6),
-            e.Oqu(null == a.entityData ? null : a.entityData.CompanyName),
-            e.xp6(7),
-            e.Oqu(a.EntityNameTitle),
-            e.xp6(3),
-            e.Oqu(a.Entityid),
-            e.xp6(2),
-            e.hij(
-              " Title : ",
-              null == a.entityData ? null : a.entityData.Title,
-              ""
-            ),
-            e.xp6(10),
-            e.Oqu(null == a.entityData ? null : a.entityData.CompanyAddress),
-            e.xp6(2),
-            e.hij(
-              " ",
-              null == a.entityData ? null : a.entityData.CompanyAddress1,
-              ""
-            ),
-            e.xp6(9),
-            e.Oqu(null == a.entityData ? null : a.entityData.BillingStatus),
-            e.xp6(5),
-            e.Oqu(null == a.entityData ? null : a.entityData.Stage),
-            e.xp6(6),
-            e.hij(" ", null == a.entityData ? null : a.entityData.Priority, ""),
-            e.xp6(5),
-            e.Oqu(null == a.entityData ? null : a.entityData.Probability),
-            e.xp6(6),
-            e.Oqu(null == a.entityData ? null : a.entityData.Source),
-            e.xp6(5),
-            e.Oqu(null == a.entityData ? null : a.entityData.Source_Ref),
-            e.xp6(9),
-            e.Oqu(
-              e.xi3(
-                76,
-                15,
-                null == a.entityData ? null : a.entityData.Opendate,
-                "dd MMM YYYY "
-              )
-            ),
-            e.xp6(10),
-            e.Q6J("ngIf", a.ViewProductDetail),
-            e.xp6(20),
-            e.Q6J("ngForOf", a.ViewActionDetail);
-        }
-      }
-      let ga = (() => {
-        class s {
-          constructor(a, d, g) {
+      let fe = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.listService = a),
-              (this.data = d),
-              (this.global = g),
+              (this.data = _),
+              (this.global = M),
               (this.viewNoteTable = !1),
               (this.viewProductTable = !1),
               (this.actionTable = !1),
@@ -7951,8 +6157,8 @@
                   this.global.LOGGED_IN_USER.Password,
                   this.global.LOGGED_IN_USER.encryptPswd
                 )
-                .subscribe((v) => {
-                  (this.entityIdDetailData = JSON.parse(v)),
+                .subscribe((A) => {
+                  (this.entityIdDetailData = JSON.parse(A)),
                     (this.entityData = this.entityIdDetailData[0]);
                 }),
               this.listService
@@ -7963,8 +6169,8 @@
                   encrypt: this.global.LOGGED_IN_USER.encryptPswd,
                   userid: this.global.LOGGED_IN_USER.UserId,
                 })
-                .subscribe((v) => {
-                  this.chatData = JSON.parse(v);
+                .subscribe((A) => {
+                  this.chatData = JSON.parse(A);
                 }),
               this.listService
                 .productDetails(
@@ -7972,8 +6178,8 @@
                   this.EntityModule,
                   this.global.LOGGED_IN_USER.DbName
                 )
-                .subscribe((v) => {
-                  this.ViewProductDetail = JSON.parse(v);
+                .subscribe((A) => {
+                  this.ViewProductDetail = JSON.parse(A);
                 }),
               this.listService
                 .actionDetails(
@@ -7982,23 +6188,22 @@
                   this.global.LOGGED_IN_USER.DbName,
                   this.global.LOGGED_IN_USER.encryptPswd
                 )
-                .subscribe((v) => {
-                  this.ViewActionDetail = JSON.parse(v);
+                .subscribe((A) => {
+                  this.ViewActionDetail = JSON.parse(A);
                 });
           }
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(ae.L), e.Y36(U.WI), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(D.L), e.Y36(u.WI), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-entity-product"]],
-            decls: 1,
-            vars: 1,
+            decls: 114,
+            vars: 18,
             consts: [
-              ["class", "entityData", 4, "ngIf"],
               [1, "entityData"],
               [1, "modal-header", "standard-color-modal", "modal-heading"],
               [1, "container"],
@@ -8033,47 +6238,291 @@
               ["label", "Vouchers"],
               ["label", "Notes"],
             ],
-            template: function (a, d) {
-              1 & a && e.YNc(0, ri, 114, 18, "div", 0),
-                2 & a && e.Q6J("ngIf", d.entityData);
+            template: function (a, _) {
+              1 & a &&
+                (e.TgZ(0, "div", 0),
+                e.TgZ(1, "div", 1),
+                e.TgZ(2, "div", 2),
+                e.TgZ(3, "div", 3),
+                e.TgZ(4, "div", 4),
+                e.TgZ(5, "h2"),
+                e._uU(6),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(7, "div", 5),
+                e.TgZ(8, "div", 2),
+                e.TgZ(9, "div", 3),
+                e.TgZ(10, "div", 6),
+                e.TgZ(11, "div", 7),
+                e.TgZ(12, "span"),
+                e._uU(13),
+                e.qZA(),
+                e._uU(14, " ID : "),
+                e.TgZ(15, "span"),
+                e._uU(16),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(17, "span"),
+                e._uU(18),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(19, "div", 8),
+                e.TgZ(20, "div", 2),
+                e.TgZ(21, "div", 3),
+                e.TgZ(22, "div", 9),
+                e.TgZ(23, "div", 10),
+                e.TgZ(24, "h3"),
+                e._uU(25, "Billing Address :"),
+                e.qZA(),
+                e.TgZ(26, "div"),
+                e.TgZ(27, "span"),
+                e._uU(28),
+                e.qZA(),
+                e.TgZ(29, "span"),
+                e._uU(30),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(31, "div", 9),
+                e.TgZ(32, "div", 10),
+                e.TgZ(33, "div", 11),
+                e.TgZ(34, "div", 3),
+                e.TgZ(35, "div", 12),
+                e.TgZ(36, "span", 13),
+                e._uU(37, "Status : "),
+                e.qZA(),
+                e.TgZ(38, "span", 14),
+                e._uU(39),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(40, "div", 15),
+                e.TgZ(41, "span", 13),
+                e._uU(42, "Stage : "),
+                e.qZA(),
+                e.TgZ(43, "span", 14),
+                e._uU(44),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(45, "div", 3),
+                e.TgZ(46, "div", 12),
+                e.TgZ(47, "span", 13),
+                e._uU(48, "Priority : "),
+                e.qZA(),
+                e.TgZ(49, "span", 14),
+                e._uU(50),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(51, "div", 15),
+                e.TgZ(52, "span", 13),
+                e._uU(53, "Probability : "),
+                e.qZA(),
+                e.TgZ(54, "span", 14),
+                e._uU(55),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(56, "div", 3),
+                e.TgZ(57, "div", 12),
+                e.TgZ(58, "span", 13),
+                e._uU(59, "Source : "),
+                e.qZA(),
+                e.TgZ(60, "span", 14),
+                e._uU(61),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(62, "div", 15),
+                e.TgZ(63, "span", 13),
+                e._uU(64, "Source Ref : "),
+                e.qZA(),
+                e.TgZ(65, "span", 14),
+                e._uU(66),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(67, "div", 16),
+                e.TgZ(68, "div", 17),
+                e.TgZ(69, "div", 18),
+                e.TgZ(70, "span"),
+                e._uU(71, "Next Schedule Action"),
+                e.qZA(),
+                e.TgZ(72, "span"),
+                e._uU(73, "Follow up action on"),
+                e.qZA(),
+                e.TgZ(74, "span", 19),
+                e._uU(75),
+                e.ALo(76, "date"),
+                e.qZA(),
+                e.TgZ(77, "span"),
+                e._uU(78, "To call and ask for demo meeting"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(79, "div", 20),
+                e.TgZ(80, "div", 2),
+                e.TgZ(81, "div", 3),
+                e.TgZ(82, "div", 21),
+                e.TgZ(83, "mat-tab-group", 22),
+                e.TgZ(84, "mat-tab", 23),
+                e.YNc(85, St, 19, 1, "table", 24),
+                e.qZA(),
+                e.TgZ(86, "mat-tab", 25),
+                e.TgZ(87, "table", 26),
+                e.TgZ(88, "thead"),
+                e.TgZ(89, "tr", 27),
+                e.TgZ(90, "th"),
+                e._uU(91, "Id"),
+                e.qZA(),
+                e.TgZ(92, "th"),
+                e._uU(93, "Sch Id"),
+                e.qZA(),
+                e.TgZ(94, "th"),
+                e._uU(95, "Date"),
+                e.qZA(),
+                e.TgZ(96, "th"),
+                e._uU(97, "Time"),
+                e.qZA(),
+                e.TgZ(98, "th"),
+                e._uU(99, "By"),
+                e.qZA(),
+                e.TgZ(100, "th"),
+                e._uU(101, "Discussions"),
+                e.qZA(),
+                e.TgZ(102, "th"),
+                e._uU(103, "Link"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(104, "tbody"),
+                e.YNc(105, zn, 16, 10, "tr", 28),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(106, "mat-tab", 29),
+                e._UZ(107, "app-chat"),
+                e.qZA(),
+                e.TgZ(108, "mat-tab", 30),
+                e._uU(109, "Content 3"),
+                e.qZA(),
+                e.TgZ(110, "mat-tab", 31),
+                e._uU(111, "Content 3"),
+                e.qZA(),
+                e.TgZ(112, "mat-tab", 32),
+                e._UZ(113, "app-note"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA()),
+                2 & a &&
+                  (e.xp6(6),
+                  e.Oqu(null == _.entityData ? null : _.entityData.CompanyName),
+                  e.xp6(7),
+                  e.Oqu(_.EntityNameTitle),
+                  e.xp6(3),
+                  e.Oqu(_.Entityid),
+                  e.xp6(2),
+                  e.hij(
+                    " Title : ",
+                    null == _.entityData ? null : _.entityData.Title,
+                    ""
+                  ),
+                  e.xp6(10),
+                  e.Oqu(
+                    null == _.entityData ? null : _.entityData.CompanyAddress
+                  ),
+                  e.xp6(2),
+                  e.hij(
+                    " ",
+                    null == _.entityData ? null : _.entityData.CompanyAddress1,
+                    ""
+                  ),
+                  e.xp6(9),
+                  e.Oqu(
+                    null == _.entityData ? null : _.entityData.BillingStatus
+                  ),
+                  e.xp6(5),
+                  e.Oqu(null == _.entityData ? null : _.entityData.Stage),
+                  e.xp6(6),
+                  e.hij(
+                    " ",
+                    null == _.entityData ? null : _.entityData.Priority,
+                    ""
+                  ),
+                  e.xp6(5),
+                  e.Oqu(null == _.entityData ? null : _.entityData.Probability),
+                  e.xp6(6),
+                  e.Oqu(null == _.entityData ? null : _.entityData.Source),
+                  e.xp6(5),
+                  e.Oqu(null == _.entityData ? null : _.entityData.Source_Ref),
+                  e.xp6(9),
+                  e.Oqu(
+                    e.xi3(
+                      76,
+                      15,
+                      null == _.entityData ? null : _.entityData.Opendate,
+                      "dd MMM YYYY "
+                    )
+                  ),
+                  e.xp6(10),
+                  e.Q6J("ngIf", _.ViewProductDetail),
+                  e.xp6(20),
+                  e.Q6J("ngForOf", _.ViewActionDetail));
             },
-            directives: [m.O5, le.SP, le.uX, m.sg, O, $t],
+            directives: [ue.SP, ue.uX, m.O5, m.sg, Ve, zt],
             pipes: [m.uU],
             styles: [
               ".modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center;padding-top:28px}.id-title-block[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{display:block}.id-name-section[_ngcontent-%COMP%]{padding-top:5px;padding-bottom:5px}.id-entity[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{display:inline-block}.table_heading[_ngcontent-%COMP%]{background-color:#bce1c6;color:#000}.card[_ngcontent-%COMP%]{height:200px}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}.company_details[_ngcontent-%COMP%]{padding:5px 0p 5px 0px;row-gap:10px}.span-text[_ngcontent-%COMP%]{color:#789;font-size:15px;padding-right:10px}.resp-text[_ngcontent-%COMP%]{font-size:14px;font-weight:700;color:#000}.nxt-action-details[_ngcontent-%COMP%]{margin-top:5px;margin-bottom:5px}.i-block[_ngcontent-%COMP%]{margin-top:5px}.i-block[_ngcontent-%COMP%]   span[_ngcontent-%COMP%]{display:block;color:#789}.date-class[_ngcontent-%COMP%]{color:#000;font-weight:700;font-size:14px}",
             ],
           })),
-          s
+          i
         );
       })();
-      var _i = f(449);
-      let Ma = (() => {
-        class s {
-          constructor(a, d, g) {
+      var Gn = f(449);
+      let qt = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.data = a),
-              (this.listService = d),
-              (this.global = g),
+              (this.listService = _),
+              (this.global = M),
               console.log(a);
           }
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(U.WI), e.Y36(ae.L), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(u.WI), e.Y36(D.L), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-edit-vouchar"]],
             decls: 0,
             vars: 0,
-            template: function (a, d) {},
+            template: function (a, _) {},
             styles: [""],
           })),
-          s
+          i
         );
       })();
-      function R(s, c) {
-        if (1 & s) {
+      var Nt = f(9772);
+      function Bn(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "tr", 5),
             e.TgZ(1, "td"),
@@ -8110,8 +6559,8 @@
             e.TgZ(22, "td"),
             e.TgZ(23, "a", 6),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw().editVouchar(T);
+              const g = e.CHM(a).$implicit;
+              return e.oxw().editVouchar(g);
             }),
             e._UZ(24, "i", 7),
             e.qZA(),
@@ -8127,7 +6576,7 @@
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(2),
             e.Oqu(a.VoucherNo),
@@ -8157,13 +6606,13 @@
             e.Oqu(a.ApprovedRemark);
         }
       }
-      let di = (() => {
-          class s {
-            constructor(a, d, g, T) {
+      let Vn = (() => {
+          class i {
+            constructor(a, _, M, g) {
               (this.data = a),
-                (this.listService = d),
-                (this.global = g),
-                (this.dialog = T),
+                (this.listService = _),
+                (this.global = M),
+                (this.dialog = g),
                 this.listService
                   .showvoucharData({
                     id: a.installno,
@@ -8172,13 +6621,13 @@
                     dbname: this.global.LOGGED_IN_USER.DbName,
                     encrypt: this.global.LOGGED_IN_USER.encryptPswd,
                   })
-                  .subscribe((Rt) => {
-                    this.editData = JSON.parse(Rt);
+                  .subscribe((Ee) => {
+                    this.editData = JSON.parse(Ee);
                   });
             }
             editVouchar(a) {
               this.dialog
-                .open(Ma, {
+                .open(qt, {
                   position: { left: "65%", top: "5%" },
                   data: { value: a },
                 })
@@ -8188,16 +6637,16 @@
             ngOnInit() {}
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)(
-                e.Y36(U.WI),
-                e.Y36(ae.L),
-                e.Y36(M.x),
-                e.Y36(U.uw)
+            (i.ɵfac = function (a) {
+              return new (a || i)(
+                e.Y36(u.WI),
+                e.Y36(D.L),
+                e.Y36(w.x),
+                e.Y36(u.uw)
               );
             }),
-            (s.ɵcmp = e.Xpm({
-              type: s,
+            (i.ɵcmp = e.Xpm({
+              type: i,
               selectors: [["app-edit-list"]],
               decls: 38,
               vars: 1,
@@ -8211,7 +6660,7 @@
                 [1, "a", 3, "click"],
                 ["matTooltip", "Edit Vouchar", 1, "fas", "fa-pencil-alt"],
               ],
-              template: function (a, d) {
+              template: function (a, _) {
                 1 & a &&
                   (e.TgZ(0, "div", 0),
                   e.TgZ(1, "div", 1),
@@ -8268,174 +6717,174 @@
                   e.qZA(),
                   e.qZA(),
                   e.TgZ(36, "tbody"),
-                  e.YNc(37, R, 31, 16, "tr", 4),
+                  e.YNc(37, Bn, 31, 16, "tr", 4),
                   e.qZA(),
                   e.qZA(),
                   e.qZA(),
                   e.qZA()),
-                  2 & a && (e.xp6(37), e.Q6J("ngForOf", d.editData));
+                  2 & a && (e.xp6(37), e.Q6J("ngForOf", _.editData));
               },
-              directives: [m.sg, _e.gM],
+              directives: [m.sg, Nt.gM],
               pipes: [m.uU],
               styles: [
                 "th[_ngcontent-%COMP%]{height:30px;text-align:center}td[_ngcontent-%COMP%]{font-size:13px}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
               ],
             })),
-            s
+            i
           );
         })(),
-        Ta = (() => {
-          class s {
+        Ge = (() => {
+          class i {
             transform(a) {
               if (null == a) return a;
               {
-                let T = a.split("/").reverse().join("-");
-                return H(T).format("DD MMM y");
+                let g = a.split("/").reverse().join("-");
+                return j(g).format("DD MMM y");
               }
             }
           }
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)();
+            (i.ɵfac = function (a) {
+              return new (a || i)();
             }),
-            (s.ɵpipe = e.Yjl({ name: "dateformat", type: s, pure: !0 })),
-            s
+            (i.ɵpipe = e.Yjl({ name: "dateformat", type: i, pure: !0 })),
+            i
           );
         })();
-      function ya(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Sch ID"), e.qZA());
+      function Ot(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Sch ID"), e.qZA());
       }
-      function li(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function $n(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.ScheduleActionId, " ");
         }
       }
-      function mi(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Date"), e.qZA());
+      function Xn(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Date"), e.qZA());
       }
-      function ui(s, c) {
+      function Kn(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 18), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 19), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", e.lcZ(2, 1, a.ActualActionDate), " ");
         }
       }
-      function Ke(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Time"), e.qZA());
+      function ca(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Time"), e.qZA());
       }
-      function ci(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ei(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.ActualActionTime, " ");
         }
       }
-      function pi(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "By"), e.qZA());
+      function ti(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "By"), e.qZA());
       }
-      function hi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ai(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.UpdatedBy);
         }
       }
-      function ut(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Work To Do"), e.qZA());
+      function ni(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Work To Do"), e.qZA());
       }
-      function ct(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ii(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.Instructions);
         }
       }
-      function Et(s, c) {
-        1 & s && e._UZ(0, "tr", 19);
+      function pa(i, c) {
+        1 & i && e._UZ(0, "tr", 20);
       }
-      function fi(s, c) {
-        1 & s && e._UZ(0, "tr", 20);
+      function si(i, c) {
+        1 & i && e._UZ(0, "tr", 21);
       }
-      function La(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "ID"), e.qZA());
+      function Oe(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "ID"), e.qZA());
       }
-      function gi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function oi(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.ActualId);
         }
       }
-      function Pt(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Sch ID"), e.qZA());
+      function Ut(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Sch ID"), e.qZA());
       }
-      function jt(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ri(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.name);
         }
       }
-      function It(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Date"), e.qZA());
+      function Ht(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Date"), e.qZA());
       }
-      function Mi(s, c) {
+      function _i(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 18), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 19), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", e.lcZ(2, 1, a.ActionStartDate), " ");
         }
       }
-      function Ti(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Time"), e.qZA());
+      function di(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Time"), e.qZA());
       }
-      function yi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function li(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.ActionStartTime, " ");
         }
       }
-      function Li(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "By"), e.qZA());
+      function mi(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "By"), e.qZA());
       }
-      function Zi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ha(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.username);
         }
       }
-      function Yi(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Action Done"), e.qZA());
+      function ui(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Action Done"), e.qZA());
       }
-      function Di(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function fa(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.Discussions);
         }
       }
-      function ki(s, c) {
-        1 & s && (e.TgZ(0, "th", 17), e._uU(1, "Revised PDF"), e.qZA());
+      function J(i, c) {
+        1 & i && (e.TgZ(0, "th", 18), e._uU(1, "Revised PDF"), e.qZA());
       }
-      function vi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 18), e._uU(1), e.qZA()), 2 & s)) {
+      function ci(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 19), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.Oqu(a.PDFPathId);
         }
       }
-      function Ai(s, c) {
-        1 & s && e._UZ(0, "tr", 19);
+      function pi(i, c) {
+        1 & i && e._UZ(0, "tr", 20);
       }
-      function Za(s, c) {
-        1 & s && e._UZ(0, "tr", 20);
+      function ga(i, c) {
+        1 & i && e._UZ(0, "tr", 21);
       }
-      let bi = (() => {
-        class s {
-          constructor(a, d, g) {
+      let hi = (() => {
+        class i {
+          constructor(a, _, M) {
             (this.data = a),
-              (this.actionService = d),
-              (this.global = g),
+              (this.actionService = _),
+              (this.global = M),
               (this.displayedColumns = [
                 "ID",
                 "SchID",
@@ -8457,37 +6906,38 @@
               (this.EntityName = this.data.EntityName),
               (this.EntityNameTitle = this.data.EntityNameTitle),
               (this.companyName = this.data.companyName);
-            const T = {
+            const g = {
               DBNAME: this.global.LOGGED_IN_USER.DbName,
               password: this.global.LOGGED_IN_USER.encryptPswd,
               EntityId: this.Entityid,
               EntityName: this.EntityName,
             };
-            this.actionService.GetActualDataRandom(T).subscribe((v) => {
-              (this.dataSource = JSON.parse(v)), console.log(this.dataSource);
+            this.actionService.GetActualDataRandom(g).subscribe((A) => {
+              (this.dataSource = JSON.parse(A)), console.log(this.dataSource);
             }),
-              this.actionService.GetSheduledData(T).subscribe((v) => {
-                (this.dataSource2 = JSON.parse(v)),
+              this.actionService.GetSheduledData(g).subscribe((A) => {
+                (this.dataSource2 = JSON.parse(A)),
                   console.log(this.dataSource2);
               }),
-              this.actionService.GetRevisedPDFData(T).subscribe((v) => {
-                (this.dataSource3 = JSON.parse(v)),
+              this.actionService.GetRevisedPDFData(g).subscribe((A) => {
+                (this.dataSource3 = JSON.parse(A)),
                   console.log(this.dataSource3);
               });
           }
           ngOnInit() {}
         }
         return (
-          (s.ɵfac = function (a) {
-            return new (a || s)(e.Y36(U.WI), e.Y36(Ae), e.Y36(M.x));
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(u.WI), e.Y36(G), e.Y36(w.x));
           }),
-          (s.ɵcmp = e.Xpm({
-            type: s,
+          (i.ɵcmp = e.Xpm({
+            type: i,
             selectors: [["app-action-scheduled"]],
             decls: 50,
-            vars: 9,
+            vars: 10,
             consts: [
               [1, "modal-heading", "standard-color-modal"],
+              [3, "selectedIndex"],
               ["label", "Pending"],
               ["mat-table", "", 1, "mat-elevation-z8", 3, "dataSource"],
               ["matColumnDef", "SchID"],
@@ -8509,7 +6959,7 @@
               ["mat-header-row", ""],
               ["mat-row", ""],
             ],
-            template: function (a, d) {
+            template: function (a, _) {
               1 & a &&
                 (e.TgZ(0, "div"),
                 e.TgZ(1, "div", 0),
@@ -8517,129 +6967,133 @@
                 e._uU(3),
                 e.qZA(),
                 e.qZA(),
-                e.TgZ(4, "mat-tab-group"),
-                e.TgZ(5, "mat-tab", 1),
-                e.TgZ(6, "table", 2),
-                e.ynx(7, 3),
-                e.YNc(8, ya, 2, 0, "th", 4),
-                e.YNc(9, li, 2, 1, "td", 5),
+                e.TgZ(4, "mat-tab-group", 1),
+                e.TgZ(5, "mat-tab", 2),
+                e.TgZ(6, "table", 3),
+                e.ynx(7, 4),
+                e.YNc(8, Ot, 2, 0, "th", 5),
+                e.YNc(9, $n, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(10, 6),
-                e.YNc(11, mi, 2, 0, "th", 4),
-                e.YNc(12, ui, 3, 3, "td", 5),
+                e.ynx(10, 7),
+                e.YNc(11, Xn, 2, 0, "th", 5),
+                e.YNc(12, Kn, 3, 3, "td", 6),
                 e.BQk(),
-                e.ynx(13, 7),
-                e.YNc(14, Ke, 2, 0, "th", 4),
-                e.YNc(15, ci, 2, 1, "td", 5),
+                e.ynx(13, 8),
+                e.YNc(14, ca, 2, 0, "th", 5),
+                e.YNc(15, ei, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(16, 8),
-                e.YNc(17, pi, 2, 0, "th", 4),
-                e.YNc(18, hi, 2, 1, "td", 5),
+                e.ynx(16, 9),
+                e.YNc(17, ti, 2, 0, "th", 5),
+                e.YNc(18, ai, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(19, 9),
-                e.YNc(20, ut, 2, 0, "th", 4),
-                e.YNc(21, ct, 2, 1, "td", 5),
+                e.ynx(19, 10),
+                e.YNc(20, ni, 2, 0, "th", 5),
+                e.YNc(21, ii, 2, 1, "td", 6),
                 e.BQk(),
-                e.YNc(22, Et, 1, 0, "tr", 10),
-                e.YNc(23, fi, 1, 0, "tr", 11),
+                e.YNc(22, pa, 1, 0, "tr", 11),
+                e.YNc(23, si, 1, 0, "tr", 12),
                 e.qZA(),
                 e.qZA(),
-                e.TgZ(24, "mat-tab", 12),
-                e.TgZ(25, "table", 2),
-                e.ynx(26, 13),
-                e.YNc(27, La, 2, 0, "th", 4),
-                e.YNc(28, gi, 2, 1, "td", 5),
+                e.TgZ(24, "mat-tab", 13),
+                e.TgZ(25, "table", 3),
+                e.ynx(26, 14),
+                e.YNc(27, Oe, 2, 0, "th", 5),
+                e.YNc(28, oi, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(29, 3),
-                e.YNc(30, Pt, 2, 0, "th", 4),
-                e.YNc(31, jt, 2, 1, "td", 5),
+                e.ynx(29, 4),
+                e.YNc(30, Ut, 2, 0, "th", 5),
+                e.YNc(31, ri, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(32, 6),
-                e.YNc(33, It, 2, 0, "th", 4),
-                e.YNc(34, Mi, 3, 3, "td", 5),
+                e.ynx(32, 7),
+                e.YNc(33, Ht, 2, 0, "th", 5),
+                e.YNc(34, _i, 3, 3, "td", 6),
                 e.BQk(),
-                e.ynx(35, 7),
-                e.YNc(36, Ti, 2, 0, "th", 4),
-                e.YNc(37, yi, 2, 1, "td", 5),
+                e.ynx(35, 8),
+                e.YNc(36, di, 2, 0, "th", 5),
+                e.YNc(37, li, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(38, 8),
-                e.YNc(39, Li, 2, 0, "th", 4),
-                e.YNc(40, Zi, 2, 1, "td", 5),
+                e.ynx(38, 9),
+                e.YNc(39, mi, 2, 0, "th", 5),
+                e.YNc(40, ha, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(41, 14),
-                e.YNc(42, Yi, 2, 0, "th", 4),
-                e.YNc(43, Di, 2, 1, "td", 5),
+                e.ynx(41, 15),
+                e.YNc(42, ui, 2, 0, "th", 5),
+                e.YNc(43, fa, 2, 1, "td", 6),
                 e.BQk(),
-                e.ynx(44, 15),
-                e.YNc(45, ki, 2, 0, "th", 4),
-                e.YNc(46, vi, 2, 1, "td", 5),
+                e.ynx(44, 16),
+                e.YNc(45, J, 2, 0, "th", 5),
+                e.YNc(46, ci, 2, 1, "td", 6),
                 e.BQk(),
-                e.YNc(47, Ai, 1, 0, "tr", 10),
-                e.YNc(48, Za, 1, 0, "tr", 11),
+                e.YNc(47, pi, 1, 0, "tr", 11),
+                e.YNc(48, ga, 1, 0, "tr", 12),
                 e.qZA(),
                 e.qZA(),
-                e._UZ(49, "mat-tab", 16),
+                e._UZ(49, "mat-tab", 17),
                 e.qZA(),
                 e.qZA()),
                 2 & a &&
                   (e.xp6(3),
                   e.lnq(
                     " Action Scheduled ",
-                    d.companyName,
+                    _.companyName,
                     " for ",
-                    d.EntityNameTitle,
+                    _.EntityNameTitle,
                     " Id : ",
-                    d.Entityid,
+                    _.Entityid,
                     " "
                   ),
-                  e.xp6(3),
-                  e.Q6J("dataSource", d.dataSource2),
-                  e.xp6(16),
-                  e.Q6J("matHeaderRowDef", d.PendingColumns),
                   e.xp6(1),
-                  e.Q6J("matRowDefColumns", d.PendingColumns),
+                  e.Q6J("selectedIndex", 1),
                   e.xp6(2),
-                  e.Q6J("dataSource", d.dataSource),
-                  e.xp6(22),
-                  e.Q6J("matHeaderRowDef", d.displayedColumns),
+                  e.Q6J("dataSource", _.dataSource2),
+                  e.xp6(16),
+                  e.Q6J("matHeaderRowDef", _.PendingColumns),
                   e.xp6(1),
-                  e.Q6J("matRowDefColumns", d.displayedColumns));
+                  e.Q6J("matRowDefColumns", _.PendingColumns),
+                  e.xp6(2),
+                  e.Q6J("dataSource", _.dataSource),
+                  e.xp6(22),
+                  e.Q6J("matHeaderRowDef", _.displayedColumns),
+                  e.xp6(1),
+                  e.Q6J("matRowDefColumns", _.displayedColumns));
             },
             directives: [
-              le.SP,
-              le.uX,
-              G.BZ,
-              G.w1,
-              G.fO,
-              G.Dz,
-              G.as,
-              G.nj,
-              G.ge,
-              G.ev,
-              G.XQ,
-              G.Gk,
+              ue.SP,
+              ue.uX,
+              T.BZ,
+              T.w1,
+              T.fO,
+              T.Dz,
+              T.as,
+              T.nj,
+              T.ge,
+              T.ev,
+              T.XQ,
+              T.Gk,
             ],
-            pipes: [Ta],
+            pipes: [Ge],
             styles: [
               "table[_ngcontent-%COMP%]{width:100%;height:75%;padding-top:70px}th[_ngcontent-%COMP%]{height:26px;background-color:#dcebdc;font-size:20px;color:#000}tr[_ngcontent-%COMP%]{height:36px}tr[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}.modal-heading[_ngcontent-%COMP%]{height:30px;text-align:center}.standard-color-modal[_ngcontent-%COMP%]{background-color:#dcebdc}",
             ],
           })),
-          s
+          i
         );
       })();
-      var pt = f(1125);
-      function ue(s, c) {
-        if (1 & s) {
+      var Ma = f(7544),
+        Ta = f(9224),
+        Le = f(1125);
+      function fi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "mat-checkbox", 56),
-            e.NdJ("change", function (g) {
+          e.TgZ(0, "mat-checkbox", 58),
+            e.NdJ("change", function (M) {
               e.CHM(a);
-              const T = e.oxw(5);
-              return g ? T.masterToggle() : null;
+              const g = e.oxw(5);
+              return M ? g.masterToggle() : null;
             }),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(5);
           e.Q6J("checked", a.selection.hasValue() && a.isAllSelected())(
             "indeterminate",
@@ -8647,132 +7101,141 @@
           )("aria-label", a.checkboxLabel());
         }
       }
-      function xe(s, c) {
+      function gi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "th", 54),
-            e.YNc(1, ue, 1, 3, "mat-checkbox", 55),
+          (1 & i &&
+            (e.TgZ(0, "th", 56),
+            e.YNc(1, fi, 1, 3, "mat-checkbox", 57),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(4);
           e.xp6(1), e.Q6J("ngIf", a.Allshow);
         }
       }
-      function Ya(s, c) {
-        if (1 & s) {
+      function Mi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "mat-checkbox", 59),
-            e.NdJ("click", function (g) {
-              return g.stopPropagation();
-            })("change", function (g) {
+          e.TgZ(0, "mat-checkbox", 62),
+            e.NdJ("click", function (M) {
+              return M.stopPropagation();
+            })("change", function (M) {
               e.CHM(a);
-              const T = e.oxw().$implicit,
-                v = e.oxw(4);
-              return g ? v.selection.toggle(T) : null;
+              const g = e.oxw().$implicit,
+                A = e.oxw(4);
+              return M ? A.selection.toggle(g) : null;
             }),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit,
-            d = e.oxw(4);
-          e.Q6J("checked", d.selection.isSelected(a))(
+            _ = e.oxw(4);
+          e.Q6J("checked", _.selection.isSelected(a))(
             "aria-label",
-            d.checkboxLabel(a)
+            _.checkboxLabel(a)
           );
         }
       }
-      function wi(s, c) {
+      function lt(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 57),
-            e.YNc(1, Ya, 1, 2, "mat-checkbox", 58),
+          (1 & i &&
+            (e.TgZ(0, "td", 59),
+            e.TgZ(1, "span"),
+            e.YNc(2, Mi, 1, 2, "mat-checkbox", 60),
+            e.qZA(),
+            e.TgZ(3, "span"),
+            e.TgZ(4, "button", 61),
+            e.TgZ(5, "mat-icon"),
+            e._uU(6, "more_vert"),
+            e.qZA(),
+            e.qZA(),
+            e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(4);
-          e.xp6(1), e.Q6J("ngIf", a.Allshow);
+          e.xp6(2), e.Q6J("ngIf", a.Allshow);
         }
       }
-      function Da(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " ID. "), e.qZA());
+      function mt(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " ID. "), e.qZA());
       }
-      function ka(s, c) {
-        if (1 & s) {
+      function Et(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "a", 63),
+          e.TgZ(0, "a", 66),
             e.NdJ("click", function () {
               e.CHM(a);
-              const g = e.oxw().$implicit;
-              return e.oxw(4).openEntity(g.InstalledNo);
+              const M = e.oxw().$implicit;
+              return e.oxw(4).openEntity(M.InstalledNo);
             }),
             e._uU(1),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.hij(" ", a.InstalledNo, " ");
         }
       }
-      function xi(s, c) {
-        if ((1 & s && (e.TgZ(0, "div"), e._uU(1), e.qZA()), 2 & s)) {
+      function Ti(i, c) {
+        if ((1 & i && (e.TgZ(0, "div"), e._uU(1), e.qZA()), 2 & i)) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.Oqu(a.InstalledNo);
         }
       }
-      function Ci(s, c) {
-        if ((1 & s && (e.TgZ(0, "a", 65), e._UZ(1, "i", 69), e.qZA()), 2 & s)) {
+      function ya(i, c) {
+        if ((1 & i && (e.TgZ(0, "a", 68), e._UZ(1, "i", 72), e.qZA()), 2 & i)) {
           const a = e.oxw(5);
           e.xp6(1), e.MGl("matTooltip", "Edit ", a.EntityName, "");
         }
       }
-      function va(s, c) {
-        if (1 & s) {
+      function yi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "a", 63),
+          e.TgZ(0, "a", 66),
             e.NdJ("click", function () {
               e.CHM(a);
-              const g = e.oxw().$implicit;
-              return e.oxw(4).EditList(g.InstalledNo, g.ENTITY, g.EntityId);
+              const M = e.oxw().$implicit;
+              return e.oxw(4).EditList(M.InstalledNo, M.ENTITY, M.EntityId);
             }),
-            e._UZ(1, "i", 69),
+            e._UZ(1, "i", 72),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(5);
           e.xp6(1), e.MGl("matTooltip", "Edit ", a.EntityName, "");
         }
       }
-      function Si(s, c) {
-        if (1 & s) {
+      function Pt(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 61),
-            e.YNc(1, ka, 2, 1, "a", 62),
+          e.TgZ(0, "td", 64),
+            e.YNc(1, Et, 2, 1, "a", 65),
             e.TgZ(2, "div"),
-            e.YNc(3, xi, 2, 1, "div", 13),
-            e.TgZ(4, "a", 63),
+            e.YNc(3, Ti, 2, 1, "div", 13),
+            e.TgZ(4, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(4).openEmailTrace(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(4).openEmailTrace(g.InstalledNo);
             }),
-            e._UZ(5, "i", 64),
+            e._UZ(5, "i", 67),
             e.qZA(),
-            e.TgZ(6, "a", 65),
-            e._UZ(7, "i", 66),
+            e.TgZ(6, "a", 68),
+            e._UZ(7, "i", 69),
             e.qZA(),
-            e.YNc(8, Ci, 2, 1, "a", 67),
-            e.YNc(9, va, 2, 1, "a", 62),
+            e.YNc(8, ya, 2, 1, "a", 70),
+            e.YNc(9, yi, 2, 1, "a", 65),
             e.TgZ(10, "a", 8),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(4).openAction(T.InstalledNo, T.ClientID);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(4).openAction(g.InstalledNo, g.ClientID);
             }),
-            e._UZ(11, "i", 68),
+            e._UZ(11, "i", 71),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(4);
           e.xp6(1),
             e.Q6J("ngIf", a.installedno),
@@ -8784,104 +7247,104 @@
             e.Q6J("ngIf", a.voucher);
         }
       }
-      function qi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Company "), e.qZA());
+      function jt(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Company "), e.qZA());
       }
-      function Ni(s, c) {
-        if (1 & s) {
+      function It(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
-            e.TgZ(1, "a", 63),
+            e.TgZ(1, "a", 66),
             e.NdJ("click", function () {
               e.CHM(a);
-              const g = e.oxw().$implicit;
-              return e.oxw(4).approval(g.InstalledNo, g.ENTITY, g.EntityId);
+              const M = e.oxw().$implicit;
+              return e.oxw(4).approval(M.InstalledNo, M.ENTITY, M.EntityId);
             }),
             e._uU(2),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit;
           e.xp6(2), e.Oqu(a.Approval);
         }
       }
-      function Oi(s, c) {
-        if (1 & s) {
+      function Li(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 70),
+          e.TgZ(0, "td", 73),
             e._uU(1),
             e.TgZ(2, "div"),
-            e.TgZ(3, "a", 63),
+            e.TgZ(3, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(4).openEmailQuote(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(4).openEmailQuote(g.InstalledNo);
             }),
-            e._UZ(4, "i", 71),
+            e._UZ(4, "i", 74),
             e.qZA(),
             e.qZA(),
-            e.YNc(5, Ni, 3, 1, "div", 13),
+            e.YNc(5, It, 3, 1, "div", 13),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit,
-            d = e.oxw(4);
+            _ = e.oxw(4);
           e.xp6(1),
             e.hij(" ", a.ClientName, " "),
             e.xp6(4),
-            e.Q6J("ngIf", d.voucher);
+            e.Q6J("ngIf", _.voucher);
         }
       }
-      function Ui(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Contact "), e.qZA());
+      function Zi(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Contact "), e.qZA());
       }
-      function Hi(s, c) {
+      function Yi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 61),
+          (1 & i &&
+            (e.TgZ(0, "td", 64),
             e._uU(1),
             e.TgZ(2, "div"),
-            e.TgZ(3, "a", 65),
-            e._UZ(4, "i", 72),
+            e.TgZ(3, "a", 68),
+            e._UZ(4, "i", 75),
             e.qZA(),
             e.TgZ(5, "a"),
-            e._UZ(6, "i", 73),
+            e._UZ(6, "i", 76),
             e.qZA(),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.ContactName, " ");
         }
       }
-      function Ei(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Owner Name "), e.qZA());
+      function Di(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Owner Name "), e.qZA());
       }
-      function Pi(s, c) {
-        if (1 & s) {
+      function ki(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 61),
+          e.TgZ(0, "td", 64),
             e._uU(1),
             e.TgZ(2, "div"),
-            e.TgZ(3, "a", 63),
+            e.TgZ(3, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(4).openChat(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(4).openChat(g.InstalledNo);
             }),
-            e._UZ(4, "i", 74),
+            e._UZ(4, "i", 77),
             e.qZA(),
-            e.TgZ(5, "a", 63),
+            e.TgZ(5, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(4).openNotes(T.InstalledNo, T.ClientName);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(4).openNotes(g.InstalledNo, g.ClientName);
             }),
-            e._UZ(6, "i", 75),
+            e._UZ(6, "i", 78),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(1),
             e.hij(" ", a.OwnerName, " "),
@@ -8889,178 +7352,178 @@
             e.s9C("matBadge", a.ChatNotiCount);
         }
       }
-      function ji(s, c) {
-        1 & s && (e.TgZ(0, "th", 76), e._uU(1, " Amount "), e.qZA());
+      function vi(i, c) {
+        1 & i && (e.TgZ(0, "th", 79), e._uU(1, " Amount "), e.qZA());
       }
-      function Ii(s, c) {
+      function Ai(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 77), e._uU(1), e.ALo(2, "currency"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 80), e._uU(1), e.ALo(2, "currency"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", e.xi3(2, 1, a.Anualisedamount, "INR"), " ");
         }
       }
-      function Fi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Status "), e.qZA());
+      function bi(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Status "), e.qZA());
       }
-      function Ji(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function wi(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.StatusName, " ");
         }
       }
-      function Wi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Del Status "), e.qZA());
+      function Ci(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Del Status "), e.qZA());
       }
-      function Ri(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function La(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.DeliveryStatusName, " ");
         }
       }
-      function ht(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Source "), e.qZA());
+      function xi(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Source "), e.qZA());
       }
-      function Qi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function Si(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.SourceName, " ");
         }
       }
-      function zi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Billed status "), e.qZA());
+      function re(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Billed status "), e.qZA());
       }
-      function Gi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function ke(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.Billedstatus, " ");
         }
       }
-      function Bi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Service "), e.qZA());
+      function Za(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Service "), e.qZA());
       }
-      function Vi(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function qi(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.ServiceTypeName, " ");
         }
       }
-      function $i(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Stage "), e.qZA());
+      function Ya(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Stage "), e.qZA());
       }
-      function Ki(s, c) {
-        if ((1 & s && (e.TgZ(0, "td", 61), e._uU(1), e.qZA()), 2 & s)) {
+      function Da(i, c) {
+        if ((1 & i && (e.TgZ(0, "td", 64), e._uU(1), e.qZA()), 2 & i)) {
           const a = c.$implicit;
           e.xp6(1), e.hij(" ", a.Stage, " ");
         }
       }
-      function Xi(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " EXP Date "), e.qZA());
+      function Ni(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " EXP Date "), e.qZA());
       }
-      function Aa(s, c) {
+      function Oi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 78), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 81), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw(4);
+            _ = e.oxw(4);
           e.Q6J(
             "ngClass",
-            a.EXPClosuredateDashboard >= d.toDayDate ? "green" : "red"
+            a.EXPClosuredateDashboard >= _.toDayDate ? "green" : "red"
           ),
             e.xp6(1),
             e.hij(" ", e.lcZ(2, 2, a.EXPClosuredateDashboard), " ");
         }
       }
-      function ba(s, c) {
-        1 & s && (e.TgZ(0, "th", 60), e._uU(1, " Del Date "), e.qZA());
+      function ka(i, c) {
+        1 & i && (e.TgZ(0, "th", 63), e._uU(1, " Del Date "), e.qZA());
       }
-      function wa(s, c) {
+      function Ui(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 78), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 81), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw(4);
-          e.Q6J("ngClass", a.DeliveryDate >= d.toDayDate ? "green" : "red"),
+            _ = e.oxw(4);
+          e.Q6J("ngClass", a.DeliveryDate >= _.toDayDate ? "green" : "red"),
             e.xp6(1),
             e.hij(" ", e.lcZ(2, 2, a.DeliveryDate), " ");
         }
       }
-      function ft(s, c) {
-        1 & s && e._UZ(0, "tr", 79);
+      function Hi(i, c) {
+        1 & i && e._UZ(0, "tr", 82);
       }
-      function je(s, c) {
-        1 & s && e._UZ(0, "tr", 80);
+      function Ei(i, c) {
+        1 & i && e._UZ(0, "tr", 83);
       }
-      function gt(s, c) {
+      function Pi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "table", 29),
-            e.ynx(1, 30),
-            e.YNc(2, xe, 2, 1, "th", 31),
-            e.YNc(3, wi, 2, 1, "td", 32),
+          (1 & i &&
+            (e.TgZ(0, "table", 31),
+            e.ynx(1, 32),
+            e.YNc(2, gi, 2, 1, "th", 33),
+            e.YNc(3, lt, 7, 1, "td", 34),
             e.BQk(),
-            e.ynx(4, 33),
-            e.YNc(5, Da, 2, 0, "th", 34),
-            e.YNc(6, Si, 12, 4, "td", 35),
+            e.ynx(4, 35),
+            e.YNc(5, mt, 2, 0, "th", 36),
+            e.YNc(6, Pt, 12, 4, "td", 37),
             e.BQk(),
-            e.ynx(7, 36),
-            e.YNc(8, qi, 2, 0, "th", 34),
-            e.YNc(9, Oi, 6, 2, "td", 37),
+            e.ynx(7, 38),
+            e.YNc(8, jt, 2, 0, "th", 36),
+            e.YNc(9, Li, 6, 2, "td", 39),
             e.BQk(),
-            e.ynx(10, 38),
-            e.YNc(11, Ui, 2, 0, "th", 34),
-            e.YNc(12, Hi, 7, 1, "td", 35),
+            e.ynx(10, 40),
+            e.YNc(11, Zi, 2, 0, "th", 36),
+            e.YNc(12, Yi, 7, 1, "td", 37),
             e.BQk(),
-            e.ynx(13, 39),
-            e.YNc(14, Ei, 2, 0, "th", 34),
-            e.YNc(15, Pi, 7, 2, "td", 35),
+            e.ynx(13, 41),
+            e.YNc(14, Di, 2, 0, "th", 36),
+            e.YNc(15, ki, 7, 2, "td", 37),
             e.BQk(),
-            e.ynx(16, 40),
-            e.YNc(17, ji, 2, 0, "th", 41),
-            e.YNc(18, Ii, 3, 4, "td", 42),
+            e.ynx(16, 42),
+            e.YNc(17, vi, 2, 0, "th", 43),
+            e.YNc(18, Ai, 3, 4, "td", 44),
             e.BQk(),
-            e.ynx(19, 43),
-            e.YNc(20, Fi, 2, 0, "th", 34),
-            e.YNc(21, Ji, 2, 1, "td", 35),
+            e.ynx(19, 45),
+            e.YNc(20, bi, 2, 0, "th", 36),
+            e.YNc(21, wi, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(22, 44),
-            e.YNc(23, Wi, 2, 0, "th", 34),
-            e.YNc(24, Ri, 2, 1, "td", 35),
+            e.ynx(22, 46),
+            e.YNc(23, Ci, 2, 0, "th", 36),
+            e.YNc(24, La, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(25, 45),
-            e.YNc(26, ht, 2, 0, "th", 34),
-            e.YNc(27, Qi, 2, 1, "td", 35),
+            e.ynx(25, 47),
+            e.YNc(26, xi, 2, 0, "th", 36),
+            e.YNc(27, Si, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(28, 46),
-            e.YNc(29, zi, 2, 0, "th", 34),
-            e.YNc(30, Gi, 2, 1, "td", 35),
+            e.ynx(28, 48),
+            e.YNc(29, re, 2, 0, "th", 36),
+            e.YNc(30, ke, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(31, 47),
-            e.YNc(32, Bi, 2, 0, "th", 34),
-            e.YNc(33, Vi, 2, 1, "td", 35),
+            e.ynx(31, 49),
+            e.YNc(32, Za, 2, 0, "th", 36),
+            e.YNc(33, qi, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(34, 48),
-            e.YNc(35, $i, 2, 0, "th", 34),
-            e.YNc(36, Ki, 2, 1, "td", 35),
+            e.ynx(34, 50),
+            e.YNc(35, Ya, 2, 0, "th", 36),
+            e.YNc(36, Da, 2, 1, "td", 37),
             e.BQk(),
-            e.ynx(37, 49),
-            e.YNc(38, Xi, 2, 0, "th", 34),
-            e.YNc(39, Aa, 3, 4, "td", 50),
+            e.ynx(37, 51),
+            e.YNc(38, Ni, 2, 0, "th", 36),
+            e.YNc(39, Oi, 3, 4, "td", 52),
             e.BQk(),
-            e.ynx(40, 51),
-            e.YNc(41, ba, 2, 0, "th", 34),
-            e.YNc(42, wa, 3, 4, "td", 50),
+            e.ynx(40, 53),
+            e.YNc(41, ka, 2, 0, "th", 36),
+            e.YNc(42, Ui, 3, 4, "td", 52),
             e.BQk(),
-            e.YNc(43, ft, 1, 0, "tr", 52),
-            e.YNc(44, je, 1, 0, "tr", 53),
+            e.YNc(43, Hi, 1, 0, "tr", 54),
+            e.YNc(44, Ei, 1, 0, "tr", 55),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(3);
           e.Q6J("dataSource", a.dataSource),
@@ -9070,11 +7533,11 @@
             e.Q6J("matRowDefColumns", a.listColumns);
         }
       }
-      const Ft = function () {
+      const va = function () {
         return [5, 10, 25, 100];
       };
-      function Ie(s, c) {
-        if (1 & s) {
+      function ji(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
             e.TgZ(1, "div", 22),
@@ -9092,32 +7555,54 @@
             e._uU(8, "Search Column"),
             e.qZA(),
             e.TgZ(9, "input", 24, 25),
-            e.NdJ("keyup", function (g) {
-              return e.CHM(a), e.oxw(2).applyFilter(g);
+            e.NdJ("keyup", function (M) {
+              return e.CHM(a), e.oxw(2).applyFilter(M);
             }),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.TgZ(11, "div"),
-            e._UZ(12, "mat-paginator", 26),
+            e.TgZ(12, "mat-form-field", 23),
+            e.TgZ(13, "mat-label"),
+            e._uU(14, "Select Sort Type"),
+            e.qZA(),
+            e.TgZ(15, "mat-select", 26),
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw(2).selectedColumn = M);
+            })("ngModelChange", function () {
+              return e.CHM(a), e.oxw(2).changeSortedColumn();
+            }),
+            e.TgZ(16, "mat-option", 27),
+            e._uU(17, "ContactName"),
+            e.qZA(),
+            e.TgZ(18, "mat-option", 18),
+            e._uU(19, "OwnerName"),
             e.qZA(),
             e.qZA(),
-            e.TgZ(13, "div", 27),
-            e.YNc(14, gt, 45, 3, "table", 28),
+            e.qZA(),
+            e.qZA(),
+            e.TgZ(20, "div"),
+            e._UZ(21, "mat-paginator", 28),
+            e.qZA(),
+            e.qZA(),
+            e.TgZ(22, "div", 29),
+            e.YNc(23, Pi, 45, 3, "table", 30),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(2);
-          e.xp6(12),
-            e.Q6J("pageSize", 10)("pageSizeOptions", e.DdM(3, Ft)),
+          e.xp6(15),
+            e.Q6J("ngModel", a.selectedColumn),
+            e.xp6(6),
+            e.Q6J("pageSize", 10)("pageSizeOptions", e.DdM(4, va)),
             e.xp6(2),
             e.Q6J("ngIf", a.dataSource);
         }
       }
-      function xa(s, c) {
+      function Ii(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "div"),
             e.TgZ(1, "span"),
             e._uU(2),
@@ -9130,7 +7615,7 @@
             e.ALo(7, "dateformat"),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw().$implicit;
           e.xp6(2),
@@ -9139,47 +7624,47 @@
             e.Oqu(e.lcZ(7, 2, a.DeliveryDate));
         }
       }
-      function Ca(s, c) {
+      function Fi(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "span"), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.Oqu(e.lcZ(2, 1, a.UpTo));
         }
       }
-      function es(s, c) {
+      function Ji(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "span"), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.hij(" ", e.lcZ(2, 1, a.NextActtiondate), "");
         }
       }
-      function ts(s, c) {
+      function Wi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "span", 93), e._uU(1), e.ALo(2, "currency"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "span", 96), e._uU(1), e.ALo(2, "currency"), e.qZA()),
+          2 & i)
         ) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.Oqu(e.xi3(2, 1, a.Anualisedamount, "INR"));
         }
       }
-      function as(s, c) {
-        if ((1 & s && (e.TgZ(0, "span", 93), e._uU(1), e.qZA()), 2 & s)) {
+      function Ri(i, c) {
+        if ((1 & i && (e.TgZ(0, "span", 96), e._uU(1), e.qZA()), 2 & i)) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.Oqu(a.StatusName);
         }
       }
-      function ns(s, c) {
-        if (1 & s) {
+      function Qi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "mat-card", 84),
-            e.TgZ(1, "div", 85),
+          e.TgZ(0, "mat-card", 87),
+            e.TgZ(1, "div", 88),
             e.TgZ(2, "span"),
             e._uU(3),
             e.qZA(),
@@ -9191,10 +7676,10 @@
             e.qZA(),
             e.TgZ(7, "div"),
             e.TgZ(8, "span"),
-            e.TgZ(9, "a", 63),
+            e.TgZ(9, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openEntity(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openEntity(g.InstalledNo);
             }),
             e._uU(10),
             e.qZA(),
@@ -9208,9 +7693,9 @@
             e.TgZ(15, "div"),
             e._uU(16),
             e.qZA(),
-            e.YNc(17, xa, 8, 4, "div", 13),
+            e.YNc(17, Ii, 8, 4, "div", 13),
             e.TgZ(18, "div"),
-            e.TgZ(19, "div", 86),
+            e.TgZ(19, "div", 89),
             e.TgZ(20, "span"),
             e._uU(21, "Scheduled"),
             e.qZA(),
@@ -9222,8 +7707,8 @@
             e._uU(26),
             e.qZA(),
             e._uU(27, " on "),
-            e.YNc(28, Ca, 3, 3, "span", 13),
-            e.YNc(29, es, 3, 3, "span", 13),
+            e.YNc(28, Fi, 3, 3, "span", 13),
+            e.YNc(29, Ji, 3, 3, "span", 13),
             e._uU(30, " at "),
             e.TgZ(31, "span"),
             e._uU(32),
@@ -9233,47 +7718,47 @@
             e.TgZ(33, "div"),
             e._uU(34),
             e.qZA(),
-            e.TgZ(35, "div", 87),
+            e.TgZ(35, "div", 90),
             e.TgZ(36, "div"),
-            e.YNc(37, ts, 3, 4, "span", 88),
-            e.YNc(38, as, 2, 1, "span", 88),
+            e.YNc(37, Wi, 3, 4, "span", 91),
+            e.YNc(38, Ri, 2, 1, "span", 91),
             e.qZA(),
-            e.TgZ(39, "div", 89),
+            e.TgZ(39, "div", 92),
             e.TgZ(40, "li"),
-            e.TgZ(41, "a", 63),
+            e.TgZ(41, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openNotes(T.InstalledNo, T.ClientName);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openNotes(g.InstalledNo, g.ClientName);
             }),
-            e._UZ(42, "i", 90),
+            e._UZ(42, "i", 93),
             e.qZA(),
             e.qZA(),
             e.TgZ(43, "li"),
             e.TgZ(44, "a"),
-            e._UZ(45, "i", 91),
+            e._UZ(45, "i", 94),
             e.qZA(),
             e.qZA(),
             e.TgZ(46, "li"),
-            e.TgZ(47, "a", 65),
-            e._UZ(48, "i", 92),
+            e.TgZ(47, "a", 68),
+            e._UZ(48, "i", 95),
             e.qZA(),
             e.qZA(),
             e.TgZ(49, "li"),
-            e.TgZ(50, "a", 63),
+            e.TgZ(50, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openChat(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openChat(g.InstalledNo);
             }),
-            e._UZ(51, "i", 74),
+            e._UZ(51, "i", 77),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit,
-            d = e.oxw(3);
+            _ = e.oxw(3);
           e.xp6(3),
             e.Oqu(a.ClientName),
             e.xp6(3),
@@ -9285,15 +7770,15 @@
             e.xp6(3),
             e.Oqu(a.Title),
             e.xp6(1),
-            e.Q6J("ngIf", d.facDelDate),
+            e.Q6J("ngIf", _.facDelDate),
             e.xp6(6),
             e.hij(" ", a.nextactiontype, ""),
             e.xp6(3),
             e.hij(" ", a.SVACTOR, ""),
             e.xp6(2),
-            e.Q6J("ngIf", d.UpTo),
+            e.Q6J("ngIf", _.UpTo),
             e.xp6(1),
-            e.Q6J("ngIf", d.nextAct),
+            e.Q6J("ngIf", _.nextAct),
             e.xp6(3),
             e.hij(" ", a.Nextactiontime, ""),
             e.xp6(2),
@@ -9306,19 +7791,19 @@
             e.s9C("matBadge", a.ChatNotiCount);
         }
       }
-      function is(s, c) {
-        if (1 & s) {
+      function zi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "div", 81),
-            e.TgZ(1, "div", 82),
-            e.NdJ("cdkDropListDropped", function (g) {
-              return e.CHM(a), e.oxw(2).drop(g);
+          e.TgZ(0, "div", 84),
+            e.TgZ(1, "div", 85),
+            e.NdJ("cdkDropListDropped", function (M) {
+              return e.CHM(a), e.oxw(2).drop(M);
             }),
-            e.YNc(2, ns, 52, 17, "mat-card", 83),
+            e.YNc(2, Qi, 52, 17, "mat-card", 86),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(2);
           e.xp6(1),
             e.Q6J("cdkDropListData", a.dataSource.data),
@@ -9326,18 +7811,18 @@
             e.Q6J("ngForOf", a.dataSource.data);
         }
       }
-      function ss(s, c) {
-        if (1 & s) {
+      function Gi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "mat-checkbox", 56),
-            e.NdJ("change", function (g) {
+          e.TgZ(0, "mat-checkbox", 58),
+            e.NdJ("change", function (M) {
               e.CHM(a);
-              const T = e.oxw(4);
-              return g ? T.masterToggle() : null;
+              const g = e.oxw(4);
+              return M ? g.masterToggle() : null;
             }),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(4);
           e.Q6J("checked", a.selection.hasValue() && a.isAllSelected())(
             "indeterminate",
@@ -9345,191 +7830,191 @@
           )("aria-label", a.checkboxLabel());
         }
       }
-      function os(s, c) {
+      function ut(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "th", 54),
-            e.YNc(1, ss, 1, 3, "mat-checkbox", 55),
+          (1 & i &&
+            (e.TgZ(0, "th", 111),
+            e.YNc(1, Gi, 1, 3, "mat-checkbox", 57),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(3);
           e.xp6(1), e.Q6J("ngIf", a.Allshow);
         }
       }
-      function rs(s, c) {
-        if (1 & s) {
+      function Bi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "mat-checkbox", 59),
-            e.NdJ("click", function (g) {
-              return g.stopPropagation();
-            })("change", function (g) {
+          e.TgZ(0, "mat-checkbox", 62),
+            e.NdJ("click", function (M) {
+              return M.stopPropagation();
+            })("change", function (M) {
               e.CHM(a);
-              const T = e.oxw().$implicit,
-                v = e.oxw(3);
-              return g ? v.selection.toggle(T) : null;
+              const g = e.oxw().$implicit,
+                A = e.oxw(3);
+              return M ? A.selection.toggle(g) : null;
             }),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit,
-            d = e.oxw(3);
-          e.Q6J("checked", d.selection.isSelected(a))(
+            _ = e.oxw(3);
+          e.Q6J("checked", _.selection.isSelected(a))(
             "aria-label",
-            d.checkboxLabel(a)
+            _.checkboxLabel(a)
           );
         }
       }
-      function _s(s, c) {
+      function Vi(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 57),
-            e.YNc(1, rs, 1, 2, "mat-checkbox", 58),
+          (1 & i &&
+            (e.TgZ(0, "td", 112),
+            e.YNc(1, Bi, 1, 2, "mat-checkbox", 60),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = e.oxw(3);
           e.xp6(1), e.Q6J("ngIf", a.Allshow);
         }
       }
-      function ds(s, c) {
-        1 & s && (e.TgZ(0, "th", 106), e._uU(1, " Company "), e.qZA());
+      function $i(i, c) {
+        1 & i && (e.TgZ(0, "th", 113), e._uU(1, " Company "), e.qZA());
       }
-      function ls(s, c) {
-        if (1 & s) {
+      function Xi(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "a", 63),
+          e.TgZ(0, "a", 66),
             e.NdJ("click", function () {
               e.CHM(a);
-              const g = e.oxw().$implicit;
-              return e.oxw(3).openEntity(g.InstalledNo);
+              const M = e.oxw().$implicit;
+              return e.oxw(3).openEntity(M.InstalledNo);
             }),
             e._uU(1),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit;
           e.xp6(1), e.hij(" ", a.InstalledNo, " ");
         }
       }
-      function ms(s, c) {
-        if (1 & s) {
+      function Ki(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 57),
-            e.TgZ(1, "div", 107),
+          e.TgZ(0, "td", 112),
+            e.TgZ(1, "div", 114),
             e._uU(2),
             e.qZA(),
             e.TgZ(3, "div"),
             e._uU(4),
-            e.TgZ(5, "a", 65),
-            e._UZ(6, "i", 72),
+            e.TgZ(5, "a", 68),
+            e._UZ(6, "i", 75),
             e.qZA(),
             e.TgZ(7, "a"),
-            e._UZ(8, "i", 73),
+            e._UZ(8, "i", 76),
             e.qZA(),
             e.qZA(),
             e.TgZ(9, "div"),
-            e.YNc(10, ls, 2, 1, "a", 62),
+            e.YNc(10, Xi, 2, 1, "a", 65),
             e._uU(11),
             e.qZA(),
             e.TgZ(12, "div"),
             e.TgZ(13, "div"),
             e._uU(14),
-            e.TgZ(15, "a", 63),
+            e.TgZ(15, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openNotes(T.InstalledNo, T.ClientName);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openNotes(g.InstalledNo, g.ClientName);
             }),
-            e._UZ(16, "i", 75),
+            e._UZ(16, "i", 78),
             e.qZA(),
-            e.TgZ(17, "a", 63),
+            e.TgZ(17, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openEmailTrace(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openEmailTrace(g.InstalledNo);
             }),
-            e._UZ(18, "i", 64),
+            e._UZ(18, "i", 67),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e._UZ(19, "div"),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit,
-            d = e.oxw(3);
+            _ = e.oxw(3);
           e.xp6(2),
             e.Oqu(a.ClientName),
             e.xp6(2),
             e.hij(" ", a.ContactName, " "),
             e.xp6(6),
-            e.Q6J("ngIf", d.installedno),
+            e.Q6J("ngIf", _.installedno),
             e.xp6(1),
             e.hij(" || ", a.AMCId, " "),
             e.xp6(3),
             e.hij(" ", a.OwnerName, " ");
         }
       }
-      function us(s, c) {
-        1 & s && e._UZ(0, "th", 106);
+      function es(i, c) {
+        1 & i && e._UZ(0, "th", 113);
       }
-      function cs(s, c) {
-        if (1 & s) {
+      function ts(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 57),
-            e.TgZ(1, "div", 108),
-            e.TgZ(2, "a", 65),
-            e._UZ(3, "i", 66),
+          e.TgZ(0, "td", 112),
+            e.TgZ(1, "div", 115),
+            e.TgZ(2, "a", 68),
+            e._UZ(3, "i", 69),
             e.qZA(),
             e.qZA(),
-            e.TgZ(4, "div", 108),
-            e.TgZ(5, "a", 63),
+            e.TgZ(4, "div", 115),
+            e.TgZ(5, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).EditList(T.InstalledNo, T.ENTITY, T.EntityId);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).EditList(g.InstalledNo, g.ENTITY, g.EntityId);
             }),
-            e._UZ(6, "i", 69),
+            e._UZ(6, "i", 72),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(3);
           e.xp6(6), e.MGl("matTooltip", "Edit ", a.EntityName, "");
         }
       }
-      function ps(s, c) {
-        1 & s && (e.TgZ(0, "th", 106), e._uU(1, " Details "), e.qZA());
+      function as(i, c) {
+        1 & i && (e.TgZ(0, "th", 113), e._uU(1, " Details "), e.qZA());
       }
-      function hs(s, c) {
-        if (1 & s) {
+      function Aa(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div"),
-            e.TgZ(1, "a", 63),
+            e.TgZ(1, "a", 66),
             e.NdJ("click", function () {
               e.CHM(a);
-              const g = e.oxw().$implicit;
-              return e.oxw(3).approval(g.InstalledNo, g.ENTITY, g.EntityId);
+              const M = e.oxw().$implicit;
+              return e.oxw(3).approval(M.InstalledNo, M.ENTITY, M.EntityId);
             }),
             e._uU(2),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw().$implicit;
           e.xp6(2), e.Oqu(a.Approval);
         }
       }
-      function fs(s, c) {
+      function ba(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 57),
+          (1 & i &&
+            (e.TgZ(0, "td", 112),
             e.TgZ(1, "div"),
-            e.TgZ(2, "span", 109),
+            e.TgZ(2, "span", 116),
             e._uU(3, " Open :"),
             e.qZA(),
             e._uU(4),
             e.ALo(5, "dateformat"),
-            e.TgZ(6, "span", 109),
+            e.TgZ(6, "span", 116),
             e._uU(7, "EXP Closure :"),
             e.qZA(),
             e._uU(8),
@@ -9537,32 +8022,32 @@
             e.qZA(),
             e.TgZ(10, "div"),
             e.TgZ(11, "div"),
-            e.TgZ(12, "span", 109),
+            e.TgZ(12, "span", 116),
             e._uU(13, " Status :"),
             e.qZA(),
             e._uU(14),
-            e.TgZ(15, "span", 109),
+            e.TgZ(15, "span", 116),
             e._uU(16, " Stage :"),
             e.qZA(),
             e._uU(17),
             e.qZA(),
             e.TgZ(18, "div"),
-            e.TgZ(19, "span", 109),
+            e.TgZ(19, "span", 116),
             e._uU(20, " Source :"),
             e.qZA(),
             e._uU(21),
-            e.TgZ(22, "span", 109),
+            e.TgZ(22, "span", 116),
             e._uU(23, "Priority :"),
             e.qZA(),
             e._uU(24),
             e.qZA(),
             e.qZA(),
-            e.YNc(25, hs, 3, 1, "div", 13),
+            e.YNc(25, Aa, 3, 1, "div", 13),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw(3);
+            _ = e.oxw(3);
           e.xp6(4),
             e.hij("", e.lcZ(5, 7, a.Opendate), " ||"),
             e.xp6(4),
@@ -9576,34 +8061,34 @@
             e.xp6(3),
             e.hij(" ", a.Priority, " "),
             e.xp6(1),
-            e.Q6J("ngIf", d.voucher);
+            e.Q6J("ngIf", _.voucher);
         }
       }
-      function gs(s, c) {
-        1 & s && (e.TgZ(0, "th", 106), e._uU(1, " Amount "), e.qZA());
+      function wa(i, c) {
+        1 & i && (e.TgZ(0, "th", 113), e._uU(1, " Amount "), e.qZA());
       }
-      function Ms(s, c) {
+      function ct(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 57),
+          (1 & i &&
+            (e.TgZ(0, "td", 112),
             e.TgZ(1, "div"),
             e._uU(2),
             e.ALo(3, "currency"),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2), e.Oqu(e.xi3(3, 1, a.Anualisedamount, "INR"));
         }
       }
-      function Ts(s, c) {
-        1 & s && (e.TgZ(0, "th", 110), e._uU(1, " Description "), e.qZA());
+      function Ue(i, c) {
+        1 & i && (e.TgZ(0, "th", 117), e._uU(1, " Description "), e.qZA());
       }
-      function ys(s, c) {
+      function pt(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 57),
+          (1 & i &&
+            (e.TgZ(0, "td", 112),
             e.TgZ(1, "div"),
             e._uU(2),
             e.qZA(),
@@ -9611,50 +8096,50 @@
             e._uU(4),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2), e.Oqu(a.Title), e.xp6(2), e.Oqu(a.REMARK);
         }
       }
-      function Ls(s, c) {
-        1 & s && e._UZ(0, "th", 106);
+      function Ca(i, c) {
+        1 & i && e._UZ(0, "th", 113);
       }
-      function Jt(s, c) {
-        if (1 & s) {
+      function He(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 57),
-            e.TgZ(1, "div", 111),
+          e.TgZ(0, "td", 112),
+            e.TgZ(1, "div", 118),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).actionSchedul(T.InstalledNo, T.ClientName);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).actionSchedul(g.InstalledNo, g.ClientName);
             }),
             e._uU(2),
             e.qZA(),
-            e.TgZ(3, "div", 108),
+            e.TgZ(3, "div", 115),
             e.TgZ(4, "a", 8),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openAction(T.InstalledNo, T.ClientID);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openAction(g.InstalledNo, g.ClientID);
             }),
-            e._UZ(5, "i", 68),
+            e._UZ(5, "i", 71),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(2), e.hij(" ", a.AMCActionCount, " ");
         }
       }
-      function Zs(s, c) {
-        1 & s && (e.TgZ(0, "th", 106), e._uU(1, " Schedule "), e.qZA());
+      function xa(i, c) {
+        1 & i && (e.TgZ(0, "th", 113), e._uU(1, " Schedule "), e.qZA());
       }
-      function Ys(s, c) {
+      function Sa(i, c) {
         if (
-          (1 & s &&
-            (e.TgZ(0, "td", 112), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
-          2 & s)
+          (1 & i &&
+            (e.TgZ(0, "td", 119), e._uU(1), e.ALo(2, "dateformat"), e.qZA()),
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(1),
@@ -9671,48 +8156,48 @@
             );
         }
       }
-      function Ds(s, c) {
-        1 & s && e._UZ(0, "th", 60);
+      function ns(i, c) {
+        1 & i && e._UZ(0, "th", 63);
       }
-      function Wt(s, c) {
-        if (1 & s) {
+      function is(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "td", 57),
-            e.TgZ(1, "div", 108),
-            e.TgZ(2, "a", 63),
+          e.TgZ(0, "td", 112),
+            e.TgZ(1, "div", 115),
+            e.TgZ(2, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openEmailQuote(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openEmailQuote(g.InstalledNo);
             }),
-            e._UZ(3, "i", 71),
+            e._UZ(3, "i", 74),
             e.qZA(),
             e.qZA(),
-            e.TgZ(4, "div", 108),
-            e.TgZ(5, "a", 63),
+            e.TgZ(4, "div", 115),
+            e.TgZ(5, "a", 66),
             e.NdJ("click", function () {
-              const T = e.CHM(a).$implicit;
-              return e.oxw(3).openChat(T.InstalledNo);
+              const g = e.CHM(a).$implicit;
+              return e.oxw(3).openChat(g.InstalledNo);
             }),
-            e._UZ(6, "i", 74),
+            e._UZ(6, "i", 77),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = c.$implicit;
           e.xp6(6), e.s9C("matBadge", a.ChatNotiCount);
         }
       }
-      function Mt(s, c) {
-        1 & s && e._UZ(0, "tr", 79);
+      function ss(i, c) {
+        1 & i && e._UZ(0, "tr", 82);
       }
-      function ks(s, c) {
-        1 & s && e._UZ(0, "tr", 80);
+      function os(i, c) {
+        1 & i && e._UZ(0, "tr", 83);
       }
-      function vs(s, c) {
-        if (1 & s) {
+      function rs(i, c) {
+        if (1 & i) {
           const a = e.EpF();
-          e.TgZ(0, "div", 94),
+          e.TgZ(0, "div", 97),
             e.TgZ(1, "div"),
             e.TgZ(2, "div", 22),
             e.TgZ(3, "div"),
@@ -9729,65 +8214,65 @@
             e._uU(9, "Search Column"),
             e.qZA(),
             e.TgZ(10, "input", 24, 25),
-            e.NdJ("keyup", function (g) {
-              return e.CHM(a), e.oxw(2).applyFilter(g);
+            e.NdJ("keyup", function (M) {
+              return e.CHM(a), e.oxw(2).applyFilter(M);
             }),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.TgZ(12, "div"),
-            e._UZ(13, "mat-paginator", 26),
+            e._UZ(13, "mat-paginator", 28),
             e.qZA(),
             e.qZA(),
-            e.TgZ(14, "div", 27),
-            e.TgZ(15, "table", 29),
-            e.ynx(16, 30),
-            e.YNc(17, os, 2, 1, "th", 31),
-            e.YNc(18, _s, 2, 1, "td", 32),
+            e.TgZ(14, "div", 29),
+            e.TgZ(15, "table", 31),
+            e.ynx(16, 32),
+            e.YNc(17, ut, 2, 1, "th", 98),
+            e.YNc(18, Vi, 2, 1, "td", 99),
             e.BQk(),
-            e.ynx(19, 95),
-            e.YNc(20, ds, 2, 0, "th", 96),
-            e.YNc(21, ms, 20, 5, "td", 32),
+            e.ynx(19, 100),
+            e.YNc(20, $i, 2, 0, "th", 101),
+            e.YNc(21, Ki, 20, 5, "td", 99),
             e.BQk(),
-            e.ynx(22, 97),
-            e.YNc(23, us, 1, 0, "th", 96),
-            e.YNc(24, cs, 7, 1, "td", 32),
+            e.ynx(22, 102),
+            e.YNc(23, es, 1, 0, "th", 101),
+            e.YNc(24, ts, 7, 1, "td", 99),
             e.BQk(),
-            e.ynx(25, 98),
-            e.YNc(26, ps, 2, 0, "th", 96),
-            e.YNc(27, fs, 26, 11, "td", 32),
+            e.ynx(25, 103),
+            e.YNc(26, as, 2, 0, "th", 101),
+            e.YNc(27, ba, 26, 11, "td", 99),
             e.BQk(),
-            e.ynx(28, 99),
-            e.YNc(29, gs, 2, 0, "th", 96),
-            e.YNc(30, Ms, 4, 4, "td", 32),
+            e.ynx(28, 104),
+            e.YNc(29, wa, 2, 0, "th", 101),
+            e.YNc(30, ct, 4, 4, "td", 99),
             e.BQk(),
-            e.ynx(31, 100),
-            e.YNc(32, Ts, 2, 0, "th", 101),
-            e.YNc(33, ys, 5, 2, "td", 32),
+            e.ynx(31, 105),
+            e.YNc(32, Ue, 2, 0, "th", 106),
+            e.YNc(33, pt, 5, 2, "td", 99),
             e.BQk(),
-            e.ynx(34, 102),
-            e.YNc(35, Ls, 1, 0, "th", 96),
-            e.YNc(36, Jt, 6, 1, "td", 32),
+            e.ynx(34, 107),
+            e.YNc(35, Ca, 1, 0, "th", 101),
+            e.YNc(36, He, 6, 1, "td", 99),
             e.BQk(),
-            e.ynx(37, 103),
-            e.YNc(38, Zs, 2, 0, "th", 96),
-            e.YNc(39, Ys, 3, 6, "td", 104),
+            e.ynx(37, 108),
+            e.YNc(38, xa, 2, 0, "th", 101),
+            e.YNc(39, Sa, 3, 6, "td", 109),
             e.BQk(),
-            e.ynx(40, 105),
-            e.YNc(41, Ds, 1, 0, "th", 34),
-            e.YNc(42, Wt, 7, 1, "td", 32),
+            e.ynx(40, 110),
+            e.YNc(41, ns, 1, 0, "th", 36),
+            e.YNc(42, is, 7, 1, "td", 99),
             e.BQk(),
-            e.YNc(43, Mt, 1, 0, "tr", 52),
-            e.YNc(44, ks, 1, 0, "tr", 53),
+            e.YNc(43, ss, 1, 0, "tr", 54),
+            e.YNc(44, os, 1, 0, "tr", 55),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw(2);
           e.xp6(13),
-            e.Q6J("pageSize", 10)("pageSizeOptions", e.DdM(5, Ft)),
+            e.Q6J("pageSize", 10)("pageSizeOptions", e.DdM(5, va)),
             e.xp6(2),
             e.Q6J("dataSource", a.dataSource),
             e.xp6(28),
@@ -9796,9 +8281,9 @@
             e.Q6J("matRowDefColumns", a.columns);
         }
       }
-      function As(s, c) {
+      function _s(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "tr"),
             e.TgZ(1, "td"),
             e._uU(2),
@@ -9813,7 +8298,7 @@
             e._uU(8),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit;
           e.xp6(2),
@@ -9826,14 +8311,14 @@
             e.Oqu(a.OwnerName);
         }
       }
-      function bs(s, c) {
+      function ds(i, c) {
         if (
-          (1 & s &&
+          (1 & i &&
             (e.TgZ(0, "mat-accordion"),
-            e.TgZ(1, "mat-expansion-panel", 113),
+            e.TgZ(1, "mat-expansion-panel", 120),
             e.TgZ(2, "mat-expansion-panel-header"),
             e.TgZ(3, "mat-panel-title"),
-            e.TgZ(4, "span", 114),
+            e.TgZ(4, "span", 121),
             e._uU(5),
             e.qZA(),
             e._uU(6),
@@ -9857,25 +8342,25 @@
             e.qZA(),
             e.qZA(),
             e.TgZ(18, "tbody"),
-            e.YNc(19, As, 9, 4, "tr", 21),
+            e.YNc(19, _s, 9, 4, "tr", 21),
             e.qZA(),
             e.qZA(),
             e.qZA(),
             e.qZA()),
-          2 & s)
+          2 & i)
         ) {
           const a = c.$implicit,
-            d = e.oxw(2);
+            _ = e.oxw(2);
           e.xp6(5),
             e.hij(" ", a.key, ""),
             e.xp6(1),
             e.hij(" ", a.value.total, " "),
             e.xp6(13),
-            e.Q6J("ngForOf", d.filteredEntity(a.key));
+            e.Q6J("ngForOf", _.filteredEntity(a.key));
         }
       }
-      function ws(s, c) {
-        if (1 & s) {
+      function ls(i, c) {
+        if (1 & i) {
           const a = e.EpF();
           e.TgZ(0, "div", 1),
             e.TgZ(1, "nav", 2),
@@ -9934,9 +8419,9 @@
             e.qZA(),
             e.TgZ(24, "mat-tab-group"),
             e.TgZ(25, "mat-tab", 12),
-            e.YNc(26, Ie, 15, 4, "div", 13),
-            e.YNc(27, is, 3, 2, "div", 14),
-            e.YNc(28, vs, 45, 6, "div", 15),
+            e.YNc(26, ji, 24, 5, "div", 13),
+            e.YNc(27, zi, 3, 2, "div", 14),
+            e.YNc(28, rs, 45, 6, "div", 15),
             e.qZA(),
             e.TgZ(29, "mat-tab", 16),
             e.TgZ(30, "div"),
@@ -9945,8 +8430,8 @@
             e._uU(33, "Select an option"),
             e.qZA(),
             e.TgZ(34, "mat-select", 17),
-            e.NdJ("ngModelChange", function (g) {
-              return e.CHM(a), (e.oxw().groupSelected = g);
+            e.NdJ("ngModelChange", function (M) {
+              return e.CHM(a), (e.oxw().groupSelected = M);
             })("ngModelChange", function () {
               return e.CHM(a), e.oxw().groupSelectedValue();
             }),
@@ -9963,15 +8448,14 @@
             e.qZA(),
             e.qZA(),
             e.TgZ(41, "div"),
-            e.YNc(42, bs, 20, 3, "mat-accordion", 21),
+            e.YNc(42, ds, 20, 3, "mat-accordion", 21),
             e.ALo(43, "keyvalue"),
             e.qZA(),
             e.qZA(),
             e.qZA(),
-            e._UZ(44, "div"),
             e.qZA();
         }
-        if (2 & s) {
+        if (2 & i) {
           const a = e.oxw();
           e.xp6(7),
             e.hij(" ", a.EntityNameTitle, " "),
@@ -9987,885 +8471,2642 @@
             e.Q6J("ngForOf", e.lcZ(43, 6, a.Array));
         }
       }
-      const Sa = [
+      let qa = (() => {
+        class i {
+          constructor(a, _, M, g, A, _e) {
+            (this.CommanService = a),
+              (this.listService = _),
+              (this.root = M),
+              (this.dialog = g),
+              (this.injector = A),
+              (this.global = _e),
+              (this.panelOpenState = !1),
+              (this.a = j()),
+              (this.toDayDate = this.a.toISOString()),
+              (this.EntityNameTitle = ""),
+              (this.Allshow = !1),
+              (this.tableSection = !0),
+              (this.cardSection = !1),
+              (this.DetailViewSection = !1),
+              (this.groupSelected = " "),
+              (this.displayedColumns = [
+                { default: !0, columnName: "select" },
+                { default: !0, columnName: "InstalledNo" },
+                { default: !0, columnName: "ClientName" },
+                {
+                  default: !1,
+                  columnName: "ContactName",
+                  entityTypes: [
+                    "lead",
+                    "payment",
+                    "prospect",
+                    "ticket",
+                    "amc",
+                    "repair",
+                    "work",
+                    "molist",
+                    "milist",
+                    "salesorderlist",
+                    "polist",
+                    "payable",
+                  ],
+                },
+                { default: !0, columnName: "OwnerName" },
+                { default: !0, columnName: "Anualisedamount" },
+                {
+                  default: !1,
+                  columnName: "StatusName",
+                  entityTypes: [
+                    "lead",
+                    "molist",
+                    "payment",
+                    "prospect",
+                    "payable",
+                    "Ticket",
+                    "repair",
+                    "work",
+                    "voucher",
+                  ],
+                },
+                {
+                  default: !1,
+                  columnName: "Billedstatus",
+                  entityTypes: ["salesorderlist", "polist", "payment"],
+                },
+                {
+                  default: !1,
+                  columnName: "SourceName",
+                  entityTypes: ["prospect", "lead"],
+                },
+                {
+                  default: !1,
+                  columnName: "DeliveryStatusName",
+                  entityTypes: ["salesorderlist"],
+                },
+                {
+                  default: !1,
+                  columnName: "ServiceTypeName",
+                  entityTypes: ["Ticket", "repair", "work", "amc"],
+                },
+                {
+                  default: !1,
+                  columnName: "Stage",
+                  entityTypes: ["prospect", "lead"],
+                },
+                {
+                  default: !1,
+                  columnName: "EXPClosuredateDashboard",
+                  entityTypes: [
+                    "lead",
+                    "payment",
+                    "prospect",
+                    "ticket",
+                    "amc",
+                    "repair",
+                    "work",
+                    "molist",
+                    "milist",
+                    "voucher",
+                  ],
+                },
+                {
+                  default: !1,
+                  columnName: "DeliveryDate",
+                  entityTypes: ["salesorderlist", "polist", "payable"],
+                },
+              ]),
+              (this.columns = [
+                "Company",
+                "UploadEdit",
+                "Details",
+                "Amount",
+                "Description",
+                "AddCount",
+                "Schedule",
+                "ChatEmailPDF",
+              ]),
+              (this.dataSource = new T.by([])),
+              (this.selection = new Gn.Ov(!0, [])),
+              this.root.params.subscribe((N) => {
+                (this.dialogData = this.injector.get(u.WI, null)),
+                  this.dialogData
+                    ? ((this.EntityName = this.dialogData.EntityName),
+                      (this.Approval = "296"),
+                      (this.IsSearch = 1),
+                      console.log(this.dialogData))
+                    : (this.EntityName = N.EntityName),
+                  this.listService
+                    .getList({
+                      Flag: this.EntityName,
+                      Dbname: this.global.LOGGED_IN_USER.DbName,
+                      Password: this.global.LOGGED_IN_USER.encryptPswd,
+                      userid: this.global.LOGGED_IN_USER.UserId,
+                      RoleID: this.global.LOGGED_IN_USER.RoleId,
+                      Approval: this.Approval,
+                      IsSearch: this.IsSearch,
+                    })
+                    .subscribe((Pa) => {
+                      (this.dataSource.data = JSON.parse(Pa)),
+                        console.log(this.dataSource.data);
+                    }),
+                  "POList" === this.EntityName
+                    ? (this.EntityNameTitle = "Purchase Order")
+                    : "SalesOrderLIst" === this.EntityName
+                    ? (this.EntityNameTitle = "Sales Order")
+                    : "Prospect" === this.EntityName
+                    ? (this.EntityNameTitle = "Prospect")
+                    : "Lead" === this.EntityName
+                    ? (this.EntityNameTitle = "Lead")
+                    : "Payable" === this.EntityName
+                    ? (this.EntityNameTitle = "Payable")
+                    : "MoList" === this.EntityName
+                    ? (this.EntityNameTitle = "Material Out")
+                    : "MIList" === this.EntityName
+                    ? (this.EntityNameTitle = "Material In")
+                    : "Repair" === this.EntityName
+                    ? (this.EntityNameTitle = "Repair")
+                    : "Payment" === this.EntityName
+                    ? (this.EntityNameTitle = "Payment")
+                    : "AMC" === this.EntityName
+                    ? (this.EntityNameTitle = "AMC")
+                    : "Work" === this.EntityName
+                    ? (this.EntityNameTitle = "Work")
+                    : "Ticket" === this.EntityName
+                    ? (this.EntityNameTitle = "Ticket")
+                    : "Voucher" === this.EntityName &&
+                      (this.EntityNameTitle = "Voucher");
+              }),
+              this.CommanService.listCommanData({
+                DbName: this.global.LOGGED_IN_USER.DbName,
+                Password: this.global.LOGGED_IN_USER.encryptPswd,
+                UserId: this.global.LOGGED_IN_USER.UserId,
+              }).subscribe((N) => {
+                (this.commanData = JSON.parse(N)), console.log(this.commanData);
+              });
+          }
+          drop(a) {
+            (0, ie.bA)(this.dataSource.data, a.previousIndex, a.currentIndex);
+          }
+          get listColumns() {
+            return Object.values(this.displayedColumns)
+              .filter(
+                (a) =>
+                  !!a.default ||
+                  (!!a.entityTypes &&
+                    (a.entityTypes.includes(this.EntityName.toLowerCase()) ||
+                      a.default))
+              )
+              .map((a) => a.columnName);
+          }
+          get installedno() {
+            return [
+              "lead",
+              "payment",
+              "prospect",
+              "ticket",
+              "amc",
+              "repair",
+              "work",
+              "molist",
+              "milist",
+              "salesorderlist",
+              "polist",
+              "payable",
+            ].includes(this.EntityName.toLowerCase());
+          }
+          get voucher() {
+            return ["voucher"].includes(this.EntityName.toLowerCase());
+          }
+          get facDelDate() {
+            return ["salesorderlist"].includes(this.EntityName.toLowerCase());
+          }
+          get UpTo() {
+            return ["lead"].includes(this.EntityName.toLowerCase());
+          }
+          get nextAct() {
+            return ["salesorderlist", "prospect"].includes(
+              this.EntityName.toLowerCase()
+            );
+          }
+          ngAfterViewInit() {
+            (this.dataSource.paginator = this.paginator),
+              (this.dataSource.sort = this.sort),
+              this.changeSortedColumn();
+          }
+          changeSortedColumn() {
+            const a = { active: this.selectedColumn, direction: "asc" };
+            (this.sort.active = a.active),
+              (this.sort.direction = a.direction),
+              this.sort.sortChange.emit(a);
+          }
+          applyFilter(a) {
+            this.dataSource.filter = a.target.value.trim().toLowerCase();
+          }
+          isAllSelected() {
+            return (
+              this.selection.selected.length === this.dataSource.data.length
+            );
+          }
+          masterToggle() {
+            this.isAllSelected()
+              ? this.selection.clear()
+              : this.selection.select(...this.dataSource.data);
+          }
+          checkboxLabel(a) {
+            return a
+              ? `${this.selection.isSelected(a) ? "deselect" : "select"} row ${
+                  a.position + 1
+                }`
+              : (this.isAllSelected() ? "deselect" : "select") + " all";
+          }
+          multipleSelect() {
+            this.Allshow = !this.Allshow;
+          }
+          openEntity(a) {
+            this.dialog
+              .open(fe, {
+                height: "80%",
+                width: "100%",
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          openEmailQuote(a) {
+            this.dialog
+              .open(Gt, {
+                height: "82vh",
+                width: "1000px",
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          openEmailTrace(a) {
+            this.dialog
+              .open(Tt, {
+                height: "40%",
+                width: "70%",
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          openNotes(a, _) {
+            this.dialog
+              .open(zt, {
+                height: "50%",
+                width: "60%",
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                  companyName: _,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          openChat(a) {
+            this.dialog
+              .open(Ve, {
+                width: "30%",
+                position: { left: "70%", top: "10%" },
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          openFilterSearch() {
+            this.dialog
+              .open(Qt, {
+                height: "80%",
+                width: "80%",
+                data: {
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          EditList(a, _, M) {
+            this.dialog
+              .open(Vn, {
+                height: "50%",
+                width: "80%",
+                data: {
+                  installno: a,
+                  entityName: _,
+                  entityid: M,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          approval(a, _, M) {
+            console.log(a, _, M),
+              this.dialog
+                .open(Ce, {
+                  height: "50%",
+                  width: "80%",
+                  data: {
+                    installno: a,
+                    entityName: _,
+                    entityid: M,
+                    EntityNameTitle: this.EntityNameTitle,
+                  },
+                })
+                .afterClosed()
+                .subscribe();
+          }
+          openAction(a, _) {
+            this.dialog
+              .open(ce, {
+                width: "35%",
+                position: { left: "65%", top: "5%" },
+                data: {
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  clientNo: _,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          createForm() {
+            this.dialog
+              .open(Qn, {
+                data: {
+                  EntityName: this.EntityName,
+                  commanData: this.commanData,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          actionSchedul(a, _) {
+            this.dialog
+              .open(hi, {
+                height: "50%",
+                width: "80%",
+                data: {
+                  companyName: _,
+                  EntityID: a,
+                  EntityName: this.EntityName,
+                  EntityNameTitle: this.EntityNameTitle,
+                },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          selectTable() {
+            (this.tableSection = !0),
+              (this.cardSection = !1),
+              (this.DetailViewSection = !1);
+          }
+          selectCard() {
+            (this.tableSection = !1),
+              (this.cardSection = !0),
+              (this.DetailViewSection = !1);
+          }
+          viewDetail() {
+            (this.tableSection = !1),
+              (this.cardSection = !1),
+              (this.DetailViewSection = !0);
+          }
+          groupSelectedValue() {
+            console.log(this.groupSelected);
+            const a = new Map();
+            this.dataSource.data.forEach((_) => {
+              a.set(_[this.groupSelected], {
+                total:
+                  a.get(_[this.groupSelected]) &&
+                  a.get(_[this.groupSelected]).total
+                    ? a.get(_[this.groupSelected]).total + 1
+                    : 1,
+              });
+            }),
+              (this.Array = a),
+              console.log(this.Array);
+          }
+          filteredEntity(a) {
+            return "OwnerName" == this.groupSelected
+              ? this.dataSource.data.filter((_) => _.OwnerName == a)
+              : "StatusName" == this.groupSelected
+              ? this.dataSource.data.filter((_) => _.StatusName == a)
+              : [];
+          }
+          ngOnInit() {}
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(
+              e.Y36(At),
+              e.Y36(D.L),
+              e.Y36(s.gz),
+              e.Y36(u.uw),
+              e.Y36(e.zs3),
+              e.Y36(w.x)
+            );
+          }),
+          (i.ɵcmp = e.Xpm({
+            type: i,
+            selectors: [["app-prospect-list"]],
+            viewQuery: function (a, _) {
+              if ((1 & a && (e.Gf(p.NW, 5), e.Gf(L.YE, 5)), 2 & a)) {
+                let M;
+                e.iGM((M = e.CRH())) && (_.paginator = M.first),
+                  e.iGM((M = e.CRH())) && (_.sort = M.first);
+              }
+            },
+            decls: 1,
+            vars: 1,
+            consts: [
+              ["class", "contain", 4, "ngIf"],
+              [1, "contain"],
+              ["aria-label", "breadcrumb"],
+              [1, "flex"],
+              [1, "left"],
+              [1, "breadcrumb-item"],
+              [1, "fas", "fa-home", "home-icon"],
+              ["aria-current", "page", 1, "breadcrumb-item", "active"],
+              [3, "click"],
+              [1, "right"],
+              [1, "filterSearch", 3, "click"],
+              [
+                "data-bs-toggle",
+                "tooltip",
+                "data-bs-placement",
+                "bottom",
+                "title",
+                " Filter Search ",
+                1,
+                "fas",
+                "fa-filter",
+                "home-icon",
+              ],
+              ["label", "Default"],
+              [4, "ngIf"],
+              ["class", "cardcontainer", 4, "ngIf"],
+              ["class", "DetailViewcontainer", 4, "ngIf"],
+              ["label", "GroupBy"],
+              [3, "ngModel", "ngModelChange"],
+              ["value", "OwnerName"],
+              ["value", "StatusName"],
+              ["value", "Stage "],
+              [4, "ngFor", "ngForOf"],
+              [1, "tableOption"],
+              ["appearance", "standard"],
+              ["matInput", "", 3, "keyup"],
+              ["input", ""],
+              ["name", "selectedColumn", 3, "ngModel", "ngModelChange"],
+              ["value", "ContactName"],
+              ["aria-label", "Select page", 3, "pageSize", "pageSizeOptions"],
+              [1, "table-section"],
+              [
+                "mat-table",
+                "",
+                "matSort",
+                "",
+                "class",
+                "mat-elevation-z8",
+                3,
+                "dataSource",
+                4,
+                "ngIf",
+              ],
+              [
+                "mat-table",
+                "",
+                "matSort",
+                "",
+                1,
+                "mat-elevation-z8",
+                3,
+                "dataSource",
+              ],
+              ["matColumnDef", "select"],
+              [
+                "mat-header-cell",
+                "",
+                "class",
+                "menuCell",
+                4,
+                "matHeaderCellDef",
+              ],
+              ["mat-cell", "", "class", "menuCell", 4, "matCellDef"],
+              ["matColumnDef", "InstalledNo"],
+              [
+                "mat-header-cell",
+                "",
+                "mat-sort-header",
+                "",
+                "class",
+                "text-start",
+                4,
+                "matHeaderCellDef",
+              ],
+              [
+                "mat-cell",
+                "",
+                "class",
+                "text-start table-data",
+                4,
+                "matCellDef",
+              ],
+              ["matColumnDef", "ClientName"],
+              [
+                "mat-cell",
+                "",
+                "class",
+                "text-start columnFontSize",
+                4,
+                "matCellDef",
+              ],
+              ["matColumnDef", "ContactName"],
+              ["matColumnDef", "OwnerName"],
+              ["matColumnDef", "Anualisedamount"],
+              [
+                "mat-header-cell",
+                "",
+                "class",
+                "text-end",
+                "mat-sort-header",
+                "",
+                4,
+                "matHeaderCellDef",
+              ],
+              [
+                "mat-cell",
+                "",
+                "class",
+                "text-end columnFontSize",
+                3,
+                "ngStyle",
+                4,
+                "matCellDef",
+              ],
+              ["matColumnDef", "StatusName"],
+              ["matColumnDef", "DeliveryStatusName"],
+              ["matColumnDef", "SourceName"],
+              ["matColumnDef", "Billedstatus"],
+              ["matColumnDef", "ServiceTypeName"],
+              ["matColumnDef", "Stage"],
+              ["matColumnDef", "EXPClosuredateDashboard"],
+              [
+                "mat-cell",
+                "",
+                "class",
+                "text-start table-data",
+                3,
+                "ngClass",
+                4,
+                "matCellDef",
+              ],
+              ["matColumnDef", "DeliveryDate"],
+              ["mat-header-row", "", 4, "matHeaderRowDef"],
+              ["mat-row", "", 4, "matRowDef", "matRowDefColumns"],
+              ["mat-header-cell", "", 1, "menuCell"],
+              [
+                3,
+                "checked",
+                "indeterminate",
+                "aria-label",
+                "change",
+                4,
+                "ngIf",
+              ],
+              [3, "checked", "indeterminate", "aria-label", "change"],
+              ["mat-cell", "", 1, "menuCell"],
+              [3, "checked", "aria-label", "click", "change", 4, "ngIf"],
+              [
+                "mat-icon-button",
+                "",
+                "aria-label",
+                "Example icon button with a vertical three dot icon",
+              ],
+              [3, "checked", "aria-label", "click", "change"],
+              ["mat-header-cell", "", "mat-sort-header", "", 1, "text-start"],
+              ["mat-cell", "", 1, "text-start", "table-data"],
+              ["class", "a", 3, "click", 4, "ngIf"],
+              [1, "a", 3, "click"],
+              ["matTooltip", "Email Trace", 1, "fas", "fa-envelope"],
+              [1, "a"],
+              ["matTooltip", "Upload", 1, "fas", "fa-cloud-upload-alt"],
+              ["class", "a", 4, "ngIf"],
+              ["matTooltip", "Add Action", 1, "fas", "fa-plus-circle"],
+              [1, "fas", "fa-pencil-alt", 3, "matTooltip"],
+              ["mat-cell", "", 1, "text-start", "columnFontSize"],
+              ["matTooltip", "View Email Quote", 1, "fas", "fa-file-pdf"],
+              ["matTooltip", "Phone", 1, "fas", "fa-phone"],
+              ["matTooltip", "WhatsApp", 1, "fab", "fa-whatsapp"],
+              ["matTooltip", "Chat", 1, "far", "fa-comments", 3, "matBadge"],
+              ["matTooltip", "view Notes", 1, "far", "fa-clipboard"],
+              ["mat-header-cell", "", "mat-sort-header", "", 1, "text-end"],
+              ["mat-cell", "", 1, "text-end", "columnFontSize", 3, "ngStyle"],
+              ["mat-cell", "", 1, "text-start", "table-data", 3, "ngClass"],
+              ["mat-header-row", ""],
+              ["mat-row", ""],
+              [1, "cardcontainer"],
+              [
+                "cdkDropList",
+                "",
+                1,
+                "cardSection",
+                "row",
+                3,
+                "cdkDropListData",
+                "cdkDropListDropped",
+              ],
+              ["class", "card-box col", "cdkDrag", "", 4, "ngFor", "ngForOf"],
+              ["cdkDrag", "", 1, "card-box", "col"],
+              [1, "company"],
+              [1, "ActionField"],
+              [1, "iconfield"],
+              ["class", "iconfield-badge", 4, "ngIf"],
+              [1, "icon"],
+              [
+                "data-bs-toggle",
+                "tooltip",
+                "data-bs-placement",
+                "top",
+                "title",
+                "view Notes",
+                1,
+                "far",
+                "fa-clipboard",
+              ],
+              [
+                "data-bs-toggle",
+                "tooltip",
+                "data-bs-placement",
+                "top",
+                "title",
+                "WhatsApp",
+                1,
+                "fab",
+                "fa-whatsapp",
+              ],
+              [
+                "data-bs-toggle",
+                "tooltip",
+                "data-bs-placement",
+                "top",
+                "title",
+                "Phone",
+                1,
+                "fas",
+                "fa-phone",
+              ],
+              [1, "iconfield-badge"],
+              [1, "DetailViewcontainer"],
+              ["mat-header-cell", "", 4, "matHeaderCellDef"],
+              ["mat-cell", "", 4, "matCellDef"],
+              ["matColumnDef", "Company"],
+              [
+                "mat-header-cell",
+                "",
+                "mat-sort-header",
+                "",
+                4,
+                "matHeaderCellDef",
+              ],
+              ["matColumnDef", "UploadEdit"],
+              ["matColumnDef", "Details"],
+              ["matColumnDef", "Amount"],
+              ["matColumnDef", "Description"],
+              [
+                "mat-header-cell",
+                "",
+                "mat-sort-header",
+                "",
+                "c",
+                "",
+                4,
+                "matHeaderCellDef",
+              ],
+              ["matColumnDef", "AddCount"],
+              ["matColumnDef", "Schedule"],
+              [
+                "mat-cell",
+                "",
+                "class",
+                "table-data",
+                3,
+                "ngStyle",
+                4,
+                "matCellDef",
+              ],
+              ["matColumnDef", "ChatEmailPDF"],
+              ["mat-header-cell", ""],
+              ["mat-cell", ""],
+              ["mat-header-cell", "", "mat-sort-header", ""],
+              [1, "ClientName"],
+              [1, "subValueIcon"],
+              [1, "Datalabel"],
+              ["mat-header-cell", "", "mat-sort-header", "", "c", ""],
+              [1, "subValueIcon", "text-primary", 3, "click"],
+              ["mat-cell", "", 1, "table-data", 3, "ngStyle"],
+              [1, "card-box"],
+              [1, "me-4"],
+            ],
+            template: function (a, _) {
+              1 & a && e.YNc(0, ls, 44, 8, "div", 0),
+                2 & a && e.Q6J("ngIf", _.dataSource);
+            },
+            directives: [
+              m.O5,
+              se.Hw,
+              ue.SP,
+              ue.uX,
+              b.KE,
+              b.hX,
+              z.gD,
+              k.JJ,
+              k.On,
+              P.ey,
+              m.sg,
+              Me.oG,
+              q.Nt,
+              p.NW,
+              T.BZ,
+              L.YE,
+              T.w1,
+              T.fO,
+              T.Dz,
+              T.as,
+              T.nj,
+              T.ge,
+              T.ev,
+              K.lW,
+              L.nU,
+              Nt.gM,
+              Ma.k,
+              m.PC,
+              m.mk,
+              T.XQ,
+              T.Gk,
+              ie.Wj,
+              Ta.a8,
+              ie.Zt,
+              Le.pp,
+              Le.ib,
+              Le.yz,
+              Le.yK,
+            ],
+            pipes: [m.Nd, m.H9, Ge],
+            styles: [
+              "table[_ngcontent-%COMP%]{width:100%;height:75%;padding-top:70px}.table-section[_ngcontent-%COMP%]{overflow-x:auto}th.mat-header-cell[_ngcontent-%COMP%]{text-align:center!important;justify-content:center!important}th[_ngcontent-%COMP%]{height:26px;background-color:#dcebdc;font-size:20px;color:#000}tr[_ngcontent-%COMP%]{height:36px}tr[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}td[_ngcontent-%COMP%]{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}span[_ngcontent-%COMP%]{padding:0 3px}nav[_ngcontent-%COMP%]{padding-top:74px}mat-icon[_ngcontent-%COMP%]{margin:0 0 0 10px}li[_ngcontent-%COMP%]{text-decoration:none;display:inline}i[_ngcontent-%COMP%]{font-size:14px;color:#9c9b9b;padding:3px}.menuCell[_ngcontent-%COMP%]{width:60px}.tableOption[_ngcontent-%COMP%]{display:flex;justify-content:space-between;align-items:center}.columnFontSize[_ngcontent-%COMP%]{max-width:120px;font-size:17px;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.table-data[_ngcontent-%COMP%]{font-size:13px;padding:0 10px}.a[_ngcontent-%COMP%]{text-decoration:none}.a[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer}#modal[_ngcontent-%COMP%]{background-color:#fff}.nav-item[_ngcontent-%COMP%]{justify-content:center}.nav-link[_ngcontent-%COMP%]{font-size:x-small}.search-input[_ngcontent-%COMP%]{height:38px;display:block;width:100%;height:24px;font-size:14px;font-weight:400;color:#000;background:transparent;border:none;outline:none;border-bottom:1px solid rgb(201,199,199)}.search-input[_ngcontent-%COMP%]:focus{border-bottom:2px solid blue;outline:none}.table-control[_ngcontent-%COMP%]{padding:10px 0}.filterSearch[_ngcontent-%COMP%], .filterSearch[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:20px}.contain[_ngcontent-%COMP%]{padding:0 17px 0 67px}  .mat-dialog-container{margin:0!important;padding:0!important;overflow-x:hidden!important}.cdk-drag-preview[_ngcontent-%COMP%]{box-sizing:border-box;border-radius:4px;box-shadow:0 5px 5px -3px #0003,0 8px 10px 1px #00000024,0 3px 14px 2px #0000001f}.cdk-drag-placeholder[_ngcontent-%COMP%]{opacity:0}.cdk-drag-animating[_ngcontent-%COMP%]{transition:transform .25s cubic-bezier(0,0,.2,1)}.example-box[_ngcontent-%COMP%]:last-child{border:none}.example-list.cdk-drop-list-dragging[_ngcontent-%COMP%]   .card-box[_ngcontent-%COMP%]:not(.cdk-drag-placeholder){transition:transform .25s cubic-bezier(0,0,.2,1)}.mat-card[_ngcontent-%COMP%]{padding:10px!important;border-radius:0!important}.card-box[_ngcontent-%COMP%]{min-width:300px;margin:5px}.cardSection[_ngcontent-%COMP%]{padding:24px}.iconfield[_ngcontent-%COMP%]{display:flex;justify-content:space-between;padding:10px 0 0}.iconfield-badge[_ngcontent-%COMP%]{background-color:#b8e0d4;color:#000;border-radius:5px;margin:5px;padding:3px}.company[_ngcontent-%COMP%]{padding:0 0 5px;font-size:large;font-weight:600}.ActionField[_ngcontent-%COMP%]{padding:3px 0;font-size:medium;font-style:italic;font-weight:400}.red[_ngcontent-%COMP%]{color:red}.green[_ngcontent-%COMP%]{color:green}.tooltip[_ngcontent-%COMP%]{background-color:#000;color:#fff}.flex[_ngcontent-%COMP%]{display:flex;justify-content:space-between}.left[_ngcontent-%COMP%], .right[_ngcontent-%COMP%]{display:flex}.cardcontainer[_ngcontent-%COMP%]{background-color:#dcebdc}.breadcrumb-home[_ngcontent-%COMP%]{color:#000;list-style-type:none}.home-icon[_ngcontent-%COMP%]{color:#000;font-size:15px}.Amount-head[_ngcontent-%COMP%]{position:relative;right:-78}.card-box[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}.subValueIcon[_ngcontent-%COMP%]{margin:15px 0;cursor:pointer}.ClientName[_ngcontent-%COMP%]{color:#00f;font-weight:600;font-size:16px}.Datalabel[_ngcontent-%COMP%]{color:gray}.mat-badge-content[_ngcontent-%COMP%]{color:#f02d2d!important;background:transparent!important;right:-7px!important;top:-7px!important}",
+            ],
+          })),
+          i
+        );
+      })();
+      var ms = f(9776),
+        Ft = f(2181),
+        Na = f(4594),
+        Oa = f(3954);
+      function us(i, c) {
+        1 & i && (e.TgZ(0, "mat-icon", 35), e._uU(1, "check"), e.qZA());
+      }
+      function cs(i, c) {
+        if (1 & i) {
+          const a = e.EpF();
+          e.TgZ(0, "mat-grid-tile"),
+            e.TgZ(1, "button", 33),
+            e.NdJ("click", function (M) {
+              const A = e.CHM(a).$implicit,
+                _e = e.oxw();
+              return M.stopPropagation(), _e.setTheme(A);
+            }),
+            e.TgZ(2, "div"),
+            e._UZ(3, "div"),
+            e._UZ(4, "div"),
+            e.YNc(5, us, 2, 0, "mat-icon", 34),
+            e.qZA(),
+            e.qZA(),
+            e.qZA();
+        }
+        if (2 & i) {
+          const a = c.$implicit,
+            _ = e.oxw();
+          e.xp6(2),
+            e.uIk("class", a + "theme-primary center"),
+            e.xp6(1),
+            e.uIk("class", a + "theme-accent"),
+            e.xp6(1),
+            e.uIk("class", a + "theme-warn"),
+            e.xp6(1),
+            e.Q6J("ngIf", _.activeTheme === a);
+        }
+      }
+      let hs = (() => {
+        class i {
+          constructor(a, _, M, g, A) {
+            (this.commanService = a),
+              (this.global = _),
+              (this.router = M),
+              (this.overlayContainer = g),
+              (this.dialog = A),
+              (this.themes = [
+                "deeppurple-amber",
+                "indigo-pink",
+                "pink-bluegrey",
+                "purple-green",
+              ]),
+              (this.isThemeDark = !1),
+              this.global.LOGGED_IN_USER &&
+                ((this.companyName = this.global.LOGGED_IN_USER.CoName),
+                (this.userName = this.global.LOGGED_IN_USER.Username)),
+              this.setTheme("indigo-pink", !1),
+              this.commanService
+                .ApprovalCount({
+                  DBNAME: this.global.LOGGED_IN_USER.DbName,
+                  password: this.global.LOGGED_IN_USER.encryptPswd,
+                  userid: this.global.LOGGED_IN_USER.UserId,
+                })
+                .subscribe((me) => {
+                  (this.CountData = JSON.parse(me)),
+                    console.log(this.CountData);
+                });
+          }
+          setTheme(a, _ = null) {
+            if (null === _) _ = this.isThemeDark;
+            else if (this.isThemeDark === _) {
+              if (this.activeTheme === a) return;
+            } else this.isThemeDark = _;
+            this.activeTheme = a;
+            const M = !0 === _ ? a + "-dark" : a,
+              g = this.overlayContainer.getContainerElement().classList;
+            g.contains(this.activeThemeCssClass)
+              ? g.replace(this.activeThemeCssClass, M)
+              : g.add(M),
+              (this.activeThemeCssClass = M),
+              console.log(M);
+          }
+          toggleDarkness() {
+            this.setTheme(this.activeTheme, !this.isThemeDark);
+          }
+          approvalNotificationList(a, _) {
+            this.dialog
+              .open(qa, {
+                height: "100%",
+                width: "100%",
+                data: { Count: a, EntityName: _ },
+              })
+              .afterClosed()
+              .subscribe();
+          }
+          onSignOut() {
+            localStorage.removeItem("Global.LOGGED_IN_USER"),
+              this.router.navigate(["/login"]);
+          }
+          ngOnInit() {}
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(
+              e.Y36(At),
+              e.Y36(w.x),
+              e.Y36(s.F0),
+              e.Y36(ms.Xj),
+              e.Y36(u.uw)
+            );
+          }),
+          (i.ɵcmp = e.Xpm({
+            type: i,
+            selectors: [["app-header"]],
+            hostVars: 2,
+            hostBindings: function (a, _) {
+              2 & a && e.Tol(_.activeThemeCssClass);
+            },
+            decls: 125,
+            vars: 15,
+            consts: function () {
+              let c, a;
+              return (
+                (c = $localize`:@@Select-a-theme:Select a theme!`),
+                (a = $localize`:@@Dark:Dark `),
+                [
+                  ["role", "banner", 1, "toolbar"],
+                  ["href", "/admin/page/Lead", 1, "companyLogo"],
+                  [
+                    "src",
+                    "assets/img/FFHFinalLogo.png",
+                    "height",
+                    "45",
+                    "alt",
+                    "",
+                  ],
+                  [1, "spacer"],
+                  [
+                    "src",
+                    "assets/img/NoImage.png",
+                    "width",
+                    "50",
+                    "alt",
+                    "",
+                    3,
+                    "height",
+                  ],
+                  ["id", "ffh", 1, ""],
+                  ["id", "", 1, "header-link", 3, "matMenuTriggerFor"],
+                  [1, "fas", "fa-paperclip"],
+                  ["list", "matMenu"],
+                  ["mat-menu-item", "", 1, "matmenuList"],
+                  [1, "dropdown-divider"],
+                  ["mat-menu-item", "", 1, "dropdown-list"],
+                  [1, "fas", "fa-barcode"],
+                  ["QuickLinks", "matMenu"],
+                  [1, "fas", "fa-search"],
+                  ["masters", "matMenu"],
+                  ["id", "", 1, "header-link"],
+                  [1, "far", "fa-envelope"],
+                  [1, "header-link", 3, "matMenuTriggerFor"],
+                  [
+                    "matBadgeColor",
+                    "warn",
+                    "matBadgeOverlap",
+                    "false",
+                    1,
+                    "far",
+                    "fa-bell",
+                    3,
+                    "matBadge",
+                  ],
+                  ["Notification", "matMenu"],
+                  ["mat-menu-item", "", 1, "dropdown-list", 3, "click"],
+                  ["id", " ", 1, "header-link", 3, "matMenuTriggerFor"],
+                  [1, "fas", "fa-user-circle"],
+                  ["user", "matMenu"],
+                  [1, "themebutton"],
+                  [
+                    "mat-icon-button",
+                    "",
+                    "id",
+                    "theme-selector",
+                    "matTooltip",
+                    c,
+                    "tabindex",
+                    "-1",
+                    3,
+                    "mat-menu-trigger-for",
+                  ],
+                  [1, "auto-flip"],
+                  ["themeMenu", "matMenu"],
+                  [
+                    1,
+                    "mat-menu-item",
+                    "theme-selector-is-dark",
+                    3,
+                    "checked",
+                    "click",
+                    "change",
+                  ],
+                  a,
+                  ["cols", "2", 1, "theme-selectors-container"],
+                  [4, "ngFor", "ngForOf"],
+                  ["mat-button", "", 1, "theme-selector", 3, "click"],
+                  ["class", "center theme-check", 4, "ngIf"],
+                  [1, "center", "theme-check"],
+                ]
+              );
+            },
+            template: function (a, _) {
+              if (
+                (1 & a &&
+                  (e.TgZ(0, "div", 0),
+                  e.TgZ(1, "a", 1),
+                  e._UZ(2, "img", 2),
+                  e.qZA(),
+                  e._UZ(3, "div", 3),
+                  e._UZ(4, "img", 4),
+                  e.TgZ(5, "a", 5),
+                  e._uU(6),
+                  e.qZA(),
+                  e.TgZ(7, "li", 6),
+                  e._UZ(8, "i", 7),
+                  e.TgZ(9, "mat-menu", null, 8),
+                  e.TgZ(11, "button", 9),
+                  e._uU(12, "My list"),
+                  e.qZA(),
+                  e._UZ(13, "hr", 10),
+                  e.TgZ(14, "a", 11),
+                  e._uU(15, "My User"),
+                  e.qZA(),
+                  e.TgZ(16, "a", 11),
+                  e._uU(17, "User Rights"),
+                  e.qZA(),
+                  e.TgZ(18, "a", 11),
+                  e._uU(19, "My Company"),
+                  e.qZA(),
+                  e.TgZ(20, "a", 11),
+                  e._uU(21, "My Config"),
+                  e.qZA(),
+                  e.TgZ(22, "a", 11),
+                  e._uU(23, "My Alert"),
+                  e.qZA(),
+                  e.TgZ(24, "a", 11),
+                  e._uU(25, "My Branches"),
+                  e.qZA(),
+                  e.TgZ(26, "a", 11),
+                  e._uU(27, "My Report"),
+                  e.qZA(),
+                  e.TgZ(28, "a", 11),
+                  e._uU(29, "User Report"),
+                  e.qZA(),
+                  e.TgZ(30, "a", 11),
+                  e._uU(31, "Location Detail"),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(32, "li", 6),
+                  e._UZ(33, "i", 12),
+                  e.TgZ(34, "mat-menu", null, 13),
+                  e.TgZ(36, "button", 9),
+                  e._uU(37, "Quick Links"),
+                  e.qZA(),
+                  e._UZ(38, "hr", 10),
+                  e.TgZ(39, "a", 11),
+                  e._uU(40, "Create Prospect"),
+                  e.qZA(),
+                  e.TgZ(41, "a", 11),
+                  e._uU(42, "Create Lead"),
+                  e.qZA(),
+                  e.TgZ(43, "a", 11),
+                  e._uU(44, "Create SO"),
+                  e.qZA(),
+                  e.TgZ(45, "a", 11),
+                  e._uU(46, "Create MO"),
+                  e.qZA(),
+                  e.TgZ(47, "a", 11),
+                  e._uU(48, "Create MI"),
+                  e.qZA(),
+                  e.TgZ(49, "a", 11),
+                  e._uU(50, "Create Bill"),
+                  e.qZA(),
+                  e.TgZ(51, "a", 11),
+                  e._uU(52, "Create Ticket"),
+                  e.qZA(),
+                  e.TgZ(53, "a", 11),
+                  e._uU(54, "Install Product"),
+                  e.qZA(),
+                  e.TgZ(55, "a", 11),
+                  e._uU(56, "Create PO"),
+                  e.qZA(),
+                  e.TgZ(57, "a", 11),
+                  e._uU(58, "Create POBill"),
+                  e.qZA(),
+                  e.TgZ(59, "a", 11),
+                  e._uU(60, "Journal Vouchar"),
+                  e.qZA(),
+                  e.TgZ(61, "a", 11),
+                  e._uU(62, "Memo"),
+                  e.qZA(),
+                  e.TgZ(63, "a", 11),
+                  e._uU(64, "Payment Received"),
+                  e.qZA(),
+                  e.TgZ(65, "a", 11),
+                  e._uU(66, "Payment Made"),
+                  e.qZA(),
+                  e.TgZ(67, "a", 11),
+                  e._uU(68, "Stock Journal "),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(69, "li", 6),
+                  e._UZ(70, "i", 14),
+                  e.TgZ(71, "mat-menu", null, 15),
+                  e.TgZ(73, "button", 9),
+                  e._uU(74, "Masters"),
+                  e.qZA(),
+                  e._UZ(75, "hr", 10),
+                  e.TgZ(76, "a", 11),
+                  e._uU(77, "Company"),
+                  e.qZA(),
+                  e.TgZ(78, "a", 11),
+                  e._uU(79, "Contact"),
+                  e.qZA(),
+                  e.TgZ(80, "a", 11),
+                  e._uU(81, "Product"),
+                  e.qZA(),
+                  e.TgZ(82, "a", 11),
+                  e._uU(83, "Ledger"),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(84, "li", 16),
+                  e._UZ(85, "i", 17),
+                  e.qZA(),
+                  e.TgZ(86, "li", 18),
+                  e._UZ(87, "i", 19),
+                  e.TgZ(88, "mat-menu", null, 20),
+                  e.TgZ(90, "button", 9),
+                  e._uU(91, "Approval Notification"),
+                  e.qZA(),
+                  e._UZ(92, "hr", 10),
+                  e.TgZ(93, "a", 21),
+                  e.NdJ("click", function () {
+                    return _.approvalNotificationList(
+                      null == _.CountData ? null : _.CountData.SOApprovalCount,
+                      "SalesOrderLIst"
+                    );
+                  }),
+                  e._uU(94),
+                  e.qZA(),
+                  e.TgZ(95, "a", 21),
+                  e.NdJ("click", function () {
+                    return _.approvalNotificationList(
+                      null == _.CountData
+                        ? null
+                        : _.CountData.PayableApprovalCount,
+                      "Payable"
+                    );
+                  }),
+                  e._uU(96),
+                  e.qZA(),
+                  e.TgZ(97, "a", 21),
+                  e.NdJ("click", function () {
+                    return _.approvalNotificationList(
+                      null == _.CountData
+                        ? null
+                        : _.CountData.VoucherApprovalCount,
+                      "Voucher"
+                    );
+                  }),
+                  e._uU(98),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(99, "li", 22),
+                  e._UZ(100, "i", 23),
+                  e._uU(101),
+                  e.TgZ(102, "mat-menu", null, 24),
+                  e.TgZ(104, "a", 11),
+                  e._uU(105, "Register Extension "),
+                  e.qZA(),
+                  e.TgZ(106, "a", 11),
+                  e._uU(107, "Change Pwd"),
+                  e.qZA(),
+                  e.TgZ(108, "a", 11),
+                  e._uU(109, "Upload"),
+                  e.qZA(),
+                  e._UZ(110, "hr", 10),
+                  e.TgZ(111, "a", 21),
+                  e.NdJ("click", function () {
+                    return _.onSignOut();
+                  }),
+                  e._uU(112, "Sign out"),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(113, "span"),
+                  e.TgZ(114, "mat-toolbar", 25),
+                  e.TgZ(115, "mat-toolbar-row"),
+                  e.TgZ(116, "button", 26),
+                  e.TgZ(117, "mat-icon", 27),
+                  e._uU(118, "format_color_fill"),
+                  e.qZA(),
+                  e.qZA(),
+                  e.TgZ(119, "mat-menu", null, 28),
+                  e.TgZ(121, "mat-checkbox", 29),
+                  e.NdJ("click", function (g) {
+                    return g.stopPropagation();
+                  })("change", function () {
+                    return _.toggleDarkness();
+                  }),
+                  e.SDv(122, 30),
+                  e.qZA(),
+                  e.TgZ(123, "mat-grid-list", 31),
+                  e.YNc(124, cs, 6, 4, "mat-grid-tile", 32),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA(),
+                  e.qZA()),
+                2 & a)
+              ) {
+                const M = e.MAs(10),
+                  g = e.MAs(35),
+                  A = e.MAs(72),
+                  _e = e.MAs(89),
+                  me = e.MAs(103),
+                  N = e.MAs(120);
+                e.xp6(4),
+                  e.Q6J("height", 40),
+                  e.xp6(2),
+                  e.hij(" ", _.companyName, " "),
+                  e.xp6(1),
+                  e.Q6J("matMenuTriggerFor", M),
+                  e.xp6(25),
+                  e.Q6J("matMenuTriggerFor", g),
+                  e.xp6(37),
+                  e.Q6J("matMenuTriggerFor", A),
+                  e.xp6(17),
+                  e.Q6J("matMenuTriggerFor", _e),
+                  e.xp6(1),
+                  e.s9C(
+                    "matBadge",
+                    null == _.CountData ? null : _.CountData.TotalApprovalCount
+                  ),
+                  e.xp6(7),
+                  e.hij(
+                    "Sales Order(",
+                    null == _.CountData ? null : _.CountData.SOApprovalCount,
+                    ")"
+                  ),
+                  e.xp6(2),
+                  e.hij(
+                    "Payble(",
+                    null == _.CountData
+                      ? null
+                      : _.CountData.PayableApprovalCount,
+                    ")"
+                  ),
+                  e.xp6(2),
+                  e.hij(
+                    "Vouchar(",
+                    null == _.CountData
+                      ? null
+                      : _.CountData.VoucherApprovalCount,
+                    ")"
+                  ),
+                  e.xp6(1),
+                  e.Q6J("matMenuTriggerFor", me),
+                  e.xp6(2),
+                  e.hij(" ", _.userName, " "),
+                  e.xp6(15),
+                  e.Q6J("mat-menu-trigger-for", N),
+                  e.xp6(5),
+                  e.Q6J("checked", _.isThemeDark),
+                  e.xp6(3),
+                  e.Q6J("ngForOf", _.themes);
+              }
+            },
+            directives: [
+              Ft.p6,
+              Ft.VK,
+              Ft.OP,
+              Ma.k,
+              Na.Ye,
+              Na.rD,
+              K.lW,
+              Nt.gM,
+              se.Hw,
+              Me.oG,
+              Oa.Il,
+              m.sg,
+              Oa.DX,
+              m.O5,
+            ],
+            styles: [
+              ".spacer[_ngcontent-%COMP%]{flex:1}.toolbar[_ngcontent-%COMP%]{position:absolute;top:0;left:0;right:0;height:60px;display:flex;align-items:center;background-color:#b8e0d4;color:#000;font-weight:600;z-index:100;position:fixed}.mat-badge-medium[_ngcontent-%COMP%]   .mat-badge-content[_ngcontent-%COMP%]{width:32px!important;height:21px!important;top:-16px!important;line-height:22px}.header-link[_ngcontent-%COMP%]{margin:0 16px;list-style:none}.matmenuList[_ngcontent-%COMP%]{background-color:#dcebdc}#ffh[_ngcontent-%COMP%]{color:#000;margin-right:10px}.companyLogo[_ngcontent-%COMP%]{padding-left:83px}i[_ngcontent-%COMP%]{font-size:18px;color:#000}.dropdown-list[_ngcontent-%COMP%]{color:#000;text-decoration:none}.dropdown-list[_ngcontent-%COMP%]:hover{background:#b8e0d4}.green[_ngcontent-%COMP%]{background-color:#b8e0d4}.red[_ngcontent-%COMP%]{background-color:#ffa07a}.themebutton[_ngcontent-%COMP%]{background-color:#b8e0d4}.example-icon[_ngcontent-%COMP%]{padding:0 14px}.example-spacer[_ngcontent-%COMP%]{flex:1 1 auto}@mixin size($width,$height: null){width: $width; height: if($height==null,$width,$height);}.theme-selectors-container[_ngcontent-%COMP%]{width:190px;margin:0 8px}button.theme-selector[_ngcontent-%COMP%]{@include size(80px);}div.theme-primary[_ngcontent-%COMP%]{@include size(70px);border-radius:50%}div.theme-accent[_ngcontent-%COMP%]{@include size(25px);position:absolute;bottom:0;left:0}div.theme-warn[_ngcontent-%COMP%]{@include size(15px);position:absolute;bottom:7%;left:20%;transform:rotate(45deg)}.theme-check[_ngcontent-%COMP%]{color:#fff;font-size:3.2em}.theme-selector-is-dark[_ngcontent-%COMP%]{font-weight:700;font-size:1.2em}.center[_ngcontent-%COMP%]{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}",
+            ],
+          })),
+          i
+        );
+      })();
+      var Ua = f(2313);
+      let fs = (() => {
+        class i {
+          constructor(a) {
+            (this.titleService = a), (this.toggle = !0);
+          }
+          setTitle(a) {
+            this.titleService.setTitle(a);
+          }
+          ngOnInit() {}
+          changeTheme() {
+            this.toggle = !this.toggle;
+          }
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(Ua.Dx));
+          }),
+          (i.ɵcmp = e.Xpm({
+            type: i,
+            selectors: [["app-side-nav"]],
+            decls: 143,
+            vars: 0,
+            consts: [
+              [1, "sidebar", "close", "pb-3"],
+              [1, "nav-links"],
+              [1, "iocn-link"],
+              [
+                "src",
+                " /assets/img/dashboard.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [1, "sub-menu", "shadow-lg", "bg-body", "rounded"],
+              [
+                "routerLink",
+                "/admin/Dashboard/Dashboard",
+                1,
+                "link_name",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/growth.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [1, "link_name"],
+              [
+                "routerLink",
+                "/admin/ListDashboard/Prospect",
+                "routerLinkActive",
+                "active",
+                3,
+                "click",
+              ],
+              [
+                "routerLink",
+                "/admin/page/Prospect",
+                "routerLinkActive",
+                "active",
+                "id",
+                "Prospect",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/business-and-finance.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [3, "click"],
+              [
+                "routerLink",
+                "/admin/page/Lead",
+                "routerLinkActive",
+                "active",
+                "id",
+                "Lead",
+                3,
+                "click",
+              ],
+              ["id", "SOdash", 3, "click"],
+              [
+                "routerLink",
+                "/admin/page/SalesOrderLIst",
+                "routerLinkActive",
+                "active",
+                "id",
+                "SO",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/shopping-cart.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [
+                "routerLink",
+                "/admin/page/MoList",
+                "routerLinkActive",
+                "active",
+                "id",
+                "MO",
+                3,
+                "click",
+              ],
+              [
+                "routerLink",
+                "/admin/page/POList",
+                "routerLinkActive",
+                "active",
+                "id",
+                "PO",
+                3,
+                "click",
+              ],
+              [
+                "routerLink",
+                "/admin/page/MIList",
+                "routerLinkActive",
+                "active",
+                3,
+                "click",
+              ],
+              ["routerLink", "/admin/page/Repair", 3, "click"],
+              [
+                "src",
+                "/assets/img/coin.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [
+                "routerLink",
+                "/admin/page/Payment",
+                "id",
+                "Invoice",
+                3,
+                "click",
+              ],
+              [
+                "routerLink",
+                "/admin/page/Payable",
+                "routerLinkActive",
+                "active",
+                "id",
+                "PI",
+                3,
+                "click",
+              ],
+              [
+                "routerLink",
+                "/admin/page/Voucher",
+                "id",
+                "vouchar",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/technical-support.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [
+                "routerLink",
+                "/admin/page/Ticket",
+                "routerLinkActive",
+                "active",
+                "id",
+                "Ticket",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/handshake.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+              [
+                "routerLink",
+                "/admin/page/AMC",
+                "routerLinkActive",
+                "active",
+                "id",
+                " AMC",
+                3,
+                "click",
+              ],
+              [1, "fas", "fa-briefcase"],
+              [
+                "routerLink",
+                "/admin/page/Work",
+                "routerLinkActive",
+                "active",
+                "id",
+                "Work",
+                3,
+                "click",
+              ],
+              [
+                "src",
+                "/assets/img/blueprint.png",
+                "width",
+                "30px",
+                "height",
+                "30px",
+                1,
+                "icon-img",
+              ],
+            ],
+            template: function (a, _) {
+              1 & a &&
+                (e.TgZ(0, "div", 0),
+                e.TgZ(1, "ul", 1),
+                e.TgZ(2, "li"),
+                e.TgZ(3, "div", 2),
+                e._UZ(4, "img", 3),
+                e.qZA(),
+                e.TgZ(5, "ul", 4),
+                e.TgZ(6, "li"),
+                e.TgZ(7, "a", 5),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Dashboard");
+                }),
+                e._uU(8, " Dashboard "),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(9, "li"),
+                e.TgZ(10, "div", 2),
+                e._UZ(11, "img", 6),
+                e.qZA(),
+                e.TgZ(12, "ul", 4),
+                e.TgZ(13, "li"),
+                e.TgZ(14, "a", 7),
+                e._uU(15, "Marketing"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(16, "li"),
+                e.TgZ(17, "a", 8),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Prospect Dashboard");
+                }),
+                e._uU(18, "Prospect Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(19, "li"),
+                e.TgZ(20, "a", 9),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Prospect");
+                }),
+                e._uU(21, "ProspectList"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(22, "li"),
+                e.TgZ(23, "div", 2),
+                e._UZ(24, "img", 10),
+                e.qZA(),
+                e.TgZ(25, "ul", 4),
+                e.TgZ(26, "li"),
+                e.TgZ(27, "a", 7),
+                e._uU(28, "Sales"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(29, "li"),
+                e.TgZ(30, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Lead Dashboard");
+                }),
+                e._uU(31, " Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(32, "li"),
+                e.TgZ(33, "a", 12),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Lead");
+                }),
+                e._uU(34, "Lead "),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(35, "li"),
+                e.TgZ(36, "a", 13),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/SO Dashboard");
+                }),
+                e._uU(37, "SO Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(38, "li"),
+                e.TgZ(39, "a", 14),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Sales Order");
+                }),
+                e._uU(40, "Sales Order"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(41, "li"),
+                e.TgZ(42, "div", 2),
+                e._UZ(43, "img", 15),
+                e.qZA(),
+                e.TgZ(44, "ul", 4),
+                e.TgZ(45, "li"),
+                e.TgZ(46, "a", 7),
+                e._uU(47, "Inventoy"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(48, "li"),
+                e.TgZ(49, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/MO Dashboard");
+                }),
+                e._uU(50, "MODashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(51, "li"),
+                e.TgZ(52, "a", 16),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Material Out");
+                }),
+                e._uU(53, "Material Out"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(54, "li"),
+                e.TgZ(55, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/PO Dashboard");
+                }),
+                e._uU(56, "PODashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(57, "li"),
+                e.TgZ(58, "a", 17),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Purchas Order");
+                }),
+                e._uU(59, "Purchas Order"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(60, "li"),
+                e.TgZ(61, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/MI Dashboard");
+                }),
+                e._uU(62, "MIDashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(63, "li"),
+                e.TgZ(64, "a", 18),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Material In");
+                }),
+                e._uU(65, "Material In"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(66, "li"),
+                e.TgZ(67, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Repair Dashboard");
+                }),
+                e._uU(68, "RepairDashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(69, "li"),
+                e.TgZ(70, "a", 19),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Repair List");
+                }),
+                e._uU(71, "Repair "),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(72, "li"),
+                e.TgZ(73, "div", 2),
+                e._UZ(74, "img", 20),
+                e.qZA(),
+                e.TgZ(75, "ul", 4),
+                e.TgZ(76, "li"),
+                e.TgZ(77, "a", 7),
+                e._uU(78, "Payment"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(79, "li"),
+                e.TgZ(80, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Invoice Dashboard");
+                }),
+                e._uU(81, "Invoice Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(82, "li"),
+                e.TgZ(83, "a", 21),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Sales Invoice ");
+                }),
+                e._uU(84, "Sales Invoice "),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(85, "li"),
+                e.TgZ(86, "a", 22),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Purchas Invoice ");
+                }),
+                e._uU(87, "Purchase Invoice"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(88, "li"),
+                e.TgZ(89, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/PI Dashboard ");
+                }),
+                e._uU(90, "PI Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(91, "li"),
+                e.TgZ(92, "a", 23),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Voucher ");
+                }),
+                e._uU(93, "Voucher"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(94, "li"),
+                e.TgZ(95, "div", 2),
+                e._UZ(96, "img", 24),
+                e.qZA(),
+                e.TgZ(97, "ul", 4),
+                e.TgZ(98, "li"),
+                e.TgZ(99, "a", 7),
+                e._uU(100, "Support"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(101, "li"),
+                e.TgZ(102, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Ticket Dashboard ");
+                }),
+                e._uU(103, " Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(104, "li"),
+                e.TgZ(105, "a", 25),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Ticket ");
+                }),
+                e._uU(106, "Ticket "),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(107, "li"),
+                e.TgZ(108, "div", 2),
+                e._UZ(109, "img", 26),
+                e.qZA(),
+                e.TgZ(110, "ul", 4),
+                e.TgZ(111, "li"),
+                e.TgZ(112, "a", 7),
+                e._uU(113, "AMC"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(114, "li"),
+                e.TgZ(115, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/AMC Dashboard");
+                }),
+                e._uU(116, " Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(117, "li"),
+                e.TgZ(118, "a", 27),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/AMC");
+                }),
+                e._uU(119, "AMC "),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(120, "li"),
+                e.TgZ(121, "div", 2),
+                e._UZ(122, "i", 28),
+                e.qZA(),
+                e.TgZ(123, "ul", 4),
+                e.TgZ(124, "li"),
+                e.TgZ(125, "a", 7),
+                e._uU(126, " Work"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(127, "li"),
+                e.TgZ(128, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Work Dashboard ");
+                }),
+                e._uU(129, " Dashboard"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(130, "li"),
+                e.TgZ(131, "a", 29),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/Work ");
+                }),
+                e._uU(132, "Work "),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(133, "li"),
+                e.TgZ(134, "div", 2),
+                e._UZ(135, "img", 30),
+                e.qZA(),
+                e.TgZ(136, "ul", 4),
+                e.TgZ(137, "li"),
+                e.TgZ(138, "a", 7),
+                e._uU(139, " Project"),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(140, "li"),
+                e.TgZ(141, "a", 11),
+                e.NdJ("click", function () {
+                  return _.setTitle("FFHErp/My Project ");
+                }),
+                e._uU(142, "My Project"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.qZA());
+            },
+            directives: [s.yS, s.Od],
+            styles: [
+              ".sidebar[_ngcontent-%COMP%]{position:fixed;top:0;left:0;height:100vh;width:260px;transition:all .5s ease;z-index:100}.sidebar.close[_ngcontent-%COMP%]{width:50px}.nav-links[_ngcontent-%COMP%]{height:100%;padding:60px 0 0;overflow:auto}.nav-links[_ngcontent-%COMP%]{overflow:visible}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]{position:relative;list-style:none;transition:all .4s ease;padding:1px 0}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:hover{background:#b8e0d4;color:#000}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .iocn-link[_ngcontent-%COMP%]{text-align:center;background-color:#b8e0d4}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .iocn-link[_ngcontent-%COMP%]{display:block}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{height:50px;min-width:50px;text-align:center;line-height:50px;color:#000;font-size:20px;cursor:pointer;transition:all .3s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{display:flex;align-items:center;text-decoration:none}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{margin-top:2px;background:white;display:none}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li.showMenu[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{display:block}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]{color:#000;font-size:15px;padding:5px 0;white-space:nowrap;opacity:.6;transition:all .3s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   a[_ngcontent-%COMP%]:hover{opacity:1;color:#000}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]{position:absolute;left:100%;top:-10px;margin-top:0;padding:10px 3px;border-radius:0 6px 6px 0;opacity:0;display:block;pointer-events:none;transition:0s}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]:hover   .sub-menu[_ngcontent-%COMP%]{top:0;opacity:1;pointer-events:auto;transition:all .4s ease}.sidebar[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   .link_name[_ngcontent-%COMP%]{display:none}.sidebar.close[_ngcontent-%COMP%]   .nav-links[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   .sub-menu[_ngcontent-%COMP%]   .link_name[_ngcontent-%COMP%]{font-size:18px;opacity:1;display:block;background-color:#dcebdc}.sideNavimg[_ngcontent-%COMP%]{max-height:33px}.icon-img[_ngcontent-%COMP%]{margin:10px}",
+            ],
+          })),
+          i
+        );
+      })();
+      var gs = f(773);
+      function Ms(i, c) {
+        1 & i &&
+          (e.TgZ(0, "div", 1),
+          e.TgZ(1, "div", 2),
+          e._UZ(2, "mat-spinner", 3),
+          e.qZA(),
+          e.qZA());
+      }
+      let Ts = (() => {
+          class i {
+            constructor(a) {
+              (this.loaderService = a),
+                this.loaderService.loader.subscribe((_) => {
+                  this.loader = _;
+                });
+            }
+            ngOnInit() {}
+          }
+          return (
+            (i.ɵfac = function (a) {
+              return new (a || i)(e.Y36(D.L));
+            }),
+            (i.ɵcmp = e.Xpm({
+              type: i,
+              selectors: [["app-loader"]],
+              decls: 1,
+              vars: 1,
+              consts: [
+                ["class", "loading", 4, "ngIf"],
+                [1, "loading"],
+                [1, "loader"],
+                ["color", "accent", 2, "margin", "auto auto"],
+              ],
+              template: function (a, _) {
+                1 & a && e.YNc(0, Ms, 3, 0, "div", 0),
+                  2 & a && e.Q6J("ngIf", _.loader);
+              },
+              directives: [m.O5, gs.$g],
+              styles: [
+                ".loader[_ngcontent-%COMP%]{height:100%;width:100%;background-color:#000000cf;z-index:1002}.loading[_ngcontent-%COMP%]{height:100%;width:100%;display:block;z-index:2000;position:fixed}.mat-progress-spinner[_ngcontent-%COMP%]{top:50vh}",
+              ],
+            })),
+            i
+          );
+        })(),
+        Jt = (() => {
+          class i {
+            constructor() {}
+            ngOnInit() {}
+          }
+          return (
+            (i.ɵfac = function (a) {
+              return new (a || i)();
+            }),
+            (i.ɵcmp = e.Xpm({
+              type: i,
+              selectors: [["app-comman"]],
+              decls: 4,
+              vars: 0,
+              template: function (a, _) {
+                1 & a &&
+                  (e._UZ(0, "app-header"),
+                  e._UZ(1, "app-side-nav"),
+                  e._UZ(2, "app-loader"),
+                  e._UZ(3, "router-outlet"));
+              },
+              directives: [hs, fs, Ts, s.lC],
+              styles: [""],
+            })),
+            i
+          );
+        })();
+      function ys(i, c) {
+        if (
+          (1 & i &&
+            (e.TgZ(0, "tr"),
+            e.TgZ(1, "td"),
+            e._uU(2),
+            e.qZA(),
+            e.TgZ(3, "td"),
+            e._uU(4),
+            e.qZA(),
+            e.TgZ(5, "td"),
+            e._uU(6),
+            e.qZA(),
+            e.TgZ(7, "td"),
+            e._uU(8),
+            e.qZA(),
+            e.TgZ(9, "td"),
+            e._uU(10),
+            e.qZA(),
+            e.TgZ(11, "td"),
+            e._uU(12),
+            e.qZA(),
+            e.qZA()),
+          2 & i)
+        ) {
+          const a = c.$implicit;
+          e.xp6(2),
+            e.Oqu(a.entActionId),
+            e.xp6(2),
+            e.Oqu(a.entActionContactName),
+            e.xp6(2),
+            e.Oqu(a.entActionCompanyName),
+            e.xp6(2),
+            e.Oqu(a.entEntityName),
+            e.xp6(2),
+            e.Oqu(a.entActivityType),
+            e.xp6(2),
+            e.Oqu(a.entActionType);
+        }
+      }
+      let Ls = (() => {
+        class i {
+          constructor(a) {
+            (this.data = a),
+              (this.dashDetailList = this.filteredEntity(a.ActorName, a.Data)),
+              console.log(this.dashDetailList);
+          }
+          filteredEntity(a, _) {
+            return _ && _.length > 0
+              ? _.filter((M) => M.entActionContactName == a)
+              : [];
+          }
+          ngOnInit() {}
+        }
+        return (
+          (i.ɵfac = function (a) {
+            return new (a || i)(e.Y36(u.WI));
+          }),
+          (i.ɵcmp = e.Xpm({
+            type: i,
+            selectors: [["app-dash-list"]],
+            decls: 17,
+            vars: 1,
+            consts: [[4, "ngFor", "ngForOf"]],
+            template: function (a, _) {
+              1 & a &&
+                (e.TgZ(0, "table"),
+                e.TgZ(1, "thead"),
+                e.TgZ(2, "tr"),
+                e.TgZ(3, "th"),
+                e._uU(4, "ID"),
+                e.qZA(),
+                e.TgZ(5, "th"),
+                e._uU(6, "Contact Name"),
+                e.qZA(),
+                e.TgZ(7, "th"),
+                e._uU(8, "Company Name"),
+                e.qZA(),
+                e.TgZ(9, "th"),
+                e._uU(10, "Entity Name"),
+                e.qZA(),
+                e.TgZ(11, "th"),
+                e._uU(12, "Activity Type"),
+                e.qZA(),
+                e.TgZ(13, "th"),
+                e._uU(14, "Action Type"),
+                e.qZA(),
+                e.qZA(),
+                e.qZA(),
+                e.TgZ(15, "tbody"),
+                e.YNc(16, ys, 13, 6, "tr", 0),
+                e.qZA(),
+                e.qZA()),
+                2 & a && (e.xp6(16), e.Q6J("ngForOf", _.dashDetailList));
+            },
+            directives: [m.sg],
+            styles: [
+              "table[_ngcontent-%COMP%]{width:100%;margin:20px 10px 10px}th[_ngcontent-%COMP%]{height:26px;background-color:#dcebdc;font-size:16px;font-weight:400;color:#000}tr[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}",
+            ],
+          })),
+          i
+        );
+      })();
+      var Zs = f(483);
+      function Wt(i, c) {
+        if ((1 & i && (e.TgZ(0, "mat-option", 18), e._uU(1), e.qZA()), 2 & i)) {
+          const a = c.$implicit;
+          e.s9C("id", a.id),
+            e.Q6J("value", a.key),
+            e.xp6(1),
+            e.hij(" ", a.value, " ");
+        }
+      }
+      function ht(i, c) {
+        if ((1 & i && (e.TgZ(0, "th"), e._uU(1), e.qZA()), 2 & i)) {
+          const a = e.oxw().$implicit;
+          e.xp6(1), e.hij(" ", a, " ");
+        }
+      }
+      function Ys(i, c) {
+        if (
+          (1 & i && (e.ynx(0), e.YNc(1, ht, 2, 1, "th", 17), e.BQk()), 2 & i)
+        ) {
+          const a = c.$implicit;
+          e.xp6(1), e.Q6J("ngIf", "total" != a);
+        }
+      }
+      function Ds(i, c) {
+        if ((1 & i && (e.TgZ(0, "td"), e._uU(1), e.qZA()), 2 & i)) {
+          const a = e.oxw().$implicit,
+            _ = e.oxw().$implicit;
+          e.xp6(1), e.Oqu(_.value[a]);
+        }
+      }
+      function ks(i, c) {
+        if (
+          (1 & i && (e.ynx(0), e.YNc(1, Ds, 2, 1, "td", 17), e.BQk()), 2 & i)
+        ) {
+          const a = c.$implicit;
+          e.xp6(1), e.Q6J("ngIf", "total" != a);
+        }
+      }
+      function vs(i, c) {
+        if (1 & i) {
+          const a = e.EpF();
+          e.TgZ(0, "tr"),
+            e.TgZ(1, "td"),
+            e.TgZ(2, "a", 14),
+            e.NdJ("click", function () {
+              const g = e.CHM(a).$implicit;
+              return e.oxw(2).piChart(g.value);
+            }),
+            e._uU(3),
+            e.qZA(),
+            e.qZA(),
+            e.YNc(4, ks, 2, 1, "ng-container", 20),
+            e.TgZ(5, "td"),
+            e.TgZ(6, "a", 14),
+            e.NdJ("click", function () {
+              const g = e.CHM(a).$implicit;
+              return e.oxw(2).ShowListDeatail(g.key);
+            }),
+            e._uU(7),
+            e.qZA(),
+            e.qZA(),
+            e.qZA();
+        }
+        if (2 & i) {
+          const a = c.$implicit,
+            _ = e.oxw(2);
+          e.xp6(3),
+            e.hij(" ", a.key, " "),
+            e.xp6(1),
+            e.Q6J("ngForOf", _.columns),
+            e.xp6(3),
+            e.Oqu(a.value.total);
+        }
+      }
+      function As(i, c) {
+        if ((1 & i && (e.TgZ(0, "td"), e._uU(1), e.qZA()), 2 & i)) {
+          const a = e.oxw().$implicit,
+            _ = e.oxw(2);
+          e.xp6(1), e.hij(" ", _.getTotal(a), " ");
+        }
+      }
+      function bs(i, c) {
+        if (
+          (1 & i && (e.ynx(0), e.YNc(1, As, 2, 1, "td", 17), e.BQk()), 2 & i)
+        ) {
+          const a = c.$implicit;
+          e.xp6(1), e.Q6J("ngIf", "total" != a);
+        }
+      }
+      function Ha(i, c) {
+        if (
+          (1 & i &&
+            (e.TgZ(0, "table", 19),
+            e.TgZ(1, "thead"),
+            e.TgZ(2, "tr"),
+            e.TgZ(3, "th"),
+            e._uU(4, "Actor"),
+            e.qZA(),
+            e.YNc(5, Ys, 2, 1, "ng-container", 20),
+            e.TgZ(6, "th"),
+            e._uU(7, "Total"),
+            e.qZA(),
+            e.qZA(),
+            e.qZA(),
+            e.TgZ(8, "tbody"),
+            e.YNc(9, vs, 8, 3, "tr", 20),
+            e.ALo(10, "keyvalue"),
+            e.TgZ(11, "tr"),
+            e.TgZ(12, "td"),
+            e._uU(13, "Total"),
+            e.qZA(),
+            e.YNc(14, bs, 2, 1, "ng-container", 20),
+            e.TgZ(15, "td"),
+            e._uU(16),
+            e.qZA(),
+            e.qZA(),
+            e.qZA(),
+            e.qZA()),
+          2 & i)
+        ) {
+          const a = e.oxw();
+          e.xp6(5),
+            e.Q6J("ngForOf", a.columns),
+            e.xp6(4),
+            e.Q6J("ngForOf", e.lcZ(10, 4, a.tableData)),
+            e.xp6(5),
+            e.Q6J("ngForOf", a.columns),
+            e.xp6(2),
+            e.Oqu(a.getTotal("total"));
+        }
+      }
+      function ws(i, c) {
+        if (
+          (1 & i &&
+            (e.TgZ(0, "div"),
+            e.TgZ(1, "h2", 21),
+            e._uU(2, "Chart"),
+            e.qZA(),
+            e.TgZ(3, "mat-card"),
+            e._UZ(4, "canvas", 22),
+            e.qZA(),
+            e.qZA()),
+          2 & i)
+        ) {
+          const a = e.oxw();
+          e.xp6(4),
+            e.Q6J("type", "pie")("datasets", a.pieChartData)(
+              "labels",
+              a.pieChartLabels
+            )("options", a.pieChartOptions)("legend", a.pieChartLegend);
+        }
+      }
+      const xs = [
         {
           path: "",
-          component: Qt,
+          component: Jt,
           children: [
             {
               path: "page/:EntityName",
+              component: qa,
+              resolve: { login: o.H },
+              canActivate: [r.a],
+            },
+            {
+              path: "Dashboard/:id",
               component: (() => {
-                class s {
-                  constructor(a, d, g, T, v) {
-                    (this.CommanService = a),
-                      (this.listService = d),
-                      (this.root = g),
-                      (this.dialog = T),
-                      (this.global = v),
-                      (this.panelOpenState = !1),
-                      (this.a = H()),
-                      (this.toDayDate = this.a.toISOString()),
-                      (this.EntityNameTitle = ""),
-                      (this.Allshow = !1),
-                      (this.tableSection = !0),
-                      (this.cardSection = !1),
-                      (this.DetailViewSection = !1),
-                      (this.groupSelected = " "),
-                      (this.displayedColumns = [
-                        { default: !0, columnName: "select" },
-                        { default: !0, columnName: "InstalledNo" },
-                        { default: !0, columnName: "ClientName" },
-                        {
-                          default: !1,
-                          columnName: "ContactName",
-                          entityTypes: [
-                            "lead",
-                            "payment",
-                            "prospect",
-                            "ticket",
-                            "amc",
-                            "repair",
-                            "work",
-                            "molist",
-                            "milist",
-                            "salesorderlist",
-                            "polist",
-                            "payable",
-                          ],
-                        },
-                        { default: !0, columnName: "OwnerName" },
-                        { default: !0, columnName: "Anualisedamount" },
-                        {
-                          default: !1,
-                          columnName: "StatusName",
-                          entityTypes: [
-                            "lead",
-                            "molist",
-                            "payment",
-                            "prospect",
-                            "payable",
-                            "Ticket",
-                            "repair",
-                            "work",
-                            "voucher",
-                          ],
-                        },
-                        {
-                          default: !1,
-                          columnName: "Billedstatus",
-                          entityTypes: ["salesorderlist", "polist", "payment"],
-                        },
-                        {
-                          default: !1,
-                          columnName: "SourceName",
-                          entityTypes: ["prospect", "lead"],
-                        },
-                        {
-                          default: !1,
-                          columnName: "DeliveryStatusName",
-                          entityTypes: ["salesorderlist"],
-                        },
-                        {
-                          default: !1,
-                          columnName: "ServiceTypeName",
-                          entityTypes: ["Ticket", "repair", "work", "amc"],
-                        },
-                        {
-                          default: !1,
-                          columnName: "Stage",
-                          entityTypes: ["prospect", "lead"],
-                        },
-                        {
-                          default: !1,
-                          columnName: "EXPClosuredateDashboard",
-                          entityTypes: [
-                            "lead",
-                            "payment",
-                            "prospect",
-                            "ticket",
-                            "amc",
-                            "repair",
-                            "work",
-                            "molist",
-                            "milist",
-                            "voucher",
-                          ],
-                        },
-                        {
-                          default: !1,
-                          columnName: "DeliveryDate",
-                          entityTypes: ["salesorderlist", "polist", "payable"],
-                        },
-                      ]),
-                      (this.columns = [
-                        "Company",
-                        "UploadEdit",
-                        "Details",
-                        "Amount",
-                        "Description",
-                        "AddCount",
-                        "Schedule",
-                        "ChatEmailPDF",
-                      ]),
-                      (this.dataSource = new G.by([])),
-                      (this.selection = new _i.Ov(!0, [])),
-                      this.CommanService.listCommanData({
-                        DbName: this.global.LOGGED_IN_USER.DbName,
-                        Password: this.global.LOGGED_IN_USER.encryptPswd,
-                        UserId: this.global.LOGGED_IN_USER.UserId,
-                      }).subscribe((ye) => {
-                        this.commanData = JSON.parse(ye);
+                class i {
+                  constructor(a, _, M, g) {
+                    (this.listService = a),
+                      (this.global = _),
+                      (this.httpClient = M),
+                      (this.dialog = g),
+                      (this.Today = j()),
+                      (this.selectedValue = "entActionType"),
+                      (this.From = this.Today),
+                      (this.To = this.Today),
+                      (this.minDate = this.Today),
+                      (this.maxDate = this.Today),
+                      this.httpClient
+                        .get("./assets/inputlabel.json")
+                        .subscribe((A) => {
+                          (this.jsonData = A),
+                            (this.ddData = this.jsonData.DDvalue);
+                        }),
+                      this.submitValue();
+                  }
+                  today() {
+                    (this.From = j(this.Today)),
+                      (this.To = j(this.Today)),
+                      this.submitValue();
+                  }
+                  yesterday() {
+                    (this.From = j(this.Today).add(-1, "days")),
+                      (this.To = j(this.Today).add("days")),
+                      this.submitValue();
+                  }
+                  lastWeek() {
+                    (this.From = j(this.Today)
+                      .subtract(1, "weeks")
+                      .startOf("isoWeek")),
+                      (this.To = j(this.Today)
+                        .subtract(1, "weeks")
+                        .endOf("isoWeek")),
+                      this.submitValue();
+                  }
+                  getPivotTable(a, _) {
+                    const M = new Map();
+                    return (
+                      a.forEach((g) => {
+                        M.set(
+                          g.entActionContactName,
+                          Object.assign(
+                            Object.assign({}, M.get(g.entActionContactName)),
+                            {
+                              [g[_]]:
+                                M.get(g.entActionContactName) &&
+                                M.get(g.entActionContactName)[g[_]]
+                                  ? M.get(g.entActionContactName)[g[_]] + 1
+                                  : 1,
+                              total:
+                                M.get(g.entActionContactName) &&
+                                M.get(g.entActionContactName).total
+                                  ? M.get(g.entActionContactName).total + 1
+                                  : 1,
+                            }
+                          )
+                        );
                       }),
-                      this.root.params.subscribe((ye) => {
-                        (this.EntityName = ye.EntityName),
-                          this.listService
-                            .getLeadList({
-                              Flag: this.EntityName,
-                              Dbname: this.global.LOGGED_IN_USER.DbName,
-                              Password: this.global.LOGGED_IN_USER.encryptPswd,
-                              id: this.global.LOGGED_IN_USER.RoleId,
-                              userid: this.global.LOGGED_IN_USER.UserId,
-                              RoleID: this.global.LOGGED_IN_USER.RoleId,
-                            })
-                            .subscribe((Rt) => {
-                              (this.dataSource.data = JSON.parse(Rt)),
-                                console.log(this.dataSource.data);
-                            }),
-                          "POList" === this.EntityName
-                            ? (this.EntityNameTitle = "Purchase Order")
-                            : "SalesOrderLIst" === this.EntityName
-                            ? (this.EntityNameTitle = "Sales Order")
-                            : "Prospect" === this.EntityName
-                            ? (this.EntityNameTitle = "Prospect")
-                            : "Lead" === this.EntityName
-                            ? (this.EntityNameTitle = "Lead")
-                            : "Payable" === this.EntityName
-                            ? (this.EntityNameTitle = "Payable")
-                            : "MoList" === this.EntityName
-                            ? (this.EntityNameTitle = "Material Out")
-                            : "MIList" === this.EntityName
-                            ? (this.EntityNameTitle = "Material In")
-                            : "Repair" === this.EntityName
-                            ? (this.EntityNameTitle = "Repair")
-                            : "Payment" === this.EntityName
-                            ? (this.EntityNameTitle = "Payment")
-                            : "AMC" === this.EntityName
-                            ? (this.EntityNameTitle = "AMC")
-                            : "Work" === this.EntityName
-                            ? (this.EntityNameTitle = "Work")
-                            : "Ticket" === this.EntityName
-                            ? (this.EntityNameTitle = "Ticket")
-                            : "Voucher" === this.EntityName &&
-                              (this.EntityNameTitle = "Voucher");
+                      M
+                    );
+                  }
+                  submitValue() {
+                    const a = j(this.From).format("YYYY-MM-DD"),
+                      _ = j(this.To).format("YYYY-MM-DD");
+                    this.listService
+                      .showtotalActivity({
+                        eDbname: this.global.LOGGED_IN_USER.DbName,
+                        eFromDate: a,
+                        eMissedFlag: "1",
+                        eModuleFlag: "All",
+                        ePassword: this.global.LOGGED_IN_USER.encryptPswd,
+                        eToDate: _,
+                      })
+                      .subscribe((g) => {
+                        (this.AllData = JSON.parse(g)),
+                          (this.tableData = this.getPivotTable(
+                            this.AllData,
+                            this.selectedValue
+                          )),
+                          console.log(this.tableData);
                       });
                   }
-                  drop(a) {
-                    (0, wt.bA)(
-                      this.dataSource.data,
-                      a.previousIndex,
-                      a.currentIndex
+                  get columns() {
+                    if (this.tableData) {
+                      const a = Array.from(this.tableData).reduce(
+                        (_, M) => (
+                          Object.keys(M[1]).forEach((g) => {
+                            _.add(g.trim());
+                          }),
+                          _
+                        ),
+                        new Set()
+                      );
+                      return Array.from(a);
+                    }
+                    return [];
+                  }
+                  updateTable() {
+                    this.submitValue();
+                  }
+                  getTotal(a) {
+                    return Array.from(this.tableData).reduce(
+                      (_, M) => (M[1] && M[1][a] ? M[1][a] + _ : _),
+                      0
                     );
                   }
-                  get listColumns() {
-                    return Object.values(this.displayedColumns)
-                      .filter(
-                        (a) =>
-                          !!a.default ||
-                          (!!a.entityTypes &&
-                            (a.entityTypes.includes(
-                              this.EntityName.toLowerCase()
-                            ) ||
-                              a.default))
-                      )
-                      .map((a) => a.columnName);
+                  piChart(a) {
+                    const _ = Object.keys(a)
+                        .filter((g) => "total" !== g)
+                        .reduce((g, A) => ((g[A] = a[A]), g), {}),
+                      M = Object.values(_);
+                    (this.pieChartLabels = Object.keys(_)),
+                      (this.pieChartOptions = {
+                        scaleShowVerticalLines: !1,
+                        responsive: !0,
+                      }),
+                      (this.pieChartLegend = !0),
+                      (this.pieChartData = [{ data: M }]);
                   }
-                  get installedno() {
-                    return [
-                      "lead",
-                      "payment",
-                      "prospect",
-                      "ticket",
-                      "amc",
-                      "repair",
-                      "work",
-                      "molist",
-                      "milist",
-                      "salesorderlist",
-                      "polist",
-                      "payable",
-                    ].includes(this.EntityName.toLowerCase());
-                  }
-                  get voucher() {
-                    return ["voucher"].includes(this.EntityName.toLowerCase());
-                  }
-                  get facDelDate() {
-                    return ["salesorderlist"].includes(
-                      this.EntityName.toLowerCase()
-                    );
-                  }
-                  get UpTo() {
-                    return ["lead"].includes(this.EntityName.toLowerCase());
-                  }
-                  get nextAct() {
-                    return ["salesorderlist", "prospect"].includes(
-                      this.EntityName.toLowerCase()
-                    );
-                  }
-                  ngAfterViewInit() {
-                    (this.dataSource.paginator = this.paginator),
-                      (this.dataSource.sort = this.sort);
-                  }
-                  applyFilter(a) {
-                    this.dataSource.filter = a.target.value
-                      .trim()
-                      .toLowerCase();
-                  }
-                  isAllSelected() {
-                    return (
-                      this.selection.selected.length ===
-                      this.dataSource.data.length
-                    );
-                  }
-                  masterToggle() {
-                    this.isAllSelected()
-                      ? this.selection.clear()
-                      : this.selection.select(...this.dataSource.data);
-                  }
-                  checkboxLabel(a) {
-                    return a
-                      ? `${
-                          this.selection.isSelected(a) ? "deselect" : "select"
-                        } row ${a.position + 1}`
-                      : (this.isAllSelected() ? "deselect" : "select") + " all";
-                  }
-                  multipleSelect() {
-                    this.Allshow = !this.Allshow;
-                  }
-                  openEntity(a) {
-                    this.dialog
-                      .open(ga, {
-                        height: "80%",
-                        width: "100%",
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  openEmailQuote(a) {
-                    this.dialog
-                      .open(za, {
-                        height: "80vh",
-                        width: "1000px",
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  openEmailTrace(a) {
-                    this.dialog
-                      .open(He, {
-                        height: "40%",
-                        width: "70%",
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  openNotes(a, d) {
-                    this.dialog
-                      .open($t, {
-                        height: "50%",
-                        width: "60%",
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                          companyName: d,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  openChat(a) {
-                    this.dialog
-                      .open(O, {
-                        width: "30%",
-                        position: { left: "70%", top: "10%" },
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  openFilterSearch() {
-                    this.dialog
-                      .open(Vt, {
-                        height: "80%",
-                        width: "80%",
-                        data: {
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  EditList(a, d, g) {
-                    this.dialog
-                      .open(di, {
-                        height: "50%",
-                        width: "80%",
-                        data: {
-                          installno: a,
-                          entityName: d,
-                          entityid: g,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  approval(a, d, g) {
-                    console.log(a, d, g),
+                  ShowListDeatail(a) {
+                    console.log(a),
                       this.dialog
-                        .open(at, {
+                        .open(Ls, {
                           height: "50%",
                           width: "80%",
-                          data: {
-                            installno: a,
-                            entityName: d,
-                            entityid: g,
-                            EntityNameTitle: this.EntityNameTitle,
-                          },
+                          data: { ActorName: a, Data: this.AllData },
                         })
                         .afterClosed()
                         .subscribe();
                   }
-                  openAction(a, d) {
-                    this.dialog
-                      .open(mn, {
-                        width: "35%",
-                        position: { left: "65%", top: "5%" },
-                        data: {
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          clientNo: d,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  createForm() {
-                    this.dialog
-                      .open(ni, {
-                        data: {
-                          EntityName: this.EntityName,
-                          commanData: this.commanData,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  actionSchedul(a, d) {
-                    this.dialog
-                      .open(bi, {
-                        height: "50%",
-                        width: "80%",
-                        data: {
-                          companyName: d,
-                          EntityID: a,
-                          EntityName: this.EntityName,
-                          EntityNameTitle: this.EntityNameTitle,
-                        },
-                      })
-                      .afterClosed()
-                      .subscribe();
-                  }
-                  selectTable() {
-                    (this.tableSection = !0),
-                      (this.cardSection = !1),
-                      (this.DetailViewSection = !1),
-                      (this.dataSource.paginator = this.paginator),
-                      (this.dataSource.sort = this.sort);
-                  }
-                  selectCard() {
-                    (this.tableSection = !1),
-                      (this.cardSection = !0),
-                      (this.DetailViewSection = !1);
-                  }
-                  viewDetail() {
-                    (this.tableSection = !1),
-                      (this.cardSection = !1),
-                      (this.DetailViewSection = !0),
-                      (this.dataSource.paginator = this.paginator),
-                      (this.dataSource.sort = this.sort);
-                  }
-                  groupSelectedValue() {
-                    console.log(this.groupSelected);
-                    const a = new Map();
-                    this.dataSource.data.forEach((d) => {
-                      a.set(d[this.groupSelected], {
-                        total:
-                          a.get(d[this.groupSelected]) &&
-                          a.get(d[this.groupSelected]).total
-                            ? a.get(d[this.groupSelected]).total + 1
-                            : 1,
-                      });
-                    }),
-                      (this.Array = a),
-                      console.log(this.Array),
-                      console.log(this.FilterEntityData);
-                  }
-                  filteredEntity(a) {
-                    return this.dataSource.data &&
-                      this.dataSource.data.length > 0
-                      ? this.dataSource.data.filter((d) => d.OwnerName == a)
-                      : [];
-                  }
                   ngOnInit() {}
                 }
                 return (
-                  (s.ɵfac = function (a) {
-                    return new (a || s)(
-                      e.Y36(p),
-                      e.Y36(ae.L),
-                      e.Y36(i.gz),
-                      e.Y36(U.uw),
-                      e.Y36(M.x)
+                  (i.ɵfac = function (a) {
+                    return new (a || i)(
+                      e.Y36(D.L),
+                      e.Y36(w.x),
+                      e.Y36(ge.eN),
+                      e.Y36(u.uw)
                     );
                   }),
-                  (s.ɵcmp = e.Xpm({
-                    type: s,
-                    selectors: [["app-prospect-list"]],
-                    viewQuery: function (a, d) {
-                      if ((1 & a && (e.Gf(ne.NW, 5), e.Gf(tt.YE, 5)), 2 & a)) {
-                        let g;
-                        e.iGM((g = e.CRH())) && (d.paginator = g.first),
-                          e.iGM((g = e.CRH())) && (d.sort = g.first);
+                  (i.ɵcmp = e.Xpm({
+                    type: i,
+                    selectors: [["app-dash-board"]],
+                    features: [
+                      e._Bn([
+                        { provide: P.Ad, useValue: "en-GB" },
+                        { provide: P._A, useClass: Ke, deps: [P.Ad, je] },
+                        { provide: P.sG, useValue: Te },
+                      ]),
+                    ],
+                    decls: 41,
+                    vars: 11,
+                    consts: [
+                      [1, "contain"],
+                      [1, "row"],
+                      [1, "col"],
+                      [1, "option"],
+                      [3, "ngModel", "ngModelChange"],
+                      [3, "id", "value", 4, "ngFor", "ngForOf"],
+                      [
+                        "matInput",
+                        "",
+                        "name",
+                        "From",
+                        3,
+                        "matDatepicker",
+                        "ngModel",
+                        "max",
+                        "ngModelChange",
+                      ],
+                      ["input", "ngModel"],
+                      ["matSuffix", "", 3, "for"],
+                      ["from", ""],
+                      [
+                        "matInput",
+                        "",
+                        3,
+                        "matDatepicker",
+                        "ngModel",
+                        "ngModelChange",
+                      ],
+                      ["to", ""],
+                      [
+                        "mat-stroked-button",
+                        "",
+                        "type",
+                        "submit",
+                        "color",
+                        "primary",
+                        1,
+                        "ms-2",
+                        3,
+                        "click",
+                      ],
+                      [1, "dateOption"],
+                      [1, "a", 3, "click"],
+                      ["class", "table", 4, "ngIf"],
+                      [1, "col", "piaChart"],
+                      [4, "ngIf"],
+                      [3, "id", "value"],
+                      [1, "table"],
+                      [4, "ngFor", "ngForOf"],
+                      [1, "ChartHeading"],
+                      [
+                        "baseChart",
+                        "",
+                        3,
+                        "type",
+                        "datasets",
+                        "labels",
+                        "options",
+                        "legend",
+                      ],
+                    ],
+                    template: function (a, _) {
+                      if (
+                        (1 & a &&
+                          (e.TgZ(0, "div", 0),
+                          e.TgZ(1, "div", 1),
+                          e.TgZ(2, "div", 2),
+                          e.TgZ(3, "div", 3),
+                          e.TgZ(4, "mat-form-field"),
+                          e.TgZ(5, "mat-label"),
+                          e._uU(6, "Select an option"),
+                          e.qZA(),
+                          e.TgZ(7, "mat-select", 4),
+                          e.NdJ("ngModelChange", function (g) {
+                            return (_.selectedValue = g);
+                          })("ngModelChange", function () {
+                            return _.updateTable();
+                          }),
+                          e.YNc(8, Wt, 2, 3, "mat-option", 5),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(9, "mat-form-field"),
+                          e.TgZ(10, "mat-label"),
+                          e._uU(11, "From Date"),
+                          e.qZA(),
+                          e.TgZ(12, "input", 6, 7),
+                          e.NdJ("ngModelChange", function (g) {
+                            return (_.From = g);
+                          }),
+                          e.qZA(),
+                          e._UZ(14, "mat-datepicker-toggle", 8),
+                          e._UZ(15, "mat-datepicker", null, 9),
+                          e.qZA(),
+                          e.TgZ(17, "mat-form-field"),
+                          e.TgZ(18, "mat-label"),
+                          e._uU(19, "To Date"),
+                          e.qZA(),
+                          e.TgZ(20, "input", 10, 7),
+                          e.NdJ("ngModelChange", function (g) {
+                            return (_.To = g);
+                          }),
+                          e.qZA(),
+                          e._UZ(22, "mat-datepicker-toggle", 8),
+                          e._UZ(23, "mat-datepicker", null, 11),
+                          e.qZA(),
+                          e.TgZ(25, "button", 12),
+                          e.NdJ("click", function () {
+                            return _.submitValue();
+                          }),
+                          e._uU(26, " Go "),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(27, "div", 13),
+                          e.TgZ(28, "div"),
+                          e.TgZ(29, "a", 14),
+                          e.NdJ("click", function () {
+                            return _.today();
+                          }),
+                          e._uU(30, "Today"),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(31, "div"),
+                          e.TgZ(32, "a", 14),
+                          e.NdJ("click", function () {
+                            return _.yesterday();
+                          }),
+                          e._uU(33, "Yesterday"),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(34, "div"),
+                          e.TgZ(35, "a", 14),
+                          e.NdJ("click", function () {
+                            return _.lastWeek();
+                          }),
+                          e._uU(36, "Last Week"),
+                          e.qZA(),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(37, "div"),
+                          e.YNc(38, Ha, 17, 6, "table", 15),
+                          e.qZA(),
+                          e.qZA(),
+                          e.TgZ(39, "div", 16),
+                          e.YNc(40, ws, 5, 5, "div", 17),
+                          e.qZA(),
+                          e.qZA(),
+                          e.qZA()),
+                        2 & a)
+                      ) {
+                        const M = e.MAs(16),
+                          g = e.MAs(24);
+                        e.xp6(7),
+                          e.Q6J("ngModel", _.selectedValue),
+                          e.xp6(1),
+                          e.Q6J("ngForOf", _.ddData),
+                          e.xp6(4),
+                          e.Q6J("matDatepicker", M)("ngModel", _.From)(
+                            "max",
+                            _.maxDate
+                          ),
+                          e.xp6(2),
+                          e.Q6J("for", M),
+                          e.xp6(6),
+                          e.Q6J("matDatepicker", g)("ngModel", _.To),
+                          e.xp6(2),
+                          e.Q6J("for", g),
+                          e.xp6(16),
+                          e.Q6J("ngIf", _.tableData),
+                          e.xp6(2),
+                          e.Q6J("ngIf", _.pieChartData);
                       }
                     },
-                    decls: 1,
-                    vars: 1,
-                    consts: [
-                      ["class", "contain", 4, "ngIf"],
-                      [1, "contain"],
-                      ["aria-label", "breadcrumb"],
-                      [1, "flex"],
-                      [1, "left"],
-                      [1, "breadcrumb-item"],
-                      [1, "fas", "fa-home", "home-icon"],
-                      ["aria-current", "page", 1, "breadcrumb-item", "active"],
-                      [3, "click"],
-                      [1, "right"],
-                      [1, "filterSearch", 3, "click"],
-                      [
-                        "data-bs-toggle",
-                        "tooltip",
-                        "data-bs-placement",
-                        "bottom",
-                        "title",
-                        " Filter Search ",
-                        1,
-                        "fas",
-                        "fa-filter",
-                        "home-icon",
-                      ],
-                      ["label", "Default"],
-                      [4, "ngIf"],
-                      ["class", "cardcontainer", 4, "ngIf"],
-                      ["class", "DetailViewcontainer", 4, "ngIf"],
-                      ["label", "GroupBy"],
-                      [3, "ngModel", "ngModelChange"],
-                      ["value", "OwnerName"],
-                      ["value", "StatusName"],
-                      ["value", "Stage "],
-                      [4, "ngFor", "ngForOf"],
-                      [1, "tableOption"],
-                      ["appearance", "standard"],
-                      ["matInput", "", 3, "keyup"],
-                      ["input", ""],
-                      [
-                        "aria-label",
-                        "Select page",
-                        3,
-                        "pageSize",
-                        "pageSizeOptions",
-                      ],
-                      [1, "table-section"],
-                      [
-                        "mat-table",
-                        "",
-                        "matSort",
-                        "",
-                        "class",
-                        "mat-elevation-z8",
-                        3,
-                        "dataSource",
-                        4,
-                        "ngIf",
-                      ],
-                      [
-                        "mat-table",
-                        "",
-                        "matSort",
-                        "",
-                        1,
-                        "mat-elevation-z8",
-                        3,
-                        "dataSource",
-                      ],
-                      ["matColumnDef", "select"],
-                      ["mat-header-cell", "", 4, "matHeaderCellDef"],
-                      ["mat-cell", "", 4, "matCellDef"],
-                      ["matColumnDef", "InstalledNo"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "mat-sort-header",
-                        "",
-                        "class",
-                        "text-start",
-                        4,
-                        "matHeaderCellDef",
-                      ],
-                      [
-                        "mat-cell",
-                        "",
-                        "class",
-                        "text-start table-data",
-                        4,
-                        "matCellDef",
-                      ],
-                      ["matColumnDef", "ClientName"],
-                      [
-                        "mat-cell",
-                        "",
-                        "class",
-                        "text-start Company",
-                        4,
-                        "matCellDef",
-                      ],
-                      ["matColumnDef", "ContactName"],
-                      ["matColumnDef", "OwnerName"],
-                      ["matColumnDef", "Anualisedamount"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "class",
-                        "text-end",
-                        "mat-sort-header",
-                        "",
-                        4,
-                        "matHeaderCellDef",
-                      ],
-                      [
-                        "mat-cell",
-                        "",
-                        "class",
-                        "text-end table-data",
-                        3,
-                        "ngStyle",
-                        4,
-                        "matCellDef",
-                      ],
-                      ["matColumnDef", "StatusName"],
-                      ["matColumnDef", "DeliveryStatusName"],
-                      ["matColumnDef", "SourceName"],
-                      ["matColumnDef", "Billedstatus"],
-                      ["matColumnDef", "ServiceTypeName"],
-                      ["matColumnDef", "Stage"],
-                      ["matColumnDef", "EXPClosuredateDashboard"],
-                      [
-                        "mat-cell",
-                        "",
-                        "class",
-                        "text-start table-data",
-                        3,
-                        "ngClass",
-                        4,
-                        "matCellDef",
-                      ],
-                      ["matColumnDef", "DeliveryDate"],
-                      ["mat-header-row", "", 4, "matHeaderRowDef"],
-                      ["mat-row", "", 4, "matRowDef", "matRowDefColumns"],
-                      ["mat-header-cell", ""],
-                      [
-                        3,
-                        "checked",
-                        "indeterminate",
-                        "aria-label",
-                        "change",
-                        4,
-                        "ngIf",
-                      ],
-                      [3, "checked", "indeterminate", "aria-label", "change"],
-                      ["mat-cell", ""],
-                      [
-                        3,
-                        "checked",
-                        "aria-label",
-                        "click",
-                        "change",
-                        4,
-                        "ngIf",
-                      ],
-                      [3, "checked", "aria-label", "click", "change"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "mat-sort-header",
-                        "",
-                        1,
-                        "text-start",
-                      ],
-                      ["mat-cell", "", 1, "text-start", "table-data"],
-                      ["class", "a", 3, "click", 4, "ngIf"],
-                      [1, "a", 3, "click"],
-                      ["matTooltip", "Email Trace", 1, "fas", "fa-envelope"],
-                      [1, "a"],
-                      ["matTooltip", "Upload", 1, "fas", "fa-cloud-upload-alt"],
-                      ["class", "a", 4, "ngIf"],
-                      ["matTooltip", "Add Action", 1, "fas", "fa-plus-circle"],
-                      [1, "fas", "fa-pencil-alt", 3, "matTooltip"],
-                      ["mat-cell", "", 1, "text-start", "Company"],
-                      [
-                        "matTooltip",
-                        "View Email Quote",
-                        1,
-                        "fas",
-                        "fa-file-pdf",
-                      ],
-                      ["matTooltip", "Phone", 1, "fas", "fa-phone"],
-                      ["matTooltip", "WhatsApp", 1, "fab", "fa-whatsapp"],
-                      [
-                        "matTooltip",
-                        "Chat",
-                        "matBadgeColor",
-                        "primary",
-                        "matBadgeSize",
-                        "small",
-                        1,
-                        "far",
-                        "fa-comments",
-                        3,
-                        "matBadge",
-                      ],
-                      ["matTooltip", "view Notes", 1, "far", "fa-clipboard"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "mat-sort-header",
-                        "",
-                        1,
-                        "text-end",
-                      ],
-                      [
-                        "mat-cell",
-                        "",
-                        1,
-                        "text-end",
-                        "table-data",
-                        3,
-                        "ngStyle",
-                      ],
-                      [
-                        "mat-cell",
-                        "",
-                        1,
-                        "text-start",
-                        "table-data",
-                        3,
-                        "ngClass",
-                      ],
-                      ["mat-header-row", ""],
-                      ["mat-row", ""],
-                      [1, "cardcontainer"],
-                      [
-                        "cdkDropList",
-                        "",
-                        1,
-                        "cardSection",
-                        "row",
-                        3,
-                        "cdkDropListData",
-                        "cdkDropListDropped",
-                      ],
-                      [
-                        "class",
-                        "card-box col",
-                        "cdkDrag",
-                        "",
-                        4,
-                        "ngFor",
-                        "ngForOf",
-                      ],
-                      ["cdkDrag", "", 1, "card-box", "col"],
-                      [1, "company"],
-                      [1, "ActionField"],
-                      [1, "iconfield"],
-                      ["class", "iconfield-badge", 4, "ngIf"],
-                      [1, "icon"],
-                      [
-                        "data-bs-toggle",
-                        "tooltip",
-                        "data-bs-placement",
-                        "top",
-                        "title",
-                        "view Notes",
-                        1,
-                        "far",
-                        "fa-clipboard",
-                      ],
-                      [
-                        "data-bs-toggle",
-                        "tooltip",
-                        "data-bs-placement",
-                        "top",
-                        "title",
-                        "WhatsApp",
-                        1,
-                        "fab",
-                        "fa-whatsapp",
-                      ],
-                      [
-                        "data-bs-toggle",
-                        "tooltip",
-                        "data-bs-placement",
-                        "top",
-                        "title",
-                        "Phone",
-                        1,
-                        "fas",
-                        "fa-phone",
-                      ],
-                      [1, "iconfield-badge"],
-                      [1, "DetailViewcontainer"],
-                      ["matColumnDef", "Company"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "mat-sort-header",
-                        "",
-                        4,
-                        "matHeaderCellDef",
-                      ],
-                      ["matColumnDef", "UploadEdit"],
-                      ["matColumnDef", "Details"],
-                      ["matColumnDef", "Amount"],
-                      ["matColumnDef", "Description"],
-                      [
-                        "mat-header-cell",
-                        "",
-                        "mat-sort-header",
-                        "",
-                        "c",
-                        "",
-                        4,
-                        "matHeaderCellDef",
-                      ],
-                      ["matColumnDef", "AddCount"],
-                      ["matColumnDef", "Schedule"],
-                      [
-                        "mat-cell",
-                        "",
-                        "class",
-                        "table-data",
-                        3,
-                        "ngStyle",
-                        4,
-                        "matCellDef",
-                      ],
-                      ["matColumnDef", "ChatEmailPDF"],
-                      ["mat-header-cell", "", "mat-sort-header", ""],
-                      [1, "ClientName"],
-                      [1, "subValueIcon"],
-                      [1, "Datalabel"],
-                      ["mat-header-cell", "", "mat-sort-header", "", "c", ""],
-                      [1, "subValueIcon", "text-primary", 3, "click"],
-                      ["mat-cell", "", 1, "table-data", 3, "ngStyle"],
-                      [1, "card-box"],
-                      [1, "me-4"],
-                    ],
-                    template: function (a, d) {
-                      1 & a && e.YNc(0, ws, 45, 8, "div", 0),
-                        2 & a && e.Q6J("ngIf", d.dataSource);
-                    },
                     directives: [
-                      m.O5,
-                      w.Hw,
-                      le.SP,
-                      le.uX,
-                      j.KE,
-                      j.hX,
-                      te.gD,
-                      A.JJ,
-                      A.On,
-                      E.ey,
+                      b.KE,
+                      b.hX,
+                      z.gD,
+                      k.JJ,
+                      k.On,
                       m.sg,
-                      K.oG,
-                      oe.Nt,
-                      ne.NW,
-                      G.BZ,
-                      tt.YE,
-                      G.w1,
-                      G.fO,
-                      G.Dz,
-                      G.as,
-                      G.nj,
-                      G.ge,
-                      G.ev,
-                      tt.nU,
-                      _e.gM,
-                      C.k,
-                      m.PC,
-                      m.mk,
-                      G.XQ,
-                      G.Gk,
-                      wt.Wj,
-                      We.a8,
-                      wt.Zt,
-                      pt.pp,
-                      pt.ib,
-                      pt.yz,
-                      pt.yK,
+                      q.Nt,
+                      H.hl,
+                      k.Fj,
+                      H.nW,
+                      b.R9,
+                      H.Mq,
+                      K.lW,
+                      m.O5,
+                      P.ey,
+                      Ta.a8,
+                      Zs.jh,
                     ],
-                    pipes: [m.Nd, m.H9, Ta],
+                    pipes: [m.Nd],
                     styles: [
-                      "table[_ngcontent-%COMP%]{width:100%;height:75%;padding-top:70px}.table-section[_ngcontent-%COMP%]{overflow-x:auto}th[_ngcontent-%COMP%]{height:26px;background-color:#dcebdc;font-size:20px;color:#000}tr[_ngcontent-%COMP%]{height:36px}tr[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}i[_ngcontent-%COMP%]{font-size:14px;color:#9c9b9b;padding:3px}.tableOption[_ngcontent-%COMP%]{display:flex;justify-content:space-between;align-items:center}.Company[_ngcontent-%COMP%]{font-size:16px;color:#000}.table-data[_ngcontent-%COMP%]{font-size:13px;padding:0 10px}.a[_ngcontent-%COMP%]{text-decoration:none}.a[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer}#modal[_ngcontent-%COMP%]{background-color:#fff}.nav-item[_ngcontent-%COMP%]{justify-content:center}.nav-link[_ngcontent-%COMP%]{font-size:x-small}.search-input[_ngcontent-%COMP%]{height:38px;display:block;width:100%;height:24px;font-size:14px;font-weight:400;color:#000;background:transparent;border:none;outline:none;border-bottom:1px solid rgb(201,199,199)}.search-input[_ngcontent-%COMP%]:focus{border-bottom:2px solid blue;outline:none}.table-control[_ngcontent-%COMP%]{padding:10px 0}.filterSearch[_ngcontent-%COMP%], .filterSearch[_ngcontent-%COMP%]   i[_ngcontent-%COMP%]{font-size:20px}.contain[_ngcontent-%COMP%]{padding:0 17px 0 67px}nav[_ngcontent-%COMP%]{padding-top:74px}mat-icon[_ngcontent-%COMP%]{margin:0 0 0 10px}  .mat-dialog-container{margin:0!important;padding:0!important;overflow-x:hidden!important}.cdk-drag-preview[_ngcontent-%COMP%]{box-sizing:border-box;border-radius:4px;box-shadow:0 5px 5px -3px #0003,0 8px 10px 1px #00000024,0 3px 14px 2px #0000001f}.cdk-drag-placeholder[_ngcontent-%COMP%]{opacity:0}.cdk-drag-animating[_ngcontent-%COMP%]{transition:transform .25s cubic-bezier(0,0,.2,1)}.example-box[_ngcontent-%COMP%]:last-child{border:none}.example-list.cdk-drop-list-dragging[_ngcontent-%COMP%]   .card-box[_ngcontent-%COMP%]:not(.cdk-drag-placeholder){transition:transform .25s cubic-bezier(0,0,.2,1)}.mat-card[_ngcontent-%COMP%]{padding:10px!important;border-radius:0!important}.card-box[_ngcontent-%COMP%]{min-width:300px;margin:5px}.cardSection[_ngcontent-%COMP%]{padding:24px}li[_ngcontent-%COMP%]{text-decoration:none;display:inline}.iconfield[_ngcontent-%COMP%]{display:flex;justify-content:space-between;padding:10px 0 0}span[_ngcontent-%COMP%]{padding:0 3px}.iconfield-badge[_ngcontent-%COMP%]{background-color:#b8e0d4;color:#000;border-radius:5px;margin:5px;padding:3px}.company[_ngcontent-%COMP%]{padding:0 0 5px;font-size:large;font-weight:600}.ActionField[_ngcontent-%COMP%]{padding:3px 0;font-size:medium;font-style:italic;font-weight:400}.red[_ngcontent-%COMP%]{color:red}.green[_ngcontent-%COMP%]{color:green}.tooltip[_ngcontent-%COMP%]{background-color:#000;color:#fff}th.mat-header-cell[_ngcontent-%COMP%]{text-align:center!important;justify-content:center!important}.flex[_ngcontent-%COMP%]{display:flex;justify-content:space-between}.left[_ngcontent-%COMP%], .right[_ngcontent-%COMP%]{display:flex}.cardcontainer[_ngcontent-%COMP%]{background-color:#dcebdc}.breadcrumb-home[_ngcontent-%COMP%]{color:#000;list-style-type:none}.home-icon[_ngcontent-%COMP%]{color:#000;font-size:15px}.Amount-head[_ngcontent-%COMP%]{position:relative;right:-78}.card-box[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}.subValueIcon[_ngcontent-%COMP%]{margin:15px 0;cursor:pointer}.ClientName[_ngcontent-%COMP%]{color:#00f;font-weight:600;font-size:16px}.Datalabel[_ngcontent-%COMP%]{color:gray}",
+                      ".chart[_ngcontent-%COMP%]{display:block;width:400px;height:400px}.contain[_ngcontent-%COMP%]{padding:64px 17px 0 67px}th[_ngcontent-%COMP%]{height:26px;background-color:#dcebdc;font-size:11px;font-weight:400;color:#000}tr[_ngcontent-%COMP%]:hover{background-color:#dbe4eb}button[_ngcontent-%COMP%]{box-shadow:0 2px 5px #00000042!important;height:45px;margin-bottom:10px;border:1px solid rgb(108,166,231)!important}button[_ngcontent-%COMP%]:hover{color:#000}mat-form-field[_ngcontent-%COMP%]{margin:0 10px}.ChartHeading[_ngcontent-%COMP%]{text-align:center;margin-top:10px}.mat-card[_ngcontent-%COMP%]{margin-top:30px;display:block;width:500px;height:500px;box-shadow:2px 2px 2px 2px #0003,2px 2px 2px 2px #00000024,2px 2px 2px 2px #0000001f}.piaChart[_ngcontent-%COMP%]{display:flex;justify-content:center}.option[_ngcontent-%COMP%]{display:flex;margin:20px 0 10px;height:54px}a[_ngcontent-%COMP%]{text-decoration:none;font-size:11px;font-weight:400}a[_ngcontent-%COMP%]:hover{text-decoration:underline;cursor:pointer;font-size:small}.dateOption[_ngcontent-%COMP%]{display:flex;justify-content:space-between}  .mat-dialog-container{margin:0!important;padding:0!important;overflow-x:hidden!important}",
                     ],
                   })),
-                  s
+                  i
                 );
               })(),
               resolve: { login: o.H },
               canActivate: [r.a],
             },
             {
-              path: "Dashboard/:id",
-              component: Re,
-              resolve: { login: o.H },
-              canActivate: [r.a],
-            },
-            {
               path: "ListDashboard/:EntityName",
-              component: X,
+              component: (() => {
+                class i {
+                  constructor(a) {
+                    this.sanitizer = a;
+                  }
+                  ngOnInit() {
+                    this.safeUrl =
+                      this.sanitizer.bypassSecurityTrustResourceUrl(
+                        "https://ffherp.co.in/Pages/Modules/Lead/SupDashboard.aspx"
+                      );
+                  }
+                }
+                return (
+                  (i.ɵfac = function (a) {
+                    return new (a || i)(e.Y36(Ua.H7));
+                  }),
+                  (i.ɵcmp = e.Xpm({
+                    type: i,
+                    selectors: [["app-list-dashboard"]],
+                    decls: 2,
+                    vars: 1,
+                    consts: [
+                      [1, "DashBoard"],
+                      ["frameborder", "0", 1, "Iframe", 3, "src"],
+                    ],
+                    template: function (a, _) {
+                      1 & a &&
+                        (e.TgZ(0, "div", 0), e._UZ(1, "iframe", 1), e.qZA()),
+                        2 & a && (e.xp6(1), e.Q6J("src", _.safeUrl, e.uOi));
+                    },
+                    styles: [
+                      "#DashBoard[_ngcontent-%COMP%]{padding:0 17px 0 67px}.Iframe[_ngcontent-%COMP%]{height:100vh;width:100%}",
+                    ],
+                  })),
+                  i
+                );
+              })(),
               resolve: { login: o.H },
               canActivate: [r.a],
             },
@@ -10873,26 +11114,26 @@
           ],
         },
       ];
-      let xs = (() => {
-          class s {}
+      let Ss = (() => {
+          class i {}
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)();
+            (i.ɵfac = function (a) {
+              return new (a || i)();
             }),
-            (s.ɵmod = e.oAB({ type: s })),
-            (s.ɵinj = e.cJS({ imports: [[i.Bz.forChild(Sa)], i.Bz] })),
-            s
+            (i.ɵmod = e.oAB({ type: i })),
+            (i.ɵinj = e.cJS({ imports: [[s.Bz.forChild(xs)], s.Bz] })),
+            i
           );
         })(),
-        Cs = (() => {
-          class s {}
+        qs = (() => {
+          class i {}
           return (
-            (s.ɵfac = function (a) {
-              return new (a || s)();
+            (i.ɵfac = function (a) {
+              return new (a || i)();
             }),
-            (s.ɵmod = e.oAB({ type: s })),
-            (s.ɵinj = e.cJS({ imports: [[m.ez, xs]] })),
-            s
+            (i.ɵmod = e.oAB({ type: i })),
+            (i.ɵinj = e.cJS({ imports: [[m.ez, Ss]] })),
+            i
           );
         })();
     },
@@ -10963,7 +11204,7 @@
     2502: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = function (p) {
+        var s = function (p) {
             return 0 === p
               ? 0
               : 1 === p
@@ -11045,10 +11286,10 @@
             ],
           },
           o = function (p) {
-            return function (M, L, k, C) {
-              var q = i(M),
-                N = r[p][i(M)];
-              return 2 === q && (N = N[L ? 0 : 1]), N.replace(/%d/i, M);
+            return function (T, L, D, w) {
+              var b = s(T),
+                q = r[p][s(T)];
+              return 2 === b && (q = q[L ? 0 : 1]), q.replace(/%d/i, T);
             };
           },
           e = [
@@ -11092,7 +11333,7 @@
           isPM: function (p) {
             return "\u0645" === p;
           },
-          meridiem: function (p, M, L) {
+          meridiem: function (p, T, L) {
             return p < 12 ? "\u0635" : "\u0645";
           },
           calendar: {
@@ -11199,7 +11440,7 @@
     4519: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "1",
             2: "2",
             3: "3",
@@ -11211,16 +11452,16 @@
             9: "9",
             0: "0",
           },
-          r = function (M) {
-            return 0 === M
+          r = function (T) {
+            return 0 === T
               ? 0
-              : 1 === M
+              : 1 === T
               ? 1
-              : 2 === M
+              : 2 === T
               ? 2
-              : M % 100 >= 3 && M % 100 <= 10
+              : T % 100 >= 3 && T % 100 <= 10
               ? 3
-              : M % 100 >= 11
+              : T % 100 >= 11
               ? 4
               : 5;
           },
@@ -11292,11 +11533,11 @@
               "%d \u0639\u0627\u0645",
             ],
           },
-          e = function (M) {
-            return function (L, k, C, q) {
-              var N = r(L),
-                _e = o[M][r(L)];
-              return 2 === N && (_e = _e[k ? 0 : 1]), _e.replace(/%d/i, L);
+          e = function (T) {
+            return function (L, D, w, b) {
+              var q = r(L),
+                se = o[T][r(L)];
+              return 2 === q && (se = se[D ? 0 : 1]), se.replace(/%d/i, L);
             };
           },
           u = [
@@ -11337,11 +11578,11 @@
             LLLL: "dddd D MMMM YYYY HH:mm",
           },
           meridiemParse: /\u0635|\u0645/,
-          isPM: function (M) {
-            return "\u0645" === M;
+          isPM: function (T) {
+            return "\u0645" === T;
           },
-          meridiem: function (M, L, k) {
-            return M < 12 ? "\u0635" : "\u0645";
+          meridiem: function (T, L, D) {
+            return T < 12 ? "\u0635" : "\u0645";
           },
           calendar: {
             sameDay:
@@ -11372,12 +11613,12 @@
             y: e("y"),
             yy: e("y"),
           },
-          preparse: function (M) {
-            return M.replace(/\u060c/g, ",");
+          preparse: function (T) {
+            return T.replace(/\u060c/g, ",");
           },
-          postformat: function (M) {
-            return M.replace(/\d/g, function (L) {
-              return i[L];
+          postformat: function (T) {
+            return T.replace(/\d/g, function (L) {
+              return s[L];
             }).replace(/,/g, "\u060c");
           },
           week: { dow: 6, doy: 12 },
@@ -11452,7 +11693,7 @@
     7642: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0661",
             2: "\u0662",
             3: "\u0663",
@@ -11554,7 +11795,7 @@
           postformat: function (e) {
             return e
               .replace(/\d/g, function (u) {
-                return i[u];
+                return s[u];
               })
               .replace(/,/g, "\u060c");
           },
@@ -11630,7 +11871,7 @@
     7038: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0661",
             2: "\u0662",
             3: "\u0663",
@@ -11736,10 +11977,10 @@
             ],
           },
           u = function (L) {
-            return function (k, C, q, N) {
-              var _e = o(k),
-                w = e[L][o(k)];
-              return 2 === _e && (w = w[C ? 0 : 1]), w.replace(/%d/i, k);
+            return function (D, w, b, q) {
+              var se = o(D),
+                k = e[L][o(D)];
+              return 2 === se && (k = k[w ? 0 : 1]), k.replace(/%d/i, D);
             };
           },
           p = [
@@ -11783,7 +12024,7 @@
           isPM: function (L) {
             return "\u0645" === L;
           },
-          meridiem: function (L, k, C) {
+          meridiem: function (L, D, w) {
             return L < 12 ? "\u0635" : "\u0645";
           },
           calendar: {
@@ -11818,14 +12059,14 @@
           preparse: function (L) {
             return L.replace(
               /[\u0661\u0662\u0663\u0664\u0665\u0666\u0667\u0668\u0669\u0660]/g,
-              function (k) {
-                return r[k];
+              function (D) {
+                return r[D];
               }
             ).replace(/\u060c/g, ",");
           },
           postformat: function (L) {
-            return L.replace(/\d/g, function (k) {
-              return i[k];
+            return L.replace(/\d/g, function (D) {
+              return s[D];
             }).replace(/,/g, "\u060c");
           },
           week: { dow: 6, doy: 12 },
@@ -11835,7 +12076,7 @@
     1213: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           1: "-inci",
           5: "-inci",
           8: "-inci",
@@ -11923,7 +12164,7 @@
           ordinal: function (o) {
             if (0 === o) return o + "-\u0131nc\u0131";
             var e = o % 10;
-            return o + (i[e] || i[(o % 100) - e] || i[o >= 100 ? 100 : null]);
+            return o + (s[e] || s[(o % 100) - e] || s[o >= 100 ? 100 : null]);
           },
           week: { dow: 1, doy: 7 },
         });
@@ -11943,7 +12184,7 @@
               : "\u0433\u0430\u0434\u0437\u0456\u043d\u0443"
             : e +
               " " +
-              (function i(e, u) {
+              (function s(e, u) {
                 var p = e.split("_");
                 return u % 10 == 1 && u % 100 != 11
                   ? p[0]
@@ -12237,7 +12478,7 @@
     5903: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u09e7",
             2: "\u09e8",
             3: "\u09e9",
@@ -12324,7 +12565,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -12370,7 +12611,7 @@
     9620: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u09e7",
             2: "\u09e8",
             3: "\u09e9",
@@ -12457,7 +12698,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -12490,7 +12731,7 @@
     9645: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0f21",
             2: "\u0f22",
             3: "\u0f23",
@@ -12581,7 +12822,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -12614,24 +12855,24 @@
     5020: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(w, K, De) {
+        function s(k, ae, Ce) {
           return (
-            w +
+            k +
             " " +
-            (function e(w, K) {
-              return 2 === K
-                ? (function u(w) {
-                    var K = { m: "v", b: "v", d: "z" };
-                    return void 0 === K[w.charAt(0)]
-                      ? w
-                      : K[w.charAt(0)] + w.substring(1);
-                  })(w)
-                : w;
-            })({ mm: "munutenn", MM: "miz", dd: "devezh" }[De], w)
+            (function e(k, ae) {
+              return 2 === ae
+                ? (function u(k) {
+                    var ae = { m: "v", b: "v", d: "z" };
+                    return void 0 === ae[k.charAt(0)]
+                      ? k
+                      : ae[k.charAt(0)] + k.substring(1);
+                  })(k)
+                : k;
+            })({ mm: "munutenn", MM: "miz", dd: "devezh" }[Ce], k)
           );
         }
-        function o(w) {
-          return w > 9 ? o(w % 10) : w;
+        function o(k) {
+          return k > 9 ? o(k % 10) : k;
         }
         var p = [
             /^gen/i,
@@ -12647,9 +12888,9 @@
             /^du/i,
             /^ker/i,
           ],
-          M =
+          T =
             /^(genver|c[\u02bc\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu|gen|c[\u02bc\']hwe|meu|ebr|mae|eve|gou|eos|gwe|her|du|ker)/i,
-          N = [/^Su/i, /^Lu/i, /^Me([^r]|$)/i, /^Mer/i, /^Ya/i, /^Gw/i, /^Sa/i];
+          q = [/^Su/i, /^Lu/i, /^Me([^r]|$)/i, /^Mer/i, /^Ya/i, /^Gw/i, /^Sa/i];
         m.defineLocale("br", {
           months:
             "Genver_C\u02bchwevrer_Meurzh_Ebrel_Mae_Mezheven_Gouere_Eost_Gwengolo_Here_Du_Kerzu".split(
@@ -12662,7 +12903,7 @@
           ),
           weekdaysShort: "Sul_Lun_Meu_Mer_Yao_Gwe_Sad".split("_"),
           weekdaysMin: "Su_Lu_Me_Mer_Ya_Gw_Sa".split("_"),
-          weekdaysParse: N,
+          weekdaysParse: q,
           fullWeekdaysParse: [
             /^sul/i,
             /^lun/i,
@@ -12681,9 +12922,9 @@
             /^Gwe/i,
             /^Sad/i,
           ],
-          minWeekdaysParse: N,
-          monthsRegex: M,
-          monthsShortRegex: M,
+          minWeekdaysParse: q,
+          monthsRegex: T,
+          monthsShortRegex: T,
           monthsStrictRegex:
             /^(genver|c[\u02bc\']hwevrer|meurzh|ebrel|mae|mezheven|gouere|eost|gwengolo|here|du|kerzu)/i,
           monthsShortStrictRegex:
@@ -12713,38 +12954,38 @@
             s: "un nebeud segondenno\xf9",
             ss: "%d eilenn",
             m: "ur vunutenn",
-            mm: i,
+            mm: s,
             h: "un eur",
             hh: "%d eur",
             d: "un devezh",
-            dd: i,
+            dd: s,
             M: "ur miz",
-            MM: i,
+            MM: s,
             y: "ur bloaz",
-            yy: function r(w) {
-              switch (o(w)) {
+            yy: function r(k) {
+              switch (o(k)) {
                 case 1:
                 case 3:
                 case 4:
                 case 5:
                 case 9:
-                  return w + " bloaz";
+                  return k + " bloaz";
                 default:
-                  return w + " vloaz";
+                  return k + " vloaz";
               }
             },
           },
           dayOfMonthOrdinalParse: /\d{1,2}(a\xf1|vet)/,
-          ordinal: function (w) {
-            return w + (1 === w ? "a\xf1" : "vet");
+          ordinal: function (k) {
+            return k + (1 === k ? "a\xf1" : "vet");
           },
           week: { dow: 1, doy: 4 },
           meridiemParse: /a.m.|g.m./,
-          isPM: function (w) {
-            return "g.m." === w;
+          isPM: function (k) {
+            return "g.m." === k;
           },
-          meridiem: function (w, K, De) {
-            return w < 12 ? "a.m." : "g.m.";
+          meridiem: function (k, ae, Ce) {
+            return k < 12 ? "a.m." : "g.m.";
           },
         });
       })(f(5439));
@@ -12752,7 +12993,7 @@
     4792: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u) {
+        function s(o, e, u) {
           var p = o + " ";
           switch (u) {
             case "ss":
@@ -12872,17 +13113,17 @@
             future: "za %s",
             past: "prije %s",
             s: "par sekundi",
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
             d: "dan",
-            dd: i,
+            dd: s,
             M: "mjesec",
-            MM: i,
+            MM: s,
             y: "godinu",
-            yy: i,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -12989,7 +13230,7 @@
     6466: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "leden_\xfanor_b\u0159ezen_duben_kv\u011bten_\u010derven_\u010dervenec_srpen_z\xe1\u0159\xed_\u0159\xedjen_listopad_prosinec".split(
               "_"
             ),
@@ -13016,41 +13257,41 @@
         function u(L) {
           return L > 1 && L < 5 && 1 != ~~(L / 10);
         }
-        function p(L, k, C, q) {
-          var N = L + " ";
-          switch (C) {
+        function p(L, D, w, b) {
+          var q = L + " ";
+          switch (w) {
             case "s":
-              return k || q ? "p\xe1r sekund" : "p\xe1r sekundami";
+              return D || b ? "p\xe1r sekund" : "p\xe1r sekundami";
             case "ss":
-              return k || q
-                ? N + (u(L) ? "sekundy" : "sekund")
-                : N + "sekundami";
+              return D || b
+                ? q + (u(L) ? "sekundy" : "sekund")
+                : q + "sekundami";
             case "m":
-              return k ? "minuta" : q ? "minutu" : "minutou";
+              return D ? "minuta" : b ? "minutu" : "minutou";
             case "mm":
-              return k || q ? N + (u(L) ? "minuty" : "minut") : N + "minutami";
+              return D || b ? q + (u(L) ? "minuty" : "minut") : q + "minutami";
             case "h":
-              return k ? "hodina" : q ? "hodinu" : "hodinou";
+              return D ? "hodina" : b ? "hodinu" : "hodinou";
             case "hh":
-              return k || q ? N + (u(L) ? "hodiny" : "hodin") : N + "hodinami";
+              return D || b ? q + (u(L) ? "hodiny" : "hodin") : q + "hodinami";
             case "d":
-              return k || q ? "den" : "dnem";
+              return D || b ? "den" : "dnem";
             case "dd":
-              return k || q ? N + (u(L) ? "dny" : "dn\xed") : N + "dny";
+              return D || b ? q + (u(L) ? "dny" : "dn\xed") : q + "dny";
             case "M":
-              return k || q ? "m\u011bs\xedc" : "m\u011bs\xedcem";
+              return D || b ? "m\u011bs\xedc" : "m\u011bs\xedcem";
             case "MM":
-              return k || q
-                ? N + (u(L) ? "m\u011bs\xedce" : "m\u011bs\xedc\u016f")
-                : N + "m\u011bs\xedci";
+              return D || b
+                ? q + (u(L) ? "m\u011bs\xedce" : "m\u011bs\xedc\u016f")
+                : q + "m\u011bs\xedci";
             case "y":
-              return k || q ? "rok" : "rokem";
+              return D || b ? "rok" : "rokem";
             case "yy":
-              return k || q ? N + (u(L) ? "roky" : "let") : N + "lety";
+              return D || b ? q + (u(L) ? "roky" : "let") : q + "lety";
           }
         }
         m.defineLocale("cs", {
-          months: i,
+          months: s,
           monthsShort: r,
           monthsRegex: e,
           monthsShortRegex: e,
@@ -13360,8 +13601,8 @@
     9459: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             m: ["eine Minute", "einer Minute"],
             h: ["eine Stunde", "einer Stunde"],
             d: ["ein Tag", "einem Tag"],
@@ -13372,7 +13613,7 @@
             y: ["ein Jahr", "einem Jahr"],
             yy: [o + " Jahre", o + " Jahren"],
           };
-          return e ? M[u][0] : M[u][1];
+          return e ? T[u][0] : T[u][1];
         }
         m.defineLocale("de-at", {
           months:
@@ -13412,18 +13653,18 @@
             past: "vor %s",
             s: "ein paar Sekunden",
             ss: "%d Sekunden",
-            m: i,
+            m: s,
             mm: "%d Minuten",
-            h: i,
+            h: s,
             hh: "%d Stunden",
-            d: i,
-            dd: i,
-            w: i,
+            d: s,
+            dd: s,
+            w: s,
             ww: "%d Wochen",
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -13434,8 +13675,8 @@
     3694: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             m: ["eine Minute", "einer Minute"],
             h: ["eine Stunde", "einer Stunde"],
             d: ["ein Tag", "einem Tag"],
@@ -13446,7 +13687,7 @@
             y: ["ein Jahr", "einem Jahr"],
             yy: [o + " Jahre", o + " Jahren"],
           };
-          return e ? M[u][0] : M[u][1];
+          return e ? T[u][0] : T[u][1];
         }
         m.defineLocale("de-ch", {
           months:
@@ -13486,18 +13727,18 @@
             past: "vor %s",
             s: "ein paar Sekunden",
             ss: "%d Sekunden",
-            m: i,
+            m: s,
             mm: "%d Minuten",
-            h: i,
+            h: s,
             hh: "%d Stunden",
-            d: i,
-            dd: i,
-            w: i,
+            d: s,
+            dd: s,
+            w: s,
             ww: "%d Wochen",
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -13508,8 +13749,8 @@
     4307: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             m: ["eine Minute", "einer Minute"],
             h: ["eine Stunde", "einer Stunde"],
             d: ["ein Tag", "einem Tag"],
@@ -13520,7 +13761,7 @@
             y: ["ein Jahr", "einem Jahr"],
             yy: [o + " Jahre", o + " Jahren"],
           };
-          return e ? M[u][0] : M[u][1];
+          return e ? T[u][0] : T[u][1];
         }
         m.defineLocale("de", {
           months:
@@ -13560,18 +13801,18 @@
             past: "vor %s",
             s: "ein paar Sekunden",
             ss: "%d Sekunden",
-            m: i,
+            m: s,
             mm: "%d Minuten",
-            h: i,
+            h: s,
             hh: "%d Stunden",
-            d: i,
-            dd: i,
-            w: i,
+            d: s,
+            dd: s,
+            w: s,
             ww: "%d Wochen",
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -13582,7 +13823,7 @@
     9659: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = [
+        var s = [
             "\u0796\u07ac\u0782\u07aa\u0787\u07a6\u0783\u07a9",
             "\u078a\u07ac\u0784\u07b0\u0783\u07aa\u0787\u07a6\u0783\u07a9",
             "\u0789\u07a7\u0783\u07a8\u0797\u07aa",
@@ -13606,8 +13847,8 @@
             "\u0780\u07ae\u0782\u07a8\u0780\u07a8\u0783\u07aa",
           ];
         m.defineLocale("dv", {
-          months: i,
-          monthsShort: i,
+          months: s,
+          monthsShort: s,
           weekdays: r,
           weekdaysShort: r,
           weekdaysMin:
@@ -13737,7 +13978,7 @@
             var u = this._calendarEl[o],
               p = e && e.hours();
             return (
-              (function i(o) {
+              (function s(o) {
                 return (
                   ("undefined" != typeof Function && o instanceof Function) ||
                   "[object Function]" === Object.prototype.toString.call(o)
@@ -14386,7 +14627,7 @@
     8944: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split(
               "_"
             ),
@@ -14412,8 +14653,8 @@
             "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -14490,7 +14731,7 @@
     9116: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split(
               "_"
             ),
@@ -14516,8 +14757,8 @@
             "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -14595,7 +14836,7 @@
     3609: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split(
               "_"
             ),
@@ -14621,8 +14862,8 @@
             "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -14699,7 +14940,7 @@
     6866: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "ene._feb._mar._abr._may._jun._jul._ago._sep._oct._nov._dic.".split(
               "_"
             ),
@@ -14725,8 +14966,8 @@
             "enero_febrero_marzo_abril_mayo_junio_julio_agosto_septiembre_octubre_noviembre_diciembre".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -14804,8 +15045,8 @@
     6725: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             s: ["m\xf5ne sekundi", "m\xf5ni sekund", "paar sekundit"],
             ss: [o + "sekundi", o + "sekundit"],
             m: ["\xfche minuti", "\xfcks minut"],
@@ -14818,7 +15059,7 @@
             y: ["\xfche aasta", "aasta", "\xfcks aasta"],
             yy: [o + " aasta", o + " aastat"],
           };
-          return e ? (M[u][2] ? M[u][2] : M[u][1]) : p ? M[u][0] : M[u][1];
+          return e ? (T[u][2] ? T[u][2] : T[u][1]) : p ? T[u][0] : T[u][1];
         }
         m.defineLocale("et", {
           months:
@@ -14854,18 +15095,18 @@
           relativeTime: {
             future: "%s p\xe4rast",
             past: "%s tagasi",
-            s: i,
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
-            d: i,
+            s,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
+            d: s,
             dd: "%d p\xe4eva",
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -14938,7 +15179,7 @@
     6417: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u06f1",
             2: "\u06f2",
             3: "\u06f3",
@@ -15037,7 +15278,7 @@
           postformat: function (e) {
             return e
               .replace(/\d/g, function (u) {
-                return i[u];
+                return s[u];
               })
               .replace(/,/g, "\u060c");
           },
@@ -15050,7 +15291,7 @@
     944: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "nolla yksi kaksi kolme nelj\xe4 viisi kuusi seitsem\xe4n kahdeksan yhdeks\xe4n".split(
               " "
             ),
@@ -15062,49 +15303,49 @@
             "nelj\xe4n",
             "viiden",
             "kuuden",
-            i[7],
-            i[8],
-            i[9],
+            s[7],
+            s[8],
+            s[9],
           ];
-        function o(p, M, L, k) {
-          var C = "";
+        function o(p, T, L, D) {
+          var w = "";
           switch (L) {
             case "s":
-              return k ? "muutaman sekunnin" : "muutama sekunti";
+              return D ? "muutaman sekunnin" : "muutama sekunti";
             case "ss":
-              C = k ? "sekunnin" : "sekuntia";
+              w = D ? "sekunnin" : "sekuntia";
               break;
             case "m":
-              return k ? "minuutin" : "minuutti";
+              return D ? "minuutin" : "minuutti";
             case "mm":
-              C = k ? "minuutin" : "minuuttia";
+              w = D ? "minuutin" : "minuuttia";
               break;
             case "h":
-              return k ? "tunnin" : "tunti";
+              return D ? "tunnin" : "tunti";
             case "hh":
-              C = k ? "tunnin" : "tuntia";
+              w = D ? "tunnin" : "tuntia";
               break;
             case "d":
-              return k ? "p\xe4iv\xe4n" : "p\xe4iv\xe4";
+              return D ? "p\xe4iv\xe4n" : "p\xe4iv\xe4";
             case "dd":
-              C = k ? "p\xe4iv\xe4n" : "p\xe4iv\xe4\xe4";
+              w = D ? "p\xe4iv\xe4n" : "p\xe4iv\xe4\xe4";
               break;
             case "M":
-              return k ? "kuukauden" : "kuukausi";
+              return D ? "kuukauden" : "kuukausi";
             case "MM":
-              C = k ? "kuukauden" : "kuukautta";
+              w = D ? "kuukauden" : "kuukautta";
               break;
             case "y":
-              return k ? "vuoden" : "vuosi";
+              return D ? "vuoden" : "vuosi";
             case "yy":
-              C = k ? "vuoden" : "vuotta";
+              w = D ? "vuoden" : "vuotta";
           }
           return (
-            (function e(p, M) {
-              return p < 10 ? (M ? r[p] : i[p]) : p;
-            })(p, k) +
+            (function e(p, T) {
+              return p < 10 ? (T ? r[p] : s[p]) : p;
+            })(p, D) +
             " " +
-            C
+            w
           );
         }
         m.defineLocale("fi", {
@@ -15491,8 +15732,8 @@
             yy: "%d ans",
           },
           dayOfMonthOrdinalParse: /\d{1,2}(er|)/,
-          ordinal: function (p, M) {
-            switch (M) {
+          ordinal: function (p, T) {
+            switch (T) {
               case "D":
                 return p + (1 === p ? "er" : "");
               default:
@@ -15513,7 +15754,7 @@
     4940: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "jan._feb._mrt._apr._mai_jun._jul._aug._sep._okt._nov._des.".split(
               "_"
             ),
@@ -15524,7 +15765,7 @@
               "_"
             ),
           monthsShort: function (e, u) {
-            return e ? (/-MMM-/.test(u) ? r[e.month()] : i[e.month()]) : i;
+            return e ? (/-MMM-/.test(u) ? r[e.month()] : s[e.month()]) : s;
           },
           monthsParseExact: !0,
           weekdays:
@@ -15657,8 +15898,8 @@
             yy: "%d bliain",
           },
           dayOfMonthOrdinalParse: /\d{1,2}(d|na|mh)/,
-          ordinal: function (M) {
-            return M + (1 === M ? "d" : M % 10 == 2 ? "na" : "mh");
+          ordinal: function (T) {
+            return T + (1 === T ? "d" : T % 10 == 2 ? "na" : "mh");
           },
           week: { dow: 1, doy: 4 },
         });
@@ -15741,8 +15982,8 @@
             yy: "%d bliadhna",
           },
           dayOfMonthOrdinalParse: /\d{1,2}(d|na|mh)/,
-          ordinal: function (M) {
-            return M + (1 === M ? "d" : M % 10 == 2 ? "na" : "mh");
+          ordinal: function (T) {
+            return T + (1 === T ? "d" : T % 10 == 2 ? "na" : "mh");
           },
           week: { dow: 1, doy: 4 },
         });
@@ -15829,8 +16070,8 @@
     2457: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             s: [
               "\u0925\u094b\u0921\u092f\u093e \u0938\u0945\u0915\u0902\u0921\u093e\u0902\u0928\u0940",
               "\u0925\u094b\u0921\u0947 \u0938\u0945\u0915\u0902\u0921",
@@ -15881,7 +16122,7 @@
               o + " \u0935\u0930\u094d\u0938\u093e\u0902",
             ],
           };
-          return p ? M[u][0] : M[u][1];
+          return p ? T[u][0] : T[u][1];
         }
         m.defineLocale("gom-deva", {
           months: {
@@ -15933,18 +16174,18 @@
           relativeTime: {
             future: "%s",
             past: "%s \u0906\u0926\u0940\u0902",
-            s: i,
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
-            d: i,
-            dd: i,
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            s,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
+            d: s,
+            dd: s,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}(\u0935\u0947\u0930)/,
           ordinal: function (o, e) {
@@ -15988,8 +16229,8 @@
     2545: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = {
+        function s(o, e, u, p) {
+          var T = {
             s: ["thoddea sekondamni", "thodde sekond"],
             ss: [o + " sekondamni", o + " sekond"],
             m: ["eka mintan", "ek minut"],
@@ -16003,7 +16244,7 @@
             y: ["eka vorsan", "ek voros"],
             yy: [o + " vorsamni", o + " vorsam"],
           };
-          return p ? M[u][0] : M[u][1];
+          return p ? T[u][0] : T[u][1];
         }
         m.defineLocale("gom-latn", {
           months: {
@@ -16047,18 +16288,18 @@
           relativeTime: {
             future: "%s",
             past: "%s adim",
-            s: i,
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
-            d: i,
-            dd: i,
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            s,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
+            d: s,
+            dd: s,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}(er)/,
           ordinal: function (o, e) {
@@ -16101,7 +16342,7 @@
     2641: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0ae7",
             2: "\u0ae8",
             3: "\u0ae9",
@@ -16189,7 +16430,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -16333,7 +16574,7 @@
     6335: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0967",
             2: "\u0968",
             3: "\u0969",
@@ -16457,37 +16698,37 @@
           preparse: function (p) {
             return p.replace(
               /[\u0967\u0968\u0969\u096a\u096b\u096c\u096d\u096e\u096f\u0966]/g,
-              function (M) {
-                return r[M];
+              function (T) {
+                return r[T];
               }
             );
           },
           postformat: function (p) {
-            return p.replace(/\d/g, function (M) {
-              return i[M];
+            return p.replace(/\d/g, function (T) {
+              return s[T];
             });
           },
           meridiemParse:
             /\u0930\u093e\u0924|\u0938\u0941\u092c\u0939|\u0926\u094b\u092a\u0939\u0930|\u0936\u093e\u092e/,
-          meridiemHour: function (p, M) {
+          meridiemHour: function (p, T) {
             return (
               12 === p && (p = 0),
-              "\u0930\u093e\u0924" === M
+              "\u0930\u093e\u0924" === T
                 ? p < 4
                   ? p
                   : p + 12
-                : "\u0938\u0941\u092c\u0939" === M
+                : "\u0938\u0941\u092c\u0939" === T
                 ? p
-                : "\u0926\u094b\u092a\u0939\u0930" === M
+                : "\u0926\u094b\u092a\u0939\u0930" === T
                 ? p >= 10
                   ? p
                   : p + 12
-                : "\u0936\u093e\u092e" === M
+                : "\u0936\u093e\u092e" === T
                 ? p + 12
                 : void 0
             );
           },
-          meridiem: function (p, M, L) {
+          meridiem: function (p, T, L) {
             return p < 4
               ? "\u0930\u093e\u0924"
               : p < 10
@@ -16505,7 +16746,7 @@
     7458: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u) {
+        function s(o, e, u) {
           var p = o + " ";
           switch (u) {
             case "ss":
@@ -16632,17 +16873,17 @@
             future: "za %s",
             past: "prije %s",
             s: "par sekundi",
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
             d: "dan",
-            dd: i,
+            dd: s,
             M: "mjesec",
-            MM: i,
+            MM: s,
             y: "godinu",
-            yy: i,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -16653,44 +16894,44 @@
     6540: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
           "vas\xe1rnap h\xe9tf\u0151n kedden szerd\xe1n cs\xfct\xf6rt\xf6k\xf6n p\xe9nteken szombaton".split(
             " "
           );
-        function r(u, p, M, L) {
-          var k = u;
-          switch (M) {
+        function r(u, p, T, L) {
+          var D = u;
+          switch (T) {
             case "s":
               return L || p
                 ? "n\xe9h\xe1ny m\xe1sodperc"
                 : "n\xe9h\xe1ny m\xe1sodperce";
             case "ss":
-              return k + (L || p) ? " m\xe1sodperc" : " m\xe1sodperce";
+              return D + (L || p) ? " m\xe1sodperc" : " m\xe1sodperce";
             case "m":
               return "egy" + (L || p ? " perc" : " perce");
             case "mm":
-              return k + (L || p ? " perc" : " perce");
+              return D + (L || p ? " perc" : " perce");
             case "h":
               return "egy" + (L || p ? " \xf3ra" : " \xf3r\xe1ja");
             case "hh":
-              return k + (L || p ? " \xf3ra" : " \xf3r\xe1ja");
+              return D + (L || p ? " \xf3ra" : " \xf3r\xe1ja");
             case "d":
               return "egy" + (L || p ? " nap" : " napja");
             case "dd":
-              return k + (L || p ? " nap" : " napja");
+              return D + (L || p ? " nap" : " napja");
             case "M":
               return "egy" + (L || p ? " h\xf3nap" : " h\xf3napja");
             case "MM":
-              return k + (L || p ? " h\xf3nap" : " h\xf3napja");
+              return D + (L || p ? " h\xf3nap" : " h\xf3napja");
             case "y":
               return "egy" + (L || p ? " \xe9v" : " \xe9ve");
             case "yy":
-              return k + (L || p ? " \xe9v" : " \xe9ve");
+              return D + (L || p ? " \xe9v" : " \xe9ve");
           }
           return "";
         }
         function o(u) {
-          return (u ? "" : "[m\xfalt] ") + "[" + i[this.day()] + "] LT[-kor]";
+          return (u ? "" : "[m\xfalt] ") + "[" + s[this.day()] + "] LT[-kor]";
         }
         m.defineLocale("hu", {
           months:
@@ -16720,8 +16961,8 @@
           isPM: function (u) {
             return "u" === u.charAt(1).toLowerCase();
           },
-          meridiem: function (u, p, M) {
-            return u < 12 ? (!0 === M ? "de" : "DE") : !0 === M ? "du" : "DU";
+          meridiem: function (u, p, T) {
+            return u < 12 ? (!0 === T ? "de" : "DE") : !0 === T ? "du" : "DU";
           },
           calendar: {
             sameDay: "[ma] LT[-kor]",
@@ -16932,56 +17173,56 @@
     4205: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(e) {
+        function s(e) {
           return e % 100 == 11 || e % 10 != 1;
         }
-        function r(e, u, p, M) {
+        function r(e, u, p, T) {
           var L = e + " ";
           switch (p) {
             case "s":
-              return u || M ? "nokkrar sek\xfandur" : "nokkrum sek\xfandum";
+              return u || T ? "nokkrar sek\xfandur" : "nokkrum sek\xfandum";
             case "ss":
-              return i(e)
-                ? L + (u || M ? "sek\xfandur" : "sek\xfandum")
+              return s(e)
+                ? L + (u || T ? "sek\xfandur" : "sek\xfandum")
                 : L + "sek\xfanda";
             case "m":
               return u ? "m\xedn\xfata" : "m\xedn\xfatu";
             case "mm":
-              return i(e)
-                ? L + (u || M ? "m\xedn\xfatur" : "m\xedn\xfatum")
+              return s(e)
+                ? L + (u || T ? "m\xedn\xfatur" : "m\xedn\xfatum")
                 : u
                 ? L + "m\xedn\xfata"
                 : L + "m\xedn\xfatu";
             case "hh":
-              return i(e)
-                ? L + (u || M ? "klukkustundir" : "klukkustundum")
+              return s(e)
+                ? L + (u || T ? "klukkustundir" : "klukkustundum")
                 : L + "klukkustund";
             case "d":
-              return u ? "dagur" : M ? "dag" : "degi";
+              return u ? "dagur" : T ? "dag" : "degi";
             case "dd":
-              return i(e)
+              return s(e)
                 ? u
                   ? L + "dagar"
-                  : L + (M ? "daga" : "d\xf6gum")
+                  : L + (T ? "daga" : "d\xf6gum")
                 : u
                 ? L + "dagur"
-                : L + (M ? "dag" : "degi");
+                : L + (T ? "dag" : "degi");
             case "M":
-              return u ? "m\xe1nu\xf0ur" : M ? "m\xe1nu\xf0" : "m\xe1nu\xf0i";
+              return u ? "m\xe1nu\xf0ur" : T ? "m\xe1nu\xf0" : "m\xe1nu\xf0i";
             case "MM":
-              return i(e)
+              return s(e)
                 ? u
                   ? L + "m\xe1nu\xf0ir"
-                  : L + (M ? "m\xe1nu\xf0i" : "m\xe1nu\xf0um")
+                  : L + (T ? "m\xe1nu\xf0i" : "m\xe1nu\xf0um")
                 : u
                 ? L + "m\xe1nu\xf0ur"
-                : L + (M ? "m\xe1nu\xf0" : "m\xe1nu\xf0i");
+                : L + (T ? "m\xe1nu\xf0" : "m\xe1nu\xf0i");
             case "y":
-              return u || M ? "\xe1r" : "\xe1ri";
+              return u || T ? "\xe1r" : "\xe1ri";
             case "yy":
-              return i(e)
-                ? L + (u || M ? "\xe1r" : "\xe1rum")
-                : L + (u || M ? "\xe1r" : "\xe1ri");
+              return s(e)
+                ? L + (u || T ? "\xe1r" : "\xe1rum")
+                : L + (u || T ? "\xe1r" : "\xe1ri");
           }
         }
         m.defineLocale("is", {
@@ -17524,7 +17765,7 @@
     6074: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           0: "-\u0448\u0456",
           1: "-\u0448\u0456",
           2: "-\u0448\u0456",
@@ -17605,7 +17846,7 @@
           },
           dayOfMonthOrdinalParse: /\d{1,2}-(\u0448\u0456|\u0448\u044b)/,
           ordinal: function (o) {
-            return o + (i[o] || i[o % 10] || i[o >= 100 ? 100 : null]);
+            return o + (s[o] || s[o % 10] || s[o >= 100 ? 100 : null]);
           },
           week: { dow: 1, doy: 7 },
         });
@@ -17614,7 +17855,7 @@
     3343: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u17e1",
             2: "\u17e2",
             3: "\u17e3",
@@ -17718,7 +17959,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           week: { dow: 1, doy: 4 },
@@ -17728,7 +17969,7 @@
     4799: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0ce7",
             2: "\u0ce8",
             3: "\u0ce9",
@@ -17816,7 +18057,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -17944,7 +18185,7 @@
     1037: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0661",
             2: "\u0662",
             3: "\u0663",
@@ -18010,7 +18251,7 @@
           isPM: function (u) {
             return /\u0626\u06ce\u0648\u0627\u0631\u0647\u200c/.test(u);
           },
-          meridiem: function (u, p, M) {
+          meridiem: function (u, p, T) {
             return u < 12
               ? "\u0628\u0647\u200c\u06cc\u0627\u0646\u06cc"
               : "\u0626\u06ce\u0648\u0627\u0631\u0647\u200c";
@@ -18055,7 +18296,7 @@
           postformat: function (u) {
             return u
               .replace(/\d/g, function (p) {
-                return i[p];
+                return s[p];
               })
               .replace(/,/g, "\u060c");
           },
@@ -18066,7 +18307,7 @@
     3125: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           0: "-\u0447\u04af",
           1: "-\u0447\u0438",
           2: "-\u0447\u0438",
@@ -18148,7 +18389,7 @@
           dayOfMonthOrdinalParse:
             /\d{1,2}-(\u0447\u0438|\u0447\u044b|\u0447\u04af|\u0447\u0443)/,
           ordinal: function (o) {
-            return o + (i[o] || i[o % 10] || i[o >= 100 ? 100 : null]);
+            return o + (s[o] || s[o % 10] || s[o >= 100 ? 100 : null]);
           },
           week: { dow: 1, doy: 7 },
         });
@@ -18157,23 +18398,23 @@
     9586: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(p, M, L, k) {
-          var C = {
+        function s(p, T, L, D) {
+          var w = {
             m: ["eng Minutt", "enger Minutt"],
             h: ["eng Stonn", "enger Stonn"],
             d: ["een Dag", "engem Dag"],
             M: ["ee Mount", "engem Mount"],
             y: ["ee Joer", "engem Joer"],
           };
-          return M ? C[L][0] : C[L][1];
+          return T ? w[L][0] : w[L][1];
         }
         function e(p) {
           if (((p = parseInt(p, 10)), isNaN(p))) return !1;
           if (p < 0) return !0;
           if (p < 10) return 4 <= p && p <= 7;
           if (p < 100) {
-            var M = p % 10;
-            return e(0 === M ? p / 10 : M);
+            var T = p % 10;
+            return e(0 === T ? p / 10 : T);
           }
           if (p < 1e4) {
             for (; p >= 10; ) p /= 10;
@@ -18233,15 +18474,15 @@
             },
             s: "e puer Sekonnen",
             ss: "%d Sekonnen",
-            m: i,
+            m: s,
             mm: "%d Minutten",
-            h: i,
+            h: s,
             hh: "%d Stonnen",
-            d: i,
+            d: s,
             dd: "%d Deeg",
-            M: i,
+            M: s,
             MM: "%d M\xe9int",
-            y: i,
+            y: s,
             yy: "%d Joer",
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
@@ -18332,7 +18573,7 @@
     2400: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           ss: "sekund\u0117_sekund\u017ei\u0173_sekundes",
           m: "minut\u0117_minut\u0117s_minut\u0119",
           mm: "minut\u0117s_minu\u010di\u0173_minutes",
@@ -18345,24 +18586,24 @@
           y: "metai_met\u0173_metus",
           yy: "metai_met\u0173_metus",
         };
-        function o(L, k, C, q) {
-          return k ? u(C)[0] : q ? u(C)[1] : u(C)[2];
+        function o(L, D, w, b) {
+          return D ? u(w)[0] : b ? u(w)[1] : u(w)[2];
         }
         function e(L) {
           return L % 10 == 0 || (L > 10 && L < 20);
         }
         function u(L) {
-          return i[L].split("_");
+          return s[L].split("_");
         }
-        function p(L, k, C, q) {
-          var N = L + " ";
+        function p(L, D, w, b) {
+          var q = L + " ";
           return 1 === L
-            ? N + o(0, k, C[0], q)
-            : k
-            ? N + (e(L) ? u(C)[1] : u(C)[0])
-            : q
-            ? N + u(C)[1]
-            : N + (e(L) ? u(C)[1] : u(C)[2]);
+            ? q + o(0, D, w[0], b)
+            : D
+            ? q + (e(L) ? u(w)[1] : u(w)[0])
+            : b
+            ? q + u(w)[1]
+            : q + (e(L) ? u(w)[1] : u(w)[2]);
         }
         m.defineLocale("lt", {
           months: {
@@ -18417,10 +18658,10 @@
           relativeTime: {
             future: "po %s",
             past: "prie\u0161 %s",
-            s: function r(L, k, C, q) {
-              return k
+            s: function r(L, D, w, b) {
+              return D
                 ? "kelios sekund\u0117s"
-                : q
+                : b
                 ? "keli\u0173 sekund\u017ei\u0173"
                 : "kelias sekundes";
             },
@@ -18447,7 +18688,7 @@
     9991: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           ss: "sekundes_sekund\u0113m_sekunde_sekundes".split("_"),
           m: "min\u016btes_min\u016bt\u0113m_min\u016bte_min\u016btes".split(
             "_"
@@ -18468,20 +18709,20 @@
           y: "gada_gadiem_gads_gadi".split("_"),
           yy: "gada_gadiem_gads_gadi".split("_"),
         };
-        function r(M, L, k) {
-          return k
+        function r(T, L, D) {
+          return D
             ? L % 10 == 1 && L % 100 != 11
-              ? M[2]
-              : M[3]
+              ? T[2]
+              : T[3]
             : L % 10 == 1 && L % 100 != 11
-            ? M[0]
-            : M[1];
+            ? T[0]
+            : T[1];
         }
-        function o(M, L, k) {
-          return M + " " + r(i[k], M, L);
+        function o(T, L, D) {
+          return T + " " + r(s[D], T, L);
         }
-        function e(M, L, k) {
-          return r(i[k], M, L);
+        function e(T, L, D) {
+          return r(s[D], T, L);
         }
         m.defineLocale("lv", {
           months:
@@ -18518,7 +18759,7 @@
           relativeTime: {
             future: "p\u0113c %s",
             past: "pirms %s",
-            s: function u(M, L) {
+            s: function u(T, L) {
               return L
                 ? "da\u017eas sekundes"
                 : "da\u017e\u0101m sekund\u0113m";
@@ -18544,7 +18785,7 @@
     8477: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           words: {
             ss: ["sekund", "sekunda", "sekundi"],
             m: ["jedan minut", "jednog minuta"],
@@ -18559,12 +18800,12 @@
             return 1 === o ? e[0] : o >= 2 && o <= 4 ? e[1] : e[2];
           },
           translate: function (o, e, u) {
-            var p = i.words[u];
+            var p = s.words[u];
             return 1 === u.length
               ? e
                 ? p[0]
                 : p[1]
-              : o + " " + i.correctGrammaticalCase(o, p);
+              : o + " " + s.correctGrammaticalCase(o, p);
           },
         };
         m.defineLocale("me", {
@@ -18628,17 +18869,17 @@
             future: "za %s",
             past: "prije %s",
             s: "nekoliko sekundi",
-            ss: i.translate,
-            m: i.translate,
-            mm: i.translate,
-            h: i.translate,
-            hh: i.translate,
+            ss: s.translate,
+            m: s.translate,
+            mm: s.translate,
+            h: s.translate,
+            hh: s.translate,
             d: "dan",
-            dd: i.translate,
+            dd: s.translate,
             M: "mjesec",
-            MM: i.translate,
+            MM: s.translate,
             y: "godinu",
-            yy: i.translate,
+            yy: s.translate,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -18885,7 +19126,7 @@
     1977: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
+        function s(o, e, u, p) {
           switch (u) {
             case "s":
               return e
@@ -18990,18 +19231,18 @@
           relativeTime: {
             future: "%s \u0434\u0430\u0440\u0430\u0430",
             past: "%s \u04e9\u043c\u043d\u04e9",
-            s: i,
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
-            d: i,
-            dd: i,
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            s,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
+            d: s,
+            dd: s,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2} \u04e9\u0434\u04e9\u0440/,
           ordinal: function (o, e) {
@@ -19020,7 +19261,7 @@
     6184: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0967",
             2: "\u0968",
             3: "\u0969",
@@ -19044,87 +19285,87 @@
             "\u096f": "9",
             "\u0966": "0",
           };
-        function o(u, p, M, L) {
-          var k = "";
+        function o(u, p, T, L) {
+          var D = "";
           if (p)
-            switch (M) {
+            switch (T) {
               case "s":
-                k = "\u0915\u093e\u0939\u0940 \u0938\u0947\u0915\u0902\u0926";
+                D = "\u0915\u093e\u0939\u0940 \u0938\u0947\u0915\u0902\u0926";
                 break;
               case "ss":
-                k = "%d \u0938\u0947\u0915\u0902\u0926";
+                D = "%d \u0938\u0947\u0915\u0902\u0926";
                 break;
               case "m":
-                k = "\u090f\u0915 \u092e\u093f\u0928\u093f\u091f";
+                D = "\u090f\u0915 \u092e\u093f\u0928\u093f\u091f";
                 break;
               case "mm":
-                k = "%d \u092e\u093f\u0928\u093f\u091f\u0947";
+                D = "%d \u092e\u093f\u0928\u093f\u091f\u0947";
                 break;
               case "h":
-                k = "\u090f\u0915 \u0924\u093e\u0938";
+                D = "\u090f\u0915 \u0924\u093e\u0938";
                 break;
               case "hh":
-                k = "%d \u0924\u093e\u0938";
+                D = "%d \u0924\u093e\u0938";
                 break;
               case "d":
-                k = "\u090f\u0915 \u0926\u093f\u0935\u0938";
+                D = "\u090f\u0915 \u0926\u093f\u0935\u0938";
                 break;
               case "dd":
-                k = "%d \u0926\u093f\u0935\u0938";
+                D = "%d \u0926\u093f\u0935\u0938";
                 break;
               case "M":
-                k = "\u090f\u0915 \u092e\u0939\u093f\u0928\u093e";
+                D = "\u090f\u0915 \u092e\u0939\u093f\u0928\u093e";
                 break;
               case "MM":
-                k = "%d \u092e\u0939\u093f\u0928\u0947";
+                D = "%d \u092e\u0939\u093f\u0928\u0947";
                 break;
               case "y":
-                k = "\u090f\u0915 \u0935\u0930\u094d\u0937";
+                D = "\u090f\u0915 \u0935\u0930\u094d\u0937";
                 break;
               case "yy":
-                k = "%d \u0935\u0930\u094d\u0937\u0947";
+                D = "%d \u0935\u0930\u094d\u0937\u0947";
             }
           else
-            switch (M) {
+            switch (T) {
               case "s":
-                k =
+                D =
                   "\u0915\u093e\u0939\u0940 \u0938\u0947\u0915\u0902\u0926\u093e\u0902";
                 break;
               case "ss":
-                k = "%d \u0938\u0947\u0915\u0902\u0926\u093e\u0902";
+                D = "%d \u0938\u0947\u0915\u0902\u0926\u093e\u0902";
                 break;
               case "m":
-                k = "\u090f\u0915\u093e \u092e\u093f\u0928\u093f\u091f\u093e";
+                D = "\u090f\u0915\u093e \u092e\u093f\u0928\u093f\u091f\u093e";
                 break;
               case "mm":
-                k = "%d \u092e\u093f\u0928\u093f\u091f\u093e\u0902";
+                D = "%d \u092e\u093f\u0928\u093f\u091f\u093e\u0902";
                 break;
               case "h":
-                k = "\u090f\u0915\u093e \u0924\u093e\u0938\u093e";
+                D = "\u090f\u0915\u093e \u0924\u093e\u0938\u093e";
                 break;
               case "hh":
-                k = "%d \u0924\u093e\u0938\u093e\u0902";
+                D = "%d \u0924\u093e\u0938\u093e\u0902";
                 break;
               case "d":
-                k = "\u090f\u0915\u093e \u0926\u093f\u0935\u0938\u093e";
+                D = "\u090f\u0915\u093e \u0926\u093f\u0935\u0938\u093e";
                 break;
               case "dd":
-                k = "%d \u0926\u093f\u0935\u0938\u093e\u0902";
+                D = "%d \u0926\u093f\u0935\u0938\u093e\u0902";
                 break;
               case "M":
-                k =
+                D =
                   "\u090f\u0915\u093e \u092e\u0939\u093f\u0928\u094d\u092f\u093e";
                 break;
               case "MM":
-                k = "%d \u092e\u0939\u093f\u0928\u094d\u092f\u093e\u0902";
+                D = "%d \u092e\u0939\u093f\u0928\u094d\u092f\u093e\u0902";
                 break;
               case "y":
-                k = "\u090f\u0915\u093e \u0935\u0930\u094d\u0937\u093e";
+                D = "\u090f\u0915\u093e \u0935\u0930\u094d\u0937\u093e";
                 break;
               case "yy":
-                k = "%d \u0935\u0930\u094d\u0937\u093e\u0902";
+                D = "%d \u0935\u0930\u094d\u0937\u093e\u0902";
             }
-          return k.replace(/%d/i, u);
+          return D.replace(/%d/i, u);
         }
         m.defineLocale("mr", {
           months:
@@ -19190,7 +19431,7 @@
           },
           postformat: function (u) {
             return u.replace(/\d/g, function (p) {
-              return i[p];
+              return s[p];
             });
           },
           meridiemParse:
@@ -19210,7 +19451,7 @@
                 : void 0
             );
           },
-          meridiem: function (u, p, M) {
+          meridiem: function (u, p, T) {
             return u >= 0 && u < 6
               ? "\u092a\u0939\u093e\u091f\u0947"
               : u < 12
@@ -19434,7 +19675,7 @@
     2024: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u1041",
             2: "\u1042",
             3: "\u1043",
@@ -19524,7 +19765,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           week: { dow: 1, doy: 4 },
@@ -19594,7 +19835,7 @@
     8914: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0967",
             2: "\u0968",
             3: "\u0969",
@@ -19659,7 +19900,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -19724,7 +19965,7 @@
     2272: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.".split(
               "_"
             ),
@@ -19750,8 +19991,8 @@
             "januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -19812,7 +20053,7 @@
     1758: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "jan._feb._mrt._apr._mei_jun._jul._aug._sep._okt._nov._dec.".split(
               "_"
             ),
@@ -19838,8 +20079,8 @@
             "januari_februari_maart_april_mei_juni_juli_augustus_september_oktober_november_december".split(
               "_"
             ),
-          monthsShort: function (p, M) {
-            return p ? (/-MMM-/.test(M) ? r[p.month()] : i[p.month()]) : i;
+          monthsShort: function (p, T) {
+            return p ? (/-MMM-/.test(T) ? r[p.month()] : s[p.month()]) : s;
           },
           monthsRegex: e,
           monthsShortRegex: e,
@@ -20040,7 +20281,7 @@
     7944: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0a67",
             2: "\u0a68",
             3: "\u0a69",
@@ -20127,7 +20368,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -20168,7 +20409,7 @@
     1605: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "stycze\u0144_luty_marzec_kwiecie\u0144_maj_czerwiec_lipiec_sierpie\u0144_wrzesie\u0144_pa\u017adziernik_listopad_grudzie\u0144".split(
               "_"
             ),
@@ -20190,33 +20431,33 @@
             /^lis/i,
             /^gru/i,
           ];
-        function e(M) {
-          return M % 10 < 5 && M % 10 > 1 && ~~(M / 10) % 10 != 1;
+        function e(T) {
+          return T % 10 < 5 && T % 10 > 1 && ~~(T / 10) % 10 != 1;
         }
-        function u(M, L, k) {
-          var C = M + " ";
-          switch (k) {
+        function u(T, L, D) {
+          var w = T + " ";
+          switch (D) {
             case "ss":
-              return C + (e(M) ? "sekundy" : "sekund");
+              return w + (e(T) ? "sekundy" : "sekund");
             case "m":
               return L ? "minuta" : "minut\u0119";
             case "mm":
-              return C + (e(M) ? "minuty" : "minut");
+              return w + (e(T) ? "minuty" : "minut");
             case "h":
               return L ? "godzina" : "godzin\u0119";
             case "hh":
-              return C + (e(M) ? "godziny" : "godzin");
+              return w + (e(T) ? "godziny" : "godzin");
             case "ww":
-              return C + (e(M) ? "tygodnie" : "tygodni");
+              return w + (e(T) ? "tygodnie" : "tygodni");
             case "MM":
-              return C + (e(M) ? "miesi\u0105ce" : "miesi\u0119cy");
+              return w + (e(T) ? "miesi\u0105ce" : "miesi\u0119cy");
             case "yy":
-              return C + (e(M) ? "lata" : "lat");
+              return w + (e(T) ? "lata" : "lat");
           }
         }
         m.defineLocale("pl", {
-          months: function (M, L) {
-            return M ? (/D MMMM/.test(L) ? r[M.month()] : i[M.month()]) : i;
+          months: function (T, L) {
+            return T ? (/D MMMM/.test(L) ? r[T.month()] : s[T.month()]) : s;
           },
           monthsShort:
             "sty_lut_mar_kwi_maj_cze_lip_sie_wrz_pa\u017a_lis_gru".split("_"),
@@ -20418,12 +20659,12 @@
     352: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u) {
-          var M = " ";
+        function s(o, e, u) {
+          var T = " ";
           return (
-            (o % 100 >= 20 || (o >= 100 && o % 100 == 0)) && (M = " de "),
+            (o % 100 >= 20 || (o >= 100 && o % 100 == 0)) && (T = " de "),
             o +
-              M +
+              T +
               {
                 ss: "secunde",
                 mm: "minute",
@@ -20471,19 +20712,19 @@
             future: "peste %s",
             past: "%s \xeen urm\u0103",
             s: "c\xe2teva secunde",
-            ss: i,
+            ss: s,
             m: "un minut",
-            mm: i,
+            mm: s,
             h: "o or\u0103",
-            hh: i,
+            hh: s,
             d: "o zi",
-            dd: i,
+            dd: s,
             w: "o s\u0103pt\u0103m\xe2n\u0103",
-            ww: i,
+            ww: s,
             M: "o lun\u0103",
-            MM: i,
+            MM: s,
             y: "un an",
-            yy: i,
+            yy: s,
           },
           week: { dow: 1, doy: 7 },
         });
@@ -20492,22 +20733,22 @@
     5127: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function r(u, p, M) {
-          return "m" === M
+        function r(u, p, T) {
+          return "m" === T
             ? p
               ? "\u043c\u0438\u043d\u0443\u0442\u0430"
               : "\u043c\u0438\u043d\u0443\u0442\u0443"
             : u +
                 " " +
-                (function i(u, p) {
-                  var M = u.split("_");
+                (function s(u, p) {
+                  var T = u.split("_");
                   return p % 10 == 1 && p % 100 != 11
-                    ? M[0]
+                    ? T[0]
                     : p % 10 >= 2 &&
                       p % 10 <= 4 &&
                       (p % 100 < 10 || p % 100 >= 20)
-                    ? M[1]
-                    : M[2];
+                    ? T[1]
+                    : T[2];
                 })(
                   {
                     ss: p
@@ -20521,7 +20762,7 @@
                     ww: "\u043d\u0435\u0434\u0435\u043b\u044f_\u043d\u0435\u0434\u0435\u043b\u0438_\u043d\u0435\u0434\u0435\u043b\u044c",
                     MM: "\u043c\u0435\u0441\u044f\u0446_\u043c\u0435\u0441\u044f\u0446\u0430_\u043c\u0435\u0441\u044f\u0446\u0435\u0432",
                     yy: "\u0433\u043e\u0434_\u0433\u043e\u0434\u0430_\u043b\u0435\u0442",
-                  }[M],
+                  }[T],
                   +u
                 );
         }
@@ -20666,7 +20907,7 @@
               u
             );
           },
-          meridiem: function (u, p, M) {
+          meridiem: function (u, p, T) {
             return u < 4
               ? "\u043d\u043e\u0447\u0438"
               : u < 12
@@ -20698,7 +20939,7 @@
     2525: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = [
+        var s = [
             "\u062c\u0646\u0648\u0631\u064a",
             "\u0641\u064a\u0628\u0631\u0648\u0631\u064a",
             "\u0645\u0627\u0631\u0686",
@@ -20722,8 +20963,8 @@
             "\u0687\u0646\u0687\u0631",
           ];
         m.defineLocale("sd", {
-          months: i,
-          monthsShort: i,
+          months: s,
+          monthsShort: s,
           weekdays: r,
           weekdaysShort: r,
           weekdaysMin: r,
@@ -20918,7 +21159,7 @@
     9635: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
             "janu\xe1r_febru\xe1r_marec_apr\xedl_m\xe1j_j\xfan_j\xfal_august_september_okt\xf3ber_november_december".split(
               "_"
             ),
@@ -20928,45 +21169,45 @@
         function o(p) {
           return p > 1 && p < 5;
         }
-        function e(p, M, L, k) {
-          var C = p + " ";
+        function e(p, T, L, D) {
+          var w = p + " ";
           switch (L) {
             case "s":
-              return M || k ? "p\xe1r sek\xfand" : "p\xe1r sekundami";
+              return T || D ? "p\xe1r sek\xfand" : "p\xe1r sekundami";
             case "ss":
-              return M || k
-                ? C + (o(p) ? "sekundy" : "sek\xfand")
-                : C + "sekundami";
+              return T || D
+                ? w + (o(p) ? "sekundy" : "sek\xfand")
+                : w + "sekundami";
             case "m":
-              return M ? "min\xfata" : k ? "min\xfatu" : "min\xfatou";
+              return T ? "min\xfata" : D ? "min\xfatu" : "min\xfatou";
             case "mm":
-              return M || k
-                ? C + (o(p) ? "min\xfaty" : "min\xfat")
-                : C + "min\xfatami";
+              return T || D
+                ? w + (o(p) ? "min\xfaty" : "min\xfat")
+                : w + "min\xfatami";
             case "h":
-              return M ? "hodina" : k ? "hodinu" : "hodinou";
+              return T ? "hodina" : D ? "hodinu" : "hodinou";
             case "hh":
-              return M || k
-                ? C + (o(p) ? "hodiny" : "hod\xedn")
-                : C + "hodinami";
+              return T || D
+                ? w + (o(p) ? "hodiny" : "hod\xedn")
+                : w + "hodinami";
             case "d":
-              return M || k ? "de\u0148" : "d\u0148om";
+              return T || D ? "de\u0148" : "d\u0148om";
             case "dd":
-              return M || k ? C + (o(p) ? "dni" : "dn\xed") : C + "d\u0148ami";
+              return T || D ? w + (o(p) ? "dni" : "dn\xed") : w + "d\u0148ami";
             case "M":
-              return M || k ? "mesiac" : "mesiacom";
+              return T || D ? "mesiac" : "mesiacom";
             case "MM":
-              return M || k
-                ? C + (o(p) ? "mesiace" : "mesiacov")
-                : C + "mesiacmi";
+              return T || D
+                ? w + (o(p) ? "mesiace" : "mesiacov")
+                : w + "mesiacmi";
             case "y":
-              return M || k ? "rok" : "rokom";
+              return T || D ? "rok" : "rokom";
             case "yy":
-              return M || k ? C + (o(p) ? "roky" : "rokov") : C + "rokmi";
+              return T || D ? w + (o(p) ? "roky" : "rokov") : w + "rokmi";
           }
         }
         m.defineLocale("sk", {
-          months: i,
+          months: s,
           monthsShort: r,
           weekdays:
             "nede\u013ea_pondelok_utorok_streda_\u0161tvrtok_piatok_sobota".split(
@@ -21045,14 +21286,14 @@
     8106: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function i(o, e, u, p) {
-          var M = o + " ";
+        function s(o, e, u, p) {
+          var T = o + " ";
           switch (u) {
             case "s":
               return e || p ? "nekaj sekund" : "nekaj sekundami";
             case "ss":
               return (
-                M +
+                T +
                 (1 === o
                   ? e
                     ? "sekundo"
@@ -21071,7 +21312,7 @@
               return e ? "ena minuta" : "eno minuto";
             case "mm":
               return (
-                M +
+                T +
                 (1 === o
                   ? e
                     ? "minuta"
@@ -21092,7 +21333,7 @@
               return e ? "ena ura" : "eno uro";
             case "hh":
               return (
-                M +
+                T +
                 (1 === o
                   ? e
                     ? "ura"
@@ -21113,7 +21354,7 @@
               return e || p ? "en dan" : "enim dnem";
             case "dd":
               return (
-                M +
+                T +
                 (1 === o
                   ? e || p
                     ? "dan"
@@ -21130,7 +21371,7 @@
               return e || p ? "en mesec" : "enim mesecem";
             case "MM":
               return (
-                M +
+                T +
                 (1 === o
                   ? e || p
                     ? "mesec"
@@ -21151,7 +21392,7 @@
               return e || p ? "eno leto" : "enim letom";
             case "yy":
               return (
-                M +
+                T +
                 (1 === o
                   ? e || p
                     ? "leto"
@@ -21234,18 +21475,18 @@
           relativeTime: {
             future: "\u010dez %s",
             past: "pred %s",
-            s: i,
-            ss: i,
-            m: i,
-            mm: i,
-            h: i,
-            hh: i,
-            d: i,
-            dd: i,
-            M: i,
-            MM: i,
-            y: i,
-            yy: i,
+            s,
+            ss: s,
+            m: s,
+            mm: s,
+            h: s,
+            hh: s,
+            d: s,
+            dd: s,
+            M: s,
+            MM: s,
+            y: s,
+            yy: s,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -21318,7 +21559,7 @@
     2872: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           words: {
             ss: [
               "\u0441\u0435\u043a\u0443\u043d\u0434\u0430",
@@ -21363,12 +21604,12 @@
             return 1 === o ? e[0] : o >= 2 && o <= 4 ? e[1] : e[2];
           },
           translate: function (o, e, u) {
-            var p = i.words[u];
+            var p = s.words[u];
             return 1 === u.length
               ? e
                 ? p[0]
                 : p[1]
-              : o + " " + i.correctGrammaticalCase(o, p);
+              : o + " " + s.correctGrammaticalCase(o, p);
           },
         };
         m.defineLocale("sr-cyrl", {
@@ -21438,17 +21679,17 @@
             future: "\u0437\u0430 %s",
             past: "\u043f\u0440\u0435 %s",
             s: "\u043d\u0435\u043a\u043e\u043b\u0438\u043a\u043e \u0441\u0435\u043a\u0443\u043d\u0434\u0438",
-            ss: i.translate,
-            m: i.translate,
-            mm: i.translate,
-            h: i.translate,
-            hh: i.translate,
+            ss: s.translate,
+            m: s.translate,
+            mm: s.translate,
+            h: s.translate,
+            hh: s.translate,
             d: "\u0434\u0430\u043d",
-            dd: i.translate,
+            dd: s.translate,
             M: "\u043c\u0435\u0441\u0435\u0446",
-            MM: i.translate,
+            MM: s.translate,
             y: "\u0433\u043e\u0434\u0438\u043d\u0443",
-            yy: i.translate,
+            yy: s.translate,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -21459,7 +21700,7 @@
     7949: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           words: {
             ss: ["sekunda", "sekunde", "sekundi"],
             m: ["jedan minut", "jedne minute"],
@@ -21474,12 +21715,12 @@
             return 1 === o ? e[0] : o >= 2 && o <= 4 ? e[1] : e[2];
           },
           translate: function (o, e, u) {
-            var p = i.words[u];
+            var p = s.words[u];
             return 1 === u.length
               ? e
                 ? p[0]
                 : p[1]
-              : o + " " + i.correctGrammaticalCase(o, p);
+              : o + " " + s.correctGrammaticalCase(o, p);
           },
         };
         m.defineLocale("sr", {
@@ -21543,17 +21784,17 @@
             future: "za %s",
             past: "pre %s",
             s: "nekoliko sekundi",
-            ss: i.translate,
-            m: i.translate,
-            mm: i.translate,
-            h: i.translate,
-            hh: i.translate,
+            ss: s.translate,
+            m: s.translate,
+            mm: s.translate,
+            h: s.translate,
+            hh: s.translate,
             d: "dan",
-            dd: i.translate,
+            dd: s.translate,
             M: "mesec",
-            MM: i.translate,
+            MM: s.translate,
             y: "godinu",
-            yy: i.translate,
+            yy: s.translate,
           },
           dayOfMonthOrdinalParse: /\d{1,2}\./,
           ordinal: "%d.",
@@ -21767,7 +22008,7 @@
     2732: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
             1: "\u0be7",
             2: "\u0be8",
             3: "\u0be9",
@@ -21859,7 +22100,7 @@
           },
           postformat: function (e) {
             return e.replace(/\d/g, function (u) {
-              return i[u];
+              return s[u];
             });
           },
           meridiemParse:
@@ -22063,7 +22304,7 @@
     9801: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           0: "-\u0443\u043c",
           1: "-\u0443\u043c",
           2: "-\u044e\u043c",
@@ -22183,7 +22424,7 @@
           },
           dayOfMonthOrdinalParse: /\d{1,2}-(\u0443\u043c|\u044e\u043c)/,
           ordinal: function (o) {
-            return o + (i[o] || i[o % 10] || i[o >= 100 ? 100 : null]);
+            return o + (s[o] || s[o % 10] || s[o >= 100 ? 100 : null]);
           },
           week: { dow: 1, doy: 7 },
         });
@@ -22273,7 +22514,7 @@
     1310: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           1: "'inji",
           5: "'inji",
           8: "'inji",
@@ -22351,7 +22592,7 @@
                 if (0 === o) return o + "'unjy";
                 var u = o % 10;
                 return (
-                  o + (i[u] || i[(o % 100) - u] || i[o >= 100 ? 100 : null])
+                  o + (s[u] || s[(o % 100) - u] || s[o >= 100 ? 100 : null])
                 );
             }
           },
@@ -22417,34 +22658,34 @@
     6645: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i =
+        var s =
           "pagh_wa\u2019_cha\u2019_wej_loS_vagh_jav_Soch_chorgh_Hut".split("_");
-        function e(M, L, k, C) {
-          var q = (function u(M) {
-            var L = Math.floor((M % 1e3) / 100),
-              k = Math.floor((M % 100) / 10),
-              C = M % 10,
-              q = "";
+        function e(T, L, D, w) {
+          var b = (function u(T) {
+            var L = Math.floor((T % 1e3) / 100),
+              D = Math.floor((T % 100) / 10),
+              w = T % 10,
+              b = "";
             return (
-              L > 0 && (q += i[L] + "vatlh"),
-              k > 0 && (q += ("" !== q ? " " : "") + i[k] + "maH"),
-              C > 0 && (q += ("" !== q ? " " : "") + i[C]),
-              "" === q ? "pagh" : q
+              L > 0 && (b += s[L] + "vatlh"),
+              D > 0 && (b += ("" !== b ? " " : "") + s[D] + "maH"),
+              w > 0 && (b += ("" !== b ? " " : "") + s[w]),
+              "" === b ? "pagh" : b
             );
-          })(M);
-          switch (k) {
+          })(T);
+          switch (D) {
             case "ss":
-              return q + " lup";
+              return b + " lup";
             case "mm":
-              return q + " tup";
+              return b + " tup";
             case "hh":
-              return q + " rep";
+              return b + " rep";
             case "dd":
-              return q + " jaj";
+              return b + " jaj";
             case "MM":
-              return q + " jar";
+              return b + " jar";
             case "yy":
-              return q + " DIS";
+              return b + " DIS";
           }
         }
         m.defineLocale("tlh", {
@@ -22486,23 +22727,23 @@
             sameElse: "L",
           },
           relativeTime: {
-            future: function r(M) {
-              var L = M;
-              return -1 !== M.indexOf("jaj")
+            future: function r(T) {
+              var L = T;
+              return -1 !== T.indexOf("jaj")
                 ? L.slice(0, -3) + "leS"
-                : -1 !== M.indexOf("jar")
+                : -1 !== T.indexOf("jar")
                 ? L.slice(0, -3) + "waQ"
-                : -1 !== M.indexOf("DIS")
+                : -1 !== T.indexOf("DIS")
                 ? L.slice(0, -3) + "nem"
                 : L + " pIq";
             },
-            past: function o(M) {
-              var L = M;
-              return -1 !== M.indexOf("jaj")
+            past: function o(T) {
+              var L = T;
+              return -1 !== T.indexOf("jaj")
                 ? L.slice(0, -3) + "Hu\u2019"
-                : -1 !== M.indexOf("jar")
+                : -1 !== T.indexOf("jar")
                 ? L.slice(0, -3) + "wen"
-                : -1 !== M.indexOf("DIS")
+                : -1 !== T.indexOf("DIS")
                 ? L.slice(0, -3) + "ben"
                 : L + " ret";
             },
@@ -22528,7 +22769,7 @@
     8374: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = {
+        var s = {
           1: "'inci",
           5: "'inci",
           8: "'inci",
@@ -22621,7 +22862,7 @@
                 if (0 === o) return o + "'\u0131nc\u0131";
                 var u = o % 10;
                 return (
-                  o + (i[u] || i[(o % 100) - u] || i[o >= 100 ? 100 : null])
+                  o + (s[u] || s[(o % 100) - u] || s[o >= 100 ? 100 : null])
                 );
             }
           },
@@ -22633,7 +22874,7 @@
       !(function (m) {
         "use strict";
         function r(o, e, u, p) {
-          var M = {
+          var T = {
             s: ["viensas secunds", "'iensas secunds"],
             ss: [o + " secunds", o + " secunds"],
             m: ["'n m\xedut", "'iens m\xedut"],
@@ -22647,7 +22888,7 @@
             y: ["'n ar", "'iens ar"],
             yy: [o + " ars", o + " ars"],
           };
-          return p || e ? M[u][0] : M[u][1];
+          return p || e ? T[u][0] : T[u][1];
         }
         m.defineLocale("tzl", {
           months:
@@ -22943,35 +23184,35 @@
     5610: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        function r(p, M, L) {
+        function r(p, T, L) {
           return "m" === L
-            ? M
+            ? T
               ? "\u0445\u0432\u0438\u043b\u0438\u043d\u0430"
               : "\u0445\u0432\u0438\u043b\u0438\u043d\u0443"
             : "h" === L
-            ? M
+            ? T
               ? "\u0433\u043e\u0434\u0438\u043d\u0430"
               : "\u0433\u043e\u0434\u0438\u043d\u0443"
             : p +
               " " +
-              (function i(p, M) {
+              (function s(p, T) {
                 var L = p.split("_");
-                return M % 10 == 1 && M % 100 != 11
+                return T % 10 == 1 && T % 100 != 11
                   ? L[0]
-                  : M % 10 >= 2 &&
-                    M % 10 <= 4 &&
-                    (M % 100 < 10 || M % 100 >= 20)
+                  : T % 10 >= 2 &&
+                    T % 10 <= 4 &&
+                    (T % 100 < 10 || T % 100 >= 20)
                   ? L[1]
                   : L[2];
               })(
                 {
-                  ss: M
+                  ss: T
                     ? "\u0441\u0435\u043a\u0443\u043d\u0434\u0430_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434"
                     : "\u0441\u0435\u043a\u0443\u043d\u0434\u0443_\u0441\u0435\u043a\u0443\u043d\u0434\u0438_\u0441\u0435\u043a\u0443\u043d\u0434",
-                  mm: M
+                  mm: T
                     ? "\u0445\u0432\u0438\u043b\u0438\u043d\u0430_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d"
                     : "\u0445\u0432\u0438\u043b\u0438\u043d\u0443_\u0445\u0432\u0438\u043b\u0438\u043d\u0438_\u0445\u0432\u0438\u043b\u0438\u043d",
-                  hh: M
+                  hh: T
                     ? "\u0433\u043e\u0434\u0438\u043d\u0430_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d"
                     : "\u0433\u043e\u0434\u0438\u043d\u0443_\u0433\u043e\u0434\u0438\u043d\u0438_\u0433\u043e\u0434\u0438\u043d",
                   dd: "\u0434\u0435\u043d\u044c_\u0434\u043d\u0456_\u0434\u043d\u0456\u0432",
@@ -23003,7 +23244,7 @@
             "\u0441\u0456\u0447_\u043b\u044e\u0442_\u0431\u0435\u0440_\u043a\u0432\u0456\u0442_\u0442\u0440\u0430\u0432_\u0447\u0435\u0440\u0432_\u043b\u0438\u043f_\u0441\u0435\u0440\u043f_\u0432\u0435\u0440_\u0436\u043e\u0432\u0442_\u043b\u0438\u0441\u0442_\u0433\u0440\u0443\u0434".split(
               "_"
             ),
-          weekdays: function o(p, M) {
+          weekdays: function o(p, T) {
             var L = {
               nominative:
                 "\u043d\u0435\u0434\u0456\u043b\u044f_\u043f\u043e\u043d\u0435\u0434\u0456\u043b\u043e\u043a_\u0432\u0456\u0432\u0442\u043e\u0440\u043e\u043a_\u0441\u0435\u0440\u0435\u0434\u0430_\u0447\u0435\u0442\u0432\u0435\u0440_\u043f\u2019\u044f\u0442\u043d\u0438\u0446\u044f_\u0441\u0443\u0431\u043e\u0442\u0430".split(
@@ -23022,10 +23263,10 @@
               ? L.nominative.slice(1, 7).concat(L.nominative.slice(0, 1))
               : p
               ? L[
-                  /(\[[\u0412\u0432\u0423\u0443]\]) ?dddd/.test(M)
+                  /(\[[\u0412\u0432\u0423\u0443]\]) ?dddd/.test(T)
                     ? "accusative"
                     : /\[?(?:\u043c\u0438\u043d\u0443\u043b\u043e\u0457|\u043d\u0430\u0441\u0442\u0443\u043f\u043d\u043e\u0457)? ?\] ?dddd/.test(
-                        M
+                        T
                       )
                     ? "genitive"
                     : "nominative"
@@ -23095,7 +23336,7 @@
               p
             );
           },
-          meridiem: function (p, M, L) {
+          meridiem: function (p, T, L) {
             return p < 4
               ? "\u043d\u043e\u0447\u0456"
               : p < 12
@@ -23105,8 +23346,8 @@
               : "\u0432\u0435\u0447\u043e\u0440\u0430";
           },
           dayOfMonthOrdinalParse: /\d{1,2}-(\u0439|\u0433\u043e)/,
-          ordinal: function (p, M) {
-            switch (M) {
+          ordinal: function (p, T) {
+            switch (T) {
               case "M":
               case "d":
               case "DDD":
@@ -23126,7 +23367,7 @@
     6077: function (Z, Y, f) {
       !(function (m) {
         "use strict";
-        var i = [
+        var s = [
             "\u062c\u0646\u0648\u0631\u06cc",
             "\u0641\u0631\u0648\u0631\u06cc",
             "\u0645\u0627\u0631\u0686",
@@ -23150,8 +23391,8 @@
             "\u06c1\u0641\u062a\u06c1",
           ];
         m.defineLocale("ur", {
-          months: i,
-          monthsShort: i,
+          months: s,
+          monthsShort: s,
           weekdays: r,
           weekdaysShort: r,
           weekdaysMin: r,
@@ -23985,8 +24226,8 @@
     5439: function (Z, Y, f) {
       (Z = f.nmd(Z)).exports = (function () {
         "use strict";
-        var m, K;
-        function i() {
+        var m, ae;
+        function s() {
           return m.apply(null, arguments);
         }
         function o(t) {
@@ -24010,7 +24251,7 @@
           for (n in t) if (u(t, n)) return !1;
           return !0;
         }
-        function M(t) {
+        function T(t) {
           return void 0 === t;
         }
         function L(t) {
@@ -24019,30 +24260,30 @@
             "[object Number]" === Object.prototype.toString.call(t)
           );
         }
-        function k(t) {
+        function D(t) {
           return (
             t instanceof Date ||
             "[object Date]" === Object.prototype.toString.call(t)
           );
         }
-        function C(t, n) {
+        function w(t, n) {
           var l,
-            _ = [];
-          for (l = 0; l < t.length; ++l) _.push(n(t[l], l));
-          return _;
+            d = [];
+          for (l = 0; l < t.length; ++l) d.push(n(t[l], l));
+          return d;
         }
-        function q(t, n) {
-          for (var _ in n) u(n, _) && (t[_] = n[_]);
+        function b(t, n) {
+          for (var d in n) u(n, d) && (t[d] = n[d]);
           return (
             u(n, "toString") && (t.toString = n.toString),
             u(n, "valueOf") && (t.valueOf = n.valueOf),
             t
           );
         }
-        function N(t, n, _, l) {
-          return Ma(t, n, _, l, !0).utc();
+        function q(t, n, d, l) {
+          return fa(t, n, d, l, !0).utc();
         }
-        function w(t) {
+        function k(t) {
           return (
             null == t._pf &&
               (t._pf = {
@@ -24066,10 +24307,10 @@
             t._pf
           );
         }
-        function De(t) {
+        function Ce(t) {
           if (null == t._isValid) {
-            var n = w(t),
-              _ = K.call(n.parsedDateParts, function (h) {
+            var n = k(t),
+              d = ae.call(n.parsedDateParts, function (h) {
                 return null != h;
               }),
               l =
@@ -24083,7 +24324,7 @@
                 !n.nullInput &&
                 !n.invalidFormat &&
                 !n.userInvalidated &&
-                (!n.meridiem || (n.meridiem && _));
+                (!n.meridiem || (n.meridiem && d));
             if (
               (t._strict &&
                 (l =
@@ -24098,299 +24339,299 @@
           }
           return t._isValid;
         }
-        function Oe(t) {
-          var n = N(NaN);
-          return null != t ? q(w(n), t) : (w(n).userInvalidated = !0), n;
+        function K(t) {
+          var n = q(NaN);
+          return null != t ? b(k(n), t) : (k(n).userInvalidated = !0), n;
         }
-        K = Array.prototype.some
+        ae = Array.prototype.some
           ? Array.prototype.some
           : function (t) {
               var l,
                 n = Object(this),
-                _ = n.length >>> 0;
-              for (l = 0; l < _; l++)
+                d = n.length >>> 0;
+              for (l = 0; l < d; l++)
                 if (l in n && t.call(this, n[l], l, n)) return !0;
               return !1;
             };
-        var Lt = (i.momentProperties = []),
-          Zt = !1;
-        function Yt(t, n) {
-          var _, l, h;
+        var Mt = (s.momentProperties = []),
+          Ve = !1;
+        function Tt(t, n) {
+          var d, l, h;
           if (
-            (M(n._isAMomentObject) || (t._isAMomentObject = n._isAMomentObject),
-            M(n._i) || (t._i = n._i),
-            M(n._f) || (t._f = n._f),
-            M(n._l) || (t._l = n._l),
-            M(n._strict) || (t._strict = n._strict),
-            M(n._tzm) || (t._tzm = n._tzm),
-            M(n._isUTC) || (t._isUTC = n._isUTC),
-            M(n._offset) || (t._offset = n._offset),
-            M(n._pf) || (t._pf = w(n)),
-            M(n._locale) || (t._locale = n._locale),
-            Lt.length > 0)
+            (T(n._isAMomentObject) || (t._isAMomentObject = n._isAMomentObject),
+            T(n._i) || (t._i = n._i),
+            T(n._f) || (t._f = n._f),
+            T(n._l) || (t._l = n._l),
+            T(n._strict) || (t._strict = n._strict),
+            T(n._tzm) || (t._tzm = n._tzm),
+            T(n._isUTC) || (t._isUTC = n._isUTC),
+            T(n._offset) || (t._offset = n._offset),
+            T(n._pf) || (t._pf = k(n)),
+            T(n._locale) || (t._locale = n._locale),
+            Mt.length > 0)
           )
-            for (_ = 0; _ < Lt.length; _++)
-              M((h = n[(l = Lt[_])])) || (t[l] = h);
+            for (d = 0; d < Mt.length; d++)
+              T((h = n[(l = Mt[d])])) || (t[l] = h);
           return t;
         }
-        function Ue(t) {
-          Yt(this, t),
+        function ge(t) {
+          Tt(this, t),
             (this._d = new Date(null != t._d ? t._d.getTime() : NaN)),
             this.isValid() || (this._d = new Date(NaN)),
-            !1 === Zt && ((Zt = !0), i.updateOffset(this), (Zt = !1));
+            !1 === Ve && ((Ve = !0), s.updateOffset(this), (Ve = !1));
         }
-        function de(t) {
-          return t instanceof Ue || (null != t && null != t._isAMomentObject);
+        function z(t) {
+          return t instanceof ge || (null != t && null != t._isAMomentObject);
         }
-        function Qt(t) {
-          !1 === i.suppressDeprecationWarnings &&
+        function P(t) {
+          !1 === s.suppressDeprecationWarnings &&
             "undefined" != typeof console &&
             console.warn &&
             console.warn("Deprecation warning: " + t);
         }
         function H(t, n) {
-          var _ = !0;
-          return q(function () {
+          var d = !0;
+          return b(function () {
             if (
-              (null != i.deprecationHandler && i.deprecationHandler(null, t), _)
+              (null != s.deprecationHandler && s.deprecationHandler(null, t), d)
             ) {
               var h,
                 y,
-                D,
+                v,
                 l = [];
               for (y = 0; y < arguments.length; y++) {
                 if (((h = ""), "object" == typeof arguments[y])) {
-                  for (D in ((h += "\n[" + y + "] "), arguments[0]))
-                    u(arguments[0], D) &&
-                      (h += D + ": " + arguments[0][D] + ", ");
+                  for (v in ((h += "\n[" + y + "] "), arguments[0]))
+                    u(arguments[0], v) &&
+                      (h += v + ": " + arguments[0][v] + ", ");
                   h = h.slice(0, -2);
                 } else h = arguments[y];
                 l.push(h);
               }
-              Qt(
+              P(
                 t +
                   "\nArguments: " +
                   Array.prototype.slice.call(l).join("") +
                   "\n" +
                   new Error().stack
               ),
-                (_ = !1);
+                (d = !1);
             }
             return n.apply(this, arguments);
           }, n);
         }
-        var kt,
-          zt = {};
-        function Je(t, n) {
-          null != i.deprecationHandler && i.deprecationHandler(t, n),
-            zt[t] || (Qt(n), (zt[t] = !0));
+        var Lt,
+          Rt = {};
+        function Qt(t, n) {
+          null != s.deprecationHandler && s.deprecationHandler(t, n),
+            Rt[t] || (P(n), (Rt[t] = !0));
         }
-        function E(t) {
+        function de(t) {
           return (
             ("undefined" != typeof Function && t instanceof Function) ||
             "[object Function]" === Object.prototype.toString.call(t)
           );
         }
-        function ve(t, n) {
+        function Me(t, n) {
           var l,
-            _ = q({}, t);
+            d = b({}, t);
           for (l in n)
             u(n, l) &&
               (e(t[l]) && e(n[l])
-                ? ((_[l] = {}), q(_[l], t[l]), q(_[l], n[l]))
+                ? ((d[l] = {}), b(d[l], t[l]), b(d[l], n[l]))
                 : null != n[l]
-                ? (_[l] = n[l])
-                : delete _[l]);
-          for (l in t) u(t, l) && !u(n, l) && e(t[l]) && (_[l] = q({}, _[l]));
-          return _;
+                ? (d[l] = n[l])
+                : delete d[l]);
+          for (l in t) u(t, l) && !u(n, l) && e(t[l]) && (d[l] = b({}, d[l]));
+          return d;
         }
-        function Dt(t) {
+        function yt(t) {
           null != t && this.set(t);
         }
-        (i.suppressDeprecationWarnings = !1),
-          (i.deprecationHandler = null),
-          (kt = Object.keys
+        (s.suppressDeprecationWarnings = !1),
+          (s.deprecationHandler = null),
+          (Lt = Object.keys
             ? Object.keys
             : function (t) {
                 var n,
-                  _ = [];
-                for (n in t) u(t, n) && _.push(n);
-                return _;
+                  d = [];
+                for (n in t) u(t, n) && d.push(n);
+                return d;
               });
-        function he(t, n, _) {
+        function le(t, n, d) {
           var l = "" + Math.abs(t);
           return (
-            (t >= 0 ? (_ ? "+" : "") : "-") +
+            (t >= 0 ? (d ? "+" : "") : "-") +
             Math.pow(10, Math.max(0, n - l.length))
               .toString()
               .substr(1) +
             l
           );
         }
-        var Gt =
+        var Zt =
             /(\[[^\[]*\])|(\\)?([Hh]mm(ss)?|Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|Qo?|N{1,5}|YYYYYY|YYYYY|YYYY|YY|y{2,4}|yo?|gg(ggg?)?|GG(GGG?)?|e|E|a|A|hh?|HH?|kk?|mm?|ss?|S{1,9}|x|X|zz?|ZZ?|.)/g,
-          ae = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
-          j = {},
-          te = {};
-        function A(t, n, _, l) {
+          $e = /(\[[^\[]*\])|(\\)?(LTS|LT|LL?L?L?|l{1,4})/g,
+          Yt = {},
+          xe = {};
+        function x(t, n, d, l) {
           var h = l;
           "string" == typeof l &&
             (h = function () {
               return this[l]();
             }),
-            t && (te[t] = h),
+            t && (xe[t] = h),
             n &&
-              (te[n[0]] = function () {
-                return he(h.apply(this, arguments), n[1], n[2]);
+              (xe[n[0]] = function () {
+                return le(h.apply(this, arguments), n[1], n[2]);
               }),
-            _ &&
-              (te[_] = function () {
+            d &&
+              (xe[d] = function () {
                 return this.localeData().ordinal(h.apply(this, arguments), t);
               });
         }
-        function oe(t) {
+        function Ja(t) {
           return t.match(/\[[\s\S]/)
             ? t.replace(/^\[|\]$/g, "")
             : t.replace(/\\/g, "");
         }
-        function We(t, n) {
+        function Xe(t, n) {
           return t.isValid()
-            ? ((n = Bt(n, t.localeData())),
-              (j[n] =
-                j[n] ||
-                (function B(t) {
-                  var _,
+            ? ((n = Gt(n, t.localeData())),
+              (Yt[n] =
+                Yt[n] ||
+                (function Wa(t) {
+                  var d,
                     l,
-                    n = t.match(Gt);
-                  for (_ = 0, l = n.length; _ < l; _++)
-                    n[_] = te[n[_]] ? te[n[_]] : oe(n[_]);
+                    n = t.match(Zt);
+                  for (d = 0, l = n.length; d < l; d++)
+                    n[d] = xe[n[d]] ? xe[n[d]] : Ja(n[d]);
                   return function (h) {
-                    var D,
+                    var v,
                       y = "";
-                    for (D = 0; D < l; D++)
-                      y += E(n[D]) ? n[D].call(h, t) : n[D];
+                    for (v = 0; v < l; v++)
+                      y += de(n[v]) ? n[v].call(h, t) : n[v];
                     return y;
                   };
                 })(n)),
-              j[n](t))
+              Yt[n](t))
             : t.localeData().invalidDate();
         }
-        function Bt(t, n) {
-          var _ = 5;
+        function Gt(t, n) {
+          var d = 5;
           function l(h) {
             return n.longDateFormat(h) || h;
           }
-          for (ae.lastIndex = 0; _ >= 0 && ae.test(t); )
-            (t = t.replace(ae, l)), (ae.lastIndex = 0), (_ -= 1);
+          for ($e.lastIndex = 0; d >= 0 && $e.test(t); )
+            (t = t.replace($e, l)), ($e.lastIndex = 0), (d -= 1);
           return t;
         }
-        var Re = {};
-        function X(t, n) {
-          var _ = t.toLowerCase();
-          Re[_] = Re[_ + "s"] = Re[n] = t;
+        var Te = {};
+        function G(t, n) {
+          var d = t.toLowerCase();
+          Te[d] = Te[d + "s"] = Te[n] = t;
         }
-        function ne(t) {
-          return "string" == typeof t ? Re[t] || Re[t.toLowerCase()] : void 0;
+        function V(t) {
+          return "string" == typeof t ? Te[t] || Te[t.toLowerCase()] : void 0;
         }
-        function G(t) {
-          var _,
+        function Se(t) {
+          var d,
             l,
             n = {};
-          for (l in t) u(t, l) && (_ = ne(l)) && (n[_] = t[l]);
+          for (l in t) u(t, l) && (d = V(l)) && (n[d] = t[l]);
           return n;
         }
-        var tt = {};
-        function U(t, n) {
-          tt[t] = n;
+        var ue = {};
+        function $(t, n) {
+          ue[t] = n;
         }
-        function at(t) {
+        function et(t) {
           return (t % 4 == 0 && t % 100 != 0) || t % 400 == 0;
         }
-        function re(t) {
+        function ne(t) {
           return t < 0 ? Math.ceil(t) || 0 : Math.floor(t);
         }
         function O(t) {
           var n = +t,
-            _ = 0;
-          return 0 !== n && isFinite(n) && (_ = re(n)), _;
+            d = 0;
+          return 0 !== n && isFinite(n) && (d = ne(n)), d;
         }
-        function He(t, n) {
-          return function (_) {
-            return null != _
-              ? (Vt(this, t, _), i.updateOffset(this, n), this)
-              : nt(this, t);
+        function qe(t, n) {
+          return function (d) {
+            return null != d
+              ? (Bt(this, t, d), s.updateOffset(this, n), this)
+              : tt(this, t);
           };
         }
-        function nt(t, n) {
+        function tt(t, n) {
           return t.isValid()
             ? t._d["get" + (t._isUTC ? "UTC" : "") + n]()
             : NaN;
         }
-        function Vt(t, n, _) {
+        function Bt(t, n, d) {
           t.isValid() &&
-            !isNaN(_) &&
+            !isNaN(d) &&
             ("FullYear" === n &&
-            at(t.year()) &&
+            et(t.year()) &&
             1 === t.month() &&
             29 === t.date()
-              ? ((_ = O(_)),
+              ? ((d = O(d)),
                 t._d["set" + (t._isUTC ? "UTC" : "") + n](
-                  _,
+                  d,
                   t.month(),
-                  _t(_, t.month())
+                  _t(d, t.month())
                 ))
-              : t._d["set" + (t._isUTC ? "UTC" : "") + n](_));
+              : t._d["set" + (t._isUTC ? "UTC" : "") + n](d));
         }
-        var le,
-          Kt = /\d/,
-          ie = /\d\d/,
-          Xt = /\d{3}/,
-          vt = /\d{4}/,
-          it = /[+-]?\d{6}/,
-          W = /\d\d?/,
-          ea = /\d\d\d\d?/,
-          ta = /\d\d\d\d\d\d?/,
-          st = /\d{1,3}/,
-          At = /\d{1,4}/,
-          ot = /[+-]?\d{1,6}/,
-          Ee = /\d+/,
-          rt = /[+-]?\d+/,
-          za = /Z|[+-]\d\d:?\d\d/gi,
-          Ae = /Z|[+-]\d\d(?::?\d\d)?/gi,
-          Le =
+        var rt,
+          Vt = /\d/,
+          ee = /\d\d/,
+          $t = /\d{3}/,
+          Dt = /\d{4}/,
+          at = /[+-]?\d{6}/,
+          F = /\d\d?/,
+          Xt = /\d\d\d\d?/,
+          Kt = /\d\d\d\d\d\d?/,
+          nt = /\d{1,3}/,
+          kt = /\d{1,4}/,
+          it = /[+-]?\d{1,6}/,
+          Ne = /\d+/,
+          st = /[+-]?\d+/,
+          $a = /Z|[+-]\d\d:?\d\d/gi,
+          ot = /Z|[+-]\d\d(?::?\d\d)?/gi,
+          Ie =
             /[0-9]{0,256}['a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFF07\uFF10-\uFFEF]{1,256}|[\u0600-\u06FF\/]{1,256}(\s*?[\u0600-\u06FF]{1,256}){1,2}/i;
-        function x(t, n, _) {
-          le[t] = E(n)
+        function C(t, n, d) {
+          rt[t] = de(n)
             ? n
             : function (l, h) {
-                return l && _ ? _ : n;
+                return l && d ? d : n;
               };
         }
-        function Ga(t, n) {
-          return u(le, t)
-            ? le[t](n._strict, n._locale)
+        function Ka(t, n) {
+          return u(rt, t)
+            ? rt[t](n._strict, n._locale)
             : new RegExp(
-                (function Ba(t) {
-                  return se(
+                (function en(t) {
+                  return te(
                     t
                       .replace("\\", "")
                       .replace(
                         /\\(\[)|\\(\])|\[([^\]\[]*)\]|\\(.)/g,
-                        function (n, _, l, h, y) {
-                          return _ || l || h || y;
+                        function (n, d, l, h, y) {
+                          return d || l || h || y;
                         }
                       )
                   );
                 })(t)
               );
         }
-        function se(t) {
+        function te(t) {
           return t.replace(/[-\/\\^$*+?.()|[\]{}]/g, "\\$&");
         }
-        le = {};
-        var bt = {};
-        function J(t, n) {
-          var _,
+        rt = {};
+        var vt = {};
+        function I(t, n) {
+          var d,
             l = n;
           for (
             "string" == typeof t && (t = [t]),
@@ -24398,77 +24639,77 @@
                 (l = function (h, y) {
                   y[n] = O(h);
                 }),
-              _ = 0;
-            _ < t.length;
-            _++
+              d = 0;
+            d < t.length;
+            d++
           )
-            bt[t[_]] = l;
+            vt[t[d]] = l;
         }
-        function Qe(t, n) {
-          J(t, function (_, l, h, y) {
-            (h._w = h._w || {}), n(_, h._w, h, y);
+        function Fe(t, n) {
+          I(t, function (d, l, h, y) {
+            (h._w = h._w || {}), n(d, h._w, h, y);
           });
         }
-        function Va(t, n, _) {
-          null != n && u(bt, t) && bt[t](n, _._a, _, t);
+        function tn(t, n, d) {
+          null != n && u(vt, t) && vt[t](n, d._a, d, t);
         }
-        var V;
+        var Q;
         function _t(t, n) {
           if (isNaN(t) || isNaN(n)) return NaN;
-          var _ = (function Xa(t, n) {
+          var d = (function ea(t, n) {
             return ((t % n) + n) % n;
           })(n, 12);
           return (
-            (t += (n - _) / 12),
-            1 === _ ? (at(t) ? 29 : 28) : 31 - ((_ % 7) % 2)
+            (t += (n - d) / 12),
+            1 === d ? (et(t) ? 29 : 28) : 31 - ((d % 7) % 2)
           );
         }
-        (V = Array.prototype.indexOf
+        (Q = Array.prototype.indexOf
           ? Array.prototype.indexOf
           : function (t) {
               var n;
               for (n = 0; n < this.length; ++n) if (this[n] === t) return n;
               return -1;
             }),
-          A("M", ["MM", 2], "Mo", function () {
+          x("M", ["MM", 2], "Mo", function () {
             return this.month() + 1;
           }),
-          A("MMM", 0, 0, function (t) {
+          x("MMM", 0, 0, function (t) {
             return this.localeData().monthsShort(this, t);
           }),
-          A("MMMM", 0, 0, function (t) {
+          x("MMMM", 0, 0, function (t) {
             return this.localeData().months(this, t);
           }),
-          X("month", "M"),
-          U("month", 8),
-          x("M", W),
-          x("MM", W, ie),
-          x("MMM", function (t, n) {
+          G("month", "M"),
+          $("month", 8),
+          C("M", F),
+          C("MM", F, ee),
+          C("MMM", function (t, n) {
             return n.monthsShortRegex(t);
           }),
-          x("MMMM", function (t, n) {
+          C("MMMM", function (t, n) {
             return n.monthsRegex(t);
           }),
-          J(["M", "MM"], function (t, n) {
+          I(["M", "MM"], function (t, n) {
             n[1] = O(t) - 1;
           }),
-          J(["MMM", "MMMM"], function (t, n, _, l) {
-            var h = _._locale.monthsParse(t, l, _._strict);
-            null != h ? (n[1] = h) : (w(_).invalidMonth = t);
+          I(["MMM", "MMMM"], function (t, n, d, l) {
+            var h = d._locale.monthsParse(t, l, d._strict);
+            null != h ? (n[1] = h) : (k(d).invalidMonth = t);
           });
-        var en =
+        var nn =
             "January_February_March_April_May_June_July_August_September_October_November_December".split(
               "_"
             ),
-          aa = "Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),
-          na = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
-          tn = Le,
-          an = Le;
-        function on(t, n, _) {
+          ta = "Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),
+          aa = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
+          sn = Ie,
+          on = Ie;
+        function dn(t, n, d) {
           var l,
             h,
             y,
-            D = t.toLocaleLowerCase();
+            v = t.toLocaleLowerCase();
           if (!this._monthsParse)
             for (
               this._monthsParse = [],
@@ -24478,7 +24719,7 @@
               l < 12;
               ++l
             )
-              (y = N([2e3, l])),
+              (y = q([2e3, l])),
                 (this._shortMonthsParse[l] = this.monthsShort(
                   y,
                   ""
@@ -24487,63 +24728,63 @@
                   y,
                   ""
                 ).toLocaleLowerCase());
-          return _
+          return d
             ? "MMM" === n
-              ? -1 !== (h = V.call(this._shortMonthsParse, D))
+              ? -1 !== (h = Q.call(this._shortMonthsParse, v))
                 ? h
                 : null
-              : -1 !== (h = V.call(this._longMonthsParse, D))
+              : -1 !== (h = Q.call(this._longMonthsParse, v))
               ? h
               : null
             : "MMM" === n
-            ? -1 !== (h = V.call(this._shortMonthsParse, D)) ||
-              -1 !== (h = V.call(this._longMonthsParse, D))
+            ? -1 !== (h = Q.call(this._shortMonthsParse, v)) ||
+              -1 !== (h = Q.call(this._longMonthsParse, v))
               ? h
               : null
-            : -1 !== (h = V.call(this._longMonthsParse, D)) ||
-              -1 !== (h = V.call(this._shortMonthsParse, D))
+            : -1 !== (h = Q.call(this._longMonthsParse, v)) ||
+              -1 !== (h = Q.call(this._shortMonthsParse, v))
             ? h
             : null;
         }
-        function ia(t, n) {
-          var _;
+        function na(t, n) {
+          var d;
           if (!t.isValid()) return t;
           if ("string" == typeof n)
             if (/^\d+$/.test(n)) n = O(n);
             else if (!L((n = t.localeData().monthsParse(n)))) return t;
           return (
-            (_ = Math.min(t.date(), _t(t.year(), n))),
-            t._d["set" + (t._isUTC ? "UTC" : "") + "Month"](n, _),
+            (d = Math.min(t.date(), _t(t.year(), n))),
+            t._d["set" + (t._isUTC ? "UTC" : "") + "Month"](n, d),
             t
           );
         }
-        function sa(t) {
+        function ia(t) {
           return null != t
-            ? (ia(this, t), i.updateOffset(this, !0), this)
-            : nt(this, "Month");
+            ? (na(this, t), s.updateOffset(this, !0), this)
+            : tt(this, "Month");
         }
-        function oa() {
-          function t(D, S) {
-            return S.length - D.length;
+        function sa() {
+          function t(v, S) {
+            return S.length - v.length;
           }
           var h,
             y,
             n = [],
-            _ = [],
+            d = [],
             l = [];
           for (h = 0; h < 12; h++)
-            (y = N([2e3, h])),
+            (y = q([2e3, h])),
               n.push(this.monthsShort(y, "")),
-              _.push(this.months(y, "")),
+              d.push(this.months(y, "")),
               l.push(this.months(y, "")),
               l.push(this.monthsShort(y, ""));
-          for (n.sort(t), _.sort(t), l.sort(t), h = 0; h < 12; h++)
-            (n[h] = se(n[h])), (_[h] = se(_[h]));
-          for (h = 0; h < 24; h++) l[h] = se(l[h]);
+          for (n.sort(t), d.sort(t), l.sort(t), h = 0; h < 12; h++)
+            (n[h] = te(n[h])), (d[h] = te(d[h]));
+          for (h = 0; h < 24; h++) l[h] = te(l[h]);
           (this._monthsRegex = new RegExp("^(" + l.join("|") + ")", "i")),
             (this._monthsShortRegex = this._monthsRegex),
             (this._monthsStrictRegex = new RegExp(
-              "^(" + _.join("|") + ")",
+              "^(" + d.join("|") + ")",
               "i"
             )),
             (this._monthsShortStrictRegex = new RegExp(
@@ -24551,164 +24792,164 @@
               "i"
             ));
         }
-        function ze(t) {
-          return at(t) ? 366 : 365;
+        function Je(t) {
+          return et(t) ? 366 : 365;
         }
-        A("Y", 0, 0, function () {
+        x("Y", 0, 0, function () {
           var t = this.year();
-          return t <= 9999 ? he(t, 4) : "+" + t;
+          return t <= 9999 ? le(t, 4) : "+" + t;
         }),
-          A(0, ["YY", 2], 0, function () {
+          x(0, ["YY", 2], 0, function () {
             return this.year() % 100;
           }),
-          A(0, ["YYYY", 4], 0, "year"),
-          A(0, ["YYYYY", 5], 0, "year"),
-          A(0, ["YYYYYY", 6, !0], 0, "year"),
-          X("year", "y"),
-          U("year", 1),
-          x("Y", rt),
-          x("YY", W, ie),
-          x("YYYY", At, vt),
-          x("YYYYY", ot, it),
-          x("YYYYYY", ot, it),
-          J(["YYYYY", "YYYYYY"], 0),
-          J("YYYY", function (t, n) {
-            n[0] = 2 === t.length ? i.parseTwoDigitYear(t) : O(t);
+          x(0, ["YYYY", 4], 0, "year"),
+          x(0, ["YYYYY", 5], 0, "year"),
+          x(0, ["YYYYYY", 6, !0], 0, "year"),
+          G("year", "y"),
+          $("year", 1),
+          C("Y", st),
+          C("YY", F, ee),
+          C("YYYY", kt, Dt),
+          C("YYYYY", it, at),
+          C("YYYYYY", it, at),
+          I(["YYYYY", "YYYYYY"], 0),
+          I("YYYY", function (t, n) {
+            n[0] = 2 === t.length ? s.parseTwoDigitYear(t) : O(t);
           }),
-          J("YY", function (t, n) {
-            n[0] = i.parseTwoDigitYear(t);
+          I("YY", function (t, n) {
+            n[0] = s.parseTwoDigitYear(t);
           }),
-          J("Y", function (t, n) {
+          I("Y", function (t, n) {
             n[0] = parseInt(t, 10);
           }),
-          (i.parseTwoDigitYear = function (t) {
+          (s.parseTwoDigitYear = function (t) {
             return O(t) + (O(t) > 68 ? 1900 : 2e3);
           });
-        var ra = He("FullYear", !0);
-        function wt(t, n, _, l, h, y, D) {
+        var oa = qe("FullYear", !0);
+        function hn(t, n, d, l, h, y, v) {
           var S;
           return (
             t < 100 && t >= 0
-              ? ((S = new Date(t + 400, n, _, l, h, y, D)),
+              ? ((S = new Date(t + 400, n, d, l, h, y, v)),
                 isFinite(S.getFullYear()) && S.setFullYear(t))
-              : (S = new Date(t, n, _, l, h, y, D)),
+              : (S = new Date(t, n, d, l, h, y, v)),
             S
           );
         }
-        function Ge(t) {
-          var n, _;
+        function We(t) {
+          var n, d;
           return (
             t < 100 && t >= 0
-              ? (((_ = Array.prototype.slice.call(arguments))[0] = t + 400),
-                (n = new Date(Date.UTC.apply(null, _))),
+              ? (((d = Array.prototype.slice.call(arguments))[0] = t + 400),
+                (n = new Date(Date.UTC.apply(null, d))),
                 isFinite(n.getUTCFullYear()) && n.setUTCFullYear(t))
               : (n = new Date(Date.UTC.apply(null, arguments))),
             n
           );
         }
-        function dt(t, n, _) {
-          var l = 7 + n - _;
-          return (-(7 + Ge(t, 0, l).getUTCDay() - n) % 7) + l - 1;
+        function dt(t, n, d) {
+          var l = 7 + n - d;
+          return (-(7 + We(t, 0, l).getUTCDay() - n) % 7) + l - 1;
         }
-        function _a(t, n, _, l, h) {
-          var P,
-            z,
-            S = 1 + 7 * (n - 1) + ((7 + _ - l) % 7) + dt(t, l, h);
+        function ra(t, n, d, l, h) {
+          var U,
+            R,
+            S = 1 + 7 * (n - 1) + ((7 + d - l) % 7) + dt(t, l, h);
           return (
             S <= 0
-              ? (z = ze((P = t - 1)) + S)
-              : S > ze(t)
-              ? ((P = t + 1), (z = S - ze(t)))
-              : ((P = t), (z = S)),
-            { year: P, dayOfYear: z }
+              ? (R = Je((U = t - 1)) + S)
+              : S > Je(t)
+              ? ((U = t + 1), (R = S - Je(t)))
+              : ((U = t), (R = S)),
+            { year: U, dayOfYear: R }
           );
         }
-        function Be(t, n, _) {
+        function Re(t, n, d) {
           var y,
-            D,
-            l = dt(t.year(), n, _),
+            v,
+            l = dt(t.year(), n, d),
             h = Math.floor((t.dayOfYear() - l - 1) / 7) + 1;
           return (
             h < 1
-              ? (y = h + Me((D = t.year() - 1), n, _))
-              : h > Me(t.year(), n, _)
-              ? ((y = h - Me(t.year(), n, _)), (D = t.year() + 1))
-              : ((D = t.year()), (y = h)),
-            { week: y, year: D }
+              ? (y = h + he((v = t.year() - 1), n, d))
+              : h > he(t.year(), n, d)
+              ? ((y = h - he(t.year(), n, d)), (v = t.year() + 1))
+              : ((v = t.year()), (y = h)),
+            { week: y, year: v }
           );
         }
-        function Me(t, n, _) {
-          var l = dt(t, n, _),
-            h = dt(t + 1, n, _);
-          return (ze(t) - l + h) / 7;
+        function he(t, n, d) {
+          var l = dt(t, n, d),
+            h = dt(t + 1, n, d);
+          return (Je(t) - l + h) / 7;
         }
-        A("w", ["ww", 2], "wo", "week"),
-          A("W", ["WW", 2], "Wo", "isoWeek"),
-          X("week", "w"),
-          X("isoWeek", "W"),
-          U("week", 5),
-          U("isoWeek", 5),
-          x("w", W),
-          x("ww", W, ie),
-          x("W", W),
-          x("WW", W, ie),
-          Qe(["w", "ww", "W", "WW"], function (t, n, _, l) {
+        x("w", ["ww", 2], "wo", "week"),
+          x("W", ["WW", 2], "Wo", "isoWeek"),
+          G("week", "w"),
+          G("isoWeek", "W"),
+          $("week", 5),
+          $("isoWeek", 5),
+          C("w", F),
+          C("ww", F, ee),
+          C("W", F),
+          C("WW", F, ee),
+          Fe(["w", "ww", "W", "WW"], function (t, n, d, l) {
             n[l.substr(0, 1)] = O(t);
           });
-        function xt(t, n) {
+        function bt(t, n) {
           return t.slice(n, 7).concat(t.slice(0, n));
         }
-        A("d", 0, "do", "day"),
-          A("dd", 0, 0, function (t) {
+        x("d", 0, "do", "day"),
+          x("dd", 0, 0, function (t) {
             return this.localeData().weekdaysMin(this, t);
           }),
-          A("ddd", 0, 0, function (t) {
+          x("ddd", 0, 0, function (t) {
             return this.localeData().weekdaysShort(this, t);
           }),
-          A("dddd", 0, 0, function (t) {
+          x("dddd", 0, 0, function (t) {
             return this.localeData().weekdays(this, t);
           }),
-          A("e", 0, 0, "weekday"),
-          A("E", 0, 0, "isoWeekday"),
-          X("day", "d"),
-          X("weekday", "e"),
-          X("isoWeekday", "E"),
-          U("day", 11),
-          U("weekday", 11),
-          U("isoWeekday", 11),
-          x("d", W),
-          x("e", W),
-          x("E", W),
-          x("dd", function (t, n) {
+          x("e", 0, 0, "weekday"),
+          x("E", 0, 0, "isoWeekday"),
+          G("day", "d"),
+          G("weekday", "e"),
+          G("isoWeekday", "E"),
+          $("day", 11),
+          $("weekday", 11),
+          $("isoWeekday", 11),
+          C("d", F),
+          C("e", F),
+          C("E", F),
+          C("dd", function (t, n) {
             return n.weekdaysMinRegex(t);
           }),
-          x("ddd", function (t, n) {
+          C("ddd", function (t, n) {
             return n.weekdaysShortRegex(t);
           }),
-          x("dddd", function (t, n) {
+          C("dddd", function (t, n) {
             return n.weekdaysRegex(t);
           }),
-          Qe(["dd", "ddd", "dddd"], function (t, n, _, l) {
-            var h = _._locale.weekdaysParse(t, l, _._strict);
-            null != h ? (n.d = h) : (w(_).invalidWeekday = t);
+          Fe(["dd", "ddd", "dddd"], function (t, n, d, l) {
+            var h = d._locale.weekdaysParse(t, l, d._strict);
+            null != h ? (n.d = h) : (k(d).invalidWeekday = t);
           }),
-          Qe(["d", "e", "E"], function (t, n, _, l) {
+          Fe(["d", "e", "E"], function (t, n, d, l) {
             n[l] = O(t);
           });
-        var Tn =
+        var Dn =
             "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split(
               "_"
             ),
-          la = "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
-          yn = "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
-          Ln = Le,
-          Zn = Le,
-          Yn = Le;
-        function An(t, n, _) {
+          _a = "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
+          kn = "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
+          vn = Ie,
+          An = Ie,
+          bn = Ie;
+        function Sn(t, n, d) {
           var l,
             h,
             y,
-            D = t.toLocaleLowerCase();
+            v = t.toLocaleLowerCase();
           if (!this._weekdaysParse)
             for (
               this._weekdaysParse = [],
@@ -24718,7 +24959,7 @@
               l < 7;
               ++l
             )
-              (y = N([2e3, 1]).day(l)),
+              (y = q([2e3, 1]).day(l)),
                 (this._minWeekdaysParse[l] = this.weekdaysMin(
                   y,
                   ""
@@ -24731,62 +24972,62 @@
                   y,
                   ""
                 ).toLocaleLowerCase());
-          return _
+          return d
             ? "dddd" === n
-              ? -1 !== (h = V.call(this._weekdaysParse, D))
+              ? -1 !== (h = Q.call(this._weekdaysParse, v))
                 ? h
                 : null
               : "ddd" === n
-              ? -1 !== (h = V.call(this._shortWeekdaysParse, D))
+              ? -1 !== (h = Q.call(this._shortWeekdaysParse, v))
                 ? h
                 : null
-              : -1 !== (h = V.call(this._minWeekdaysParse, D))
+              : -1 !== (h = Q.call(this._minWeekdaysParse, v))
               ? h
               : null
             : "dddd" === n
-            ? -1 !== (h = V.call(this._weekdaysParse, D)) ||
-              -1 !== (h = V.call(this._shortWeekdaysParse, D)) ||
-              -1 !== (h = V.call(this._minWeekdaysParse, D))
+            ? -1 !== (h = Q.call(this._weekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._shortWeekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._minWeekdaysParse, v))
               ? h
               : null
             : "ddd" === n
-            ? -1 !== (h = V.call(this._shortWeekdaysParse, D)) ||
-              -1 !== (h = V.call(this._weekdaysParse, D)) ||
-              -1 !== (h = V.call(this._minWeekdaysParse, D))
+            ? -1 !== (h = Q.call(this._shortWeekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._weekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._minWeekdaysParse, v))
               ? h
               : null
-            : -1 !== (h = V.call(this._minWeekdaysParse, D)) ||
-              -1 !== (h = V.call(this._weekdaysParse, D)) ||
-              -1 !== (h = V.call(this._shortWeekdaysParse, D))
+            : -1 !== (h = Q.call(this._minWeekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._weekdaysParse, v)) ||
+              -1 !== (h = Q.call(this._shortWeekdaysParse, v))
             ? h
             : null;
         }
-        function Ct() {
-          function t(Ye, Ne) {
-            return Ne.length - Ye.length;
+        function wt() {
+          function t(Ze, we) {
+            return we.length - Ze.length;
           }
           var y,
-            D,
+            v,
             S,
-            P,
-            z,
+            U,
+            R,
             n = [],
-            _ = [],
+            d = [],
             l = [],
             h = [];
           for (y = 0; y < 7; y++)
-            (D = N([2e3, 1]).day(y)),
-              (S = se(this.weekdaysMin(D, ""))),
-              (P = se(this.weekdaysShort(D, ""))),
-              (z = se(this.weekdays(D, ""))),
+            (v = q([2e3, 1]).day(y)),
+              (S = te(this.weekdaysMin(v, ""))),
+              (U = te(this.weekdaysShort(v, ""))),
+              (R = te(this.weekdays(v, ""))),
               n.push(S),
-              _.push(P),
-              l.push(z),
+              d.push(U),
+              l.push(R),
               h.push(S),
-              h.push(P),
-              h.push(z);
+              h.push(U),
+              h.push(R);
           n.sort(t),
-            _.sort(t),
+            d.sort(t),
             l.sort(t),
             h.sort(t),
             (this._weekdaysRegex = new RegExp("^(" + h.join("|") + ")", "i")),
@@ -24797,7 +25038,7 @@
               "i"
             )),
             (this._weekdaysShortStrictRegex = new RegExp(
-              "^(" + _.join("|") + ")",
+              "^(" + d.join("|") + ")",
               "i"
             )),
             (this._weekdaysMinStrictRegex = new RegExp(
@@ -24805,96 +25046,96 @@
               "i"
             ));
         }
-        function St() {
+        function Ct() {
           return this.hours() % 12 || 12;
         }
-        function ma(t, n) {
-          A(t, 0, 0, function () {
+        function da(t, n) {
+          x(t, 0, 0, function () {
             return this.localeData().meridiem(this.hours(), this.minutes(), n);
           });
         }
-        function ua(t, n) {
+        function la(t, n) {
           return n._meridiemParse;
         }
-        A("H", ["HH", 2], 0, "hour"),
-          A("h", ["hh", 2], 0, St),
-          A("k", ["kk", 2], 0, function On() {
+        x("H", ["HH", 2], 0, "hour"),
+          x("h", ["hh", 2], 0, Ct),
+          x("k", ["kk", 2], 0, function jn() {
             return this.hours() || 24;
           }),
-          A("hmm", 0, 0, function () {
-            return "" + St.apply(this) + he(this.minutes(), 2);
+          x("hmm", 0, 0, function () {
+            return "" + Ct.apply(this) + le(this.minutes(), 2);
           }),
-          A("hmmss", 0, 0, function () {
+          x("hmmss", 0, 0, function () {
             return (
               "" +
-              St.apply(this) +
-              he(this.minutes(), 2) +
-              he(this.seconds(), 2)
+              Ct.apply(this) +
+              le(this.minutes(), 2) +
+              le(this.seconds(), 2)
             );
           }),
-          A("Hmm", 0, 0, function () {
-            return "" + this.hours() + he(this.minutes(), 2);
+          x("Hmm", 0, 0, function () {
+            return "" + this.hours() + le(this.minutes(), 2);
           }),
-          A("Hmmss", 0, 0, function () {
+          x("Hmmss", 0, 0, function () {
             return (
-              "" + this.hours() + he(this.minutes(), 2) + he(this.seconds(), 2)
+              "" + this.hours() + le(this.minutes(), 2) + le(this.seconds(), 2)
             );
           }),
-          ma("a", !0),
-          ma("A", !1),
-          X("hour", "h"),
-          U("hour", 13),
-          x("a", ua),
-          x("A", ua),
-          x("H", W),
-          x("h", W),
-          x("k", W),
-          x("HH", W, ie),
-          x("hh", W, ie),
-          x("kk", W, ie),
-          x("hmm", ea),
-          x("hmmss", ta),
-          x("Hmm", ea),
-          x("Hmmss", ta),
-          J(["H", "HH"], 3),
-          J(["k", "kk"], function (t, n, _) {
+          da("a", !0),
+          da("A", !1),
+          G("hour", "h"),
+          $("hour", 13),
+          C("a", la),
+          C("A", la),
+          C("H", F),
+          C("h", F),
+          C("k", F),
+          C("HH", F, ee),
+          C("hh", F, ee),
+          C("kk", F, ee),
+          C("hmm", Xt),
+          C("hmmss", Kt),
+          C("Hmm", Xt),
+          C("Hmmss", Kt),
+          I(["H", "HH"], 3),
+          I(["k", "kk"], function (t, n, d) {
             var l = O(t);
             n[3] = 24 === l ? 0 : l;
           }),
-          J(["a", "A"], function (t, n, _) {
-            (_._isPm = _._locale.isPM(t)), (_._meridiem = t);
+          I(["a", "A"], function (t, n, d) {
+            (d._isPm = d._locale.isPM(t)), (d._meridiem = t);
           }),
-          J(["h", "hh"], function (t, n, _) {
-            (n[3] = O(t)), (w(_).bigHour = !0);
+          I(["h", "hh"], function (t, n, d) {
+            (n[3] = O(t)), (k(d).bigHour = !0);
           }),
-          J("hmm", function (t, n, _) {
+          I("hmm", function (t, n, d) {
             var l = t.length - 2;
             (n[3] = O(t.substr(0, l))),
               (n[4] = O(t.substr(l))),
-              (w(_).bigHour = !0);
+              (k(d).bigHour = !0);
           }),
-          J("hmmss", function (t, n, _) {
+          I("hmmss", function (t, n, d) {
             var l = t.length - 4,
               h = t.length - 2;
             (n[3] = O(t.substr(0, l))),
               (n[4] = O(t.substr(l, 2))),
               (n[5] = O(t.substr(h))),
-              (w(_).bigHour = !0);
+              (k(d).bigHour = !0);
           }),
-          J("Hmm", function (t, n, _) {
+          I("Hmm", function (t, n, d) {
             var l = t.length - 2;
             (n[3] = O(t.substr(0, l))), (n[4] = O(t.substr(l)));
           }),
-          J("Hmmss", function (t, n, _) {
+          I("Hmmss", function (t, n, d) {
             var l = t.length - 4,
               h = t.length - 2;
             (n[3] = O(t.substr(0, l))),
               (n[4] = O(t.substr(l, 2))),
               (n[5] = O(t.substr(h)));
           });
-        var En = He("Hours", !0);
-        var $e,
-          ca = {
+        var Jn = qe("Hours", !0);
+        var ze,
+          ma = {
             calendar: {
               sameDay: "[Today at] LT",
               nextDay: "[Tomorrow at] LT",
@@ -24932,142 +25173,142 @@
               y: "a year",
               yy: "%d years",
             },
-            months: en,
-            monthsShort: aa,
+            months: nn,
+            monthsShort: ta,
             week: { dow: 0, doy: 6 },
-            weekdays: Tn,
-            weekdaysMin: yn,
-            weekdaysShort: la,
+            weekdays: Dn,
+            weekdaysMin: kn,
+            weekdaysShort: _a,
             meridiemParse: /[ap]\.?m?\.?/i,
           },
-          Q = {},
-          Ve = {};
-        function jn(t, n) {
-          var _,
+          W = {},
+          Qe = {};
+        function Rn(t, n) {
+          var d,
             l = Math.min(t.length, n.length);
-          for (_ = 0; _ < l; _ += 1) if (t[_] !== n[_]) return _;
+          for (d = 0; d < l; d += 1) if (t[d] !== n[d]) return d;
           return l;
         }
-        function pa(t) {
+        function ua(t) {
           return t && t.toLowerCase().replace("_", "-");
         }
-        function lt(t) {
+        function xt(t) {
           var n = null;
-          if (void 0 === Q[t] && Z && Z.exports)
+          if (void 0 === W[t] && Z && Z.exports)
             try {
-              (n = $e._abbr), f(6700)("./" + t), Ze(n);
+              (n = ze._abbr), f(6700)("./" + t), ye(n);
             } catch (l) {
-              Q[t] = null;
+              W[t] = null;
             }
-          return Q[t];
+          return W[t];
         }
-        function Ze(t, n) {
-          var _;
+        function ye(t, n) {
+          var d;
           return (
             t &&
-              ((_ = M(n) ? Te(t) : qt(t, n))
-                ? ($e = _)
+              ((d = T(n) ? fe(t) : St(t, n))
+                ? (ze = d)
                 : "undefined" != typeof console &&
                   console.warn &&
                   console.warn(
                     "Locale " + t + " not found. Did you forget to load it?"
                   )),
-            $e._abbr
+            ze._abbr
           );
         }
-        function qt(t, n) {
+        function St(t, n) {
           if (null !== n) {
-            var _,
-              l = ca;
-            if (((n.abbr = t), null != Q[t]))
-              Je(
+            var d,
+              l = ma;
+            if (((n.abbr = t), null != W[t]))
+              Qt(
                 "defineLocaleOverride",
                 "use moment.updateLocale(localeName, config) to change an existing locale. moment.defineLocale(localeName, config) should only be used for creating a new locale See http://momentjs.com/guides/#/warnings/define-locale/ for more info."
               ),
-                (l = Q[t]._config);
+                (l = W[t]._config);
             else if (null != n.parentLocale)
-              if (null != Q[n.parentLocale]) l = Q[n.parentLocale]._config;
+              if (null != W[n.parentLocale]) l = W[n.parentLocale]._config;
               else {
-                if (null == (_ = lt(n.parentLocale)))
+                if (null == (d = xt(n.parentLocale)))
                   return (
-                    Ve[n.parentLocale] || (Ve[n.parentLocale] = []),
-                    Ve[n.parentLocale].push({ name: t, config: n }),
+                    Qe[n.parentLocale] || (Qe[n.parentLocale] = []),
+                    Qe[n.parentLocale].push({ name: t, config: n }),
                     null
                   );
-                l = _._config;
+                l = d._config;
               }
             return (
-              (Q[t] = new Dt(ve(l, n))),
-              Ve[t] &&
-                Ve[t].forEach(function (h) {
-                  qt(h.name, h.config);
+              (W[t] = new yt(Me(l, n))),
+              Qe[t] &&
+                Qe[t].forEach(function (h) {
+                  St(h.name, h.config);
                 }),
-              Ze(t),
-              Q[t]
+              ye(t),
+              W[t]
             );
           }
-          return delete Q[t], null;
+          return delete W[t], null;
         }
-        function Te(t) {
+        function fe(t) {
           var n;
           if ((t && t._locale && t._locale._abbr && (t = t._locale._abbr), !t))
-            return $e;
+            return ze;
           if (!o(t)) {
-            if ((n = lt(t))) return n;
+            if ((n = xt(t))) return n;
             t = [t];
           }
-          return (function In(t) {
-            for (var _, l, h, y, n = 0; n < t.length; ) {
+          return (function Qn(t) {
+            for (var d, l, h, y, n = 0; n < t.length; ) {
               for (
-                _ = (y = pa(t[n]).split("-")).length,
-                  l = (l = pa(t[n + 1])) ? l.split("-") : null;
-                _ > 0;
+                d = (y = ua(t[n]).split("-")).length,
+                  l = (l = ua(t[n + 1])) ? l.split("-") : null;
+                d > 0;
 
               ) {
-                if ((h = lt(y.slice(0, _).join("-")))) return h;
-                if (l && l.length >= _ && jn(y, l) >= _ - 1) break;
-                _--;
+                if ((h = xt(y.slice(0, d).join("-")))) return h;
+                if (l && l.length >= d && Rn(y, l) >= d - 1) break;
+                d--;
               }
               n++;
             }
-            return $e;
+            return ze;
           })(t);
         }
-        function Nt(t) {
+        function qt(t) {
           var n,
-            _ = t._a;
+            d = t._a;
           return (
-            _ &&
-              -2 === w(t).overflow &&
+            d &&
+              -2 === k(t).overflow &&
               ((n =
-                _[1] < 0 || _[1] > 11
+                d[1] < 0 || d[1] > 11
                   ? 1
-                  : _[2] < 1 || _[2] > _t(_[0], _[1])
+                  : d[2] < 1 || d[2] > _t(d[0], d[1])
                   ? 2
-                  : _[3] < 0 ||
-                    _[3] > 24 ||
-                    (24 === _[3] && (0 !== _[4] || 0 !== _[5] || 0 !== _[6]))
+                  : d[3] < 0 ||
+                    d[3] > 24 ||
+                    (24 === d[3] && (0 !== d[4] || 0 !== d[5] || 0 !== d[6]))
                   ? 3
-                  : _[4] < 0 || _[4] > 59
+                  : d[4] < 0 || d[4] > 59
                   ? 4
-                  : _[5] < 0 || _[5] > 59
+                  : d[5] < 0 || d[5] > 59
                   ? 5
-                  : _[6] < 0 || _[6] > 999
+                  : d[6] < 0 || d[6] > 999
                   ? 6
                   : -1),
-              w(t)._overflowDayOfYear && (n < 0 || n > 2) && (n = 2),
-              w(t)._overflowWeeks && -1 === n && (n = 7),
-              w(t)._overflowWeekday && -1 === n && (n = 8),
-              (w(t).overflow = n)),
+              k(t)._overflowDayOfYear && (n < 0 || n > 2) && (n = 2),
+              k(t)._overflowWeeks && -1 === n && (n = 7),
+              k(t)._overflowWeekday && -1 === n && (n = 8),
+              (k(t).overflow = n)),
             t
           );
         }
-        var Wn =
+        var Nt =
             /^\s*((?:[+-]\d{6}|\d{4})-(?:\d\d-\d\d|W\d\d-\d|W\d\d|\d\d\d|\d\d))(?:(T| )(\d\d(?::\d\d(?::\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
-          Rn =
+          Bn =
             /^\s*((?:[+-]\d{6}|\d{4})(?:\d\d\d\d|W\d\d\d|W\d\d|\d\d\d|\d\d|))(?:(T| )(\d\d(?:\d\d(?:\d\d(?:[.,]\d+)?)?)?)([+-]\d\d(?::?\d\d)?|\s*Z)?)?$/,
-          Qn = /Z|[+-]\d\d(?::?\d\d)?/,
-          mt = [
+          Vn = /Z|[+-]\d\d(?::?\d\d)?/,
+          Ge = [
             ["YYYYYY-MM-DD", /[+-]\d{6}-\d\d-\d\d/],
             ["YYYY-MM-DD", /\d{4}-\d\d-\d\d/],
             ["GGGG-[W]WW-E", /\d{4}-W\d\d-\d/],
@@ -25093,10 +25334,10 @@
             ["HHmm", /\d\d\d\d/],
             ["HH", /\d\d/],
           ],
-          zn = /^\/?Date\((-?\d+)/i,
-          Gn =
+          $n = /^\/?Date\((-?\d+)/i,
+          Xn =
             /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),?\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|([+-]\d{4}))$/,
-          Bn = {
+          Kn = {
             UT: 0,
             GMT: 0,
             EDT: -240,
@@ -25108,24 +25349,24 @@
             PDT: -420,
             PST: -480,
           };
-        function ha(t) {
+        function ca(t) {
           var n,
-            _,
+            d,
             y,
-            D,
+            v,
             S,
-            P,
+            U,
             l = t._i,
-            h = Wn.exec(l) || Rn.exec(l);
+            h = Nt.exec(l) || Bn.exec(l);
           if (h) {
-            for (w(t).iso = !0, n = 0, _ = mt.length; n < _; n++)
-              if (mt[n][1].exec(h[1])) {
-                (D = mt[n][0]), (y = !1 !== mt[n][2]);
+            for (k(t).iso = !0, n = 0, d = Ge.length; n < d; n++)
+              if (Ge[n][1].exec(h[1])) {
+                (v = Ge[n][0]), (y = !1 !== Ge[n][2]);
                 break;
               }
-            if (null == D) return void (t._isValid = !1);
+            if (null == v) return void (t._isValid = !1);
             if (h[3]) {
-              for (n = 0, _ = Ot.length; n < _; n++)
+              for (n = 0, d = Ot.length; n < d; n++)
                 if (Ot[n][1].exec(h[3])) {
                   S = (h[2] || " ") + Ot[n][0];
                   break;
@@ -25134,20 +25375,20 @@
             }
             if (!y && null != S) return void (t._isValid = !1);
             if (h[4]) {
-              if (!Qn.exec(h[4])) return void (t._isValid = !1);
-              P = "Z";
+              if (!Vn.exec(h[4])) return void (t._isValid = !1);
+              U = "Z";
             }
-            (t._f = D + (S || "") + (P || "")), Ht(t);
+            (t._f = v + (S || "") + (U || "")), Ht(t);
           } else t._isValid = !1;
         }
-        function $n(t) {
+        function ti(t) {
           var n = parseInt(t, 10);
           return n <= 49 ? 2e3 + n : n <= 999 ? 1900 + n : n;
         }
-        function fa(t) {
-          var _,
-            n = Gn.exec(
-              (function Kn(t) {
+        function pa(t) {
+          var d,
+            n = Xn.exec(
+              (function ai(t) {
                 return t
                   .replace(/\([^)]*\)|[\n\t]/g, " ")
                   .replace(/(\s\s+)/g, " ")
@@ -25157,52 +25398,52 @@
             );
           if (n) {
             if (
-              ((_ = (function Vn(t, n, _, l, h, y) {
-                var D = [
-                  $n(t),
-                  aa.indexOf(n),
-                  parseInt(_, 10),
+              ((d = (function ei(t, n, d, l, h, y) {
+                var v = [
+                  ti(t),
+                  ta.indexOf(n),
+                  parseInt(d, 10),
                   parseInt(l, 10),
                   parseInt(h, 10),
                 ];
-                return y && D.push(parseInt(y, 10)), D;
+                return y && v.push(parseInt(y, 10)), v;
               })(n[4], n[3], n[2], n[5], n[6], n[7])),
-              !(function Xn(t, n, _) {
+              !(function ni(t, n, d) {
                 return (
                   !t ||
-                  la.indexOf(t) === new Date(n[0], n[1], n[2]).getDay() ||
-                  ((w(_).weekdayMismatch = !0), (_._isValid = !1), !1)
+                  _a.indexOf(t) === new Date(n[0], n[1], n[2]).getDay() ||
+                  ((k(d).weekdayMismatch = !0), (d._isValid = !1), !1)
                 );
-              })(n[1], _, t))
+              })(n[1], d, t))
             )
               return;
-            (t._a = _),
-              (t._tzm = (function ei(t, n, _) {
-                if (t) return Bn[t];
+            (t._a = d),
+              (t._tzm = (function ii(t, n, d) {
+                if (t) return Kn[t];
                 if (n) return 0;
-                var l = parseInt(_, 10),
+                var l = parseInt(d, 10),
                   h = l % 100;
                 return ((l - h) / 100) * 60 + h;
               })(n[8], n[9], n[10])),
-              (t._d = Ge.apply(null, t._a)),
+              (t._d = We.apply(null, t._a)),
               t._d.setUTCMinutes(t._d.getUTCMinutes() - t._tzm),
-              (w(t).rfc2822 = !0);
+              (k(t).rfc2822 = !0);
           } else t._isValid = !1;
         }
-        function Pe(t, n, _) {
-          return null != t ? t : null != n ? n : _;
+        function Oe(t, n, d) {
+          return null != t ? t : null != n ? n : d;
         }
         function Ut(t) {
           var n,
-            _,
+            d,
             h,
             y,
-            D,
+            v,
             l = [];
           if (!t._d) {
             for (
-              h = (function ai(t) {
-                var n = new Date(i.now());
+              h = (function oi(t) {
+                var n = new Date(s.now());
                 return t._useUTC
                   ? [n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate()]
                   : [n.getFullYear(), n.getMonth(), n.getDate()];
@@ -25210,39 +25451,39 @@
                 t._w &&
                   null == t._a[2] &&
                   null == t._a[1] &&
-                  (function ni(t) {
-                    var n, _, l, h, y, D, S, P, z;
+                  (function ri(t) {
+                    var n, d, l, h, y, v, S, U, R;
                     null != (n = t._w).GG || null != n.W || null != n.E
                       ? ((y = 1),
-                        (D = 4),
-                        (_ = Pe(n.GG, t._a[0], Be(R(), 1, 4).year)),
-                        (l = Pe(n.W, 1)),
-                        ((h = Pe(n.E, 1)) < 1 || h > 7) && (P = !0))
+                        (v = 4),
+                        (d = Oe(n.GG, t._a[0], Re(J(), 1, 4).year)),
+                        (l = Oe(n.W, 1)),
+                        ((h = Oe(n.E, 1)) < 1 || h > 7) && (U = !0))
                       : ((y = t._locale._week.dow),
-                        (D = t._locale._week.doy),
-                        (z = Be(R(), y, D)),
-                        (_ = Pe(n.gg, t._a[0], z.year)),
-                        (l = Pe(n.w, z.week)),
+                        (v = t._locale._week.doy),
+                        (R = Re(J(), y, v)),
+                        (d = Oe(n.gg, t._a[0], R.year)),
+                        (l = Oe(n.w, R.week)),
                         null != n.d
-                          ? ((h = n.d) < 0 || h > 6) && (P = !0)
+                          ? ((h = n.d) < 0 || h > 6) && (U = !0)
                           : null != n.e
-                          ? ((h = n.e + y), (n.e < 0 || n.e > 6) && (P = !0))
+                          ? ((h = n.e + y), (n.e < 0 || n.e > 6) && (U = !0))
                           : (h = y)),
-                      l < 1 || l > Me(_, y, D)
-                        ? (w(t)._overflowWeeks = !0)
-                        : null != P
-                        ? (w(t)._overflowWeekday = !0)
-                        : ((S = _a(_, l, h, y, D)),
+                      l < 1 || l > he(d, y, v)
+                        ? (k(t)._overflowWeeks = !0)
+                        : null != U
+                        ? (k(t)._overflowWeekday = !0)
+                        : ((S = ra(d, l, h, y, v)),
                           (t._a[0] = S.year),
                           (t._dayOfYear = S.dayOfYear));
                   })(t),
                 null != t._dayOfYear &&
-                  ((D = Pe(t._a[0], h[0])),
-                  (t._dayOfYear > ze(D) || 0 === t._dayOfYear) &&
-                    (w(t)._overflowDayOfYear = !0),
-                  (_ = Ge(D, 0, t._dayOfYear)),
-                  (t._a[1] = _.getUTCMonth()),
-                  (t._a[2] = _.getUTCDate())),
+                  ((v = Oe(t._a[0], h[0])),
+                  (t._dayOfYear > Je(v) || 0 === t._dayOfYear) &&
+                    (k(t)._overflowDayOfYear = !0),
+                  (d = We(v, 0, t._dayOfYear)),
+                  (t._a[1] = d.getUTCMonth()),
+                  (t._a[2] = d.getUTCDate())),
                 n = 0;
               n < 3 && null == t._a[n];
               ++n
@@ -25255,7 +25496,7 @@
               0 === t._a[5] &&
               0 === t._a[6] &&
               ((t._nextDay = !0), (t._a[3] = 0)),
-              (t._d = (t._useUTC ? Ge : wt).apply(null, l)),
+              (t._d = (t._useUTC ? We : hn).apply(null, l)),
               (y = t._useUTC ? t._d.getUTCDay() : t._d.getDay()),
               null != t._tzm &&
                 t._d.setUTCMinutes(t._d.getUTCMinutes() - t._tzm),
@@ -25263,138 +25504,138 @@
               t._w &&
                 void 0 !== t._w.d &&
                 t._w.d !== y &&
-                (w(t).weekdayMismatch = !0);
+                (k(t).weekdayMismatch = !0);
           }
         }
         function Ht(t) {
-          if (t._f !== i.ISO_8601)
-            if (t._f !== i.RFC_2822) {
-              (t._a = []), (w(t).empty = !0);
-              var _,
+          if (t._f !== s.ISO_8601)
+            if (t._f !== s.RFC_2822) {
+              (t._a = []), (k(t).empty = !0);
+              var d,
                 l,
                 h,
                 y,
-                D,
-                z,
+                v,
+                R,
                 n = "" + t._i,
                 S = n.length,
-                P = 0;
+                U = 0;
               for (
-                h = Bt(t._f, t._locale).match(Gt) || [], _ = 0;
-                _ < h.length;
-                _++
+                h = Gt(t._f, t._locale).match(Zt) || [], d = 0;
+                d < h.length;
+                d++
               )
-                (l = (n.match(Ga((y = h[_]), t)) || [])[0]) &&
-                  ((D = n.substr(0, n.indexOf(l))).length > 0 &&
-                    w(t).unusedInput.push(D),
+                (l = (n.match(Ka((y = h[d]), t)) || [])[0]) &&
+                  ((v = n.substr(0, n.indexOf(l))).length > 0 &&
+                    k(t).unusedInput.push(v),
                   (n = n.slice(n.indexOf(l) + l.length)),
-                  (P += l.length)),
-                  te[y]
-                    ? (l ? (w(t).empty = !1) : w(t).unusedTokens.push(y),
-                      Va(y, l, t))
-                    : t._strict && !l && w(t).unusedTokens.push(y);
-              (w(t).charsLeftOver = S - P),
-                n.length > 0 && w(t).unusedInput.push(n),
+                  (U += l.length)),
+                  xe[y]
+                    ? (l ? (k(t).empty = !1) : k(t).unusedTokens.push(y),
+                      tn(y, l, t))
+                    : t._strict && !l && k(t).unusedTokens.push(y);
+              (k(t).charsLeftOver = S - U),
+                n.length > 0 && k(t).unusedInput.push(n),
                 t._a[3] <= 12 &&
-                  !0 === w(t).bigHour &&
+                  !0 === k(t).bigHour &&
                   t._a[3] > 0 &&
-                  (w(t).bigHour = void 0),
-                (w(t).parsedDateParts = t._a.slice(0)),
-                (w(t).meridiem = t._meridiem),
-                (t._a[3] = (function ii(t, n, _) {
+                  (k(t).bigHour = void 0),
+                (k(t).parsedDateParts = t._a.slice(0)),
+                (k(t).meridiem = t._meridiem),
+                (t._a[3] = (function _i(t, n, d) {
                   var l;
-                  return null == _
+                  return null == d
                     ? n
                     : null != t.meridiemHour
-                    ? t.meridiemHour(n, _)
+                    ? t.meridiemHour(n, d)
                     : (null != t.isPM &&
-                        ((l = t.isPM(_)) && n < 12 && (n += 12),
+                        ((l = t.isPM(d)) && n < 12 && (n += 12),
                         !l && 12 === n && (n = 0)),
                       n);
                 })(t._locale, t._a[3], t._meridiem)),
-                null !== (z = w(t).era) &&
-                  (t._a[0] = t._locale.erasConvertYear(z, t._a[0])),
+                null !== (R = k(t).era) &&
+                  (t._a[0] = t._locale.erasConvertYear(R, t._a[0])),
                 Ut(t),
-                Nt(t);
-            } else fa(t);
-          else ha(t);
+                qt(t);
+            } else pa(t);
+          else ca(t);
         }
-        function ga(t) {
+        function ha(t) {
           var n = t._i,
-            _ = t._f;
+            d = t._f;
           return (
-            (t._locale = t._locale || Te(t._l)),
-            null === n || (void 0 === _ && "" === n)
-              ? Oe({ nullInput: !0 })
+            (t._locale = t._locale || fe(t._l)),
+            null === n || (void 0 === d && "" === n)
+              ? K({ nullInput: !0 })
               : ("string" == typeof n && (t._i = n = t._locale.preparse(n)),
-                de(n)
-                  ? new Ue(Nt(n))
-                  : (k(n)
+                z(n)
+                  ? new ge(qt(n))
+                  : (D(n)
                       ? (t._d = n)
-                      : o(_)
-                      ? (function si(t) {
+                      : o(d)
+                      ? (function di(t) {
                           var n,
-                            _,
+                            d,
                             l,
                             h,
                             y,
-                            D,
+                            v,
                             S = !1;
                           if (0 === t._f.length)
                             return (
-                              (w(t).invalidFormat = !0),
+                              (k(t).invalidFormat = !0),
                               void (t._d = new Date(NaN))
                             );
                           for (h = 0; h < t._f.length; h++)
                             (y = 0),
-                              (D = !1),
-                              (n = Yt({}, t)),
+                              (v = !1),
+                              (n = Tt({}, t)),
                               null != t._useUTC && (n._useUTC = t._useUTC),
                               (n._f = t._f[h]),
                               Ht(n),
-                              De(n) && (D = !0),
-                              (y += w(n).charsLeftOver),
-                              (y += 10 * w(n).unusedTokens.length),
-                              (w(n).score = y),
+                              Ce(n) && (v = !0),
+                              (y += k(n).charsLeftOver),
+                              (y += 10 * k(n).unusedTokens.length),
+                              (k(n).score = y),
                               S
-                                ? y < l && ((l = y), (_ = n))
-                                : (null == l || y < l || D) &&
-                                  ((l = y), (_ = n), D && (S = !0));
-                          q(t, _ || n);
+                                ? y < l && ((l = y), (d = n))
+                                : (null == l || y < l || v) &&
+                                  ((l = y), (d = n), v && (S = !0));
+                          b(t, d || n);
                         })(t)
-                      : _
+                      : d
                       ? Ht(t)
-                      : (function _i(t) {
+                      : (function ui(t) {
                           var n = t._i;
-                          M(n)
-                            ? (t._d = new Date(i.now()))
-                            : k(n)
+                          T(n)
+                            ? (t._d = new Date(s.now()))
+                            : D(n)
                             ? (t._d = new Date(n.valueOf()))
                             : "string" == typeof n
-                            ? (function ti(t) {
-                                var n = zn.exec(t._i);
+                            ? (function si(t) {
+                                var n = $n.exec(t._i);
                                 null === n
-                                  ? (ha(t),
+                                  ? (ca(t),
                                     !1 === t._isValid &&
                                       (delete t._isValid,
-                                      fa(t),
+                                      pa(t),
                                       !1 === t._isValid &&
                                         (delete t._isValid,
                                         t._strict
                                           ? (t._isValid = !1)
-                                          : i.createFromInputFallback(t))))
+                                          : s.createFromInputFallback(t))))
                                   : (t._d = new Date(+n[1]));
                               })(t)
                             : o(n)
-                            ? ((t._a = C(n.slice(0), function (_) {
-                                return parseInt(_, 10);
+                            ? ((t._a = w(n.slice(0), function (d) {
+                                return parseInt(d, 10);
                               })),
                               Ut(t))
                             : e(n)
-                            ? (function oi(t) {
+                            ? (function li(t) {
                                 if (!t._d) {
-                                  var n = G(t._i);
-                                  (t._a = C(
+                                  var n = Se(t._i);
+                                  (t._a = w(
                                     [
                                       n.year,
                                       n.month,
@@ -25413,71 +25654,71 @@
                               })(t)
                             : L(n)
                             ? (t._d = new Date(n))
-                            : i.createFromInputFallback(t);
+                            : s.createFromInputFallback(t);
                         })(t),
-                    De(t) || (t._d = null),
+                    Ce(t) || (t._d = null),
                     t))
           );
         }
-        function Ma(t, n, _, l, h) {
+        function fa(t, n, d, l, h) {
           var y = {};
           return (
             (!0 === n || !1 === n) && ((l = n), (n = void 0)),
-            (!0 === _ || !1 === _) && ((l = _), (_ = void 0)),
+            (!0 === d || !1 === d) && ((l = d), (d = void 0)),
             ((e(t) && p(t)) || (o(t) && 0 === t.length)) && (t = void 0),
             (y._isAMomentObject = !0),
             (y._useUTC = y._isUTC = h),
-            (y._l = _),
+            (y._l = d),
             (y._i = t),
             (y._f = n),
             (y._strict = l),
-            (function ri(t) {
-              var n = new Ue(Nt(ga(t)));
+            (function mi(t) {
+              var n = new ge(qt(ha(t)));
               return n._nextDay && (n.add(1, "d"), (n._nextDay = void 0)), n;
             })(y)
           );
         }
-        function R(t, n, _, l) {
-          return Ma(t, n, _, l, !1);
+        function J(t, n, d, l) {
+          return fa(t, n, d, l, !1);
         }
-        (i.createFromInputFallback = H(
+        (s.createFromInputFallback = H(
           "value provided is not in a recognized RFC2822 or ISO format. moment construction falls back to js Date(), which is not reliable across all browsers and versions. Non RFC2822/ISO date formats are discouraged. Please refer to http://momentjs.com/guides/#/warnings/js-date/ for more info.",
           function (t) {
             t._d = new Date(t._i + (t._useUTC ? " UTC" : ""));
           }
         )),
-          (i.ISO_8601 = function () {}),
-          (i.RFC_2822 = function () {});
-        var di = H(
+          (s.ISO_8601 = function () {}),
+          (s.RFC_2822 = function () {});
+        var ci = H(
             "moment().min is deprecated, use moment.max instead. http://momentjs.com/guides/#/warnings/min-max/",
             function () {
-              var t = R.apply(null, arguments);
+              var t = J.apply(null, arguments);
               return this.isValid() && t.isValid()
                 ? t < this
                   ? this
                   : t
-                : Oe();
+                : K();
             }
           ),
-          Ta = H(
+          pi = H(
             "moment().max is deprecated, use moment.min instead. http://momentjs.com/guides/#/warnings/min-max/",
             function () {
-              var t = R.apply(null, arguments);
+              var t = J.apply(null, arguments);
               return this.isValid() && t.isValid()
                 ? t > this
                   ? this
                   : t
-                : Oe();
+                : K();
             }
           );
-        function ya(t, n) {
-          var _, l;
-          if ((1 === n.length && o(n[0]) && (n = n[0]), !n.length)) return R();
-          for (_ = n[0], l = 1; l < n.length; ++l)
-            (!n[l].isValid() || n[l][t](_)) && (_ = n[l]);
-          return _;
+        function ga(t, n) {
+          var d, l;
+          if ((1 === n.length && o(n[0]) && (n = n[0]), !n.length)) return J();
+          for (d = n[0], l = 1; l < n.length; ++l)
+            (!n[l].isValid() || n[l][t](d)) && (d = n[l]);
+          return d;
         }
-        var Ke = [
+        var Le = [
           "year",
           "quarter",
           "month",
@@ -25488,75 +25729,75 @@
           "second",
           "millisecond",
         ];
-        function ut(t) {
-          var n = G(t),
-            _ = n.year || 0,
+        function lt(t) {
+          var n = Se(t),
+            d = n.year || 0,
             l = n.quarter || 0,
             h = n.month || 0,
             y = n.week || n.isoWeek || 0,
-            D = n.day || 0,
+            v = n.day || 0,
             S = n.hour || 0,
-            P = n.minute || 0,
-            z = n.second || 0,
-            Ye = n.millisecond || 0;
-          (this._isValid = (function ci(t) {
+            U = n.minute || 0,
+            R = n.second || 0,
+            Ze = n.millisecond || 0;
+          (this._isValid = (function fi(t) {
             var n,
               l,
-              _ = !1;
+              d = !1;
             for (n in t)
               if (
                 u(t, n) &&
-                (-1 === V.call(Ke, n) || (null != t[n] && isNaN(t[n])))
+                (-1 === Q.call(Le, n) || (null != t[n] && isNaN(t[n])))
               )
                 return !1;
-            for (l = 0; l < Ke.length; ++l)
-              if (t[Ke[l]]) {
-                if (_) return !1;
-                parseFloat(t[Ke[l]]) !== O(t[Ke[l]]) && (_ = !0);
+            for (l = 0; l < Le.length; ++l)
+              if (t[Le[l]]) {
+                if (d) return !1;
+                parseFloat(t[Le[l]]) !== O(t[Le[l]]) && (d = !0);
               }
             return !0;
           })(n)),
-            (this._milliseconds = +Ye + 1e3 * z + 6e4 * P + 1e3 * S * 60 * 60),
-            (this._days = +D + 7 * y),
-            (this._months = +h + 3 * l + 12 * _),
+            (this._milliseconds = +Ze + 1e3 * R + 6e4 * U + 1e3 * S * 60 * 60),
+            (this._days = +v + 7 * y),
+            (this._months = +h + 3 * l + 12 * d),
             (this._data = {}),
-            (this._locale = Te()),
+            (this._locale = fe()),
             this._bubble();
         }
-        function ct(t) {
-          return t instanceof ut;
+        function mt(t) {
+          return t instanceof lt;
         }
         function Et(t) {
           return t < 0 ? -1 * Math.round(-1 * t) : Math.round(t);
         }
-        function La(t, n) {
-          A(t, 0, 0, function () {
-            var _ = this.utcOffset(),
+        function ya(t, n) {
+          x(t, 0, 0, function () {
+            var d = this.utcOffset(),
               l = "+";
             return (
-              _ < 0 && ((_ = -_), (l = "-")),
-              l + he(~~(_ / 60), 2) + n + he(~~_ % 60, 2)
+              d < 0 && ((d = -d), (l = "-")),
+              l + le(~~(d / 60), 2) + n + le(~~d % 60, 2)
             );
           });
         }
-        La("Z", ":"),
-          La("ZZ", ""),
-          x("Z", Ae),
-          x("ZZ", Ae),
-          J(["Z", "ZZ"], function (t, n, _) {
-            (_._useUTC = !0), (_._tzm = Pt(Ae, t));
+        ya("Z", ":"),
+          ya("ZZ", ""),
+          C("Z", ot),
+          C("ZZ", ot),
+          I(["Z", "ZZ"], function (t, n, d) {
+            (d._useUTC = !0), (d._tzm = Pt(ot, t));
           });
-        var gi = /([\+\-]|\d\d)/gi;
+        var yi = /([\+\-]|\d\d)/gi;
         function Pt(t, n) {
           var h,
             y,
-            _ = (n || "").match(t);
-          return null === _
+            d = (n || "").match(t);
+          return null === d
             ? null
             : 0 ===
               (y =
                 60 *
-                  (h = ((_[_.length - 1] || []) + "").match(gi) || [
+                  (h = ((d[d.length - 1] || []) + "").match(yi) || [
                     "-",
                     0,
                     0,
@@ -25568,40 +25809,39 @@
             : -y;
         }
         function jt(t, n) {
-          var _, l;
+          var d, l;
           return n._isUTC
-            ? ((_ = n.clone()),
-              (l =
-                (de(t) || k(t) ? t.valueOf() : R(t).valueOf()) - _.valueOf()),
-              _._d.setTime(_._d.valueOf() + l),
-              i.updateOffset(_, !1),
-              _)
-            : R(t).local();
+            ? ((d = n.clone()),
+              (l = (z(t) || D(t) ? t.valueOf() : J(t).valueOf()) - d.valueOf()),
+              d._d.setTime(d._d.valueOf() + l),
+              s.updateOffset(d, !1),
+              d)
+            : J(t).local();
         }
         function It(t) {
           return -Math.round(t._d.getTimezoneOffset());
         }
-        function Za() {
+        function La() {
           return !!this.isValid() && this._isUTC && 0 === this._offset;
         }
-        i.updateOffset = function () {};
-        var bi = /^(-|\+)?(?:(\d*)[. ])?(\d+):(\d+)(?::(\d+)(\.\d*)?)?$/,
-          pt =
+        s.updateOffset = function () {};
+        var xi = /^(-|\+)?(?:(\d*)[. ])?(\d+):(\d+)(?::(\d+)(\.\d*)?)?$/,
+          Si =
             /^(-|\+)?P(?:([-+]?[0-9,.]*)Y)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)W)?(?:([-+]?[0-9,.]*)D)?(?:T(?:([-+]?[0-9,.]*)H)?(?:([-+]?[0-9,.]*)M)?(?:([-+]?[0-9,.]*)S)?)?$/;
-        function ue(t, n) {
+        function re(t, n) {
           var h,
             y,
-            D,
-            _ = t,
+            v,
+            d = t,
             l = null;
           return (
-            ct(t)
-              ? (_ = { ms: t._milliseconds, d: t._days, M: t._months })
+            mt(t)
+              ? (d = { ms: t._milliseconds, d: t._days, M: t._months })
               : L(t) || !isNaN(+t)
-              ? ((_ = {}), n ? (_[n] = +t) : (_.milliseconds = +t))
-              : (l = bi.exec(t))
+              ? ((d = {}), n ? (d[n] = +t) : (d.milliseconds = +t))
+              : (l = xi.exec(t))
               ? ((h = "-" === l[1] ? -1 : 1),
-                (_ = {
+                (d = {
                   y: 0,
                   d: O(l[2]) * h,
                   h: O(l[3]) * h,
@@ -25609,59 +25849,59 @@
                   s: O(l[5]) * h,
                   ms: O(Et(1e3 * l[6])) * h,
                 }))
-              : (l = pt.exec(t))
-              ? (_ = {
-                  y: xe(l[2], (h = "-" === l[1] ? -1 : 1)),
-                  M: xe(l[3], h),
-                  w: xe(l[4], h),
-                  d: xe(l[5], h),
-                  h: xe(l[6], h),
-                  m: xe(l[7], h),
-                  s: xe(l[8], h),
+              : (l = Si.exec(t))
+              ? (d = {
+                  y: ke(l[2], (h = "-" === l[1] ? -1 : 1)),
+                  M: ke(l[3], h),
+                  w: ke(l[4], h),
+                  d: ke(l[5], h),
+                  h: ke(l[6], h),
+                  m: ke(l[7], h),
+                  s: ke(l[8], h),
                 })
-              : null == _
-              ? (_ = {})
-              : "object" == typeof _ &&
-                ("from" in _ || "to" in _) &&
-                ((D = (function wi(t, n) {
-                  var _;
+              : null == d
+              ? (d = {})
+              : "object" == typeof d &&
+                ("from" in d || "to" in d) &&
+                ((v = (function qi(t, n) {
+                  var d;
                   return t.isValid() && n.isValid()
                     ? ((n = jt(n, t)),
                       t.isBefore(n)
-                        ? (_ = Ya(t, n))
-                        : (((_ = Ya(n, t)).milliseconds = -_.milliseconds),
-                          (_.months = -_.months)),
-                      _)
+                        ? (d = Za(t, n))
+                        : (((d = Za(n, t)).milliseconds = -d.milliseconds),
+                          (d.months = -d.months)),
+                      d)
                     : { milliseconds: 0, months: 0 };
-                })(R(_.from), R(_.to))),
-                ((_ = {}).ms = D.milliseconds),
-                (_.M = D.months)),
-            (y = new ut(_)),
-            ct(t) && u(t, "_locale") && (y._locale = t._locale),
-            ct(t) && u(t, "_isValid") && (y._isValid = t._isValid),
+                })(J(d.from), J(d.to))),
+                ((d = {}).ms = v.milliseconds),
+                (d.M = v.months)),
+            (y = new lt(d)),
+            mt(t) && u(t, "_locale") && (y._locale = t._locale),
+            mt(t) && u(t, "_isValid") && (y._isValid = t._isValid),
             y
           );
         }
-        function xe(t, n) {
-          var _ = t && parseFloat(t.replace(",", "."));
-          return (isNaN(_) ? 0 : _) * n;
+        function ke(t, n) {
+          var d = t && parseFloat(t.replace(",", "."));
+          return (isNaN(d) ? 0 : d) * n;
         }
-        function Ya(t, n) {
-          var _ = {};
+        function Za(t, n) {
+          var d = {};
           return (
-            (_.months = n.month() - t.month() + 12 * (n.year() - t.year())),
-            t.clone().add(_.months, "M").isAfter(n) && --_.months,
-            (_.milliseconds = +n - +t.clone().add(_.months, "M")),
-            _
+            (d.months = n.month() - t.month() + 12 * (n.year() - t.year())),
+            t.clone().add(d.months, "M").isAfter(n) && --d.months,
+            (d.milliseconds = +n - +t.clone().add(d.months, "M")),
+            d
           );
         }
-        function Da(t, n) {
-          return function (_, l) {
+        function Ya(t, n) {
+          return function (d, l) {
             var y;
             return (
               null !== l &&
                 !isNaN(+l) &&
-                (Je(
+                (Qt(
                   n,
                   "moment()." +
                     n +
@@ -25669,57 +25909,57 @@
                     n +
                     "(number, period). See http://momentjs.com/guides/#/warnings/add-inverted-param/ for more info."
                 ),
-                (y = _),
-                (_ = l),
+                (y = d),
+                (d = l),
                 (l = y)),
-              ka(this, ue(_, l), t),
+              Da(this, re(d, l), t),
               this
             );
           };
         }
-        function ka(t, n, _, l) {
+        function Da(t, n, d, l) {
           var h = n._milliseconds,
             y = Et(n._days),
-            D = Et(n._months);
+            v = Et(n._months);
           !t.isValid() ||
             ((l = null == l || l),
-            D && ia(t, nt(t, "Month") + D * _),
-            y && Vt(t, "Date", nt(t, "Date") + y * _),
-            h && t._d.setTime(t._d.valueOf() + h * _),
-            l && i.updateOffset(t, y || D));
+            v && na(t, tt(t, "Month") + v * d),
+            y && Bt(t, "Date", tt(t, "Date") + y * d),
+            h && t._d.setTime(t._d.valueOf() + h * d),
+            l && s.updateOffset(t, y || v));
         }
-        (ue.fn = ut.prototype),
-          (ue.invalid = function hi() {
-            return ue(NaN);
+        (re.fn = lt.prototype),
+          (re.invalid = function Mi() {
+            return re(NaN);
           });
-        var xi = Da(1, "add"),
-          Ci = Da(-1, "subtract");
-        function va(t) {
+        var Ni = Ya(1, "add"),
+          Oi = Ya(-1, "subtract");
+        function ka(t) {
           return "string" == typeof t || t instanceof String;
         }
-        function Si(t) {
+        function Ui(t) {
           return (
-            de(t) ||
-            k(t) ||
-            va(t) ||
+            z(t) ||
+            D(t) ||
+            ka(t) ||
             L(t) ||
-            (function Ni(t) {
+            (function Ei(t) {
               var n = o(t),
-                _ = !1;
+                d = !1;
               return (
                 n &&
-                  (_ =
+                  (d =
                     0 ===
                     t.filter(function (l) {
-                      return !L(l) && va(t);
+                      return !L(l) && ka(t);
                     }).length),
-                n && _
+                n && d
               );
             })(t) ||
-            (function qi(t) {
+            (function Hi(t) {
               var h,
                 n = e(t) && !p(t),
-                _ = !1,
+                d = !1,
                 l = [
                   "years",
                   "year",
@@ -25746,16 +25986,16 @@
                   "millisecond",
                   "ms",
                 ];
-              for (h = 0; h < l.length; h += 1) _ = _ || u(t, l[h]);
-              return n && _;
+              for (h = 0; h < l.length; h += 1) d = d || u(t, l[h]);
+              return n && d;
             })(t) ||
             null == t
           );
         }
-        function Oi(t) {
+        function Pi(t) {
           var h,
             n = e(t) && !p(t),
-            _ = !1,
+            d = !1,
             l = [
               "sameDay",
               "nextDay",
@@ -25764,19 +26004,19 @@
               "lastWeek",
               "sameElse",
             ];
-          for (h = 0; h < l.length; h += 1) _ = _ || u(t, l[h]);
-          return n && _;
+          for (h = 0; h < l.length; h += 1) d = d || u(t, l[h]);
+          return n && d;
         }
-        function ht(t, n) {
-          if (t.date() < n.date()) return -ht(n, t);
-          var _ = 12 * (n.year() - t.year()) + (n.month() - t.month()),
-            l = t.clone().add(_, "months");
+        function ut(t, n) {
+          if (t.date() < n.date()) return -ut(n, t);
+          var d = 12 * (n.year() - t.year()) + (n.month() - t.month()),
+            l = t.clone().add(d, "months");
           return (
             -(
-              _ +
+              d +
               (n - l < 0
-                ? (n - l) / (l - t.clone().add(_ - 1, "months"))
-                : (n - l) / (t.clone().add(_ + 1, "months") - l))
+                ? (n - l) / (l - t.clone().add(d - 1, "months"))
+                : (n - l) / (t.clone().add(d + 1, "months") - l))
             ) || 0
           );
         }
@@ -25784,10 +26024,10 @@
           var n;
           return void 0 === t
             ? this._locale._abbr
-            : (null != (n = Te(t)) && (this._locale = n), this);
+            : (null != (n = fe(t)) && (this._locale = n), this);
         }
-        (i.defaultFormat = "YYYY-MM-DDTHH:mm:ssZ"),
-          (i.defaultFormatUtc = "YYYY-MM-DDTHH:mm:ss[Z]");
+        (s.defaultFormat = "YYYY-MM-DDTHH:mm:ssZ"),
+          (s.defaultFormatUtc = "YYYY-MM-DDTHH:mm:ss[Z]");
         var ba = H(
           "moment().lang() is deprecated. Instead, use moment().localeData() to get the language configuration. Use moment().locale() to change languages.",
           function (t) {
@@ -25797,21 +26037,21 @@
         function wa() {
           return this._locale;
         }
-        var je = 6e4,
-          gt = 60 * je,
-          Ft = 3506328 * gt;
-        function Ie(t, n) {
+        var Ue = 6e4,
+          pt = 60 * Ue,
+          Ca = 3506328 * pt;
+        function He(t, n) {
           return ((t % n) + n) % n;
         }
-        function xa(t, n, _) {
+        function xa(t, n, d) {
           return t < 100 && t >= 0
-            ? new Date(t + 400, n, _) - Ft
-            : new Date(t, n, _).valueOf();
+            ? new Date(t + 400, n, d) - Ca
+            : new Date(t, n, d).valueOf();
         }
-        function Ca(t, n, _) {
+        function Sa(t, n, d) {
           return t < 100 && t >= 0
-            ? Date.UTC(t + 400, n, _) - Ft
-            : Date.UTC(t, n, _);
+            ? Date.UTC(t + 400, n, d) - Ca
+            : Date.UTC(t, n, d);
         }
         function Jt(t, n) {
           return n.erasAbbrRegex(t);
@@ -25821,231 +26061,231 @@
             y,
             t = [],
             n = [],
-            _ = [],
+            d = [],
             l = [],
-            D = this.eras();
-          for (h = 0, y = D.length; h < y; ++h)
-            n.push(se(D[h].name)),
-              t.push(se(D[h].abbr)),
-              _.push(se(D[h].narrow)),
-              l.push(se(D[h].name)),
-              l.push(se(D[h].abbr)),
-              l.push(se(D[h].narrow));
+            v = this.eras();
+          for (h = 0, y = v.length; h < y; ++h)
+            n.push(te(v[h].name)),
+              t.push(te(v[h].abbr)),
+              d.push(te(v[h].narrow)),
+              l.push(te(v[h].name)),
+              l.push(te(v[h].abbr)),
+              l.push(te(v[h].narrow));
           (this._erasRegex = new RegExp("^(" + l.join("|") + ")", "i")),
             (this._erasNameRegex = new RegExp("^(" + n.join("|") + ")", "i")),
             (this._erasAbbrRegex = new RegExp("^(" + t.join("|") + ")", "i")),
-            (this._erasNarrowRegex = new RegExp("^(" + _.join("|") + ")", "i"));
+            (this._erasNarrowRegex = new RegExp("^(" + d.join("|") + ")", "i"));
         }
-        function Mt(t, n) {
-          A(0, [t, t.length], 0, n);
+        function ht(t, n) {
+          x(0, [t, t.length], 0, n);
         }
-        function Sa(t, n, _, l, h) {
+        function Ha(t, n, d, l, h) {
           var y;
           return null == t
-            ? Be(this, l, h).year
-            : (n > (y = Me(t, l, h)) && (n = y), xs.call(this, t, n, _, l, h));
+            ? Re(this, l, h).year
+            : (n > (y = he(t, l, h)) && (n = y), ws.call(this, t, n, d, l, h));
         }
-        function xs(t, n, _, l, h) {
-          var y = _a(t, n, _, l, h),
-            D = Ge(y.year, 0, y.dayOfYear);
+        function ws(t, n, d, l, h) {
+          var y = ra(t, n, d, l, h),
+            v = We(y.year, 0, y.dayOfYear);
           return (
-            this.year(D.getUTCFullYear()),
-            this.month(D.getUTCMonth()),
-            this.date(D.getUTCDate()),
+            this.year(v.getUTCFullYear()),
+            this.month(v.getUTCMonth()),
+            this.date(v.getUTCDate()),
             this
           );
         }
-        A("N", 0, 0, "eraAbbr"),
-          A("NN", 0, 0, "eraAbbr"),
-          A("NNN", 0, 0, "eraAbbr"),
-          A("NNNN", 0, 0, "eraName"),
-          A("NNNNN", 0, 0, "eraNarrow"),
-          A("y", ["y", 1], "yo", "eraYear"),
-          A("y", ["yy", 2], 0, "eraYear"),
-          A("y", ["yyy", 3], 0, "eraYear"),
-          A("y", ["yyyy", 4], 0, "eraYear"),
-          x("N", Jt),
-          x("NN", Jt),
-          x("NNN", Jt),
-          x("NNNN", function Zs(t, n) {
+        x("N", 0, 0, "eraAbbr"),
+          x("NN", 0, 0, "eraAbbr"),
+          x("NNN", 0, 0, "eraAbbr"),
+          x("NNNN", 0, 0, "eraName"),
+          x("NNNNN", 0, 0, "eraNarrow"),
+          x("y", ["y", 1], "yo", "eraYear"),
+          x("y", ["yy", 2], 0, "eraYear"),
+          x("y", ["yyy", 3], 0, "eraYear"),
+          x("y", ["yyyy", 4], 0, "eraYear"),
+          C("N", Jt),
+          C("NN", Jt),
+          C("NNN", Jt),
+          C("NNNN", function ys(t, n) {
             return n.erasNameRegex(t);
           }),
-          x("NNNNN", function Ys(t, n) {
+          C("NNNNN", function Ls(t, n) {
             return n.erasNarrowRegex(t);
           }),
-          J(["N", "NN", "NNN", "NNNN", "NNNNN"], function (t, n, _, l) {
-            var h = _._locale.erasParse(t, l, _._strict);
-            h ? (w(_).era = h) : (w(_).invalidEra = t);
+          I(["N", "NN", "NNN", "NNNN", "NNNNN"], function (t, n, d, l) {
+            var h = d._locale.erasParse(t, l, d._strict);
+            h ? (k(d).era = h) : (k(d).invalidEra = t);
           }),
-          x("y", Ee),
-          x("yy", Ee),
-          x("yyy", Ee),
-          x("yyyy", Ee),
-          x("yo", function Ds(t, n) {
-            return n._eraYearOrdinalRegex || Ee;
+          C("y", Ne),
+          C("yy", Ne),
+          C("yyy", Ne),
+          C("yyyy", Ne),
+          C("yo", function Zs(t, n) {
+            return n._eraYearOrdinalRegex || Ne;
           }),
-          J(["y", "yy", "yyy", "yyyy"], 0),
-          J(["yo"], function (t, n, _, l) {
+          I(["y", "yy", "yyy", "yyyy"], 0),
+          I(["yo"], function (t, n, d, l) {
             var h;
-            _._locale._eraYearOrdinalRegex &&
-              (h = t.match(_._locale._eraYearOrdinalRegex)),
-              (n[0] = _._locale.eraYearOrdinalParse
-                ? _._locale.eraYearOrdinalParse(t, h)
+            d._locale._eraYearOrdinalRegex &&
+              (h = t.match(d._locale._eraYearOrdinalRegex)),
+              (n[0] = d._locale.eraYearOrdinalParse
+                ? d._locale.eraYearOrdinalParse(t, h)
                 : parseInt(t, 10));
           }),
-          A(0, ["gg", 2], 0, function () {
+          x(0, ["gg", 2], 0, function () {
             return this.weekYear() % 100;
           }),
-          A(0, ["GG", 2], 0, function () {
+          x(0, ["GG", 2], 0, function () {
             return this.isoWeekYear() % 100;
           }),
-          Mt("gggg", "weekYear"),
-          Mt("ggggg", "weekYear"),
-          Mt("GGGG", "isoWeekYear"),
-          Mt("GGGGG", "isoWeekYear"),
-          X("weekYear", "gg"),
-          X("isoWeekYear", "GG"),
-          U("weekYear", 1),
-          U("isoWeekYear", 1),
-          x("G", rt),
-          x("g", rt),
-          x("GG", W, ie),
-          x("gg", W, ie),
-          x("GGGG", At, vt),
-          x("gggg", At, vt),
-          x("GGGGG", ot, it),
-          x("ggggg", ot, it),
-          Qe(["gggg", "ggggg", "GGGG", "GGGGG"], function (t, n, _, l) {
+          ht("gggg", "weekYear"),
+          ht("ggggg", "weekYear"),
+          ht("GGGG", "isoWeekYear"),
+          ht("GGGGG", "isoWeekYear"),
+          G("weekYear", "gg"),
+          G("isoWeekYear", "GG"),
+          $("weekYear", 1),
+          $("isoWeekYear", 1),
+          C("G", st),
+          C("g", st),
+          C("GG", F, ee),
+          C("gg", F, ee),
+          C("GGGG", kt, Dt),
+          C("gggg", kt, Dt),
+          C("GGGGG", it, at),
+          C("ggggg", it, at),
+          Fe(["gggg", "ggggg", "GGGG", "GGGGG"], function (t, n, d, l) {
             n[l.substr(0, 2)] = O(t);
           }),
-          Qe(["gg", "GG"], function (t, n, _, l) {
-            n[l] = i.parseTwoDigitYear(t);
+          Fe(["gg", "GG"], function (t, n, d, l) {
+            n[l] = s.parseTwoDigitYear(t);
           }),
-          A("Q", 0, "Qo", "quarter"),
-          X("quarter", "Q"),
-          U("quarter", 7),
-          x("Q", Kt),
-          J("Q", function (t, n) {
+          x("Q", 0, "Qo", "quarter"),
+          G("quarter", "Q"),
+          $("quarter", 7),
+          C("Q", Vt),
+          I("Q", function (t, n) {
             n[1] = 3 * (O(t) - 1);
           }),
-          A("D", ["DD", 2], "Do", "date"),
-          X("date", "D"),
-          U("date", 9),
-          x("D", W),
-          x("DD", W, ie),
-          x("Do", function (t, n) {
+          x("D", ["DD", 2], "Do", "date"),
+          G("date", "D"),
+          $("date", 9),
+          C("D", F),
+          C("DD", F, ee),
+          C("Do", function (t, n) {
             return t
               ? n._dayOfMonthOrdinalParse || n._ordinalParse
               : n._dayOfMonthOrdinalParseLenient;
           }),
-          J(["D", "DD"], 2),
-          J("Do", function (t, n) {
-            n[2] = O(t.match(W)[0]);
+          I(["D", "DD"], 2),
+          I("Do", function (t, n) {
+            n[2] = O(t.match(F)[0]);
           });
-        var s = He("Date", !0);
-        A("DDD", ["DDDD", 3], "DDDo", "dayOfYear"),
-          X("dayOfYear", "DDD"),
-          U("dayOfYear", 4),
-          x("DDD", st),
-          x("DDDD", Xt),
-          J(["DDD", "DDDD"], function (t, n, _) {
-            _._dayOfYear = O(t);
+        var Ea = qe("Date", !0);
+        x("DDD", ["DDDD", 3], "DDDo", "dayOfYear"),
+          G("dayOfYear", "DDD"),
+          $("dayOfYear", 4),
+          C("DDD", nt),
+          C("DDDD", $t),
+          I(["DDD", "DDDD"], function (t, n, d) {
+            d._dayOfYear = O(t);
           }),
-          A("m", ["mm", 2], 0, "minute"),
-          X("minute", "m"),
-          U("minute", 14),
-          x("m", W),
-          x("mm", W, ie),
-          J(["m", "mm"], 4);
-        var a = He("Minutes", !1);
-        A("s", ["ss", 2], 0, "second"),
-          X("second", "s"),
-          U("second", 15),
-          x("s", W),
-          x("ss", W, ie),
-          J(["s", "ss"], 5);
-        var g,
-          T,
-          d = He("Seconds", !1);
+          x("m", ["mm", 2], 0, "minute"),
+          G("minute", "m"),
+          $("minute", 14),
+          C("m", F),
+          C("mm", F, ee),
+          I(["m", "mm"], 4);
+        var Ss = qe("Minutes", !1);
+        x("s", ["ss", 2], 0, "second"),
+          G("second", "s"),
+          $("second", 15),
+          C("s", F),
+          C("ss", F, ee),
+          I(["s", "ss"], 5);
+        var i,
+          c,
+          qs = qe("Seconds", !1);
         for (
-          A("S", 0, 0, function () {
+          x("S", 0, 0, function () {
             return ~~(this.millisecond() / 100);
           }),
-            A(0, ["SS", 2], 0, function () {
+            x(0, ["SS", 2], 0, function () {
               return ~~(this.millisecond() / 10);
             }),
-            A(0, ["SSS", 3], 0, "millisecond"),
-            A(0, ["SSSS", 4], 0, function () {
+            x(0, ["SSS", 3], 0, "millisecond"),
+            x(0, ["SSSS", 4], 0, function () {
               return 10 * this.millisecond();
             }),
-            A(0, ["SSSSS", 5], 0, function () {
+            x(0, ["SSSSS", 5], 0, function () {
               return 100 * this.millisecond();
             }),
-            A(0, ["SSSSSS", 6], 0, function () {
+            x(0, ["SSSSSS", 6], 0, function () {
               return 1e3 * this.millisecond();
             }),
-            A(0, ["SSSSSSS", 7], 0, function () {
+            x(0, ["SSSSSSS", 7], 0, function () {
               return 1e4 * this.millisecond();
             }),
-            A(0, ["SSSSSSSS", 8], 0, function () {
+            x(0, ["SSSSSSSS", 8], 0, function () {
               return 1e5 * this.millisecond();
             }),
-            A(0, ["SSSSSSSSS", 9], 0, function () {
+            x(0, ["SSSSSSSSS", 9], 0, function () {
               return 1e6 * this.millisecond();
             }),
-            X("millisecond", "ms"),
-            U("millisecond", 16),
-            x("S", st, Kt),
-            x("SS", st, ie),
-            x("SSS", st, Xt),
-            g = "SSSS";
-          g.length <= 9;
-          g += "S"
+            G("millisecond", "ms"),
+            $("millisecond", 16),
+            C("S", nt, Vt),
+            C("SS", nt, ee),
+            C("SSS", nt, $t),
+            i = "SSSS";
+          i.length <= 9;
+          i += "S"
         )
-          x(g, Ee);
-        function v(t, n) {
+          C(i, Ne);
+        function a(t, n) {
           n[6] = O(1e3 * ("0." + t));
         }
-        for (g = "S"; g.length <= 9; g += "S") J(g, v);
-        (T = He("Milliseconds", !1)),
-          A("z", 0, 0, "zoneAbbr"),
-          A("zz", 0, 0, "zoneName");
-        var b = Ue.prototype;
-        function Hs(t) {
+        for (i = "S"; i.length <= 9; i += "S") I(i, a);
+        (c = qe("Milliseconds", !1)),
+          x("z", 0, 0, "zoneAbbr"),
+          x("zz", 0, 0, "zoneName");
+        var g = ge.prototype;
+        function me(t) {
           return t;
         }
-        (b.add = xi),
-          (b.calendar = function Hi(t, n) {
+        (g.add = Ni),
+          (g.calendar = function ji(t, n) {
             1 === arguments.length &&
               (arguments[0]
-                ? Si(arguments[0])
+                ? Ui(arguments[0])
                   ? ((t = arguments[0]), (n = void 0))
-                  : Oi(arguments[0]) && ((n = arguments[0]), (t = void 0))
+                  : Pi(arguments[0]) && ((n = arguments[0]), (t = void 0))
                 : ((t = void 0), (n = void 0)));
-            var _ = t || R(),
-              l = jt(_, this).startOf("day"),
-              h = i.calendarFormat(this, l) || "sameElse",
-              y = n && (E(n[h]) ? n[h].call(this, _) : n[h]);
-            return this.format(y || this.localeData().calendar(h, this, R(_)));
+            var d = t || J(),
+              l = jt(d, this).startOf("day"),
+              h = s.calendarFormat(this, l) || "sameElse",
+              y = n && (de(n[h]) ? n[h].call(this, d) : n[h]);
+            return this.format(y || this.localeData().calendar(h, this, J(d)));
           }),
-          (b.clone = function Ei() {
-            return new Ue(this);
+          (g.clone = function Ii() {
+            return new ge(this);
           }),
-          (b.diff = function Ri(t, n, _) {
+          (g.diff = function Gi(t, n, d) {
             var l, h, y;
             if (!this.isValid()) return NaN;
             if (!(l = jt(t, this)).isValid()) return NaN;
             switch (
-              ((h = 6e4 * (l.utcOffset() - this.utcOffset())), (n = ne(n)))
+              ((h = 6e4 * (l.utcOffset() - this.utcOffset())), (n = V(n)))
             ) {
               case "year":
-                y = ht(this, l) / 12;
+                y = ut(this, l) / 12;
                 break;
               case "month":
-                y = ht(this, l);
+                y = ut(this, l);
                 break;
               case "quarter":
-                y = ht(this, l) / 3;
+                y = ut(this, l) / 3;
                 break;
               case "second":
                 y = (this - l) / 1e3;
@@ -26065,30 +26305,26 @@
               default:
                 y = this - l;
             }
-            return _ ? y : re(y);
+            return d ? y : ne(y);
           }),
-          (b.endOf = function ts(t) {
-            var n, _;
-            if (
-              void 0 === (t = ne(t)) ||
-              "millisecond" === t ||
-              !this.isValid()
-            )
+          (g.endOf = function is(t) {
+            var n, d;
+            if (void 0 === (t = V(t)) || "millisecond" === t || !this.isValid())
               return this;
-            switch (((_ = this._isUTC ? Ca : xa), t)) {
+            switch (((d = this._isUTC ? Sa : xa), t)) {
               case "year":
-                n = _(this.year() + 1, 0, 1) - 1;
+                n = d(this.year() + 1, 0, 1) - 1;
                 break;
               case "quarter":
                 n =
-                  _(this.year(), this.month() - (this.month() % 3) + 3, 1) - 1;
+                  d(this.year(), this.month() - (this.month() % 3) + 3, 1) - 1;
                 break;
               case "month":
-                n = _(this.year(), this.month() + 1, 1) - 1;
+                n = d(this.year(), this.month() + 1, 1) - 1;
                 break;
               case "week":
                 n =
-                  _(
+                  d(
                     this.year(),
                     this.month(),
                     this.date() - this.weekday() + 7
@@ -26096,7 +26332,7 @@
                 break;
               case "isoWeek":
                 n =
-                  _(
+                  d(
                     this.year(),
                     this.month(),
                     this.date() - (this.isoWeekday() - 1) + 7
@@ -26104,149 +26340,145 @@
                 break;
               case "day":
               case "date":
-                n = _(this.year(), this.month(), this.date() + 1) - 1;
+                n = d(this.year(), this.month(), this.date() + 1) - 1;
                 break;
               case "hour":
                 (n = this._d.valueOf()),
                   (n +=
-                    gt -
-                    Ie(n + (this._isUTC ? 0 : this.utcOffset() * je), gt) -
+                    pt -
+                    He(n + (this._isUTC ? 0 : this.utcOffset() * Ue), pt) -
                     1);
                 break;
               case "minute":
-                (n = this._d.valueOf()), (n += je - Ie(n, je) - 1);
+                (n = this._d.valueOf()), (n += Ue - He(n, Ue) - 1);
                 break;
               case "second":
-                (n = this._d.valueOf()), (n += 1e3 - Ie(n, 1e3) - 1);
+                (n = this._d.valueOf()), (n += 1e3 - He(n, 1e3) - 1);
             }
-            return this._d.setTime(n), i.updateOffset(this, !0), this;
+            return this._d.setTime(n), s.updateOffset(this, !0), this;
           }),
-          (b.format = function Bi(t) {
-            t || (t = this.isUtc() ? i.defaultFormatUtc : i.defaultFormat);
-            var n = We(this, t);
+          (g.format = function Xi(t) {
+            t || (t = this.isUtc() ? s.defaultFormatUtc : s.defaultFormat);
+            var n = Xe(this, t);
             return this.localeData().postformat(n);
           }),
-          (b.from = function Vi(t, n) {
-            return this.isValid() && ((de(t) && t.isValid()) || R(t).isValid())
-              ? ue({ to: this, from: t }).locale(this.locale()).humanize(!n)
+          (g.from = function Ki(t, n) {
+            return this.isValid() && ((z(t) && t.isValid()) || J(t).isValid())
+              ? re({ to: this, from: t }).locale(this.locale()).humanize(!n)
               : this.localeData().invalidDate();
           }),
-          (b.fromNow = function $i(t) {
-            return this.from(R(), t);
+          (g.fromNow = function es(t) {
+            return this.from(J(), t);
           }),
-          (b.to = function Ki(t, n) {
-            return this.isValid() && ((de(t) && t.isValid()) || R(t).isValid())
-              ? ue({ from: this, to: t }).locale(this.locale()).humanize(!n)
+          (g.to = function ts(t, n) {
+            return this.isValid() && ((z(t) && t.isValid()) || J(t).isValid())
+              ? re({ from: this, to: t }).locale(this.locale()).humanize(!n)
               : this.localeData().invalidDate();
           }),
-          (b.toNow = function Xi(t) {
-            return this.to(R(), t);
+          (g.toNow = function as(t) {
+            return this.to(J(), t);
           }),
-          (b.get = function Qa(t) {
-            return E(this[(t = ne(t))]) ? this[t]() : this;
+          (g.get = function Ba(t) {
+            return de(this[(t = V(t))]) ? this[t]() : this;
           }),
-          (b.invalidAt = function ls() {
-            return w(this).overflow;
+          (g.invalidAt = function Ft() {
+            return k(this).overflow;
           }),
-          (b.isAfter = function Pi(t, n) {
-            var _ = de(t) ? t : R(t);
+          (g.isAfter = function Fi(t, n) {
+            var d = z(t) ? t : J(t);
             return (
-              !(!this.isValid() || !_.isValid()) &&
-              ("millisecond" === (n = ne(n) || "millisecond")
-                ? this.valueOf() > _.valueOf()
-                : _.valueOf() < this.clone().startOf(n).valueOf())
+              !(!this.isValid() || !d.isValid()) &&
+              ("millisecond" === (n = V(n) || "millisecond")
+                ? this.valueOf() > d.valueOf()
+                : d.valueOf() < this.clone().startOf(n).valueOf())
             );
           }),
-          (b.isBefore = function ji(t, n) {
-            var _ = de(t) ? t : R(t);
+          (g.isBefore = function Ji(t, n) {
+            var d = z(t) ? t : J(t);
             return (
-              !(!this.isValid() || !_.isValid()) &&
-              ("millisecond" === (n = ne(n) || "millisecond")
-                ? this.valueOf() < _.valueOf()
-                : this.clone().endOf(n).valueOf() < _.valueOf())
+              !(!this.isValid() || !d.isValid()) &&
+              ("millisecond" === (n = V(n) || "millisecond")
+                ? this.valueOf() < d.valueOf()
+                : this.clone().endOf(n).valueOf() < d.valueOf())
             );
           }),
-          (b.isBetween = function Ii(t, n, _, l) {
-            var h = de(t) ? t : R(t),
-              y = de(n) ? n : R(n);
+          (g.isBetween = function Wi(t, n, d, l) {
+            var h = z(t) ? t : J(t),
+              y = z(n) ? n : J(n);
             return (
               !!(this.isValid() && h.isValid() && y.isValid()) &&
               ("(" === (l = l || "()")[0]
-                ? this.isAfter(h, _)
-                : !this.isBefore(h, _)) &&
-              (")" === l[1] ? this.isBefore(y, _) : !this.isAfter(y, _))
+                ? this.isAfter(h, d)
+                : !this.isBefore(h, d)) &&
+              (")" === l[1] ? this.isBefore(y, d) : !this.isAfter(y, d))
             );
           }),
-          (b.isSame = function Fi(t, n) {
+          (g.isSame = function Ri(t, n) {
             var l,
-              _ = de(t) ? t : R(t);
+              d = z(t) ? t : J(t);
             return (
-              !(!this.isValid() || !_.isValid()) &&
-              ("millisecond" === (n = ne(n) || "millisecond")
-                ? this.valueOf() === _.valueOf()
-                : ((l = _.valueOf()),
+              !(!this.isValid() || !d.isValid()) &&
+              ("millisecond" === (n = V(n) || "millisecond")
+                ? this.valueOf() === d.valueOf()
+                : ((l = d.valueOf()),
                   this.clone().startOf(n).valueOf() <= l &&
                     l <= this.clone().endOf(n).valueOf()))
             );
           }),
-          (b.isSameOrAfter = function Ji(t, n) {
+          (g.isSameOrAfter = function Qi(t, n) {
             return this.isSame(t, n) || this.isAfter(t, n);
           }),
-          (b.isSameOrBefore = function Wi(t, n) {
+          (g.isSameOrBefore = function zi(t, n) {
             return this.isSame(t, n) || this.isBefore(t, n);
           }),
-          (b.isValid = function _s() {
-            return De(this);
+          (g.isValid = function qa() {
+            return Ce(this);
           }),
-          (b.lang = ba),
-          (b.locale = Aa),
-          (b.localeData = wa),
-          (b.max = Ta),
-          (b.min = di),
-          (b.parsingFlags = function ds() {
-            return q({}, w(this));
+          (g.lang = ba),
+          (g.locale = Aa),
+          (g.localeData = wa),
+          (g.max = pi),
+          (g.min = ci),
+          (g.parsingFlags = function ms() {
+            return b({}, k(this));
           }),
-          (b.set = function $t(t, n) {
+          (g.set = function Va(t, n) {
             if ("object" == typeof t) {
               var l,
-                _ = (function Ra(t) {
-                  var _,
+                d = (function Ga(t) {
+                  var d,
                     n = [];
-                  for (_ in t) u(t, _) && n.push({ unit: _, priority: tt[_] });
+                  for (d in t) u(t, d) && n.push({ unit: d, priority: ue[d] });
                   return (
                     n.sort(function (l, h) {
                       return l.priority - h.priority;
                     }),
                     n
                   );
-                })((t = G(t)));
-              for (l = 0; l < _.length; l++) this[_[l].unit](t[_[l].unit]);
-            } else if (E(this[(t = ne(t))])) return this[t](n);
+                })((t = Se(t)));
+              for (l = 0; l < d.length; l++) this[d[l].unit](t[d[l].unit]);
+            } else if (de(this[(t = V(t))])) return this[t](n);
             return this;
           }),
-          (b.startOf = function es(t) {
-            var n, _;
-            if (
-              void 0 === (t = ne(t)) ||
-              "millisecond" === t ||
-              !this.isValid()
-            )
+          (g.startOf = function ns(t) {
+            var n, d;
+            if (void 0 === (t = V(t)) || "millisecond" === t || !this.isValid())
               return this;
-            switch (((_ = this._isUTC ? Ca : xa), t)) {
+            switch (((d = this._isUTC ? Sa : xa), t)) {
               case "year":
-                n = _(this.year(), 0, 1);
+                n = d(this.year(), 0, 1);
                 break;
               case "quarter":
-                n = _(this.year(), this.month() - (this.month() % 3), 1);
+                n = d(this.year(), this.month() - (this.month() % 3), 1);
                 break;
               case "month":
-                n = _(this.year(), this.month(), 1);
+                n = d(this.year(), this.month(), 1);
                 break;
               case "week":
-                n = _(this.year(), this.month(), this.date() - this.weekday());
+                n = d(this.year(), this.month(), this.date() - this.weekday());
                 break;
               case "isoWeek":
-                n = _(
+                n = d(
                   this.year(),
                   this.month(),
                   this.date() - (this.isoWeekday() - 1)
@@ -26254,22 +26486,22 @@
                 break;
               case "day":
               case "date":
-                n = _(this.year(), this.month(), this.date());
+                n = d(this.year(), this.month(), this.date());
                 break;
               case "hour":
                 (n = this._d.valueOf()),
-                  (n -= Ie(n + (this._isUTC ? 0 : this.utcOffset() * je), gt));
+                  (n -= He(n + (this._isUTC ? 0 : this.utcOffset() * Ue), pt));
                 break;
               case "minute":
-                (n = this._d.valueOf()), (n -= Ie(n, je));
+                (n = this._d.valueOf()), (n -= He(n, Ue));
                 break;
               case "second":
-                (n = this._d.valueOf()), (n -= Ie(n, 1e3));
+                (n = this._d.valueOf()), (n -= He(n, 1e3));
             }
-            return this._d.setTime(n), i.updateOffset(this, !0), this;
+            return this._d.setTime(n), s.updateOffset(this, !0), this;
           }),
-          (b.subtract = Ci),
-          (b.toArray = function ss() {
+          (g.subtract = Oi),
+          (g.toArray = function _s() {
             var t = this;
             return [
               t.year(),
@@ -26281,7 +26513,7 @@
               t.millisecond(),
             ];
           }),
-          (b.toObject = function os() {
+          (g.toObject = function ds() {
             var t = this;
             return {
               years: t.year(),
@@ -26293,36 +26525,36 @@
               milliseconds: t.milliseconds(),
             };
           }),
-          (b.toDate = function is() {
+          (g.toDate = function rs() {
             return new Date(this.valueOf());
           }),
-          (b.toISOString = function zi(t) {
+          (g.toISOString = function Vi(t) {
             if (!this.isValid()) return null;
             var n = !0 !== t,
-              _ = n ? this.clone().utc() : this;
-            return _.year() < 0 || _.year() > 9999
-              ? We(
-                  _,
+              d = n ? this.clone().utc() : this;
+            return d.year() < 0 || d.year() > 9999
+              ? Xe(
+                  d,
                   n
                     ? "YYYYYY-MM-DD[T]HH:mm:ss.SSS[Z]"
                     : "YYYYYY-MM-DD[T]HH:mm:ss.SSSZ"
                 )
-              : E(Date.prototype.toISOString)
+              : de(Date.prototype.toISOString)
               ? n
                 ? this.toDate().toISOString()
                 : new Date(this.valueOf() + 60 * this.utcOffset() * 1e3)
                     .toISOString()
-                    .replace("Z", We(_, "Z"))
-              : We(
-                  _,
+                    .replace("Z", Xe(d, "Z"))
+              : Xe(
+                  d,
                   n
                     ? "YYYY-MM-DD[T]HH:mm:ss.SSS[Z]"
                     : "YYYY-MM-DD[T]HH:mm:ss.SSSZ"
                 );
           }),
-          (b.inspect = function Gi() {
+          (g.inspect = function $i() {
             if (!this.isValid()) return "moment.invalid(/* " + this._i + " */)";
-            var _,
+            var d,
               l,
               t = "moment",
               n = "";
@@ -26331,31 +26563,31 @@
                 ((t =
                   0 === this.utcOffset() ? "moment.utc" : "moment.parseZone"),
                 (n = "Z")),
-              (_ = "[" + t + '("]'),
+              (d = "[" + t + '("]'),
               (l = 0 <= this.year() && this.year() <= 9999 ? "YYYY" : "YYYYYY"),
-              this.format(_ + l + "-MM-DD[T]HH:mm:ss.SSS" + n + '[")]')
+              this.format(d + l + "-MM-DD[T]HH:mm:ss.SSS" + n + '[")]')
             );
           }),
           "undefined" != typeof Symbol &&
             null != Symbol.for &&
-            (b[Symbol.for("nodejs.util.inspect.custom")] = function () {
+            (g[Symbol.for("nodejs.util.inspect.custom")] = function () {
               return "Moment<" + this.format() + ">";
             }),
-          (b.toJSON = function rs() {
+          (g.toJSON = function ls() {
             return this.isValid() ? this.toISOString() : null;
           }),
-          (b.toString = function Qi() {
+          (g.toString = function Bi() {
             return this.clone()
               .locale("en")
               .format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
           }),
-          (b.unix = function ns() {
+          (g.unix = function os() {
             return Math.floor(this.valueOf() / 1e3);
           }),
-          (b.valueOf = function as() {
+          (g.valueOf = function ss() {
             return this._d.valueOf() - 6e4 * (this._offset || 0);
           }),
-          (b.creationData = function ms() {
+          (g.creationData = function Na() {
             return {
               input: this._i,
               format: this._f,
@@ -26364,70 +26596,70 @@
               strict: this._strict,
             };
           }),
-          (b.eraName = function hs() {
+          (g.eraName = function ps() {
             var t,
               n,
-              _,
+              d,
               l = this.localeData().eras();
             for (t = 0, n = l.length; t < n; ++t)
               if (
-                ((_ = this.clone().startOf("day").valueOf()),
-                (l[t].since <= _ && _ <= l[t].until) ||
-                  (l[t].until <= _ && _ <= l[t].since))
+                ((d = this.clone().startOf("day").valueOf()),
+                (l[t].since <= d && d <= l[t].until) ||
+                  (l[t].until <= d && d <= l[t].since))
               )
                 return l[t].name;
             return "";
           }),
-          (b.eraNarrow = function fs() {
+          (g.eraNarrow = function hs() {
             var t,
               n,
-              _,
+              d,
               l = this.localeData().eras();
             for (t = 0, n = l.length; t < n; ++t)
               if (
-                ((_ = this.clone().startOf("day").valueOf()),
-                (l[t].since <= _ && _ <= l[t].until) ||
-                  (l[t].until <= _ && _ <= l[t].since))
+                ((d = this.clone().startOf("day").valueOf()),
+                (l[t].since <= d && d <= l[t].until) ||
+                  (l[t].until <= d && d <= l[t].since))
               )
                 return l[t].narrow;
             return "";
           }),
-          (b.eraAbbr = function gs() {
+          (g.eraAbbr = function Ua() {
             var t,
               n,
-              _,
+              d,
               l = this.localeData().eras();
             for (t = 0, n = l.length; t < n; ++t)
               if (
-                ((_ = this.clone().startOf("day").valueOf()),
-                (l[t].since <= _ && _ <= l[t].until) ||
-                  (l[t].until <= _ && _ <= l[t].since))
+                ((d = this.clone().startOf("day").valueOf()),
+                (l[t].since <= d && d <= l[t].until) ||
+                  (l[t].until <= d && d <= l[t].since))
               )
                 return l[t].abbr;
             return "";
           }),
-          (b.eraYear = function Ms() {
+          (g.eraYear = function fs() {
             var t,
               n,
-              _,
+              d,
               l,
               h = this.localeData().eras();
             for (t = 0, n = h.length; t < n; ++t)
               if (
-                ((_ = h[t].since <= h[t].until ? 1 : -1),
+                ((d = h[t].since <= h[t].until ? 1 : -1),
                 (l = this.clone().startOf("day").valueOf()),
                 (h[t].since <= l && l <= h[t].until) ||
                   (h[t].until <= l && l <= h[t].since))
               )
-                return (this.year() - i(h[t].since).year()) * _ + h[t].offset;
+                return (this.year() - s(h[t].since).year()) * d + h[t].offset;
             return this.year();
           }),
-          (b.year = ra),
-          (b.isLeapYear = function mn() {
-            return at(this.year());
+          (g.year = oa),
+          (g.isLeapYear = function pn() {
+            return et(this.year());
           }),
-          (b.weekYear = function ks(t) {
-            return Sa.call(
+          (g.weekYear = function Ys(t) {
+            return Ha.call(
               this,
               t,
               this.week(),
@@ -26436,50 +26668,50 @@
               this.localeData()._week.doy
             );
           }),
-          (b.isoWeekYear = function vs(t) {
-            return Sa.call(this, t, this.isoWeek(), this.isoWeekday(), 1, 4);
+          (g.isoWeekYear = function Ds(t) {
+            return Ha.call(this, t, this.isoWeek(), this.isoWeekday(), 1, 4);
           }),
-          (b.quarter = b.quarters =
+          (g.quarter = g.quarters =
             function Cs(t) {
               return null == t
                 ? Math.ceil((this.month() + 1) / 3)
                 : this.month(3 * (t - 1) + (this.month() % 3));
             }),
-          (b.month = sa),
-          (b.daysInMonth = function _n() {
+          (g.month = ia),
+          (g.daysInMonth = function mn() {
             return _t(this.year(), this.month());
           }),
-          (b.week = b.weeks =
-            function hn(t) {
+          (g.week = g.weeks =
+            function yn(t) {
               var n = this.localeData().week(this);
               return null == t ? n : this.add(7 * (t - n), "d");
             }),
-          (b.isoWeek = b.isoWeeks =
-            function fn(t) {
-              var n = Be(this, 1, 4).week;
+          (g.isoWeek = g.isoWeeks =
+            function Ln(t) {
+              var n = Re(this, 1, 4).week;
               return null == t ? n : this.add(7 * (t - n), "d");
             }),
-          (b.weeksInYear = function ws() {
+          (g.weeksInYear = function As() {
             var t = this.localeData()._week;
-            return Me(this.year(), t.dow, t.doy);
+            return he(this.year(), t.dow, t.doy);
           }),
-          (b.weeksInWeekYear = function Us() {
+          (g.weeksInWeekYear = function bs() {
             var t = this.localeData()._week;
-            return Me(this.weekYear(), t.dow, t.doy);
+            return he(this.weekYear(), t.dow, t.doy);
           }),
-          (b.isoWeeksInYear = function As() {
-            return Me(this.year(), 1, 4);
+          (g.isoWeeksInYear = function ks() {
+            return he(this.year(), 1, 4);
           }),
-          (b.isoWeeksInISOWeekYear = function bs() {
-            return Me(this.isoWeekYear(), 1, 4);
+          (g.isoWeeksInISOWeekYear = function vs() {
+            return he(this.isoWeekYear(), 1, 4);
           }),
-          (b.date = s),
-          (b.day = b.days =
-            function wn(t) {
+          (g.date = Ea),
+          (g.day = g.days =
+            function Nn(t) {
               if (!this.isValid()) return null != t ? this : NaN;
               var n = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
               return null != t
-                ? ((t = (function gn(t, n) {
+                ? ((t = (function Zn(t, n) {
                     return "string" != typeof t
                       ? t
                       : isNaN(t)
@@ -26491,15 +26723,15 @@
                   this.add(t - n, "d"))
                 : n;
             }),
-          (b.weekday = function xn(t) {
+          (g.weekday = function On(t) {
             if (!this.isValid()) return null != t ? this : NaN;
             var n = (this.day() + 7 - this.localeData()._week.dow) % 7;
             return null == t ? n : this.add(t - n, "d");
           }),
-          (b.isoWeekday = function Cn(t) {
+          (g.isoWeekday = function Un(t) {
             if (!this.isValid()) return null != t ? this : NaN;
             if (null != t) {
-              var n = (function Mn(t, n) {
+              var n = (function Yn(t, n) {
                 return "string" == typeof t
                   ? n.weekdaysParse(t) % 7 || 7
                   : isNaN(t)
@@ -26510,7 +26742,7 @@
             }
             return this.day() || 7;
           }),
-          (b.dayOfYear = function c(t) {
+          (g.dayOfYear = function xs(t) {
             var n =
               Math.round(
                 (this.clone().startOf("day") - this.clone().startOf("year")) /
@@ -26518,18 +26750,18 @@
               ) + 1;
             return null == t ? n : this.add(t - n, "d");
           }),
-          (b.hour = b.hours = En),
-          (b.minute = b.minutes = a),
-          (b.second = b.seconds = d),
-          (b.millisecond = b.milliseconds = T),
-          (b.utcOffset = function Mi(t, n, _) {
+          (g.hour = g.hours = Jn),
+          (g.minute = g.minutes = Ss),
+          (g.second = g.seconds = qs),
+          (g.millisecond = g.milliseconds = c),
+          (g.utcOffset = function Li(t, n, d) {
             var h,
               l = this._offset || 0;
             if (!this.isValid()) return null != t ? this : NaN;
             if (null != t) {
               if ("string" == typeof t) {
-                if (null === (t = Pt(Ae, t))) return this;
-              } else Math.abs(t) < 16 && !_ && (t *= 60);
+                if (null === (t = Pt(ot, t))) return this;
+              } else Math.abs(t) < 16 && !d && (t *= 60);
               return (
                 !this._isUTC && n && (h = It(this)),
                 (this._offset = t),
@@ -26537,20 +26769,20 @@
                 null != h && this.add(h, "m"),
                 l !== t &&
                   (!n || this._changeInProgress
-                    ? ka(this, ue(t - l, "m"), 1, !1)
+                    ? Da(this, re(t - l, "m"), 1, !1)
                     : this._changeInProgress ||
                       ((this._changeInProgress = !0),
-                      i.updateOffset(this, !0),
+                      s.updateOffset(this, !0),
                       (this._changeInProgress = null))),
                 this
               );
             }
             return this._isUTC ? l : It(this);
           }),
-          (b.utc = function yi(t) {
+          (g.utc = function Yi(t) {
             return this.utcOffset(0, t);
           }),
-          (b.local = function Li(t) {
+          (g.local = function Di(t) {
             return (
               this._isUTC &&
                 (this.utcOffset(0, t),
@@ -26559,74 +26791,74 @@
               this
             );
           }),
-          (b.parseZone = function Zi() {
+          (g.parseZone = function ki() {
             if (null != this._tzm) this.utcOffset(this._tzm, !1, !0);
             else if ("string" == typeof this._i) {
-              var t = Pt(za, this._i);
+              var t = Pt($a, this._i);
               null != t ? this.utcOffset(t) : this.utcOffset(0, !0);
             }
             return this;
           }),
-          (b.hasAlignedHourOffset = function Yi(t) {
+          (g.hasAlignedHourOffset = function vi(t) {
             return (
               !!this.isValid() &&
-              ((t = t ? R(t).utcOffset() : 0), (this.utcOffset() - t) % 60 == 0)
+              ((t = t ? J(t).utcOffset() : 0), (this.utcOffset() - t) % 60 == 0)
             );
           }),
-          (b.isDST = function Di() {
+          (g.isDST = function Ai() {
             return (
               this.utcOffset() > this.clone().month(0).utcOffset() ||
               this.utcOffset() > this.clone().month(5).utcOffset()
             );
           }),
-          (b.isLocal = function vi() {
+          (g.isLocal = function wi() {
             return !!this.isValid() && !this._isUTC;
           }),
-          (b.isUtcOffset = function Ai() {
+          (g.isUtcOffset = function Ci() {
             return !!this.isValid() && this._isUTC;
           }),
-          (b.isUtc = Za),
-          (b.isUTC = Za),
-          (b.zoneAbbr = function ce() {
+          (g.isUtc = La),
+          (g.isUTC = La),
+          (g.zoneAbbr = function _() {
             return this._isUTC ? "UTC" : "";
           }),
-          (b.zoneName = function ye() {
+          (g.zoneName = function M() {
             return this._isUTC ? "Coordinated Universal Time" : "";
           }),
-          (b.dates = H("dates accessor is deprecated. Use date instead.", s)),
-          (b.months = H(
+          (g.dates = H("dates accessor is deprecated. Use date instead.", Ea)),
+          (g.months = H(
             "months accessor is deprecated. Use month instead",
-            sa
+            ia
           )),
-          (b.years = H("years accessor is deprecated. Use year instead", ra)),
-          (b.zone = H(
+          (g.years = H("years accessor is deprecated. Use year instead", oa)),
+          (g.zone = H(
             "moment().zone is deprecated, use moment().utcOffset instead. http://momentjs.com/guides/#/warnings/zone/",
-            function Ti(t, n) {
+            function Zi(t, n) {
               return null != t
                 ? ("string" != typeof t && (t = -t), this.utcOffset(t, n), this)
                 : -this.utcOffset();
             }
           )),
-          (b.isDSTShifted = H(
+          (g.isDSTShifted = H(
             "isDSTShifted is deprecated. See http://momentjs.com/guides/#/warnings/dst-shifted/ for more information",
-            function ki() {
-              if (!M(this._isDSTShifted)) return this._isDSTShifted;
+            function bi() {
+              if (!T(this._isDSTShifted)) return this._isDSTShifted;
               var n,
                 t = {};
               return (
-                Yt(t, this),
-                (t = ga(t))._a
-                  ? ((n = t._isUTC ? N(t._a) : R(t._a)),
+                Tt(t, this),
+                (t = ha(t))._a
+                  ? ((n = t._isUTC ? q(t._a) : J(t._a)),
                     (this._isDSTShifted =
                       this.isValid() &&
-                      (function fi(t, n, _) {
-                        var D,
+                      (function Ti(t, n, d) {
+                        var v,
                           l = Math.min(t.length, n.length),
                           h = Math.abs(t.length - n.length),
                           y = 0;
-                        for (D = 0; D < l; D++)
-                          ((_ && t[D] !== n[D]) ||
-                            (!_ && O(t[D]) !== O(n[D]))) &&
+                        for (v = 0; v < l; v++)
+                          ((d && t[v] !== n[v]) ||
+                            (!d && O(t[v]) !== O(n[v]))) &&
                             y++;
                         return y + h;
                       })(t._a, n.toArray()) > 0))
@@ -26635,45 +26867,46 @@
               );
             }
           ));
-        var F = Dt.prototype;
-        function qa(t, n, _, l) {
-          var h = Te(),
-            y = N().set(l, n);
-          return h[_](y, t);
+        var N = yt.prototype;
+        function Ee(t, n, d, l) {
+          var h = fe(),
+            y = q().set(l, n);
+          return h[d](y, t);
         }
-        function Es(t, n, _) {
+        function Pa(t, n, d) {
           if ((L(t) && ((n = t), (t = void 0)), (t = t || ""), null != n))
-            return qa(t, n, _, "month");
+            return Ee(t, n, d, "month");
           var l,
             h = [];
-          for (l = 0; l < 12; l++) h[l] = qa(t, l, _, "month");
+          for (l = 0; l < 12; l++) h[l] = Ee(t, l, d, "month");
           return h;
         }
-        function Ss(t, n, _, l) {
+        function Ns(t, n, d, l) {
           "boolean" == typeof t
-            ? (L(n) && ((_ = n), (n = void 0)), (n = n || ""))
-            : ((_ = n = t),
+            ? (L(n) && ((d = n), (n = void 0)), (n = n || ""))
+            : ((d = n = t),
               (t = !1),
-              L(n) && ((_ = n), (n = void 0)),
+              L(n) && ((d = n), (n = void 0)),
               (n = n || ""));
-          var D,
-            h = Te(),
+          var v,
+            h = fe(),
             y = t ? h._week.dow : 0,
             S = [];
-          if (null != _) return qa(n, (_ + y) % 7, l, "day");
-          for (D = 0; D < 7; D++) S[D] = qa(n, (D + y) % 7, l, "day");
+          if (null != d) return Ee(n, (d + y) % 7, l, "day");
+          for (v = 0; v < 7; v++) S[v] = Ee(n, (v + y) % 7, l, "day");
           return S;
         }
-        (F.calendar = function Os(t, n, _) {
+        (N.calendar = function Fa(t, n, d) {
           var l = this._calendar[t] || this._calendar.sameElse;
-          return E(l) ? l.call(n, _) : l;
+          return de(l) ? l.call(n, d) : l;
         }),
-          (F.longDateFormat = function Ua(t) {
+          (N.longDateFormat = function Ra(t) {
             var n = this._longDateFormat[t],
-              _ = this._longDateFormat[t.toUpperCase()];
-            return n || !_
+              d = this._longDateFormat[t.toUpperCase()];
+            return n || !d
               ? n
-              : ((this._longDateFormat[t] = _.match(Gt)
+              : ((this._longDateFormat[t] = d
+                  .match(Zt)
                   .map(function (l) {
                     return "MMMM" === l ||
                       "MM" === l ||
@@ -26685,26 +26918,26 @@
                   .join("")),
                 this._longDateFormat[t]);
           }),
-          (F.invalidDate = function Ea() {
+          (N.invalidDate = function je() {
             return this._invalidDate;
           }),
-          (F.ordinal = function Ia(t) {
+          (N.ordinal = function Ke(t) {
             return this._ordinal.replace("%d", t);
           }),
-          (F.preparse = Hs),
-          (F.postformat = Hs),
-          (F.relativeTime = function Ja(t, n, _, l) {
-            var h = this._relativeTime[_];
-            return E(h) ? h(t, n, _, l) : h.replace(/%d/i, t);
+          (N.preparse = me),
+          (N.postformat = me),
+          (N.relativeTime = function Es(t, n, d, l) {
+            var h = this._relativeTime[d];
+            return de(h) ? h(t, n, d, l) : h.replace(/%d/i, t);
           }),
-          (F.pastFuture = function Wa(t, n) {
-            var _ = this._relativeTime[t > 0 ? "future" : "past"];
-            return E(_) ? _(n) : _.replace(/%s/i, n);
+          (N.pastFuture = function Ps(t, n) {
+            var d = this._relativeTime[t > 0 ? "future" : "past"];
+            return de(d) ? d(n) : d.replace(/%s/i, n);
           }),
-          (F.set = function ke(t) {
-            var n, _;
-            for (_ in t)
-              u(t, _) && (E((n = t[_])) ? (this[_] = n) : (this["_" + _] = n));
+          (N.set = function zt(t) {
+            var n, d;
+            for (d in t)
+              u(t, d) && (de((n = t[d])) ? (this[d] = n) : (this["_" + d] = n));
             (this._config = t),
               (this._dayOfMonthOrdinalParseLenient = new RegExp(
                 (this._dayOfMonthOrdinalParse.source ||
@@ -26713,40 +26946,40 @@
                   /\d{1,2}/.source
               ));
           }),
-          (F.eras = function us(t, n) {
-            var _,
+          (N.eras = function Oa(t, n) {
+            var d,
               l,
               h,
-              y = this._eras || Te("en")._eras;
-            for (_ = 0, l = y.length; _ < l; ++_)
+              y = this._eras || fe("en")._eras;
+            for (d = 0, l = y.length; d < l; ++d)
               switch (
-                ("string" == typeof y[_].since &&
-                  ((h = i(y[_].since).startOf("day")),
-                  (y[_].since = h.valueOf())),
-                typeof y[_].until)
+                ("string" == typeof y[d].since &&
+                  ((h = s(y[d].since).startOf("day")),
+                  (y[d].since = h.valueOf())),
+                typeof y[d].until)
               ) {
                 case "undefined":
-                  y[_].until = 1 / 0;
+                  y[d].until = 1 / 0;
                   break;
                 case "string":
-                  (h = i(y[_].until).startOf("day").valueOf()),
-                    (y[_].until = h.valueOf());
+                  (h = s(y[d].until).startOf("day").valueOf()),
+                    (y[d].until = h.valueOf());
               }
             return y;
           }),
-          (F.erasParse = function cs(t, n, _) {
+          (N.erasParse = function us(t, n, d) {
             var l,
               h,
-              D,
+              v,
               S,
-              P,
+              U,
               y = this.eras();
             for (t = t.toUpperCase(), l = 0, h = y.length; l < h; ++l)
               if (
-                ((D = y[l].name.toUpperCase()),
+                ((v = y[l].name.toUpperCase()),
                 (S = y[l].abbr.toUpperCase()),
-                (P = y[l].narrow.toUpperCase()),
-                _)
+                (U = y[l].narrow.toUpperCase()),
+                d)
               )
                 switch (n) {
                   case "N":
@@ -26755,43 +26988,43 @@
                     if (S === t) return y[l];
                     break;
                   case "NNNN":
-                    if (D === t) return y[l];
+                    if (v === t) return y[l];
                     break;
                   case "NNNNN":
-                    if (P === t) return y[l];
+                    if (U === t) return y[l];
                 }
-              else if ([D, S, P].indexOf(t) >= 0) return y[l];
+              else if ([v, S, U].indexOf(t) >= 0) return y[l];
           }),
-          (F.erasConvertYear = function ps(t, n) {
-            var _ = t.since <= t.until ? 1 : -1;
+          (N.erasConvertYear = function cs(t, n) {
+            var d = t.since <= t.until ? 1 : -1;
             return void 0 === n
-              ? i(t.since).year()
-              : i(t.since).year() + (n - t.offset) * _;
+              ? s(t.since).year()
+              : s(t.since).year() + (n - t.offset) * d;
           }),
-          (F.erasAbbrRegex = function ys(t) {
+          (N.erasAbbrRegex = function Ms(t) {
             return (
               u(this, "_erasAbbrRegex") || Wt.call(this),
               t ? this._erasAbbrRegex : this._erasRegex
             );
           }),
-          (F.erasNameRegex = function Ts(t) {
+          (N.erasNameRegex = function gs(t) {
             return (
               u(this, "_erasNameRegex") || Wt.call(this),
               t ? this._erasNameRegex : this._erasRegex
             );
           }),
-          (F.erasNarrowRegex = function Ls(t) {
+          (N.erasNarrowRegex = function Ts(t) {
             return (
               u(this, "_erasNarrowRegex") || Wt.call(this),
               t ? this._erasNarrowRegex : this._erasRegex
             );
           }),
-          (F.months = function nn(t, n) {
+          (N.months = function rn(t, n) {
             return t
               ? o(this._months)
                 ? this._months[t.month()]
                 : this._months[
-                    (this._months.isFormat || na).test(n)
+                    (this._months.isFormat || aa).test(n)
                       ? "format"
                       : "standalone"
                   ][t.month()]
@@ -26799,20 +27032,20 @@
               ? this._months
               : this._months.standalone;
           }),
-          (F.monthsShort = function sn(t, n) {
+          (N.monthsShort = function _n(t, n) {
             return t
               ? o(this._monthsShort)
                 ? this._monthsShort[t.month()]
-                : this._monthsShort[na.test(n) ? "format" : "standalone"][
+                : this._monthsShort[aa.test(n) ? "format" : "standalone"][
                     t.month()
                   ]
               : o(this._monthsShort)
               ? this._monthsShort
               : this._monthsShort.standalone;
           }),
-          (F.monthsParse = function rn(t, n, _) {
+          (N.monthsParse = function ln(t, n, d) {
             var l, h, y;
-            if (this._monthsParseExact) return on.call(this, t, n, _);
+            if (this._monthsParseExact) return dn.call(this, t, n, d);
             for (
               this._monthsParse ||
                 ((this._monthsParse = []),
@@ -26823,8 +27056,8 @@
               l++
             ) {
               if (
-                ((h = N([2e3, l])),
-                _ &&
+                ((h = q([2e3, l])),
+                d &&
                   !this._longMonthsParse[l] &&
                   ((this._longMonthsParse[l] = new RegExp(
                     "^" + this.months(h, "").replace(".", "") + "$",
@@ -26834,73 +27067,73 @@
                     "^" + this.monthsShort(h, "").replace(".", "") + "$",
                     "i"
                   ))),
-                !_ &&
+                !d &&
                   !this._monthsParse[l] &&
                   ((y =
                     "^" + this.months(h, "") + "|^" + this.monthsShort(h, "")),
                   (this._monthsParse[l] = new RegExp(y.replace(".", ""), "i"))),
-                _ && "MMMM" === n && this._longMonthsParse[l].test(t))
+                d && "MMMM" === n && this._longMonthsParse[l].test(t))
               )
                 return l;
-              if (_ && "MMM" === n && this._shortMonthsParse[l].test(t))
+              if (d && "MMM" === n && this._shortMonthsParse[l].test(t))
                 return l;
-              if (!_ && this._monthsParse[l].test(t)) return l;
+              if (!d && this._monthsParse[l].test(t)) return l;
             }
           }),
-          (F.monthsRegex = function ln(t) {
+          (N.monthsRegex = function cn(t) {
             return this._monthsParseExact
-              ? (u(this, "_monthsRegex") || oa.call(this),
+              ? (u(this, "_monthsRegex") || sa.call(this),
                 t ? this._monthsStrictRegex : this._monthsRegex)
-              : (u(this, "_monthsRegex") || (this._monthsRegex = an),
+              : (u(this, "_monthsRegex") || (this._monthsRegex = on),
                 this._monthsStrictRegex && t
                   ? this._monthsStrictRegex
                   : this._monthsRegex);
           }),
-          (F.monthsShortRegex = function dn(t) {
+          (N.monthsShortRegex = function un(t) {
             return this._monthsParseExact
-              ? (u(this, "_monthsRegex") || oa.call(this),
+              ? (u(this, "_monthsRegex") || sa.call(this),
                 t ? this._monthsShortStrictRegex : this._monthsShortRegex)
-              : (u(this, "_monthsShortRegex") || (this._monthsShortRegex = tn),
+              : (u(this, "_monthsShortRegex") || (this._monthsShortRegex = sn),
                 this._monthsShortStrictRegex && t
                   ? this._monthsShortStrictRegex
                   : this._monthsShortRegex);
           }),
-          (F.week = function da(t) {
-            return Be(t, this._week.dow, this._week.doy).week;
+          (N.week = function fn(t) {
+            return Re(t, this._week.dow, this._week.doy).week;
           }),
-          (F.firstDayOfYear = function pn() {
+          (N.firstDayOfYear = function Tn() {
             return this._week.doy;
           }),
-          (F.firstDayOfWeek = function cn() {
+          (N.firstDayOfWeek = function Mn() {
             return this._week.dow;
           }),
-          (F.weekdays = function Dn(t, n) {
-            var _ = o(this._weekdays)
+          (N.weekdays = function wn(t, n) {
+            var d = o(this._weekdays)
               ? this._weekdays
               : this._weekdays[
                   t && !0 !== t && this._weekdays.isFormat.test(n)
                     ? "format"
                     : "standalone"
                 ];
-            return !0 === t ? xt(_, this._week.dow) : t ? _[t.day()] : _;
+            return !0 === t ? bt(d, this._week.dow) : t ? d[t.day()] : d;
           }),
-          (F.weekdaysMin = function vn(t) {
+          (N.weekdaysMin = function xn(t) {
             return !0 === t
-              ? xt(this._weekdaysMin, this._week.dow)
+              ? bt(this._weekdaysMin, this._week.dow)
               : t
               ? this._weekdaysMin[t.day()]
               : this._weekdaysMin;
           }),
-          (F.weekdaysShort = function kn(t) {
+          (N.weekdaysShort = function Cn(t) {
             return !0 === t
-              ? xt(this._weekdaysShort, this._week.dow)
+              ? bt(this._weekdaysShort, this._week.dow)
               : t
               ? this._weekdaysShort[t.day()]
               : this._weekdaysShort;
           }),
-          (F.weekdaysParse = function bn(t, n, _) {
+          (N.weekdaysParse = function qn(t, n, d) {
             var l, h, y;
-            if (this._weekdaysParseExact) return An.call(this, t, n, _);
+            if (this._weekdaysParseExact) return Sn.call(this, t, n, d);
             for (
               this._weekdaysParse ||
                 ((this._weekdaysParse = []),
@@ -26912,8 +27145,8 @@
               l++
             ) {
               if (
-                ((h = N([2e3, 1]).day(l)),
-                _ &&
+                ((h = q([2e3, 1]).day(l)),
+                d &&
                   !this._fullWeekdaysParse[l] &&
                   ((this._fullWeekdaysParse[l] = new RegExp(
                     "^" + this.weekdays(h, "").replace(".", "\\.?") + "$",
@@ -26939,51 +27172,51 @@
                     y.replace(".", ""),
                     "i"
                   ))),
-                _ && "dddd" === n && this._fullWeekdaysParse[l].test(t))
+                d && "dddd" === n && this._fullWeekdaysParse[l].test(t))
               )
                 return l;
-              if (_ && "ddd" === n && this._shortWeekdaysParse[l].test(t))
+              if (d && "ddd" === n && this._shortWeekdaysParse[l].test(t))
                 return l;
-              if (_ && "dd" === n && this._minWeekdaysParse[l].test(t))
+              if (d && "dd" === n && this._minWeekdaysParse[l].test(t))
                 return l;
-              if (!_ && this._weekdaysParse[l].test(t)) return l;
+              if (!d && this._weekdaysParse[l].test(t)) return l;
             }
           }),
-          (F.weekdaysRegex = function Sn(t) {
+          (N.weekdaysRegex = function Hn(t) {
             return this._weekdaysParseExact
-              ? (u(this, "_weekdaysRegex") || Ct.call(this),
+              ? (u(this, "_weekdaysRegex") || wt.call(this),
                 t ? this._weekdaysStrictRegex : this._weekdaysRegex)
-              : (u(this, "_weekdaysRegex") || (this._weekdaysRegex = Ln),
+              : (u(this, "_weekdaysRegex") || (this._weekdaysRegex = vn),
                 this._weekdaysStrictRegex && t
                   ? this._weekdaysStrictRegex
                   : this._weekdaysRegex);
           }),
-          (F.weekdaysShortRegex = function qn(t) {
+          (N.weekdaysShortRegex = function En(t) {
             return this._weekdaysParseExact
-              ? (u(this, "_weekdaysRegex") || Ct.call(this),
+              ? (u(this, "_weekdaysRegex") || wt.call(this),
                 t ? this._weekdaysShortStrictRegex : this._weekdaysShortRegex)
               : (u(this, "_weekdaysShortRegex") ||
-                  (this._weekdaysShortRegex = Zn),
+                  (this._weekdaysShortRegex = An),
                 this._weekdaysShortStrictRegex && t
                   ? this._weekdaysShortStrictRegex
                   : this._weekdaysShortRegex);
           }),
-          (F.weekdaysMinRegex = function Nn(t) {
+          (N.weekdaysMinRegex = function Pn(t) {
             return this._weekdaysParseExact
-              ? (u(this, "_weekdaysRegex") || Ct.call(this),
+              ? (u(this, "_weekdaysRegex") || wt.call(this),
                 t ? this._weekdaysMinStrictRegex : this._weekdaysMinRegex)
-              : (u(this, "_weekdaysMinRegex") || (this._weekdaysMinRegex = Yn),
+              : (u(this, "_weekdaysMinRegex") || (this._weekdaysMinRegex = bn),
                 this._weekdaysMinStrictRegex && t
                   ? this._weekdaysMinStrictRegex
                   : this._weekdaysMinRegex);
           }),
-          (F.isPM = function Un(t) {
+          (N.isPM = function In(t) {
             return "p" === (t + "").toLowerCase().charAt(0);
           }),
-          (F.meridiem = function Pn(t, n, _) {
-            return t > 11 ? (_ ? "pm" : "PM") : _ ? "am" : "AM";
+          (N.meridiem = function Wn(t, n, d) {
+            return t > 11 ? (d ? "pm" : "PM") : d ? "am" : "AM";
           }),
-          Ze("en", {
+          ye("en", {
             eras: [
               {
                 since: "0001-01-01",
@@ -27019,17 +27252,17 @@
               );
             },
           }),
-          (i.lang = H(
+          (s.lang = H(
             "moment.lang is deprecated. Use moment.locale instead.",
-            Ze
+            ye
           )),
-          (i.langData = H(
+          (s.langData = H(
             "moment.langData is deprecated. Use moment.localeData instead.",
-            Te
+            fe
           ));
-        var Ce = Math.abs;
-        function Ps(t, n, _, l) {
-          var h = ue(n, _);
+        var ve = Math.abs;
+        function js(t, n, d, l) {
+          var h = re(n, d);
           return (
             (t._milliseconds += l * h._milliseconds),
             (t._days += l * h._days),
@@ -27037,131 +27270,131 @@
             t._bubble()
           );
         }
-        function js(t) {
+        function Is(t) {
           return t < 0 ? Math.floor(t) : Math.ceil(t);
         }
-        function Is(t) {
+        function Fs(t) {
           return (4800 * t) / 146097;
         }
-        function qs(t) {
+        function Os(t) {
           return (146097 * t) / 4800;
         }
-        function Se(t) {
+        function Ae(t) {
           return function () {
             return this.as(t);
           };
         }
-        var eo = Se("ms"),
-          to = Se("s"),
-          ao = Se("m"),
-          no = Se("h"),
-          io = Se("d"),
-          so = Se("w"),
-          oo = Se("M"),
-          ro = Se("Q"),
-          _o = Se("y");
-        function Xe(t) {
+        var eo = Ae("ms"),
+          to = Ae("s"),
+          ao = Ae("m"),
+          no = Ae("h"),
+          io = Ae("d"),
+          so = Ae("w"),
+          oo = Ae("M"),
+          ro = Ae("Q"),
+          _o = Ae("y");
+        function Be(t) {
           return function () {
             return this.isValid() ? this._data[t] : NaN;
           };
         }
-        var uo = Xe("milliseconds"),
-          co = Xe("seconds"),
-          po = Xe("minutes"),
-          ho = Xe("hours"),
-          fo = Xe("days"),
-          go = Xe("months"),
-          Mo = Xe("years");
-        var qe = Math.round,
-          Tt = { ss: 44, s: 45, m: 45, h: 22, d: 26, w: null, M: 11 };
-        function yo(t, n, _, l, h) {
-          return h.relativeTime(n || 1, !!_, t, l);
+        var uo = Be("milliseconds"),
+          co = Be("seconds"),
+          po = Be("minutes"),
+          ho = Be("hours"),
+          fo = Be("days"),
+          go = Be("months"),
+          Mo = Be("years");
+        var be = Math.round,
+          ft = { ss: 44, s: 45, m: 45, h: 22, d: 26, w: null, M: 11 };
+        function yo(t, n, d, l, h) {
+          return h.relativeTime(n || 1, !!d, t, l);
         }
-        var Ns = Math.abs;
-        function yt(t) {
+        var Us = Math.abs;
+        function gt(t) {
           return (t > 0) - (t < 0) || +t;
         }
-        function Na() {
+        function ja() {
           if (!this.isValid()) return this.localeData().invalidDate();
           var l,
             h,
             y,
-            D,
-            P,
-            z,
-            Ye,
-            Ne,
-            t = Ns(this._milliseconds) / 1e3,
-            n = Ns(this._days),
-            _ = Ns(this._months),
+            v,
+            U,
+            R,
+            Ze,
+            we,
+            t = Us(this._milliseconds) / 1e3,
+            n = Us(this._days),
+            d = Us(this._months),
             S = this.asSeconds();
           return S
-            ? ((l = re(t / 60)),
-              (h = re(l / 60)),
+            ? ((l = ne(t / 60)),
+              (h = ne(l / 60)),
               (t %= 60),
               (l %= 60),
-              (y = re(_ / 12)),
-              (_ %= 12),
-              (D = t ? t.toFixed(3).replace(/\.?0+$/, "") : ""),
-              (P = S < 0 ? "-" : ""),
-              (z = yt(this._months) !== yt(S) ? "-" : ""),
-              (Ye = yt(this._days) !== yt(S) ? "-" : ""),
-              (Ne = yt(this._milliseconds) !== yt(S) ? "-" : ""),
-              P +
+              (y = ne(d / 12)),
+              (d %= 12),
+              (v = t ? t.toFixed(3).replace(/\.?0+$/, "") : ""),
+              (U = S < 0 ? "-" : ""),
+              (R = gt(this._months) !== gt(S) ? "-" : ""),
+              (Ze = gt(this._days) !== gt(S) ? "-" : ""),
+              (we = gt(this._milliseconds) !== gt(S) ? "-" : ""),
+              U +
                 "P" +
-                (y ? z + y + "Y" : "") +
-                (_ ? z + _ + "M" : "") +
-                (n ? Ye + n + "D" : "") +
+                (y ? R + y + "Y" : "") +
+                (d ? R + d + "M" : "") +
+                (n ? Ze + n + "D" : "") +
                 (h || l || t ? "T" : "") +
-                (h ? Ne + h + "H" : "") +
-                (l ? Ne + l + "M" : "") +
-                (t ? Ne + D + "S" : ""))
+                (h ? we + h + "H" : "") +
+                (l ? we + l + "M" : "") +
+                (t ? we + v + "S" : ""))
             : "P0D";
         }
-        var I = ut.prototype;
+        var E = lt.prototype;
         return (
-          (I.isValid = function pi() {
+          (E.isValid = function gi() {
             return this._isValid;
           }),
-          (I.abs = function Gs() {
+          (E.abs = function Gs() {
             var t = this._data;
             return (
-              (this._milliseconds = Ce(this._milliseconds)),
-              (this._days = Ce(this._days)),
-              (this._months = Ce(this._months)),
-              (t.milliseconds = Ce(t.milliseconds)),
-              (t.seconds = Ce(t.seconds)),
-              (t.minutes = Ce(t.minutes)),
-              (t.hours = Ce(t.hours)),
-              (t.months = Ce(t.months)),
-              (t.years = Ce(t.years)),
+              (this._milliseconds = ve(this._milliseconds)),
+              (this._days = ve(this._days)),
+              (this._months = ve(this._months)),
+              (t.milliseconds = ve(t.milliseconds)),
+              (t.seconds = ve(t.seconds)),
+              (t.minutes = ve(t.minutes)),
+              (t.hours = ve(t.hours)),
+              (t.months = ve(t.months)),
+              (t.years = ve(t.years)),
               this
             );
           }),
-          (I.add = function Bs(t, n) {
-            return Ps(this, t, n, 1);
+          (E.add = function Bs(t, n) {
+            return js(this, t, n, 1);
           }),
-          (I.subtract = function Vs(t, n) {
-            return Ps(this, t, n, -1);
+          (E.subtract = function Vs(t, n) {
+            return js(this, t, n, -1);
           }),
-          (I.as = function Ks(t) {
+          (E.as = function Xs(t) {
             if (!this.isValid()) return NaN;
             var n,
-              _,
+              d,
               l = this._milliseconds;
-            if ("month" === (t = ne(t)) || "quarter" === t || "year" === t)
+            if ("month" === (t = V(t)) || "quarter" === t || "year" === t)
               switch (
-                ((n = this._days + l / 864e5), (_ = this._months + Is(n)), t)
+                ((n = this._days + l / 864e5), (d = this._months + Fs(n)), t)
               ) {
                 case "month":
-                  return _;
+                  return d;
                 case "quarter":
-                  return _ / 3;
+                  return d / 3;
                 case "year":
-                  return _ / 12;
+                  return d / 12;
               }
             else
-              switch (((n = this._days + Math.round(qs(this._months))), t)) {
+              switch (((n = this._days + Math.round(Os(this._months))), t)) {
                 case "week":
                   return n / 7 + l / 6048e5;
                 case "day":
@@ -27178,16 +27411,16 @@
                   throw new Error("Unknown unit " + t);
               }
           }),
-          (I.asMilliseconds = eo),
-          (I.asSeconds = to),
-          (I.asMinutes = ao),
-          (I.asHours = no),
-          (I.asDays = io),
-          (I.asWeeks = so),
-          (I.asMonths = oo),
-          (I.asQuarters = ro),
-          (I.asYears = _o),
-          (I.valueOf = function Xs() {
+          (E.asMilliseconds = eo),
+          (E.asSeconds = to),
+          (E.asMinutes = ao),
+          (E.asHours = no),
+          (E.asDays = io),
+          (E.asWeeks = so),
+          (E.asMonths = oo),
+          (E.asQuarters = ro),
+          (E.asYears = _o),
+          (E.valueOf = function Ks() {
             return this.isValid()
               ? this._milliseconds +
                   864e5 * this._days +
@@ -27195,217 +27428,217 @@
                   31536e6 * O(this._months / 12)
               : NaN;
           }),
-          (I._bubble = function $s() {
+          (E._bubble = function $s() {
             var h,
               y,
-              D,
+              v,
               S,
-              P,
+              U,
               t = this._milliseconds,
               n = this._days,
-              _ = this._months,
+              d = this._months,
               l = this._data;
             return (
-              (t >= 0 && n >= 0 && _ >= 0) ||
-                (t <= 0 && n <= 0 && _ <= 0) ||
-                ((t += 864e5 * js(qs(_) + n)), (n = 0), (_ = 0)),
+              (t >= 0 && n >= 0 && d >= 0) ||
+                (t <= 0 && n <= 0 && d <= 0) ||
+                ((t += 864e5 * Is(Os(d) + n)), (n = 0), (d = 0)),
               (l.milliseconds = t % 1e3),
-              (h = re(t / 1e3)),
+              (h = ne(t / 1e3)),
               (l.seconds = h % 60),
-              (y = re(h / 60)),
+              (y = ne(h / 60)),
               (l.minutes = y % 60),
-              (D = re(y / 60)),
-              (l.hours = D % 24),
-              (n += re(D / 24)),
-              (_ += P = re(Is(n))),
-              (n -= js(qs(P))),
-              (S = re(_ / 12)),
-              (_ %= 12),
+              (v = ne(y / 60)),
+              (l.hours = v % 24),
+              (n += ne(v / 24)),
+              (d += U = ne(Fs(n))),
+              (n -= Is(Os(U))),
+              (S = ne(d / 12)),
+              (d %= 12),
               (l.days = n),
-              (l.months = _),
+              (l.months = d),
               (l.years = S),
               this
             );
           }),
-          (I.clone = function lo() {
-            return ue(this);
+          (E.clone = function lo() {
+            return re(this);
           }),
-          (I.get = function mo(t) {
-            return (t = ne(t)), this.isValid() ? this[t + "s"]() : NaN;
+          (E.get = function mo(t) {
+            return (t = V(t)), this.isValid() ? this[t + "s"]() : NaN;
           }),
-          (I.milliseconds = uo),
-          (I.seconds = co),
-          (I.minutes = po),
-          (I.hours = ho),
-          (I.days = fo),
-          (I.weeks = function To() {
-            return re(this.days() / 7);
+          (E.milliseconds = uo),
+          (E.seconds = co),
+          (E.minutes = po),
+          (E.hours = ho),
+          (E.days = fo),
+          (E.weeks = function To() {
+            return ne(this.days() / 7);
           }),
-          (I.months = go),
-          (I.years = Mo),
-          (I.humanize = function Do(t, n) {
+          (E.months = go),
+          (E.years = Mo),
+          (E.humanize = function Do(t, n) {
             if (!this.isValid()) return this.localeData().invalidDate();
             var h,
               y,
-              _ = !1,
-              l = Tt;
+              d = !1,
+              l = ft;
             return (
               "object" == typeof t && ((n = t), (t = !1)),
-              "boolean" == typeof t && (_ = t),
+              "boolean" == typeof t && (d = t),
               "object" == typeof n &&
-                ((l = Object.assign({}, Tt, n)),
+                ((l = Object.assign({}, ft, n)),
                 null != n.s && null == n.ss && (l.ss = n.s - 1)),
-              (y = (function Lo(t, n, _, l) {
-                var h = ue(t).abs(),
-                  y = qe(h.as("s")),
-                  D = qe(h.as("m")),
-                  S = qe(h.as("h")),
-                  P = qe(h.as("d")),
-                  z = qe(h.as("M")),
-                  Ye = qe(h.as("w")),
-                  Ne = qe(h.as("y")),
-                  Fe =
-                    (y <= _.ss && ["s", y]) ||
-                    (y < _.s && ["ss", y]) ||
-                    (D <= 1 && ["m"]) ||
-                    (D < _.m && ["mm", D]) ||
+              (y = (function Lo(t, n, d, l) {
+                var h = re(t).abs(),
+                  y = be(h.as("s")),
+                  v = be(h.as("m")),
+                  S = be(h.as("h")),
+                  U = be(h.as("d")),
+                  R = be(h.as("M")),
+                  Ze = be(h.as("w")),
+                  we = be(h.as("y")),
+                  Pe =
+                    (y <= d.ss && ["s", y]) ||
+                    (y < d.s && ["ss", y]) ||
+                    (v <= 1 && ["m"]) ||
+                    (v < d.m && ["mm", v]) ||
                     (S <= 1 && ["h"]) ||
-                    (S < _.h && ["hh", S]) ||
-                    (P <= 1 && ["d"]) ||
-                    (P < _.d && ["dd", P]);
+                    (S < d.h && ["hh", S]) ||
+                    (U <= 1 && ["d"]) ||
+                    (U < d.d && ["dd", U]);
                 return (
-                  null != _.w &&
-                    (Fe = Fe || (Ye <= 1 && ["w"]) || (Ye < _.w && ["ww", Ye])),
-                  ((Fe = Fe ||
-                    (z <= 1 && ["M"]) ||
-                    (z < _.M && ["MM", z]) ||
-                    (Ne <= 1 && ["y"]) || ["yy", Ne])[2] = n),
-                  (Fe[3] = +t > 0),
-                  (Fe[4] = l),
-                  yo.apply(null, Fe)
+                  null != d.w &&
+                    (Pe = Pe || (Ze <= 1 && ["w"]) || (Ze < d.w && ["ww", Ze])),
+                  ((Pe = Pe ||
+                    (R <= 1 && ["M"]) ||
+                    (R < d.M && ["MM", R]) ||
+                    (we <= 1 && ["y"]) || ["yy", we])[2] = n),
+                  (Pe[3] = +t > 0),
+                  (Pe[4] = l),
+                  yo.apply(null, Pe)
                 );
-              })(this, !_, l, (h = this.localeData()))),
-              _ && (y = h.pastFuture(+this, y)),
+              })(this, !d, l, (h = this.localeData()))),
+              d && (y = h.pastFuture(+this, y)),
               h.postformat(y)
             );
           }),
-          (I.toISOString = Na),
-          (I.toString = Na),
-          (I.toJSON = Na),
-          (I.locale = Aa),
-          (I.localeData = wa),
-          (I.toIsoString = H(
+          (E.toISOString = ja),
+          (E.toString = ja),
+          (E.toJSON = ja),
+          (E.locale = Aa),
+          (E.localeData = wa),
+          (E.toIsoString = H(
             "toIsoString() is deprecated. Please use toISOString() instead (notice the capitals)",
-            Na
+            ja
           )),
-          (I.lang = ba),
-          A("X", 0, 0, "unix"),
-          A("x", 0, 0, "valueOf"),
-          x("x", rt),
-          x("X", /[+-]?\d+(\.\d{1,3})?/),
-          J("X", function (t, n, _) {
-            _._d = new Date(1e3 * parseFloat(t));
+          (E.lang = ba),
+          x("X", 0, 0, "unix"),
+          x("x", 0, 0, "valueOf"),
+          C("x", st),
+          C("X", /[+-]?\d+(\.\d{1,3})?/),
+          I("X", function (t, n, d) {
+            d._d = new Date(1e3 * parseFloat(t));
           }),
-          J("x", function (t, n, _) {
-            _._d = new Date(O(t));
+          I("x", function (t, n, d) {
+            d._d = new Date(O(t));
           }),
-          (i.version = "2.29.1"),
+          (s.version = "2.29.1"),
           (function r(t) {
             m = t;
-          })(R),
-          (i.fn = b),
-          (i.min = function li() {
-            return ya("isBefore", [].slice.call(arguments, 0));
+          })(J),
+          (s.fn = g),
+          (s.min = function hi() {
+            return ga("isBefore", [].slice.call(arguments, 0));
           }),
-          (i.max = function mi() {
-            return ya("isAfter", [].slice.call(arguments, 0));
+          (s.max = function Ma() {
+            return ga("isAfter", [].slice.call(arguments, 0));
           }),
-          (i.now = function () {
+          (s.now = function () {
             return Date.now ? Date.now() : +new Date();
           }),
-          (i.utc = N),
-          (i.unix = function Rt(t) {
-            return R(1e3 * t);
+          (s.utc = q),
+          (s.unix = function A(t) {
+            return J(1e3 * t);
           }),
-          (i.months = function Js(t, n) {
-            return Es(t, n, "months");
+          (s.months = function Js(t, n) {
+            return Pa(t, n, "months");
           }),
-          (i.isDate = k),
-          (i.locale = Ze),
-          (i.invalid = Oe),
-          (i.duration = ue),
-          (i.isMoment = de),
-          (i.weekdays = function Rs(t, n, _) {
-            return Ss(t, n, _, "weekdays");
+          (s.isDate = D),
+          (s.locale = ye),
+          (s.invalid = K),
+          (s.duration = re),
+          (s.isMoment = z),
+          (s.weekdays = function Rs(t, n, d) {
+            return Ns(t, n, d, "weekdays");
           }),
-          (i.parseZone = function Fs() {
-            return R.apply(null, arguments).parseZone();
+          (s.parseZone = function _e() {
+            return J.apply(null, arguments).parseZone();
           }),
-          (i.localeData = Te),
-          (i.isDuration = ct),
-          (i.monthsShort = function Ws(t, n) {
-            return Es(t, n, "monthsShort");
+          (s.localeData = fe),
+          (s.isDuration = mt),
+          (s.monthsShort = function Ws(t, n) {
+            return Pa(t, n, "monthsShort");
           }),
-          (i.weekdaysMin = function zs(t, n, _) {
-            return Ss(t, n, _, "weekdaysMin");
+          (s.weekdaysMin = function zs(t, n, d) {
+            return Ns(t, n, d, "weekdaysMin");
           }),
-          (i.defineLocale = qt),
-          (i.updateLocale = function Fn(t, n) {
+          (s.defineLocale = St),
+          (s.updateLocale = function zn(t, n) {
             if (null != n) {
-              var _,
+              var d,
                 l,
-                h = ca;
-              null != Q[t] && null != Q[t].parentLocale
-                ? Q[t].set(ve(Q[t]._config, n))
-                : (null != (l = lt(t)) && (h = l._config),
-                  (n = ve(h, n)),
+                h = ma;
+              null != W[t] && null != W[t].parentLocale
+                ? W[t].set(Me(W[t]._config, n))
+                : (null != (l = xt(t)) && (h = l._config),
+                  (n = Me(h, n)),
                   null == l && (n.abbr = t),
-                  ((_ = new Dt(n)).parentLocale = Q[t]),
-                  (Q[t] = _)),
-                Ze(t);
+                  ((d = new yt(n)).parentLocale = W[t]),
+                  (W[t] = d)),
+                ye(t);
             } else
-              null != Q[t] &&
-                (null != Q[t].parentLocale
-                  ? ((Q[t] = Q[t].parentLocale), t === Ze() && Ze(t))
-                  : null != Q[t] && delete Q[t]);
-            return Q[t];
+              null != W[t] &&
+                (null != W[t].parentLocale
+                  ? ((W[t] = W[t].parentLocale), t === ye() && ye(t))
+                  : null != W[t] && delete W[t]);
+            return W[t];
           }),
-          (i.locales = function Jn() {
-            return kt(Q);
+          (s.locales = function Gn() {
+            return Lt(W);
           }),
-          (i.weekdaysShort = function Qs(t, n, _) {
-            return Ss(t, n, _, "weekdaysShort");
+          (s.weekdaysShort = function Qs(t, n, d) {
+            return Ns(t, n, d, "weekdaysShort");
           }),
-          (i.normalizeUnits = ne),
-          (i.relativeTimeRounding = function Zo(t) {
-            return void 0 === t ? qe : "function" == typeof t && ((qe = t), !0);
+          (s.normalizeUnits = V),
+          (s.relativeTimeRounding = function Zo(t) {
+            return void 0 === t ? be : "function" == typeof t && ((be = t), !0);
           }),
-          (i.relativeTimeThreshold = function Yo(t, n) {
+          (s.relativeTimeThreshold = function Yo(t, n) {
             return (
-              void 0 !== Tt[t] &&
+              void 0 !== ft[t] &&
               (void 0 === n
-                ? Tt[t]
-                : ((Tt[t] = n), "s" === t && (Tt.ss = n - 1), !0))
+                ? ft[t]
+                : ((ft[t] = n), "s" === t && (ft.ss = n - 1), !0))
             );
           }),
-          (i.calendarFormat = function Ui(t, n) {
-            var _ = t.diff(n, "days", !0);
-            return _ < -6
+          (s.calendarFormat = function va(t, n) {
+            var d = t.diff(n, "days", !0);
+            return d < -6
               ? "sameElse"
-              : _ < -1
+              : d < -1
               ? "lastWeek"
-              : _ < 0
+              : d < 0
               ? "lastDay"
-              : _ < 1
+              : d < 1
               ? "sameDay"
-              : _ < 2
+              : d < 2
               ? "nextDay"
-              : _ < 7
+              : d < 7
               ? "nextWeek"
               : "sameElse";
           }),
-          (i.prototype = b),
-          (i.HTML5_FMT = {
+          (s.prototype = g),
+          (s.HTML5_FMT = {
             DATETIME_LOCAL: "YYYY-MM-DDTHH:mm",
             DATETIME_LOCAL_SECONDS: "YYYY-MM-DDTHH:mm:ss",
             DATETIME_LOCAL_MS: "YYYY-MM-DDTHH:mm:ss.SSS",
@@ -27416,7 +27649,7 @@
             WEEK: "GGGG-[W]WW",
             MONTH: "YYYY-MM",
           }),
-          i
+          s
         );
       })();
     },
@@ -27693,7 +27926,7 @@
         "./zh-tw": 3291,
         "./zh-tw.js": 3291,
       };
-      function i(o) {
+      function s(o) {
         var e = r(o);
         return f(e);
       }
@@ -27704,12 +27937,12 @@
         }
         return m[o];
       }
-      (i.keys = function () {
+      (s.keys = function () {
         return Object.keys(m);
       }),
-        (i.resolve = r),
-        (Z.exports = i),
-        (i.id = 6700);
+        (s.resolve = r),
+        (Z.exports = s),
+        (s.id = 6700);
     },
   },
 ]);

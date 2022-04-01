@@ -483,8 +483,8 @@ var sw = Object.defineProperty,
           path: "admin",
           loadChildren: () =>
             v
-              .e(112)
-              .then(v.bind(v, 112))
+              .e(942)
+              .then(v.bind(v, 3942))
               .then((rt) => rt.AdminModule),
           resolve: { login: v(1423).H },
           canActivate: [te.a],

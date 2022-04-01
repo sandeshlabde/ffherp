@@ -117,15 +117,8 @@ var sw = Object.defineProperty,
           getList(he) {
             return this.http.post(this.listUrl, he);
           }
-          getViewList(he, Re, Fe, ve, be, _e) {
-            return this.http.post(this.entityIdUrl, {
-              dbname: Fe,
-              encrypt: ve,
-              password: be,
-              id: Re,
-              flag: he,
-              userid: _e,
-            });
+          getViewList(he) {
+            return this.http.post(this.entityIdUrl, he);
           }
           getProductList(he) {
             return this.http.post(this.productDetailsUrl, he);

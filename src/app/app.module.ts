@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProspectService } from '../app/services/prospect.service';
 import { LoginComponent } from './Login/login/login.component';
-import { AuthGuard } from './auth.guard';
+
 import { DashBoardComponent } from './MyComponents/dash-board/dash-board.component';
 import { CommanComponent } from './MyComponents/comman/comman.component';
 import { SharedModule } from './shared/shared.module';
@@ -16,11 +16,11 @@ import { ListDashboardComponent } from './MyComponents/list-dashboard/list-dashb
 import { LoaderComponent } from './loader/loader.component';
 import { LoaderintercepterInterceptor } from './shared/intercepter/loaderintercepter.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthGuard } from 'src/guards/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
-
     LoginComponent,
     DashBoardComponent,
     CommanComponent,

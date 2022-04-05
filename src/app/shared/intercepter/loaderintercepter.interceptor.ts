@@ -9,6 +9,7 @@ import {
 import { Observable } from 'rxjs';
 import { ProspectService } from 'src/app/services/prospect.service';
 import { tap } from 'rxjs';
+
 @Injectable()
 export class LoaderintercepterInterceptor implements HttpInterceptor {
   constructor(private loaderService: ProspectService) {}
@@ -20,6 +21,7 @@ export class LoaderintercepterInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap((event) => {
         this.loaderService.loader.next(true);
+
         if (event.type == HttpEventType.Response) {
           if (event.status == 200) {
             this.loaderService.loader.next(false);

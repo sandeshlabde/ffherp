@@ -2,6 +2,7 @@ table {
   width: 100%;
   height: 75%;
   padding-top: 70px;
+  border: 1px solid #ddd;
 }
 .table-section {
   overflow-x: auto;
@@ -19,11 +20,17 @@ th {
 tr {
   height: 36px;
 }
-tr:hover {
+
+/* table tr:nth-child(even) {
+  background-color: #dbe4eb;
+} */
+
+table tr:hover {
+  cursor: pointer;
   background-color: #dbe4eb;
 }
 td {
-  max-width: 180px;
+  max-width: 200px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -31,9 +38,7 @@ td {
 span {
   padding: 0px 3px;
 }
-nav {
-  padding-top: 74px;
-}
+
 mat-icon {
   margin: 0px 0px 0px 10px;
 }
@@ -44,7 +49,10 @@ li {
 i {
   font-size: 14px;
   color: rgb(156, 155, 155);
-  padding: 3px;
+  padding: 4px;
+}
+.ListContain {
+  margin: 10px;
 }
 .menuCell {
   width: 60px;
@@ -127,10 +135,6 @@ i {
 }
 .filterSearch i {
   font-size: 20px;
-}
-
-.contain {
-  padding: 0px 17px 0px 67px;
 }
 
 ::ng-deep.mat-dialog-container {
@@ -239,9 +243,9 @@ i {
   right: -78;
 }
 
-.card-box:hover {
+/* .card-box:hover {
   background-color: #dbe4eb;
-}
+} */
 
 .subValueIcon {
   margin: 15px 0px;

@@ -36,7 +36,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ActionScheduledComponent } from './action-scheduled/action-scheduled.component';
-import { ApprovalnotifictionListComponent } from './approvalnotifiction-list/approvalnotifiction-list.component';
+import { PivortReportComponent } from './pivort-report/pivort-report.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { ApprovalnotifictionListComponent } from './approvalnotifiction-list/app
     NextActionComponent,
     CloseActionComponent,
     ActionScheduledComponent,
-    ApprovalnotifictionListComponent,
+    PivortReportComponent,
   ],
   imports: [
     CommonModule,
@@ -119,7 +119,7 @@ import { ApprovalnotifictionListComponent } from './approvalnotifiction-list/app
     MatToolbarModule,
     MatBadgeModule,
     ActionScheduledComponent,
-    ApprovalnotifictionListComponent,
+    PivortReportComponent,
   ],
 })
 export class SharedModule {}

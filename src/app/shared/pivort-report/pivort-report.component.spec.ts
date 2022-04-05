@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateNewComponent } from './create-new.component';
+import { PivortReportComponent } from './pivort-report.component';
 
-describe('CreateNewComponent', () => {
-  let component: CreateNewComponent;
-  let fixture: ComponentFixture<CreateNewComponent>;
+describe('PivortReportComponent', () => {
+  let component: PivortReportComponent;
+  let fixture: ComponentFixture<PivortReportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateNewComponent ]
+      declarations: [ PivortReportComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateNewComponent);
+    fixture = TestBed.createComponent(PivortReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

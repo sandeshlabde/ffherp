@@ -1,4 +1,4 @@
-<div class="contain" *ngIf="dataSource">
+<div class="ListContain">
   <nav aria-label="breadcrumb">
     <!-- <ol class="breadcrumb"> -->
     <div class="flex">
@@ -57,24 +57,7 @@
               <input matInput (keyup)="applyFilter($event)" #input />
             </mat-form-field>
           </div>
-          <div>
-            <mat-form-field appearance="standard">
-              <mat-label>Select Sort Type</mat-label>
-              <mat-select
-                name="selectedColumn"
-                [(ngModel)]="selectedColumn"
-                (ngModelChange)="changeSortedColumn()"
-              >
-                <!-- <mat-option
-                  *ngFor="let Value of commanData"
-                  value="{{ Value.Key }}"
-                  >{{ Value.Value }}</mat-option
-                > -->
-                <mat-option value="ContactName">ContactName</mat-option>
-                <mat-option value="OwnerName">OwnerName</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
+
           <div>
             <mat-paginator
               [pageSize]="10"
@@ -178,7 +161,11 @@
                     ></i
                   ></a>
                   <a (click)="openAction(element.InstalledNo, element.ClientID)"
-                    ><i matTooltip="Add Action" class="fas fa-plus-circle"></i
+                    ><i matTooltip="Add Action" class="fas fa-plus-circle"></i>
+                    <span
+                      *ngIf="element.AMCActionCount >= 1"
+                      matBadge="{{ element.AMCActionCount }}"
+                    ></span
                   ></a>
                 </div>
               </td>
@@ -199,12 +186,7 @@
                 class="text-start columnFontSize"
               >
                 {{ element.ClientName }}
-                <div>
-                  <a class="a" (click)="openEmailQuote(element.InstalledNo)">
-                    <i matTooltip="View Email Quote" class="fas fa-file-pdf"></i
-                  ></a>
-                </div>
-                <div *ngIf="voucher">
+                <div *ngIf="voucherStatus">
                   <a
                     class="a"
                     (click)="
@@ -216,6 +198,11 @@
                     "
                     >{{ element.Approval }}</a
                   >
+                </div>
+                <div>
+                  <a class="a" (click)="openEmailQuote(element.InstalledNo)">
+                    <i matTooltip="View Email Quote" class="fas fa-file-pdf"></i
+                  ></a>
                 </div>
               </td>
             </ng-container>
@@ -261,17 +248,21 @@
                 {{ element.OwnerName }}
                 <div>
                   <a class="a" (click)="openChat(element.InstalledNo)">
-                    <i
-                      matTooltip="Chat"
+                    <i matTooltip="Chat" class="far fa-comments"></i>
+                    <span
+                      *ngIf="element.ChatNotiCount >= 1"
                       matBadge="{{ element.ChatNotiCount }}"
-                      class="far fa-comments"
-                    ></i
+                    ></span
                   ></a>
                   <a
                     class="a"
                     (click)="openNotes(element.InstalledNo, element.ClientName)"
                   >
                     <i matTooltip="view Notes" class="far fa-clipboard"></i>
+                    <span
+                      *ngIf="element.NotesCount >= 1"
+                      matBadge="{{ element.NotesCount }}"
+                    ></span>
                   </a>
                 </div>
               </td>
@@ -291,7 +282,12 @@
                 class="text-end columnFontSize"
                 [ngStyle]=""
               >
-                {{ element.Anualisedamount | currency: "INR" }}
+                <div *ngIf="installedno">
+                  {{ element.Anualisedamount | currency: "INR" }}
+                </div>
+                <div *ngIf="voucher">
+                  {{ element.AvgFeedback | currency: "INR" }}
+                </div>
               </td>
             </ng-container>
             <ng-container matColumnDef="StatusName">
@@ -520,6 +516,10 @@
                       title="view Notes"
                       class="far fa-clipboard"
                     ></i>
+                    <span
+                      *ngIf="cardData.NotesCount >= 1"
+                      matBadge="{{ cardData.NotesCount }}"
+                    ></span>
                   </a>
                 </li>
                 <li>
@@ -544,11 +544,11 @@
                 </li>
                 <li>
                   <a class="a" (click)="openChat(cardData.InstalledNo)">
-                    <i
-                      matTooltip="Chat"
+                    <i matTooltip="Chat" class="far fa-comments"></i>
+                    <span
+                      *ngIf="cardData.ChatNotiCount >= 1"
                       matBadge="{{ cardData.ChatNotiCount }}"
-                      class="far fa-comments"
-                    ></i
+                    ></span
                   ></a>
                 </li>
               </div>
@@ -569,6 +569,24 @@
               <mat-form-field appearance="standard">
                 <mat-label>Search Column</mat-label>
                 <input matInput (keyup)="applyFilter($event)" #input />
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="standard">
+                <mat-label>Select Sort Type</mat-label>
+                <mat-select
+                  name="selectedColumn"
+                  [(ngModel)]="selectedColumn"
+                  (ngModelChange)="changeSortedColumn()"
+                >
+                  <!-- <mat-option
+                    *ngFor="let Value of commanData"
+                    value="{{ Value.Key }}"
+                    >{{ Value.Value }}</mat-option
+                  > -->
+                  <mat-option value="ContactName">ContactName</mat-option>
+                  <mat-option value="OwnerName">OwnerName</mat-option>
+                </mat-select>
               </mat-form-field>
             </div>
             <div>
@@ -642,6 +660,10 @@
                         "
                       >
                         <i matTooltip="view Notes" class="far fa-clipboard"></i>
+                        <span
+                          *ngIf="element.NotesCount >= 1"
+                          matBadge="{{ element.NotesCount }}"
+                        ></span>
                       </a>
                       <a class="a" (click)="openEmailTrace(element.InstalledNo)"
                         ><i
@@ -754,6 +776,7 @@
                     (click)="
                       actionSchedul(element.InstalledNo, element.ClientName)
                     "
+                    *ngIf="element.AMCActionCount >= 1"
                   >
                     {{ element.AMCActionCount }}
                   </div>
@@ -801,11 +824,11 @@
                   </div>
                   <div class="subValueIcon">
                     <a class="a" (click)="openChat(element.InstalledNo)">
-                      <i
-                        matTooltip="Chat"
+                      <i matTooltip="Chat" class="far fa-comments"></i>
+                      <span
+                        *ngIf="element.ChatNotiCount >= 1"
                         matBadge="{{ element.ChatNotiCount }}"
-                        class="far fa-comments"
-                      ></i
+                      ></span
                     ></a>
                   </div>
                 </td>
@@ -851,15 +874,20 @@
                   <th>Contact</th>
                   <!-- <th></th> -->
                   <th>Owner</th>
-                  <!-- <th>Action</th> -->
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let EntityList of filteredEntity(group.key)">
-                  <td>{{ EntityList.InstalledNo }}</td>
+                  <td>
+                    <a class="a" (click)="openEntity(EntityList.InstalledNo)">{{
+                      EntityList.InstalledNo
+                    }}</a>
+                  </td>
                   <td>{{ EntityList.ClientName }}</td>
                   <td>{{ EntityList.ContactName }}</td>
                   <td>{{ EntityList.OwnerName }}</td>
+                  <td>{{ EntityList.AMCActionCount }}</td>
                 </tr>
               </tbody>
             </table>

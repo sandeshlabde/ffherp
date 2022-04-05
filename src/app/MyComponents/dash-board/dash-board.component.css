@@ -3,15 +3,12 @@
   width: 400px;
   height: 400px;
 }
-.contain {
-  padding: 64px 17px 0px 67px;
-}
 
 th {
   height: 26px;
   background-color: #dcebdc;
-  font-size: 11px;
-  font-weight: 400;
+  font-size: 13px !important;
+  font-weight: 500 !important;
   color: black;
 }
 tr:hover {

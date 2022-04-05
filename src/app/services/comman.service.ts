@@ -12,6 +12,12 @@ export class CommanService {
   companyContactListURL =
     'https://apitest.ffherp.co.in/api/Voucher/GetCommonContactList';
   ApprovalCountUrl = 'https://ffherp.co.in:446/api/Voucher/GetApprovalCount';
+  pivortReportcommanDataUrl =
+    'https://ffherp.co.in:446/api/Voucher/GetCommonData';
+
+  GetReportMappingUrl = 'https://ffherp.co.in:446/api/Voucher/GetReportMapping';
+
+  GetVReportUrl = 'https://ffherp.co.in:446/api/Voucher/GetVReport';
   constructor(private http: HttpClient) {}
   createFormAutoComplete(param: any) {
     return this.http.post(this.createFormAutoCompleteURL, param);
@@ -24,5 +30,15 @@ export class CommanService {
   }
   ApprovalCount(param) {
     return this.http.post(this.ApprovalCountUrl, param);
+  }
+  GetCommanDataPivortReport(param) {
+    return this.http.post(this.pivortReportcommanDataUrl, param);
+  }
+  GetReportMapping(param) {
+    return this.http.post(this.GetReportMappingUrl, param);
+  }
+
+  GetVReport(param) {
+    return this.http.post(this.GetVReportUrl, param);
   }
 }

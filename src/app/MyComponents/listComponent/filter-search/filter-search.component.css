@@ -7,18 +7,17 @@ button {
 .input-width {
   width: 100%;
 }
-.standard-color-modal{
+.standard-color-modal {
   background-color: #dcebdc;
 }
 .modal-heading {
   /* background-color: #bce1c6; */
   height: 30px;
   text-align: center;
-
 }
-.modal-container{
+.modal-container {
   height: 650px;
 }
-.filterSearchContain{
-  margin:35px;
+.filterSearchContain {
+  margin: 35px;
 }

@@ -18,7 +18,6 @@ export class DashListComponent implements OnInit {
   dashDetailList: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
     this.dashDetailList = this.filteredEntity(data.ActorName, data.Data);
-    console.log(this.dashDetailList);
   }
   filteredEntity(entity: any, data: any) {
     if (data && data.length > 0) {

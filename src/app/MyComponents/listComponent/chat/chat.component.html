@@ -3,12 +3,15 @@
     <h2>Chat</h2>
   </div>
   <div class="contain">
-    <div *ngFor="let x of chat">
-      <div class="card chatCard">
-        <div class="text-primary">{{ x.UserID }}</div>
-        <div [innerHTML]="x.Instruction"></div>
-        <div class="text-end">
-          {{ x.UpdatedOn | date: "dd MMM y ,h:mm:ss a" }}
+    <div *ngFor="let msg of chatAllData">
+      <div
+        class="card chatCard user"
+        [ngClass]="msg.Name === user ? 'user' : 'anotherUser'"
+      >
+        <div>{{ msg.Name }}</div>
+        <div [innerHTML]="msg.Instruction"></div>
+        <div class="text-end datetime">
+          {{ msg.UpdatedOn | date: "dd MMM y , h:mm  a" }}
         </div>
       </div>
     </div>

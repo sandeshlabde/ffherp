@@ -29,7 +29,6 @@ export class ApprovalComponent implements OnInit {
       encrypt: this.global.LOGGED_IN_USER.encryptPswd,
     };
     this.listService.showvoucharData(params).subscribe((data: any) => {
-      console.log(JSON.parse(data));
       this.approvalData = JSON.parse(data);
     });
   }

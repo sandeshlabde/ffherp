@@ -1,5 +1,5 @@
 <div class="noteBox">
-  <div class=" modal-heading standard-color-modal">
+  <div class="modal-heading standard-color-modal">
     <h2>Vouchar Detail</h2>
   </div>
   <div class="modal-body">
@@ -16,6 +16,7 @@
           <th>Appv Status</th>
           <th>Appv Amt</th>
           <th>Paid Amt</th>
+          <th></th>
           <th>Due Amt</th>
           <th>Paid Status</th>
 
@@ -32,7 +33,7 @@
           <td>{{ x.ExpenseTitle }}</td>
           <td>{{ x.EntityName }}</td>
           <td>{{ x.Budgeted }}</td>
-          <td>{{ x.ExpenseTitle }}</td>
+          <td>{{ x.ExpenseAmount }}</td>
           <td>{{ x.ApprovalStatus }}</td>
           <td>{{ x.ApprovedAmount }}</td>
           <td>{{ x.PaidAmount }}</td>
@@ -44,6 +45,7 @@
           <td>{{ x.PaymentStatus }}</td>
           <td>{{ x.DueAmount }}</td>
           <td>{{ x.ApprovedRemark }}</td>
+          <td></td>
         </tr>
       </tbody>
     </table>

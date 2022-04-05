@@ -1,0 +1,78 @@
+.pivortReport {
+  margin: 10px;
+}
+.heading {
+  text-align: center;
+  background-color: #bce1c6;
+}
+.ChartHeading {
+  text-align: center;
+}
+.contain {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.table_heading {
+  background-color: #bce1c6;
+  color: black;
+}
+table {
+  border: 1px solid #ddd;
+}
+.tableDiv {
+  overflow-x: auto;
+}
+
+th {
+  height: 26px;
+  background-color: #dcebdc;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: black;
+}
+td {
+  max-width: 100%;
+}
+table tr:nth-child(even) {
+  background-color: #dbe4eb;
+}
+
+table tr:hover {
+  cursor: pointer;
+}
+.GenerateButton {
+  background-color: green;
+  color: white;
+}
+.ExportButton {
+  border: 1px solid black;
+}
+.piaChart {
+  display: flex;
+  justify-content: center;
+}
+.mat-card {
+  height: 60vh;
+  width: 60vh;
+}
+.right {
+  text-align: right;
+}
+.left {
+  text-align: left;
+}
+.pieOver {
+  background-color: white;
+  position: fixed;
+  bottom: 13vh;
+}
+.canvasDiv {
+  height: 500px;
+  width: 500px;
+}
+.closeButton {
+  display: flex;
+  justify-content: end;
+}

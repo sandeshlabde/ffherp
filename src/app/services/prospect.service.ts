@@ -93,24 +93,8 @@ export class ProspectService {
   }
 
   // show entityid  info APi calling
-  getViewList(
-    flag: string,
-    id: number,
-    dbname: string,
-    encrypt: string,
-    password: string,
-    userid: string
-  ) {
-    const requestBody = {
-      dbname,
-      encrypt,
-      password,
-      id,
-      flag,
-      userid,
-    };
-
-    return this.http.post(this.entityIdUrl, requestBody);
+  getViewList(param) {
+    return this.http.post(this.entityIdUrl, param);
   }
 
   // Entity product details api calling

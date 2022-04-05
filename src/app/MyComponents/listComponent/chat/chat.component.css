@@ -12,9 +12,20 @@ textarea {
 .chatCard {
   box-sizing: border-box;
   /* background-color: rgb(238, 209, 188); */
-  background-color: #dbe4eb;
-  margin: 10px;
+
   padding: 10px;
+}
+.user {
+  background-color: #eee5cf;
+  margin: 10px 0px 10px 174px;
+}
+.anotherUser {
+  color: white;
+  background-color: #3f4242;
+  margin: 10px 167px 10px 0px;
+}
+.datetime {
+  font-size: 10px;
 }
 .FormContain {
   margin: 0px 10px;
@@ -35,5 +46,5 @@ textarea {
 .sendButtonDiv {
   margin-bottom: 5px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }

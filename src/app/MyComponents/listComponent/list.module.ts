@@ -8,7 +8,7 @@ import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.compon
 import { FilterSearchComponent } from './filter-search/filter-search.component';
 import { ApprovalComponent } from './approval/approval.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { CreateNewComponent } from './create-new/create-new.component';
+import { CreateNewFormComponent } from './create-new/create-new-form.component';
 import { AdditionalDetailsComponent } from './create-new/additional-details/additional-details.component';
 import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-address/delivary-billing-address.component';
 
@@ -27,7 +27,7 @@ import { ListComponent } from './list.component';
     FilterSearchComponent,
     ApprovalComponent,
     EditListComponent,
-    CreateNewComponent,
+    CreateNewFormComponent,
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
     EditVoucharComponent,
@@ -45,7 +45,7 @@ import { ListComponent } from './list.component';
     FilterSearchComponent,
     ApprovalComponent,
     EditListComponent,
-    CreateNewComponent,
+    CreateNewFormComponent,
     AdditionalDetailsComponent,
     DelivaryBillingAddressComponent,
     EditVoucharComponent,

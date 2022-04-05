@@ -122,7 +122,6 @@ export class DashBoardComponent implements OnInit {
     this.listService.showtotalActivity(param).subscribe((data: any) => {
       this.AllData = JSON.parse(data);
       this.tableData = this.getPivotTable(this.AllData, this.selectedValue);
-      console.log(this.tableData);
     });
   }
 
@@ -153,6 +152,7 @@ export class DashBoardComponent implements OnInit {
     }, 0);
   }
   piChart(x) {
+    console.log(x);
     const A = Object.keys(x)
       .filter((key) => key !== 'total')
       .reduce((obj, key) => {

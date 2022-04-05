@@ -11,42 +11,52 @@ export class FilterSearchComponent implements OnInit {
   labelData: any;
   FormArry: any;
   EntityName: any;
-
+  commanData: any;
+  get lead() {
+    return ['lead'].includes(this.EntityName.toLowerCase());
+  }
+  get prospect() {
+    return ['prospect'].includes(this.EntityName.toLowerCase());
+  }
+  get so() {
+    return ['salesorderlist'].includes(this.EntityName.toLowerCase());
+  }
+  get mo() {
+    return ['molist'].includes(this.EntityName.toLowerCase());
+  }
+  get mi() {
+    return ['milist'].includes(this.EntityName.toLowerCase());
+  }
+  get po() {
+    return ['polist'].includes(this.EntityName.toLowerCase());
+  }
+  get invoice() {
+    return ['payment'].includes(this.EntityName.toLowerCase());
+  }
+  get pi() {
+    return ['payable'].includes(this.EntityName.toLowerCase());
+  }
+  get ticket() {
+    return ['ticket'].includes(this.EntityName.toLowerCase());
+  }
+  get amc() {
+    return ['amc'].includes(this.EntityName.toLowerCase());
+  }
+  get work() {
+    return ['work'].includes(this.EntityName.toLowerCase());
+  }
+  get repair() {
+    return ['repair'].includes(this.EntityName.toLowerCase());
+  }
+  get vouchar() {
+    return ['vouchar'].includes(this.EntityName.toLowerCase());
+  }
   constructor(
     private httpClient: HttpClient,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.commanData = data.Data;
     this.EntityName = this.data.EntityName;
-    this.httpClient.get('/assets/inputlabel.json').subscribe((data) => {
-      this.FormArry = data;
-      if (this.EntityName === 'Prospect') {
-        this.labelData = this.FormArry.prospect;
-      } else if (this.EntityName === 'Lead') {
-        this.labelData = this.FormArry.Lead;
-      } else if (this.EntityName === 'SalesOrderLIst') {
-        this.labelData = this.FormArry.SO;
-      } else if (this.EntityName === 'MIList') {
-        this.labelData = this.FormArry.MI;
-      } else if (this.EntityName === 'MoList') {
-        this.labelData = this.FormArry.MO;
-      } else if (this.EntityName === 'POList') {
-        this.labelData = this.FormArry.PO;
-      } else if (this.EntityName === 'Repair') {
-        this.labelData = this.FormArry.Repair;
-      } else if (this.EntityName === 'Payment') {
-        this.labelData = this.FormArry.Payment;
-      } else if (this.EntityName === 'Payable') {
-        this.labelData = this.FormArry.Payble;
-      } else if (this.EntityName === 'Ticket') {
-        this.labelData = this.FormArry.Ticket;
-      } else if (this.EntityName === 'AMC') {
-        this.labelData = this.FormArry.AMC;
-      } else if (this.EntityName === 'Work') {
-        this.labelData = this.FormArry.Work;
-      }
-
-      console.log();
-    });
   }
 
   ngOnInit(): void {}

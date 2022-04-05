@@ -1,0 +1,136 @@
+<div class="pivortReport">
+  <div class="heading">
+    <h1>Report (User Wise)</h1>
+  </div>
+  <div class="contain">
+    <div>
+      <mat-form-field class="input-width">
+        <mat-label>Entity </mat-label>
+        <mat-select [(ngModel)]="Entity" (ngModelChange)="reportMapping()">
+          <mat-option value="1"> Lead </mat-option>
+          <mat-option value="2"> So </mat-option>
+          <mat-option value="3"> Prospect </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="input-width">
+        <mat-label>Row </mat-label>
+        <mat-select [(ngModel)]="Row" (ngModelChange)="reportMapping()">
+          <mat-option
+            value="{{ Row.Id }}  "
+            *ngFor="let Row of reportCommanData"
+          >
+            {{ Row.Name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="input-width">
+        <mat-label> Column </mat-label>
+        <mat-select [(ngModel)]="Column">
+          <mat-option
+            *ngFor="let Column of reportMappingData"
+            value="{{ Column.Id }}"
+            >{{ Column.Name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="input-width">
+        <mat-label>From</mat-label>
+        <input matInput [matDatepicker]="From" [(ngModel)]="from" />
+        <mat-datepicker-toggle matSuffix [for]="From"></mat-datepicker-toggle>
+        <mat-datepicker #From></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="input-width">
+        <mat-label>To</mat-label>
+        <input matInput [matDatepicker]="To" [(ngModel)]="to" />
+        <mat-datepicker-toggle matSuffix [for]="To"></mat-datepicker-toggle>
+        <mat-datepicker #To></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <button
+        mat-raised-button
+        class="GenerateButton"
+        (click)="generateReport()"
+      >
+        Generate
+      </button>
+    </div>
+    <div><button class="ExportButton" mat-raised-button>Export</button></div>
+  </div>
+  <div class="tableDiv">
+    <table class="table">
+      <thead class="table_heading">
+        <tr>
+          <th
+            *ngFor="let heading of Headings"
+            [ngClass]="
+              heading == 'entityOwnerName' ||
+              heading == 'user Name' ||
+              heading == 'name'
+                ? 'left'
+                : 'right'
+            "
+          >
+            {{ heading }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let x of VReportData">
+          <ng-container *ngFor="let heading of Headings">
+            <td
+              (click)="getRowData(x, heading)"
+              [ngClass]="
+                heading == 'entityOwnerName' ||
+                heading == 'user Name' ||
+                heading == 'name'
+                  ? 'left'
+                  : 'right'
+              "
+            >
+              <div *ngIf="x[heading] !== '0'">
+                {{ x[heading] }}
+              </div>
+            </td>
+          </ng-container>
+        </tr>
+        <!-- <tr>
+          <td>Total</td>
+          <ng-container *ngFor="let A of Headings">
+            <td>
+              {{ getTotal(A) }}
+            </td>
+          </ng-container>
+        </tr> -->
+      </tbody>
+    </table>
+  </div>
+  <div class="piaChart">
+    <div *ngIf="displyaPieChart" class="pieOver">
+      <h2 class="ChartHeading">{{ username }}</h2>
+      <div class="canvasDiv">
+        <canvas
+          baseChart
+          [type]="'pie'"
+          [datasets]="pieChartData"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+        ></canvas>
+      </div>
+      <div class="closeButton">
+        <button mat-stroked-button (click)="displyaPieChart = !displyaPieChart">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

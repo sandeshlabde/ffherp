@@ -47,4 +47,5 @@ export interface listdatafield {
   SVACTOR: string;
   FActor: string;
   UpTo: string;
+  NotesCount: number;
 }

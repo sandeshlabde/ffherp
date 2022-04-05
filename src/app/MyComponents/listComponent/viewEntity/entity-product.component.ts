@@ -78,20 +78,18 @@ export class EntityProductComponent implements OnInit {
     // entity Product EntityModule name set end here
 
     // entityid Details Section Start Here*******************************************************************************
+    const param = {
+      dbname: this.global.LOGGED_IN_USER.DbName,
+      encrypt: this.global.LOGGED_IN_USER.encryptPswd,
 
-    this.listService
-      .getViewList(
-        this.Entityflag,
-        this.Entityid,
-        this.global.LOGGED_IN_USER.DbName,
-        this.global.LOGGED_IN_USER.UserId,
-        this.global.LOGGED_IN_USER.Password,
-        this.global.LOGGED_IN_USER.encryptPswd
-      )
-      .subscribe((data: any) => {
-        this.entityIdDetailData = JSON.parse(data);
-        this.entityData = this.entityIdDetailData[0];
-      });
+      id: this.Entityid,
+      flag: this.Entityflag,
+      userid: this.global.LOGGED_IN_USER.UserId,
+    };
+    this.listService.getViewList(param).subscribe((data: any) => {
+      this.entityIdDetailData = JSON.parse(data);
+      this.entityData = this.entityIdDetailData[0];
+    });
     // }
 
     // entityid Details Section End Here*************************************************************************

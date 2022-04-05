@@ -22,7 +22,6 @@ import { ShowEmailQuotComponent } from './show-email-quot/show-email-quot.compon
 import { ActionComponent } from 'src/app/shared/action/action.component';
 
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { CreateNewComponent } from './create-new/create-new.component';
 import * as moment from 'moment';
 import { CommanService } from 'src/app/services/comman.service';
 
@@ -32,6 +31,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { EditListComponent } from './edit-approvedlist/edit-approvedlist';
 import { ActionScheduledComponent } from 'src/app/shared/action-scheduled/action-scheduled.component';
 import { Subscription } from 'rxjs';
+import { CreateNewFormComponent } from './create-new/create-new-form.component';
 
 export interface DialogData {
   EntityID: number;
@@ -63,7 +63,7 @@ export class ListComponent implements OnInit {
   tableSection: boolean = true;
   cardSection: boolean = false;
   DetailViewSection: boolean = false;
-  groupSelected: string = ' ';
+  groupSelected: any;
   Array: any;
   // dialogRef: MatDialogRef<Count>;
   // dialogData: NewMessageDialoagData;
@@ -154,7 +154,6 @@ export class ListComponent implements OnInit {
       entityTypes: [
         'lead',
         'payment',
-        'prospect',
         'ticket',
         'amc',
         'repair',
@@ -187,6 +186,10 @@ export class ListComponent implements OnInit {
   dialogData: any;
   Approval: any;
   IsSearch: any;
+  fromDate: any;
+  toDate: any;
+  Ownername: any;
+  categoryId: any;
 
   drop(event: CdkDragDrop<any[]>) {
     moveItemInArray(
@@ -236,6 +239,11 @@ export class ListComponent implements OnInit {
   get voucher() {
     return ['voucher'].includes(this.EntityName.toLowerCase());
   }
+  get voucherStatus() {
+    return ['voucher', 'salesorderlist'].includes(
+      this.EntityName.toLowerCase()
+    );
+  }
   get facDelDate() {
     return ['salesorderlist'].includes(this.EntityName.toLowerCase());
   }
@@ -258,10 +266,19 @@ export class ListComponent implements OnInit {
   ) {
     this.root.params.subscribe((param) => {
       this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
+      console.log(this.dialogData);
       if (this.dialogData) {
-        this.EntityName = this.dialogData.EntityName;
-        this.Approval = '296';
-        (this.IsSearch = 1), console.log(this.dialogData);
+        if (this.dialogData.Count) {
+          this.EntityName = this.dialogData.EntityName;
+          this.Approval = '296';
+          this.IsSearch = 1;
+        } else if (this.dialogData.columnId) {
+          this.EntityName = this.dialogData.EntityName;
+          this.fromDate = this.dialogData.fromdate;
+          this.toDate = this.dialogData.todate;
+          this.Ownername = this.dialogData.Ownername;
+          this.categoryId = this.dialogData.categoryId;
+        }
       } else {
         this.EntityName = param['EntityName'];
       }
@@ -269,16 +286,81 @@ export class ListComponent implements OnInit {
         Flag: this.EntityName,
         Dbname: this.global.LOGGED_IN_USER.DbName,
         Password: this.global.LOGGED_IN_USER.encryptPswd,
-        // id: this.global.LOGGED_IN_USER.RoleId,
+
         userid: this.global.LOGGED_IN_USER.UserId,
         RoleID: this.global.LOGGED_IN_USER.RoleId,
         Approval: this.Approval,
         IsSearch: this.IsSearch,
+
+        // ClientName: '',
+        // ProductId: '',
+        CategoryId: this.categoryId,
+        // GroupId: '',
+        // ManufacturerName: '',
+        // SerialNO: '',
+        // Remark: '',
+        Status: ' ',
+        // BranchId: '',
+        // ServicetyType: '',
+        // Subscriptioncheck: 0,
+        // DateStatus: '0',
+        Fromdate: this.fromDate,
+        ToDate: this.toDate,
+        // InstalledNo: '',
+        // Periodicity: '-1',
+        // ProspectId: '',
+        // CompanyName: '',
+        // ProductName: '',
+        // Source: '0',
+        // Source_name: '',
+        // NActor: '',
+        // CompEmail: '',
+        // ConMobile: '',
+        // ConEmail: '',
+        // Opendate: '',
+        // ContactName: '',
+        OwnerName: this.Ownername,
+        // FActor: '',
+        // ProblemDetail: 'Select Problems',
+        // Billedstatus: '0',
+
+        // SoDateTypee: '0',
+        // DocketNo: '',
+        // TransportName: '',
+        // SalesOrderId: '',
+        // POID: '',
+        // MIID: '',
+        // PONumber: '',
+        // BillType: 'Select Invoice Type',
+        // DeliveryStatusName: '0',
+        // AssociateCompany: '',
+        // IndustryType: '0',
+        // Relationshiptype: '0',
+        // Area: '',
+        // City: '',
+        // State: '',
+        // CompanyOwner: '',
+        // Parentcompany: '',
+        // Stage: '0',
+        // ProspectContactCode: '0',
+        // LeadStage: '0',
+        // MOID: '',
+        // actiontype: '0',
+        // ProductRowId: '0',
+        // Priority: '0',
+        // SourceRef: '',
+        // EntityId: '',
+        // ENTITY: 'Select Entity',
+        // TicketType: '0',
+        // TicketFaultType: '0',
+        // Installedstatusid: '0',
+        // Tag: '0',
+        // VoucherNo: '',
+        // ExpneseType: '0',
       };
 
       this.listService.getList(params).subscribe((data: any) => {
         this.dataSource.data = JSON.parse(data);
-        console.log(this.dataSource.data);
       });
       if (this.EntityName === 'POList') {
         this.EntityNameTitle = 'Purchase Order';
@@ -315,7 +397,6 @@ export class ListComponent implements OnInit {
     };
     this.CommanService.listCommanData(params).subscribe((data: any) => {
       this.commanData = JSON.parse(data);
-      console.log(this.commanData);
     });
   }
 
@@ -441,6 +522,7 @@ export class ListComponent implements OnInit {
       height: '80%',
       width: '80%',
       data: {
+        Data: this.commanData,
         EntityName: this.EntityName,
         EntityNameTitle: this.EntityNameTitle,
       },
@@ -495,7 +577,7 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
   createForm() {
-    const dialogRef = this.dialog.open(CreateNewComponent, {
+    const dialogRef = this.dialog.open(CreateNewFormComponent, {
       data: {
         EntityName: this.EntityName,
         commanData: this.commanData,
@@ -520,11 +602,11 @@ export class ListComponent implements OnInit {
     dialogRef.afterClosed().subscribe();
   }
   selectTable() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.tableSection = true;
     this.cardSection = false;
     this.DetailViewSection = false;
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
   }
   selectCard() {
     this.tableSection = false;
@@ -532,15 +614,13 @@ export class ListComponent implements OnInit {
     this.DetailViewSection = false;
   }
   viewDetail() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
     this.tableSection = false;
     this.cardSection = false;
     this.DetailViewSection = true;
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
   }
   groupSelectedValue() {
-    console.log(this.groupSelected);
-
     const map = new Map();
     this.dataSource.data.forEach((item) => {
       map.set(item[this.groupSelected], {
@@ -552,7 +632,7 @@ export class ListComponent implements OnInit {
       });
     });
     this.Array = map;
-    console.log(this.Array);
+
     // this.FilterEntityData = this.filteredEntity(
     //   this.dataSource.data,
     //   this.groupSelected

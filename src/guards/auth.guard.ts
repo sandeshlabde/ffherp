@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
- 
-import { ProspectService } from './services/prospect.service';
- 
+import { ProspectService } from 'src/app/services/prospect.service';
 
 @Injectable({
   providedIn: 'root',

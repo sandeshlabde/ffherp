@@ -11,18 +11,19 @@ import { ProspectService } from 'src/app/services/prospect.service';
 export class ChatComponent implements OnInit {
   Entityid: any;
   EntityName: any;
-  chatData: any;
   pageID: any;
-  chat: any;
   prefixText: any;
   actorList: any;
   chatMessage: any;
   AddedUserinChat: any;
+  user: any;
+  chatAllData: any;
   constructor(
     private listService: ProspectService,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private global: Global
   ) {
+    this.user = this.global.LOGGED_IN_USER.Username;
     this.Entityid = this.data.EntityID;
     this.EntityName = this.data.EntityName;
 
@@ -94,8 +95,8 @@ export class ChatComponent implements OnInit {
       userid: this.global.LOGGED_IN_USER.UserId,
     };
     this.listService.showChat(params).subscribe((data: any) => {
-      this.chat = JSON.parse(data);
-      console.warn(data);
+      this.chatAllData = JSON.parse(data);
+      console.log(this.chatAllData.Name);
     });
   }
   onChangeSearch(val: string) {

@@ -17,7 +17,7 @@
   </div> -->
 
   <div class="modal-body">
-    <table id="noteTable" class="table ">
+    <table id="noteTable" class="table">
       <thead class="notes table_heading">
         <tr>
           <th class="chatHeadingSize">Added By</th>
@@ -28,7 +28,7 @@
       <tbody>
         <tr *ngFor="let note of noteData">
           <td>{{ note.UpdatedBy }}</td>
-          <td>{{ note.Fromdate }}</td>
+          <td>{{ note.Fromdate | dateformat }}</td>
           <td>{{ note.Description }}</td>
         </tr>
       </tbody>

@@ -1,124 +1,113 @@
-<div class="contain">
-  <div class="row">
-    <div class="col">
-      <div class="option">
-        <mat-form-field>
-          <mat-label>Select an option</mat-label>
-          <mat-select
-            [(ngModel)]="selectedValue"
-            (ngModelChange)="updateTable()"
-          >
-            <mat-option
-              id="{{ D.id }}"
-              *ngFor="let D of ddData"
-              [value]="D.key"
-            >
-              {{ D.value }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <!-- <mat-label class="me-2">Activity Report :</mat-label> -->
+<div class="row">
+  <div class="col">
+    <div class="option">
+      <mat-form-field>
+        <mat-label>Select an option</mat-label>
+        <mat-select [(ngModel)]="selectedValue" (ngModelChange)="updateTable()">
+          <mat-option id="{{ D.id }}" *ngFor="let D of ddData" [value]="D.key">
+            {{ D.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <!-- <mat-label class="me-2">Activity Report :</mat-label> -->
 
-        <mat-form-field>
-          <mat-label>From Date</mat-label>
-          <input
-            matInput
-            [matDatepicker]="from"
-            [(ngModel)]="From"
-            name="From"
-            #input="ngModel"
-            [max]="maxDate"
-          />
-          <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
-          <mat-datepicker #from></mat-datepicker>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>To Date</mat-label>
-          <input
-            matInput
-            [matDatepicker]="to"
-            [(ngModel)]="To"
-            #input="ngModel"
-          />
-          <!-- [min]="minDate" -->
-          <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
-          <mat-datepicker #to></mat-datepicker>
-        </mat-form-field>
+      <mat-form-field>
+        <mat-label>From Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="from"
+          [(ngModel)]="From"
+          name="From"
+          #input="ngModel"
+          [max]="maxDate"
+        />
+        <mat-datepicker-toggle matSuffix [for]="from"></mat-datepicker-toggle>
+        <mat-datepicker #from></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>To Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="to"
+          [(ngModel)]="To"
+          #input="ngModel"
+        />
+        <!-- [min]="minDate" -->
+        <mat-datepicker-toggle matSuffix [for]="to"></mat-datepicker-toggle>
+        <mat-datepicker #to></mat-datepicker>
+      </mat-form-field>
 
-        <button
-          class="ms-2"
-          mat-stroked-button
-          type="submit"
-          (click)="submitValue()"
-          color="primary"
-        >
-          Go
-        </button>
-      </div>
-      <div class="dateOption">
-        <div><a class="a" (click)="today()">Today</a></div>
-        <div><a class="a" (click)="yesterday()">Yesterday</a></div>
-        <div><a class="a" (click)="lastWeek()">Last Week</a></div>
-      </div>
-      <div>
-        <table class="table" *ngIf="tableData">
-          <thead>
-            <tr>
-              <th>Actor</th>
-              <ng-container *ngFor="let Actor of columns">
-                <th *ngIf="Actor != 'total'">
-                  {{ Actor }}
-                </th>
-              </ng-container>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let count of tableData | keyvalue">
-              <td>
-                <a class="a" (click)="piChart(count.value)">
-                  {{ count.key }}
-                </a>
-              </td>
-              <ng-container *ngFor="let Actor of columns">
-                <td *ngIf="Actor != 'total'">{{ count.value[Actor] }}</td>
-              </ng-container>
-
-              <td>
-                <a class="a" (click)="ShowListDeatail(count.key)">{{
-                  count.value["total"]
-                }}</a>
-              </td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <ng-container *ngFor="let A of columns">
-                <td *ngIf="A != 'total'">
-                  {{ getTotal(A) }}
-                </td>
-              </ng-container>
-              <td>{{ getTotal("total") }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <button
+        class="ms-2"
+        mat-stroked-button
+        type="submit"
+        (click)="submitValue()"
+        color="primary"
+      >
+        Go
+      </button>
     </div>
-    <div class="col piaChart">
-      <div *ngIf="pieChartData">
-        <h2 class="ChartHeading">Chart</h2>
-        <mat-card>
-          <canvas
-            baseChart
-            [type]="'pie'"
-            [datasets]="pieChartData"
-            [labels]="pieChartLabels"
-            [options]="pieChartOptions"
-            [legend]="pieChartLegend"
-          ></canvas>
-        </mat-card>
-      </div>
+    <div class="dateOption">
+      <div><a class="a" (click)="today()">Today</a></div>
+      <div><a class="a" (click)="yesterday()">Yesterday</a></div>
+      <div><a class="a" (click)="lastWeek()">Last Week</a></div>
+    </div>
+    <div>
+      <table class="table" *ngIf="tableData">
+        <thead>
+          <tr>
+            <th>Actor</th>
+            <ng-container *ngFor="let Actor of columns">
+              <th *ngIf="Actor != 'total'">
+                {{ Actor }}
+              </th>
+            </ng-container>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let count of tableData | keyvalue">
+            <td>
+              <a class="a" (click)="piChart(count.value)">
+                {{ count.key }}
+              </a>
+            </td>
+            <ng-container *ngFor="let Actor of columns">
+              <td *ngIf="Actor != 'total'">{{ count.value[Actor] }}</td>
+            </ng-container>
+
+            <td>
+              <a class="a" (click)="ShowListDeatail(count.key)">{{
+                count.value["total"]
+              }}</a>
+            </td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <ng-container *ngFor="let A of columns">
+              <td *ngIf="A != 'total'">
+                {{ getTotal(A) }}
+              </td>
+            </ng-container>
+            <td>{{ getTotal("total") }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
-  <!-- <app-action></app-action>
-    <app-close-action></app-close-action> -->
+  <div class="col piaChart">
+    <div *ngIf="pieChartData">
+      <h2 class="ChartHeading">Chart</h2>
+      <mat-card>
+        <canvas
+          baseChart
+          [type]="'pie'"
+          [datasets]="pieChartData"
+          [labels]="pieChartLabels"
+          [options]="pieChartOptions"
+          [legend]="pieChartLegend"
+        ></canvas>
+      </mat-card>
+    </div>
+  </div>
 </div>

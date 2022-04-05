@@ -4,7 +4,6 @@ import { Global } from 'Global';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { CommanService } from 'src/app/services/comman.service';
 import { MatDialog } from '@angular/material/dialog';
-import { ApprovalnotifictionListComponent } from 'src/app/shared/approvalnotifiction-list/approvalnotifiction-list.component';
 import { ListComponent } from '../listComponent/list.component';
 
 const THEME_DARKNESS_SUFFIX = `-dark`;
@@ -45,7 +44,6 @@ export class HeaderComponent implements OnInit {
     else classList.add(cssClass);
 
     this.activeThemeCssClass = cssClass;
-    console.log(cssClass);
   }
 
   toggleDarkness() {
@@ -71,7 +69,6 @@ export class HeaderComponent implements OnInit {
     };
     this.commanService.ApprovalCount(param).subscribe((data: any) => {
       this.CountData = JSON.parse(data);
-      console.log(this.CountData);
     });
   }
   approvalNotificationList(count, entityName) {

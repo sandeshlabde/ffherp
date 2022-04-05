@@ -17,9 +17,9 @@ import { AdditionalDetailsComponent } from './additional-details/additional-deta
 import { DelivaryBillingAddressComponent } from './delivary-billing-address/delivary-billing-address.component';
 
 @Component({
-  selector: 'app-create-new',
-  templateUrl: './create-new.component.html',
-  styleUrls: ['./create-new.component.css'],
+  selector: 'app-create-new-form',
+  templateUrl: './create-new-form.component.html',
+  styleUrls: ['./create-new-form.component.css'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
 
@@ -31,7 +31,7 @@ import { DelivaryBillingAddressComponent } from './delivary-billing-address/deli
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class CreateNewComponent implements OnInit {
+export class CreateNewFormComponent implements OnInit {
   CommanData: any;
   Company: any = '';
   a = moment();
@@ -48,6 +48,7 @@ export class CreateNewComponent implements OnInit {
 
   autoCompleteData: any;
   CompanyId: any;
+  contactData: any;
   get Source() {
     return ['prospect', 'lead', 'salesorderlist'].includes(
       this.EntityName.toLowerCase()
@@ -90,9 +91,6 @@ export class CreateNewComponent implements OnInit {
     );
   }
 
-  get MaterialReceiptStatus() {
-    return ['polist', 'payable'].includes(this.EntityName.toLowerCase());
-  }
   get prospect() {
     return ['prospect'].includes(this.EntityName.toLowerCase());
   }
@@ -121,6 +119,9 @@ export class CreateNewComponent implements OnInit {
   get ticket() {
     return ['ticket'].includes(this.EntityName.toLowerCase());
   }
+  get work() {
+    return ['work'].includes(this.EntityName.toLowerCase());
+  }
 
   constructor(
     private global: Global,
@@ -129,14 +130,11 @@ export class CreateNewComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.CommanData = data.commanData;
-    console.log(data.commanData);
+
     this.EntityName = this.data.EntityName;
   }
 
   Autocomplete(e: any) {
-    console.log(e);
-    console.log(this.Company);
-    // console.log(this.CompanyId);
     if (e.length >= 3) {
       let param = {
         DBName: this.global.LOGGED_IN_USER.DbName,
@@ -146,10 +144,9 @@ export class CreateNewComponent implements OnInit {
         .createFormAutoComplete(param)
         .subscribe((data: any) => {
           this.autoCompleteData = JSON.parse(data);
-          console.log();
+          this.companyContactList(this.autoCompleteData[0].companyId);
         });
     }
-    this.companyContactList(this.autoCompleteData[0].companyId);
   }
   companyContactList(id: any) {
     console.log(id);
@@ -160,6 +157,7 @@ export class CreateNewComponent implements OnInit {
       password: this.global.LOGGED_IN_USER.encryptPswd,
     };
     this.commanservice.getCompanyContactList(param).subscribe((data: any) => {
+      this.contactData = JSON.parse(data);
       console.log(JSON.parse(data));
     });
   }

@@ -9,12 +9,12 @@ import {
   DateAdapter,
 } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Global } from 'Global';
+import { Global } from 'src/app/shared/Global';
 import * as moment from 'moment';
 import { MY_FORMATS } from 'src/app/matdatepickerformat';
-import { ListComponent } from 'src/app/MyComponents/listComponent/list.component';
 import { CommanService } from 'src/app/services/comman.service';
-import { ProspectService } from 'src/app/services/prospect.service';
+import { CurrencyConversion } from '../models';
+import { ListComponent } from 'src/app/FFHerpComponents/listComponent/list.component';
 
 @Component({
   selector: 'app-pivort-report',
@@ -53,6 +53,8 @@ export class PivortReportComponent implements OnInit {
   AmcFilterData: any;
   displyaPieChart: boolean = false;
   username: any;
+  currencyConversion = CurrencyConversion;
+  totalObj: unknown[];
   constructor(
     private commanService: CommanService,
     private global: Global,
@@ -141,6 +143,7 @@ export class PivortReportComponent implements OnInit {
   }
 
   piChart(x: any) {
+    console.log(x);
     (this.username = x.entityOwnerName || x.name || x['user Name']),
       (this.displyaPieChart = true);
     const A = Object.keys(x)
@@ -157,7 +160,7 @@ export class PivortReportComponent implements OnInit {
     this.pieData.forEach((x: string, i) => {
       this.pieData[i] = x.replace(',', '');
     });
-
+    console.log(this.pieData);
     this.pieChartLabels = Object.keys(A);
 
     this.pieChartOptions = {
@@ -174,20 +177,74 @@ export class PivortReportComponent implements OnInit {
     ];
   }
 
-  // filteredEntity(e) {
-  //   if (this.Entity == '1') {
-  //     return this.AmcListData.filter((item) => item.Stage == e);
-  //   }
-  //   return [];
-  // }
-  // groupSelectedValue(data) {
-  //   const map = new Map();
-  //   data.forEach((item) => {
-  //     map.set(item['Stage'], {});
-  //   });
+  filteredEntity(e) {
+    if (this.Entity == '1') {
+      return this.AmcListData.filter((item) => item.Stage == e);
+    }
+    return [];
+  }
+  groupSelectedValue(data) {
+    const map = new Map();
+    data.forEach((item) => {
+      map.set(item['Stage'], {});
+    });
 
-  //   this.AmcFilterData = this.filteredEntity(Array.from(map.keys()));
-  // }
+    this.AmcFilterData = this.filteredEntity(Array.from(map.keys()));
+  }
+  getTotal(r) {
+    const T = Object.keys(r)
+      .filter(
+        (key) =>
+          key !== 'entityOwnerName' && key !== 'user Name' && key !== 'name'
+      )
+      .reduce((obj, key) => {
+        obj[key] = r[key];
+        return obj;
+      }, {});
+    this.totalObj = Object.values(T);
+    console.log(this.totalObj);
+    this.totalObj.forEach((x: any, i) => {
+      this.totalObj[i] = x.replace(',', '');
+    });
 
+    const sum = this.totalObj.reduce((o: any, a: any) => {
+      return parseInt(o) + parseInt(a);
+    });
+
+    return this.currencyConversion.Convert(sum);
+  }
+  Total(A) {
+    console.log(A);
+    const map = new Map();
+    this.VReportData.forEach((item) => {
+      map.set(item[A], {});
+    });
+    const ABC = map;
+    const BN = Object.keys(ABC);
+    // const ABC = this.VReportData.filter((item) => item[A] == A);
+
+    // const ABC = this.VReportData.filter((item) => item.A == A);
+
+    // const result = Object.values(
+    //   this.VReportData.reduce(
+    //     (r, o) => (r[o.A] ? (r[o.A].A += o.A) : (r[o.A] = { ...o }), r),
+    //     {}
+    //   )
+    // );
+    var totalChild = this.VReportData.reduce((sum, item) => {
+      return item[1] && item[1][A] ? item[1][A] + sum : sum;
+    }, 0);
+
+    console.log(ABC);
+    console.log(BN);
+    return 'total';
+  }
+  currancyFormat(e, H) {
+    if (H !== 'entityOwnerName' && H !== 'user Name' && H !== 'name') {
+      return this.currencyConversion.Convert(e.replace(',', ''));
+    } else {
+      return e;
+    }
+  }
   ngOnInit(): void {}
 }

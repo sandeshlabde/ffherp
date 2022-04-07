@@ -14,7 +14,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
 import { TablePipe } from './pipe/table.pipe';
@@ -37,6 +37,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ActionScheduledComponent } from './action-scheduled/action-scheduled.component';
 import { PivortReportComponent } from './pivort-report/pivort-report.component';
+import { LoaderintercepterInterceptor } from './intercepter/loaderintercepter.interceptor';
 
 @NgModule({
   declarations: [
@@ -120,6 +121,13 @@ import { PivortReportComponent } from './pivort-report/pivort-report.component';
     MatBadgeModule,
     ActionScheduledComponent,
     PivortReportComponent,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderintercepterInterceptor,
+      multi: true,
+    },
   ],
 })
 export class SharedModule {}

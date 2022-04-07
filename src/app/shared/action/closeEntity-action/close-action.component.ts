@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Global } from 'Global';
+import { Global } from 'src/app/shared/Global';
 import * as moment from 'moment';
 import { ActionService } from 'src/app/services/action.service';
 

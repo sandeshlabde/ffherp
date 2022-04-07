@@ -4,7 +4,7 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Global } from 'Global';
+import { Global } from 'src/app/shared/Global';
 import { Observable, of } from 'rxjs';
 import { ProspectService } from './prospect.service';
 @Injectable({

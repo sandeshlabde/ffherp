@@ -1,0 +1,94 @@
+<div class="noteBox">
+  <div class="modal-heading standard-color-modal">
+    <h2>Vouchar Detail</h2>
+  </div>
+  <div>
+    <mat-form-field class="full-width" *ngIf="Vouchar == 'ApprovedVouchar'">
+      <mat-label>Enter Password for validate and Approve...</mat-label>
+      <input matInput type="password" />
+    </mat-form-field>
+
+    <table class="table">
+      <thead>
+        <tr class="standard-color-modal">
+          <th>Seq</th>
+          <th>By</th>
+          <th>On</th>
+          <th>Head</th>
+          <th>Entity</th>
+          <th>Budget</th>
+          <th>Exp.</th>
+          <th>Appv Status</th>
+          <th>Appv Amt</th>
+          <th>Paid Amt</th>
+          <th>Due Amt</th>
+          <th>Paid Status</th>
+          <th></th>
+          <th>Appv Status</th>
+          <th>Appv Amt</th>
+          <th>Remark</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let vouchar of approvalData" class="table-light">
+          <td>{{ vouchar.VoucherNo }}</td>
+          <td>{{ vouchar.UpdatedBy }}</td>
+          <td>{{ vouchar.UpdatedOn | dateformat }}</td>
+          <td>{{ vouchar.ExpenseTitle }}</td>
+          <td>{{ vouchar.EntityName }}</td>
+          <td>{{ vouchar.Budgeted }}</td>
+          <td>{{ vouchar.ExpenseAmount }}</td>
+          <td>{{ vouchar.ApprovalStatus }}</td>
+          <td>{{ vouchar.ApprovedAmount }}</td>
+          <td>{{ vouchar.ApprovedAmount }}</td>
+          <td>{{ vouchar.PaidAmount }}</td>
+
+          <td>{{ vouchar.DueAmount }}</td>
+          <td>
+            <div *ngIf="Vouchar == 'ApprovedVouchar'">
+              <mat-icon> border_color</mat-icon>
+            </div>
+            <div>
+              <a
+                class="a"
+                *ngIf="Vouchar == 'EditVouchar'"
+                (click)="editVouchar(vouchar)"
+                ><i matTooltip="Edit Vouchar" class="fas fa-pencil-alt"></i
+              ></a>
+            </div>
+          </td>
+
+          <td>
+            <select
+              *ngIf="Vouchar == 'ApprovedVouchar'"
+              class="dd"
+              name=""
+              id=""
+            >
+              <option value="">Approved</option>
+              <option value="">Not Approved</option>
+            </select>
+          </td>
+          <td>
+            <input
+              *ngIf="Vouchar == 'ApprovedVouchar'"
+              type="number"
+              class="input1"
+              name=""
+              id=""
+              value="{{ vouchar.ApprovalStatus }}"
+            />
+          </td>
+          <td>
+            <input
+              *ngIf="Vouchar == 'ApprovedVouchar'"
+              type="text"
+              class="input2"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

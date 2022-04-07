@@ -1,4 +1,5 @@
 export interface listdatafield {
+  Select: any;
   position: number;
   IsSearch: number;
   RoleID: number;

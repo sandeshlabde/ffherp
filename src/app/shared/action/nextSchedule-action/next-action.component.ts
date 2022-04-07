@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
-import { Global } from 'Global';
+import { Global } from 'src/app/shared/Global';
 import * as moment from 'moment';
 import { ActionService } from 'src/app/services/action.service';
 

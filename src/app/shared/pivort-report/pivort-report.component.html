@@ -81,6 +81,7 @@
           >
             {{ heading }}
           </th>
+          <th class="right">Total</th>
         </tr>
       </thead>
       <tbody>
@@ -97,19 +98,23 @@
               "
             >
               <div *ngIf="x[heading] !== '0'">
-                {{ x[heading] }}
+                {{ currancyFormat(x[heading], heading) }}
               </div>
             </td>
           </ng-container>
+
+          <td class="right">{{ getTotal(x) }}</td>
         </tr>
-        <!-- <tr>
+        <tr>
           <td>Total</td>
           <ng-container *ngFor="let A of Headings">
-            <td>
-              {{ getTotal(A) }}
+            <td
+              *ngIf="A != 'entityOwnerName' || A != 'user Name' || A != 'name'"
+            >
+              {{ Total(A) }}
             </td>
           </ng-container>
-        </tr> -->
+        </tr>
       </tbody>
     </table>
   </div>
@@ -127,7 +132,11 @@
         ></canvas>
       </div>
       <div class="closeButton">
-        <button mat-stroked-button (click)="displyaPieChart = !displyaPieChart">
+        <button
+          class="ExportButton"
+          mat-stroked-button
+          (click)="displyaPieChart = !displyaPieChart"
+        >
           Close
         </button>
       </div>

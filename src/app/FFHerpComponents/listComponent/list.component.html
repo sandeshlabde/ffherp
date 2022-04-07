@@ -1,0 +1,982 @@
+<div class="ListContain">
+  <nav aria-label="breadcrumb">
+    <!-- <ol class="breadcrumb"> -->
+    <div class="flex">
+      <div class="left">
+        <div class="breadcrumb-item"><i class="fas fa-home home-icon"></i></div>
+
+        <div class="breadcrumb-item active" aria-current="page">
+          {{ EntityNameTitle }}
+        </div>
+        <div (click)="selectCard()">
+          <mat-icon>featured_play_list</mat-icon>
+        </div>
+        <div (click)="selectTable()"><mat-icon>dns</mat-icon></div>
+        <div (click)="viewDetail()"><mat-icon>details</mat-icon></div>
+      </div>
+      <div class="right">
+        <!-- <div (click)="createForm()"><mat-icon> local_hospital</mat-icon></div> -->
+
+        <!-- <div>
+          <span class="filterSearch" (click)="openFilterSearch()"
+            ><i
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title=" Filter Search "
+              class="fas fa-filter home-icon"
+            ></i
+          ></span>
+        </div> -->
+        <div (click)="createForm()"><mat-icon> local_hospital</mat-icon></div>
+        <div>
+          <span class="filterSearch" (click)="openFilterSearch()"
+            ><i
+              data-bs-toggle="tooltip"
+              data-bs-placement="bottom"
+              title=" Filter Search "
+              class="fas fa-filter home-icon"
+            ></i
+          ></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <mat-tab-group *ngIf="allList">
+    <mat-tab label="Default">
+      <div *ngIf="tableSection">
+        <div class="tableOption">
+          <div>
+            <mat-checkbox (click)="multipleSelect()"
+              >Multiple Select</mat-checkbox
+            >
+          </div>
+          <div>
+            <mat-form-field appearance="standard">
+              <mat-label>Search Column</mat-label>
+              <input matInput (keyup)="applyFilter($event)" #input />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-paginator
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page"
+            >
+            </mat-paginator>
+          </div>
+        </div>
+        <div class="table-section">
+          <table
+            *ngIf="dataSource"
+            mat-table
+            [dataSource]="dataSource"
+            matSort
+            class="mat-elevation-z8"
+          >
+            <ng-container matColumnDef="select">
+              <th mat-header-cell *matHeaderCellDef class="menuCell">
+                <mat-checkbox
+                  *ngIf="Allshow"
+                  (change)="$event ? masterToggle() : null"
+                  [checked]="selection.hasValue() && isAllSelected()"
+                  [indeterminate]="selection.hasValue() && !isAllSelected()"
+                  [aria-label]="checkboxLabel()"
+                >
+                </mat-checkbox>
+              </th>
+              <td mat-cell *matCellDef="let row" class="menuCell">
+                <span
+                  ><mat-checkbox
+                    *ngIf="Allshow"
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)"
+                  >
+                  </mat-checkbox
+                ></span>
+
+                <span>
+                  <button
+                    mat-icon-button
+                    aria-label="Example icon button with a vertical three dot icon"
+                  >
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                </span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="InstalledNo">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                ID.
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                <a
+                  *ngIf="installedno"
+                  class="a"
+                  (click)="openEntity(element.InstalledNo)"
+                >
+                  {{ element.InstalledNo }}
+                </a>
+
+                <div>
+                  <div *ngIf="voucher">{{ element.InstalledNo }}</div>
+                  <a class="a" (click)="openEmailTrace(element.InstalledNo)"
+                    ><i matTooltip="Email Trace" class="fas fa-envelope"></i>
+                  </a>
+
+                  <a class="a">
+                    <i matTooltip="Upload" class="fas fa-cloud-upload-alt"></i>
+                  </a>
+                  <a *ngIf="installedno" class="a"
+                    ><i
+                      matTooltip="Edit {{ EntityName }}"
+                      class="fas fa-pencil-alt"
+                    ></i
+                  ></a>
+                  <a
+                    *ngIf="voucher"
+                    class="a"
+                    (click)="
+                      approval(
+                        element.InstalledNo,
+                        element.ENTITY,
+                        element.EntityId,
+                        'EditVouchar'
+                      )
+                    "
+                    ><i
+                      matTooltip="Edit {{ EntityName }}"
+                      class="fas fa-pencil-alt"
+                    ></i
+                  ></a>
+                  <a (click)="openAction(element.InstalledNo, element.ClientID)"
+                    ><i matTooltip="Add Action" class="fas fa-plus-circle"></i>
+                    <span
+                      *ngIf="element.AMCActionCount >= 1"
+                      matBadge="{{ element.AMCActionCount }}"
+                    ></span
+                  ></a>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ClientName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Company
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start columnFontSize"
+              >
+                {{ element.ClientName }}
+                <div *ngIf="voucherStatus">
+                  <a
+                    class="a"
+                    (click)="
+                      approval(
+                        element.InstalledNo,
+                        element.ENTITY,
+                        element.EntityId,
+                        'ApprovedVouchar'
+                      )
+                    "
+                    >{{ element.Approval }}</a
+                  >
+                </div>
+                <div>
+                  <a class="a" (click)="openEmailQuote(element.InstalledNo)">
+                    <i matTooltip="View Email Quote" class="fas fa-file-pdf"></i
+                  ></a>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ContactName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Contact
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.ContactName }}
+                <div>
+                  <a class="a"
+                    ><i matTooltip="Phone" class="fas fa-phone"></i
+                  ></a>
+                  <a><i matTooltip="WhatsApp" class="fab fa-whatsapp"></i></a>
+                </div>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="OwnerName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Owner Name
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.OwnerName }}
+                <div>
+                  <a class="a" (click)="openChat(element.InstalledNo)">
+                    <i matTooltip="Chat" class="far fa-comments"></i>
+                    <span
+                      *ngIf="element.ChatNotiCount >= 1"
+                      matBadge="{{ element.ChatNotiCount }}"
+                    ></span
+                  ></a>
+                  <a
+                    class="a"
+                    (click)="openNotes(element.InstalledNo, element.ClientName)"
+                  >
+                    <i matTooltip="view Notes" class="far fa-clipboard"></i>
+                    <span
+                      *ngIf="element.NotesCount >= 1"
+                      matBadge="{{ element.NotesCount }}"
+                    ></span>
+                  </a>
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Anualisedamount">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                class="text-end"
+                mat-sort-header
+              >
+                Amount
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-end columnFontSize"
+                [ngStyle]=""
+              >
+                <div *ngIf="installedno">
+                  {{ currencyConversion.Convert(element.Anualisedamount) }}
+                </div>
+                <div *ngIf="voucher">
+                  {{ element.AvgFeedback | currency: "INR" }}
+                </div>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="StatusName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Status
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.StatusName }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="DeliveryStatusName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Del Status
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.DeliveryStatusName }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="SourceName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Source
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.SourceName }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="Billedstatus">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Billed status
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.Billedstatus }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ServiceTypeName">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Service
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.ServiceTypeName }}
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="Stage">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Stage
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+              >
+                {{ element.Stage }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="EXPClosuredateDashboard">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                EXP Date
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+                [ngClass]="
+                  element.EXPClosuredateDashboard >= toDayDate ? 'green' : 'red'
+                "
+              >
+                {{ element.EXPClosuredateDashboard | dateformat }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="DeliveryDate">
+              <th
+                mat-header-cell
+                *matHeaderCellDef
+                mat-sort-header
+                class="text-start"
+              >
+                Del Date
+              </th>
+              <td
+                mat-cell
+                *matCellDef="let element"
+                class="text-start table-data"
+                [ngClass]="element.DeliveryDate >= toDayDate ? 'green' : 'red'"
+              >
+                {{ element.DeliveryDate | dateformat }}
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="listColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: listColumns"></tr>
+          </table>
+        </div>
+      </div>
+      <!-- *************************Card Section Start Here********************* -->
+      <div class="cardcontainer" *ngIf="cardSection">
+        <div
+          cdkDropList
+          [cdkDropListData]="dataSource.data"
+          class="cardSection row"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <mat-card
+            class="card-box col"
+            *ngFor="let cardData of dataSource.data"
+            cdkDrag
+          >
+            <div class="company">
+              <span>{{ cardData.ClientName }}</span>
+            </div>
+            <div>
+              <span> {{ cardData.ContactName }}</span>
+            </div>
+
+            <div>
+              <span>
+                <a class="a" (click)="openEntity(cardData.InstalledNo)">
+                  {{ cardData.InstalledNo }}</a
+                ></span
+              >
+              opened on
+              <span>{{ cardData.Opendate | dateformat }}</span>
+            </div>
+            <div>{{ cardData.Title }}</div>
+            <div *ngIf="facDelDate">
+              <span>{{ cardData.FActor }}</span
+              ><span>on</span>
+              <span>{{ cardData.DeliveryDate | dateformat }}</span>
+            </div>
+            <div>
+              <div class="ActionField">
+                <span>Scheduled</span>
+                <span> {{ cardData.nextactiontype }}</span> for
+                <span> {{ cardData.SVACTOR }}</span> on
+
+                <span *ngIf="UpTo">{{ cardData.UpTo | dateformat }}</span>
+                <span *ngIf="nextAct">
+                  {{ cardData.NextActtiondate | dateformat }}</span
+                >
+                at
+                <span> {{ cardData.Nextactiontime }}</span>
+              </div>
+            </div>
+            <div>{{ cardData.REMARK }}</div>
+            <div class="iconfield">
+              <div>
+                <span
+                  class="iconfield-badge"
+                  *ngIf="cardData.Anualisedamount"
+                  >{{
+                    currencyConversion.Convert(cardData.Anualisedamount)
+                  }}</span
+                >
+                <span *ngIf="cardData.StatusName" class="iconfield-badge">{{
+                  cardData.StatusName
+                }}</span>
+              </div>
+
+              <div class="icon">
+                <li>
+                  <a
+                    class="a"
+                    (click)="
+                      openNotes(cardData.InstalledNo, cardData.ClientName)
+                    "
+                  >
+                    <i
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="view Notes"
+                      class="far fa-clipboard"
+                    ></i>
+                    <span
+                      *ngIf="cardData.NotesCount >= 1"
+                      matBadge="{{ cardData.NotesCount }}"
+                    ></span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    ><i
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="WhatsApp"
+                      class="fab fa-whatsapp"
+                    ></i
+                  ></a>
+                </li>
+                <li>
+                  <a class="a"
+                    ><i
+                      data-bs-toggle="tooltip"
+                      data-bs-placement="top"
+                      title="Phone"
+                      class="fas fa-phone"
+                    ></i
+                  ></a>
+                </li>
+                <li>
+                  <a class="a" (click)="openChat(cardData.InstalledNo)">
+                    <i matTooltip="Chat" class="far fa-comments"></i>
+                    <span
+                      *ngIf="cardData.ChatNotiCount >= 1"
+                      matBadge="{{ cardData.ChatNotiCount }}"
+                    ></span
+                  ></a>
+                </li>
+              </div>
+            </div>
+          </mat-card>
+        </div>
+      </div>
+      <!-- *************************Card Section End Here********************* -->
+      <div class="DetailViewcontainer" *ngIf="DetailViewSection">
+        <div>
+          <div class="tableOption">
+            <div>
+              <mat-checkbox (click)="multipleSelect()"
+                >Multiple Select</mat-checkbox
+              >
+            </div>
+            <div>
+              <mat-form-field appearance="standard">
+                <mat-label>Search Column</mat-label>
+                <input matInput (keyup)="applyFilter($event)" #input />
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field appearance="standard">
+                <mat-label>Select Sort Type</mat-label>
+                <mat-select
+                  name="selectedColumn"
+                  [(ngModel)]="selectedColumn"
+                  (ngModelChange)="changeSortedColumn()"
+                >
+                  <mat-option
+                    *ngFor="let Value of commanData.slice(138, 148)"
+                    value="{{ Value.Key }}"
+                    >{{ Value.Value }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-paginator
+                [pageSize]="10"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                aria-label="Select page"
+              >
+              </mat-paginator>
+            </div>
+          </div>
+          <div class="table-section">
+            <table
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+              class="mat-elevation-z8"
+            >
+              <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                  <mat-checkbox
+                    *ngIf="Allshow"
+                    (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()"
+                    [aria-label]="checkboxLabel()"
+                  >
+                  </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                  <mat-checkbox
+                    *ngIf="Allshow"
+                    (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [aria-label]="checkboxLabel(row)"
+                  >
+                  </mat-checkbox>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Company">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Company
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <div class="ClientName">{{ element.ClientName }}</div>
+                  <div>
+                    {{ element.ContactName }}
+                    <a class="a"
+                      ><i matTooltip="Phone" class="fas fa-phone"></i
+                    ></a>
+                    <a><i matTooltip="WhatsApp" class="fab fa-whatsapp"></i></a>
+                  </div>
+                  <div>
+                    <a
+                      *ngIf="installedno"
+                      class="a"
+                      (click)="openEntity(element.InstalledNo)"
+                    >
+                      {{ element.InstalledNo }}
+                    </a>
+                    || {{ element.AMCId }}
+                  </div>
+                  <div>
+                    <div>
+                      {{ element.OwnerName }}
+                      <a
+                        class="a"
+                        (click)="
+                          openNotes(element.InstalledNo, element.ClientName)
+                        "
+                      >
+                        <i matTooltip="view Notes" class="far fa-clipboard"></i>
+                        <span
+                          *ngIf="element.NotesCount >= 1"
+                          matBadge="{{ element.NotesCount }}"
+                        ></span>
+                      </a>
+                      <a class="a" (click)="openEmailTrace(element.InstalledNo)"
+                        ><i
+                          matTooltip="Email Trace"
+                          class="fas fa-envelope"
+                        ></i>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div></div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="UploadEdit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let element">
+                  <div class="subValueIcon">
+                    <a class="a">
+                      <i
+                        matTooltip="Upload"
+                        class="fas fa-cloud-upload-alt"
+                      ></i>
+                    </a>
+                  </div>
+
+                  <div class="subValueIcon">
+                    <a
+                      class="a"
+                      (click)="
+                        approval(
+                          element.InstalledNo,
+                          element.ENTITY,
+                          element.EntityId,
+                          'EditVouchar'
+                        )
+                      "
+                      ><i
+                        matTooltip="Edit {{ EntityName }}"
+                        class="fas fa-pencil-alt"
+                      ></i
+                    ></a>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Details">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Details
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <div>
+                    <span class="Datalabel"> Open :</span
+                    >{{ element.Opendate | dateformat }} ||<span
+                      class="Datalabel"
+                      >EXP Closure :</span
+                    >
+                    {{ element.EXPClosuredateDashboard | dateformat }}
+                  </div>
+                  <div>
+                    <div>
+                      <span class="Datalabel"> Status :</span>
+                      {{ element.StatusName }}
+                      || <span class="Datalabel"> Stage :</span
+                      >{{ element.Stage }}
+                    </div>
+                    <div>
+                      <span class="Datalabel"> Source :</span>
+                      {{ element.SourceName }} ||
+                      <span class="Datalabel">Priority :</span>
+                      {{ element.Priority }}
+                    </div>
+                  </div>
+                  <div *ngIf="voucher">
+                    <a
+                      class="a"
+                      (click)="
+                        approval(
+                          element.InstalledNo,
+                          element.ENTITY,
+                          element.EntityId,
+                          'ApprovedVouchar'
+                        )
+                      "
+                      >{{ element.Approval }}</a
+                    >
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Amount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Amount
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <div>
+                    {{ currencyConversion.Convert(element.Anualisedamount) }}
+                  </div>
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="Description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header c>
+                  Description
+                </th>
+                <td mat-cell *matCellDef="let element">
+                  <div>{{ element.Title }}</div>
+                  <div>{{ element.REMARK }}</div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="AddCount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let element">
+                  <div
+                    class="subValueIcon text-primary"
+                    (click)="
+                      actionSchedul(element.InstalledNo, element.ClientName)
+                    "
+                    *ngIf="element.AMCActionCount >= 1"
+                  >
+                    {{ element.AMCActionCount }}
+                  </div>
+
+                  <div class="subValueIcon">
+                    <a
+                      (click)="
+                        openAction(element.InstalledNo, element.ClientID)
+                      "
+                      ><i matTooltip="Add Action" class="fas fa-plus-circle"></i
+                    ></a>
+                  </div>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="Schedule">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                  Schedule
+                </th>
+                <td
+                  mat-cell
+                  *matCellDef="let element"
+                  class="table-data"
+                  [ngStyle]=""
+                >
+                  {{ element.nextactiontype }} for {{ element.OwnerName }} on
+                  {{ element.UpTo | dateformat }} at
+                  {{ element.Nextactiontime }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="ChatEmailPDF">
+                <th
+                  mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                  class="text-start"
+                ></th>
+                <td mat-cell *matCellDef="let element">
+                  <div class="subValueIcon">
+                    <a class="a" (click)="openEmailQuote(element.InstalledNo)">
+                      <i
+                        matTooltip="View Email Quote"
+                        class="fas fa-file-pdf"
+                      ></i
+                    ></a>
+                  </div>
+                  <div class="subValueIcon">
+                    <a class="a" (click)="openChat(element.InstalledNo)">
+                      <i matTooltip="Chat" class="far fa-comments"></i>
+                      <span
+                        *ngIf="element.ChatNotiCount >= 1"
+                        matBadge="{{ element.ChatNotiCount }}"
+                      ></span
+                    ></a>
+                  </div>
+                </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="columns"></tr>
+              <tr mat-row *matRowDef="let row; columns: columns"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="GroupBy">
+      <!-- *************************GroupBy Section Start Here********************* -->
+      <div>
+        <mat-form-field>
+          <mat-label>Select an option</mat-label>
+          <mat-select
+            [(ngModel)]="groupSelected"
+            (ngModelChange)="groupSelectedValue()"
+          >
+            <mat-option
+              *ngFor="let Value of commanData.slice(148, 158)"
+              value="{{ Value.Key }}"
+              >{{ Value.Value }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-accordion *ngFor="let group of Array | keyvalue">
+          <mat-expansion-panel class="card-box">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <span class="me-4"> {{ group.key }}</span>
+                {{ group.value["total"] }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <table>
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Company</th>
+                  <th>Contact</th>
+                  <!-- <th></th> -->
+                  <th>Owner</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let EntityList of filteredEntity(group.key)">
+                  <td>
+                    <a class="a" (click)="openEntity(EntityList.InstalledNo)">{{
+                      EntityList.InstalledNo
+                    }}</a>
+                  </td>
+                  <td>{{ EntityList.ClientName }}</td>
+                  <td>{{ EntityList.ContactName }}</td>
+                  <td>{{ EntityList.OwnerName }}</td>
+                  <td>{{ EntityList.AMCActionCount }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+
+      <!-- *************************GroupBy Section end Here********************* -->
+    </mat-tab>
+  </mat-tab-group>
+  <div class="ActivityLog" *ngIf="ActivityList">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="Entity">
+        <th mat-header-cell *matHeaderCellDef>Entity</th>
+        <td mat-cell *matCellDef="let element">{{ element.EntityType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ActionDate | dateformat }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CreationDate">
+        <th mat-header-cell *matHeaderCellDef>Creation Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.CreationDate }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Company">
+        <th mat-header-cell *matHeaderCellDef>Company</th>
+        <td mat-cell *matCellDef="let element">{{ element.CompanyName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Contact">
+        <th mat-header-cell *matHeaderCellDef>Contact</th>
+        <td mat-cell *matCellDef="let element">{{ element.ContactName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Code">
+        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <td mat-cell *matCellDef="let element">{{ element.ContactCode }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Actor">
+        <th mat-header-cell *matHeaderCellDef>Actor</th>
+        <td mat-cell *matCellDef="let element">{{ element.ActorName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let element">{{ element.ActionType }}</td>
+      </ng-container>
+      <ng-container matColumnDef="Form">
+        <th mat-header-cell *matHeaderCellDef>Form</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.ActionStarttime }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="To">
+        <th mat-header-cell *matHeaderCellDef>To</th>
+        <td mat-cell *matCellDef="let element">{{ element.ActionEndTime }}</td>
+      </ng-container>
+      <ng-container matColumnDef="NextAction">
+        <th mat-header-cell *matHeaderCellDef>Next Action</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.NextDate | dateformat }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="Dis">
+        <th mat-header-cell *matHeaderCellDef>Discuss</th>
+        <td mat-cell *matCellDef="let element">{{ element.Discuss }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="ActivityLogColumn"></tr>
+      <tr mat-row *matRowDef="let row; columns: ActivityLogColumn"></tr>
+    </table>
+
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 20]"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
+  </div>
+</div>

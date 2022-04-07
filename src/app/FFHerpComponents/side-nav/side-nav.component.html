@@ -1,0 +1,296 @@
+<div class="sidebar close pb-3">
+  <ul class="nav-links">
+    <li>
+      <div class="iocn-link">
+        <img
+          src=" /assets/img/dashboard.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li>
+          <a
+            class="link_name"
+            (click)="setTitle('FFHErp/Dashboard')"
+            routerLink="/admin/Dashboard/Dashboard"
+          >
+            Dashboard
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i><mat-icon>home</mat-icon></i> -->
+        <img
+          src="/assets/img/growth.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">Marketing</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Prospect Dashboard')"
+            routerLink="/admin/ListDashboard/Prospect"
+            routerLinkActive="active"
+            >Prospect Dashboard</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Prospect')"
+            routerLink="/admin/page/Prospect"
+            routerLinkActive="active"
+            id="Prospect"
+            >Prospect List</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i><mat-icon>business_center</mat-icon></i> -->
+        <img
+          src="/assets/img/business-and-finance.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">Sales</a></li>
+        <li><a (click)="setTitle('FFHErp/Lead Dashboard')"> Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Lead')"
+            routerLink="/admin/page/Lead"
+            routerLinkActive="active"
+            >Lead
+          </a>
+        </li>
+        <li>
+          <a (click)="setTitle('FFHErp/SO Dashboard')">SO Dashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Sales Order')"
+            routerLink="/admin/page/SalesOrderLIst"
+            routerLinkActive="active"
+            >Sales Order</a
+          >
+        </li>
+        <li>
+          <a (click)="PivortReport()">Report</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Activity Log')"
+            routerLink="/admin/page/Activity"
+            routerLinkActive="active"
+            >Activity Log</a
+          >
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="iocn-link">
+        <!-- <i><mat-icon>add_shopping_cart</mat-icon></i> -->
+        <img
+          src="/assets/img/shopping-cart.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">Inventoy</a></li>
+
+        <li><a (click)="setTitle('FFHErp/MO Dashboard')">MO Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Material Out')"
+            routerLink="/admin/page/MoList"
+            routerLinkActive="active"
+            id="MO"
+            >Material Out</a
+          >
+        </li>
+
+        <li><a (click)="setTitle('FFHErp/PO Dashboard')">PO Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Purchas Order')"
+            routerLink="/admin/page/POList"
+            routerLinkActive="active"
+            id="PO"
+            >Purchas Order</a
+          >
+        </li>
+        <li><a (click)="setTitle('FFHErp/MI Dashboard')">MI Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Material In')"
+            routerLink="/admin/page/MIList"
+            routerLinkActive="active"
+            >Material In</a
+          >
+        </li>
+        <li>
+          <a (click)="setTitle('FFHErp/Repair Dashboard')">Repair Dashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Repair List')"
+            routerLink="/admin/page/Repair"
+            >Repair
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i><mat-icon>payment</mat-icon></i> -->
+        <img
+          src="/assets/img/coin.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">Payment</a></li>
+        <li>
+          <a (click)="setTitle('FFHErp/Invoice Dashboard')"
+            >Invoice Dashboard</a
+          >
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Sales Invoice ')"
+            routerLink="/admin/page/Payment"
+            id="Invoice"
+            >Sales Invoice
+          </a>
+        </li>
+
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Purchas Invoice ')"
+            routerLink="/admin/page/Payable"
+            routerLinkActive="active"
+            id="PI"
+            >Purchase Invoice</a
+          >
+        </li>
+        <li>
+          <a (click)="setTitle('FFHErp/PI Dashboard ')">Purchase Dashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Voucher ')"
+            routerLink="/admin/page/Voucher"
+            id="vouchar"
+            >Voucher</a
+          >
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i class="fas fa-envelope-square"></i> -->
+        <img
+          src="/assets/img/technical-support.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">Support</a></li>
+        <li>
+          <a (click)="setTitle('FFHErp/Ticket Dashboard ')"> Dashboard</a>
+        </li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Ticket ')"
+            routerLink="/admin/page/Ticket"
+            routerLinkActive="active"
+            id="Ticket"
+            >Ticket
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i class="fas fa-handshake"></i> -->
+        <img
+          src="/assets/img/handshake.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name">AMC</a></li>
+        <li><a (click)="setTitle('FFHErp/AMC Dashboard')"> Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/AMC')"
+            routerLink="/admin/page/AMC"
+            routerLinkActive="active"
+            id=" AMC"
+            >AMC
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="iocn-link">
+        <i class="fas fa-briefcase"></i>
+      </div>
+
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name"> Work</a></li>
+        <li><a (click)="setTitle('FFHErp/Work Dashboard ')"> Dashboard</a></li>
+        <li>
+          <a
+            (click)="setTitle('FFHErp/Work ')"
+            routerLink="/admin/page/Work"
+            routerLinkActive="active"
+            id="Work"
+            >Work
+          </a>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <!-- <i class="fas fa-tasks"></i> -->
+        <img
+          src="/assets/img/blueprint.png"
+          width="30px"
+          height="30px"
+          class="icon-img"
+        />
+      </div>
+      <ul class="sub-menu shadow-lg bg-body rounded">
+        <li><a class="link_name"> Project</a></li>
+        <li><a (click)="setTitle('FFHErp/My Project ')">My Project</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

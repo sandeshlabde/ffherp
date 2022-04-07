@@ -76,6 +76,9 @@ export class ProspectService {
   totalActivityUrl =
     'https://apitest.ffherp.co.in/api/Voucher/GetActivityReportDetails';
 
+  // Activity log API url
+  ActivityLogUrl = 'https://ffherp.co.in:446/api/FFHAMC/ActivityLogList';
+
   constructor(private http: HttpClient) {}
 
   // login API Calling
@@ -367,5 +370,8 @@ export class ProspectService {
   }
   showtotalActivity(param: any) {
     return this.http.post(this.totalActivityUrl, param);
+  }
+  GetActivityLog(param: any) {
+    return this.http.post(this.ActivityLogUrl, param);
   }
 }

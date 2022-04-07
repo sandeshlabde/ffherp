@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Global } from 'src/app/shared/Global';
 
-import { Global } from 'Global';
-import { ILoginDetails } from '../../models';
+import { ILoginDetails } from 'src/app/shared/models';
 
 import { ProspectService } from '../../services/prospect.service';
 

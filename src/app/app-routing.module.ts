@@ -11,7 +11,9 @@ const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () =>
-      import('./MyComponents/admin/admin.module').then((m) => m.AdminModule),
+      import('./FFHerpComponents/admin/admin.module').then(
+        (m) => m.AdminModule
+      ),
     resolve: { login: Resolver },
     canActivate: [AuthGuard],
   },

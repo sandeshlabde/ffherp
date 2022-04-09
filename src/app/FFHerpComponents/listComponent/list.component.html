@@ -584,7 +584,7 @@
                   (ngModelChange)="changeSortedColumn()"
                 >
                   <mat-option
-                    *ngFor="let Value of commanData.slice(138, 148)"
+                    *ngFor="let Value of commanData"
                     value="{{ Value.Key }}"
                     >{{ Value.Value }}</mat-option
                   >
@@ -857,7 +857,7 @@
             (ngModelChange)="groupSelectedValue()"
           >
             <mat-option
-              *ngFor="let Value of commanData.slice(148, 158)"
+              *ngFor="let Value of commanData"
               value="{{ Value.Key }}"
               >{{ Value.Value }}</mat-option
             >

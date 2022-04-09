@@ -146,11 +146,11 @@ export class ActionComponent implements OnInit {
     //   this.stageType = 'todolist';
     //   this.entityname = 'todolist';
     // }
-    //  else if (this.EntityName === 'Ticket') {
-    //   this.activityType = 'Ticket';
-    //   this.stageType = 'Ticket';
-    //   this.entityname = 'Ticket';
-    // }
+    else if (this.EntityName === 'Ticket') {
+      this.activityType = 'Ticket';
+      this.stageType = 'Ticket';
+      this.entityname = 'Ticket';
+    }
     const param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,

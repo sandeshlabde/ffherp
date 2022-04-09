@@ -15,6 +15,8 @@ import { CommanService } from 'src/app/services/comman.service';
 import { MY_FORMATS } from 'src/app/matdatepickerformat';
 import { AdditionalDetailsComponent } from './additional-details/additional-details.component';
 import { DelivaryBillingAddressComponent } from './delivary-billing-address/delivary-billing-address.component';
+import { TicketProductComponent } from './ticket-product/ticket-product.component';
+import { ActionService } from 'src/app/services/action.service';
 
 @Component({
   selector: 'app-create-new-form',
@@ -48,7 +50,19 @@ export class CreateNewFormComponent implements OnInit {
 
   autoCompleteData: any;
   CompanyId: any;
-  contactData: any;
+  contactData: any = [];
+
+  ProductData: any;
+  bindTicketValues: any;
+  DDTypeValue: any = [];
+  Product: boolean = false;
+  SelectedProductData: any = [];
+  userValues: any;
+  Mobile: any;
+  Email: any;
+  contactinfo: any;
+  selectedUserData: any;
+  UserData: any;
   get Source() {
     return ['prospect', 'lead', 'salesorderlist'].includes(
       this.EntityName.toLowerCase()
@@ -127,13 +141,38 @@ export class CreateNewFormComponent implements OnInit {
     private global: Global,
     private commanservice: CommanService,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private actionService: ActionService
   ) {
     this.CommanData = data.commanData;
-
     this.EntityName = this.data.EntityName;
-  }
 
+    this.GetTicketDDLvalue();
+    this.GetdataForbindTicket();
+  }
+  NewForm(Value: any) {
+    console.log(Value);
+  }
+  GetTicketDDLvalue() {
+    let param = {
+      dbname: this.global.LOGGED_IN_USER.DbName,
+    };
+    this.commanservice.GetTicketDDLvalues(param).subscribe((data: any) => {
+      this.DDTypeValue = JSON.parse(data);
+    });
+  }
+  GetdataForbindTicket() {
+    let param = {
+      dbname: this.global.LOGGED_IN_USER.DbName,
+    };
+    this.commanservice
+      .GetdataForbindTicketValues(param)
+      .subscribe((data: any) => {
+        this.bindTicketValues = JSON.parse(data);
+        this.userValues = this.bindTicketValues.Table2;
+        console.log(this.userValues);
+      });
+  }
   Autocomplete(e: any) {
     if (e.length >= 3) {
       let param = {
@@ -144,13 +183,14 @@ export class CreateNewFormComponent implements OnInit {
         .createFormAutoComplete(param)
         .subscribe((data: any) => {
           this.autoCompleteData = JSON.parse(data);
-          this.companyContactList(this.autoCompleteData[0].companyId);
         });
+      if (this.autoCompleteData != null) {
+        this.companyContactList(this.autoCompleteData[0].companyId);
+        this.GetProduct(this.autoCompleteData[0].companyName);
+      }
     }
   }
   companyContactList(id: any) {
-    console.log(id);
-
     let param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       id11: id,
@@ -158,10 +198,26 @@ export class CreateNewFormComponent implements OnInit {
     };
     this.commanservice.getCompanyContactList(param).subscribe((data: any) => {
       this.contactData = JSON.parse(data);
+
       console.log(JSON.parse(data));
     });
   }
-
+  Contact(e) {
+    console.log(e);
+    this.contactinfo = e;
+  }
+  ManagerContact(e) {
+    console.log(e);
+    let param = {
+      DBNAME: this.global.LOGGED_IN_USER.DbName,
+      password: this.global.LOGGED_IN_USER.encryptPswd,
+      id11: e.id,
+    };
+    this.actionService.getUserEmailMobile(param).subscribe((data: any) => {
+      this.UserData = JSON.parse(data);
+      this.selectedUserData = this.UserData[0];
+    });
+  }
   Detail() {
     const dialogRef = this.dialog.open(AdditionalDetailsComponent, {
       position: { right: 0 + '%', top: 10 + '%' },
@@ -172,6 +228,23 @@ export class CreateNewFormComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe();
   }
+  TicketProduct() {
+    this.Product = !this.Product;
+  }
+  selectedProduct(e) {
+    this.Product = e;
+  }
+  GetProduct(partyname) {
+    let param = {
+      dbname: this.global.LOGGED_IN_USER.DbName,
+      password: this.global.LOGGED_IN_USER.encryptPswd,
+      PartyName: partyname,
+      SiteId: '',
+    };
+    this.commanservice.GetProductByParty(param).subscribe((data: any) => {
+      this.ProductData = JSON.parse(data);
+    });
+  }
   address() {
     const dialogRef = this.dialog.open(DelivaryBillingAddressComponent, {
       data: {},
@@ -179,8 +252,9 @@ export class CreateNewFormComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe();
   }
+  product(event) {
+    this.SelectedProductData = event;
+    console.log(event);
+  }
   ngOnInit(): void {}
-}
-function id(id: any) {
-  throw new Error('Function not implemented.');
 }

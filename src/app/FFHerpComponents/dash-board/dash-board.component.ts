@@ -89,17 +89,16 @@ export class DashBoardComponent implements OnInit {
   getPivotTable(data, type) {
     const map = new Map();
     data.forEach((item) => {
-      map.set(item['entActionContactName'], {
-        ...map.get(item['entActionContactName']),
+      map.set(item['entActorName'], {
+        ...map.get(item['entActorName']),
         [item[type]]:
-          map.get(item['entActionContactName']) &&
-          map.get(item['entActionContactName'])[item[type]]
-            ? map.get(item['entActionContactName'])[item[type]] + 1
+          map.get(item['entActorName']) &&
+          map.get(item['entActorName'])[item[type]]
+            ? map.get(item['entActorName'])[item[type]] + 1
             : 1,
         total:
-          map.get(item['entActionContactName']) &&
-          map.get(item['entActionContactName']).total
-            ? map.get(item['entActionContactName']).total + 1
+          map.get(item['entActorName']) && map.get(item['entActorName']).total
+            ? map.get(item['entActorName']).total + 1
             : 1,
       });
     });

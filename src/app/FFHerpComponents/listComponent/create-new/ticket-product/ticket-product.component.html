@@ -1,0 +1,21 @@
+<div class="productList">
+  <div class="heading">
+    <h1>Product List</h1>
+  </div>
+  <div class="Product">
+    <mat-radio-group class="productGroup" [(ngModel)]="product">
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let Product of ProductData"
+        (click)="selectProduct(Product)"
+      >
+        <div>
+          <h1>{{ Product.productName }}</h1>
+        </div>
+        <div>{{ Product.CIOwnerId }}</div>
+        <div>{{ Product.TypeId }}</div>
+        <div>{{ Product.WarrantyTo_new }} - {{ Product.Warrantyfrom_new }}</div>
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

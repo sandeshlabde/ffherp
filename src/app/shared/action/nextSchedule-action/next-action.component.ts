@@ -93,6 +93,7 @@ export class NextActionComponent implements OnInit {
   }
   updateOptionalLabel() {}
   getuserdata(e: any) {
+    console.log(e);
     let param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -117,6 +118,5 @@ export class NextActionComponent implements OnInit {
     this.selectedUserData = this.newlyActionData.Table4;
     // console.log(this.contactlistData);
     // console.log(this.newlyActionData);
-    console.log(this.commanActionFormData);
   }
 }

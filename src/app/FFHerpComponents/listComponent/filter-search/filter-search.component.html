@@ -28,7 +28,7 @@
           <mat-label>Select Industy Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let IndustyType of commanData.slice(0, 18)"
+              *ngFor="let IndustyType of commanData"
               value="{{ IndustyType.Key }} "
               >{{ IndustyType.Value }}
             </mat-option>
@@ -38,7 +38,7 @@
           <mat-label>Select Relationship </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Relationship of commanData.slice(18, 26)"
+              *ngFor="let Relationship of filterData('Prospect__RelationType')"
               value="{{ Relationship.Key }} "
               >{{ Relationship.Value }}
             </mat-option>
@@ -90,7 +90,7 @@
           <mat-label>Select Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Status of commanData.slice(26, 36)"
+              *ngFor="let Status of commanData"
               value="{{ Status.Key }} "
               >{{ Status.Value }}
             </mat-option>
@@ -100,7 +100,7 @@
           <mat-label>Select Source </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(36, 56)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -109,9 +109,7 @@
         <mat-form-field class="input-width">
           <mat-label>Select Tag </mat-label>
           <mat-select>
-            <mat-option
-              *ngFor="let Tag of commanData.slice(129, 130)"
-              value="{{ Tag.Key }} "
+            <mat-option *ngFor="let Tag of commanData" value="{{ Tag.Key }} "
               >{{ Tag.Value }}
             </mat-option>
           </mat-select>
@@ -124,7 +122,7 @@
           <mat-label>Select Stage</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Stage of commanData.slice(56, 63)"
+              *ngFor="let Stage of commanData"
               value="{{ Stage.Key }} "
               >{{ Stage.Value }}
             </mat-option>
@@ -134,7 +132,7 @@
           <mat-label>Select Activity </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Activity of commanData.slice(63, 70)"
+              *ngFor="let Activity of commanData"
               value="{{ Activity.Key }} "
               >{{ Activity.Value }}
             </mat-option>
@@ -150,7 +148,7 @@
           <mat-label>Select Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Status of commanData.slice(46, 53)"
+              *ngFor="let Status of commanData"
               value="{{ Status.Key }} "
               >{{ Status.Value }}
             </mat-option>
@@ -160,7 +158,7 @@
           <mat-label>Select Source </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(26, 46)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -170,7 +168,7 @@
           <mat-label>Select Stage</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Stage of commanData.slice(53, 61)"
+              *ngFor="let Stage of commanData"
               value="{{ Stage.Key }} "
               >{{ Stage.Value }}
             </mat-option>
@@ -193,7 +191,7 @@
           <mat-label>Select Branch</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Branch of commanData.slice(62, 85)"
+              *ngFor="let Branch of commanData"
               value="{{ Branch.Key }} "
               >{{ Branch.Value }}
             </mat-option>
@@ -209,7 +207,7 @@
           <mat-label>Select Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Status of commanData.slice(24, 30)"
+              *ngFor="let Status of commanData"
               value="{{ Status.Key }} "
               >{{ Status.Value }}
             </mat-option>
@@ -223,7 +221,7 @@
           <mat-label>Select Billing Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let BillingStatus of commanData.slice(30, 33)"
+              *ngFor="let BillingStatus of commanData"
               value="{{ BillingStatus.Key }} "
               >{{ BillingStatus.Value }}
             </mat-option>
@@ -233,7 +231,7 @@
           <mat-label>Select Approve Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let ApproveStatus of commanData.slice(33, 35)"
+              *ngFor="let ApproveStatus of commanData"
               value="{{ ApproveStatus.Key }} "
               >{{ ApproveStatus.Value }}
             </mat-option>
@@ -243,7 +241,7 @@
           <mat-label>Select Installed Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let InstalledStatus of commanData.slice(35, 38)"
+              *ngFor="let InstalledStatus of commanData"
               value="{{ InstalledStatus.Key }} "
               >{{ InstalledStatus.Value }}
             </mat-option>
@@ -266,7 +264,7 @@
           <mat-label>Branch</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Branch of commanData.slice(38, 60)"
+              *ngFor="let Branch of commanData"
               value="{{ Branch.Key }} "
               >{{ Branch.Value }}
             </mat-option>
@@ -276,7 +274,7 @@
           <mat-label>Select Activity</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let Activity of commanData.slice(60, 68)"
+              *ngFor="let Activity of commanData"
               value="{{ Activity.Key }} "
               >{{ Activity.Value }}
             </mat-option>
@@ -296,7 +294,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(174, 192)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -345,7 +343,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(192, 204)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -391,7 +389,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(204, 208)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -431,7 +429,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(223, 227)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -475,7 +473,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(227, 230)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -489,7 +487,7 @@
           <mat-label>Select Approval Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(231, 234)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -511,7 +509,7 @@
           <mat-label>Select Mat Status</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(234, 246)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -535,7 +533,7 @@
           <mat-label>Select Product Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(288, 293)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -545,7 +543,7 @@
           <mat-label>Select Bill Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(293, 298)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -565,7 +563,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(303, 312)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -579,7 +577,7 @@
           <mat-label>Select Work Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(312, 316)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -589,7 +587,7 @@
           <mat-label>Select Work Level</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(316, 321)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -599,7 +597,7 @@
           <mat-label>Select Priority </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(321, 324)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -609,7 +607,7 @@
           <mat-label>Select Work Source </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(324, 326)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -645,7 +643,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(208, 216)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -659,7 +657,7 @@
           <mat-label>Select Repair Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(216, 223)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -684,7 +682,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(246, 249)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -694,7 +692,7 @@
           <mat-label>Select Expense Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(249, 264)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -719,7 +717,7 @@
           <mat-label>Select Status </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(264, 273)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -729,7 +727,7 @@
           <mat-label>Select Tag </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(249, 264)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -759,7 +757,7 @@
           <mat-label>Select Problem Type </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(273, 281)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -769,7 +767,7 @@
           <mat-label>Select Ticket Type </mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let sourceValue of commanData.slice(281, 288)"
+              *ngFor="let sourceValue of commanData"
               value="{{ sourceValue.Key }} "
               >{{ sourceValue.Value }}
             </mat-option>
@@ -785,7 +783,7 @@
           <mat-label>Select Date Type</mat-label>
           <mat-select>
             <mat-option
-              *ngFor="let DateType of commanData.slice(85, 89)"
+              *ngFor="let DateType of commanData"
               value="{{ DateType.Key }} "
               >{{ DateType.Value }}
             </mat-option>

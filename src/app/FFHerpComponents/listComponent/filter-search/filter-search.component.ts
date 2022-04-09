@@ -58,6 +58,8 @@ export class FilterSearchComponent implements OnInit {
     this.commanData = data.Data;
     this.EntityName = this.data.EntityName;
   }
-
+  filterData(type: any) {
+    return this.commanData.filter((item) => item.Type == type);
+  }
   ngOnInit(): void {}
 }

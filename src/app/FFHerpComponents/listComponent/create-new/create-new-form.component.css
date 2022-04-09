@@ -1,3 +1,10 @@
+.Contain {
+  min-width: 70%;
+}
+.productSection {
+  display: flex;
+  width: 50%;
+}
 .contact_form {
   min-height: 400px;
   margin: 0px 6px;
@@ -24,7 +31,6 @@ textarea {
 .Formheader {
   display: flex;
   justify-content: space-around;
-
 }
 
 .modal-heading {
@@ -33,18 +39,20 @@ textarea {
   text-align: center;
 }
 
-.standard-color-modal{
+.standard-color-modal {
   background-color: #dcebdc;
 }
-
 
 .link {
   text-decoration: none;
   cursor: pointer;
 }
 .formFooter {
+  display: flex;
+  justify-content: space-between;
   height: 48px;
-  padding-top: 7px;
+
+  margin: 7px 5px 0px 5px;
 }
 .mat-stroked-button {
   margin-right: 15px !important;
@@ -52,4 +60,9 @@ textarea {
 }
 .mat-checkbox {
   margin-top: 16px;
+}
+.product {
+  position: fixed;
+  bottom: 24%;
+  background: white;
 }

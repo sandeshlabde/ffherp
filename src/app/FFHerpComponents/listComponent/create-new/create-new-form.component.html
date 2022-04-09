@@ -1,11 +1,11 @@
-<div>
+<div class="Contain">
   <div mat-dialog-title class="Formheader modal-heading standard-color-modal">
     <div><h2 class="text-cente">New / Edit</h2></div>
     <div class="text-end">
       <h4><a class="link" (click)="Detail()"> Additional Details</a></h4>
     </div>
   </div>
-  <form action="">
+  <form #form="ngForm" (submit)="NewForm(form.value)">
     <div class="row g-0">
       <div class="col">
         <h4>For Company</h4>
@@ -56,7 +56,13 @@
             <mat-form-field class="full-width">
               <mat-label>Contact</mat-label>
               <mat-select>
-                <mat-option value=" "> </mat-option>
+                <mat-option
+                  *ngFor="let contact of contactData"
+                  [value]="contact.Id"
+                  (onSelectionChange)="Contact(contact)"
+                >
+                  {{ contact.Name }}</mat-option
+                >
               </mat-select>
               <!-- <input matInput name="Contact" required /> -->
             </mat-form-field>
@@ -70,7 +76,11 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput name="Mobile" [value]="" />
+              <input
+                matInput
+                name="Mobile"
+                [value]="contactinfo?.ContactMobile"
+              />
             </mat-form-field>
           </div>
           <div class="col-lg-1 text-center">
@@ -79,15 +89,25 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput name="Email" [value]="" />
+              <input
+                matInput
+                name="Email"
+                [value]="contactinfo?.ContactEmail"
+              />
             </mat-form-field>
           </div>
 
           <div class="col-lg-12">
             <mat-form-field class="full-width">
               <mat-label>Manager</mat-label>
-              <mat-select>
-                <mat-option> select </mat-option>
+              <mat-select name="Manager" ngModel>
+                <mat-option
+                  *ngFor="let user of userValues"
+                  [value]="user.id"
+                  (onSelectionChange)="ManagerContact(user)"
+                >
+                  {{ user.Name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -96,7 +116,11 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput name="Mobile" />
+              <input
+                matInput
+                name="ManagerMobile"
+                [value]="selectedUserData?.UserMobile"
+              />
             </mat-form-field>
           </div>
           <div class="col-lg-1 text-center">
@@ -105,14 +129,18 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput name="Email" />
+              <input
+                matInput
+                name="ManagerEmail"
+                [value]="selectedUserData?.UserEmail"
+              />
             </mat-form-field>
           </div>
 
           <div class="col-lg-12">
             <mat-form-field class="full-width">
               <mat-label> Email Subject Line</mat-label>
-              <input matInput name="Email_Subj_Line" />
+              <input matInput name="Email_Subj_Line" ngModel />
             </mat-form-field>
           </div>
         </div>
@@ -177,7 +205,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Complaint for product / Service type</mat-label>
-                  <mat-select>
+                  <mat-select name="product/Servicetype" ngModel>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -230,7 +258,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Select Problem</mat-label>
-                  <mat-select>
+                  <mat-select name="SelectProblem" ngModel>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -261,12 +289,14 @@
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Ticket Type</mat-label>
-                  <mat-select>
-                    <!-- <mat-option
-                      *ngFor="let sourceValue of CommanData.slice(273, 281)"
-                      value="{{ sourceValue.Key }} "
-                      >{{ sourceValue.Value }}
-                    </mat-option> -->
+                  <mat-select name="TicketType" ngModel>
+                    <mat-option
+                      *ngFor="
+                        let TicketType of DDTypeValue | formFilter: 'TicketType'
+                      "
+                      value="{{ TicketType.Key }} "
+                      >{{ TicketType.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="DispatchBy">
@@ -286,7 +316,7 @@
               <div class="col" *ngIf="ticket">
                 <mat-form-field class="full-width">
                   <mat-label>Amount</mat-label>
-                  <input matInput />
+                  <input matInput name="Amount" ngModel />
                 </mat-form-field>
               </div>
               <div class="col" *ngIf="work">
@@ -335,8 +365,15 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Problem Type</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select name="problemType" ngModel>
+                    <mat-option
+                      *ngFor="
+                        let ProblemType of DDTypeValue
+                          | formFilter: 'TicketWorkType'
+                      "
+                      value="{{ ProblemType.Key }}"
+                      >{{ ProblemType.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="Stage">
@@ -399,8 +436,14 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Priority</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select name="Priority" ngModel>
+                    <mat-option
+                      *ngFor="
+                        let Priority of DDTypeValue | formFilter: 'Priority'
+                      "
+                      value="{{ Priority.Key }} "
+                      >{{ Priority.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="PONumber">
@@ -456,6 +499,7 @@
                     [(ngModel)]="TCloseBefore"
                     name="TCloseBefore"
                     [min]="minDate"
+                    ngModel=""
                   />
                   <mat-datepicker-toggle
                     matSuffix
@@ -531,8 +575,15 @@
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Ticket Source</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select name="TicketSource" ngModel>
+                    <mat-option
+                      *ngFor="
+                        let TicketSource of DDTypeValue
+                          | formFilter: 'TicketSource'
+                      "
+                      value="{{ TicketSource.Key }} "
+                      >{{ TicketSource.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="work">
@@ -587,7 +638,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Stage</mat-label>
-                  <mat-select>
+                  <mat-select name="stage" ngModel>
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -715,32 +766,73 @@
           <div class="form-field col-lg-12">
             <mat-form-field class="full-width">
               <mat-label>Description</mat-label>
-              <textarea matInput maxlength="300" required></textarea>
+              <textarea
+                matInput
+                maxlength="300"
+                name="Description"
+                required
+                ngModel
+              ></textarea>
             </mat-form-field>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="text-end formFooter">
-      <button
-        class="border border-danger"
-        mat-button
-        mat-dialog-close
-        mat-stroked-button
-        color="warn"
-      >
-        Cancel
-      </button>
-      <button
-        mat-button
-        mat-stroked-button
-        color="primary"
-        type="submit"
-        class="border border-primary"
-      >
-        Save
-      </button>
+    <div class="product" *ngIf="Product">
+      <app-ticket-product
+        [ProductData]="ProductData"
+        (product)="product($event)"
+        (selectedProduct)="selectedProduct($event)"
+      ></app-ticket-product>
+    </div>
+    <div class="formFooter">
+      <div class="productSection">
+        <div class="col-lg-3" (click)="TicketProduct()">
+          <a class="a">Product</a>
+        </div>
+        <div class="col-lg-9" *ngIf="SelectedProductData">
+          <div>
+            <div>
+              {{ SelectedProductData?.productName }}
+            </div>
+            <div>{{ SelectedProductData?.CIOwnerId }}</div>
+            <div>{{ SelectedProductData?.TypeId }}</div>
+            <div>
+              {{ SelectedProductData?.WarrantyTo_new }} -
+              {{ SelectedProductData?.Warrantyfrom_new }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-end">
+        <button
+          class="border border-success"
+          mat-button
+          mat-dialog-close
+          mat-stroked-button
+          color="warn"
+        >
+          Schedule
+        </button>
+        <button
+          class="border border-danger"
+          mat-button
+          mat-dialog-close
+          mat-stroked-button
+          color="warn"
+        >
+          Cancel
+        </button>
+        <button
+          mat-button
+          mat-stroked-button
+          color="primary"
+          type="submit"
+          class="border border-primary"
+        >
+          Save
+        </button>
+      </div>
 
       <!-- [mat-dialog-close]="true" -->
     </div>

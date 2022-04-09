@@ -17,7 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
-import { TablePipe } from './pipe/table.pipe';
+import { FormFilter, TablePipe } from './pipe/pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActionComponent } from './action/action.component';
@@ -42,6 +42,7 @@ import { LoaderintercepterInterceptor } from './intercepter/loaderintercepter.in
 @NgModule({
   declarations: [
     TablePipe,
+    FormFilter,
     ActionComponent,
     NextActionComponent,
     CloseActionComponent,
@@ -121,6 +122,7 @@ import { LoaderintercepterInterceptor } from './intercepter/loaderintercepter.in
     MatBadgeModule,
     ActionScheduledComponent,
     PivortReportComponent,
+    FormFilter,
   ],
   providers: [
     {

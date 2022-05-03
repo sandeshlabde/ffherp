@@ -1,3 +1,10 @@
+.Contain {
+  min-width: 70%;
+}
+.productSection {
+  display: flex;
+  width: 50%;
+}
 .contact_form {
   min-height: 400px;
   margin: 0px 6px;
@@ -17,14 +24,17 @@ h4 {
   color: lightskyblue;
   margin: 0px !important;
 }
-textarea {
+.contact_form textarea {
   height: 330px;
+  resize: none;
+}
+.schedulTextarea {
+  height: 60px;
   resize: none;
 }
 .Formheader {
   display: flex;
   justify-content: space-around;
-
 }
 
 .modal-heading {
@@ -33,18 +43,21 @@ textarea {
   text-align: center;
 }
 
-.standard-color-modal{
+.standard-color-modal {
   background-color: #dcebdc;
 }
-
 
 .link {
   text-decoration: none;
   cursor: pointer;
+  margin: 5px;
 }
 .formFooter {
+  display: flex;
+  justify-content: space-between;
   height: 48px;
-  padding-top: 7px;
+
+  margin: 7px 5px 0px 5px;
 }
 .mat-stroked-button {
   margin-right: 15px !important;
@@ -52,4 +65,45 @@ textarea {
 }
 .mat-checkbox {
   margin-top: 16px;
+}
+.product {
+  position: fixed;
+  bottom: 24%;
+  background: white;
+}
+.productName {
+  font-weight: 500;
+}
+.ScheduleAction {
+  height: fit-content;
+  position: fixed;
+  bottom: 8%;
+  background-color: #bce1c6;
+  left: 70%;
+  top: 18%;
+  padding: 10px;
+}
+.scheduleContain {
+  margin-top: 20px;
+  background-color: white;
+  padding: 7px;
+  height: 100%;
+}
+.scheduleRadioButtons {
+  display: flex;
+}
+.mat-radio-button {
+  margin-right: 10px;
+}
+.ScheduleCreateButton {
+  background-color: green;
+  color: white;
+}
+.CancelButton {
+  background-color: red;
+  color: white;
+}
+.linkbutton {
+  display: flex;
+  justify-content: space-between;
 }

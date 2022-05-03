@@ -1,39 +1,17 @@
-<div>
+<div class="Contain">
   <div mat-dialog-title class="Formheader modal-heading standard-color-modal">
     <div><h2 class="text-cente">New / Edit</h2></div>
     <div class="text-end">
       <h4><a class="link" (click)="Detail()"> Additional Details</a></h4>
     </div>
   </div>
-  <form action="">
+  <form [formGroup]="userForm" (submit)="CreateTicket(userForm.value)">
     <div class="row g-0">
       <div class="col">
         <h4>For Company</h4>
         <div class="contact_form row g-0 border border-primary">
           <div class="col-lg-10">
-            <mat-form-field class="full-width">
-              <mat-label>Company</mat-label>
-              <input
-                matInput
-                type="text"
-                name="Company"
-                minlength="3"
-                maxlength="40"
-                [(ngModel)]="Company"
-                (ngModelChange)="Autocomplete($event)"
-                [matAutocomplete]="auto"
-                required
-              />
-
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option
-                  *ngFor="let item of autoCompleteData"
-                  [value]="item.companyName"
-                >
-                  {{ item.companyName }}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
+            <app-autocomplete (company)="company($event)"></app-autocomplete>
             <li class="company_link">
               <a class="link" style="color: red">Select Site</a>
             </li>
@@ -48,15 +26,21 @@
           </div>
 
           <div class="col-lg-2">
-            <a class="link" rel="noopener noreferrer" style="color: red">+</a>
+            <a class="link" style="color: red">+</a>
 
-            <a class="link" rel="noopener noreferrer" style="color: red">360</a>
+            <a class="link" style="color: red">360</a>
           </div>
           <div class="col-lg-11">
             <mat-form-field class="full-width">
               <mat-label>Contact</mat-label>
-              <mat-select>
-                <mat-option value=" "> </mat-option>
+              <mat-select formControlName="ContactId">
+                <mat-option
+                  (click)="Contact(contact)"
+                  *ngFor="let contact of contactData"
+                  [value]="contact.Id"
+                >
+                  {{ contact.Name }}</mat-option
+                >
               </mat-select>
               <!-- <input matInput name="Contact" required /> -->
             </mat-form-field>
@@ -66,28 +50,36 @@
             <a class="link" style="color: red">+</a>
           </div>
 
-          <div class="col-lg-1 text-center"><mat-checkbox> </mat-checkbox></div>
+          <div class="col-lg-1"><mat-checkbox> </mat-checkbox></div>
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput name="Mobile" [value]="" />
+              <input matInput formControlName="ContactMobile" />
             </mat-form-field>
           </div>
-          <div class="col-lg-1 text-center">
-            <mat-checkbox> </mat-checkbox>
+          <div class="col-lg-1">
+            <mat-checkbox formControlName="Emailcheckbox"> </mat-checkbox>
           </div>
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput name="Email" [value]="" />
+              <input matInput [email]="true" formControlName="ContactEmail" />
+              <!-- <mat-error  
+              >Please enter a valid email address
+            </mat-error> -->
             </mat-form-field>
           </div>
 
           <div class="col-lg-12">
             <mat-form-field class="full-width">
               <mat-label>Manager</mat-label>
-              <mat-select>
-                <mat-option> select </mat-option>
+              <mat-select
+                formControlName="OwnerId"
+                (ngModelChange)="ManagerContact($event)"
+              >
+                <mat-option *ngFor="let user of userValues" [value]="user.id">
+                  {{ user.Name }}
+                </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
@@ -96,7 +88,7 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Mobile</mat-label>
-              <input matInput name="Mobile" />
+              <input matInput formControlName="OwnerMobile" />
             </mat-form-field>
           </div>
           <div class="col-lg-1 text-center">
@@ -105,14 +97,14 @@
           <div class="col-lg-5">
             <mat-form-field class="full-width">
               <mat-label>Email</mat-label>
-              <input matInput name="Email" />
+              <input matInput [email]="true" formControlName="OwnerEmail" />
             </mat-form-field>
           </div>
 
           <div class="col-lg-12">
             <mat-form-field class="full-width">
-              <mat-label> Email Subject Line</mat-label>
-              <input matInput name="Email_Subj_Line" />
+              <mat-label> Title</mat-label>
+              <input matInput formControlName="Title" />
             </mat-form-field>
           </div>
         </div>
@@ -177,7 +169,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Complaint for product / Service type</mat-label>
-                  <mat-select>
+                  <mat-select formControlName="ProductServicetype">
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -230,7 +222,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Select Problem</mat-label>
-                  <mat-select>
+                  <mat-select formControlName="SelectProblem">
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -245,7 +237,7 @@
             <!-- 1st row Details Section end  -->
             <!-- 2nd row Details Section start  -->
             <div class="row">
-              <div class="col">
+              <div class="col-lg-6">
                 <mat-form-field class="full-width" *ngIf="so">
                   <mat-label>Allocate To</mat-label>
                   <input matInput />
@@ -261,12 +253,14 @@
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Ticket Type</mat-label>
-                  <mat-select>
-                    <!-- <mat-option
-                      *ngFor="let sourceValue of CommanData.slice(273, 281)"
-                      value="{{ sourceValue.Key }} "
-                      >{{ sourceValue.Value }}
-                    </mat-option> -->
+                  <mat-select formControlName="TypeId">
+                    <mat-option
+                      *ngFor="
+                        let TicketType of DDTypeValue | formFilter: 'TicketType'
+                      "
+                      [value]="TicketType.Key"
+                      >{{ TicketType.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="DispatchBy">
@@ -283,19 +277,19 @@
                   <input matInput />
                 </mat-form-field>
               </div>
-              <div class="col" *ngIf="ticket">
+              <div class="col-lg-2" *ngIf="ticket">
                 <mat-form-field class="full-width">
                   <mat-label>Amount</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="ChargeAmount" />
                 </mat-form-field>
               </div>
-              <div class="col" *ngIf="work">
+              <div class="col-lg-2" *ngIf="work">
                 <mat-form-field class="full-width">
                   <mat-label>Score</mat-label>
                   <input matInput />
                 </mat-form-field>
               </div>
-              <div class="col">
+              <div class="col-lg-4">
                 <mat-form-field class="full-width" *ngIf="prospect">
                   <mat-label>DropDown</mat-label>
                   <mat-select>
@@ -335,8 +329,15 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Problem Type</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select formControlName="ProblemType">
+                    <mat-option
+                      *ngFor="
+                        let ProblemType of DDTypeValue
+                          | formFilter: 'TicketWorkType'
+                      "
+                      value="{{ ProblemType.Key }}"
+                      >{{ ProblemType.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="Stage">
@@ -399,8 +400,14 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Priority</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select formControlName="Priority">
+                    <mat-option
+                      *ngFor="
+                        let Priority of DDTypeValue | formFilter: 'Priority'
+                      "
+                      [value]="Priority.Key"
+                      >{{ Priority.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="PONumber">
@@ -453,8 +460,7 @@
                   <input
                     matInput
                     [matDatepicker]="tCloseBefore"
-                    [(ngModel)]="TCloseBefore"
-                    name="TCloseBefore"
+                    formControlName="TCloseBefore"
                     [min]="minDate"
                   />
                   <mat-datepicker-toggle
@@ -531,8 +537,15 @@
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Ticket Source</mat-label>
-                  <mat-select>
-                    <mat-option> </mat-option>
+                  <mat-select formControlName="TicketSourceId">
+                    <mat-option
+                      *ngFor="
+                        let TicketSource of DDTypeValue
+                          | formFilter: 'TicketSource'
+                      "
+                      value="{{ TicketSource.Key }} "
+                      >{{ TicketSource.Value }}
+                    </mat-option>
                   </mat-select>
                 </mat-form-field>
                 <mat-form-field class="full-width" *ngIf="work">
@@ -587,7 +600,7 @@
 
                 <mat-form-field class="full-width" *ngIf="ticket">
                   <mat-label>Stage</mat-label>
-                  <mat-select>
+                  <mat-select formControlName="Stage">
                     <mat-option> </mat-option>
                   </mat-select>
                 </mat-form-field>
@@ -715,34 +728,225 @@
           <div class="form-field col-lg-12">
             <mat-form-field class="full-width">
               <mat-label>Description</mat-label>
-              <textarea matInput maxlength="300" required></textarea>
+              <textarea
+                matInput
+                maxlength="300"
+                formControlName="Description"
+                required
+              ></textarea>
             </mat-form-field>
           </div>
         </div>
       </div>
     </div>
+    <div class="product" *ngIf="Product">
+      <app-ticket-product
+        [ProductData]="ProductData"
+        (product)="product($event)"
+        (selectedProduct)="selectedProduct($event)"
+      ></app-ticket-product>
+    </div>
+    <div class="formFooter">
+      <div class="productSection">
+        <div class="col-lg-4">
+          <mat-radio-group aria-label="Select an option">
+            <mat-radio-button value="1" (click)="TicketProduct()"
+              >Product</mat-radio-button
+            >
+            <!-- <mat-radio-button value="2">Temp Product</mat-radio-button> -->
+          </mat-radio-group>
+        </div>
 
-    <div class="text-end formFooter">
-      <button
-        class="border border-danger"
-        mat-button
-        mat-dialog-close
-        mat-stroked-button
-        color="warn"
-      >
-        Cancel
-      </button>
-      <button
-        mat-button
-        mat-stroked-button
-        color="primary"
-        type="submit"
-        class="border border-primary"
-      >
-        Save
-      </button>
+        <div class="col-lg-8">
+          <div>
+            <div class="productName">
+              {{ SelectedProductData?.productName }}
+            </div>
+            <div>{{ SelectedProductData?.CIOwnerId }}</div>
+            <div>{{ SelectedProductData?.TypeId }}</div>
+            <div>
+              {{ SelectedProductData?.WarrantyTo_new | dateformat }} -
+              {{ SelectedProductData?.Warrantyfrom_new | dateformat }}
+            </div>
+          </div>
+          <!-- <div>
+            <mat-form-field class="full-width"  >
+              <mat-label>Product</mat-label>
+              <mat-select>
+                <mat-option
+                  *ngFor="let temp of tempProduct"
+                  value="{{ tempProduct.id }}"
+                  ngModel
+                  >{{ tempProduct.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+        </div>
+      </div>
+      <div>
+        <a class="link" (click)="scheduleAction()"> Schedule</a>
+      </div>
+      <div>
+        <button
+          class="CancelButton"
+          mat-button
+          mat-dialog-close
+          mat-stroked-button
+          color="warn"
+        >
+          Cancel
+        </button>
+      </div>
+      <!-- <div class="linkbutton"> -->
+
+      <!-- <button
+          class="ScheduleCreateButton"
+          mat-button
+          mat-stroked-button
+         
+        >
+         
+        </button> -->
+
+      <!-- <button
+          mat-button
+          mat-stroked-button
+          color="primary"
+          type="submit"
+          class="border border-primary"
+        >
+          Create
+        </button> -->
+      <!-- </div> -->
 
       <!-- [mat-dialog-close]="true" -->
+    </div>
+    <div class="ScheduleAction" *ngIf="ScheduleAction">
+      <div class="scheduleRadioButtons">
+        <mat-radio-group
+          aria-label="Select an option"
+          formControlName="ActionType"
+        >
+          <mat-radio-button value="Visit">Visit</mat-radio-button>
+          <mat-radio-button value="Email">Email</mat-radio-button>
+          <mat-radio-button value="Phone">Phone</mat-radio-button>
+          <mat-radio-button value="Message">Message</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div class="scheduleContain">
+        <div class="row">
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <mat-label>Allocate To</mat-label>
+              <mat-select formControlName="AllocateTo">
+                <mat-option value="DC5254">Dattatray Chavan </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <mat-label>Close Before</mat-label>
+              <input
+                matInput
+                [matDatepicker]="closeBefore"
+                formControlName="CloseBefore"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="closeBefore"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #closeBefore></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6">
+            <mat-checkbox class="full-width">
+              <mat-form-field class="full-width">
+                <mat-label>E-mail</mat-label>
+                <input matInput [email]="true" formControlName="SchduleEmail" />
+              </mat-form-field>
+            </mat-checkbox>
+          </div>
+          <div class="col-lg-6">
+            <mat-checkbox class="full-width">
+              <mat-form-field class="full-width">
+                <mat-label>SMS</mat-label>
+                <input name="scheduleMobile" matInput />
+              </mat-form-field>
+            </mat-checkbox>
+          </div>
+
+          <div class="col-lg-12">
+            <mat-form-field class="full-width">
+              <mat-label>Instruction</mat-label>
+              <textarea
+                class="schedulTextarea"
+                matInput
+                formControlName="Instruction"
+                required
+              ></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <mat-label>Schedule On</mat-label>
+              <input
+                matInput
+                [matDatepicker]="scheduleOn"
+                formControlName="ScheduleOn"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="scheduleOn"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #scheduleOn></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                type="time"
+                formControlName="ScheduleActionTime"
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <mat-label>Days</mat-label>
+              <mat-select formControlName="Days">
+                <mat-option value="1"> 1</mat-option>
+                <mat-option value="2"> 2</mat-option>
+                <mat-option value="3"> 3</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-lg-6">
+            <mat-form-field class="full-width">
+              <mat-label>Alert Before</mat-label>
+              <mat-select formControlName="AlertBefore">
+                <mat-option value="Minutes"> Minutes</mat-option>
+                <mat-option value="hh"> Hours</mat-option>
+                <mat-option value="Days"> Days</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="text-end">
+            <button
+              mat-dialog-close
+              mat-button
+              mat-stroked-button
+              type="submit"
+              class="ScheduleCreateButton"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 </div>

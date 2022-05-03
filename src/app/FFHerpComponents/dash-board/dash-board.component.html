@@ -58,25 +58,30 @@
           <tr>
             <th>Actor</th>
             <ng-container *ngFor="let Actor of columns">
-              <th *ngIf="Actor != 'total'">
+              <th
+                [ngClass]="Actor == 'Actor' ? 'leftlign' : 'rightlign'"
+                *ngIf="Actor != 'total'"
+              >
                 {{ Actor }}
               </th>
             </ng-container>
-            <th>Total</th>
+            <th class="rightlign">Total</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let count of tableData | keyvalue">
-            <td>
-              <a class="a" (click)="piChart(count.value)">
+            <td class="leftlign">
+              <a class="a" (click)="piChart(count.value, count.key)">
                 {{ count.key }}
               </a>
             </td>
             <ng-container *ngFor="let Actor of columns">
-              <td *ngIf="Actor != 'total'">{{ count.value[Actor] }}</td>
+              <td class="rightlign" *ngIf="Actor != 'total'">
+                {{ count.value[Actor] }}
+              </td>
             </ng-container>
 
-            <td>
+            <td class="rightlign">
               <a class="a" (click)="ShowListDeatail(count.key)">{{
                 count.value["total"]
               }}</a>
@@ -85,11 +90,11 @@
           <tr>
             <td>Total</td>
             <ng-container *ngFor="let A of columns">
-              <td *ngIf="A != 'total'">
+              <td class="rightlign" *ngIf="A != 'total'">
                 {{ getTotal(A) }}
               </td>
             </ng-container>
-            <td>{{ getTotal("total") }}</td>
+            <td class="rightlign">{{ getTotal("total") }}</td>
           </tr>
         </tbody>
       </table>
@@ -97,8 +102,8 @@
   </div>
   <div class="col piaChart">
     <div *ngIf="pieChartData">
-      <h2 class="ChartHeading">Chart</h2>
       <mat-card>
+        <h2 class="ChartHeading">{{ userName }}</h2>
         <canvas
           baseChart
           [type]="'pie'"

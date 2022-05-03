@@ -584,7 +584,7 @@
                   (ngModelChange)="changeSortedColumn()"
                 >
                   <mat-option
-                    *ngFor="let Value of commanData.slice(138, 148)"
+                    *ngFor="let Value of commanData | commanFilter: 'SortBy'"
                     value="{{ Value.Key }}"
                     >{{ Value.Value }}</mat-option
                   >
@@ -857,7 +857,7 @@
             (ngModelChange)="groupSelectedValue()"
           >
             <mat-option
-              *ngFor="let Value of commanData.slice(148, 158)"
+              *ngFor="let Value of commanData | commanFilter: 'GroupBy'"
               value="{{ Value.Key }}"
               >{{ Value.Value }}</mat-option
             >
@@ -907,6 +907,49 @@
     </mat-tab>
   </mat-tab-group>
   <div class="ActivityLog" *ngIf="ActivityList">
+    <div class="activityOption">
+      <div>
+        <mat-form-field>
+          <mat-label>From </mat-label>
+          <input
+            matInput
+            [matDatepicker]="activityFrom"
+            [(ngModel)]="ActivityFrom"
+          />
+
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="activityFrom"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #activityFrom></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>To</mat-label>
+          <input
+            matInput
+            [matDatepicker]="activityTo"
+            [(ngModel)]="ActivityTo"
+          />
+
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="activityTo"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #activityTo></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="activityButtons">
+        <div>
+          <button mat-stroked-button (click)="activityGenerate()">
+            Generate
+          </button>
+        </div>
+        <div><button mat-stroked-button>Export to Excel</button></div>
+        <div>Add</div>
+      </div>
+    </div>
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="Entity">
         <th mat-header-cell *matHeaderCellDef>Entity</th>

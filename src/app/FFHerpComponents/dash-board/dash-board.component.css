@@ -35,7 +35,7 @@ mat-form-field {
   margin-top: 30px;
   display: block;
   width: 500px;
-  height: 500px;
+  height: 540px;
   box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 20%), 2px 2px 2px 2px rgb(0 0 0 / 14%),
     2px 2px 2px 2px rgb(0 0 0 / 12%);
 }
@@ -68,4 +68,10 @@ a:hover {
   margin: 0px !important;
   padding: 0px !important;
   overflow-x: hidden !important;
+}
+.leftlign {
+  text-align: left;
+}
+.rightlign {
+  text-align: right;
 }

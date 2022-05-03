@@ -31,6 +31,17 @@ import { Subscription } from 'rxjs';
 import { CreateNewFormComponent } from './create-new/create-new-form.component';
 import { Global } from 'src/app/shared/Global';
 import { CurrencyConversion } from 'src/app/shared/models';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
+import {
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS,
+  DateAdapter,
+} from '@angular/material/core';
+
+import { MY_FORMATS } from 'src/app/matdatepickerformat';
 
 export interface DialogData {
   EntityID: number;
@@ -40,6 +51,16 @@ export interface DialogData {
   selector: 'app-prospect-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class ListComponent implements OnInit {
   panelOpenState: boolean = false;
@@ -64,6 +85,8 @@ export class ListComponent implements OnInit {
   DetailViewSection: boolean = false;
   groupSelected: any;
   Array: any;
+  ActivityFrom: any = this.a;
+  ActivityTo: any = this.a;
   currencyConversion = CurrencyConversion;
 
   displayedColumns: any[] = [
@@ -298,7 +321,7 @@ export class ListComponent implements OnInit {
   ) {
     this.root.params.subscribe((param) => {
       this.dialogData = this.injector.get(MAT_DIALOG_DATA, null);
-      console.log(this.dialogData);
+
       if (this.dialogData) {
         if (this.dialogData.Count) {
           this.EntityName = this.dialogData.EntityName;
@@ -360,22 +383,7 @@ export class ListComponent implements OnInit {
       }
 
       if (this.EntityName == 'Activity') {
-        var ToDate = moment().format('YYYY/MM/DD');
-        var FromDate = moment().startOf('month').format('YYYY/MM/DD');
-        let params = {
-          DbName: this.global.LOGGED_IN_USER.DbName,
-          RoleID: this.global.LOGGED_IN_USER.RoleId,
-          Password: this.global.LOGGED_IN_USER.Password,
-          UserID: this.global.LOGGED_IN_USER.UserId,
-          FromDate: FromDate,
-          ToDate: ToDate,
-        };
-        this.listService.GetActivityLog(params).subscribe((data: any) => {
-          this.dataSource.data = JSON.parse(data);
-          console.log(JSON.parse(data));
-
-          this.ngAfterViewInit();
-        });
+        this.activityGenerate();
       } else {
         let params = {
           Flag: this.EntityName,
@@ -455,7 +463,7 @@ export class ListComponent implements OnInit {
         };
         this.listService.getList(params).subscribe((data: any) => {
           this.dataSource.data = JSON.parse(data);
-
+          this.commanTotalData();
           this.ngAfterViewInit();
         });
       }
@@ -718,7 +726,26 @@ export class ListComponent implements OnInit {
     this.dataSource.sort = this.sort;
     this.changeSortedColumn();
   }
-  ngOnInit() {
-    this.commanTotalData();
+  activityGenerate() {
+    var ToDate = moment(this.ActivityTo).format('YYYY/MM/DD');
+    var FromDate = moment(this.ActivityFrom)
+      .startOf('month')
+      .format('YYYY/MM/DD');
+    let params = {
+      DbName: this.global.LOGGED_IN_USER.DbName,
+      RoleID: this.global.LOGGED_IN_USER.RoleId,
+      Password: this.global.LOGGED_IN_USER.Password,
+      UserID: this.global.LOGGED_IN_USER.UserId,
+      FromDate: FromDate,
+      ToDate: ToDate,
+    };
+    this.listService.GetActivityLog(params).subscribe((data: any) => {
+      this.dataSource.data = JSON.parse(data);
+      console.log(JSON.parse(data));
+
+      this.ngAfterViewInit();
+    });
   }
+
+  ngOnInit() {}
 }

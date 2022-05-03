@@ -49,7 +49,7 @@ export class FilterSearchComponent implements OnInit {
     return ['repair'].includes(this.EntityName.toLowerCase());
   }
   get vouchar() {
-    return ['vouchar'].includes(this.EntityName.toLowerCase());
+    return ['voucher'].includes(this.EntityName.toLowerCase());
   }
   constructor(
     private httpClient: HttpClient,
@@ -58,6 +58,11 @@ export class FilterSearchComponent implements OnInit {
     this.commanData = data.Data;
     this.EntityName = this.data.EntityName;
   }
-
+  filterData(type: any) {
+    return this.commanData.filter((item) => item.Type == type);
+  }
+  company(e: any) {
+    console.log(e);
+  }
   ngOnInit(): void {}
 }

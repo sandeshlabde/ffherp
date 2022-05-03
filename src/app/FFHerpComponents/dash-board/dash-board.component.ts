@@ -35,6 +35,7 @@ import { Global } from 'src/app/shared/Global';
 })
 export class DashBoardComponent implements OnInit {
   [x: string]: any;
+  userName: any;
   Today = moment();
   selectedValue = 'entActionType';
   ddData: any;
@@ -54,6 +55,7 @@ export class DashBoardComponent implements OnInit {
   pieChartLegend: boolean;
   pieChartData: { data: any[] }[];
   tableData: any;
+  Total: any;
 
   h: any;
 
@@ -89,17 +91,16 @@ export class DashBoardComponent implements OnInit {
   getPivotTable(data, type) {
     const map = new Map();
     data.forEach((item) => {
-      map.set(item['entActionContactName'], {
-        ...map.get(item['entActionContactName']),
+      map.set(item['entActorName'], {
+        ...map.get(item['entActorName']),
         [item[type]]:
-          map.get(item['entActionContactName']) &&
-          map.get(item['entActionContactName'])[item[type]]
-            ? map.get(item['entActionContactName'])[item[type]] + 1
+          map.get(item['entActorName']) &&
+          map.get(item['entActorName'])[item[type]]
+            ? map.get(item['entActorName'])[item[type]] + 1
             : 1,
         total:
-          map.get(item['entActionContactName']) &&
-          map.get(item['entActionContactName']).total
-            ? map.get(item['entActionContactName']).total + 1
+          map.get(item['entActorName']) && map.get(item['entActorName']).total
+            ? map.get(item['entActorName']).total + 1
             : 1,
       });
     });
@@ -151,7 +152,8 @@ export class DashBoardComponent implements OnInit {
       return o[1] && o[1][A] ? o[1][A] + sum : sum;
     }, 0);
   }
-  piChart(x) {
+  piChart(x, user) {
+    this.userName = user;
     const A = Object.keys(x)
       .filter((key) => key !== 'total')
       .reduce((obj, key) => {
@@ -175,10 +177,11 @@ export class DashBoardComponent implements OnInit {
       },
     ];
   }
+
   ShowListDeatail(A) {
     console.log(A);
     const dialogRef = this.dialog.open(DashListComponent, {
-      height: '50%',
+      height: '70%',
       width: '80%',
       data: {
         ActorName: A,

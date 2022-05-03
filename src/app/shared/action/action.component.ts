@@ -146,11 +146,11 @@ export class ActionComponent implements OnInit {
     //   this.stageType = 'todolist';
     //   this.entityname = 'todolist';
     // }
-    //  else if (this.EntityName === 'Ticket') {
-    //   this.activityType = 'Ticket';
-    //   this.stageType = 'Ticket';
-    //   this.entityname = 'Ticket';
-    // }
+    else if (this.EntityName === 'Ticket') {
+      this.activityType = 'Ticket';
+      this.stageType = 'Ticket';
+      this.entityname = 'Ticket';
+    }
     const param = {
       DBNAME: this.global.LOGGED_IN_USER.DbName,
       password: this.global.LOGGED_IN_USER.encryptPswd,
@@ -164,8 +164,7 @@ export class ActionComponent implements OnInit {
       this.ActivityType = this.getDefaultData[0].NextScheduleActivityType;
       this.MoveTostage = this.getDefaultData[0].MoveToStage;
       this.ActivityBy = this.getDefaultData[0].ScheduleUserId;
-      console.log(this.ActivityType);
-      console.log(this.getDefaultData);
+
       this.getNewlyData();
     });
   }

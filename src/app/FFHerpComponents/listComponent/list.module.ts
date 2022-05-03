@@ -14,6 +14,7 @@ import { DelivaryBillingAddressComponent } from './create-new/delivary-billing-a
 import { DashListComponent } from '../dash-board/dash-list/dash-list.component';
 import { ListComponent } from './list.component';
 import { EditVoucharComponent } from './approval/edit-vouchar/edit-vouchar.component';
+import { TicketProductComponent } from './create-new/ticket-product/ticket-product.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { EditVoucharComponent } from './approval/edit-vouchar/edit-vouchar.compo
     EditVoucharComponent,
     DashListComponent,
     ListComponent,
+    TicketProductComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [
@@ -47,6 +49,7 @@ import { EditVoucharComponent } from './approval/edit-vouchar/edit-vouchar.compo
     EditVoucharComponent,
     DashListComponent,
     ListComponent,
+    TicketProductComponent,
   ],
 })
 export class ListModule {}

@@ -1,0 +1,24 @@
+<mat-form-field class="full-width">
+  <mat-label>Company</mat-label>
+  <input
+    matInput
+    name="company"
+    type="text"
+    ngModel
+    minlength="3"
+    maxlength="40"
+    (ngModelChange)="Autocomplete($event)"
+    [matAutocomplete]="auto"
+    required
+  />
+
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option
+      *ngFor="let item of autoCompleteData"
+      [value]="item.companyName"
+      (click)="SelectedCompany(item)"
+    >
+      {{ item.companyName }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

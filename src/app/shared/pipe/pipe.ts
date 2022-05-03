@@ -37,3 +37,30 @@ export class TablePipe implements PipeTransform {
 //     }
 //   }
 // }
+@Pipe({
+  name: 'Filter',
+})
+export class FilterPipe implements PipeTransform {
+  transform(value: any): any {
+    console.log(value);
+    return value;
+  }
+}
+@Pipe({
+  name: 'formFilter',
+})
+export class FormFilter implements PipeTransform {
+  transform(list: any, type: any): any {
+    return list.filter((item: any) => item.Category == type);
+  }
+}
+@Pipe({
+  name: 'commanFilter',
+})
+export class CommanFilter implements PipeTransform {
+  transform(list: any, type: any): any {
+    if (list != null) {
+      return list.filter((item: any) => item.Type == type);
+    }
+  }
+}

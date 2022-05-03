@@ -1,4 +1,4 @@
-import { TablePipe } from './table.pipe';
+import { TablePipe } from './pipe';
 
 describe('TablePipe', () => {
   it('create an instance', () => {

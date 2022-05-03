@@ -17,7 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgChartsModule } from 'ng2-charts';
-import { FormFilter, TablePipe } from './pipe/pipe';
+import { CommanFilter, FormFilter, TablePipe } from './pipe/pipe';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActionComponent } from './action/action.component';
@@ -38,16 +38,19 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ActionScheduledComponent } from './action-scheduled/action-scheduled.component';
 import { PivortReportComponent } from './pivort-report/pivort-report.component';
 import { LoaderintercepterInterceptor } from './intercepter/loaderintercepter.interceptor';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
     TablePipe,
     FormFilter,
+    CommanFilter,
     ActionComponent,
     NextActionComponent,
     CloseActionComponent,
     ActionScheduledComponent,
     PivortReportComponent,
+    AutocompleteComponent,
   ],
   imports: [
     CommonModule,
@@ -123,6 +126,8 @@ import { LoaderintercepterInterceptor } from './intercepter/loaderintercepter.in
     ActionScheduledComponent,
     PivortReportComponent,
     FormFilter,
+    CommanFilter,
+    AutocompleteComponent,
   ],
   providers: [
     {

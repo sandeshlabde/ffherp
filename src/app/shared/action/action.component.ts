@@ -164,8 +164,7 @@ export class ActionComponent implements OnInit {
       this.ActivityType = this.getDefaultData[0].NextScheduleActivityType;
       this.MoveTostage = this.getDefaultData[0].MoveToStage;
       this.ActivityBy = this.getDefaultData[0].ScheduleUserId;
-      console.log(this.ActivityType);
-      console.log(this.getDefaultData);
+
       this.getNewlyData();
     });
   }

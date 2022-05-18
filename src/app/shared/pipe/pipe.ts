@@ -51,7 +51,16 @@ export class FilterPipe implements PipeTransform {
 })
 export class FormFilter implements PipeTransform {
   transform(list: any, type: any): any {
-    console.log(list);
     return list.filter((item: any) => item.Category == type);
+  }
+}
+@Pipe({
+  name: 'commanFilter',
+})
+export class CommanFilter implements PipeTransform {
+  transform(list: any, type: any): any {
+    if (list != null) {
+      return list.filter((item: any) => item.Type == type);
+    }
   }
 }

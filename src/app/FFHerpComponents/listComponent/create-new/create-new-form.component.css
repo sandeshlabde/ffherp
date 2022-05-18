@@ -24,8 +24,12 @@ h4 {
   color: lightskyblue;
   margin: 0px !important;
 }
-textarea {
+.contact_form textarea {
   height: 330px;
+  resize: none;
+}
+.schedulTextarea {
+  height: 60px;
   resize: none;
 }
 .Formheader {
@@ -46,6 +50,7 @@ textarea {
 .link {
   text-decoration: none;
   cursor: pointer;
+  margin: 5px;
 }
 .formFooter {
   display: flex;
@@ -65,4 +70,40 @@ textarea {
   position: fixed;
   bottom: 24%;
   background: white;
+}
+.productName {
+  font-weight: 500;
+}
+.ScheduleAction {
+  height: fit-content;
+  position: fixed;
+  bottom: 8%;
+  background-color: #bce1c6;
+  left: 70%;
+  top: 18%;
+  padding: 10px;
+}
+.scheduleContain {
+  margin-top: 20px;
+  background-color: white;
+  padding: 7px;
+  height: 100%;
+}
+.scheduleRadioButtons {
+  display: flex;
+}
+.mat-radio-button {
+  margin-right: 10px;
+}
+.ScheduleCreateButton {
+  background-color: green;
+  color: white;
+}
+.CancelButton {
+  background-color: red;
+  color: white;
+}
+.linkbutton {
+  display: flex;
+  justify-content: space-between;
 }

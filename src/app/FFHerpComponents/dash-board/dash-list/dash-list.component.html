@@ -1,22 +1,43 @@
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Contact Name</th>
-      <th>Company Name</th>
-      <th>Entity Name</th>
-      <th>Activity Type</th>
-      <th>Action Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let dashData of dashDetailList">
-      <td>{{ dashData.entActionId }}</td>
-      <td>{{ dashData.entActionContactName }}</td>
-      <td>{{ dashData.entActionCompanyName }}</td>
-      <td>{{ dashData.entEntityName }}</td>
-      <td>{{ dashData.entActivityType }}</td>
-      <td>{{ dashData.entActionType }}</td>
-    </tr>
-  </tbody>
-</table>
+<mat-form-field appearance="standard">
+  <mat-label>Search Column</mat-label>
+  <input matInput (keyup)="applyFilter($event)" #input />
+</mat-form-field>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="entActionId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let row">{{ row.entActionId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="entActionContactName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Contact Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.entActionContactName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="entActionCompanyName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Company Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.entActionCompanyName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="entEntityName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Entity Name</th>
+      <td mat-cell *matCellDef="let row">{{ row.entEntityName }}</td>
+    </ng-container>
+    <ng-container matColumnDef="entActivityType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Activity Type</th>
+      <td mat-cell *matCellDef="let row">{{ row.entActivityType }}</td>
+    </ng-container>
+    <ng-container matColumnDef="entActionType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Action Type</th>
+      <td mat-cell *matCellDef="let row">{{ row.entActionType }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+  ></mat-paginator>
+</div>

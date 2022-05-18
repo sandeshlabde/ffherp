@@ -24,6 +24,8 @@ export class CommanService {
     'https://ffherp.co.in:446/api/Voucher/GetProductByParty';
   GetdataForbindTicketValuesUrl =
     'https://ffherp.co.in:446/api/Voucher/GetdataForbindTicketValues';
+  GetCIPdetailUrl = 'https://ffherp.co.in:446/api/Voucher/GetCIPdetail';
+  createTicketUrl = 'https://ffherp.co.in:446/api/Voucher/createTicket';
   constructor(private http: HttpClient) {}
   createFormAutoComplete(param: any) {
     return this.http.post(this.createFormAutoCompleteURL, param);
@@ -55,5 +57,11 @@ export class CommanService {
   }
   GetdataForbindTicketValues(param) {
     return this.http.post(this.GetdataForbindTicketValuesUrl, param);
+  }
+  GetCIPdetail(param) {
+    return this.http.post(this.GetCIPdetailUrl, param);
+  }
+  createTicket(param) {
+    return this.http.post(this.createTicketUrl, param);
   }
 }

@@ -1,6 +1,29 @@
 .productGroup {
   display: flex;
   flex-direction: column;
-  margin: 15px 0;
+
   align-items: flex-start;
+}
+.heading {
+  text-align: center;
+  background-color: #dcebdc;
+}
+.Product {
+  background-color: #bce1c6;
+}
+h3 {
+  margin: 0px;
+  font-weight: 500;
+}
+h1 {
+  top: 0;
+  position: sticky;
+}
+
+.mat-radio-button {
+  margin-bottom: 13px;
+}
+.mat-card {
+  width: 380px;
+  margin: 10px;
 }

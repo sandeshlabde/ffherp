@@ -267,3 +267,13 @@ i {
 .ActivityLog {
   margin-top: 15px;
 }
+.activityOption {
+  display: flex;
+  justify-content: space-around;
+}
+.activityButtons {
+  display: flex;
+}
+.activityButtons button {
+  margin: 0px 5px;
+}
